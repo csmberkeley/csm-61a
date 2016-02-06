@@ -1,3 +1,5 @@
 *.aux
 *.out
+*.log
+*.gz
 .DS_Store
