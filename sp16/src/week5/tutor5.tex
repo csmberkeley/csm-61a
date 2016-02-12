@@ -80,7 +80,7 @@
 \end{lstlisting}
 \end{solution}
 \begin{solution}
-\href{http://goo.gl/Gxe0qv}{Box and pointer diagram on Python Tutor.}
+\href{http://goo.gl/Gxe0qv}{Box and pointer diagram in Python Tutor.}
 \end{solution}
 \end{blocksection}
 
@@ -319,16 +319,37 @@ tree(4,
         [tree(4, [])])])
 \end{lstlisting}
 \begin{solution}[4in]
-    TREE DRAWING HERE
+\begin{tikzpicture}[scale=1.5, transform shape]
+    \node [circle, draw] (z){$4$}
+        child {node [circle, draw] (a) {$5$}}
+        child {node [circle, draw] (b) {$2$}
+            child {node [circle, draw] (e) {$2$}}
+            child {node [circle, draw] (f) {$1$}}
+        }
+        child {node [circle, draw] (c) {$1$}}
+        child {node [circle, draw] (d) {$8$}
+            child {node [circle, draw] (g) {$4$}}
+        };
+\end{tikzpicture}
 \end{solution}
 
 \end{blocksection}
 
 \begin{blocksection}
-\question Given the following, construct it using Python. Save it to the
-variable \texttt{t}.
+\question Construct the following tree and save it to the variable \texttt{t}.
 
-TREE DRAWING HERE
+\begin{tikzpicture}[scale=1.5, transform shape]
+\tikzstyle{level 2}=[sibling distance=10mm]
+    \node [circle, draw] (z){$4$}
+        child {node [circle, draw] (a) {$5$}}
+        child {node [circle, draw] (d) {$8$}
+            child {node [circle, draw] (g) {$4$}}
+        }
+        child {node [circle, draw] (b) {$2$}
+            child {node [circle, draw] (e) {$2$}}
+            child {node [circle, draw] (f) {$1$}}
+        };
+\end{tikzpicture}
 
 \begin{solution}[4in]
 \begin{lstlisting}
