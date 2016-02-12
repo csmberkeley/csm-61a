@@ -82,12 +82,12 @@ def isSorted(n):
 \begin{lstlisting}
 right_digit = number % 10
 rest =  number // 10
-if rest  == 0:
+if rest == 0:
     return True
-elif right_digit > rest % 10 :
+elif right_digit > rest % 10:
     return False
 else:
-  	return isSorted(rest) 
+    return isSorted(rest)
 \end{lstlisting}
 \end{solution}
 
@@ -175,9 +175,9 @@ print(z(2))
 \begin{solution}[2in]
 \begin{lstlisting}
 def mystery(f, x):
-	def helper(y):
-		return f(x,y)
-	return helper
+    def helper(y):
+        return f(x,y)
+    return helper
 
 One-line solution: return lambda y : f(x,y)
 \end{lstlisting}

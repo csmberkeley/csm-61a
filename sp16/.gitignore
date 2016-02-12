@@ -2,4 +2,5 @@
 *.out
 *.log
 *.gz
+*.swp
 .DS_Store
