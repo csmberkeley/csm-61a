@@ -273,12 +273,9 @@ def __neg__(self):
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{(Optional)} Now write \texttt{reverse} by modifying the
-existing Links. Assume reverse returns the head of the new list (so the last
-\texttt{Link} object of the previous list).
+\question \textbf{(Optional)} Now write \texttt{reverse} by modifying the existing Links. Assume reverse returns the head of the new list (so the last \texttt{Link} object of the previous list).
 
-\begin{parts}
-\part First, draw out the box and pointer for the following:
+First, draw out the box and pointer for the following:
 \begin{lstlisting}
 >>> a = Link(1, Link(2))
 >>> a.rest.rest = a
@@ -295,8 +292,10 @@ modified.
 +------------------------+
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
 
-\part Now, generalize this to reverse an entire linked list.
+\begin{blocksection}
+Now, generalize this to reverse an entire linked list.
 \begin{lstlisting}
 def reverse(lst):
     """
@@ -329,7 +328,6 @@ def reverse(lst):
 \end{lstlisting}
 \end{solution}
 
-\end{parts}
 
 \end{blocksection}
 
