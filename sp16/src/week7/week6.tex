@@ -4,7 +4,7 @@
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{3}
 \title{\textsc{Linked Lists}}
-\date{February 29 to February 26, 2016}
+\date{February 22 to February 26, 2016}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -19,8 +19,7 @@
 
 \begin{questions}
 \begin{blocksection}
-\question \textbf{(H)OOP} \newline
-Given the following code, what will Python output for the following prompts? 
+\question \textbf{(H)OOP} Given the following code, what will Python output for the following prompts? 
 
 \begin{lstlisting}
 class Baller:
@@ -113,8 +112,7 @@ Error
 
 %%% Question %%%
 \begin{blocksection}
-\question \textbf{TeamBaller} \newline
-Write \texttt{TeamBaller}, a subclass of \texttt{Baller}. An instance of \texttt{TeamBaller} cheers on the team every time it passes a ball.  \newline
+\question \textbf{TeamBaller} Write \texttt{TeamBaller}, a subclass of \texttt{Baller}. An instance of \texttt{TeamBaller} cheers on the team every time it passes a ball.  \newline
 Hint: What can we use to avoid writing duplicate code? \newline
 "Super" Hint: There are two ways to implement \texttt{pass\_ball} \newline
 
@@ -149,8 +147,7 @@ class TeamBaller(Baller):
 %%% Question %%%
 
 \begin{blocksection}
-\question \textbf{Nonlocal Kale} \newline
-Draw the environment diagram for the following code.
+\question \textbf{Nonlocal Kale} Draw the environment diagram for the following code.
 
 \begin{lstlisting}
 eggplant = 8
@@ -169,14 +166,15 @@ spinach = vegetable(lambda kale: carrot*kale)(eggplant)
 \end{lstlisting}
 
 \begin{solution}[1in]
-	\includegraphics[scale=0.5]{img/kale.png}
+\begin{lstlisting}
+INSERT IMAGE
+\end{lstlisting}
 \end{solution}
 
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{Pinpong again...}  \newline
-Recap of ping-pong: The ping-pong sequence counts up starting from 1 and is always either counting up or counting down. At element k, the direction switches if k is a multiple of 7 or contains the digit 7. The first 30 elements of the ping-pong sequence are listed below, with direction swaps marked using brackets at the 7th, 14th, 17th, 21st, 27th, and 28th elements:
+\question \textbf{Pinpong again...}  Recap of ping-pong: The ping-pong sequence counts up starting from 1 and is always either counting up or counting down. At element k, the direction switches if k is a multiple of 7 or contains the digit 7. The first 30 elements of the ping-pong sequence are listed below, with direction swaps marked using brackets at the 7th, 14th, 17th, 21st, 27th, and 28th elements:
 \begin{lstlisting}
 1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0 [-1] 0 1 2 3 4 [5] [4] 5 6
 \end{lstlisting}
