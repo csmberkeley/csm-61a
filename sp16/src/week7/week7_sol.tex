@@ -2,8 +2,8 @@
 \usepackage{../../commonheader}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{4}
-\title{\textsc{Nonlocality and Object-Oriented Programming}}
+\discnumber{3}
+\title{\textsc{Linked Lists}}
 \date{February 29 to March 5, 2016}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,27 +26,26 @@ Given the following code, what will Python output for the following prompts?
 class Baller:
 	all_players = []
 	def __init__(self, name, has_ball = False):
-	   self.name = name
-	   self.has_ball = has_ball
-	   Baller.all_players.append(self)
+		self.name = name
+		self.has_ball = has_ball
+		Baller.all_players.append(self)
 	
 	def pass_ball(self, other_player):
-	   if self.has_ball:
-	      self.has_ball = False
-	      other_player.has_ball = True
-	      return True
-	   else:
-	      return False
+		if self.has_ball:
+		self.has_ball = False
+		other_player.has_ball = True
+		return True
+	else:
+		return False
 
 class BallHog(Baller):
 	def pass_ball(self, other_player):	
-	   return False	
-	   
+		return False	
 \end{lstlisting}
 
 \begin{lstlisting}
 >>> tiffany = Baller('Tiffany', True)
->>> jerry = BallHog('Jerry')
+>>> garrett = BallHog('Garrett')
 >>> len(Baller.all_players)
 \end{lstlisting}
 \begin{solution}[.2in]
@@ -61,7 +60,7 @@ Error
 \end{solution}
 
 \begin{lstlisting}
->>> len(jerry.all_players)
+>>> len(garrett.all_players)
 \end{lstlisting}
 \begin{solution}[.2in]
 2
@@ -77,35 +76,35 @@ Error
 \end{solution}
 
 \begin{lstlisting}
->>> tiffany.pass_ball(jerry)
+>>> tiffany.pass_ball(garrett)
 \end{lstlisting}
 \begin{solution}[.2in]
 True
 \end{solution}
 
 \begin{lstlisting}
->>> tiffany.pass_ball(jerry)
+>>> tiffany.pass_ball(garrett)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> BallHog.pass_ball(jerry, tiffany)
+>>> BallHog.pass_ball(garrett, tiffany)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> jerry.pass_ball(tiffany)
+>>> garrett.pass_ball(tiffany)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> jerry.pass_ball(jerry, tiffany)
+>>> garrett.pass_ball(garrett, tiffany)
 \end{lstlisting}
 \begin{solution}[.2in]
 Error
@@ -121,17 +120,16 @@ Hint: What can we use to avoid writing duplicate code? \newline
 
 \begin{lstlisting}
 >>> cheerballer = TeamBaller('Susanna', has_ball=True)
->>> cheerballer.pass_ball(jerry)
+>>> cheerballer.pass_ball(garrett)
 Yay!!!!
 True
->>> cheerballer.pass_ball(jerry)
+>>> cheerballer.pass_ball(garrett)
 I dont have the ball :(
 False
 
 
 class TeamBaller(_________):
 	def pass_ball(_________, __________):
-	   *** Enter solution below ***
 \end{lstlisting}
 \begin{solution}[1in]
 \begin{lstlisting}
