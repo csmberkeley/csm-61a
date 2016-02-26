@@ -51,7 +51,9 @@ class BallHog(Baller):
 \begin{solution}[.2in]
 2
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{lstlisting}
 >>> Baller.name
 \end{lstlisting}
@@ -65,9 +67,7 @@ Error
 \begin{solution}[.2in]
 2
 \end{solution}
-\end{blocksection}
 
-\begin{blocksection}
 \begin{lstlisting}
 >>> tiffany.pass_ball()
 \end{lstlisting}
@@ -191,7 +191,11 @@ def has_seven(k): #Use this function for your answer below
         return False
     else:
         return has_seven(k // 10)
+\end{lstlisting}
+\end{blocksection}
 
+\begin{blocksection}
+\begin{lstlisting}
 def make_pingpong_tracker():
 """ Returns a function that returns the next value in the pingpong sequence each time it is called. 
 	>>> output = []
@@ -263,7 +267,9 @@ class PingPongTracker:
     def next(self):
         *** Enter solution below ***
 \end{lstlisting}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{solution}[0.3in]
 \begin{lstlisting}
 class PingPongTracker:
@@ -281,11 +287,10 @@ class PingPongTracker:
 	self.add = not self.add
 self.index += 1
 return self.current
-
-
-Notice how the OOP approach is insanely similar to the non local function. Instead of using nonlocal, we use self.varName and the code becomes exactly the same. We just store the data in a slightly different way. This implies that OOP and functions are pretty similar, and it turns out you can even write your own OOP framework using just functions and nonlocal! 
-In addition, there are a lot of python specific features that can be written using functions or using classes. If you are interested, check out the powerful python feature decorators, and note how we can write them both as functions and as classes!
 \end{lstlisting}
+Notice how the OOP approach is insanely similar to the non local function. Instead of using nonlocal, we use self.varName and the code becomes exactly the same. We just store the data in a slightly different way. This implies that OOP and functions are pretty similar, and it turns out you can even write your own OOP framework using just functions and nonlocal!  \newline
+\newline
+In addition, there are a lot of python specific features that can be written using functions or using classes. If you are interested, check out the powerful python feature decorators, and note how we can write them both as functions and as classes!
 \end{solution}
 
 \end{blocksection}
