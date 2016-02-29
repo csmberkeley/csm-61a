@@ -24,24 +24,24 @@ Given the following code, what will Python output for the following prompts?
 
 \begin{lstlisting}
 class Baller:
-	all_players = []
-	def __init__(self, name, has_ball = False):
-	   self.name = name
-	   self.has_ball = has_ball
-	   Baller.all_players.append(self)
-	
-	def pass_ball(self, other_player):
-	   if self.has_ball:
-	      self.has_ball = False
-	      other_player.has_ball = True
-	      return True
-	   else:
-	      return False
+    all_players = []
+    def __init__(self, name, has_ball = False):
+       self.name = name
+       self.has_ball = has_ball
+       Baller.all_players.append(self)
+    
+    def pass_ball(self, other_player):
+       if self.has_ball:
+          self.has_ball = False
+          other_player.has_ball = True
+          return True
+       else:
+          return False
 
 class BallHog(Baller):
-	def pass_ball(self, other_player):	
-	   return False	
-	   
+    def pass_ball(self, other_player):  
+       return False 
+       
 \end{lstlisting}
 
 \begin{lstlisting}
@@ -130,20 +130,20 @@ False
 
 
 class TeamBaller(_________):
-	def pass_ball(_________, __________):
-	   *** Enter solution below ***
+    def pass_ball(_________, __________):
+        """*** Enter solution below ***"""
 \end{lstlisting}
 \begin{solution}[1in]
 \begin{lstlisting}
 class TeamBaller(Baller):
-	def pass_ball(self, other_player):
-		did_pass = super().pass_ball(other_player) 
-		# above line could also be:
-		# did_pass = Baller.pass_ball(self, other_player)
-		if did_pass:
-			print('Yay!!!!')
-		else:
-			print("I dont have the ball :(")
+    def pass_ball(self, other_player):
+        did_pass = super().pass_ball(other_player) 
+        # above line could also be:
+        # did_pass = Baller.pass_ball(self, other_player)
+        if did_pass:
+            print('Yay!!!!')
+        else:
+            print("I dont have the ball :(")
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -171,7 +171,7 @@ spinach = vegetable(lambda kale: carrot*kale)(eggplant)
 \end{lstlisting}
 
 \begin{solution}[3in]
-	\includegraphics[scale=0.5]{img/kale.png}
+    \includegraphics[scale=0.5]{img/kale.png}
 \end{solution}
 
 \end{blocksection}
@@ -195,44 +195,44 @@ def has_seven(k): #Use this function for your answer below
         return has_seven(k // 10)
 
 def make_pingpong_tracker():
-""" Returns a function that returns the next value in the pingpong sequence each time it is called. 
-	>>> output = []
-	>>> x = make_pingpong_tracker()
-	>>> for _ in range(9):
-	...	output += x()
-	>>> output
-	[1, 2, 3, 4, 5, 6, 7, 6, 5]
-	"""
-	index, current, add = 1, 0, True
-	def pingpong_tracker():
-		__________________________
-	if add:
-		________________________
-	else:
-		________________________
-	if _______________________:
-		add = not add
-	__________________________
-	__________________________	
-return pingpong_tracker
+    """ Returns a function that returns the next value in the pingpong sequence each time it is called. 
+    >>> output = []
+    >>> x = make_pingpong_tracker()
+    >>> for _ in range(9):
+    ... output += x()
+    >>> output
+    [1, 2, 3, 4, 5, 6, 7, 6, 5]
+    """
+    index, current, add = 1, 0, True
+    def pingpong_tracker():
+        __________________________
+        if add:
+            ________________________
+        else:
+            ________________________
+        if _______________________:
+            add = not add
+        __________________________
+        __________________________
+    return pingpong_tracker
 
 \end{lstlisting}
 
 \begin{solution}
 \begin{lstlisting}
 def make_pingpong_tracker():
-	index, current, add = 1, 0, True
-	def pingpong_tracker():
-		nonlocal index, current, add
-		if add:
-			current = current + 1
-		else:
-			current = current - 1
-		if has_seven(index) or index % 7 == 0:
-			add = not add
-		index += 1
-		return current
-	return pingpong_tracker
+    index, current, add = 1, 0, True
+    def pingpong_tracker():
+        nonlocal index, current, add
+        if add:
+            current = current + 1
+        else:
+            current = current - 1
+        if has_seven(index) or index % 7 == 0:
+            add = not add
+        index += 1
+        return current
+    return pingpong_tracker
 \end{lstlisting}
 \end{solution}
 
@@ -263,24 +263,24 @@ class PingPongTracker:
         self.index = 0
         self.add = True
     def next(self):
-        *** Enter solution below ***
+        """*** Enter solution below ***"""
 \end{lstlisting}
 
 \begin{solution}[0.3in]
 \begin{lstlisting}
 class PingPongTracker:
-	def __init__(self):
-		self.current = 0
-		self.index = 0
-		self.add = True
-	
-	def next(self):
-		if self.add:
-			self.current += 1
-		else:
-			self.current -= 1
-		if has_seven(self.index) or self.index%7 == 0:
-	self.add = not self.add
+    def __init__(self):
+        self.current = 0
+        self.index = 0
+        self.add = True
+
+    def next(self):
+        if self.add:
+            self.current += 1
+        else:
+            self.current -= 1
+        if has_seven(self.index) or self.index%7 == 0:
+    self.add = not self.add
 self.index += 1
 return self.current
 
