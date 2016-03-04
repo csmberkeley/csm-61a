@@ -195,11 +195,12 @@ def has_seven(k): #Use this function for your answer below
         return has_seven(k // 10)
 
 def make_pingpong_tracker():
-    """ Returns a function that returns the next value in the pingpong sequence each time it is called. 
+    """ Returns a function that returns the next value in the pingpong sequence
+    each time it is called.
     >>> output = []
     >>> x = make_pingpong_tracker()
     >>> for _ in range(9):
-    ... output += x()
+    ... output += [x()]
     >>> output
     [1, 2, 3, 4, 5, 6, 7, 6, 5]
     """
@@ -260,7 +261,7 @@ Bonus points if you can get the following syntax.
 class PingPongTracker:
     def __init__(self):
         self.current = 0
-        self.index = 0
+        self.index = 1
         self.add = True
     def next(self):
         """*** Enter solution below ***"""
@@ -271,7 +272,7 @@ class PingPongTracker:
 class PingPongTracker:
     def __init__(self):
         self.current = 0
-        self.index = 0
+        self.index = 1
         self.add = True
 
     def next(self):
@@ -279,10 +280,10 @@ class PingPongTracker:
             self.current += 1
         else:
             self.current -= 1
-        if has_seven(self.index) or self.index%7 == 0:
-    self.add = not self.add
-self.index += 1
-return self.current
+        if has_seven(self.index) or self.index % 7 == 0:
+            self.add = not self.add
+        self.index += 1
+        return self.current
 
 
 Notice how the OOP approach is insanely similar to the non local function. Instead of using nonlocal, we use self.varName and the code becomes exactly the same. We just store the data in a slightly different way. This implies that OOP and functions are pretty similar, and it turns out you can even write your own OOP framework using just functions and nonlocal! 
