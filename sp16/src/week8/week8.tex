@@ -54,7 +54,6 @@ $O(1)$
 \end{parts}
 \end{blocksection}
 
-\newpage
 \question What is the order of growth in time for the following functions? Use
 big-O notation.
 \begin{parts}
@@ -85,6 +84,7 @@ def stranger_add(n):
 $O(n)$ is $n$ is a multiple of 3, otherwise $O(1)$.
 \end{solution}
 
+\newpage
 \part
 \begin{lstlisting}
 def waffle(n):
@@ -148,6 +148,56 @@ $O(n^3)$
 \end{parts}
 
 \begin{blocksection}
+\question Consider the following functions: 
+\begin{lstlisting}
+def hailstone(n):
+   print(n)
+   if n < 2:
+    return
+   if n % 2 == 0:
+        hailstone(n // 2)
+   else:
+        hailstone((n * 3) + 1)
+
+def fib(n):
+   if n < 2:
+      return n
+   return fib(n - 1) + fib(n - 2)
+
+def slow(n):
+    i, j, k = 0, 0, 0
+    while i < n:
+        while j < n:
+            while k < n:
+                fib(k)
+                k += 1
+            fib(j)
+            j += 1
+        fib(i)
+        i += 1
+
+def foo(n, f):
+    return n + f(500)
+\end{lstlisting}
+In big-O notation, describe the runtime for the following:
+\begin{parts}
+\part \texttt{foo(10, hailstone)}
+\begin{solution}[0in]
+$O(1)$
+\end{solution}
+\part \texttt{foo(3000, fib)}
+\begin{solution}[0in]
+$O(1)$
+\end{solution}
+\part \texttt{foo(99999999999, slow)}
+\begin{solution}[0in]
+$O(1)$
+\end{solution}
+\end{parts}
+
+\end{blocksection}
+
+\begin{blocksection}
 \question \textbf{Fast Exponentiation:} in this problem, we will examine a
 real-world algorithm used to improve the speed of calculating exponents.
 
@@ -201,58 +251,7 @@ $O(n \log n)$
 \end{blocksection}
 
 \begin{blocksection}
-\question
-\begin{lstlisting}
-def hailstone(n):
-   print(n)
-   if n < 2:
-    return
-   if n % 2 == 0:
-        hailstone(n // 2)
-   else:
-        hailstone((n * 3) + 1)
-
-def fib(n):
-   if n < 2:
-      return n
-   return fib(n - 1) + fib(n - 2)
-
-def slow(n):
-    i, j, k = 0, 0, 0
-    while i < n:
-        while j < n:
-            while k < n:
-                fib(k)
-                k += 1
-            fib(j)
-            j += 1
-        fib(i)
-        i += 1
-
-def foo(n, f):
-    return n + f(500)
-\end{lstlisting}
-In big-O notation, describe the runtime for the following:
-\begin{parts}
-\part \texttt{foo(10, hailstone)}
-\begin{solution}[0in]
-$O(1)$
-\end{solution}
-\part \texttt{foo(3000, fib)}
-\begin{solution}[0in]
-$O(1)$
-\end{solution}
-\part \texttt{foo(99999999999, slow)}
-\begin{solution}[0in]
-$O(1)$
-\end{solution}
-\end{parts}
-
-\end{blocksection}
-
-\begin{blocksection}
-\question \textbf{Mysterious loops:} What is the order of growth in time for the
-following functions? Use big-O notation.
+\question \textbf{Mysterious loops:} What is the order of growth in time for the following functions? Use big-O notation.
 
 \begin{parts}
 
@@ -283,6 +282,50 @@ $O(1)$
 \end{solution}
     
 \end{parts}
+\end{blocksection}
+
+\begin{blocksection}
+\question \textbf{Orders of Growth and Trees:} Assume we are using the non-mutable Tree implementation introduced in discussion. Consider the following function:
+\begin{lstlisting}
+def word_finder(t, n, word):
+    if label(t) == word:
+        n -= 1
+        if n == 0:
+            return True
+    for child in children(t):
+        if word_finder(child, n, word) == True:
+            return True
+    return False
+\end{lstlisting}
+
+\begin{parts}
+\part What does this function do?  \newline
+Hint: A path is a sequence of connected nodes. For example, here are four paths in the tree below: 1 $\rightarrow$ 2, 1 $\rightarrow$ 3 $\rightarrow$ 4, 1 $\rightarrow$ 3 $\rightarrow$ 5, 1 $\rightarrow$ 3 $\rightarrow$ 6 
+
+\begin{tikzpicture}[scale=0.6, transform shape]
+\tikzstyle{level 2}=[sibling distance=10mm]
+    \node [circle, draw] (z){$1$}
+        child {node [circle, draw] (a) {$2$}}
+        child {node [circle, draw] (d) {$3$}
+            child {node [circle, draw] (g) {$4$}}
+            child {node [circle, draw] (e) {$5$}}
+            child {node [circle, draw] (f) {$6$}}
+        };
+\end{tikzpicture}
+\begin{solution}[0.25in]
+This function take a Tree \texttt{t}, an integer \texttt{n}, and a string
+\texttt{word} in as input. Then, \texttt{word\char`_finder} returns True if the
+word appears as a label in the Tree \texttt{n}-times and False otherwise.
+\end{solution}
+
+\part If a tree has $n$ total nodes, what is the total runtime for all searches
+in big-O notation?
+\begin{solution}[0.25in]
+$O(n)$
+\end{solution}
+
+\end{parts}
+
 \end{blocksection}
 
 \begin{blocksection}
@@ -330,39 +373,6 @@ $\frac{n (n + 1)}{2}$ = $O(n^{2})$
 \end{subparts}
 
 \end{parts}
-\end{blocksection}
-
-\begin{blocksection}
-\question \textbf{Orders of Growth and Trees:} Assume we are using the Tree
-implementation introduced in discussion. Consider the following function:
-\begin{lstlisting}
-def word_finder(t, n, word):
-    if label(t) == word:
-        n -= 1
-        if n == 0:
-            return True
-    for child in children(t):
-        if word_finder(child, n, word) == True:
-            return True
-    return False
-\end{lstlisting}
-
-\begin{parts}
-\part What does this function do?
-\begin{solution}[0.25in]
-This function take a Tree \texttt{t}, an integer \texttt{n}, and a string
-\texttt{word} in as input. Then, \texttt{word\char`_finder} returns True if the
-word appears as a label in the Tree \texttt{n}-times and False otherwise.
-\end{solution}
-
-\part If a tree has $n$ total nodes, what is the total runtime for all searches
-in big-O notation?
-\begin{solution}[0.25in]
-$O(n)$
-\end{solution}
-
-\end{parts}
-
 \end{blocksection}
 
 \end{questions}
