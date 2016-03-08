@@ -29,7 +29,7 @@ def foo(n):
         print('hello')
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$. This is simple loop that will run $n$ times.
+$O(n)$
 \end{solution}
 
 \part What's the runtime of \texttt{foo} if we change \texttt{range(n)}:
@@ -37,19 +37,17 @@ $O(n)$. This is simple loop that will run $n$ times.
 
 \subpart To \texttt{range(n / 2)}?
 \begin{solution}[0in]
-$O(n)$. The loop runs $n / 2$ times, but we ignore constant factors.
+$O(n)$
 \end{solution}
 
 \subpart To \texttt{range(10)}?
 \begin{solution}[0in]
-$O(1)$. No matter the size of $n$, we will run the loop the same number of
-times.
+$O(1)$
 \end{solution}
 
 \subpart To \texttt{range(10000000)}?
 \begin{solution}[0in]
-$O(1)$. No matter the size of $n$, we will run the loop the same number of
-times.
+$O(1)$
 \end{solution}
 
 \end{subparts}
@@ -69,9 +67,7 @@ def strange_add(n):
         return strange_add(n - 1) + strange_add(n - 1)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(2^n)$. To see this, try drawing out the call tree. Each level will create
-two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
-Therefore, $2^n$ calls.
+$O(2^n)$
 \end{solution}
 
 \part
@@ -85,12 +81,7 @@ def stranger_add(n):
         return n
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$ is $n$ is a multiple of 3, otherwise $O(1)$.\\
-The case where $n$ is not a multiple of 3 is fairly obvious -- we step into the
-else clause and immediately return.\\
-If $n$ is a multiple of 3, then neither $n - 1$ nor $n - 2$ are multiples of 3
-so those calls will take constant time. Therefore, we just run
-\texttt{stranger\char`_add}, decrementing the argument by 3 each time.
+$O(n)$ is $n$ is a multiple of 3, otherwise $O(1)$.
 \end{solution}
 
 \newpage
@@ -106,8 +97,7 @@ def waffle(n):
     return sum
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n^2)$. Ignore the constant term in $50 * n$, and it because just two for
-loops.
+$O(n^2)$
 \end{solution}
 
 \part
@@ -122,21 +112,19 @@ def belgian_waffle(n):
     return sum
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n^3)$. Inner loop runs $n^2$ times, and the outer loop runs $n$ times. To get
-the total, multiply those together.
+$O(n^3)$
 \end{solution}
 
 \part
 \begin{lstlisting}
 def pancake(n):
-    if n == 0 or n == 1:
+    if n ==  0:
         return n
     # Flip will always perform three operations and return -n.
     return flip(n) + pancake(n - 1) + pancake(n - 2)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(2^n)$. Flip will run in constant time. Therefore, this call tree looks very
-similar to fib! (which is $2^n$)
+$O(2^n)$
 \end{solution}
 
 \part
@@ -146,7 +134,7 @@ def toast(n):
     j = 0
     stack = 0
     while i < n:
-        stack += pancake(n)
+        stack += pancake(i)
         i += 1
     while j < n:
         stack += 1
@@ -154,10 +142,7 @@ def toast(n):
     return stack
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n 2^n)$. There are two loops: the first runs $n$ times for $2^n$ calls each
-time (due to pancake), for a total of $n 2^n$. The second loop runs $n$ times.
-When calculating orders of growth however, we focus on the dominating term -- in
-this case, $n 2^n$.
+$O(n^3)$
 \end{solution}
 
 \end{parts}
@@ -198,15 +183,15 @@ In big-O notation, describe the runtime for the following:
 \begin{parts}
 \part \texttt{foo(10, hailstone)}
 \begin{solution}[0in]
-$O(1)$. $f(500)$ is independent of the size of the input $n$.
+$O(1)$
 \end{solution}
 \part \texttt{foo(3000, fib)}
 \begin{solution}[0in]
-$O(1)$. See above.
+$O(1)$
 \end{solution}
 \part \texttt{foo(99999999999, slow)}
 \begin{solution}[0in]
-$O(1)$. See above.
+$O(1)$
 \end{solution}
 \end{parts}
 
@@ -228,7 +213,7 @@ def exp(b, n):
         return b * exp(b, n - 1)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$. $n$ decreases by 1 each call, so there are naturally $n$ calls.
+$O(n)$
 \end{solution}
 
 \part Now, express the runtime of the fast exponentiation algorithm in big-O
@@ -243,8 +228,7 @@ def fast_exp(b, n):
         return b * fast_exp(b, n - 1)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(\log n)$. $n$ is halved each call, so the number of calls is the number of
-times $n$ must be halved to get to 1. This is $\log n$.
+$O(\log n)$
 \end{solution}
 
 \part What about this slightly modified version of \texttt{fast\char`_exp}?
@@ -260,10 +244,7 @@ def fast_exp(b, n):
         return b * fast_exp(b, n - 1)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$. Ignore the constant term. The first call will perform $n$ operations,
-the second call will perform $n / 2$ operations, the third will perform $n / 4$
-operations, etc. Using geometric series, we see this adds up to $2n$, which is
-$n$ if we ignore constant terms.
+$O(n \log n)$
 \end{solution}
 
 \end{parts}
@@ -284,9 +265,7 @@ def mystery(n):
         print("Done")
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$. The work for when $i$ is divisible by two is constant. Subtracting one
-will immediately allow us to exit the \texttt{while} loop. Therefore, we can
-concentrate on just the outer loop.
+$O(n)$
 \end{solution}
 
 \part
@@ -299,10 +278,9 @@ def fun(n):
             print("Fun!")
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(1)$. Inner loop always immediately exits after running for 4 iterations,
-independent of $n$.
+$O(1)$
 \end{solution}
-
+    
 \end{parts}
 \end{blocksection}
 
@@ -343,7 +321,7 @@ word appears as a label in the Tree \texttt{n}-times and False otherwise.
 \part If a tree has $n$ total nodes, what is the total runtime for all searches
 in big-O notation?
 \begin{solution}[0.25in]
-$O(n)$. At worst, we must visit every node of the tree.
+$O(n)$
 \end{solution}
 
 \end{parts}
