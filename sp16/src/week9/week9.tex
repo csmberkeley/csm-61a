@@ -225,8 +225,7 @@ scm> (list? (cons 1 2))
 \end{enumerate}
 
 \begin{lstlisting}
-
-; Remember that the hailstone sequence starting at seed = 10 would be
+; The hailstone sequence starting at seed = 10 would be
 ; 10 => 5 => 16 => 8 => 4 => 2 => 1
 
 ; Doctests
@@ -285,7 +284,7 @@ scm> (cons 1 2)
 \begin{solution}[0.5in]
 \texttt{(1 . 2)}
 \begin{center}
-\includegraphics[scale=1]{9a}
+\includegraphics[scale=0.7]{9a}
 \end{center}
 \end{solution}
 
@@ -295,7 +294,7 @@ scm> (cons 1 (cons 2 nil))
 \begin{solution}[0.5in]
 \texttt{(1 2)}
 \begin{center}
-\includegraphics[scale=1]{9b}
+\includegraphics[scale=0.7]{9b}
 \end{center}
 \end{solution}
 
@@ -305,7 +304,7 @@ scm> (cons 1 '(2 3 4 5))
 \begin{solution}[0.5in]
 \texttt{(1 2 3 4 5)}
 \begin{center}
-\includegraphics[scale=0.3]{9c}
+\includegraphics[scale=0.7]{9c}
 \end{center}
 \end{solution}
 
@@ -315,7 +314,7 @@ scm> (cons 1 '(2 3 4 5))
 \begin{solution}[0.5in]
 \texttt{(1 2 (cons 3 4))}
 \begin{center}
-\includegraphics[scale=0.3]{9d}
+\includegraphics[scale=0.7]{9d}
 \end{center}
 \end{solution}
 
@@ -384,7 +383,7 @@ How can we get the 3 out of a?
 true
 > (well-formed '(1 2 3))
 true
-; List doesn't end in nil\
+; List doesn't end in nil
 > (well-formed (cons 1 2))
 false
 ; Nested lists are ok
