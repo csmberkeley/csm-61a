@@ -1,5 +1,6 @@
 \documentclass{exam}
 \usepackage{../../commonheader}
+\lstset{language=Scheme}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{6}
@@ -22,9 +23,9 @@ Scheme is a programming language, much like Python. In fact, many of Python's de
 \newline
 \newline
 \textbf{Useful Resources:} \newline
-CS61A Online Scheme Interpreter: \texttt{scheme.cs61a.org} \newline
-Scheme Box-and-Pointer Interpreter (\texttt{nil} must be represented as \texttt{()}: \texttt{xuanji.appspot.com/js-scheme-stk/index.html \newline
-}
+CS61A Online Scheme Interpreter: \texttt{scheme.cs61a.org}\\
+Scheme Box-and-Pointer Interpreter (\texttt{nil} must be represented as
+\texttt{()}: \texttt{xuanji.appspot.com/js-scheme-stk/index.html}
 \end{blocksection}
 
 \section{What Would Scheme Print?}
@@ -126,9 +127,9 @@ hello
 
 \begin{lstlisting}
 scm> (define (factorial n)
-            (if (= n 0)
-                1
-                (* n (factorial (- n 1)) )))
+        (if (= n 0)
+            1
+            (* n (factorial (- n 1)) )))
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
@@ -150,7 +151,7 @@ scm> (= 2 3)
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-F
+#f
 \end{lstlisting}
 \end{solution}
 
@@ -168,7 +169,7 @@ scm> (eq? '() '())
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-T
+#t
 \end{lstlisting}
 \end{solution}
 
@@ -177,7 +178,7 @@ scm> (eq? nil nil)
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-T
+#t
 \end{lstlisting}
 \end{solution}
 
@@ -186,7 +187,7 @@ scm> (eq? '() nil)
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-T
+#t
 \end{lstlisting}
 \end{solution}
 
@@ -195,7 +196,7 @@ scm> (pair? (cons 1 2))
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-T
+#t
 \end{lstlisting}
 \end{solution}
 
@@ -204,7 +205,7 @@ scm> (list? (cons 1 2))
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-F
+#f
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -217,8 +218,8 @@ F
 
 \textbf{Useful procedures to know:} \newline
 \begin{enumerate}
-\item \texttt{quotient}: floor divides, much like // in python 
-\subitem \texttt{(quotient 103 10)} outputs 10 
+\item \texttt{quotient}: floor divides, much like // in python
+\subitem \texttt{(quotient 103 10)} outputs 10
 \item \texttt{remainder}: takes two numbers and computes the remainder of dividing the first number by the second
 \subitem \texttt{(remainder 103 10)} outputs 3
 \end{enumerate}
@@ -228,7 +229,7 @@ F
 ; Remember that the hailstone sequence starting at seed = 10 would be
 ; 10 => 5 => 16 => 8 => 4 => 2 => 1
 
-;Doctests
+; Doctests
 > (hailstone 10 0)
 10
 > (hailstone 10 1)
@@ -236,7 +237,7 @@ F
 > (hailstone 10 2)
 16
 > (hailstone 5 1)
-16 
+16
 > (hailstone 5 5)
 1
 \end{lstlisting}
@@ -247,12 +248,12 @@ F
     (if (= n 0)
         seed
         (if (= 0 (remainder seed 2))
-            (hailstone 
-            (quotient seed 2) 
+            (hailstone
+            (quotient seed 2)
             (- n 1)
            )
-          (hailstone 
-          (+ 1 (* seed 3)) 
+          (hailstone
+          (+ 1 (* seed 3))
           (- n 1)
          )
     )
@@ -266,11 +267,11 @@ F
 \begin{blocksection}
 Scheme has linked lists built in. You can make the following analogy:
 \begin{center}
-\begin{tabular}{ |c|c| } 
+\begin{tabular}{ |l|l| }
 \hline
- \texttt{Link(1, Link.empty)} & \texttt{(cons 1 nil)} \\ 
- \texttt{a = Link(1, Link(2, Link.empty))} & \texttt{(define a (cons 1 (cons 2 nil)))}  \\ 
- \texttt{a.first} & \texttt{(car a)} \\ 
+ \texttt{Link(1, Link.empty)} & \texttt{(cons 1 nil)} \\
+ \texttt{a = Link(1, Link(2, Link.empty))} & \texttt{(define a (cons 1 (cons 2 nil)))}  \\
+ \texttt{a.first} & \texttt{(car a)} \\
  \texttt{a.rest} & \texttt{(cdr a)} \\
  \hline
 \end{tabular}
@@ -289,7 +290,7 @@ scm> (cons 1 2)
 \end{solution}
 
 \begin{lstlisting}
-scm> (cons 1 (cons 2 nil))	
+scm> (cons 1 (cons 2 nil))
 \end{lstlisting}
 \begin{solution}[0.5in]
 \texttt{(1 2)}
@@ -394,11 +395,11 @@ true
 \begin{solution}[0.75in]
 \begin{lstlisting}
 ; well-formed with a nested if statement
-(define (well-formed lst) 
-    (if (null? lst) 
-        #t 
+(define (well-formed lst)
+    (if (null? lst)
+        #t
         (if (number? lst)
-            #f 
+            #f
             (well-formed (cdr lst)))))
 
 ; well-form with a cond statement
@@ -443,9 +444,9 @@ false
     (if (null? p)
         #t
         (if (null? lst)
-            #f    
-            (and 
-                (= (car p) (car lst)) 
+            #f
+            (and
+                (= (car p) (car lst))
                 (is-prefix (cdr p) (cdr lst))))))
 \end{lstlisting}
 \end{solution}
