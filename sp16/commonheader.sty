@@ -313,6 +313,14 @@
 \else
   \noprintanswers
 \fi
+
+% The nonsol environment will show items within it only if answers are not set
+% to be printed. Useful for hiding docstring in worksheet solutions.
+\newenvironment{nonsol}{}{}
+\ifdefined\discussionsolutions
+    \excludecomment{nonsol}
+\else
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{\Large \sc Computer Science Mentors 61A}
