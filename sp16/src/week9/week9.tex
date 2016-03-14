@@ -22,10 +22,12 @@
 Scheme is a programming language, much like Python. In fact, many of Python's design features were inspired by Scheme. The point of learning this language is twofold: one, we're looking into what parts of Python generalize to other languages. Two, we want to start thinking about how to design and build (an interpreter  for) a programming language, and it turns out Scheme is a nice one to build. In fact, we'll show you enough of the language in this hour to write recursive procedures. This section covers the basics. You'll learn the rest in lab and discussion. It's pretty awesome that we'll be picking up a whole new programming language within an hour.
 \newline
 \newline
-\textbf{Useful Resources:} \newline
-CS61A Online Scheme Interpreter: \texttt{scheme.cs61a.org}\\
-Scheme Box-and-Pointer Interpreter (\texttt{nil} must be represented as
-\texttt{()}: \texttt{xuanji.appspot.com/js-scheme-stk/index.html}
+\textbf{Useful Resources:}
+\begin{itemize}
+    \item CS61A Online Scheme Interpreter: \texttt{scheme.cs61a.org}
+    \item Scheme Box-and-Pointer Interpreter (\texttt{nil} must be represented
+        as \texttt{()}: \texttt{xuanji.appspot.com/js-scheme-stk/index.html}
+\end{itemize}
 \end{blocksection}
 
 \section{What Would Scheme Print?}
@@ -68,9 +70,7 @@ scm> pi
 3.14
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
 
-\begin{blocksection}
 \begin{lstlisting}
 scm> 'pi
 \end{lstlisting}
@@ -98,6 +98,9 @@ scm> (if 0 3 4)
 \end{lstlisting}
 \end{solution}
 
+\end{blocksection}
+
+\begin{blocksection}
 \begin{lstlisting}
 scm> (if #f 3 4)
 \end{lstlisting}
@@ -224,6 +227,7 @@ scm> (list? (cons 1 2))
 \subitem \texttt{(remainder 103 10)} outputs 3
 \end{enumerate}
 
+\begin{nonsol}
 \begin{lstlisting}
 ; The hailstone sequence starting at seed = 10 would be
 ; 10 => 5 => 16 => 8 => 4 => 2 => 1
@@ -240,6 +244,7 @@ scm> (list? (cons 1 2))
 > (hailstone 5 5)
 1
 \end{lstlisting}
+\end{nonsol}
 
 \begin{solution}[1in]
 \begin{lstlisting}
@@ -264,6 +269,7 @@ scm> (list? (cons 1 2))
 %%% Question %%%
 \section{Scheme Lists}
 \begin{blocksection}
+\begin{nonsol}
 Scheme has linked lists built in. You can make the following analogy:
 \begin{center}
 \begin{tabular}{ |l|l| }
@@ -277,11 +283,12 @@ Scheme has linked lists built in. You can make the following analogy:
 \end{center}
 However, \textbf{Scheme \texttt{cons} is more powerful}, as it allows its second argument to not be a list. Try the following out in the interpreter. Draw box and pointers when appropriate. Ask your mentor if you're unsure what's going on. You aren't expected to understand this completely on your own.
 \question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
+\end{nonsol}
 
 \begin{lstlisting}
 scm> (cons 1 2)
 \end{lstlisting}
-\begin{solution}[0.5in]
+\begin{solution}[0.25in]
 \texttt{(1 . 2)}
 \begin{center}
 \includegraphics[scale=0.7]{9a}
@@ -291,7 +298,7 @@ scm> (cons 1 2)
 \begin{lstlisting}
 scm> (cons 1 (cons 2 nil))
 \end{lstlisting}
-\begin{solution}[0.5in]
+\begin{solution}[0.25in]
 \texttt{(1 2)}
 \begin{center}
 \includegraphics[scale=0.7]{9b}
@@ -301,7 +308,7 @@ scm> (cons 1 (cons 2 nil))
 \begin{lstlisting}
 scm> (cons 1 '(2 3 4 5))
 \end{lstlisting}
-\begin{solution}[0.5in]
+\begin{solution}[0.25in]
 \texttt{(1 2 3 4 5)}
 \begin{center}
 \includegraphics[scale=0.7]{9c}
@@ -309,9 +316,9 @@ scm> (cons 1 '(2 3 4 5))
 \end{solution}
 
 \begin{lstlisting}
-scm> (cons 1 '(2 3 4 5))
+scm> (cons 1 '(2 (cons 3 4))
 \end{lstlisting}
-\begin{solution}[0.5in]
+\begin{solution}[0.25in]
 \texttt{(1 2 (cons 3 4))}
 \begin{center}
 \includegraphics[scale=0.7]{9d}
@@ -324,6 +331,17 @@ scm> (cons 1 (2 (cons 3 4)))
 \begin{solution}[.25in]
 \begin{lstlisting}
 eval: bad function in : (2 (cons 3 4))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+scm> (define a '(1 2 . 3))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+a
 \end{lstlisting}
 \end{solution}
 
