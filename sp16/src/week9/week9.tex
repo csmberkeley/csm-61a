@@ -38,96 +38,75 @@ Scheme is a programming language, much like Python. In fact, many of Python's de
 \begin{lstlisting}
 scm> 3.14
 \end{lstlisting}
-\begin{solution}[0.25in]
-\begin{lstlisting}
-3.14
-\end{lstlisting}
+\begin{solution}[0.25in] 
+\texttt{3.14}
 \end{solution}
 
 \begin{lstlisting}
 scm> pi
 \end{lstlisting}
 \begin{solution}[0.25in]
-\begin{lstlisting}
-Error
-\end{lstlisting}
+\texttt{Error}
 \end{solution}
 
 \begin{lstlisting}
 scm> (define pi 3.14)
 \end{lstlisting}
 \begin{solution}[0.25in]
-\begin{lstlisting}
-pi
-\end{lstlisting}
+\texttt{pi}
 \end{solution}
 
 \begin{lstlisting}
 scm> pi
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-3.14
-\end{lstlisting}
+\texttt{3.14}
 \end{solution}
 
 \begin{lstlisting}
 scm> 'pi
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-pi
-\end{lstlisting}
+\texttt{pi}
 \end{solution}
 
 \begin{lstlisting}
 scm> (if 2 3 4)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-3
-\end{lstlisting}
+\texttt{3}
 \end{solution}
 
 \begin{lstlisting}
 scm> (if 0 3 4)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-3
-\end{lstlisting}
+\texttt{3}
 \end{solution}
 
-\end{blocksection}
-
-\begin{blocksection}
 \begin{lstlisting}
 scm> (if #f 3 4)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-4
-\end{lstlisting}
+\texttt{4}
 \end{solution}
 
 \begin{lstlisting}
 scm> (if nil 3 4)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-3
-\end{lstlisting}
+\texttt{3}
 \end{solution}
 
 \begin{lstlisting}
 scm> (if (= 1 1) 'hello 'goodbye)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-hello
-\end{lstlisting}
+\texttt{hello}
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{lstlisting}
 scm> (define (factorial n)
         (if (= n 0)
@@ -135,81 +114,63 @@ scm> (define (factorial n)
             (* n (factorial (- n 1)) )))
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-factorial
-\end{lstlisting}
+\texttt{factorial}
 \end{solution}
 
 \begin{lstlisting}
 scm> (factorial 5)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-120
-\end{lstlisting}
+\texttt{120}
 \end{solution}
 
 \begin{lstlisting}
 scm> (= 2 3)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-#f
-\end{lstlisting}
+\texttt{\#f}
 \end{solution}
 
 \begin{lstlisting}
 scm> (= '() '())
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-Error
-\end{lstlisting}
+\texttt{Error}
 \end{solution}
 
 \begin{lstlisting}
 scm> (eq? '() '())
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-#t
-\end{lstlisting}
+\texttt{\#t}
 \end{solution}
 
 \begin{lstlisting}
 scm> (eq? nil nil)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-#t
-\end{lstlisting}
+\texttt{\#t}
 \end{solution}
 
 \begin{lstlisting}
 scm> (eq? '() nil)
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-#t
-\end{lstlisting}
+\texttt{\#t}
 \end{solution}
 
 \begin{lstlisting}
 scm> (pair? (cons 1 2))
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-#t
-\end{lstlisting}
+\texttt{\#t}
 \end{solution}
 
 \begin{lstlisting}
 scm> (list? (cons 1 2))
 \end{lstlisting}
 \begin{solution}[.25in]
-\begin{lstlisting}
-#f
-\end{lstlisting}
+\texttt{\#f}
 \end{solution}
 \end{blocksection}
 
