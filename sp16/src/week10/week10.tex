@@ -29,7 +29,7 @@ Solutions begin on the following page.
 \begin{blocksection}
 \part
 \begin{lstlisting}
-scm> (cons (cons 1 nil) (cons 2 (cons (cons 3 (cons 4 5)) (cons 6 nil))))
+(cons (cons 1 nil) (cons 2 (cons (cons 3 (cons 4 5)) (cons 6 nil))))
 \end{lstlisting}
 \begin{solution}[0.25in]
 \begin{lstlisting}
@@ -321,7 +321,8 @@ scm> (waldo '(1 4 9))
     (cond ((null? lst) #f)
           ((eq? (car lst) 'waldo) #t)
           (else (waldo (cdr lst)))
-        )
+      )
+  )
 \end{lstlisting}
 Challenge solution:
 \begin{lstlisting}
