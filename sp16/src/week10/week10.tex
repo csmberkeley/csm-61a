@@ -221,22 +221,24 @@ considered \texttt{\#t}!
 equivalent of the \texttt{let} expressions.
 
 \begin{lstlisting}
-(let ((foo 2)
+(let ((foo 3)
       (bar (+ foo 2)))
     (+ foo bar))
 \end{lstlisting}
 \begin{solution}[0.5in]
 The above function will error because it is equivalent to:
 \begin{lstlisting}
-((lambda (foo bar) (+ foo bar)) 2 (+ foo 2))
+((lambda (foo bar) (+ foo bar)) 2 (+ foo 3))
 \end{lstlisting}
 
 In other words, foo has not been defined in the global frame. When bar is being
-assigned to \texttt{(+ foo 2)}, it will error. The assignment of foo to 2
-happens in the lambda’s frame when it's called, not the global frame.
+assigned to \texttt{(+ foo 3)}, it will error. The assignment of foo to 2
+happens in the lambda’s frame when it's called, not the global frame (this is
+relevant to the Scheme project -- when the interpreter sees \texttt{lambda}, it
+will call a function to start a new frame).
 
 If we had the line \texttt{(define foo 3)} before the call to let, then it would
-return 7, because within let, foo would be 2 and bar would be \texttt{(+ 3 2)},
+return 8, because within let, foo would be 3 and bar would be \texttt{(+ 3 2)},
 since it would use the foo in the Global frame.
 \end{solution}
 
@@ -252,7 +254,7 @@ since it would use the foo in the Global frame.
     \item \textbf{Lexical:} The parent of a frame is the frame in which a
         procedure was defined (used in Python).
     \item \textbf{Dynamic:} The parent of a frame is the frame in which a
-        procedure is called.
+        procedure is called (keep an eye out for this in the Scheme project).
 \end{itemize}
 \end{solution}
 \end{blocksection}
