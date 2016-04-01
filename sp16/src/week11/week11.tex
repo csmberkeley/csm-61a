@@ -26,7 +26,7 @@
 Lazy evaluation. We only evaluate up to what we need.
 \end{solution}
 
-\quesiton What’s the maximum size of a stream?
+\question What’s the maximum size of a stream?
 \begin{solution}[0.2in]
 Infinity
 \end{solution}
@@ -154,7 +154,7 @@ scm> (cdr-stream bar)
 \end{solution}
 \end{blocksection}
 
-\section{Code Writing Questions for Streams}
+\section{Code Writing for Streams}
 
 %%% Question %%%
 \begin{blocksection}
@@ -287,82 +287,93 @@ class Accumulator:
 
 %%% Question %%%
 \begin{blocksection}
-\question Define \texttt{well-formed}, which determines whether \texttt{lst} is a well-formed list or not. Assume that \texttt{lst} only contains numbers.
+\question What does the following code block output?
+begin{lstlisting}
+def foo():
+	a = 0
+	if a < 10:
+		print("Hello")
+		yield a
+		print("World")
 
-\begin{lstlisting}
-; Doctests
-> (well-formed '())
-true
-> (well-formed '(1 2 3))
-true
-; List doesn't end in nil
-> (well-formed (cons 1 2))
-false
-; Nested lists are ok
-> (well-formed (cons (cons 1 2) nil))
-true
+for i in foo():
+	print(i)
 \end{lstlisting}
 
-\begin{solution}[0.75in]
+\begin{solution}
 \begin{lstlisting}
-; well-formed with a nested if statement
-(define (well-formed lst)
-    (if (null? lst)
-        #t
-        (if (number? lst)
-            #f
-            (well-formed (cdr lst)))))
+Hello
+0
+World
+\end{lstlisting}
+First time you call foo, it will yield a (which starts as 0)
+\end{solution}
 
-; well-form with a cond statement
-(define (well-formed lst)
-    (cond ((null? lst) #t)
-        ((number? lst) #f)
-        (else (well-formed (cdr lst)))))
+\questionHow can we make\texttt{ list(foo()) == [1, 2, 3 … , 10]}?  (You do not need to care about what gets printed)
+
+\begin{solution}[0.75in]
+Change the if to a while statement, and make sure to increment a. This looks like: 
+
+\begin{lstlisting}
+def foo():
+	a = 0
+	while a < 10:
+		a += 1
+yield a
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
 
 %%% Question %%%
 \begin{blocksection}
-\question Define \texttt{is-prefix}, which takes in a list \texttt{p} and a list \texttt{lst} and determines if \texttt{p} is a prefix of \texttt{lst}.
+\question Define \texttt{hailstone_sequence} a generator that yields the hailstone sequence. Remember, for the hailstone sequence, if n is even, we need to divide by two, otherwise, we will multiply by 3 and add by 1. 
 
 \begin{lstlisting}
 ; Doctests:
-> (is-prefix '() '())
-true
-> (is-prefix '() '(1 2))
-true
-> (is-prefix '(1) '(1 2))
-true
-> (is-prefix '(2) '(1 2))
-false
-; Note here p is longer than lst
-> (is-prefix '(1 2) '(1))
-false
+>> hs_gen = hailstone_sequence(10)
+>> hs_gen.__next__()
+10
+>> next(hs_gen) #equivalent to previous
+5
+>> for i in hs_gen:
+>>	print i
+16
+8
+4
+2
+1
 \end{lstlisting}
 
 \begin{solution}[0.5in]
 \begin{lstlisting}
-; Same as below, but with cond
-(define (is-prefix p lst)
-    (cond ((null? p) #t)
-        ((null? lst) #f)
-        (else (and (= (car p) (car lst))
-            (is-prefix (cdr p) (cdr lst))))))
-
-; Solution that checks if lst is null for the last doctest
-(define (is-prefix p lst)
-    (if (null? p)
-        #t
-        (if (null? lst)
-            #f
-            (and
-                (= (car p) (car lst))
-                (is-prefix (cdr p) (cdr lst))))))
+def hailstone_sequence(n):
+	while n != 1:
+		yield n
+		if n % 2 == 0:
+			n = n // 2
+		else:
+			n = n*3 + 1
+	yield n
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
 
+\question (Optional) Define \texttt{tree_sequence} a generator that iterates through a tree by first yielding the root value and then yield each branch.
+\begin{lstlisting}
+>>> tree = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
+>>> print list(tree_sequence(tree))
+[1, 2, 5, 3, 4]
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+def tree_sequence(tree):
+	yield tree.entry
+	for branch in tree.branches:
+		for value in tree_sequence(branch):
+			yield value
+\end{lstlisting}
+\end{solution}
 \end{questions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
