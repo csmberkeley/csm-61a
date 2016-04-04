@@ -368,7 +368,9 @@ scm> (cdr-stream bar)
 )
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \question Write out \texttt{interleave}, which returns a stream that alternates between the values in stream1 and stream2. Assume that the streams are infinitely long.
 \begin{lstlisting}
 (define (interleave stream1 stream2)
