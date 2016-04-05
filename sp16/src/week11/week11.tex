@@ -135,13 +135,13 @@ yield a
 
 \begin{lstlisting}
 ; Doctests:
->> hs_gen = hailstone_sequence(10)
->> hs_gen.__next__()
+>>> hs_gen = hailstone_sequence(10)
+>>> hs_gen.__next__()
 10
->> next(hs_gen) #equivalent to previous
+>>> next(hs_gen) #equivalent to previous
 5
->> for i in hs_gen:
->>	print i
+>>> for i in hs_gen:
+>>>	print i
 16
 8
 4
@@ -303,28 +303,6 @@ scm> (cdr-stream bar)
 \end{lstlisting}
 \end{solution}
 
-\begin{lstlisting}
-scm> (define (foo x) (+ x 5))
-\end{lstlisting}
-\begin{solution}[.5in]
-\texttt{foo}
-\end{solution}
-
-\begin{lstlisting}
-scm> (car bar)
-\end{lstlisting}
-\begin{solution}[.5in]
-\texttt{11}
-\end{solution}
-
-\begin{lstlisting}
-scm> (cdr-stream bar)
-\end{lstlisting}
-\begin{solution}[.5in]
-\begin{lstlisting}
-(3 . #[promise])
-\end{lstlisting}
-\end{solution}
 \end{blocksection}
 
 \section{Code Writing for Streams}
@@ -338,7 +316,6 @@ scm> (cdr-stream bar)
 )
 
 (define (double_naturals_helper first flag)
-
 
 
 
