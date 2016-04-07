@@ -123,7 +123,7 @@ def foo():
 	a = 0
 	while a < 10:
 		a += 1
-yield a
+		yield a
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -141,7 +141,7 @@ yield a
 >>> next(hs_gen) #equivalent to previous
 5
 >>> for i in hs_gen:
->>>	print i
+>>>	print(i)
 16
 8
 4
@@ -166,7 +166,7 @@ def hailstone_sequence(n):
 \question (Optional) Define \texttt{tree\_sequence} a generator that iterates through a tree by first yielding the root value and then yield each branch.
 \begin{lstlisting}
 >>> tree = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
->>> print list(tree_sequence(tree))
+>>> print(list(tree_sequence(tree)))
 [1, 2, 5, 3, 4]
 \end{lstlisting}
 
