@@ -188,7 +188,7 @@ fish*
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c| } 
  \hline
- \textbf{Species} & \textbf{Population} & \textbf{Breeding Rate} & \textbf{\$/piece} & \textbf{\# of pieces} \\ 
+ \textbf{Species} & \textbf{Population} & \textbf{Breeding Rate} & \textbf{\$/piece} & \textbf{\# of pieces per fish} \\ 
   \textbf{[species]} & \textbf{[pop]} & \textbf{[rate]} & \textbf{[price]} & \textbf{[pieces]} \\ 
  \hline
  Salmon & 500 & 3.3 & 4 & 30 \\ 
@@ -234,7 +234,8 @@ competitor
 \begin{center}
 \begin{tabular}{ |c|c| } 
  \hline
- Species [species] & \$/piece [price] \\ 
+ \textbf{Species} & \textbf{\$/piece} \\ 
+  \textbf{[species]} & \textbf{[price]} \\ 
  \hline
  Salmon & 2 \\ 
  \hline
@@ -246,7 +247,7 @@ competitor
  \hline
 \end{tabular}
 \end{center}
-Write a query that compares how much our hatchery will charge per fish versus the competitor. For example, the table should contain the following row: \newline
+Write a query that returns, for each species, the difference between our hatchery’s revenue versus the competitor’s revenue for one whole fish. For example, the table should contain the following row: \newline
 \texttt{Salmon | 60} \newline \newline
 Because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Finally, the difference is 60. Remember to do this for every species!
 \begin{solution}[1in]
