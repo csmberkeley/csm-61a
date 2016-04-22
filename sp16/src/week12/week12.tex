@@ -33,14 +33,14 @@ When a function is tail recursive, it can effectively discard all the past recur
 \end{blocksection}
 
 \begin{blocksection}
-Answer the following questions with respect to the following function: 
+Answer the following questions with respect to the following function:
 \begin{lstlisting}
 (define (sum-list lst)
-	(if (null? lst)
-		0
-		(+ (car lst) (sum-list (cdr lst)))
-	)
-) 
+  (if (null? lst)
+    0
+    (+ (car lst) (sum-list (cdr lst)))
+  )
+)
 \end{lstlisting}
 \question Why is sum-list not a tail call? Optional: draw out the environment diagram of this sum-list with list: (1 2 3). When do you add 2 and 3?
 \begin{solution}[0.5in]
@@ -50,16 +50,13 @@ Sum list is not the last call we make, it’s actually the other addition which 
 \begin{solution}[0.5in]
 \begin{lstlisting}
 (define (sum-list-tail lst)
-	(define (sum-list-helper lst sofar)
-		(if (null? lst)
-			sofar
-			(sum-list-helper 
-				(cdr lst) 
-				(+ sofar (car lst))
-			)
-		)
-	)
-	(sum-list-helper lst 0)
+  (define (sum-list-helper lst sofar)
+    (if (null? lst)
+      sofar
+      (sum-list-helper (cdr lst) (+ sofar (car lst)))
+    )
+  )
+  (sum-list-helper lst 0)
 )
 \end{lstlisting}
 \end{solution}
@@ -67,29 +64,29 @@ Sum list is not the last call we make, it’s actually the other addition which 
 
 \section{SQL}
 \begin{blocksection}
+Table name: \texttt{mentors}
 \begin{center}
-\begin{tabular}{ |c|c|c|c|c| } 
+\begin{tabular}{ |c|c|c|c|c| }
  \hline
- \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Editor} & \textbf{Language} \\ 
+ \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Editor} & \textbf{Language} \\
  \hline
- Tiffany & Thai & Purple & Notepad++ & Java \\ 
+ Tiffany & Thai & Purple & Notepad++ & Java \\
  \hline
- Diana & Pie & Green & Sublime & Java \\ 
+ Diana & Pie & Green & Sublime & Java \\
  \hline
-  Allan & Sushi & Orange & Emacs & Ruby \\ 
+  Allan & Sushi & Orange & Emacs & Ruby \\
  \hline
- Alfonso & Tacos & Blue & Vim & Python \\ 
+ Alfonso & Tacos & Blue & Vim & Python \\
  \hline
- Kelly & Ramen & Green & Vim & Python \\ 
+ Kelly & Ramen & Green & Vim & Python \\
  \hline
 \end{tabular}
 \end{center}
 \question Create a new table \textbf{mentors} that contains all the information above.
 \begin{solution}[1in]
-\begin{lstlisting}
+\begin{lstlisting}[language=SQL]
 create table mentors as
-    select 'Tiffany' as name, 'Thai' as food, 'Purple' as color, 'Notepad++' 
- as editor, 'Java' as language union
+    select 'Tiffany' as name, 'Thai' as food, 'Purple' as color, 'Notepad++' as editor, 'Java' as language union
     select 'Diana', 'Pie', 'Green', 'Sublime', 'Java' union
     select 'Allan', 'Sushi', 'Orange', 'Emacs', 'Ruby' union
     select 'Alfonso', 'Tacos', 'Blue', 'Vim', 'Python' union
@@ -101,43 +98,44 @@ create table mentors as
 %%% Question %%%
 \begin{blocksection}
 \question Write a query that lists all the mentors along with their favorite food if their favorite color is green.\newline
-Output: 
+Output:
 \begin{lstlisting}
-Diana|Pie 
+Diana|Pie
 Kelly|Ramen
 \end{lstlisting}
 \begin{solution}[1in]
-\begin{lstlisting}
-SELECT m.name, m.food
-  FROM mentors as m
-  WHERE m.color = 'Green';
-  
-WITHOUT ALIASING: 
+\begin{lstlisting}[language=SQL]
+select m.name, m.food
+  from mentors as m
+  where m.color = 'Green';
 
-SELECT name, food
-  FROM mentors
-  WHERE color = 'Green';
+Without aliasing:
+
+select name, food
+  from mentors
+  where color = 'Green';
 \end{lstlisting}
 \end{solution}
 
-\question Write a query that lists all the mentors along with their favorite food if their favorite color is green.\newline
-Output: 
+\question Write a query that lists the food and the color of every person whose
+favorite language is NOT Python. \newline
+Output:
 \begin{lstlisting}
 Sushi|Orange
 Pie|Green
 Thai|Purple
 \end{lstlisting}
 \begin{solution}[1in]
-\begin{lstlisting}
-SELECT m.food, m.color
-  FROM mentors as m
-  WHERE m.language <> 'Python';
+\begin{lstlisting}[language=SQL]
+select m.food, m.color
+  from mentors as m
+  where m.language <> 'Python';
 
-WITHOUT ALIASING
+Without aliasing:
 
-SELECT food, color
-  FROM mentors
-  WHERE language != 'Python';
+select food, color
+  from mentors
+  where language != 'Python';
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -151,10 +149,10 @@ Kelly|Alfonso
 Tiffany|Diana
 \end{lstlisting}
 \begin{solution}[2in]
-\begin{lstlisting}
-SELECT m1.name, m2.name 
-    FROM mentors as m1, mentors as m2 
-    WHERE m1.language = m2.language and m1.name > m2.name;
+\begin{lstlisting}[language=SQL]
+select m1.name, m2.name
+    from mentors as m1, mentors as m2
+    where m1.language = m2.language and m1.name > m2.name;
 \end{lstlisting}
 \end{solution}
 
@@ -168,10 +166,8 @@ Kelly|Ramen|Green|Vim|Python
 Tiffany|Thai|Purple|Notepad++|Java
 \end{lstlisting}
 \begin{solution}[1in]
-\begin{lstlisting}
-SELECT * 
-  FROM mentors
-  ORDER BY name;
+\begin{lstlisting}[language=SQL]
+select * from mentors order by name;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -179,71 +175,71 @@ SELECT *
 
 %%% Question %%%
 \begin{blocksection}
-\section{Fish Population} 
+\section{Fish Population}
 The 61A mentors want to start a fish hatchery, and they need your help to analyze the data they've collected for the fish populations! Also, running a hatchery is expensive -- they'd like to make some money on the side by selling some seafood (only older fish of course) to make delicious sushi. \newline
 \newline
 The following table contains a subset of the data that has been collected. The SQL column names are listed in brackets. Note: we must be able to extend your queries to larger tables! (i.e, don't hard code your answers) \newline
 \newline
-fish*
+Table name: \texttt{fish}*
 \begin{center}
-\begin{tabular}{ |c|c|c|c|c| } 
+\begin{tabular}{ |c|c|c|c|c| }
  \hline
- \textbf{Species} & \textbf{Population} & \textbf{Breeding Rate} & \textbf{\$/piece} & \textbf{\# of pieces per fish} \\ 
-  \textbf{[species]} & \textbf{[pop]} & \textbf{[rate]} & \textbf{[price]} & \textbf{[pieces]} \\ 
+ \textbf{Species} & \textbf{Population} & \textbf{Breeding Rate} & \textbf{\$/piece} & \textbf{\# of pieces per fish} \\
+  \textbf{[species]} & \textbf{[pop]} & \textbf{[rate]} & \textbf{[price]} & \textbf{[pieces]} \\
  \hline
- Salmon & 500 & 3.3 & 4 & 30 \\ 
+ Salmon & 500 & 3.3 & 4 & 30 \\
  \hline
- Eel & 100 & 1.3 & 4 & 15 \\ 
+ Eel & 100 & 1.3 & 4 & 15 \\
  \hline
-  Yellowtail & 700 & 2.0 & 3 & 30 \\ 
+  Yellowtail & 700 & 2.0 & 3 & 30 \\
  \hline
- Tuna & 600 & 1.1 & 3 & 20 \\ 
+ Tuna & 600 & 1.1 & 3 & 20 \\
  \hline
 \end{tabular}
 \end{center}
 *(This was made with fake data, do not actually sell fish at these rates)
-\question \textbf{Aggregation} 
+\question \textbf{Aggregation}
 \begin{parts}
 \part Profit is good, but more profit is better. Write a query to select the species that yields the most number of pieces for each price. Your output should include the species, price, and pieces.
 \begin{solution}[0.5in]
-\begin{lstlisting}
-SELECT species, price, MAX(pieces) FROM fish GROUP BY price;
+\begin{lstlisting}[language=SQL]
+select species, price, MAX(pieces) from fish GROUP BY price;
 \end{lstlisting}
 \end{solution}
 
 \part Write a query to find the three most populated fish species.
 \begin{solution}[0.5in]
-\begin{lstlisting}
-SELECT species FROM fish ORDER BY -pop LIMIT 3;
+\begin{lstlisting}[language=SQL]
+select species from fish order by -pop LIMIT 3;
 \end{lstlisting}
 \end{solution}
 
 \part Write a query to find the total number of fish in the "ocean." Additionally, include the number of species we summed. Your output should have the number of species and the total population.
 \begin{solution}[0.5in]
-\begin{lstlisting}
-SELECT COUNT(species), SUM(pop) FROM fish;
+\begin{lstlisting}[language=SQL]
+select COUNT(species), SUM(pop) from fish;
 \end{lstlisting}
 \end{solution}
 \end{parts}
 \end{blocksection}
 
-\begin{blocksection} 
+\begin{blocksection}
 (d) Business is good, but a bunch of competition has sprung up! Through some cunning corporate espionage, we have determined that one such competitor plans to open shop with the following rates:\newline
 \newline
-competitor
+Table name: \texttt{competitor}
 \begin{center}
-\begin{tabular}{ |c|c| } 
+\begin{tabular}{ |c|c| }
  \hline
- \textbf{Species} & \textbf{\$/piece} \\ 
-  \textbf{[species]} & \textbf{[price]} \\ 
+ \textbf{Species} & \textbf{\$/piece} \\
+  \textbf{[species]} & \textbf{[price]} \\
  \hline
- Salmon & 2 \\ 
+ Salmon & 2 \\
  \hline
- Eel & 3.4 \\ 
+ Eel & 3.4 \\
  \hline
-  Yellowtail & 3.2  \\ 
+  Yellowtail & 3.2  \\
  \hline
- Tuna & 2.6  \\ 
+ Tuna & 2.6  \\
  \hline
 \end{tabular}
 \end{center}
@@ -251,10 +247,10 @@ Write a query that returns, for each species, the difference between our hatcher
 \texttt{Salmon | 60} \newline \newline
 Because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Finally, the difference is 60. Remember to do this for every species!
 \begin{solution}[1in]
-\begin{lstlisting}
-SELECT fish.species, (fish.price - competitor.price) * pieces 
-    FROM fish, competitor 
-    WHERE fish.species = competitor.species;
+\begin{lstlisting}[language=SQL]
+select fish.species, (fish.price - competitor.price) * pieces
+    from fish, competitor
+    where fish.species = competitor.species;
 \end{lstlisting}
 \end{solution}
 
@@ -264,15 +260,15 @@ SELECT fish.species, (fish.price - competitor.price) * pieces
 \question \textbf{Recursive Select} Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a recursive select function that creates a table of fish 10 years from now.
 
 \begin{solution}[0.5in]
-\begin{lstlisting}
-WITH 
-  yearly_pop(yearly_species, yearly_pop, N) AS (
-     SELECT species, pop, 0 FROM fish UNION
-     SELECT yearly_species, yearly_pop * rate, N + 1 
-         FROM yearly_pop, fish 
-         WHERE yearly_species = species AND N <= 10
+\begin{lstlisting}[language=SQL]
+with
+  yearly_pop(yearly_species, yearly_pop, N) as (
+     select species, pop, 0 from fish union
+     select yearly_species, yearly_pop * rate, N + 1
+         from yearly_pop, fish
+         where yearly_species = species and N <= 10
   )
-SELECT yearly_species, yearly_pop FROM yearly_pop WHERE N = 10;
+select yearly_species, yearly_pop from yearly_pop where N = 10;
 
 \end{lstlisting}
 \end{solution}
