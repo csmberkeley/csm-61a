@@ -183,7 +183,7 @@ def double_link(lst):
     Link('c', Link('c', Link(6, Link(6, Link('a')))))
     """
     if __________________________________________:
-        return
+        return __________________________________
     _____________________________________________
     _____________________________________________
     return ______________________________________
@@ -191,7 +191,7 @@ def double_link(lst):
 \begin{solution}[0.5in]
 \begin{lstlisting}
     if lst is Link.empty or lst.rest is Link.empty:
-        return
+        return lst
     lst.rest.first = lst.first
     double_link(lst.rest.rest)
     return lst
