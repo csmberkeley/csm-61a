@@ -183,16 +183,18 @@ def double_link(lst):
     Link('c', Link('c', Link(6, Link(6, Link('a')))))
     """
     if __________________________________________:
-        return __________________________________
+        return
+    _____________________________________________
     _____________________________________________
     return ______________________________________
 \end{lstlisting}
 \begin{solution}[0.5in]
 \begin{lstlisting}
     if lst is Link.empty or lst.rest is Link.empty:
-        return lst
+        return
     lst.rest.first = lst.first
-    return double_link(lst.rest.rest)
+    double_link(lst.rest.rest)
+    return lst
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
