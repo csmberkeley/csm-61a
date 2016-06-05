@@ -30,29 +30,31 @@ Every Recursive function has three things.
 %%% Question %%%
 
 \begin{blocksection}
-\question Write \texttt{numDigits}, which takes in a number \texttt{n} and returns the number of digits it has:
+\question Write \texttt{num\char`_digits}, which takes in a number \texttt{n}
+and returns the number of digits it has.
 
 \begin{lstlisting}
-def numDigits(n):
-    """Takes in an positive integer and returns the number of digits
+def num_digits(n):
+    """Takes in an positive integer and returns the number of
+    digits.
 
-    >>> numDigits(0)
+    >>> num_digits(0)
     0
-    >>> numDigits(1)
+    >>> num_digits(1)
     1
-    >>> numDigits(7)
+    >>> num_digits(7)
     1
-    >>> numDigits(1093)
+    >>> num_digits(1093)
     4
     """
 \end{lstlisting}
 
 \begin{solution}[1in]
 \begin{lstlisting}
- if n == 0:
-   return 0
- else:
-   return 1 + numDigits(n//10)
+if n == 0:
+    return 0
+else:
+    return 1 + num_digits(n // 10)
 \end{lstlisting}
 \end{solution}
 
@@ -60,34 +62,40 @@ def numDigits(n):
 
 %%% Question %%%
 
-
 \begin{blocksection}
-\question Write a function \texttt{isSorted} that takes in an integer \texttt{n} and returns true if the digits of that number are increasing from right to left
+\question Write a function \texttt{is\char`_sorted} that takes in an integer
+\texttt{n} and returns true if the digits of that number are increasing from
+right to left.
 
 \begin{lstlisting}
-def isSorted(n): 
-   """Return true if the digit is in increasing order from rightmost digit to leftmost digit. (Consecutive same digits are allowed). Also return true if it has only onedigit. Return false otherwise.
-   >>> isSorted(2)
+def is_sorted(n):
+   """Return true if the digit is in increasing order from
+   rightmost digit to leftmost digit. (Consecutive same digits
+   are allowed).
+   Also return true if it has only one digit. Return false
+   otherwise.
+
+   >>> is_sorted(2)
    True
-   >>> isSorted(22222)
+   >>> is_sorted(22222)
    True
-   >>> isSorted(9876543210)
+   >>> is_sorted(9876543210)
    True
-   >>> isSorted(9087654321)
+   >>> is_sorted(9087654321)
    False
    """
 \end{lstlisting}
 
 \begin{solution}[1in]
 \begin{lstlisting}
-right_digit = number % 10
-rest =  number // 10
+right_digit = n % 10
+rest =  n // 10
 if rest == 0:
     return True
 elif right_digit > rest % 10:
     return False
 else:
-    return isSorted(rest)
+    return is_sorted(rest)
 \end{lstlisting}
 \end{solution}
 
@@ -102,7 +110,7 @@ x = 20
 def foo(y):
     x = 5
     def bar():
-        return lambda y: x-y
+        return lambda y: x - y
     return bar
 
 y = foo(7)
@@ -110,7 +118,7 @@ z = y()
 print(z(2))
 \end{lstlisting}
 
-\begin{solution}[2in] \newline
+\begin{solution}[2in]
     Output: 3 \newline
     \includegraphics[scale=0.5]{img/foobar.png}
 \end{solution}
@@ -135,28 +143,24 @@ z = y()
 print(z(2))
 \end{lstlisting}
 
-\begin{solution}[0.3in] \newline
+\begin{solution}[0.3in]
    Output: 18 \newline
     \includegraphics[scale=0.5]{img/foobar2.png}
 \end{solution}
 \end{blocksection}
-\end{questions}
 
 \section{Higher Order Functions}
 
-\begin{questions}
-
-%%% Question %%%
-
 \begin{blocksection}
-\question Write a higher order function that passes the following doctests. \emph{Challenge:} Write the function body in one line.
+\question Write a higher order function that passes the following doctests.
+\emph{Challenge:} Write the function body in one line.
 
 \begin{lstlisting}
 """
 >>> from operator import add, mul
 >>> a = mystery(add, 3)
 >>> a(4) #equivalent to add(3,4)
-7 
+7
 >>> a(12)
 15
 >>> b = mystery(mul, 5)

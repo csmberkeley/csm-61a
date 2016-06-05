@@ -25,7 +25,7 @@ addressed as a (+), and unaddressed ones are left as a hyphen (-)
 + is_sorted: solutions reference number instead of n. might also make more sense
   to order from left to right (and wouldn't require a substantial change in
   solutions) (JC: I fixed the "number" detail)
-- I like the environment diagrams!
+* I like the environment diagrams!
 - nit: I'm not a huge fan of the mystery HOF question (not clear on how
   instructive it is). I guess it depends on how long people typically spend on
   it. I think the last WWPP part is somewhat interesting though.
