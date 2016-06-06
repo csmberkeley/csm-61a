@@ -34,9 +34,9 @@ addressed as a (+), and unaddressed ones are left as a hyphen (-)
 
 - lists:I think this is definitely useful for getting the basics down. maybe
   addingsomething about slicing would be helpful as well.
-- all_prmes: typo has parameter num instead of nums. I think it'd be more
++ all_prmes: typo has parameter num instead of nums. I think it'd be more
   usefulif you asked them to write it all three ways.
-- nit: dctests are indented strangely in elephant (e.g. "Dumbo" should be at
+* nit: dctests are indented strangely in elephant (e.g. "Dumbo" should be at
   the sae indentation as >>>)
 - elephat_roster: I think you should just use a list comprehension here. (I
   don't eally see a point in creating a new list every time, and we may as well
@@ -50,7 +50,7 @@ addressed as a (+), and unaddressed ones are left as a hyphen (-)
   "outpus" and turn CAPS into lower case, but that's just me. I think to be
   cleare, the description for branches should say "always returns a *list* of
   trees"(since it's unclear what list of things are returned).
-- I thin the "draw the tree" and "construct the tree" questions are helpful.
+* I thin the "draw the tree" and "construct the tree" questions are helpful.
 - sum_ofnodes: the name of this function might be confusing (as well as using
   sum asan accumulator variable, which could be confused with the built-in
   functin because it's bolded and used differently in the two solutions). I

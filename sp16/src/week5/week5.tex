@@ -21,7 +21,7 @@
 %%% Question %%%
 
 \begin{blocksection}
-\question Draw box-and-pointer diagrams for the following.
+\question Draw box-and-pointer diagrams for the following:
 
 \begin{lstlisting}
 >>> a = [1, 2, 3]
@@ -94,7 +94,7 @@ new list with only the primes from \texttt{nums}. Assume that
 \texttt{for} loop, or a list comprehension.
 
 \begin{lstlisting}
-def all_primes(num):
+def all_primes(nums):
 \end{lstlisting}
 \begin{solution}[2in]
 \begin{lstlisting}
@@ -109,12 +109,8 @@ def all_primes(num):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
-\end{questions}
 
 \section{Data Abstraction}
-\begin{questions}
-
-%%% Question %%%
 
 \begin{blocksection}
 \question The following is an \textbf{Abstract Data Type (ADT)} for elephants.
@@ -128,11 +124,11 @@ def elephant(name, age, can_fly):
     Constructs an elephant with these attributes.
     >>> dumbo = elephant("Dumbo", 10, True)
     >>> elephant_name(dumbo)
-        "Dumbo"
+    "Dumbo"
     >>> elephant_age(dumbo)
-        10
+    10
     >>> elephant_can_fly(dumbo)
-        True
+    True
     """
     return [name, age, can_fly]
 \end{lstlisting}
@@ -285,8 +281,6 @@ def elephant_can_fly(e):
 
 \end{blocksection}
 
-\end{questions}
-
 \newpage
 \section{Trees}
 \textbf{Things to remember}
@@ -302,8 +296,6 @@ def root(t): # ALWAYS OUTPUTS A NUMBER
 def branches(t): # ALWAYS OUTPUTS A LIST
     return t[1:]
 \end{lstlisting}
-
-\begin{questions}
 
 %%% Question %%%
 
@@ -419,11 +411,10 @@ def sum_of_nodes(t):
 \end{lstlisting}
 \begin{solution}[4in]
 \begin{lstlisting}
-    sum = 0
+    total = root(t)
     for branch in branches(t):
-        sum += sum_of_nodes(branch)
-    sum += root(t)
-    return sum
+        total += sum_of_nodes(branch)
+    return total
 
     Alternative solution:
     return root(t) +\
