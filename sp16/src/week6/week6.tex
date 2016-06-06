@@ -143,9 +143,7 @@ def skip(lst):
 \end{lstlisting}
 \begin{solution}[1in]
 \begin{lstlisting}
-    if lst is Link.empty:
-        return Link.empty
-    if lst.rest is Link.empty:
+    if lst is Link.empty or lst.rest is Link.empty:
         return lst
     return Link(lst.first, skip(lst.rest.rest))
 \end{lstlisting}
@@ -175,7 +173,7 @@ def skip(lst): # Recursively
     if lst is Link.empty or lst.rest is Link.empty:
         return lst
     lst.rest = skip(lst.rest.rest)
-        return lst
+    return lst
 
 def skip(lst): # Iteratively
     if lst is Link.empty:
@@ -333,7 +331,7 @@ def reverse(lst):
 
 \begin{blocksection}
 \question \textbf{(Optional)} Write \texttt{has\char`_cycle} which takes in a
-\texttt{Link} \texttt{True} if and only if there is a cycle in the
+\texttt{Link} and returns \texttt{True} if and only if there is a cycle in the
 \texttt{Link}.
 
 \begin{lstlisting}
@@ -352,16 +350,16 @@ def has_cycle(s):
 
 \begin{solution}
 \begin{lstlisting}
-     if s is Link.empty:
-            return False
-        slow, fast = s, s.rest
-        while fast is not Link.empty:
-            if fast.rest is Link.empty:
-                return False
-            elif fast is slow or fast.rest is slow:
-                return True
-            slow, fast = slow.rest, fast.rest.rest
+    if s is Link.empty:
         return False
+    slow, fast = s, s.rest
+    while fast is not Link.empty:
+        if fast.rest is Link.empty:
+            return False
+        elif fast is slow or fast.rest is slow:
+            return True
+        slow, fast = slow.rest, fast.rest.rest
+    return False
 \end{lstlisting}
 \end{solution}
 

@@ -58,16 +58,16 @@ addressed as a (+), and unaddressed ones are left as a hyphen (-)
 
 ** Week 6: Linked Lists
 
-- skip: he non-mutating version could match the mutating version more closely
+* skip: he non-mutating version could match the mutating version more closely
   (combie the two conditions and return lst)
-- mutatig skip: indentation is weird on the recursive solution
+* mutatig skip: indentation is weird on the recursive solution
 - revers: recursive without helper breaks the original input linked
   list. also, camel case)
 - negatin: is of questionable usefulness. I'm hesitant to include more random
   facts hat students who are struggling are going to try and remember.
 - the oter (optional) mutating reverse solutions don't work either. Also, one
   of the uses == Link.empty instead of is Link.empty.
-- has_cyle: description is missing some words -- perhaps "which takes in a
+* has_cyle: description is missing some words -- perhaps "which takes in a
   Link ad returns True...". Also, indentation is weird here again. Isn't this
   a homeork question?
   
