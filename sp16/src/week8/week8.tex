@@ -166,30 +166,18 @@ this case, $n 2^n$.
 \question Consider the following functions: 
 \begin{lstlisting}
 def hailstone(n):
-   print(n)
-   if n < 2:
-    return
-   if n % 2 == 0:
+    print(n)
+    if n < 2:
+        return
+    if n % 2 == 0:
         hailstone(n // 2)
-   else:
+    else:
         hailstone((n * 3) + 1)
 
 def fib(n):
    if n < 2:
       return n
    return fib(n - 1) + fib(n - 2)
-
-def slow(n):
-    i, j, k = 0, 0, 0
-    while i < n:
-        while j < n:
-            while k < n:
-                fib(k)
-                k += 1
-            fib(j)
-            j += 1
-        fib(i)
-        i += 1
 
 def foo(n, f):
     return n + f(500)
@@ -201,10 +189,6 @@ In big-O notation, describe the runtime for the following:
 $O(1)$. $f(500)$ is independent of the size of the input $n$.
 \end{solution}
 \part \texttt{foo(3000, fib)}
-\begin{solution}[0in]
-$O(1)$. See above.
-\end{solution}
-\part \texttt{foo(99999999999, slow)}
 \begin{solution}[0in]
 $O(1)$. See above.
 \end{solution}
@@ -237,7 +221,7 @@ notation.
 def fast_exp(b, n):
     if n == 0:
         return 1
-    elif n % 2 == 0:
+    elif n % 2 == 0: # Assume square runs in constant time
         return square(fast_exp(b, n // 2))
     else:
         return b * fast_exp(b, n - 1)
@@ -310,34 +294,24 @@ independent of $n$.
 \question \textbf{Orders of Growth and Trees:} Assume we are using the non-mutable Tree implementation introduced in discussion. Consider the following function:
 \begin{lstlisting}
 def word_finder(t, n, word):
-    if label(t) == word:
+    if root(t) == word:
         n -= 1
         if n == 0:
             return True
-    for child in children(t):
-        if word_finder(child, n, word) == True:
+    for branch in branches(t):
+        if word_finder(branch, n, word):
             return True
     return False
 \end{lstlisting}
 
 \begin{parts}
 \part What does this function do?  \newline
-Hint: A path is a sequence of connected nodes. For example, here are four paths in the tree below: 1 $\rightarrow$ 2, 1 $\rightarrow$ 3 $\rightarrow$ 4, 1 $\rightarrow$ 3 $\rightarrow$ 5, 1 $\rightarrow$ 3 $\rightarrow$ 6 
-
-\begin{tikzpicture}[scale=0.6, transform shape]
-\tikzstyle{level 2}=[sibling distance=10mm]
-    \node [circle, draw] (z){$1$}
-        child {node [circle, draw] (a) {$2$}}
-        child {node [circle, draw] (d) {$3$}
-            child {node [circle, draw] (g) {$4$}}
-            child {node [circle, draw] (e) {$5$}}
-            child {node [circle, draw] (f) {$6$}}
-        };
-\end{tikzpicture}
 \begin{solution}[0.25in]
 This function take a Tree \texttt{t}, an integer \texttt{n}, and a string
-\texttt{word} in as input. Then, \texttt{word\char`_finder} returns True if the
-word appears as a label in any path in the Tree \texttt{n}-times and False otherwise.
+\texttt{word} in as input.
+
+Then, \texttt{word\char`_finder} returns True if any paths from the root towards
+the leaves have at least \texttt{n} occurrences of the word and False otherwise.
 \end{solution}
 
 \part If a tree has $n$ total nodes, what is the total runtime for all searches
@@ -354,6 +328,28 @@ $O(n)$. At worst, we must visit every node of the tree.
 \question \textbf{Orders of Growth and Linked Lists:} Consider the following
 linked list function:
 \begin{lstlisting}
+def insert_at_beginning(lst, x):
+    return Link(x, lst)
+\end{lstlisting}
+
+\begin{parts}
+\part What does this function do?
+
+\begin{solution}
+It takes in an existing lst and returns a new list with $x$ at the front.
+\end{solution}
+
+\part Assume lst is initially length $n$. How long does it take to do one
+insert? Two? $n$?
+\begin{solution}
+All inserts will take constant time. No matter how long the list is, it doesn't
+take any longer to add to the front. One insert will take one unit of time, and
+two will take roughly twice that. Therefore, the amount of time to do $n$
+inserts will be $O(n)$.
+\end{solution}
+
+Now consider:
+\begin{lstlisting}
 def insert_at_end(lst, x):
     if lst.rest is Link.empty:
         lst.rest = Link(x)
@@ -361,7 +357,6 @@ def insert_at_end(lst, x):
         insert_at_end(lst.rest, x)
 \end{lstlisting}
 
-\begin{parts}
 \part What does this function do?
 \begin{solution}[0.25in]
     Inserts a value \texttt{x} at the end of linked list \texttt{lst}.
@@ -369,7 +364,7 @@ def insert_at_end(lst, x):
 \part Say we want to repeatedly insert some numbers into the end of a linked
 list:
 \begin{lstlisting}
-def insert_many(lst, n):
+def insert_many_end(lst, n):
     for i in range(n):
         insert_at_end(lst, i)
 \end{lstlisting}
@@ -386,7 +381,7 @@ $n$ units of time.
 \end{solution}
 
 \subpart In big-O notation, What is the total runtime to do all the inserts?
-(total runtime of \texttt{insert\char`_many})
+(total runtime of \texttt{insert\char`_many\char`_end})
 \begin{solution}[0.25in]
 The total runtime will be the sum of all the inserts: 1 + 2 + 3 + \ldots + $n$ =
 $\frac{n (n + 1)}{2}$ = $O(n^{2})$

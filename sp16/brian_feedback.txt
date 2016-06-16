@@ -20,38 +20,38 @@ addressed as a (+), and unaddressed ones are left as a hyphen (-)
 * nit: consistently use snake case, not use camel case
 * nit: weird indentation in docstring
 * nit: inconsistent indentation (2 spaces vs 4 spaces) and spaces around operators
-- num_digits: I think the n == 0 return 0 base case is a little unintuitive; if
+* num_digits: I think the n == 0 return 0 base case is a little unintuitive; if
   n < 10 return 1 would make more sense?
-+ is_sorted: solutions reference number instead of n. might also make more sense
+* is_sorted: solutions reference number instead of n. might also make more sense
   to order from left to right (and wouldn't require a substantial change in
   solutions) (JC: I fixed the "number" detail)
 * I like the environment diagrams!
-- nit: I'm not a huge fan of the mystery HOF question (not clear on how
+* nit: I'm not a huge fan of the mystery HOF question (not clear on how
   instructive it is). I guess it depends on how long people typically spend on
   it. I think the last WWPP part is somewhat interesting though.
   
 ** Week 5: Mutable Data Structures + Data Abstraction
 
-- lists:I think this is definitely useful for getting the basics down. maybe
+* lists:I think this is definitely useful for getting the basics down. maybe
   addingsomething about slicing would be helpful as well.
-+ all_prmes: typo has parameter num instead of nums. I think it'd be more
+* all_prmes: typo has parameter num instead of nums. I think it'd be more
   usefulif you asked them to write it all three ways.
 * nit: dctests are indented strangely in elephant (e.g. "Dumbo" should be at
   the sae indentation as >>>)
-- elephat_roster: I think you should just use a list comprehension here. (I
+* elephat_roster: I think you should just use a list comprehension here. (I
   don't eally see a point in creating a new list every time, and we may as well
   try toenforce Pythonic idioms if it doesn't conflict with what we're
   teachig.)
-- elephat DA: I'm not sure how useful students find this question (because DA
+* elephat DA: I'm not sure how useful students find this question (because DA
   alwaysseems to be boring...) but I think it's fine.
-- tree D: I'd personally take out the asserts since I don't think they're
+* tree D: I'd personally take out the asserts since I don't think they're
   reallyimportant to the DA. I think "always outputs a number" is misleading
   becaus that's not necessarily true. I'd also rather use "returns" over
   "outpus" and turn CAPS into lower case, but that's just me. I think to be
   cleare, the description for branches should say "always returns a *list* of
   trees"(since it's unclear what list of things are returned).
 * I thin the "draw the tree" and "construct the tree" questions are helpful.
-- sum_ofnodes: the name of this function might be confusing (as well as using
++ sum_ofnodes: the name of this function might be confusing (as well as using
   sum asan accumulator variable, which could be confused with the built-in
   functin because it's bolded and used differently in the two solutions). I
   also tink you can just initialize sum (or total) to root(t) before the loop.

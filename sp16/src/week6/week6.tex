@@ -241,36 +241,6 @@ def reverse(lst):
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{(Optional)} Implement negation so that linked lists have the
-following behaviour:
-
-\begin{lstlisting}
->>> a = Link(1, Link(2, Link(3)))
->>> -a # This should output a new Linked List
-Link(3, Link(2, Link(1)))
-\end{lstlisting}
-
-You may use your work from question 4.\\
-\textit{Hint:}
-\begin{lstlisting}
->>> a = 4
->>> -a
--4
->>> a.__neg__()
--4
-\end{lstlisting}
-
-\begin{solution}[0.3in]
-\begin{lstlisting}
-# In class Link
-def __neg__(self):
-    return reverse(self)
-\end{lstlisting}
-\end{solution}
-
-\end{blocksection}
-
-\begin{blocksection}
 \question \textbf{(Optional)} Now write \texttt{reverse} by modifying the existing Links. Assume reverse returns the head of the new list (so the last \texttt{Link} object of the previous list).
 
 First, draw out the box and pointer for the following:

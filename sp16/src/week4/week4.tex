@@ -39,7 +39,7 @@ def num_digits(n):
     digits.
 
     >>> num_digits(0)
-    0
+    1
     >>> num_digits(1)
     1
     >>> num_digits(7)
@@ -51,8 +51,8 @@ def num_digits(n):
 
 \begin{solution}[1in]
 \begin{lstlisting}
-if n == 0:
-    return 0
+if n < 10:
+    return 1
 else:
     return 1 + num_digits(n // 10)
 \end{lstlisting}
