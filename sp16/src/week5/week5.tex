@@ -80,6 +80,18 @@
 [1, 2, 3, 4, 5]
 \end{lstlisting}
 \end{solution}
+
+\begin{lstlisting}
+>>> d = c[0:2]
+>>> c[0] = 9
+>>> d
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+[1, 2]
+\end{lstlisting}
+\end{solution}
+
 \begin{solution}
 \href{http://goo.gl/Gxe0qv}{Box and pointer diagram in Python Tutor -  tinyurl.com/week5-bap}
 \end{solution}
@@ -172,10 +184,7 @@ def elephant_roster(elephants):
     """
     Takes in a list of elephants and returns a list of their names.
     """
-    result = []
-    for elephant in elephants:
-        result = result + [elephant[0]]
-    return result
+    return [elephant[0] for elephant in elephants]
 \end{lstlisting}
 \begin{solution}[1in]
 \begin{lstlisting}[language=HTML]
@@ -285,15 +294,13 @@ def elephant_can_fly(e):
 \section{Trees}
 \textbf{Things to remember}
 \begin{lstlisting}
-def tree(root, branches=[]): # ALWAYS OUTPUTS A TREE
-    for branch in branches:
-        assert is_tree(branch), 'branches must be trees'
+def tree(root, branches=[]):
     return [root] + list(branches)
 
-def root(t): # ALWAYS OUTPUTS A NUMBER
+def root(t):
     return t[0]
 
-def branches(t): # ALWAYS OUTPUTS A LIST
+def branches(t): # Always returns a list of trees
     return t[1:]
 \end{lstlisting}
 
