@@ -1,0 +1,11 @@
+\textbf{Things to remember}
+\begin{lstlisting}
+def tree(root, branches=[]):
+    return [root] + list(branches)
+
+def root(t):
+    return t[0]
+
+def branches(t): # Always returns a list of trees
+    return t[1:]
+\end{lstlisting}

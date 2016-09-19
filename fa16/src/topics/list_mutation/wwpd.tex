@@ -1,0 +1,54 @@
+\question \textbf{What Would Python Display?}
+\begin{lstlisting}
+>>> a = [1, 2]
+>>> a.append([3, 4])
+>>> a
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[1, 2, [3, 4]]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> b = list(a)
+>>> a[0] = 5
+>>> a[2][0] = 6
+>>> b
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[1, 2, [6, 4]]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.extend([7])
+>>> a += [8]
+>>> a += 9
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+TypeError: 'int' object is not iterable
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[5, 2, [6, 4], 7, 8]
+\end{lstlisting}
+\end{solution}
+
+\textbf{Challenge problem:}
+\begin{lstlisting}
+>>> b[2][1] = a[2:]
+>>> a[2][1][0][0]
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+6
+\end{lstlisting}
+\end{solution}

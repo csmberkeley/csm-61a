@@ -1,0 +1,115 @@
+\question What is the order of growth in time for the following functions? Use
+big-O notation.
+\begin{parts}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+def strange_add(n):
+    if n == 0:
+        return 1
+    else:
+        return strange_add(n - 1) + strange_add(n - 1)
+\end{lstlisting}
+\begin{solution}[0in]
+$O(2^n)$. To see this, try drawing out the call tree. Each level will create
+two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
+Therefore, $2^n$ calls.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+def stranger_add(n):
+    if n < 3:
+        return n
+    elif n % 3 ==  0:
+        return stranger_add(n - 1) + stranger_add(n - 2) + stranger_add(n - 3)
+    else:
+        return n
+\end{lstlisting}
+\begin{solution}[0in]
+$O(n)$ is $n$ is a multiple of 3, otherwise $O(1)$.\\
+The case where $n$ is not a multiple of 3 is fairly obvious -- we step into the
+else clause and immediately return.\\
+If $n$ is a multiple of 3, then neither $n - 1$ nor $n - 2$ are multiples of 3
+so those calls will take constant time. Therefore, we just run
+\texttt{stranger\char`_add}, decrementing the argument by 3 each time.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+def waffle(n):
+    i = 0
+    sum = 0
+    while i < n:
+        for j in range(50 * n):
+            sum += 1
+        i += 1
+    return sum
+\end{lstlisting}
+\begin{solution}[0in]
+$O(n^2)$. Ignore the constant term in $50 * n$, and it because just two for
+loops.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+def belgian_waffle(n):
+    i = 0
+    sum = 0
+    while i < n:
+        for j in range(n ** 2):
+            sum += 1
+        i += 1
+    return sum
+\end{lstlisting}
+\begin{solution}[0in]
+$O(n^3)$. Inner loop runs $n^2$ times, and the outer loop runs $n$ times. To get
+the total, multiply those together.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+def pancake(n):
+    if n == 0 or n == 1:
+        return n
+    # Flip will always perform three operations and return -n.
+    return flip(n) + pancake(n - 1) + pancake(n - 2)
+\end{lstlisting}
+\begin{solution}[0in]
+$O(2^n)$. Flip will run in constant time. Therefore, this call tree looks very
+similar to fib! (which is $2^n$)
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+def toast(n):
+    i = 0
+    j = 0
+    stack = 0
+    while i < n:
+        stack += pancake(n)
+        i += 1
+    while j < n:
+        stack += 1
+        j += 1
+    return stack
+\end{lstlisting}
+\begin{solution}[0in]
+$O(n 2^n)$. There are two loops: the first runs $n$ times for $2^n$ calls each
+time (due to pancake), for a total of $n 2^n$. The second loop runs $n$ times.
+When calculating orders of growth however, we focus on the dominating term -- in
+this case, $n 2^n$.
+\end{solution}
+\end{blocksection}
+\end{parts}
