@@ -34,16 +34,6 @@ def accumulate(lst):
             sum_so_far += item
             lst[i] = sum_so_far
     return sum_so_far
-
-    Alternate solution:
-    if isinstance(lst[0], list):
-        lst[0] = accumulate(lst[0])
-    for i in range(1, len(lst)):
-        if isinstance(lst[i], list):
-            lst[i] = accumulate(lst[i)i]) + lst[i-1]
-        else:
-            lst[i] = lst[i] + lst[i-1]
-    return lst[-1]
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
