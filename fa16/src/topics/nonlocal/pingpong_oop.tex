@@ -1,0 +1,54 @@
+\question \textbf{(Optional)} Instead of using nonlocal for pingpong, let's use OOP!
+
+\begin{nonsol}
+\begin{lstlisting}
+>>> tracker1 = PingPongTracker()
+>>> tracker2 = PingPongTracker()
+>>> tracker1.next()
+1
+>>> tracker1.next()
+2
+>>> tracker2.next()
+1
+
+class PingPongTracker:
+    def __init__(self):
+        self.current = 0
+        self.index = 1
+        self.add = True
+    def next(self):
+        """*** Enter solution below ***"""
+\end{lstlisting}
+\end{nonsol}
+
+\begin{solution}[0.3in]
+\begin{lstlisting}
+class PingPongTracker:
+    def __init__(self):
+        self.current = 0
+        self.index = 1
+        self.add = True
+
+    def next(self):
+        if self.add:
+            self.current += 1
+        else:
+            self.current -= 1
+        if has_seven(self.index) or self.index % 7 == 0:
+            self.add = not self.add
+        self.index += 1
+        return self.current
+
+
+\end{lstlisting}
+Notice how the OOP approach is very similar to the nonlocal solution.
+Instead of using \texttt{nonlocal}, we use \texttt{self.variable} and the code
+becomes exactly the same. We just store the data in a slightly different way.
+This implies that OOP and functions are pretty similar, and it turns out you can
+even write your own OOP framework using just functions and \texttt{nonlocal}!
+
+In addition, there are a lot of Python specific features that can be written
+using functions or using classes. If you are interested, check out the powerful
+Python feature decorators, and note how we can write them both as functions and
+as classes!
+\end{solution}
