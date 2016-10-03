@@ -2,9 +2,9 @@
 \usepackage{../../commonheader}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{5}
-\title{\textsc{Orders of Growth}}
-\date{March 7 to March 11, 2016}
+\discnumber{4}
+\title{\textsc{Linked Lists}}
+\date{October 10 to October 14, 2016}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -17,310 +17,321 @@
 
 %%% Question %%%
 
+\begin{blocksection}
+For each of the following problems, assume linked lists are defined as follows:
+\newline
+\begin{lstlisting}
+class Link:
+
+    empty = ()
+
+    def __init__(self, first, rest=empty):
+        assert rest is Link.empty or isinstance(rest, Link)
+        self.first = first
+        self.rest = rest
+\end{lstlisting}
+
+To check if a \texttt{Link} is empty, compare it against the class attribute \texttt{Link.empty}:
+\newline
+\begin{lstlisting}
+if link is Link.empty:
+    print('This linked list is empty!')
+\end{lstlisting}
+\end{blocksection}
+
+\section{What Would Python Print?}
 \begin{questions}
 \begin{blocksection}
-\question
-In big-O notation, what is the runtime for \texttt{foo}?
-\begin{parts}
-\part
+\question What will Python output? Draw box-and-pointer diagrams to help determine this.
+
 \begin{lstlisting}
-def foo(n):
-    for i in range(n):
-        print('hello')
+>>> a = Link(1, Link(2, Link(3)))
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(n)$. This is simple loop that will run $n$ times.
-\end{solution}
-
-\part What's the runtime of \texttt{foo} if we change \texttt{range(n)}:
-\begin{subparts}
-
-\subpart To \texttt{range(n / 2)}?
 \begin{solution}[0in]
-$O(n)$. The loop runs $n / 2$ times, but we ignore constant factors.
+\begin{lstlisting}
++---+---+  +---+---+  +---+---+
+| 1 | --|->| 2 | --|->| 3 | / |
++---+---+  +---+---+  +---+---+
+\end{lstlisting}
 \end{solution}
 
-\subpart To \texttt{range(10)}?
+\begin{lstlisting}
+>>> a.first
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.first = 5
+\end{lstlisting}
 \begin{solution}[0in]
-$O(1)$. No matter the size of $n$, we will run the loop the same number of
-times.
+\begin{lstlisting}
++---+---+  +---+---+  +---+---+
+| 5 | --|->| 2 | --|->| 3 | / |
++---+---+  +---+---+  +---+---+
+\end{lstlisting}
 \end{solution}
 
-\subpart To \texttt{range(10000000)}?
-\begin{solution}[0in]
-$O(1)$. No matter the size of $n$, we will run the loop the same number of
-times.
+\begin{lstlisting}
+>>> a.first
+\end{lstlisting}
+\begin{solution}[.25in]
+5
 \end{solution}
 
-\end{subparts}
-\end{parts}
+\begin{lstlisting}
+>>> a.rest.first
+\end{lstlisting}
+\begin{solution}[.25in]
+2
+\end{solution}
+
+\begin{lstlisting}
+>>> a.rest.rest.rest.rest.first
+\end{lstlisting}
+\begin{solution}[.25in]
+Error: ‘tuple’ object has no attribute ‘rest’ (Link.empty has no rest)
+\end{solution}
 \end{blocksection}
 
-\question What is the order of growth in time for the following functions? Use
-big-O notation.
-\begin{parts}
-
-\part
+\begin{blocksection}
 \begin{lstlisting}
-def strange_add(n):
-    if n == 0:
-        return 1
-    else:
-        return strange_add(n - 1) + strange_add(n - 1)
+>>> a.rest.rest.rest = a
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(2^n)$. To see this, try drawing out the call tree. Each level will create
-two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
-Therefore, $2^n$ calls.
+\begin{solution}[0in]
+\begin{lstlisting}
+   +---+---+  +---+---+  +---+---+
++->| 5 | --|->| 2 | --|->| 3 | --|--+
+|  +---+---+  +---+---+  +---+---+  |
+|                                   |
++-----------------------------------+
+\end{lstlisting}
 \end{solution}
 
-\part
 \begin{lstlisting}
-def stranger_add(n):
-    if n < 3:
-        return n
-    elif n % 3 ==  0:
-        return stranger_add(n - 1) + stranger_add(n - 2) + stranger_add(n - 3)
-    else:
-        return n
+>>> a.rest.rest.rest.rest.first
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(n)$ is $n$ is a multiple of 3, otherwise $O(1)$.\\
-The case where $n$ is not a multiple of 3 is fairly obvious -- we step into the
-else clause and immediately return.\\
-If $n$ is a multiple of 3, then neither $n - 1$ nor $n - 2$ are multiples of 3
-so those calls will take constant time. Therefore, we just run
-\texttt{stranger\char`_add}, decrementing the argument by 3 each time.
+\begin{solution}[.25in]
+\begin{lstlisting}
+2
+\end{lstlisting}
 \end{solution}
 
-\newpage
-\part
-\begin{lstlisting}
-def waffle(n):
-    i = 0
-    sum = 0
-    while i < n:
-        for j in range(50 * n):
-            sum += 1
-        i += 1
-    return sum
-\end{lstlisting}
-\begin{solution}[0.25in]
-$O(n^2)$. Ignore the constant term in $50 * n$, and it because just two for
-loops.
-\end{solution}
+\end{blocksection}
 
-\part
-\begin{lstlisting}
-def belgian_waffle(n):
-    i = 0
-    sum = 0
-    while i < n:
-        for j in range(n ** 2):
-            sum += 1
-        i += 1
-    return sum
-\end{lstlisting}
-\begin{solution}[0.25in]
-$O(n^3)$. Inner loop runs $n^2$ times, and the outer loop runs $n$ times. To get
-the total, multiply those together.
-\end{solution}
+\section{Code Writing Questions}
 
-\part
-\begin{lstlisting}
-def pancake(n):
-    if n == 0 or n == 1:
-        return n
-    # Flip will always perform three operations and return -n.
-    return flip(n) + pancake(n - 1) + pancake(n - 2)
-\end{lstlisting}
-\begin{solution}[0.25in]
-$O(2^n)$. Flip will run in constant time. Therefore, this call tree looks very
-similar to fib! (which is $2^n$)
-\end{solution}
+%%% Question %%%
+\begin{blocksection}
+\question Write a function \texttt{skip}, which takes in a \texttt{Link} and returns a new \texttt{Link}.
 
-\part
 \begin{lstlisting}
-def toast(n):
-    i = 0
-    j = 0
-    stack = 0
-    while i < n:
-        stack += pancake(n)
-        i += 1
-    while j < n:
-        stack += 1
-        j += 1
-    return stack
+def skip(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3, Link(4))))
+    >>> a
+    Link(1, Link(2, Link(3, Link(4))))
+    >>> b = skip(a)
+    >>> b
+    Link(1, Link(3))
+    >>> a
+    Link(1, Link(2, Link(3, Link(4)))) # Original is unchanged
+    """
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(n 2^n)$. There are two loops: the first runs $n$ times for $2^n$ calls each
-time (due to pancake), for a total of $n 2^n$. The second loop runs $n$ times.
-When calculating orders of growth however, we focus on the dominating term -- in
-this case, $n 2^n$.
+\begin{solution}[1in]
+\begin{lstlisting}
+    if lst is Link.empty or lst.rest is Link.empty:
+        return lst
+    return Link(lst.first, skip(lst.rest.rest))
+\end{lstlisting}
 \end{solution}
+\end{blocksection}
 
-\end{parts}
+%%% Question %%%
 
 \begin{blocksection}
-\question Consider the following functions: 
+\question Now write function \texttt{skip} by mutating the original list, instead of returning a new list. Do NOT call the \texttt{Link} constructor.
+
 \begin{lstlisting}
-def hailstone(n):
-    print(n)
-    if n < 2:
-        return
-    if n % 2 == 0:
-        hailstone(n // 2)
-    else:
-        hailstone((n * 3) + 1)
-
-def fib(n):
-   if n < 2:
-      return n
-   return fib(n - 1) + fib(n - 2)
-
-def foo(n, f):
-    return n + f(500)
+def skip(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3, Link(4))))
+    >>> b = skip(a)
+    >>> b
+    Link(1, Link(3))
+    >>> a
+    Link(1, Link(3))
+    """
 \end{lstlisting}
-In big-O notation, describe the runtime for the following:
-\begin{parts}
-\part \texttt{foo(10, hailstone)}
-\begin{solution}[0in]
-$O(1)$. $f(500)$ is independent of the size of the input $n$.
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def skip(lst): # Recursively
+    if lst is Link.empty or lst.rest is Link.empty:
+        return lst
+    lst.rest = skip(lst.rest.rest)
+    return lst
+
+def skip(lst): # Iteratively
+    if lst is Link.empty:
+        return Link.empty
+    original = lst
+    while lst.rest is not Link.empty:
+        lst.rest = lst.rest.rest
+        lst = lst.rest
+    return original
+\end{lstlisting}
 \end{solution}
-\part \texttt{foo(3000, fib)}
-\begin{solution}[0in]
-$O(1)$. See above.
-\end{solution}
-\end{parts}
 
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{Fast Exponentiation:} in this problem, we will examine a
-real-world algorithm used to improve the speed of calculating exponents.
-
-\begin{parts}
-
-\part First, express the runtime of the naive exponentiation algorithm in big-O
-notation.
+\question Write a function \texttt{reverse}, which takes in a \texttt{Link} and
+returns a new \texttt{Link} that has the order of the contents reversed.\\
+\emph{Hint:} You may want to use a helper function if you're solving this
+recursively.
 \begin{lstlisting}
-def exp(b, n):
-    if n == 0:
-        return 1
-    else:
-        return b * exp(b, n - 1)
+def reverse(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3)))
+    >>> b = reverse(a)
+    >>> b
+    Link(3, Link(2, Link(1)))
+    >>> a
+    Link(1, Link(2, Link(3)))
+    """
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(n)$. $n$ decreases by 1 each call, so there are naturally $n$ calls.
+
+\begin{solution}[1in]
+There are quite a few different methods. We have listed some here -- can you
+think of any others?
+\begin{lstlisting}
+# Recursive w/ Helper
+def reverse(lst):
+    def helper(so_far, rest):
+        if rest is Link.empty:
+            return so_far
+        else:
+            return helper(Link(rest.first, so_far), rest.rest)
+    return helper(Link.empty, lst)
+
+# Recursive w/o Helper
+def reverse(lst):
+    if lst is Link.empty or lst.rest is Link.empty:
+        return lst
+    secondElement = lst.rest
+    lst.rest = Link.empty
+    reversedRest = reverse(secondElement)
+    secondElement.rest = lst
+    return reversedRest
+
+# Iterative
+def reverse(lst):
+    rev = Link.empty
+    while lst is not Link.empty:
+        rev = Link(lst.first, rev)
+        lst = lst.rest
+    return rev
+\end{lstlisting}
 \end{solution}
 
-\part Now, express the runtime of the fast exponentiation algorithm in big-O
-notation.
-\begin{lstlisting}
-def fast_exp(b, n):
-    if n == 0:
-        return 1
-    elif n % 2 == 0: # Assume square runs in constant time
-        return square(fast_exp(b, n // 2))
-    else:
-        return b * fast_exp(b, n - 1)
-\end{lstlisting}
-\begin{solution}[0.25in]
-$O(\log n)$. $n$ is halved each call, so the number of calls is the number of
-times $n$ must be halved to get to 1. This is $\log n$.
-\end{solution}
-
-\part What about this slightly modified version of \texttt{fast\char`_exp}?
-\begin{lstlisting}
-def fast_exp(b, n):
-    for _ in range(50 * n):
-        print("Killing time")
-    if n == 0:
-        return 1
-    elif n % 2 == 0:
-        return square(fast_exp(b, n // 2))
-    else:
-        return b * fast_exp(b, n - 1)
-\end{lstlisting}
-\begin{solution}[0.25in]
-$O(n)$. Ignore the constant term. The first call will perform $n$ operations,
-the second call will perform $n / 2$ operations, the third will perform $n / 4$
-operations, etc. Using geometric series, we see this adds up to $2n$, which is
-$n$ if we ignore constant terms.
-\end{solution}
-
-\end{parts}
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{Mysterious loops:} What is the order of growth in time for the following functions? Use big-O notation.
+\question \textbf{(Optional)} Now write \texttt{reverse} by modifying the existing Links. Assume reverse returns the head of the new list (so the last \texttt{Link} object of the previous list).
 
-\begin{parts}
-
-\part
+First, draw out the box and pointer for the following:
 \begin{lstlisting}
-def mystery(n):
-    for i in range(n):
-        while i % 2 != 0:
-            print(i)
-            i = i - 1
-        print("Done")
+>>> a = Link(1, Link(2))
+>>> a.rest.rest = a
+>>> a.rest = Link.empty
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(n)$. The work for when $i$ is divisible by two is constant. Subtracting one
-will immediately allow us to exit the \texttt{while} loop. Therefore, we can
-concentrate on just the outer loop.
-\end{solution}
-
-\part
+Observe how the pointers change, as well as the order in which they are
+modified.
+\begin{solution}[0.6in]
 \begin{lstlisting}
-def fun(n):
-    for i in range(n):
-        for j in range(n * n):
-            if j == 4:
-                return -1
-            print("Fun!")
+   +---+---+  +---+---+
++->| 1 | / |  | 2 | --|--+
+|  +---+---+  +---+---+  |
+|                        |
++------------------------+
 \end{lstlisting}
-\begin{solution}[0.25in]
-$O(1)$. Inner loop always immediately exits after running for 4 iterations,
-independent of $n$.
 \end{solution}
-
-\end{parts}
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{Orders of Growth and Trees:} Assume we are using the non-mutable Tree implementation introduced in discussion. Consider the following function:
+Now, generalize this to reverse an entire linked list.
 \begin{lstlisting}
-def word_finder(t, n, word):
-    if root(t) == word:
-        n -= 1
-        if n == 0:
+def reverse(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3)))
+    >>> b = reverse(a)
+    >>> b
+    Link(3, Link(2, Link(1)))
+    >>> a
+    Link(3, Link(2, Link(1)))
+    """
+\end{lstlisting}
+\begin{solution}[1.25in]
+Here are two possible solutions.
+\begin{lstlisting}
+def reverse(lst):
+    if lst == Link.empty or lst.rest == Link.empty:
+        return lst
+    else:
+        new_start = reverse(lst.rest)
+        lst.rest.rest = lst
+        lst.rest = Link.empty
+        return new_start
+
+def reverse(lst):
+    if lst.rest is not Link.empty:
+        second, last = lst.rest, lst
+        lst = reverse(second)
+        second.rest, last.rest = last, Link.empty
+    return lst
+\end{lstlisting}
+\end{solution}
+
+
+\end{blocksection}
+
+\begin{blocksection}
+\question \textbf{(Optional)} Write \texttt{has\char`_cycle} which takes in a
+\texttt{Link} and returns \texttt{True} if and only if there is a cycle in the
+\texttt{Link}.
+
+\begin{lstlisting}
+def has_cycle(s):
+    """
+    >>> has_cycle(Link.empty)
+    False
+    >>> a = Link(1, Link(2, Link(3)))
+    >>> has_cycle(a)
+    False
+    >>> a.rest.rest.rest = a
+    >>> has_cycle(a)
+    True
+    """
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+    if s is Link.empty:
+        return False
+    slow, fast = s, s.rest
+    while fast is not Link.empty:
+        if fast.rest is Link.empty:
+            return False
+        elif fast is slow or fast.rest is slow:
             return True
-    for branch in branches(t):
-        if word_finder(branch, n, word):
-            return True
+        slow, fast = slow.rest, fast.rest.rest
     return False
 \end{lstlisting}
-
-\begin{parts}
-\part What does this function do?  \newline
-\begin{solution}[0.25in]
-This function take a Tree \texttt{t}, an integer \texttt{n}, and a string
-\texttt{word} in as input.
-
-Then, \texttt{word\char`_finder} returns True if any paths from the root towards
-the leaves have at least \texttt{n} occurrences of the word and False otherwise.
 \end{solution}
-
-\part If a tree has $n$ total nodes, what is the total runtime for all searches
-in big-O notation?
-\begin{solution}[0.25in]
-$O(n)$. At worst, we must visit every node of the tree.
-\end{solution}
-
-\end{parts}
 
 \end{blocksection}
 
