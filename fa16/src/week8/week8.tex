@@ -218,16 +218,6 @@ def reverse(lst):
             return helper(Link(rest.first, so_far), rest.rest)
     return helper(Link.empty, lst)
 
-# Recursive w/o Helper
-def reverse(lst):
-    if lst is Link.empty or lst.rest is Link.empty:
-        return lst
-    secondElement = lst.rest
-    lst.rest = Link.empty
-    reversedRest = reverse(secondElement)
-    secondElement.rest = lst
-    return reversedRest
-
 # Iterative
 def reverse(lst):
     rev = Link.empty
@@ -272,7 +262,7 @@ def reverse(lst):
     >>> b
     Link(3, Link(2, Link(1)))
     >>> a
-    Link(3, Link(2, Link(1)))
+    Link(1)
     """
 \end{lstlisting}
 \begin{solution}[1.00in]
