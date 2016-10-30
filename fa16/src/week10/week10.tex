@@ -228,7 +228,7 @@ equivalent of the \texttt{let} expressions.
 \begin{solution}[0.5in]
 The above function will error because it is equivalent to:
 \begin{lstlisting}
-((lambda (foo bar) (+ foo bar)) 2 (+ foo 3))
+((lambda (foo bar) (+ foo bar)) 3 (+ foo 2))
 \end{lstlisting}
 
 In other words, foo has not been defined in the global frame. When bar is being
