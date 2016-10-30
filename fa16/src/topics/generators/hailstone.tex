@@ -1,0 +1,32 @@
+\question Define \texttt{hailstone\char`_sequence} a generator that yields the
+hailstone sequence. Remember, for the hailstone sequence, if n is even, we need
+to divide by two, otherwise, we will multiply by 3 and add by 1.
+
+\begin{lstlisting}
+; Doctests:
+>>> hs_gen = hailstone_sequence(10)
+>>> hs_gen.__next__()
+10
+>>> next(hs_gen) #equivalent to previous
+5
+>>> for i in hs_gen:
+>>>	print(i)
+16
+8
+4
+2
+1
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def hailstone_sequence(n):
+	while n != 1:
+		yield n
+		if n % 2 == 0:
+			n = n // 2
+		else:
+			n = n*3 + 1
+	yield n
+\end{lstlisting}
+\end{solution}

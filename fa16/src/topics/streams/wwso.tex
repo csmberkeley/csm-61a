@@ -1,0 +1,94 @@
+\question For each of the following lines of code, write what Scheme would
+output.
+
+\begin{lstlisting}
+scm> (define x 1)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{x}
+\end{solution}
+
+\begin{lstlisting}
+scm> (if 2 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{3}
+\end{solution}
+
+\begin{lstlisting}
+scm> (delay (+ x 1))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+#[promise]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 10))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define bar (cons-stream (foo 1) (cons-stream (foo 2) bar)))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{bar}
+\end{solution}
+
+\begin{lstlisting}
+scm> (car bar)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{11}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr bar)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+#[promise]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 1))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr-stream bar)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+(3 . #[promise])
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x.25))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (car bar)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{11}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr-stream bar)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+(3 . #[promise])
+\end{lstlisting}
+\end{solution}

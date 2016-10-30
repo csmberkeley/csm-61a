@@ -1,0 +1,18 @@
+\question (Optional) Define \texttt{tree\_sequence} a generator that iterates
+through a tree by first yielding the root value and then yield each branch.
+
+\begin{lstlisting}
+>>> tree = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
+>>> print(list(tree_sequence(tree)))
+[1, 2, 5, 3, 4]
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+def tree_sequence(tree):
+	yield tree.entry
+	for branch in tree.branches:
+		for value in tree_sequence(branch):
+			yield value
+\end{lstlisting}
+\end{solution}
