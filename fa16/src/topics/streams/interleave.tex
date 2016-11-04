@@ -22,13 +22,16 @@ infinitely long.
 \begin{solution}
 \begin{lstlisting}
 (define (interleave stream1 stream2)
-(cons-stream (car stream1)
- (interleave stream2 (cdr-stream stream1)))
+    (cons-stream
+        (car stream1)
+        (interleave stream2 (cdr-stream stream1))
+    )
+)
 
-(cons-stream (car stream1)
- (cons-stream (car stream2)
-  (interleave (cdr-stream stream1)
-  (cdr-stream stream2))))
+(define (interleave stream1 stream2)
+    (cons-stream (car stream1)
+        (cons-stream (car stream2)
+            (interleave (cdr-stream stream1) (cdr-stream stream2))))
 )
 \end{lstlisting}
 \end{solution}

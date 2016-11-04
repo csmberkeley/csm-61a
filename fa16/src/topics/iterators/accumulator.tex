@@ -1,6 +1,6 @@
 \question What is difference between an iterable and an iterator?
 \begin{solution}[0.5in]
-Iterator: Mutable object that tracks a position in a sequence, advancing on each call to \texttt{next} 
+Iterator: Mutable object that tracks a position in a sequence, advancing on each call to \texttt{next}
 
 Iterable: Represents a sequence and returns a new iterator on each call to \texttt{iter}
 
@@ -12,7 +12,7 @@ Lists are "iterable". To go through a list, you make an object called an "iterat
 \begin{lstlisting}
 >>> accu = Accumulator([1, 2, 3, 4, 5, 6])
 >>> for a in accu:
-            print(a)
+...     print(a)
 1
 3
 6
@@ -24,39 +24,42 @@ Lists are "iterable". To go through a list, you make an object called an "iterat
 \begin{solution}[1.5in]
 \begin{lstlisting}
 class Accumulator:
-	def __init__(self, lst):
-		self.lst = lst
-		self.index = 0
-		self.sum = 0
-	def __next__(self):
-		if self.index >= len(self.lst):
-			raise StopIteration()
-		self.sum += self.lst[self.index]
-		self.index += 1
-		return self.sum
-	def __iter__(self):
-		return self
+    def __init__(self, lst):
+        self.lst = lst
+        self.index = 0
+        self.sum = 0
+    def __next__(self):
+        if self.index >= len(self.lst):
+            raise StopIteration()
+        self.sum += self.lst[self.index]
+        self.index += 1
+        return self.sum
+    def __iter__(self):
+        return self
 \end{lstlisting}
 \end{solution}
 
 \question Is this an iterator or an iterable or both?
 \begin{solution}[0.5in]
-Both; the \texttt{iter} method returns self and the \texttt{next} method is implemented. Note that an iterator is always an iterable, but an iterable is not always an iterator.
+Both; the \texttt{iter} method returns self and the \texttt{next} method is
+implemented. Note that an iterator is always an iterable, but an iterable is not
+always an iterator.
 \end{solution}
 
-\question (Optional) Write \texttt{Accumulator} so it works if it takes in any iterable, not just a list
+\question (Optional) Write \texttt{Accumulator} so it works if it takes in any
+iterable, not just a list
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
 class Accumulator:
-	def __init__(self, iterable):
-    		self.iterable = iterable
-		self.iterator = iter(iterable)
+    def __init__(self, iterable):
+            self.iterable = iterable
+        self.iterator = iter(iterable)
             self.sum = 0
-	def __next__(self):
-    	self.sum += next(self.iterator)
-    		return self.sum
-	def __iter__(self):
-    		return self
+    def __next__(self):
+        self.sum += next(self.iterator)
+            return self.sum
+    def __iter__(self):
+            return self
 \end{lstlisting}
 \end{solution}

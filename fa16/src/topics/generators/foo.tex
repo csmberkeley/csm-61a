@@ -1,14 +1,14 @@
 \question What does the following code block output?
 \begin{lstlisting}
 def foo():
-	a = 0
-	if a < 10:
-		print("Hello")
-		yield a
-		print("World")
+    a = 0
+    if a < 10:
+        print("Hello")
+        yield a
+        print("World")
 
 for i in foo():
-	print(i)
+    print(i)
 \end{lstlisting}
 
 \begin{solution}[0.75in]
@@ -30,9 +30,9 @@ a. This looks like:
 
 \begin{lstlisting}
 def foo():
-	a = 0
-	while a < 10:
-		a += 1
-		yield a
+    a = 0
+    while a < 10:
+        a += 1
+        yield a
 \end{lstlisting}
 \end{solution}
