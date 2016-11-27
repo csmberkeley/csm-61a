@@ -5,7 +5,7 @@ def one(two):
     def four(five):
         nonlocal three
         if len(three) < 1:
-            three.append(five)
+            three += [five]
             five = lambda x: four(x)
         else:
             five = seven + 7
