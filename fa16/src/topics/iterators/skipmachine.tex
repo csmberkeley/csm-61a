@@ -11,11 +11,12 @@ class SkipMachine:
             yield current
             current += self.skip
             SkipMachine.skip += 1
-    p = SkipMachine()
-    twos = p.generate()
-    SkipMachine.skip += 1
-    twos2 = p.generate()
-    threes = SkipMachine(3).generate()
+
+p = SkipMachine()
+twos = p.generate()
+SkipMachine.skip += 1
+twos2 = p.generate()
+threes = SkipMachine(3).generate()
 \end{lstlisting}
 \begin{tabular}{|p{5cm}|p{5cm}|}
 \hline
