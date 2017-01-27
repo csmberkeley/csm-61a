@@ -1,0 +1,390 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Streams, Iterators, and Generators}}
+\date{April 4 to April 9, 2016}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Iterators}
+\begin{questions}
+\begin{blocksection}
+\question What is difference between an iterable and an iterator?
+\begin{solution}[0.5in]
+Iterator: Mutable object that tracks a position in a sequence, advancing on each call to \texttt{next} 
+
+Iterable: Represents a sequence and returns a new iterator on each call to \texttt{iter}
+
+To use in an English sentence:
+Lists are "iterable". To go through a list, you make an object called an "iterator" to scan through the list.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question \textbf{Accumulator} Write an iterator class that takes in a list and calculates the sum of the list thus far.
+\begin{lstlisting}
+>>> accu = Accumulator([1, 2, 3, 4, 5, 6])
+>>> for a in accu:
+            print(a)
+1
+3
+6
+10
+15
+21
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+class Accumulator:
+	def __init__(self, lst):
+		self.lst = lst
+		self.index = 0
+		self.sum = 0
+	def __next__(self):
+		if self.index >= len(self.lst):
+			raise StopIteration()
+		self.sum += self.lst[self.index]
+		self.index += 1
+		return self.sum
+	def __iter__(self):
+		return self
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question Is this an iterator or an iterable or both?
+\begin{solution}[0.5in]
+Both; the \texttt{iter} method returns self and the \texttt{next} method is implemented. Note that an iterator is always an iterable, but an iterable is not always an iterator.
+\end{solution}
+
+\question (Optional) Write \texttt{Accumulator} so it works if it takes in any iterable, not just a list
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+class Accumulator:
+	def __init__(self, iterable):
+    		self.iterable = iterable
+		self.iterator = iter(iterable)
+            self.sum = 0
+	def __next__(self):
+    	self.sum += next(self.iterator)
+    		return self.sum
+	def __iter__(self):
+    		return self
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+
+\section{Generators}
+
+%%% Question %%%
+\begin{blocksection}
+\question What does the following code block output?
+\begin{lstlisting}
+def foo():
+	a = 0
+	if a < 10:
+		print("Hello")
+		yield a
+		print("World")
+
+for i in foo():
+	print(i)
+\end{lstlisting}
+
+\begin{solution}[0.75in]
+\begin{lstlisting}
+Hello
+0
+World
+\end{lstlisting}
+First time you call foo, it will yield a (which starts as 0)
+\end{solution}
+
+\question How can we modify \texttt{foo} so that \texttt{list(foo()) == [1, 2, 3, . . . , 10]}?  (You do not need to care about what gets printed)
+
+\begin{solution}[0.75in]
+Change the if to a while statement, and make sure to increment a. This looks like: 
+
+\begin{lstlisting}
+def foo():
+	a = 0
+	while a < 10:
+		a += 1
+		yield a
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+
+%%% Question %%%
+\begin{blocksection}
+\question Define \texttt{hailstone\_sequence} a generator that yields the hailstone sequence. Remember, for the hailstone sequence, if n is even, we need to divide by two, otherwise, we will multiply by 3 and add by 1. 
+
+\begin{lstlisting}
+; Doctests:
+>>> hs_gen = hailstone_sequence(10)
+>>> hs_gen.__next__()
+10
+>>> next(hs_gen) #equivalent to previous
+5
+>>> for i in hs_gen:
+>>>	print(i)
+16
+8
+4
+2
+1
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def hailstone_sequence(n):
+	while n != 1:
+		yield n
+		if n % 2 == 0:
+			n = n // 2
+		else:
+			n = n*3 + 1
+	yield n
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\question (Optional) Define \texttt{tree\_sequence} a generator that iterates through a tree by first yielding the root value and then yield each branch.
+\begin{lstlisting}
+>>> tree = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
+>>> print(list(tree_sequence(tree)))
+[1, 2, 5, 3, 4]
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+def tree_sequence(tree):
+	yield tree.entry
+	for branch in tree.branches:
+		for value in tree_sequence(branch):
+			yield value
+\end{lstlisting}
+\end{solution}
+
+%%% Question %%%
+\section{Streams}
+\begin{blocksection}
+\question What’s the advantage of using a stream over a linked list?
+\begin{solution}[0.5in] 
+Lazy evaluation. We only evaluate up to what we need.
+\end{solution}
+
+\question What’s the maximum size of a stream?
+\begin{solution}[0.5in]
+Infinity
+\end{solution}
+
+\question What’s stored in first and rest? What are their types? 
+\begin{solution}[0.5in]
+First is a value, rest is another stream (either a method to calculate it, or an already calculated stream). In the case of Scheme, this is called a promise.
+\end{solution}
+
+\question When is the next element actually calculated?
+\begin{solution}[.5in]
+Only when it's requested (and hasn't already been calculated)
+\end{solution}
+\end{blocksection}
+
+
+\section{What Would Scheme Print?}
+\begin{blocksection}
+\question For each of the following lines of code, write what scheme would output.
+
+\begin{lstlisting}
+scm> (define x 1)
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{x}
+\end{solution}
+
+\begin{lstlisting}
+scm> (if 2 3 4)
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{3}
+\end{solution}
+
+\begin{lstlisting}
+scm> (delay (+ x 1))
+\end{lstlisting}
+\begin{solution}[.5in]
+\begin{lstlisting}
+#[promise]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 10))
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define bar (cons-stream (foo 1) (cons-stream (foo 2) bar)))
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{bar}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+scm> (car bar)
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{11}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr bar)
+\end{lstlisting}
+\begin{solution}[.5in]
+\begin{lstlisting}
+#[promise]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 1))
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr-stream bar)
+\end{lstlisting}
+\begin{solution}[.5in]
+\begin{lstlisting}
+(3 . #[promise])
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 5))
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (car bar)
+\end{lstlisting}
+\begin{solution}[.5in]
+\texttt{11}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr-stream bar)
+\end{lstlisting}
+\begin{solution}[.5in]
+\begin{lstlisting}
+(3 . #[promise])
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\section{Code Writing for Streams}
+
+%%% Question %%%
+\begin{blocksection}
+\question Write out \texttt{double\_naturals}, which is a stream that evaluates to the sequence 1, 1, 2, 2, 3, 3, etc.
+\begin{lstlisting}
+(define (double_naturals)
+    (double_naturals_helper 1 0)
+)
+
+(define (double_naturals_helper first flag)
+
+
+
+
+
+
+
+
+
+
+)
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (double_naturals_helper first flag)
+    (if (= 1 flag)
+        (cons-stream first (double_naturals_helper (+ 1 first) 0))
+        (cons-stream first (double_naturals_helper first 1))
+    )
+)
+
+;Alternative Solutions
+(define (double_naturals_helper first flag)
+    (cons-stream first (double_naturals_helper (+ flag first) (- 1 flag)))
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question Write out \texttt{interleave}, which returns a stream that alternates between the values in stream1 and stream2. Assume that the streams are infinitely long.
+\begin{lstlisting}
+(define (interleave stream1 stream2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (interleave stream1 stream2)
+(cons-stream (car stream1) 
+ (interleave stream2 (cdr-stream stream1)))
+
+(cons-stream (car stream1)
+ (cons-stream (car stream2)
+  (interleave (cdr-stream stream1)
+  (cdr-stream stream2))))
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
