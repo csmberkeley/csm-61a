@@ -4,7 +4,7 @@
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{2}
 \title{\textsc{Mutable Data Structures and Data Abstractions}}
-\date{February 15 to February 19, 2016}
+\date{February 13 to February 17, 2016}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -294,10 +294,10 @@ def elephant_can_fly(e):
 \section{Trees}
 \textbf{Things to remember}
 \begin{lstlisting}
-def tree(root, branches=[]):
-    return [root] + list(branches)
+def tree(label, branches=[]):
+    return [label] + list(branches)
 
-def root(t):
+def label(t):
     return t[0]
 
 def branches(t): # Always returns a list of trees
@@ -367,7 +367,7 @@ t = tree(9, [tree(2, []),
 \question What would this output?
 
 \begin{lstlisting}
->>> root(t)
+>>> label(t)
 \end{lstlisting}
 \begin{solution}[.25in]
 9
@@ -397,7 +397,7 @@ tree(7, [])
 
 \begin{solution}[0.25in]
 \begin{lstlisting}
-root(branches(t)[0])
+label(branches(t)[0])
 \end{lstlisting}
 \end{solution}
 
@@ -418,13 +418,13 @@ def sum_of_nodes(t):
 \end{lstlisting}
 \begin{solution}[4in]
 \begin{lstlisting}
-    total = root(t)
+    total = label(t)
     for branch in branches(t):
         total += sum_of_nodes(branch)
     return total
 
     Alternative solution:
-    return root(t) +\
+    return label(t) +\
            sum([sum_of_nodes(b) for b in branches(t)])
 \end{lstlisting}
 \end{solution}
