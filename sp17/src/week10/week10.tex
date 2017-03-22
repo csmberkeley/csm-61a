@@ -1,10 +1,10 @@
 \documentclass{exam}
-\usepackage{commonheader}
+\usepackage{../../commonheader}
 \lstset{language=Scheme}
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{6}
 \title{\textsc{Scheme}}
-\date{March 14 to March 19, 2016}
+\date{March 20 to March 24, 2017}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -24,8 +24,9 @@ Scheme is a programming language, much like Python. In fact, many of Python's de
 \textbf{Useful Resources:}
 \begin{itemize}
     \item CS61A Online Scheme Interpreter: \texttt{scheme.cs61a.org}
-    \item Scheme Box-and-Pointer Interpreter (\texttt{nil} must be represented
-        as \texttt{()}: \texttt{xuanji.appspot.com/js-scheme-stk/index.html}
+    \begin{itemize}
+        \item To see the box and pointer diagrams for lists, do \texttt{(demo `autopair)}
+    \end{itemize}
 \end{itemize}
 \end{blocksection}
 
@@ -251,7 +252,7 @@ scm> (cons 1 2)
 \begin{solution}[0.25in]
 \texttt{(1 . 2)}
 \begin{center}
-\includegraphics[scale=0.7]{9a}
+\includegraphics[scale=1]{scheme_lists_1}
 \end{center}
 \end{solution}
 
@@ -261,7 +262,7 @@ scm> (cons 1 (cons 2 nil))
 \begin{solution}[0.25in]
 \texttt{(1 2)}
 \begin{center}
-\includegraphics[scale=0.7]{9b}
+\includegraphics[scale=0.7]{scheme_lists_2}
 \end{center}
 \end{solution}
 
@@ -271,7 +272,7 @@ scm> (cons 1 '(2 3 4 5))
 \begin{solution}[0.25in]
 \texttt{(1 2 3 4 5)}
 \begin{center}
-\includegraphics[scale=0.7]{9c}
+\includegraphics[scale=0.7]{scheme_lists_3}
 \end{center}
 \end{solution}
 
@@ -281,7 +282,7 @@ scm> (cons 1 '(2 (cons 3 4))
 \begin{solution}[0.25in]
 \texttt{(1 2 (cons 3 4))}
 \begin{center}
-\includegraphics[scale=0.7]{9d}
+\includegraphics[scale=0.7]{scheme_lists_4}
 \end{center}
 \end{solution}
 
