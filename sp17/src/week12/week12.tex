@@ -199,7 +199,7 @@ computing rest
 \begin{questions}
 \question Write out \texttt{double\_naturals}, which is a stream that evaluates to the sequence 1, 1, 2, 2, 3, 3, etc.
 \begin{lstlisting}
-def double_natural(first=1, flag=0):
+def double_natural(first=1, go_next=False):
   """
     >>> a = double_natural()
   >>> a.first
@@ -263,7 +263,7 @@ def interleave(stream1, stream2):
 
 \begin{solution}
 \begin{lstlisting}
-def compute_rest():
+  def compute_rest():
     return interleave(stream2, stream1.rest)
   return Stream(stream1.first, compute_rest)
 \end{lstlisting}
