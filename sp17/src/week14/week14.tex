@@ -1,5 +1,5 @@
 \documentclass{exam}
-\usepackage{commonheader}
+\usepackage{../../commonheader}
 \usepackage{hyperref}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -389,19 +389,21 @@ def interleave(iter1, iter2):
 \begin{blocksection}
 \question \textbf{Stream Supreme}
 \begin{parts}
-\part You and your friends are preparing for the 61A final by streaming lectures. You get tired and want to take a rest from studying but first you realize you are hungry so you check the refrigerator. You notice that \textbf{every other food} in there is stale! Write a function that takes in a list of foods and outputs a stream that contains all your stale food.
+\part You and your friends are preparing for the 61A final by streaming lectures. You get tired and want to take a rest from studying but first you realize you are hungry so you check the refrigerator. You notice that \textbf{every other food} (starting with the first food in the list) in there is stale! Write a function that takes in a \texttt{Linked List} of foods,
+called \texttt{foods} and outputs a stream that contains all your stale food.
 \textbf{Bonus:} Count all the puns in this question!
 
 \begin{lstlisting}[language=Python]
 def stale_foods(foods):
 
 \end{lstlisting}
-\vspace{20mm}
-\begin{solution}
+\begin{solution}[20mm]
     \begin{lstlisting}[language=Python]
 def stale_foods(foods):
-  if foods is Link.empty or foods.rest is Link.empty:
+  if foods is Link.empty:
     return Stream.empty
+  if foods.rest is Link.empty
+    return Stream(foods.first)
   return Stream(foods.first, lambda: stale_foods(foods.rest.rest))
 
 \end{lstlisting}
@@ -413,8 +415,7 @@ def stale_foods(foods):
 def food_stream(foods):
 
 \end{lstlisting}
-\vspace{40mm}
-\begin{solution}
+\begin{solution}[40mm]
 \begin{lstlisting}[language=Python]
 def food_stream(foods):
   def compute_rest():
