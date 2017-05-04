@@ -179,7 +179,7 @@ def skip(lst): # Iteratively
     if lst is Link.empty:
         return Link.empty
     original = lst
-    while lst.rest is not Link.empty:
+    while not (lst is Link.empty or lst.rest is Link.empty):
         lst.rest = lst.rest.rest
         lst = lst.rest
     return original

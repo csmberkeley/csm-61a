@@ -190,7 +190,7 @@ What would Python display if we executed the following code?
 
 \begin{solution}
 \begin{center}
-    \begin{tabular}{|m{9cm}|m{6cm}|}
+    \begin{tabular}{|m{9cm}|m{5cm}|}
 \hline
 \textbf{Expression} & \textbf{Interactive Output} \\
 \hline
@@ -234,7 +234,7 @@ def cycle_ith(lst, i):
 \end{lstlisting}
 \end{solution}
 
-\item Takes in a stream and returns a new stream that contains each element of the input stream only once and in the same order. This function should work for both finite and infinite streams.
+\item Takes in a stream and returns a new stream that contains each element of the input stream only once and in the same order. Assume that the stream passed in is finite.
 \newline
 \begin{lstlisting}
 def set_stream(s):
@@ -311,15 +311,27 @@ def set_stream(s):
 \begin{solution}
 % TODO FILL OUT THIS SOLUTION
 \begin{center}
-    \begin{tabular}{|m{9cm}|m{6cm}|}
+    \begin{tabular}{|m{9cm}|m{5cm}|}
 \hline
 \textbf{Expression} & \textbf{Interactive Output} \\
 \hline
-\lstinline$>>>int_strm = make_integer_stream()$
- \lstinline$>>>print(int_strm.rest)$ & \color{red}\lstinline$computing rest$ \\
- & \color{red}\lstinline$Stream(2, <...>)$ \\ & \\
+\lstinline$scm> 'csm$ & {\color{red} \lstinline$computing rest$}\\ & \\ & \\
 \hline
-\lstinline$>>>print(int_strm.rest)$ & \color{red}\lstinline$Stream(2, <...>)$ \\ & \\ & \\
+\lstinline$scm> (if 0 1 (/ 1 0))$ & {\color{red} \lstinline$1$}\\ & \\ & \\
+\hline
+\lstinline$scm> (or 1 and 2)$ & {\color{red} \lstinline$1$}\\ & \\ & \\
+\hline
+\lstinline$scm> (and 1 2)$ & {\color{red} \lstinline$2$}\\ & \\ & \\
+\hline
+\lstinline$scm> (or 1 2)$ & {\color{red} \lstinline$1$}\\ & \\ & \\
+\hline
+\lstinline$scm> (/ 5)$ & {\color{red} \lstinline$0.2$}\\ & \\ & \\
+\hline
+\lstinline$scm> (* 5)$ & {\color{red} \lstinline$5$}\\ & \\ & \\
+\hline
+\lstinline$scm> (- 5)$ & {\color{red} \lstinline$-5$}\\ & \\ & \\
+\hline
+\lstinline$scm> (+ 5)$ & {\color{red} \lstinline$5$}\\ & \\ & \\
 \hline
 \end{tabular}
 \end{center}
@@ -381,7 +393,7 @@ scm> '(1 (2 (3 (4))))
 
 \begin{solution}
 \begin{center}
-    \begin{tabular}{|m{12cm}|m{1.5cm}|m{1.5cm}|}
+    \begin{tabular}{|m{12cm}|m{1cm}|m{1cm}|}
 \hline
 \textbf{Expression} & \textbf{Eval} & \textbf{Apply} \\
 \hline
@@ -435,6 +447,33 @@ scm> '(1 (2 (3 (4))))
 \hline
 \end{tabular}
 \end{center}
+
+\begin{solution}
+\begin{center}
+    \begin{tabular}{|m{13cm}|m{1.5cm}|}
+\hline
+\textbf{Expression} & \textbf{Yes/No} \\
+\hline
+\lstinline$(define (cream cheese)$ & {\color{red} No}  \\
+\lstinline$    (if (null? cheese)$ & \\ 
+\lstinline$        0$ & \\
+\lstinline$        (+ (car cheese) (cream (cdr cheese)))))$ & \\
+\hline
+\lstinline$(define (introducing professor dog)$ &  {\color{red} Yes}\\
+\lstinline$    (if (null? professor)$ & \\ 
+\lstinline$        dog$ & \\
+\lstinline$        (introducing (cdr professor) (+ (car professor) dog))))$ & \\
+\hline
+\lstinline$(define (fact n)$ & {\color{red} No} \\
+\lstinline$    (if (= n 1)$ & \\ 
+\lstinline$        n$ & \\
+\lstinline$        (* n (fact (- n 1)))))$ & \\
+\hline
+\end{tabular}
+\end{center}
+\end{solution}
+
+
 
 \item Here are constructors and selectors for a Binary Tree.
 
@@ -560,7 +599,7 @@ Your query should yield the following result:
 
     having 
     ______________________________;
-    
+
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}[language=SQL]
