@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question Define the function \lstinline$tree_sum$ which takes in a
+tree and outputs the sum of all the values in the tree.
+
+\begin{lstlisting}
+def tree_sum(t):
+    """
+    >>> t = tree(...)   # Example from earlier
+    >>> tree_sum(t) # 9 + 2 + 4 + 4 + 1 + 7 + 3 = 30
+    30
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    total = root(t)
+    for branch in branches(t):
+        total += tree_sum(branch)
+    return total
+\end{lstlisting}
+
+Alternatively:
+
+\begin{lstlisting}
+    return root(t) + sum([tree_sum(b) for b in branches(t)])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

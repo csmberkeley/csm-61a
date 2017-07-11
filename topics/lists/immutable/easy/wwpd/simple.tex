@@ -1,0 +1,64 @@
+\question What would Python display? Draw box-and-pointer diagrams to find out.
+
+\begin{parts}
+\part \begin{lstlisting}
+a = [1, 2, 3]
+a
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$[1, 2, 3]$
+\end{solution}
+
+\part \begin{lstlisting}
+a[2]
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$3$
+\end{solution}
+
+\part \begin{lstlisting}
+b = a
+a = a + [4, 5]
+a
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$[1, 2, 3, 4, 5]$
+\end{solution}
+
+\part \begin{lstlisting}
+b
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$[1, 2, 3]$
+\end{solution}
+
+\part \begin{lstlisting}
+c = a
+a = [4, 5]
+a
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$[4, 5]$
+\end{solution}
+
+\part \begin{lstlisting}
+c
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$[1, 2, 3, 4, 5]$
+\end{solution}
+
+\part \begin{lstlisting}
+c[0:2]
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$[1, 2]$
+\end{solution}
+\end{parts}

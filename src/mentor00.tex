@@ -1,0 +1,29 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{0}
+\title{Welcome to Python}
+\date{June 19, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Lost on the Moon}
+\subimport{../topics/misc/}{lost-on-the-moon.tex}
+
+\section{Express Yourself}
+\begin{questions}
+\subimport{../topics/functions-and-expressions/easy/}{primitive-vs-call.tex}
+\subimport{../topics/functions-and-expressions/easy/}{identify-expressions.tex}
+\end{questions}
+
+\section{What Would Python Display?}
+\subimport{../topics/functions-and-expressions/text/}{assume-imports.tex}
+\begin{questions}
+\subimport{../topics/functions-and-expressions/easy/wwpd/}{simple-add.tex}
+\subimport{../topics/functions-and-expressions/easy/wwpd/}{add-add.tex}
+\subimport{../topics/functions-and-expressions/easy/wwpd/}{varargs-add.tex}
+\subimport{../topics/functions-and-expressions/easy/wwpd/}{add-sub-add.tex}
+\end{questions}
+
+\end{document}

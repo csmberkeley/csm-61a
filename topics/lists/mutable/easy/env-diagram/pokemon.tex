@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question
+\begin{lstlisting}
+pikachu, charmander = "electric", "fire"
+ash = [[pikachu], [charmander], [[pikachu]]]
+pikachu = 2
+charmander = 0
+ash[pikachu] = [ash, ash[pikachu][charmander]]
+print(ash)
+\end{lstlisting}
+
+\begin{solution}[1in]
+\url{https://goo.gl/owrNxY}
+
+\verb+[['electric'], ['fire'], [[...], ['electric']]]+
+\end{solution}
+\end{blocksection}

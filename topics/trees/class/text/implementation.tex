@@ -1,0 +1,11 @@
+\begin{lstlisting}
+class Tree:
+    def __init__(self, root, branches=[]):
+        for c in branches:
+            assert isinstance(c, Tree)
+        self.root = root
+        self.branches = branches
+
+    def is_leaf(self):
+        return not self.branches
+\end{lstlisting}

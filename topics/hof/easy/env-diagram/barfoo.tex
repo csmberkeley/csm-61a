@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question What's the difference here?
+
+\begin{lstlisting}
+x = 20
+def bar():
+    return lambda y: x - y
+def foo(y):
+    x = 5
+    return bar
+
+y = foo(7)
+z = y()
+print(z(2))
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+The parent of \lstinline$bar$ is now the global frame so we lookup the value of \lstinline$x$ from there.
+\end{solution}
+\end{blocksection}

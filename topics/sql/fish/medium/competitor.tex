@@ -1,0 +1,19 @@
+\begin{blocksection}
+\question Business is good, but a bunch of competition has sprung up! Through some cunning corporate espionage, we have determined that one such competitor plans to open shop with the following rates:
+
+Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish. For example, the table should contain the following row:
+
+\begin{lstlisting}
+Salmon | 60
+\end{lstlisting}
+
+Because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Finally, the difference is 60. Remember to do this for every species!
+
+\begin{solution}[1in]
+\begin{lstlisting}
+select fish.species, (fish.price - competitor.price) * pieces
+    from fish, competitor
+    where fish.species = competitor.species;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,32 @@
+\begin{blocksection}
+\question Write a function \lstinline$is_sorted$ that takes in an integer
+\lstinline$n$ and returns true if the digits of that number are increasing from
+right to left.
+
+\begin{lstlisting}
+def is_sorted(n):
+   """
+   >>> is_sorted(2)
+   True
+   >>> is_sorted(22222)
+   True
+   >>> is_sorted(9876543210)
+   True
+   >>> is_sorted(9087654321)
+   False
+   """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    right_digit = n % 10
+    rest =  n // 10
+    if rest == 0:
+        return True
+    elif right_digit > rest % 10:
+        return False
+    else:
+        return is_sorted(rest)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

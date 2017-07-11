@@ -1,0 +1,18 @@
+\question Draw the environment diagram that results from running the following code.
+
+\begin{lstlisting}
+def funny(joke):
+    hoax = joke + 1
+    return funny(hoax)
+
+def sad(joke):
+    hoax = joke - 1
+    return hoax + hoax
+
+funny, sad = sad, funny
+result = funny(sad(1))
+\end{lstlisting}
+
+\begin{solution}[2in]
+\url{https://goo.gl/z89He9}
+\end{solution}

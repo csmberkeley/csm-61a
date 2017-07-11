@@ -1,0 +1,41 @@
+\begin{blocksection}
+\question Write a higher-order function that passes the following doctests.
+
+\emph{Challenge:} Write the function body in one line.
+
+\begin{lstlisting}
+def mystery(f, x):
+    """
+    >>> from operator import add, mul
+    >>> a = mystery(add, 3)
+    >>> a(4) # add(3, 4)
+    7
+    >>> a(12)
+    15
+    >>> b = mystery(mul, 5)
+    >>> b(7) # mul(5, 7)
+    35
+    >>> b(1)
+    5
+    >>> c = mystery(lambda x, y: x * x + y, 4)
+    >>> c(5)
+    21
+    >>> c(7)
+    23
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    def helper(y):
+        return f(x, y)
+    return helper
+\end{lstlisting}
+
+Challenge solution:
+
+\begin{lstlisting}
+    return lambda y : f(x, y)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

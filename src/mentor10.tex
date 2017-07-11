@@ -1,0 +1,34 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{10}
+\title{Mutable Linked Lists \& Trees}
+\date{July 24, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Linked Lists}
+\subimport{../topics/linked-lists/class/text/}{implementation.tex}
+\begin{questions}
+\subimport{../topics/linked-lists/class/medium/}{triforce.tex}
+\subimport{../topics/linked-lists/class/medium/}{double-link.tex}
+\subimport{../topics/linked-lists/class/medium/}{shuffle.tex}
+\end{questions}
+
+\clearpage
+
+\section{Trees}
+\subimport{../topics/trees/class/text/}{implementation.tex}
+\subsection*{Double Tree}
+\begin{questions}
+\marginpar{\subimport{../topics/trees/class/double-tree/}{before.tex} $\longrightarrow$
+           \subimport{../topics/trees/class/double-tree/}{after.tex}}
+\subimport{../topics/trees/class/double-tree/}{question.tex}
+\clearpage
+\subsection*{The private life of Albert Wu}
+\subimport{../topics/trees/class/eert/}{question.tex}
+\subimport{../topics/trees/class/eert/}{code.tex}
+\end{questions}
+
+\end{document}

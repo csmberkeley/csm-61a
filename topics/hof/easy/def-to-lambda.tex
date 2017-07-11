@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question Express the following expressions using lambdas instead of their named counterparts.
+
+\begin{parts}
+\part \lstinline$square(4)$
+
+\begin{solution}[0.25in]
+\lstinline$(lambda x: x * x)(4)$
+\end{solution}
+
+\part \lstinline$sum_of_squares(3, 4)$
+
+\begin{solution}[0.25in]
+\lstinline$(lambda x, y: x * x + y * y)(3, 4)$
+\end{solution}
+
+\part \begin{lstlisting}
+def hello_world():
+    return 'Hello, world!'
+hello_world()
+\end{lstlisting}
+
+\begin{solution}[0.25in]
+\lstinline$(lambda: 'Hello, world!')()$
+\end{solution}
+\end{parts}
+\end{blocksection}

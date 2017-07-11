@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question Implement \lstinline$make_skipper$, which takes in a number
+\lstinline$n$ and outputs a function. When this function takes in a number
+\lstinline$x$, it prints out all the numbers between \lstinline$0$ and
+\lstinline$x$, skipping every \lstinline$n$th number.
+
+\begin{lstlisting}
+def make_skipper(n):
+    """
+    >>> a = make_skipper(2)
+    >>> a(5)
+    1
+    3
+    5
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    def skipper(x):
+        for i in range(x + 1):
+            if i % n != 0:
+                print(i)
+    return skipper
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

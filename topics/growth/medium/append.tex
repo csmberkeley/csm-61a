@@ -1,0 +1,15 @@
+\begin{blocksection}
+\question What does this function do?
+
+\begin{lstlisting}
+def append(s, item):
+    if s is empty:
+        return link(item)
+    else:
+        return link(first(s), append(rest(s), item))
+\end{lstlisting}
+
+\begin{solution}[1em]
+\lstinline$append$ inserted the \lstinline$item$ at the end of the list in $\Theta(n)$ time where $n$ is the length of the sequence, \lstinline$s$.
+\end{solution}
+\end{blocksection}

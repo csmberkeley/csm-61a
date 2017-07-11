@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question Write a query that has the same data, but alphabetizes the rows by name. (Hint: Use \lstinline$order by$.)
+
+\begin{lstlisting}
+Alfonso|Tacos|Blue|Vim|Python
+Allan|Sushi|Orange|Emacs|Ruby
+Diana|Pie|Green|Sublime|Java
+Kelly|Ramen|Green|Vim|Python
+Tiffany|Thai|Purple|Notepad++|Java
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+select * from mentors order by name;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

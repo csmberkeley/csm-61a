@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question
+\begin{parts}
+\part What are the advantages or disadvantages of using a stream over a linked list?
+
+\begin{solution}[0.25in]
+Lazy evaluation. We only evaluate up to what we need.
+\end{solution}
+
+\part What's the maximum size of a stream?
+
+\begin{solution}[0.25in]
+Infinite
+\end{solution}
+
+\part What's stored in \lstinline$first$ and \lstinline$rest$? What are their types?
+
+\begin{solution}[0.25in]
+\lstinline$first$ is a value, \lstinline$rest$ is another stream (either a method to calculate it, or an already calculated stream). In the case of Scheme, this is called a promise.
+\end{solution}
+
+\part When is the next element actually calculated?
+
+\begin{solution}[0.25in]
+Only when it's requested (and hasn't already been calculated)
+\end{solution}
+\end{parts}
+\end{blocksection}

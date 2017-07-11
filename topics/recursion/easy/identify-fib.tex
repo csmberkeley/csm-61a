@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question Here is a Python function that computes the \lstinline$n$th Fibonnacci number. What's the domain and range of this function? Identify the three parts of this recursive program.
+
+\begin{lstlisting}
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+The domain is in the integers and the range is in the integers. There are two
+base cases for checking if \lstinline$n == 0$ or if \lstinline$n == 1$. There
+is one recursive case that makes two recursive calls, reducing the problem down
+to \lstinline$fib(n - 1)$ and \lstinline$fib(n - 2)$, respectively.
+\end{solution}
+\end{blocksection}

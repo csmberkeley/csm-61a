@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question Mario needs to jump over a series of Piranha plants, represented as a
+string of \lstinline$-$'s and \lstinline$P$'s. Mario only moves forward and can
+either \emph{step} (move forward one space) or \emph{jump} (move forward two
+spaces) from each position. How many different ways can Mario traverse a level
+without stepping or jumping into a Piranha plant? Assume that every level begins
+with a \lstinline$-$ (where Mario starts) and ends with a \lstinlne$-$ (where
+Mario must end up).
+
+\begin{lstlisting}
+def mario_number(level):
+    """
+    >>> mario_number('-P-P-')
+    1
+    >>> mario_number('-P-P--')
+    1
+    >>> mario_number('--P-P-')
+    1
+    >>> mario_number('---P-P-')
+    2
+    >>> mario_number('-P-PP-')
+    0
+    >>> mario_number('----')
+    3
+    >>> mario_number('----P----')
+    9
+    >>> mario_number('---P----P-P---P--P-P----P-----P-')
+    180
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    if len(level) == 0 or level[0] == 'P':
+        return 0
+    elif len(level) <= 2:
+        return 1
+    else:
+        return mario_number(level[1:]) + mario_number(level[2:])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

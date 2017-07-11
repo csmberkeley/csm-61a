@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question Write a query that lists all the mentors along with their favorite food if their favorite color is green.
+
+\begin{lstlisting}
+Diana|Pie
+Kelly|Ramen
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+select name, food
+  from mentors
+  where color = 'Green';
+  
+-- With aliasing
+select m.name, m.food
+  from mentors as m
+  where m.color = 'Green';
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

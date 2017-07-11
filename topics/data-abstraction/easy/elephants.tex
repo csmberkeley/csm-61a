@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question Your boss, Elaine, is building a database to keep track of all the elephants in her zoo. She's written all the business logic, but she needs your help to implement the data abstractions. Here's some of the code she's written.
+
+\begin{lstlisting}
+elephants = [elephant(name="Timothy", age=2,  rating=5.8, can_fly=False),
+             elephant(name="Voldie",  age=17, rating=2.1, can_fly=False),
+             elephant(name="Eleanor", age=5,  rating=7.2, can_fly=True)]
+
+def eldest_elephant(elephants):
+    eldest = None
+    eldest_age = -1
+    for e in elephants:
+        if age(e) > eldest_age:
+            eldest = e
+            eldest_age = age(e)
+    return eldest
+
+def num_parachutes_needed(elephants):
+    return len([e for e in elephants if can_fly(e)])
+
+def best_elephant(elephants):
+    return max(elephants, key=rating)
+\end{lstlisting}
+
+Define the \emph{constructor} and \emph{selectors} so that the code will run.
+
+\emph{Challenge:} Define the data abstraction without using containers.
+
+\begin{solution}[3in]
+\begin{lstlisting}
+def elephant(name, age, rating, can_fly):
+    return [name, age, rating, can_fly]
+
+def name(e):
+    return e[0]
+
+def age(e):
+    return e[1]
+
+def rating(e):
+    return e[2]
+
+def can_fly(e):
+    return e[3]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

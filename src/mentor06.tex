@@ -1,0 +1,38 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{6}
+\title{Linked Lists \& Trees}
+\date{July 10, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Linked Lists}
+\subimport{../topics/linked-lists/adt/text/}{implementation.tex}
+\begin{questions}
+\subimport{../topics/linked-lists/adt/easy/wwpd/}{basics.tex}
+\subimport{../topics/linked-lists/adt/easy/}{get-item.tex}
+\subimport{../topics/linked-lists/adt/easy/}{every-other.tex}
+\subimport{../topics/linked-lists/adt/medium/}{merge.tex}
+\end{questions}
+
+\clearpage
+
+\section{Trees}
+\subimport{../topics/trees/adt/text/}{implementation.tex}
+\begin{questions}
+\marginpar{\subimport{../topics/trees/adt/draw-tree/}{code.tex}}
+\subimport{../topics/trees/adt/draw-tree/}{question.tex}
+\subimport{../topics/trees/adt/construct-tree/}{question.tex}
+\marginpar{\vspace*{-1.5in}
+           \subimport{../topics/trees/adt/construct-tree/}{diagram.tex}}
+\subimport{../topics/trees/adt/construct-tree/}{wwpd.tex}
+\subimport{../topics/trees/adt/construct-tree/}{get-item.tex}
+\clearpage
+\subimport{../topics/trees/adt/medium/}{tree-sum.tex}
+\subimport{../topics/trees/adt/medium/}{factor-tree.tex}
+\subimport{../topics/trees/adt/medium/}{count.tex}
+\end{questions}
+
+\end{document}

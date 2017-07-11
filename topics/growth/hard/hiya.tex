@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question Find the $\Theta(\cdot)$ runtime bound for \lstinline$hiya(n)$.  Remember that Python strings are immutable: when we add two strings together, we need to make a copy.
+
+\begin{lstlisting}
+def hiii(m):
+    word = "h"
+    for i in range(m):
+        word += "i"
+    return word
+
+def hiya(n):
+    i = 1
+    while i < n:
+        print(hello(i))
+        i *= 2
+\end{lstlisting}
+
+\begin{solution}
+$\Theta(n^2)$.
+\end{solution}
+\end{blocksection}

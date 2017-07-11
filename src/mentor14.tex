@@ -1,0 +1,25 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{14}
+\title{Aggregation \& Recursive SQL}
+\date{August 7, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Fish}
+\subimport{../topics/sql/fish/tables/}{fish.tex}
+\subimport{../topics/sql/fish/text/}{intro.tex}
+\begin{questions}
+\subimport{../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+\subimport{../topics/sql/fish/easy/}{most-populated-species.tex}
+\subimport{../topics/sql/fish/easy/}{number-fish.tex}
+\clearpage
+\subimport{../topics/sql/fish/tables/}{competitor.tex}
+\subimport{../topics/sql/fish/medium/}{competitor.tex}
+\subimport{../topics/sql/fish/medium/}{yearly-pop.tex}
+\subimport{../topics/sql/recursive/medium/}{mod-seven.tex}
+\end{questions}
+
+\end{document}

@@ -1,0 +1,16 @@
+\begin{blocksection}
+\question Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a recursive select function that creates a table of fish 10 years from now.
+
+\begin{solution}[2in]
+\begin{lstlisting}
+with
+  yearly_pop(yearly_species, yearly_pop, N) as (
+     select species, pop, 0 from fish union
+     select yearly_species, yearly_pop * rate, N + 1
+         from yearly_pop, fish
+         where yearly_species = species and N <= 10
+  )
+select yearly_species, yearly_pop from yearly_pop where N = 10;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

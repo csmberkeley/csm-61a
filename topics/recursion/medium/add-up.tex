@@ -1,0 +1,56 @@
+\begin{blocksection}
+\question Write a function that takes as input a number, \texttt{n}, and a list of numbers, \texttt{lst}, and returns true if we can find a subset of \texttt{lst} that sums up to \texttt{n}.
+
+\ifprintanswers\else
+\begin{lstlisting}
+def add_up(n, lst):
+    """ 
+    >>> add_up(10, [1, 2, 3, 4, 5])
+    True
+    >>> add_up(8, [1, 2, 3, 4, 5])
+    True
+    >>> add_up(-1, [1, 2, 3, 4, 5])
+    False
+    >>> add_up(100, [1, 2, 3, 4, 5])
+    False
+    """
+    if __________________________________________:
+    
+        return True
+        
+    if lst == []:
+    
+        ____________________________________________________
+        
+    else:
+    
+        first, rest = ____________________, ____________________
+        
+        return __________________________________________
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{lstlisting}
+def add_up(n, lst):
+    """ 
+    >>> add_up(10, [1, 2, 3, 4, 5])
+    True
+    >>> add_up(8, [1, 2, 3, 4, 5])
+    True
+    >>> add_up(-1, [1, 2, 3, 4, 5])
+    False
+    >>> add_up(100, [1, 2, 3, 4, 5])
+    False
+    """
+    if n == 0:
+        return True
+    if lst == []:
+         return False  
+    else:
+        first, rest = lst[0], lst[1:]
+        return add_up(n - first, rest) or add_up(n, rest)
+
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

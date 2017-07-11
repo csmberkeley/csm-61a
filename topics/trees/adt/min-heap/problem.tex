@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question A \define{min-heap} is a tree with the special property that every node's value is
+less than or equal to the values of all of its branches.
+
+\vspace{\parskip}
+\begin{minipage}{0.5\linewidth}
+\centering
+\subimport{}{correct-tree.tex}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\centering
+\subimport{}{wrong-tree.tex}
+\end{minipage}
+\vspace{\parskip}
+
+Implement \lstinline$is_min_heap$ which takes in a tree and returns whether the tree satisfies
+the min-heap property or not.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def is_min_heap(t):
+    for b in branches(t):
+        if root(t) > root(b) or not is_min_heap(b):
+             return False
+    return True
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

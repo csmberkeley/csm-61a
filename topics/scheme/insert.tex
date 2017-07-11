@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question Write a Scheme function insert that creates a new list that would result from inserting an item into an existing list at the given index.
+Assume that the given index is between 0 and the length of the original list, inclusive.
+
+\emph{Challenge}: Write this as a tail recursive function. Assume append is tail recursive.
+
+\begin{lstlisting}[language=Scheme]
+(define (insert lst item index)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}[language=Scheme]
+(define (insert lst item index)
+  (if (= index 0)
+    (cons item lst)
+    (cons (car lst) (insert (cdr lst) item (- index 1))))
+)
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}
+\begin{lstlisting}[language=Scheme]
+; Tail recursive
+(define (insert lst item index)
+  (define (helper lst index so-far)
+    (if (or (null? lst) (= index 0))
+      (append so-far (cons item lst))
+      (helper (cdr lst) (- index 1)
+              (append so-far (list (car lst))))
+    )
+  )
+  (helper lst index nil)
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,26 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+def one(two):
+    three = two
+    def four(five):
+        nonlocal three
+        if len(three) < 1:
+            three += [five]
+            five = lambda x: four(x)
+        else:
+            five = seven + 7
+        return five
+    two = two + [1]
+    seven = 8
+    return four(three)
+
+eight = one([])
+print(eight(9))
+\end{lstlisting}
+
+\begin{solution}[1in]
+\url{https://goo.gl/UITJep}
+\end{solution}
+\end{blocksection}

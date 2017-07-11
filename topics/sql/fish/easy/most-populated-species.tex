@@ -1,0 +1,9 @@
+\begin{blocksection}
+\question Write a query to find the three most populated fish species.
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+select species from fish order by -pop LIMIT 3;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,31 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+\discnumber{13}
+\title{Streams \& SQL}
+\date{August 2, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Streams}
+\begin{questions}
+\subimport{../topics/streams/easy/}{basic.tex}
+\subimport{../topics/streams/easy/}{wwsd.tex}
+\subimport{../topics/streams/easy/}{double-naturals.tex}
+\subimport{../topics/streams/easy/}{interleave.tex}
+\end{questions}
+
+\lstset{language=SQL}
+\section{SQL}
+\subimport{../topics/sql/mentors/}{table.tex}
+\begin{questions}
+\subimport{../topics/sql/mentors/}{create-table.tex}
+\subimport{../topics/sql/mentors/easy/}{alphabetical.tex}
+\subimport{../topics/sql/mentors/easy/}{food-if-color-green.tex}
+\subimport{../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+\subimport{../topics/sql/mentors/medium/}{pairs-same-language.tex}
+\end{questions}
+
+\end{document}

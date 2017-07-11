@@ -1,0 +1,57 @@
+\begin{blocksection}
+\question What would Python display?
+
+\begin{lstlisting}
+s = link(1, link(2, link(3)))
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part \begin{lstlisting}
+first(s)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{1}
+\end{solution}
+
+\part \begin{lstlisting}
+rest(s)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{[2, [3, 'X']]}
+\end{solution}
+
+\part \begin{lstlisting}
+rest(first(s))
+\end{lstlisting}
+
+\begin{solution}
+\texttt{TypeError - type int}
+\end{solution}
+
+\part \begin{lstlisting}
+first(rest(s))
+\end{lstlisting}
+
+\begin{solution}
+\texttt{2}
+\end{solution}
+
+\part \begin{lstlisting}
+rest(rest(s))
+\end{lstlisting}
+
+\begin{solution}
+\texttt{[3, 'X']}
+\end{solution}
+
+\part \begin{lstlisting}
+first(rest(rest(s)))
+\end{lstlisting}
+
+\begin{solution}
+\texttt{3}
+\end{solution}
+\end{parts}

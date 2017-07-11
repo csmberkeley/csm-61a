@@ -1,0 +1,16 @@
+\begin{blocksection}
+\question Implement \lstinline$prune$, which takes in a tree \lstinline$t$ and a depth
+\lstinline$k$, and should return a new tree that is a copy of only the first \lstinline$k$
+levels of \lstinline$t$. Suppose \lstinline$t$ is the tree shown to the right. Then
+\lstinline$prune(t, 1)$ returns nodes up to a depth of level 1.
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def prune(t, k):
+    if k == 0:
+        return tree(root(t))
+    else:
+        return tree(root(t), [prune(b, k - 1) for b in branches(t)])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

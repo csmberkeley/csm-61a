@@ -1,0 +1,15 @@
+\begin{blocksection}
+\question \begin{lstlisting}
+def flip(n):
+    return -n
+
+def pancake(n):
+    if n < 1:
+        return 1
+    return flip(n) + pancake(n - 1) + pancake(n - 1)
+\end{lstlisting}
+
+\begin{solution}
+$\Theta(2^n)$. \lstinline$flip$ contributes only a constant amount of time to each call so this is just like \lstinline$strange_add$.
+\end{solution}
+\end{blocksection}

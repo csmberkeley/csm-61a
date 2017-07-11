@@ -1,0 +1,100 @@
+\begin{blocksection}
+\question Given the following code, what would Python display?
+
+\begin{lstlisting}
+class Baller:
+    all_players = []
+    def __init__(self, name, has_ball = False):
+        self.name = name
+        self.has_ball = has_ball
+        Baller.all_players.append(self)
+
+    def pass_ball(self, other):
+        if self.has_ball:
+            self.has_ball = False
+            other.has_ball = True
+            return True
+        else:
+            return False
+
+class BallHog(Baller):
+    def pass_ball(self, other):
+        return False
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part \begin{lstlisting}
+anwar = Baller('Anwar', True)
+jerry = BallHog('Jerry')
+len(Baller.all_players)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{2}
+\end{solution}
+
+\part \begin{lstlisting}
+Baller.name
+\end{lstlisting}
+
+\begin{solution}
+\texttt{NameError}
+\end{solution}
+
+\part \begin{lstlisting}
+len(jerry.all_players)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{2}
+\end{solution}
+
+\part \begin{lstlisting}
+anwar.pass_ball()
+\end{lstlisting}
+
+\begin{solution}
+\texttt{TypeError}
+\end{solution}
+
+\part \begin{lstlisting}
+anwar.pass_ball(jerry)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{True}
+\end{solution}
+
+\part \begin{lstlisting}
+anwar.pass_ball(jerry)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{False}
+\end{solution}
+
+\part \begin{lstlisting}
+BallHog.pass_ball(jerry, anwar)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{False}
+\end{solution}
+
+\part \begin{lstlisting}
+jerry.pass_ball(anwar)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{False}
+\end{solution}
+
+\part \begin{lstlisting}
+jerry.pass_ball(jerry, anwar)
+\end{lstlisting}
+
+\begin{solution}
+\texttt{TypeError}
+\end{solution}
+\end{parts}

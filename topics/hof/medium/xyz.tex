@@ -1,0 +1,15 @@
+\begin{blocksection}
+\question Fill in the blanks (\emph{without using any numbers in the first blank}) such that the entire expression evaluates to \texttt{9}.
+
+\ifprintanswers\else
+\begin{lstlisting}
+(lambda x: lambda y: ___________________)(_______)(lambda z: z*z)()
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{lstlisting}
+(lambda x: lambda y: lambda: y(x))(3)(lambda z: z*z)()
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

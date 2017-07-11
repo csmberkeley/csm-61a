@@ -1,0 +1,244 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\title{Environment Diagram Party}
+\date{July 9, 2017}
+
+\begin{document}
+\maketitle
+
+\section{WWPD? 61A, Assemble!}
+\begin{lstlisting}
+avengers = 6
+
+def vision(avengers):
+    print(avengers)
+    return avengers + 1
+    
+def hawkeye(thor, hulk):
+    love = lambda black_widow: add(black_widow, hulk)
+    return thor(love)
+    
+def hammer(worthy, stone):
+    if worthy(stone) < stone:
+        return stone
+    elif worthy(stone) > stone:
+        return -stone
+    return 0
+    
+capt = lambda iron_man: iron_man(avengers)
+\end{lstlisting}
+
+\vspace{0.1in}
+\ifprintanswers\else
+\begin{center}
+\begin{tabular}{|m{8cm}|m{6cm}|}
+\hline
+\textbf{Expression} & \textbf{Interactive Output} \\
+\hline
+\lstinline$capt(vision)$ & \\ [2.5em]
+\hline
+\lstinline$print(print(1), vision(2))$ & \\ [2.5em]
+\hline
+\lstinline$hawkeye(hammer, 3)$ & \\ [2.5em]
+\hline
+\lstinline$hawkeye(capt, 3)$ & \\ [2.5em]
+\hline
+\lstinline$hammer(lambda ultron: ultron, -1)$ & \\ [2.5em]
+\hline
+\lstinline$hammer(vision, avengers)$ & \\ [2.5em]
+\hline
+\end{tabular}
+\end{center}
+\fi
+
+\begin{solution}
+\begin{center}
+\begin{tabular}{|m{8cm}|m{6cm}|}
+\hline
+\textbf{Expression} & \textbf{Interactive Output} \\
+\hline
+\lstinline$capt(vision)$ & \color{red} \texttt{6 \newline 7}  \\ [2.5em]
+\hline
+\lstinline$print(print(1), vision(2))$ & \color{red}\texttt{1 \newline 2 \newline None 3} \\ [2.5em]
+\hline
+\lstinline$hawkeye(hammer, 3)$ & \color{red}\texttt{Error} \\ [2.5em]
+\hline
+\lstinline$hawkeye(capt, 3)$& \color{red}\texttt{9} \\ [2.5em]
+\hline
+\lstinline$hammer(lambda ultron: ultron, -1)$ & \color{red}\texttt{0} \\ [2.5em]
+\hline
+\lstinline$hammer(vision, avengers)$ & \color{red}\texttt{6 \newline 6 \newline -6} \\ [2.5em]
+\hline
+\end{tabular}
+\end{center}
+\end{solution}
+
+\newpage
+
+\section{Environment Diagrams}
+A complete answer will:
+\begin{itemize}
+\item Add all missing names and parent annotations to all local frames.
+\item Add all missing values created or referenced during execution.
+\item Show the return value for each local frame. 
+\end{itemize}
+Draw the environment diagram that results from executing the code below until the entire program
+is finished or an error occurs.
+
+\begin{questions}
+\item \textbf{No "rst" for the Weary}
+\begin{lstlisting}
+def r(s, t):
+    while s(a) > b:
+        def s(a):
+            return t(b)
+    return b + 2
+
+def t(t):
+    return t - 10
+
+a, b = -10, 2
+weary = r(abs, t)
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/73BSvB}
+\end{solution}
+
+\newpage
+
+\item \textbf{Return of the Horse Mask}
+\begin{lstlisting}
+def bo(jack):
+    return lambda mask: horse
+
+def horse(mask):
+    horse = mask
+    def mask(horse):
+        return horse
+    return horse(mask)
+    
+jack, mask = horse, bo
+
+hollywoo = bo(jack)(horse)(mask)
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/yhcHuC}
+\end{solution}
+
+\newpage
+
+\item \textbf{How Do You Like Your Eggs?}
+\begin{lstlisting}
+def scramble(egg):
+    return [egg, over(egg)]
+    
+def over(easy):
+    easy[1] = [[easy], 2]
+    return list(easy[1])
+    
+egg = scramble([12, 24])
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/nia1NS}
+\end{solution}
+
+\newpage
+
+\item \textbf{Lazy}
+\begin{lstlisting}
+def lazy(n):
+    return lambda k: (n if k == 0 else lazy(n + 1))
+v = lazy(4)(1)(0)
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/TWFJZc}
+\end{solution}
+
+\vspace{7in}
+\includegraphics[height=3cm]{env-diagram-party/gudetama.png}
+
+\newpage
+
+\item \textbf{Snow Day}
+\begin{lstlisting}
+def snow(snow, x):
+    if snow(x, x) == x:
+        def x(x):
+            return 32
+        return x(x)
+    else:
+        return snow(snow, x)
+    
+def flake(x, y):
+    return y + x - 1
+    
+griffin = snow(flake, 1)
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/thDVCx}
+\end{solution}
+
+\newpage
+
+\item \textbf{Environmentalists}
+\begin{lstlisting}
+def snow(x):
+    def ice(x):
+        if x == 0:
+            return 1
+        return 2 + rain(ice, x)
+
+    def rain(g, h):
+        return 3 + g(h - x)
+    return ice(x)
+snow(4)
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/Ld4hSm}
+\end{solution}
+
+\newpage
+
+\item \textbf{Instructor Appreciation}
+\begin{lstlisting}
+def kevin(a, b):
+    x = 42
+    y = stan(a + b, x)
+    return x - y
+
+def stan(a, b):
+    a, b = a + x, a - y
+    return a // b
+
+x, y = 1, 2
+kevin(x, y)
+\end{lstlisting}
+\ifprintanswers\else
+\fi
+
+\begin{solution}
+\url{https://goo.gl/PRiCpG}
+\end{solution}
+
+\end{questions}
+
+\end{document}

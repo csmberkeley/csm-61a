@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question Consider the \lstinline$word_finder$ function below.
+
+\begin{lstlisting}
+def word_finder(t, n, word):
+    if root(t) == word:
+        n -= 1
+        if n == 0:
+            return True
+    for branch in branches(t):
+        if word_finder(branch, n, word):
+            return True
+    return False
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part What does this function do?
+
+\begin{solution}[1em]
+This function takes a tree \lstinline$t$, an integer \lstinline$n$, and a string \lstinline$word$ in as input.
+
+\lstinline$word_finder$ returns true if any paths from the root towards the leaves have at least \lstinline$n$ occurrences of the word and false otherwise.
+\end{solution}
+
+\part If a tree has $n$ total nodes, what is the total runtime for all searches
+in $\Theta(\cdot)$ notation?
+
+\begin{solution}[1em]
+$\Theta(n)$. At worst, we must visit every node of the tree.
+\end{solution}
+
+\end{parts}

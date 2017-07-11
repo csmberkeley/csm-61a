@@ -1,0 +1,18 @@
+\begin{blocksection}
+\question Implement \lstinline$compose$.
+
+\begin{lstlisting}
+def compose(f, g):
+    """
+    >>> a = compose(lambda x: x * x, lambda x: x + 4)
+    >>> a(2)
+    36
+    """
+\end{lstlisting}
+
+\begin{solution}[0.25in]
+\begin{lstlisting}
+    return lambda x: f(g(x))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

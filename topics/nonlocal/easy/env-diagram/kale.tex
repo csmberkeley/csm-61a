@@ -1,0 +1,25 @@
+\begin{blocksection}
+\question \textbf{Nonlocal Kale} \newline
+Draw the environment diagram for the following code.
+
+\begin{lstlisting}
+eggplant = 8
+carrot = 0
+def vegetable(kale):
+    carrot = 10
+    def eggplant(spinach):
+        nonlocal eggplant
+        nonlocal kale
+        kale = 9
+        carrot = 20
+        eggplant = spinach
+    eggplant(kale)
+    return eggplant
+
+spinach = vegetable(lambda kale: carrot*kale)(eggplant)
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\url{https://goo.gl/mh9ETW}
+\end{solution}
+\end{blocksection}

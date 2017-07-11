@@ -1,0 +1,23 @@
+\begin{blocksection}
+\question Implement \lstinline$every_other$, which returns a list containing every other
+element starting from the \emph{second}.
+
+\begin{lstlisting}
+def every_other(s):
+    """
+    >>> s = link(1, link(2, link(3, link(4, link(5, empty)))))
+    >>> print_link(s)
+    <1 2 3 4 5>
+    >>> print_link(every_other(s))
+    <2 4>
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    if s == empty or rest(s) == empty:
+        return empty
+    return link(first(rest(s)), every_other(rest(rest(s))))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
