@@ -14,17 +14,17 @@ def shuffle(lst):
 
 \ifprintanswers\else
 \begin{lstlisting}
-    if __________________________________________:
+    if __________________________________________________________________:
 
-        return __________________________________
+        return __________________________________________________________
 
-    new_head = lst.rest
+    front = lst.rest
 
-    lst.rest = __________________________________
+    lst.rest = __________________________________________________________
 
-    _____________________________________________
+    _____________________________________________________________________
 
-    return ______________________________________
+    return ______________________________________________________________
 \end{lstlisting}
 \fi
 
@@ -32,10 +32,10 @@ def shuffle(lst):
 \begin{lstlisting}
     if lst is Link.empty or lst.rest is Link.empty:
         return lst
-    new_head = lst.rest
-    lst.rest = shuffle(new_head.rest)
-    new_head.rest = lst
-    return new_head
+    front = lst.rest
+    lst.rest = shuffle(front.rest)
+    front.rest = lst
+    return front
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

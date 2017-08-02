@@ -1,0 +1,65 @@
+\begin{blocksection}
+\question What would Python display? Include the number of times the rest needs to be
+computed for each part.
+
+\begin{parts}
+\part \begin{lstlisting}
+>>> a = make_integer_stream()
+>>> a
+\end{lstlisting}
+
+\begin{solution}[2em]
+\lstinline$Stream(1, <...>)$
+
+Does not need to compute rest.
+\end{solution}
+
+\part \lstinline$>>> a.first$
+
+\begin{solution}[2em]
+\lstinline$1$
+
+Does not need to compute rest.
+\end{solution}
+
+\part \lstinline$>>> a.rest$
+
+\begin{solution}[2em]
+\lstinline$Stream(2, <...>)$
+
+Needs to compute one rest value.
+\end{solution}
+
+\part \lstinline$>>> a.rest$
+
+\begin{solution}[2em]
+\lstinline$Stream(2, <...>)$
+
+Does not need to compute rest.
+\end{solution}
+
+\part \lstinline$>>> a.rest.rest.rest$
+
+\begin{solution}[2em]
+\lstinline$Stream(4, <...>)$
+
+Needs to compute two rest values.
+\end{solution}
+
+\part \lstinline$>>> a.rest.rest$
+
+\begin{solution}[2em]
+\lstinline$Stream(3, <...>)$
+
+Does not need to compute rest.
+\end{solution}
+
+\part \lstinline$>>> a.rest.rest.rest.rest.first$
+
+\begin{solution}[2em]
+\lstinline$5$
+
+Needs to compute one rest value.
+\end{solution}
+\end{parts}
+\end{blocksection}

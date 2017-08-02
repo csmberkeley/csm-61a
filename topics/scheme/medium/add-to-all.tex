@@ -1,0 +1,31 @@
+\begin{blocksection}
+\question \begin{parts}
+\part Implement \lstinline$add-to-all$.
+
+\begin{lstlisting}
+> (add-to-all 'foo '((1 2) (3 4) (5 6)))
+((foo 1 2) (foo 3 4) (foo 5 6))
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+(define (add-to-all item lst)
+    (if (null? lst) lst
+        (cons (cons item (car lst))
+              (add-to-all item (cdr lst)))))
+\end{lstlisting}
+\end{solution}
+
+\part Rewrite \lstinline$add-to-all$ tail-recursively.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+(define (add-to-all item lst)
+    (define (helper item lst added)
+        (if (null? lst) added
+            (helper item (cdr lst) (append added (list (cons item (car lst)))))))
+    (helper item lst '()))
+\end{lstlisting}
+\end{solution}
+\end{parts}
+\end{blocksection}

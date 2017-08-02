@@ -1,0 +1,13 @@
+\begin{blocksection}
+\question Implement \lstinline$make_factorial_stream$ which returns a \lstinline$Stream$
+where the $n$th element is $n$ factorial.
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def make_factorial_stream(first=1, n=0):
+    def compute_rest():
+        return make_factorial_stream(first * n + 1, n + 1)
+    return Stream(first, compute_rest)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

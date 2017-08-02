@@ -1,0 +1,61 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\title{Final Review}
+\date{August 7, 2017}
+
+\begin{document}
+\maketitle
+
+\textbf{Instructions}
+
+Form a small group. Start on problem 1.1. Check off with a staff member or
+discuss your \emph{solution process} with a nearby group when you think everyone
+in your group understands \emph{how to solve} problem 1.1. Then repeat for 1.2,
+1.3, \ldots
+
+You may not move to the next problem until you check off or discuss with another
+group and \emph{everyone understands why the solution is what it is}. You may
+use any course resources at your disposal: the purpose of this review session is
+to have everyone learning together as a group.
+
+\lstset{language=Scheme}
+\section{Scheme}
+\begin{questions}
+\subimport{../topics/scheme/easy/wwsd/}{dots.tex}
+\subimport{../topics/scheme/easy/}{sixty-ones.tex}
+\subimport{../topics/scheme/medium/}{find-bugs.tex}
+\subimport{../topics/scheme/medium/}{add-to-all.tex}
+\subimport{../topics/scheme/medium/}{sublists.tex}
+\subimport{../topics/scheme/medium/}{reverse.tex}
+\end{questions}
+
+\clearpage
+
+\section{Interpreters}
+\begin{questions}
+\subimport{../topics/interpreters/medium/}{eval-apply.tex}
+\subimport{../topics/interpreters/medium/}{hack-pi.tex}
+\end{questions}
+
+\clearpage
+
+\lstset{language=Python}
+\section{Streams}
+\subimport{../topics/streams/python/code/}{docstrings.tex}
+\begin{questions}
+\subimport{../topics/streams/}{basic.tex}
+\subimport{../topics/streams/python/medium/}{unique-stream.tex}
+\end{questions}
+
+\clearpage
+
+\lstset{language=SQL}
+\section{SQL}
+\subimport{../topics/sql/circus/}{text.tex}
+\begin{questions}
+\subimport{../topics/sql/circus/}{elevator.tex}
+\subimport{../topics/sql/circus/}{trucks.tex}
+\end{questions}
+
+\end{document}

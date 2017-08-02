@@ -26,15 +26,6 @@ $\Theta(n^2)$
 
 \part \begin{lstlisting}
 def three(n):
-    return n if n < 2 else three(n - 1) + three(n - 2)
-\end{lstlisting}
-
-\begin{solution}[0.25in]
-$\Theta(2^n)$
-\end{solution}
-
-\part \begin{lstlisting}
-def four(n):
     i = 1
     while i <= n:
         for j in range(i):
@@ -45,7 +36,6 @@ def four(n):
 \begin{solution}[0.25in]
 $\Theta(n)$
 \end{solution}
-
 \end{parts}
 
 \end{blocksection}

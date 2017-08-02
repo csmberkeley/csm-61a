@@ -1,0 +1,40 @@
+\begin{blocksection}
+\question Implement \lstinline$is_symmetric$, which returns whether a BST
+is a mirror of itself, or symmetric across its center. Both the values and the
+shape of the BST needs to match for a BST to be symmetric.
+
+\begin{lstlisting}
+def is_symmetric(t):
+    """
+    >>> t = BST(1, BST(2), BST(2))
+    >>> is_symmetric(t)
+    True
+    >>> is_symmetric(t.left)
+    True
+    >>> t = BST(1, BST(2, BST(4, BST(5), BST(5)),
+    ...                   BST(1)),
+    ...            BST(3, BST(4)))
+    >>> is_symmetric(t)
+    False
+    >>> is_symmetric(t.left)
+    False
+    >>> is_symmetric(t.left.left)
+    True
+    """
+\end{lstlisting}
+
+\begin{solution}[2in]
+\begin{lstlisting}
+    def is_symmetric_pair(t1, t2):
+        if t1 is BST.empty and t2 is BST.empty:
+            return True
+        elif t1 is BST.empty or t2 is BST.empty:
+            return False
+        else:
+            return (t1.root == t2.root
+                    and is_symmetric_pair(t1.left, t2.right)
+                    and is_symmetric_pair(t1.right, t2.left))
+    return t is BST.empty or is_symmetric_pair(t.left, t.right)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

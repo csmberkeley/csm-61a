@@ -1,0 +1,34 @@
+\begin{blocksection}
+\question Implement \lstinline$interleave$, which returns a stream that alternates between
+the values in \lstinline$stream1$ and \lstinline$stream2$. Assume that the streams are
+infinitely long.
+
+\begin{lstlisting}
+def interleave(stream1, stream2):
+    """
+    >>> s1, s2 = make_integer_stream(1), make_integer_stream(10)
+    >>> mixed = interleave(s1, s2)
+    >>> mixed.first
+    1
+    >>> mixed.rest.first
+    10
+    >>> very_mixed = interleave(mixed, mixed)
+    >>> very_mixed.first
+    1
+    >>> very_mixed.rest.first
+    1
+    >>> very_mixed.rest.rest.first
+    10
+    >>> very_mixed.rest.rest.rest.first
+    10
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    def compute_rest():
+        return interleave(stream2, stream1.rest)
+    return Stream(stream1.first, compute_rest)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

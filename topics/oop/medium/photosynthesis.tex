@@ -1,0 +1,154 @@
+\begin{blocksection}
+\question Implement the classes so the following code runs.
+
+\begin{lstlisting}
+"""
+>>> p = Plant()
+>>> p.height
+1
+>>> p.materials
+[]
+>>> p.absorb()
+>>> p.materials
+[|Sugar|]
+>>> Sugar.sugars_created
+1
+>>> p.leaf.sugars_used
+0
+>>> p.grow()
+>>> p.materials
+[]
+>>> p.height
+2
+>>> p.leaf.sugars_used
+1
+"""
+\end{lstlisting}
+\end{blocksection}
+
+\ifprintanswers\else
+\begin{lstlisting}
+class Plant:
+    def __init__(self):
+        """A Plant has a Leaf, a list of sugars created so far,
+        and an initial height of 1.
+        """
+
+
+
+
+
+    def absorb(self):
+        """Calls the Leaf to create sugar."""
+
+
+
+
+
+
+    def grow(self):
+        """A Plant consumes all of its sugars to grow, each of which
+        increases its height by 1.
+        """
+
+
+
+
+
+
+class Leaf:
+    def __init__(self, plant): # plant is a Plant instance
+        """A Leaf is initially alive, and keeps track of how many
+        sugars it has created.
+        """
+
+
+
+    def absorb(self):
+        """If this Leaf is alive, a Sugar is added to the plant's
+        list of sugars.
+        """
+        if self.alive:
+
+
+    def __repr__(self):
+        return '|Leaf|'
+
+class Sugar:
+    sugars_created = 0
+
+    def __init__(self, leaf, plant):
+
+
+
+    def activate(self):
+        """A sugar is used."""
+
+
+
+
+    def __repr__(self):
+        return '|Sugar|'
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{lstlisting}
+class Plant:
+    def __init__(self):
+        """A Plant has a Leaf, a list of sugars created so far,
+        and an initial height of 1.
+        """
+        self.leaf = Leaf(self)
+        self.materials = []
+        self.height = 1
+
+    def absorb(self):
+        """Calls the Leaf to create sugar."""
+        self.leaf.absorb()
+
+    def grow(self):
+        """A Plant consumes all of its sugars to grow, each of which
+        increases its height by 1.
+        """
+        for sugar in self.materials:
+            sugar.activate()
+            self.height += 1
+
+class Leaf:
+    def __init__(self, plant): # plant is a Plant instance
+        """A Leaf is initially alive, and keeps track of how many
+        sugars it has created.
+        """
+        self.alive = True
+        self.sugars_used = 0
+        self.plant = plant
+
+    def absorb(self):
+        """If this Leaf is alive, a Sugar is added to the plant's
+        list of sugars.
+        """
+        if self.alive:
+            self.plant.materials.append(Sugar(self, self.plant))
+
+
+    def __repr__(self):
+        return '|Leaf|'
+
+class Sugar:
+    sugars_created = 0
+
+    def __init__(self, leaf, plant):
+        self.leaf = leaf
+        self.plant = plant
+        Sugar.sugars_created += 1
+
+    def activate(self):
+        """A sugar is used."""
+        self.leaf.sugars_used += 1
+        self.plant.materials.remove(self)
+
+    def __repr__(self):
+        return '|Sugar|'
+\end{lstlisting}
+\end{solution}

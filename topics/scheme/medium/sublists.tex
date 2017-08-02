@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question Define \lstinline$sublists$. Hint: use \lstinline$add-to-all$.
+
+\begin{lstlisting}
+> (sublists '(1 2 3))
+(() (3) (2) (2 3) (1) (1 3) (1 2) (1 2 3))
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+(define (sublists lst)
+    (if (null? lst) '(())
+        (let ((recur (sublists (cdr lst))))
+            (append recur (add-to-all (car lst) recur)))))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

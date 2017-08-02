@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question To take the animals to their new habitats, the zoologists load the animals into trucks.  The zoologists again want to take the animals in groups of the same species, but one of the trucks has a height limit of 5.0.
+ 
+Write a query that returns the maximum height and species of animals in a group where the maximum height is less than 5.0.  Your query may yield a species where there is only one animal of that particular species.
+
+Your query should yield the following result.
+
+\begin{lstlisting}
+4.1 pig
+4 dog
+4.9 zebra
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+select max(height), species from animals as a, height as b
+    where a.name = b.name
+    group by species having max(height) < 5.0;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

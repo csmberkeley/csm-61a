@@ -1,0 +1,78 @@
+\begin{blocksection}
+\question What would Python display?
+
+\begin{lstlisting}
+class Foo(object):
+    x = 'bam'
+
+    def __init__(self, x):
+        self.x = x
+
+    def baz(self):
+        return type(self).x + self.x
+
+class Bar(Foo):
+    x = 'boom'
+
+    def __init__(self, x):
+        Foo.__init__(self, 'er' + x)
+
+class Foobar(Bar):
+    pass
+
+foo = Foo('boo')
+\end{lstlisting}   
+
+\begin{parts}
+\part \lstinline$>>> Foo.x$
+
+\begin{solution}[2em]
+\lstinline$'bam'$
+\end{solution}
+
+\part \lstinline$>>> foo.x$
+
+\begin{solution}[2em]
+\lstinline$'boo'$
+\end{solution}
+
+\part \lstinline$>>> foo.baz()$
+
+\begin{solution}[2em]
+\lstinline$'bamboo'$
+\end{solution}
+
+\part \lstinline$>>> Foo.baz()$
+
+\begin{solution}[2em]
+\lstinline$Error$
+\end{solution}
+
+\part \lstinline$>>> Foo.baz(foo)$
+
+\begin{solution}[2em]
+\lstinline$'bamboo'$
+\end{solution}
+
+\part \begin{lstlisting}
+>>> bar = Bar('ang')
+>>> Bar.x
+\end{lstlisting}
+
+\begin{solution}[2em]
+\lstinline$'boom'$
+\end{solution}
+
+\part \lstinline$>>> bar.x$
+
+\begin{solution}[2em]
+\lstinline$'erang'$
+\end{solution}
+
+\part \lstinline$>>> bar.baz()$
+
+\begin{solution}[2em]
+\lstinline$'boomerang'$
+\end{solution}
+\end{parts}
+\end{blocksection}

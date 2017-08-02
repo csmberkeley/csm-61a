@@ -1,0 +1,25 @@
+\begin{blocksection}
+\question Implement \lstinline$unique_stream$ which takes in a stream
+\lstinline$s$ and returns a new stream that contains only the \textbf{unique}
+elements of the input stream in the original order. Assume that \lstinline$s$ is
+finite.
+
+\begin{lstlisting}
+def unique_stream(s):
+\end{lstlisting}
+
+\begin{solution}[2in]
+\begin{lstlisting}
+    seen = set()
+    def compute_rest(s):
+        if s is Stream.empty:
+            return Stream.empty
+        elif s.first in seen:
+            return compute_rest(s.rest)
+        else:
+            seen.add(s.first)
+            return Stream(s.first, lambda: compute_rest(s.rest))
+    return compute_rest(s)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

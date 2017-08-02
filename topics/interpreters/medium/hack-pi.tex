@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question Identify the number of calls to \lstinline$scheme_eval$ and the number of calls
+to \lstinline$scheme_apply$.
+
+\begin{parts}
+\part \begin{lstlisting}
+scm> (define pi 3.14)
+pi
+scm> (define (hack x)
+	  (cond
+	    ((= x pi) ‘pwned)
+	    ((< x 0) (hack pi))
+	    (else (hack (- x 1)))))
+hack
+\end{lstlisting}
+
+\begin{solution}
+3 \lstinline$scheme_eval$, 0 \lstinline$scheme_apply$
+\end{solution}
+
+\part \begin{lstlisting}
+scm> (hack 3.14)
+pwned
+\end{lstlisting}
+
+\begin{solution}
+9 \lstinline$scheme_eval$, 2 \lstinline$scheme_apply$
+\end{solution}
+
+\part \begin{lstlisting}
+scm> ((lambda (x) (hack x)) 0)
+pwned
+\end{lstlisting}
+
+\begin{solution}
+39 \lstinline$scheme_eval$, 10 \lstinline$scheme_apply$
+\end{solution}
+\end{parts}
+\end{blocksection}

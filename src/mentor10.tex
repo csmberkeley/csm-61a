@@ -1,4 +1,4 @@
-\documentclass{exam}
+    \documentclass{exam}
 \usepackage{../commonheader}
 
 \discnumber{10}
@@ -20,15 +20,14 @@
 
 \section{Trees}
 \subimport{../topics/trees/class/text/}{implementation.tex}
-\subsection*{Double Tree}
 \begin{questions}
-\marginpar{\subimport{../topics/trees/class/double-tree/}{before.tex} $\longrightarrow$
-           \subimport{../topics/trees/class/double-tree/}{after.tex}}
-\subimport{../topics/trees/class/double-tree/}{question.tex}
+\subimport{../topics/trees/class/easy/}{tree-sum.tex}
 \clearpage
-\subsection*{The private life of Albert Wu}
-\subimport{../topics/trees/class/eert/}{question.tex}
-\subimport{../topics/trees/class/eert/}{code.tex}
+\subsection*{Binary Search Trees}
+\subimport{../topics/trees/bst/text/}{implementation.tex}
+\marginpar{\vspace*{1in}\subimport{../topics/trees/bst/is-symmetric/}{simple.tex}}
+\marginpar{\vspace*{0.5in}\subimport{../topics/trees/bst/is-symmetric/}{complex.tex}}
+\subimport{../topics/trees/bst/is-symmetric/}{question.tex}
 \end{questions}
 
 \end{document}
