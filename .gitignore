@@ -1,3 +1,6 @@
+## Published handouts and Makefile dependencies
+published/
+deps/
 
 # Created by https://www.gitignore.io/api/latex,linux,macos,windows
 
