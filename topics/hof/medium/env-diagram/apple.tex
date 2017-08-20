@@ -1,0 +1,18 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+apple = 4
+def orange(apple):
+    apple = 5
+    def plum(x):
+        return lambda plum: plum * 2
+    return plum
+
+orange(apple)("hiii")(4)
+\end{lstlisting}
+
+\begin{solution}[2in]
+\url{https://goo.gl/pZ0RLR}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,16 @@
+\begin{blocksection}
+\question \begin{lstlisting}
+def belgian_waffle(n):
+    i = 0
+    total = 0
+    while i < n:
+        for j in range(n ** 2):
+            total += 1
+        i += 1
+    return total
+\end{lstlisting}
+
+\begin{solution}
+$\Theta(n^3)$. Inner loop runs $n^2$ times, and the outer loop runs $n$ times. To get the total, multiply those together.
+\end{solution}
+\end{blocksection}

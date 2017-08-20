@@ -1,0 +1,103 @@
+\question What Would Scheme Display?
+
+\begin{parts}
+\part \lstinline$scm> 3.14$
+\begin{solution}[0.25in]
+\lstinline$3.14$
+\end{solution}
+
+\part \lstinline$scm> pi$
+\begin{solution}[0.25in]
+\lstinline$Error$
+\end{solution}
+
+\part \lstinline$scm> (define pi 3.14)$
+\begin{solution}[0.25in]
+\lstinline$pi$
+\end{solution}
+
+\part \lstinline$scm> pi$
+\begin{solution}[.25in]
+\lstinline$3.14$
+\end{solution}
+
+\part \lstinline$scm> 'pi$
+\begin{solution}[.25in]
+\lstinline$pi$
+\end{solution}
+
+\part \lstinline$scm> (if 2 3 4)$
+\begin{solution}[.25in]
+\lstinline$3$
+\end{solution}
+
+\part \lstinline$scm> (if 0 3 4)$
+\begin{solution}[.25in]
+\lstinline$3$
+\end{solution}
+
+\part \lstinline$scm> (if #f 3 4)$
+\begin{solution}[.25in]
+\lstinline$4$
+\end{solution}
+
+\part \lstinline$scm> (if nil 3 4)$
+\begin{solution}[.25in]
+\lstinline$3$
+\end{solution}
+
+\part \lstinline$scm> (if (= 1 1) 'hello 'goodbye)$
+\begin{solution}[.25in]
+\lstinline$hello$
+\end{solution}
+
+\part \begin{lstlisting}
+scm> (define (factorial n)
+        (if (= n 0)
+            1
+            (* n (factorial (- n 1)) )))
+\end{lstlisting}
+\begin{solution}[.25in]
+\lstinline$factorial$
+\end{solution}
+
+\part \lstinline$scm> (factorial 5)$
+\begin{solution}[.25in]
+\lstinline$120$
+\end{solution}
+
+\part \lstinline$scm> (= 2 3)$
+\begin{solution}[.25in]
+\lstinline$#f$
+\end{solution}
+
+\part \lstinline$scm> (= '() '())$
+\begin{solution}[.25in]
+\lstinline$Error$
+\end{solution}
+
+\part \lstinline$scm> (eq? '() '())$
+\begin{solution}[.25in]
+\lstinline$#t$
+\end{solution}
+
+\part \lstinline$scm> (eq? nil nil)$
+\begin{solution}[.25in]
+\lstinline$#t$
+\end{solution}
+
+\part \lstinline$scm> (eq? '() nil)$
+\begin{solution}[.25in]
+\lstinline$#t$
+\end{solution}
+
+\part \lstinline$scm> (pair? (cons 1 2))$
+\begin{solution}[.25in]
+\lstinline$#t$
+\end{solution}
+
+\part \lstinline$scm> (list? (cons 1 2))$
+\begin{solution}[.25in]
+\lstinline$#f$
+\end{solution}
+\end{parts}

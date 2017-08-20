@@ -1,0 +1,31 @@
+\begin{blocksection}
+\question Implement \lstinline$sequence_in$, which checks to see if a particular sequence of
+items, \lstinline$sub$, can be found in another linked list, \lstinline$s$ (the items must be
+in order, but not necessarily consecutive). \lstinline$sub$ is stored as a linked list.
+
+\begin{lstlisting}
+def sequence_in(sub, s):
+    """
+    >>> lnk1 = link(1, link(2, link(3, link(4))))
+    >>> lnk2 = link(1, link(3))
+    >>> lnk3 = link(4, link(3, link(2, link(1))))
+    >>> sequence_in(lnk1, lnk2)
+    True
+    >>> sequence_in(lnk1, lnk3)
+    False
+    """
+\end{lstlisting}
+
+\begin{solution}[2in]
+\begin{lstlisting}
+    if is_empty(sub):
+        return True
+    if is_empty(s):
+        return False
+    if first(s) == first(sub):
+        return sequence_in(rest(s), rest(sub))
+    else: 
+        return sequence_in(rest(s), sub)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

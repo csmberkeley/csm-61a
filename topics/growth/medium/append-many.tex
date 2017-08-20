@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question Say we want to repeatedly insert some numbers to the end of a linked list.
+
+\begin{lstlisting}
+def append_many(s, items):
+    for item in items:
+        append(s, item)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part Assuming \lstinline$s$ is initially length 1. How long will it take to complete the first insertion? The second? The $n$th?
+
+\begin{solution}[1em]
+Notice that the list gets longer with each insertion, so each operation will make it harder to do the next. Therefore, the first insertion will take about 1 unit of time. The second will take about two units of time. The $n$th insertion will take
+$n$ units of time.
+\end{solution}
+
+\part Give the total runtime in $\Theta(\cdot)$ notation if \lstinline$s$ is initially empty and \lstinline$items$ contains $n$ items.
+
+\begin{solution}[1em]
+The total runtime will be the sum of all the inserts: 1 + 2 + 3 + \ldots + $n$ = $\frac{n(n + 1)}{2} \in \Theta(n^2)$
+\end{solution}
+\end{parts}

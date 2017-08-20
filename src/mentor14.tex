@@ -1,0 +1,36 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{14}
+\title{Aggregation \& Final Review}
+\date{August 7, 2017}
+
+\begin{document}
+\maketitle
+
+\lstset{language=SQL}
+\section{Fish}
+\subimport{../topics/sql/fish/tables/}{fish.tex}
+\subimport{../topics/sql/fish/text/}{intro.tex}
+\begin{questions}
+\subimport{../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+\subimport{../topics/sql/fish/easy/}{most-populated-species.tex}
+\subimport{../topics/sql/fish/easy/}{number-fish.tex}
+\clearpage
+\subimport{../topics/sql/fish/text/}{competitor.tex}
+\marginpar{\subimport{../topics/sql/fish/tables/}{competitor.tex}} \\
+\subimport{../topics/sql/fish/medium/}{competitor.tex}
+\subimport{../topics/sql/fish/medium/}{undercut.tex}
+\end{questions}
+
+\lstset{language=Python}
+\section{Iterators \& Generators}
+\begin{questions}
+\subimport{../topics/iterators/easy/}{iterator-vs-iterable.tex}
+\subimport{../topics/iterators/easy/}{skipmachine.tex}
+\subimport{../topics/generators/easy/}{run-length-decoder.tex}
+\subimport{../topics/iterators/easy/}{interleave.tex}
+\subimport{../topics/generators/medium/}{flat-map.tex}
+\end{questions}
+
+\end{document}

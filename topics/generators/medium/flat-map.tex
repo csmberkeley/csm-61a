@@ -1,0 +1,31 @@
+\begin{blocksection}
+\question A flat-map operation maps a function over a sequence and flattens the result. Implement the \lstinline$flat_map$ method of the \lstinline$FlatMapper$ class in 3 lines of code.
+
+\begin{lstlisting}
+class FlatMapper:
+    """A FlatMapper takes a function fn that returns an iterable value. The
+    flat_map method takes an iterable s and returns a generator over all values
+    that are within the iterables returned by calling fn on each element of s.
+
+    >>> stutter = lambda x: [x, x]
+    >>> m = FlatMapper(stutter)
+    >>> g = m.flat_map((2, 3, 4, 5))
+    >>> type(g)
+    <class 'generator'>
+    >>> list(g)
+    [2, 2, 3, 3, 4, 4, 5, 5]
+    """
+    def __init__(self, fn):
+        self.fn = fn
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    def flat_map(self, s):
+        for x in s:
+            for r in self.fn(x):
+                yield r
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

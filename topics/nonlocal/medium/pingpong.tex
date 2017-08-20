@@ -1,0 +1,81 @@
+\begin{blocksection}
+\question The ping-pong sequence counts up starting from 1 and is always either counting up or counting down.
+
+At element $k$, the direction switches if $k$ is a multiple of 7 or contains the digit 7.
+
+The first 30 elements of the ping-pong sequence are listed below, with direction swaps marked using brackets at the 7th, 14th, 17th, 21st, 27th, and 28th elements.
+
+\begin{verbatim}
+1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0 [-1] 0 1 2 3 4 [5] [4] 5 6
+\end{verbatim}
+
+Implement \lstinline$make_pingpong_tracker$ which returns the next value in the pingpong sequence each time it is called.
+
+\begin{lstlisting}
+def has_seven(n):
+    """Returns whether a number, n, contains the digit, 7."""
+    if n % 10 == 7:
+        return True
+    elif n < 10:
+        return False
+    else:
+        return has_seven(n // 10)
+\end{lstlisting}
+
+\begin{lstlisting}
+def make_pingpong_tracker():
+    """
+    >>> output = []
+    >>> x = make_pingpong_tracker()
+    >>> for _ in range(9):
+    ...     output += [x()]
+    >>> output
+    [1, 2, 3, 4, 5, 6, 7, 6, 5]
+    """
+\end{lstlisting}
+
+\ifprintanswers\else
+\begin{lstlisting}
+    index, current, add = 1, 0, True
+
+    def pingpong_tracker():
+
+        ___________________________________
+
+        if add:
+
+            ________________________________
+
+        else:
+
+            ________________________________
+
+        if _______________________________:
+
+            add = not add
+
+        __________________________________
+
+        __________________________________
+
+    return pingpong_tracker
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{lstlisting}
+    index, current, add = 1, 0, True
+    def pingpong_tracker():
+        nonlocal index, current, add
+        if add:
+            current = current + 1
+        else:
+            current = current - 1
+        if has_seven(index) or index % 7 == 0:
+            add = not add
+        index += 1
+        return current
+    return pingpong_tracker
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

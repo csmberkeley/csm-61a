@@ -1,0 +1,16 @@
+\begin{blocksection}
+\question Define the function \lstinline$count$ which counts the number of instances of a \lstinline$value$ in the given tree.
+
+\begin{lstlisting}
+def count(t, value):
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    if value != root(t):
+        return sum([count(b, value) for b in branches(t)])
+    else:
+        return 1 + sum([count(b, value) for b in branches(t)])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

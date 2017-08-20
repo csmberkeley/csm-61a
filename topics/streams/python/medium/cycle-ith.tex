@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question Implement \lstinline$cycle_ith$, which takes in a \lstinline$lst$ and a positive
+integer \lstinline$i$ and returns an infinite stream of every \lstinline$i$th element in
+\lstinline$lst$. If the \lstinline$lst$ has no more elements, cycle back to the beginning of
+\lstinline$lst$ and continue counting.
+
+\begin{lstlisting}
+def cycle_ith(lst, i):
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    seen = 0
+    while seen < i:
+        current = lst[0]
+        lst = lst[1:] + [current]
+        seen += 1
+    return Stream(current, lambda: cycle_ith(lst, i))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

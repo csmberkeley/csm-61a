@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question Implement \lstinline$subsets$, which takes in a list of values and an
+integer \lstinline$n$ and returns all subsets of the list of size exactly
+\lstinline$n$ in any order.
+
+\begin{lstlisting}
+def subsets(lst, n):
+    """
+    >>> three_subsets = subsets(list(range(5)), 3)
+    >>> for subset in sorted(three_subsets):
+    ...     print(subset)
+    [0, 1, 2]
+    [0, 1, 3]
+    [0, 1, 4]
+    [0, 2, 3]
+    [0, 2, 4]
+    [0, 3, 4]
+    [1, 2, 3]
+    [1, 2, 4]
+    [1, 3, 4]
+    [2, 3, 4]
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    if n == 0:
+        return [[]]
+    if len(lst) == n:
+        return [lst]
+    with_first = [[lst[0]] + x for x in subsets(lst[1:], n - 1)]
+    without_first = subsets(lst[1:], n)
+    return with_first + without_first
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,16 @@
+\begin{lstlisting}
+class Stream:
+    """A lazily computed linked list."""
+
+    class empty:
+        """The empty stream."""
+
+    empty = empty()
+
+    def __init__(self, first, compute_rest=empty):
+        """A stream whose first element is FIRST and whose tail is either a stream or stream-returning parameterless function COMPUTE_REST."""
+
+    @property
+    def rest(self):
+        """Return the rest of the stream, computing it if necessary."""
+\end{lstlisting}

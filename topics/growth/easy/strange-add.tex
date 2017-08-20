@@ -1,0 +1,15 @@
+\begin{blocksection}
+\question  \begin{lstlisting}
+def strange_add(n):
+    if n == 0:
+        return 1
+    else:
+        return strange_add(n - 1) + strange_add(n - 1)
+\end{lstlisting}
+
+\begin{solution}
+$\Theta(2^n)$. To see this, try drawing out the call tree. Each level will create
+two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
+Therefore, $2^n$ calls.
+\end{solution}
+\end{blocksection}

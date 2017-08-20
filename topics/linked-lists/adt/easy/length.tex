@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question Define the function, \lstinline$length$, which returns the length of a given linked list. Assume \lstinline$s$ is a properly formed linked list.
+
+\begin{lstlisting}
+def length(s):
+    """
+    >>> link1 = link(1, empty)
+    >>> link21 = link(2, link1)
+    >>> link421 = link(4, link21)
+    >>> length(link421)
+    3
+    >>> length(link1)
+    1
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    if s is empty:
+        return 0
+    return 1 + length(rest(s))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

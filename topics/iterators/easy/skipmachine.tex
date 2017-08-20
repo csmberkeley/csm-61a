@@ -1,0 +1,54 @@
+\begin{blocksection}
+\question What Would Python Display?
+\begin{lstlisting}
+class SkipMachine:
+    skip = 1
+    def __init__(self, n=2):
+        self.skip = n + SkipMachine.skip
+
+    def generate(self):
+        current = SkipMachine.skip
+        while True:
+            yield current
+            current += self.skip
+            SkipMachine.skip += 1
+
+p = SkipMachine()
+twos = p.generate()
+SkipMachine.skip += 1
+twos2 = p.generate()
+threes = SkipMachine(3).generate()
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part \lstinline$next(twos)$
+\begin{solution}[1em]
+2
+\end{solution}
+
+\part \lstinline$next(threes)$
+\begin{solution}[1em]
+2
+\end{solution}
+
+\part \lstinline$next(twos)$
+\begin{solution}[1em]
+5
+\end{solution}
+
+\part \lstinline$next(twos)$
+\begin{solution}[1em]
+8
+\end{solution}
+
+\part \lstinline$next(threes)$
+\begin{solution}[1em]
+7
+\end{solution}
+
+\part \lstinline$next(twos2)$
+\begin{solution}[1em]
+5
+\end{solution}
+\end{parts}

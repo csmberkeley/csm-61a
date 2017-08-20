@@ -1,0 +1,58 @@
+\begin{blocksection}
+\question \textbf{Hailstone yet again} Define a program called \lstinline$hailstone$,
+which takes in two numbers \lstinline$seed$ and \lstinline$n$, and returns the
+\lstinline$n$\emph{th} hailstone number in the sequence starting at \lstinline$seed$.
+Assume the hailstone sequence starting at \lstinline$seed$ is longer or equal to
+\lstinline$n$. As a reminder, to get the next number in the sequence, if the number
+is even, divide by two. Else, multiply by 3 and add 1.
+
+\textbf{Useful procedures}
+
+\begin{itemize}
+\item \lstinline$quotient$: floor divides, much like \lstinline$//$ in python
+
+\lstinline$(quotient 103 10)$ outputs 10
+
+\item \lstinline$remainder$: takes two numbers and computes the remainder of dividing the first number by the second
+
+\lstinline$(remainder 103 10)$ outputs 3
+\end{itemize}
+
+\ifprintanswers\else
+\begin{lstlisting}
+; The hailstone sequence starting at seed = 10 would be
+; 10 => 5 => 16 => 8 => 4 => 2 => 1
+
+; Doctests
+> (hailstone 10 0)
+10
+> (hailstone 10 1)
+5
+> (hailstone 10 2)
+16
+> (hailstone 5 1)
+16
+> (hailstone 5 5)
+1
+\end{lstlisting}
+\fi
+
+\begin{solution}[1in]
+\begin{lstlisting}
+(define (hailstone seed n)
+    (if (= n 0)
+        seed
+        (if (= 0 (remainder seed 2))
+            (hailstone
+            (quotient seed 2)
+            (- n 1)
+           )
+          (hailstone
+          (+ 1 (* seed 3))
+          (- n 1)
+         )
+    )
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

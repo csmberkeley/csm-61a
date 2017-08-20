@@ -1,0 +1,25 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+def curry(f, x):
+    return lambda y: f(x, y)
+
+def square(x):
+    return x * x
+
+sum_of_squares = lambda x, y: square(x) + square(y)
+warped_square = curry(sum_of_squares, 3)
+warped_square(4)
+
+# Tricky; use a new environment diagram (otherwise it'd be cluttered)
+(lambda: curry(sum_of_squares, 3)(4))()
+
+# Even trickier; start with a clean sheet of paper for this
+curry(sum_of_squares, 3)((lambda x: 4)(lambda: 1/0))
+\end{lstlisting}
+
+\begin{solution}
+\url{https://goo.gl/2DQ6DQ}
+\end{solution}
+\end{blocksection}

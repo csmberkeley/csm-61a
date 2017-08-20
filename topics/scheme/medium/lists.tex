@@ -1,0 +1,77 @@
+Scheme lists are similar to the linked lists we've seen already in Python.
+
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}[language=Python, linewidth=\linewidth]
+Link(1, Link.empty)
+a = Link(1, Link(2, Link.empty))
+a.first
+a.rest
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{lstlisting}[linewidth=\linewidth]
+(cons 1 nil)
+(define a (cons 1 (cons 2 nil)))
+(car a)
+(cdr a)
+\end{lstlisting}
+\end{minipage}
+
+\question What Would Scheme Display? Draw box-and-pointer diagrams!
+
+\begin{parts}
+\part \lstinline$scm> (cons 1 2)$
+\begin{solution}[0.25in]
+\lstinline$(1 . 2)$
+\end{solution}
+
+\part \lstinline$scm> (cons 1 (cons 2 nil))$
+\begin{solution}[0.25in]
+\lstinline$(1 2)$
+\end{solution}
+
+\part \lstinline$scm> (cons 1 '(2 3 4 5))$
+\begin{solution}[0.25in]
+\lstinline$(1 2 3 4 5)$
+\end{solution}
+
+\part \lstinline$scm> (cons 1 '(2 (cons 3 4))$
+\begin{solution}[0.25in]
+\lstinline$(1 2 (cons 3 4))$
+\end{solution}
+
+\part \lstinline$scm> (cons 1 (2 (cons 3 4)))$
+\begin{solution}[0.25in]
+\verb$eval: bad function in : (2 (cons 3 4))$
+\end{solution}
+
+\part \lstinline$scm> (define a '(1 2 . 3))$
+\begin{solution}[0.25in]
+\lstinline$a$
+\end{solution}
+
+\part \lstinline$scm> a$
+\begin{solution}[0.25in]
+\lstinline$(1 2 . 3)$
+\end{solution}
+
+\part \lstinline$scm> (car a)$
+\begin{solution}[0.25in]
+\lstinline$1$
+\end{solution}
+
+\part \lstinline$scm> (cdr a)$
+\begin{solution}[0.25in]
+\lstinline$(2 . 3)$
+\end{solution}
+
+\part \lstinline$scm> (cadr a)$
+\begin{solution}[0.25in]
+\lstinline$2$
+\end{solution}
+
+\part How can we get the 3 out of a?
+\begin{solution}[0.25in]
+\lstinline$(cddr a)$
+\end{solution}
+\end{parts}

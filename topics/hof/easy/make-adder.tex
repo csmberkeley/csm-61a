@@ -1,0 +1,31 @@
+\begin{blocksection}
+\question Consider the following method.
+
+\begin{lstlisting}
+def make_adder(x):
+    def adder(n):
+        return x + n
+    return adder
+
+make_adder(4)(5)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part What is the operator of the above expression?
+\begin{solution}
+\lstinline$make_adder(4)$
+\end{solution}
+
+\part What are the operands?
+\begin{solution}
+\lstinline$5$
+\end{solution}
+
+\part Draw the expression tree.
+\begin{solution}[1in]
+\Tree[.make\_adder(4)(5) [.make\_adder(4) [.func\ make\_adder(x) ]
+                                          [.4 ]]
+                         [.5 ]]
+\end{solution}
+\end{parts}

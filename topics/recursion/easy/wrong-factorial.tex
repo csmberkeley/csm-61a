@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question What is wrong with the following function? How can we fix it?
+
+\begin{lstlisting}
+def factorial(n):
+    return n * factorial(n)
+\end{lstlisting}
+
+\begin{solution}[1in]
+There is no base case and the recursive call is made on the same \texttt{n}.
+
+\begin{lstlisting}
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,31 @@
+\question What would Python display?
+\begin{lstlisting}
+>>> x = 6
+>>> def beep(x):
+...     print(x)
+
+>>> def boop(x):
+...     y = x
+...     x = 7
+...     print(x)
+
+>>> y = beep(6)
+\end{lstlisting}
+\begin{solution}
+6
+\end{solution}
+\begin{lstlisting}
+>>> boop(28)
+\end{lstlisting}
+\begin{solution}
+7
+\end{solution}
+\begin{lstlisting}
+>>> y + beep(8)
+\end{lstlisting}
+\begin{solution}
+{\tt ~ \\ 8 \\
+TypeError: unsupported operand type(s) for +: 'NoneType' \\ and 'NoneType'} \\\\
+Note that neither function has a return statement, so they will both return {\tt
+None} by default.
+\end{solution}

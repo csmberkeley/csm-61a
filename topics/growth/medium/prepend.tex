@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question Consider the following linked list function.
+
+\begin{lstlisting}
+def prepend(s, item):
+    return link(item, s)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\part What does this function do?
+
+\begin{solution}[1em]
+It takes in an existing \lstinline$lst$ and returns a new list with \lstinline$item$ at the front.
+\end{solution}
+
+\part Assume \lstinline$s$ is initially length $n$, how long does it take to \lstinline$prepend$ once? \lstinline$prepend$ twice? \lstinline$prepend$ $n$ times?
+
+\begin{solution}[1em]
+All inserts will take constant time. No matter how long the list is, it doesn't take any longer to add to the front. One insert will take one unit of time, and two will take roughly twice that. Therefore, the amount of time to do $n$ inserts will be in $\Theta(n)$.
+\end{solution}
+\end{parts}

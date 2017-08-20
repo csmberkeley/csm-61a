@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question Write \lstinline$Accumulator$ so it works if it takes in any
+iterable, not just a list
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+class Accumulator:
+    def __init__(self, iterable):
+        self.iterable = iterable
+        self.iterator = iter(iterable)
+        self.sum = 0
+
+    def __next__(self):
+        self.sum += next(self.iterator)
+        return self.sum
+
+    def __iter__(self):
+            return self
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

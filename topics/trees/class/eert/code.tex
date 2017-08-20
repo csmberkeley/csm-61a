@@ -1,0 +1,46 @@
+\begin{lstlisting}
+class Tree(object):
+    def __init__(self, entry, left=None, right=None):
+        self.entry = entry
+        self.left = left
+        self.right = right
+
+    def decrypt(self):
+        "*** PART B ***"
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+        left, right = None, None
+        if self.left:
+            left = self.left.decrypt()
+        if self.right:
+            right = self.right.decrypt()
+        return Tree(self.entry, left, right)
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+class Eert(Tree):
+    def __init__(self, entry, left=None, right=None):
+        "*** PART A ***"
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+        Tree.__init__(self, entry, right, left)
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+    def decrypt(self):
+        "*** PART B ***"
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    tree = Tree.decrypt(self)
+    tree.left, tree.right = tree.right, tree.left
+    return tree
+\end{lstlisting}
+\end{solution}

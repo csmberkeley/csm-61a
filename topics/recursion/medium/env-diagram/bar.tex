@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+def bar(f):
+    def g(x):
+        if x == 1:
+            return f(x)
+        else:
+            return f(x) + g(x - 1)
+    return g
+
+f = 4
+bar(lambda x: x + f)(2)
+\end{lstlisting}
+
+\begin{solution}[2in]
+\url{https://goo.gl/xD5kVE}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,41 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+\discnumber{12}
+\title{Interpreters \& Iterators}
+\date{July 31, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Eval and Apply}
+\begin{questions}
+\subimport{../topics/interpreters/easy/}{eval-apply.tex}
+\end{questions}
+
+\section{Tail Calls}
+\begin{questions}
+\subimport{../topics/interpreters/easy/}{tail-calls.tex}
+\subimport{../topics/interpreters/easy/}{sum-list.tex}
+\end{questions}
+
+\clearpage
+
+\lstset{language=Python}
+\section{Iterators}
+\begin{questions}
+\subimport{../topics/iterators/easy/}{iterator-vs-iterable.tex}
+\subimport{../topics/iterators/accumulator/}{code.tex}
+\subimport{../topics/iterators/accumulator/}{iterator-vs-iterable.tex}
+\subimport{../topics/iterators/accumulator/}{any-iterable.tex}
+\end{questions}
+
+\section{Generators}
+\begin{questions}
+\subimport{../topics/generators/easy/}{foo.tex}
+\clearpage
+\subimport{../topics/generators/medium/}{hailstone.tex}
+\subimport{../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+\end{document}

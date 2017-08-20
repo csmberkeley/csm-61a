@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question Identify the bug(s) in this program.
+
+\begin{lstlisting}
+> (sum-every-other '(1 2 3))
+4
+> (sum-every-other '())
+0
+> (sum-every-other '(1 2 3 4))
+4
+> (sum-every-other '(1 2 3 4 5))
+9
+\end{lstlisting}
+
+\begin{lstlisting}
+(define (sum-every-other lst)
+    (cond ((null? lst) lst)
+          (else (+ (cdr lst)
+                   (sum-every-other (caar lst)) ))))
+\end{lstlisting}
+
+\begin{solution}
+\begin{itemize}
+\item The base case should return \lstinline$0$, not \lstinline$'()$.
+\item \lstinline$(cdr lst)$ is a list, so it doesn't make sense to add it to something. 
+Instead, use \lstinline$(car lst)$, which will give us a number.
+\item Using \lstinline$caar$ (first of the first) is incorrect because the first is a
+number and it doesn't make sense to get the first of a number. Instead, we should use
+\lstinline$cddr$ (rest of the rest) to skip forward two elements. However, the
+\lstinline$cdr$ could be \lstinline$'()$, so we need to add a case to our \lstinline$cond$
+to take care of this.
+\end{itemize}
+
+\begin{lstlisting}
+(define (sum-every-other lst)
+    (cond ((null? lst) 0)
+          ((null? (cdr lst)) (car lst))
+          (else (+ (car lst)
+                   (sum-every-other (cddr lst)) ))))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,30 @@
+\begin{blocksection}
+\question Implement \lstinline$make_alternator$.
+
+\begin{lstlisting}
+def make_alternator(f, g):
+    """
+    >>> a = make_alternator(lambda x: x * x, lambda x: x + 4)
+    >>> a(5)
+    1
+    6
+    9
+    8
+    25
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    def alternator(n):
+        i = 1
+        while i <= n:
+            if i % 2 == 1:
+                print(f(i))
+            else:
+                print(g(i))
+            i += 1
+    return alternator
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

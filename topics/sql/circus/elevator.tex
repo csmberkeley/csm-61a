@@ -1,0 +1,18 @@
+\begin{blocksection}
+\question Write a query that returns the collective weight and species of animals in a group where there is more than one animal of a particular species in a group, and the collective weight of the animals in the group is less than 2000.
+
+Your query should yield the following result.
+
+\begin{lstlisting}
+229 pig
+1618 tiger
+91 dog
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+select sum(weight), species from animals
+    group by species having count(*) > 1 and sum(weight) < 2000;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

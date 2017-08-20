@@ -1,0 +1,19 @@
+\begin{blocksection}
+\question \begin{lstlisting}
+def toast(n):
+    i = 0
+    j = 0
+    stack = 0
+    while i < n:
+        stack += pancake(n)
+        i += 1
+    while j < n:
+        stack += 1
+        j += 1
+    return stack
+\end{lstlisting}
+
+\begin{solution}
+$O(n \cdot 2^n)$. There are two loops: the first runs $n$ times with each iteration taking $\Theta(2^n)$ time for a total of $\Theta(n \cdot 2^n)$. The second loop runs $n$ times with each iteration taking constant time for a total of $\Theta(n)$. When computing the order of growth, however, we focus on the dominating term -- in this case, $\Theta(n \cdot 2^n + n) \in \Theta(n \cdot 2^n)$.
+\end{solution}
+\end{blocksection}

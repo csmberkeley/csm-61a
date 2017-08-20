@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+x = 20
+def foo(y):
+    x = 5
+    def bar():
+        return lambda y: x - y
+    return bar
+
+y = foo(7)
+z = y()
+print(z(2))
+\end{lstlisting}
+
+\begin{solution}[2in]
+\url{https://goo.gl/i2yiQF}
+\end{solution}
+\end{blocksection}

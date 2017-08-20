@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+def reverse(lst):
+    if len(lst) <= 1:
+        return lst
+    return reverse(lst[1:]) + [lst[0]]
+
+lst = [1, [2, 3], 4]
+rev = reverse(lst)
+\end{lstlisting}
+
+\begin{solution}[2in]
+\url{https://goo.gl/6vPeX9}
+\end{solution}
+\end{blocksection}

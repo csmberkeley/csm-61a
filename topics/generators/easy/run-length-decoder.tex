@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question Implement \lstinline$run_length_decoder$, a generator that yields the decoded
+run length sequence from a list of \lstinline$(value, length)$ pairs.
+
+\begin{lstlisting}
+def run_length_decoder(encoding):
+    """
+    >>> rld = run_length_decoder([('h', 1), ('e', 1), ('l', 2), ('o', 1)])
+    >>> lst(rld)
+    ['h', 'e', 'l', 'l', 'o']
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    for value, length in encoding:
+        for _ in range(length):
+            yield value
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

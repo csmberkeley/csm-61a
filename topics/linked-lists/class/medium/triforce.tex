@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question What does \lstinline$wild$ do? Try drawing a box-and-pointer diagram!
+
+\begin{lstlisting}
+def wild(lnk):
+    if lnk is Link.empty or lnk.rest is Link.empty:
+        return lnk
+    breath = wild(lnk.rest)
+    lnk.rest.rest = lnk
+    lnk.rest = Link.empty
+    return breath
+\end{lstlisting}
+
+\begin{lstlisting}
+>>> triforce = Link(3, Link(1, Link(4)))
+>>> wild(triforce)
+\end{lstlisting}
+
+\begin{solution}[1in]
+Destructively reverses the linked list and returns a pointer to the front of the reversed list.
+\end{solution}
+\end{blocksection}

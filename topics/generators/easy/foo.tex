@@ -1,0 +1,40 @@
+\begin{blocksection}
+\question What does the following code block output?
+
+\begin{lstlisting}
+def foo():
+    a = 0
+    if a < 10:
+        print("Hello")
+        yield a
+        print("World")
+
+for i in foo():
+    print(i)
+\end{lstlisting}
+
+\begin{solution}[0.75in]
+\begin{lstlisting}
+Hello
+0
+World
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question How can we modify \lstinline$foo$ so that \lstinline$list(foo()) == [1, 2, 3, . . . , 10]$? (It's okay if the program prints along the way.)
+
+\begin{solution}[0.50in]
+Change the \lstinline$if$ to a \lstinline$while$ statement, and make sure to increment
+\lstinline$a$. This looks like:
+
+\begin{lstlisting}
+def foo():
+    a = 0
+    while a < 10:
+        a += 1
+        yield a
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,21 @@
+\question \begin{lstlisting}
+>>> def square(x):
+...     return x * x
+...
+>>> def happy(num):
+...     print(num)
+...     return num
+...
+>>> def sad(num):
+...     return num
+...     return 1 / 0
+...
+>>> print(square(sad(5)), happy(3))
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+3
+25 3
+\end{verbatim}
+\end{solution}

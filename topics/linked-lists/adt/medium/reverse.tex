@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question Define the function, \lstinline$reverse$, which returns a new linked list containing the elements of the original except in reverse order.
+
+\begin{lstlisting}
+def reverse(s):
+    """
+    >>> l = link(1, link(2, link(3)))
+    >>> reverse(l)
+    [3, [2, [1, 'X']]]
+    >>> l
+    [1, [2, [3, 'X']]]
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    def helper(s, result):
+        if s is empty:
+            return result
+        return helper(rest(s), link(first(s), result))
+    return helper(s, empty)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

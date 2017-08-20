@@ -1,0 +1,41 @@
+\begin{blocksection}
+\question Give a tight asymptotic runtime bound for the following functions in $\Theta(\cdot)$
+notation, or ``Infinite'' if the program does not terminate.
+
+\begin{parts}
+\part \begin{lstlisting}
+def one(n):
+    while n > 0:
+       n = n // 2
+\end{lstlisting}
+
+\begin{solution}[0.25in]
+$\Theta(\log n)$
+\end{solution}
+
+\part \begin{lstlisting}
+def two(n):
+    for i in range(n):
+        for j in range(i):
+            print(str(i), str(j))
+\end{lstlisting}
+
+\begin{solution}[0.25in]
+$\Theta(n^2)$
+\end{solution}
+
+\part \begin{lstlisting}
+def three(n):
+    i = 1
+    while i <= n:
+        for j in range(i):
+            print(j)
+        i *= 2
+\end{lstlisting}
+
+\begin{solution}[0.25in]
+$\Theta(n)$
+\end{solution}
+\end{parts}
+
+\end{blocksection}

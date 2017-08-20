@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question Implement \lstinline$merge$, which takes in two sorted linked lists and returns a sorted linked list that contains all the elements of both.
+
+\begin{lstlisting}
+def merge(lst1, lst2):
+    """
+    >>> l1 = link(2, link(2, link(5, empty)))
+    >>> l2 = link(1, link(5, link(6, empty)))
+    >>> lst = merge(l1, l2)
+    >>> print_link(lst):
+    <1 2 2 5 5 6>
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    if lst1 == empty:
+        return lst2
+    elif lst2 == empty:
+        return lst1
+    elif first(lst1) < first(lst2):
+        return link(first(lst1), merge(rest(lst1), lst2))
+    else:
+        return link(first(lst2), merge(lst1, rest(lst2)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

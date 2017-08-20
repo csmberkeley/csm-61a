@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question \begin{parts}
+\part Define \lstinline$append$. In Scheme, \lstinline$append$ takes in two lists and
+returns a larger list.
+
+\begin{lstlisting}
+> (append '(1 2 3) '(4 5 6))
+(1 2 3 4 5 6)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (append lst1 lst2)
+    (if (null? lst1) lst2        
+        (cons (car lst1) (append (cdr lst1) lst2)))))
+\end{lstlisting}
+\end{solution}
+
+\part Define \lstinline$reverse$. Hint: use \lstinline$append$.
+
+\begin{lstlisting}
+> (reverse '(1 2 3))
+(3 2 1)
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+(define (reverse lst)
+    (if (null? lst) lst
+        (append (reverse (cdr lst)) (list (car lst)))))
+\end{lstlisting}
+\end{solution}
+
+\part Define \lstinline$reverse$ tail-recursively. Hint: use a helper function and
+\lstinline$cons$.
+
+\begin{solution}[1in]
+\begin{lstlisting}
+(define (reverse lst)
+    (define (helper lst reversed)
+        (if (null? lst) reversed
+            (helper (cdr lst) (cons (car lst) reversed ))))
+    (helper lst '()))
+\end{lstlisting}
+\end{solution}
+\end{parts}
+\end{blocksection}

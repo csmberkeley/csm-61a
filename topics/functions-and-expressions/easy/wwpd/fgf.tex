@@ -1,0 +1,21 @@
+\question What would Python display?
+
+\begin{lstlisting}
+>>> from operator import add, mul
+>>> def f(x, y):
+...     print('h', y)
+...     return add(add(x, y), 1)
+>>> def g(x, y):
+...     print('u', x)
+...     return mul(mul(x, y), 2)
+>>> f(2, g(2, f(500, 2)))
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+h 2
+u 2
+h 2012
+2015
+\end{lstlisting}
+\end{solution}

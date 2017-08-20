@@ -1,0 +1,33 @@
+    \documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{10}
+\title{Mutable Linked Lists \& Trees}
+\date{July 24, 2017}
+
+\begin{document}
+\maketitle
+
+\section{Linked Lists}
+\subimport{../topics/linked-lists/class/text/}{implementation.tex}
+\begin{questions}
+\subimport{../topics/linked-lists/class/medium/}{triforce.tex}
+\subimport{../topics/linked-lists/class/medium/}{double-link.tex}
+\subimport{../topics/linked-lists/class/medium/}{shuffle.tex}
+\end{questions}
+
+\clearpage
+
+\section{Trees}
+\subimport{../topics/trees/class/text/}{implementation.tex}
+\begin{questions}
+\subimport{../topics/trees/class/easy/}{tree-sum.tex}
+\clearpage
+\subsection*{Binary Search Trees}
+\subimport{../topics/trees/bst/text/}{implementation.tex}
+\marginpar{\vspace*{1in}\subimport{../topics/trees/bst/is-symmetric/}{simple.tex}}
+\marginpar{\vspace*{0.5in}\subimport{../topics/trees/bst/is-symmetric/}{complex.tex}}
+\subimport{../topics/trees/bst/is-symmetric/}{question.tex}
+\end{questions}
+
+\end{document}

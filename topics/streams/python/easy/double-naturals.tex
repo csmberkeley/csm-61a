@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question Implement \lstinline$double_naturals$, which returns a stream that evaluates to
+the sequence $1, 1, 2, 2, 3, 3, \ldots$
+
+\ifprintanswers\else
+\begin{lstlisting}
+def double_naturals(first=1, double=True):
+    """
+    >>> a = double_naturals()
+    >>> a.first
+    1
+    >>> a.rest.rest.first
+    2
+    """
+    def compute_rest():
+
+
+
+
+
+    return Stream(first, compute_rest)
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{lstlisting}
+def double_naturals(first=1, double=True):
+    """
+    >>> a = double_naturals()
+    >>> a.first
+    1
+    >>> a.rest.rest.first
+    computing rest
+    computing rest
+    2
+    """
+    def compute_rest():
+        if double:
+          return double_naturals(first, False)
+        return double_naturals(first + 1, True)
+    return Stream(first, compute_rest)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

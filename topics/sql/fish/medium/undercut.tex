@@ -1,0 +1,15 @@
+\begin{blocksection}
+\question At our current market rates, there are two price points for fish: \$4 fish (salmon and eel) and \$3 fish (yellowtail and tuna). We'd like to figure out how much money we might give up per fish if we were to reduce our prices to that of the competitor's lowest price at each price point.
+
+Between eel and salmon, our competitor's lowest priced fish is salmon at \$2. How much money would we give up if we sold 30 pieces of salmon at \$2 (instead of \$4) and 15 pieces of eel at \$2 (instead of \$4)?
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+with best as (select fish.price as ours, min(competitor.price) as theirs
+              from fish, competitor where fish.species = competitor.species
+              group by ours)
+select fish.species, (fish.price - best.theirs) * fish.pieces
+    from best, fish where best.ours = fish.price;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

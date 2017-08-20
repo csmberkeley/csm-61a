@@ -1,0 +1,26 @@
+% Question Objectives
+% - Demonstrates function termination order
+% - Compound expressions
+
+\begin{blocksection}
+\question What would Python display?
+
+\begin{lstlisting}
+>>> from operator import sub, mul
+>>> def print_sub(x, y):
+...     print('sub')
+...     return sub(x, y)
+>>> def print_mul(x, y):
+...     print('mul')
+...     return mul(x, y)
+>>> print_sub(print_mul(505, 4), 3)
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+mul
+sub
+2017
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+

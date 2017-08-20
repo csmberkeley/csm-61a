@@ -1,0 +1,24 @@
+\question What would Python display? Draw box-and-pointer diagrams to find out.
+
+\begin{parts}
+\part \begin{lstlisting}
+L = [1, 2, 3]
+B = L
+B
+\end{lstlisting}
+
+\begin{solution}
+\texttt{[1, 2, 3]}
+\end{solution}
+
+\part \begin{lstlisting}
+A = L[1:3]
+L[0] = A
+L = L + A
+B
+\end{lstlisting}
+
+\begin{solution}
+\texttt{[[2, 3], 2, 3]}
+\end{solution}
+\end{parts}

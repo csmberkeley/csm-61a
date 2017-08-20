@@ -1,0 +1,64 @@
+\question What Would Scheme Display?
+
+\begin{parts}
+
+\part \lstinline$scm> (define x 1)$
+\begin{solution}[0.25in]
+\lstinline$x$
+\end{solution}
+
+\part \lstinline$scm> (if 2 3 4)$
+\begin{solution}[0.25in]
+\lstinline$3$
+\end{solution}
+
+\part \lstinline$scm> (delay (+ x 1))$
+\begin{solution}[.25in]
+\lstinline$#[promise]$
+\end{solution}
+
+\part \lstinline$scm> (define (foo x) (+ x 10))$
+\begin{solution}[0.25in]
+\lstinline$foo$
+\end{solution}
+
+\part \lstinline$scm> (define bar (cons-stream (foo 1) (cons-stream (foo 2) bar)))$
+\begin{solution}[0.25in]
+\lstinline$bar$
+\end{solution}
+
+\part \lstinline$scm> (car bar)$
+\begin{solution}[0.25in]
+\lstinline$11$
+\end{solution}
+
+\part \lstinline$scm> (cdr bar)$
+\begin{solution}[0.25in]
+\lstinline$#[promise]$
+\end{solution}
+
+\part \lstinline$scm> (define (foo x) (+ x 1))$
+\begin{solution}[0.25in]
+\lstinline$foo$
+\end{solution}
+
+\part \lstinline$scm> (cdr-stream bar)$
+\begin{solution}[0.25in]
+\lstinline$(3 . #[promise])$
+\end{solution}
+
+\part \lstinline$scm> (define (foo x) (+ x 5))$
+\begin{solution}[0.25in]
+\lstinline$foo$
+\end{solution}
+
+\part \lstinline$scm> (car bar)$
+\begin{solution}[0.25in]
+\lstinline$11$
+\end{solution}
+
+\part \lstinline$scm> (cdr-stream bar)$
+\begin{solution}[0.25in]
+\lstinline$(3 . #[promise])$
+\end{solution}
+\end{parts}

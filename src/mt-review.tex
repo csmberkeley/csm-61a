@@ -1,0 +1,57 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\title{Midterm Review}
+\date{July 12, 2017}
+
+\begin{document}
+\maketitle
+
+\textbf{Instructions}
+
+Form a small group. Start on problem 1.1. Check off with a staff member or
+discuss your \emph{solution process} with a nearby group when you think everyone
+in your group understands \emph{how to solve} problem 1.1. Then repeat for 1.2,
+1.3, \ldots
+
+You may not move to the next problem until you check off or discuss with another
+group and \emph{everyone understands why the solution is what it is}. You may
+use any course resources at your disposal: the purpose of this review session is
+to have everyone learning together as a group.
+
+\section{Functions}
+\begin{questions}
+\subimport{../topics/functions-and-expressions/easy/wwpd/}{square.tex}
+\subimport{../topics/hof/medium/wwpd/}{lambda-mul.tex}
+\subimport{../topics/hof/medium/}{alternator.tex}
+\end{questions}
+
+\section{Lists \& Tree Recursion}
+\subimport{../topics/lists/mutable/text/}{mutable-vs-immutable.tex}
+\subimport{../topics/misc/}{golden-rule-of-equals.tex}
+\begin{questions}
+\subimport{../topics/lists/immutable/medium/}{comprehensions.tex}
+\subimport{../topics/lists/mutable/easy/env-diagram/}{pompom.tex}
+\subimport{../topics/lists/mutable/medium/env-diagram/}{bless-up.tex}
+\subimport{../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
+\subimport{../topics/recursion/medium/}{subset-sum.tex}
+\subimport{../topics/recursion/medium/}{subsets.tex}
+\end{questions}
+
+\section{Recursion on Trees}
+\marginpar{\subimport{../topics/trees/adt/text/}{implementation.tex}}
+\begin{questions}
+\subimport{../topics/trees/adt/min-heap/}{problem.tex}
+\end{questions}
+
+\section{Growth}
+\begin{questions}
+\subimport{../topics/growth/easy/}{one-two-three.tex}
+\clearpage
+\subimport{../topics/growth/text/}{intro.tex}
+\subimport{../topics/growth/easy/}{strange-add.tex}
+\subimport{../topics/growth/easy/}{belgian-waffle.tex}
+\subimport{../topics/growth/easy/}{pancake.tex}
+\subimport{../topics/growth/easy/}{toast.tex}
+\end{questions}
+\end{document}

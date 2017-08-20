@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question \begin{parts}
+\part What is an \define{Abstract Data Type}?
+
+\begin{solution}[0.5in]
+A structure that stores data but separates how it is stored from how it is used.
+
+There are two different layers to abstract data types:
+
+1) The program layer, which uses the data, and
+2) The concrete data representation that is independent of the programs that use the data. The only communication between the two layers is through selectors and constructors that implement the abstract data in terms of the concrete representation.
+
+In addition to selectors and constructors, there are behavior conditions under which the selectors and constructors give an appropriate response. That is, if we construct a rational number data type \lstinline$x$ from integers \lstinline$n$ and \lstinline$d$, then it should be the case that \lstinline$numer(x) / denom(x)$ is equal to \lstinline$n / d$.
+
+In general, we can think of an abstract data type as defined by some collection of selectors and constructors, together with some behavior conditions. As long as the behavior conditions are met (such as the division property above), these functions constitute a valid representation of the data type.
+\end{solution}
+
+\part What is the relationship between a class and an ADT?
+
+\begin{solution}[0.5in]
+Classes are a way to implement an Abstract Data Type. But, ADTs can also be created using a collection of functions, as shown by the rational number example.
+\end{solution}
+\end{parts}
+\end{blocksection}

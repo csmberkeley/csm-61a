@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question Define the function, \lstinline$get_item$, which returns the value at index \lstinline$i$ in the linked list, \lstinline$s$. If the index is greater than the length of the list, return \lstinline$None$.
+
+\begin{lstlisting}
+def get_item(s, i):
+    """
+    >>> link1 = link(1, empty)
+    >>> link21 = link(2, link1)
+    >>> link421 = link(4, link21)
+    >>> get(link421, 0)
+    4
+    >>> get(link421, 2)
+    1
+    >>> get(link421, 999) # returns None
+    """
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+    if s is empty:
+        return None
+    elif i == 0:
+        return first(s)
+    return get_item(rest(s), i - 1)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

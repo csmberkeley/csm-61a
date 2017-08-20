@@ -1,0 +1,41 @@
+\begin{blocksection}
+\question Write \lstinline$TeamBaller$, a subclass of \lstinline$Baller$. An instance of \lstinline$TeamBaller$ cheers on the team every time it passes a ball.
+
+\ifprintanswers\else
+\begin{lstlisting}
+class TeamBaller(_______________):
+    """
+    >>> cheerballer = TeamBaller('Thomas', has_ball=True)
+    >>> cheerballer.pass_ball(jerry)
+    Yay!
+    True
+    >>> cheerballer.pass_ball(jerry)
+    I don't have the ball
+    False
+    """
+    def pass_ball(_______________, ________________):
+\end{lstlisting}
+\fi
+
+\begin{solution}[1in]
+\begin{lstlisting}
+class TeamBaller(Baller):
+    """
+    >>> cheerballer = TeamBaller('Thomas', has_ball=True)
+    >>> cheerballer.pass_ball(jerry)
+    Yay!
+    True
+    >>> cheerballer.pass_ball(jerry)
+    I don't have the ball
+    False
+    """
+    def pass_ball(self, other):
+        did_pass = Baller.pass_ball(self, other)
+        if did_pass:
+            print('Yay!')
+        else:
+            print("I don't have the ball")
+        return did_pass
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

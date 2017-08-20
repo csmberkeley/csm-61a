@@ -1,0 +1,31 @@
+\begin{lstlisting}
+class Stream:
+    """A lazily computed linked list."""
+
+    class empty:
+        """The empty stream."""
+        def __repr__(self):
+            return 'Stream.empty'
+
+    empty = empty()
+
+    def __init__(self, first, compute_rest=empty):
+        """A stream whose first element is FIRST and whose tail is either a stream or stream-returning parameterless function COMPUTE_REST."""
+        self.first = first
+        if compute_rest is Stream.empty or isinstance(compute_rest, Stream):
+            self._rest, self._compute_rest = compute_rest, None
+        else:
+            assert callable(compute_rest), 'compute_rest must be callable.'
+            self._compute_rest = compute_rest
+
+    @property
+    def rest(self):
+        """Return the rest of the stream, computing it if necessary."""
+        if self._compute_rest is not None:
+            self._rest = self._compute_rest()
+            self._compute_rest = None
+        return self._rest
+
+    def __repr__(self):
+        return 'Stream({0}, <...>)'.format(repr(self.first))
+\end{lstlisting}

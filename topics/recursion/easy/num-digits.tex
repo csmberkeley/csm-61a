@@ -1,0 +1,29 @@
+\begin{blocksection}
+\question Complete the definition for \texttt{num\char`_digits}, which takes in a number \texttt{n}
+and returns the number of digits it has.
+
+\begin{lstlisting}
+def num_digits(n):
+    """Takes in an positive integer and returns the number of
+    digits.
+
+    >>> num_digits(0)
+    1
+    >>> num_digits(1)
+    1
+    >>> num_digits(7)
+    1
+    >>> num_digits(1093)
+    4
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    if n < 10:
+        return 1
+    else:
+        return 1 + num_digits(n // 10)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
