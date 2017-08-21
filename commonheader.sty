@@ -1,8 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Header for Discussion TeX Files
+%  _______  _______  ___      ____   _______
+% |       ||       ||   |    |    | |   _   |
+% |       ||  _____||   |___  |   | |  |_|  |
+% |       || |_____ |    _  | |   | |       |
+% |      _||_____  ||   | | | |   | |       |
+% |     |_  _____| ||   |_| | |   | |   _   |
+% |_______||_______||_______| |___| |__| |__|
 %
-% Collected and modified by Jonathan Kotker and Thomas Magrino (CS 61A su12).
-% Largely redesigned by Kevin Lin (CS 61A su17).
+% Header for CS61A Tutoring TeX Files
+%
+% Collected and modified by Jonathan Kotker and Thomas Magrino
 %
 % This package contains references to other packages, new commands, and values
 % for different parameters, common to all discussion documents.
@@ -13,16 +20,17 @@
 % the class: this information needs to be updated only once per semester.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Uncomment the following line to display solutions
+%% Uncomment the following line to display solutions
 %\def\discussionsolutions{}
 
 \ProvidesPackage{commonheader}
 
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-\usepackage[noend]{algpseudocode}
-\usepackage{amsfonts,amsmath,amssymb,amsthm}
+%%% Packages Needed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{color}
 \usepackage{comment}
 \usepackage{enumerate}
@@ -34,8 +42,8 @@
 \usepackage[pdftex,colorlinks]{hyperref}
 \usepackage{import}
 \usepackage{listings}
-\usepackage{multicol}
 \usepackage{multirow}
+\usepackage{palatino}
 \usepackage{paralist}
 \usepackage{parskip}
 \usepackage{tabularx}
@@ -43,102 +51,89 @@
 \usepackage{upquote}
 \usepackage{verbatim}
 \usepackage{wasysym}
-\usepackage{tikz,tikz-qtree,tikz-qtree-compat}
-% Draw trees
-\usepackage{wrapfig}
-\usetikzlibrary{arrows,positioning,calc,shapes}
-\tikzstyle{vertex}=[draw,circle,minimum size=18pt,inner sep=0pt]
-% Fonts
-\usepackage[varqu]{inconsolata}
-\linespread{1.05}
+\usepackage{tikz}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{synttree}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Define solution style
-\unframedsolutions
-\renewcommand{\solutiontitle}{}
-\SolutionEmphasis{\color{red}}
+%%% Information about the class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\semester}[1]{\newcommand{\sem}{#1}}
+\newcommand{\stafflist}[1]{\newcommand{\staff}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Course information
-\def\coursenumber{CS 61A}
-\def\semester{Summer 2017}
-% Provide discnum and disctitle
+%%% MODIFY THIS INFORMATION AS NECESSARY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\semester{Spring 2017}
+\stafflist{Paul Bitutsky and Katya Stukalova, with \\
+    Colin Schoen,
+    Kevin Lin,
+    Jason Goodman,
+    Thomas Zhang,
+    Danelle Nachum, 
+    Natalia Layson,
+    Jennie Chen,
+    Nipun Ramakrishnan,
+    Michael Gibbes,
+    Christopher Allsman
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Margins and definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\marginparwidth}{1.2in}
+\let\oldmarginpar\marginpar
+\renewcommand{\marginpar}[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Configuring the document title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{titlecol}{gray}{0.6}
+
+\let\oldtitle\title
+\renewcommand{\title}[1]
+    {\oldtitle{
+        {\begin{flushright}
+            \huge {\sc{#1}}
+            \fontsize{45}{0} \sffamily \color{titlecol} \selectfont
+        \end{flushright}}
+        \rule{\textwidth}{0.2em}}
+    \newcommand{\disctitle}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Configuring the header and footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\discnumber}[1]{\newcommand{\discnum}{#1}}
-\def\title#1{\gdef\@title{#1}\gdef\disctitle{#1}}
 
-% Provide "Extra for Experts" section text
-\newcommand{\extra}[1]{#1 \large\textit{Extra for Experts}}
+\pagestyle{headandfoot}
+\runningheadrule
+\runningheader{\sc Group Tutoring handout \discnum: \disctitle}{}{Page \thepage}
+\runningfootrule
+\runningfooter{\small Computer Science Mentors CS61A \sem: \staff}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Configuring the header and footer
-\pagestyle{head}
-\runningheader{
- \oddeven{}{\thepage \quad \textit{\disctitle}}}
- {}
- {\oddeven{\textit{\disctitle} \quad \thepage}{}
-}
+%%% Configuring the section and subsection titles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\section}[hang]{\sffamily \bfseries}
+{\fontsize{15}{25} \color{titlecol} \selectfont \thesection}{10pt}
+{\fontfamily{ppl} \fontsize{15}{0} \selectfont \raggedleft}
+[{\titlerule[1.0pt]}]
 
-% Define formatting
-\textheight=9.5in
-\textwidth=5in
-\voffset=-0.5in
-\hoffset=-0.25in
-\headsep=0.25in
-\marginparsep=0.25in
-\marginparwidth=1.75in
-\renewcommand{\baselinestretch}{1.2}
-\font\dunhd=cmdunh10 scaled \magstep5
-\font\dunhc=cmdunh10 scaled \magstep4
-\font\dunhb=cmdunh10 scaled \magstep3
-\font\dunha=cmdunh10 scaled \magstep2
-\font\dunhs=cmdunh10 scaled \magstep1
+\titleformat{\subsection}[hang]{\sffamily \bfseries}
+{\thesubsection}{10pt}{}[{\titlerule[0.5pt]}]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\preamble#1{\gdef\@preamble{#1}}
+%%% Colored titles for sections %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\colorsec}[2]{\section[#1]{{\color{#2} #1}}}
+\newcommand{\colorsubsec}[2]{\subsection[#1]{{\color{#2} #1}}}
+\newcommand{\colorsubsubsec}[2]{\subsubsection[#1]{{\color{#2} #1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\sp#1{\underline{\hspace*{#1}}}
-
-% Define title
-\renewcommand{\maketitle}{\@maketitle\thispagestyle{empty}}
-\def\@maketitle{
- \newpage
- \vspace*{-\topskip}
- \hrule height1pt width\textwidth
- \vskip 0.5em
- \makebox[1.6in][l]{\dunhb \coursenumber}
- {\dunhb \hfill \disctitle}
- \vskip 0em
- \makebox[1.6in][l]{\dunhb \semester}
- {\dunhb \hfill \dunhs \ifdefined\discnum Mentoring \discnum: \fi\@date}
- \vskip 1em
- \hrule height1pt width\textwidth \par \vskip .5em
-}
-
-% Define section and subsection styles
-\def\section{\@startsection{section}{1}{\z@}
-{-3.0ex plus -.6ex minus -.2ex}{1.3ex plus .1ex}{\dunhb}}
-\def\subsection{\@startsection{subsection}{2}{\z@}
-{-1.6ex plus -.5ex minus -.1ex}{0.9ex plus .1ex}{\dunha}}
-
-% Define questions listings
-\renewcommand{\questionshook}{
- \setlength{\leftmargin}{0in}
- \setlength{\labelwidth}{0.2in}
-}
-\renewcommand{\thequestion}{\thesection.\arabic{question}}
-\renewcommand{\questionlabel}{\scriptsize\thequestion\hfill}
-
-\long\def\@makecaption#1#2{
- \vskip 10pt
- \setbox\@tempboxa\hbox{{\bf #2}}
- \ifdim \wd\@tempboxa >\hsize {\bf #2}\par \else \hbox
-to\hsize{\hfil\box\@tempboxa\hfil}
- \fi}
-
-% Commands used to add rules to tables and figures
+%%% Commands used to add rules to tables and figures %%%%%%%%%%%%%%%%%%%%%%%%%%
 \floatstyle{ruled}
 \newfloat{ruledfigure}{tbph!}{lop}
 \floatname{ruledfigure}{Figure}
+
 \newfloat{ruledtable}{tbph!}{lop}
 \floatname{ruledtable}{Table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Commands for references
+%%% Commands for references %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\eqref}[1]{\hyperref[#1]{Equation \ref*{#1}}}
 \newcommand{\exref}[1]{\hyperref[#1]{exercise \ref*{#1}}}
 \newcommand{\figref}[1]{\hyperref[#1]{Figure \ref*{#1}}}
@@ -148,11 +143,14 @@ to\hsize{\hfil\box\@tempboxa\hfil}
 \newcommand{\stepref}[1]{\hyperref[#1]{step \ref*{#1}}}
 \newcommand{\tableref}[1]{\hyperref[#1]{Table \ref*{#1}}}
 \renewcommand{\equationautorefname}{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Useful new commands
+%%% Useful new commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\email}[1]{\href{#1}{{\tt #1}}}
+
 \newcommand{\super}[1]{\ensuremath{^{\textrm{#1}}}}
 \newcommand{\sub}[1]{\ensuremath{_{\textrm{#1}}}}
+
 \newcommand{\boxtext}[2]{\framebox{\parbox[b]{#1}{#2}}}
 
 % Defining terms
@@ -162,66 +160,24 @@ to\hsize{\hfil\box\@tempboxa\hfil}
 \makeatletter
 \long\def\unmarkedfootnote#1{{\long\def\@makefntext##1{##1}\footnotetext{#1}}}
 \makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Box sizes
+%%% Box sizes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% These parameters determine the sizes of the boxes used %%%%%%%%%%%%%%%%%%%%
+%%% to explain special and/or subtle points. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\boxlarge}{6.40in}
 \newcommand{\boxmed}{6.05in}
 \newcommand{\boxsmall}{5.75in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\copyablespace}{
-    \BeginAccSupp{method=hex,ActualText=20}
-\ %
-    \EndAccSupp{}
-}
+%%% Miscellaneous parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{0in}
+%\settimeformat{ampmtime}
+\allowdisplaybreaks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Define lstlisting styles
-\lstdefinelanguage{Scheme}{
-    morekeywords=[1]{define, define-syntax, define-macro, lambda, define-stream, stream-lambda},
-    morekeywords=[2]{begin, call-with-current-continuation, call/cc,
-        call-with-input-file, call-with-output-file, case, cond,
-        do, else, for-each, if,
-        let*, let, let-syntax, letrec, letrec-syntax,
-        let-values, let*-values,
-        and, or, not, delay, force,
-        quasiquote, quote, unquote, unquote-splicing,
-        map, fold, syntax, syntax-rules, eval, environment, query},
-    morekeywords=[3]{import, export},
-    alsodigit=!\$\%&*+-./:<=>?@^_~,
-    sensitive=true,
-    morecomment=[l]{;},
-    morecomment=[s]{\#|}{|\#},
-    morestring=[b]",
-    literate=*{`}{{`}}{1}
-}
-
-\lstset{language=Python,
-        basicstyle=\ttfamily\small,
-        showstringspaces=false,
-        breaklines=true,
-        linewidth=7in,
-        keepspaces=true,
-        columns=fullflexible,
-}
-
-% Creates a minipage environment, which can be used to section off text so that
-% it won't be split between two pages. Minipage sets the parskip variable to 0,
-% so this preserves the value in the minipage environment.
-\newlength{\currentparskip}
-\newenvironment{blocksection}{
- \setlength{\currentparskip}{\parskip} % save the value
- \begin{minipage}{\linewidth}
- \setlength{\parskip}{\currentparskip} % restore the value
-}{\end{minipage}}
-
-% Use \printanswers to print with answers and \noprintanswers to print without.
-% Check for defined flag \discussionsolutions to show solutions
-\ifdefined\discussionsolutions
-  \printanswers
-\else
-  \noprintanswers
-\fi
-
-% Mathematical commands
+%%% Mathematical commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\surjects}{\twoheadrightarrow}
 \newcommand{\injects}{\hookrightarrow}
 \newcommand{\isom}{\simeq}
@@ -235,41 +191,133 @@ to\hsize{\hfil\box\@tempboxa\hfil}
 \newcommand{\directsum}{\oplus} % binary direct sum
 \newcommand{\Directsum}{\bigoplus} % direct sum of a collection
 \newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+
 % Expected value
 \newcommand{\E}[0]{\ensuremath{\mathbb{E}}}
+
 % Probability (of an event)
 \renewcommand{\P}[0]{\ensuremath{\mathbb{P}}}
+
 % Variance/covariance
 \newcommand{\var}[0]{\text{var}}
 \newcommand{\cov}[0]{\text{cov}}
-% Fraction with parentheses around it
+
+% Fraction w/parens around it
 \newcommand{\pfrac}[2]{\ensuremath{\left(\frac{#1}{#2}\right)}}
+
 % Fraction you can use even if you're not in math mode
 \newcommand{\mfrac}[2]{\ensuremath{\frac{#1}{#2}}}
+
 % "maybe equal" - equal with a ? sign on top
 \newcommand{\meq}[0]{\ensuremath{\stackrel{?}{=}}}
+
 % maybe anything - anything with a ? on top
 \newcommand{\maybe}[1]{\ensuremath{\stackrel{?}{#1}}}
+
 % \problem{1.1} gives you a spiffy-looking "Problem 1.1"
 \newcommand{\problem}[1]{ \vspace{.15in} \noindent{\bf Problem #1} \quad\\
 \noindent}
+
 % negative/positive infinity
 \newcommand{\ninfty}[0]{{\ensuremath{{-\infty}}}}
 \newcommand{\pinfty}[0]{{\ensuremath{{+\infty}}}}
+
 % Derivative wrt argument
 \newcommand{\der}[1]{\ensuremath{\frac{d}{d #1}}}
+
 % Partial derivative of arg1 wrt arg2
 \newcommand{\pder}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+
 % nth derivative
 \newcommand{\nder}[2]{\ensuremath{\frac{d^{#2}}{d #1^{#2}}}}
+
 % floor and ceiling
 \newcommand{\floor}[1]{\ensuremath{\lfloor{} #1 \rfloor{}}}
 \newcommand{\ceil}[1]{\ensuremath{\lceil{} #1 \rceil{}}}
+
 % like \boxed{} but for text instead of math
 \newcommand{\tboxed}[1]{\boxed{\text{#1}}}
+
 \def\({\left(}
 \def\){\right)}
+
 \def\<{\left\langle}
 \def\>{\right\rangle}
+
 % For lemmas
 \newtheorem{lemma}{Lemma}
+
+% For Python code
+\lstset{language=Python,
+        basicstyle=\ttfamily,
+        commentstyle=\ttfamily,
+        showstringspaces=false,
+        breaklines=true,
+}
+
+% For Scheme code
+\lstdefinelanguage{Scheme}{
+  morekeywords=[1]{define, define-syntax, define-macro, lambda, define-stream,
+                   stream-lambda},
+  morekeywords=[2]{begin, call-with-current-continuation, call/cc,
+                   call-with-input-file, call-with-output-file, case, cond, do,
+                   else, for-each, if, let*, let, let-syntax, letrec,
+                   letrec-syntax, let-values, let*-values, and, or, not, delay,
+                   force, quasiquote, quote, unquote, unquote-splicing, map,
+                   fold, syntax, syntax-rules, eval, environment, query},
+  morekeywords=[3]{import, export},
+  alsodigit=!\$\%&*+-./:<=>?@^_~,
+  sensitive=true,
+  morecomment=[l]{;},
+  morecomment=[s]{\#|}{|\#},
+  morestring=[b]",
+  basicstyle=\ttfamily,
+  keywordstyle=\bf\ttfamily,
+  upquote=true,
+  breaklines=true,
+  breakatwhitespace=true,
+  literate=*{`}{{`}}{1}
+}
+
+% Remove spacing before and after `lstlisting` block, so there's no extra space
+% between two blocks.
+\lstset{aboveskip=0pt,belowskip=0pt}
+
+% Creates a minipage environment, which can be used to section off text so that
+% it won't be split between two pages. Minipage sets the parskip variable to 0,
+% so this preserves the value in the minipage environment.
+%
+% Source:
+% http://tex.stackexchange.com/questions/43002/how-to-preserve-the-same-parskip-in-minipage
+\newlength{\currentparskip}
+\newenvironment{blocksection}
+{
+    \setlength{\currentparskip}{\parskip}% save the value
+    \begin{minipage}{\linewidth}
+    \setlength{\parskip}{\currentparskip}% restore the value
+}
+{
+    \end{minipage}
+}
+    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use \printanswers to print with answers and \noprintanswers to print without.
+% Check for defined flag \discussionsolutions to show solutions
+\ifdefined\discussionsolutions
+  \printanswers
+\else
+  \noprintanswers
+\fi
+
+% The nonsol environment will show items within it only if answers are not set
+% to be printed. Useful for hiding docstring in worksheet solutions.
+\newenvironment{nonsol}{}{}
+\ifdefined\discussionsolutions
+    \excludecomment{nonsol}
+\else
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{\Large \sc Computer Science Mentors 61A}

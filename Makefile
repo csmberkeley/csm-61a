@@ -1,13 +1,14 @@
 # You should only have to modify RELEASED and SOLUTIONS.
+# Also change SRC once per semester.
 RELEASED =
 SOLUTIONS =
 
 DST = published
-SRC = src
+SRC = src/fa17
 
 DEPEND = python make_dependency.py
 TEX = pdflatex
-TEX_FLAGS = -halt-on-error -output-directory ../$(DST)
+TEX_FLAGS = -halt-on-error -output-directory ../../$(DST)
 
 SOURCES = $(wildcard $(SRC)/*.tex)
 HANDOUT = $(SOURCES:$(SRC)/%.tex=%)
@@ -31,11 +32,13 @@ $(DST)/%.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
 	cd $(SRC); $(TEX) $(TEX_FLAGS) $*.tex;
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
+	open $(DST)/$*.pdf
 
 $(DST)/%_sol.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
 	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_sol" "\def\discussionsolutions{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
+	open $(DST)/$*_sol.pdf
 
 $(DST):
 	mkdir -p $@

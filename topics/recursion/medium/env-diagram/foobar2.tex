@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question What would change here?
+
+%% Prompt %%
+\begin{lstlisting}
+x = 20
+
+def bar():
+    return lambda y: x-y
+
+def foo(y):
+    x = 5
+    return bar
+
+y = foo(7)
+z = y()
+print(z(2))
+\end{lstlisting}
+
+\begin{solution}[0.3in]
+   Output: 18 \newline
+    \includegraphics[scale=0.5]{foobar2.png}
+\end{solution}
+\end{blocksection}

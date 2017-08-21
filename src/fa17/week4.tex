@@ -1,0 +1,34 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{1}
+\title{\textsc{Recursion and Higher Order Functions}}
+\date{September 11 to September 15, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Recursion}
+\subimport{../../topics/recursion/text/}{introduction.tex}
+\begin{questions}
+\subimport{../../topics/recursion/easy/}{num-digits.tex}
+\subimport{../../topics/recursion/medium/}{is-sorted.tex}
+\end{questions}
+
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/recursion/medium/env-diagram/}{foobar1.tex}
+\subimport{../../topics/recursion/medium/env-diagram/}{foobar2.tex}
+
+\section{Higher Order Functions}
+\subimport{../../topics/hof/medium/}{mystery.tex}
+\subimport{../../topics/hof/medium/wwpd/}{mystery.tex}
+\end{questions}
+
+\end{document}
