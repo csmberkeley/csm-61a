@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question Write a function that takes in a list \texttt{nums} and returns a
+new list with only the primes from \texttt{nums}. Assume that
+\texttt{is\char`_prime(n)} is defined. You may use a \texttt{while} loop, a
+\texttt{for} loop, or a list comprehension.
+
+\begin{lstlisting}
+def all_primes(nums):
+\end{lstlisting}
+\begin{solution}[2in]
+\begin{lstlisting}
+    result = []
+    for i in nums:
+        if is_prime(i):
+            result = result + [i]
+    return result
+
+    List comprehension:
+    return [x for x in nums if is_prime(x)]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
