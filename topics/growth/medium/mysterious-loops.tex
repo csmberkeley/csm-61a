@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question \textbf{Mysterious loops:} What is the order of growth in time for the following functions? Use big-O notation.
+
+\begin{parts}
+
+\part
+\begin{lstlisting}
+def mystery(n):
+    for i in range(n):
+        while i % 2 != 0:
+            print(i)
+            i = i - 1
+        print("Done")
+\end{lstlisting}
+\begin{solution}[0.25in]
+$O(n)$. The work for when $i$ is divisible by two is constant. Subtracting one
+will immediately allow us to exit the \texttt{while} loop. Therefore, we can
+concentrate on just the outer loop.
+\end{solution}
+
+\part
+\begin{lstlisting}
+def fun(n):
+    for i in range(n):
+        for j in range(n * n):
+            if j == 4:
+                return -1
+            print("Fun!")
+\end{lstlisting}
+\begin{solution}[0.25in]
+$O(1)$. Inner loop always immediately exits after running for 4 iterations,
+independent of $n$.
+\end{solution}
+
+\end{parts}
+\end{blocksection}

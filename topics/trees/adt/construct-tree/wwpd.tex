@@ -1,27 +1,28 @@
-\question What would Python display?
+\begin{blocksection}
+\question What would this output?
 
-\begin{parts}
-\part \begin{lstlisting}
-root(t)
+\begin{lstlisting}
+>>> label(t)
 \end{lstlisting}
-
-\begin{solution}[1em]
-\texttt{9}
+\begin{solution}[.25in]
+9
 \end{solution}
 
-\part \begin{lstlisting}
-branches(t)[2]
+\begin{lstlisting}
+>>> branches(t)[2]
 \end{lstlisting}
-
-\begin{solution}[1em]
-\texttt{[4, [7], [3]]}
+\begin{solution}[.25in]
+\begin{lstlisting}
+tree(4, [tree(7, []), tree(3, [])])
+\end{lstlisting}
 \end{solution}
 
-\part \begin{lstlisting}
-branches(branches(t)[2])[0]
+\begin{lstlisting}
+>>> branches(branches(t)[2])[0]
 \end{lstlisting}
-
-\begin{solution}[1em]
-\texttt{[7]}
+\begin{solution}[.25in]
+\begin{lstlisting}
+tree(7, [])
+\end{lstlisting}
 \end{solution}
-\end{parts}
+\end{blocksection}
