@@ -1,13 +1,13 @@
 \begin{blocksection}
-\question \textbf{Orders of Growth and Trees:} Assume we are using the non-mutable Tree implementation introduced in discussion. Consider the following function:
+\question \textbf{Orders of Growth and Trees:} Assume we are using the non-mutable tree implementation introduced in discussion. Consider the following function:
 \begin{lstlisting}
-def word_finder(t, n, word):
+def word_finder(t, p, word):
     if root(t) == word:
-        n -= 1
-        if n == 0:
+        p -= 1
+        if p == 0:
             return True
     for branch in branches(t):
-        if word_finder(branch, n, word):
+        if word_finder(branch, p, word):
             return True
     return False
 \end{lstlisting}
@@ -22,10 +22,9 @@ Then, \texttt{word\char`_finder} returns True if any paths from the root towards
 the leaves have at least \texttt{n} occurrences of the word and False otherwise.
 \end{solution}
 
-\part If a tree has $n$ total nodes, what is the total runtime for all searches
-in big-O notation?
+\part If a tree has $n$ total nodes, what is the total runtime in big-$\Theta$ notation?
 \begin{solution}[0.25in]
-$O(n)$. At worst, we must visit every node of the tree.
+$\Theta(n)$. At worst, we must visit every node of the tree.
 \end{solution}
 
 \end{parts}

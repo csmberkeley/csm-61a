@@ -18,15 +18,15 @@ def fib(n):
 def foo(n, f):
     return n + f(500)
 \end{lstlisting}
-In big-O notation, describe the runtime for the following:
+In big-$\Theta$ notation, describe the runtime for the following:
 \begin{parts}
 \part \texttt{foo(10, hailstone)}
 \begin{solution}[0in]
-$O(1)$. $f(500)$ is independent of the size of the input $n$.
+$\Theta(1)$. $f(500)$ is independent of the size of the input $n$.
 \end{solution}
 \part \texttt{foo(3000, fib)}
 \begin{solution}[0in]
-$O(1)$. See above.
+$\Theta(1)$. See above.
 \end{solution}
 \end{parts}
 
