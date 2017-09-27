@@ -15,14 +15,14 @@ def word_finder(t, p, word):
 \begin{parts}
 \part What does this function do?  \newline
 \begin{solution}[0.25in]
-This function take a Tree \texttt{t}, an integer \texttt{n}, and a string
+This function take a Tree \texttt{t}, an integer \texttt{p}, and a string
 \texttt{word} in as input.
 
 Then, \texttt{word\char`_finder} returns True if any paths from the root towards
-the leaves have at least \texttt{n} occurrences of the word and False otherwise.
+the leaves have at least \texttt{p} occurrences of the word and False otherwise.
 \end{solution}
 
-\part If a tree has $n$ total nodes, what is the total runtime in big-$\Theta$ notation?
+\part If a tree has $n$ total nodes, what is the worst case runtime in big-$\Theta$ notation?
 \begin{solution}[0.25in]
 $\Theta(n)$. At worst, we must visit every node of the tree.
 \end{solution}
