@@ -1,4 +1,4 @@
-\begin{blocksection}
+% \begin{blocksection}
 \question Given some list \texttt{lst}, possibly a deep list, mutate \texttt{lst} to have the accumulated sum of all elements so far in the list. If there is a nested list, mutate it to similarly reflect the accumulated sum of all elements so far in the nested list. Return the total sum of \texttt{lst}.
 
 \emph{Hint:} You may find it useful to use the \lstinline$isinstance$ function, which returns true for \lstinline$isinstance(l, list)$ if \texttt{l} is a list and false otherwise.
@@ -18,7 +18,7 @@ def accumulate(lst):
     """
 \end{lstlisting}
 
-\begin{solution}[2in]
+\begin{solution}[1in]
 \begin{lstlisting}
     sum_so_far = 0
     for i in range(len(lst)):
@@ -32,4 +32,4 @@ def accumulate(lst):
     return sum_so_far
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+% \end{blocksection}

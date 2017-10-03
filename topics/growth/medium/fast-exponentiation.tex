@@ -1,9 +1,10 @@
-\begin{blocksection}
+% \begin{blocksection}
 \question \textbf{Fast Exponentiation:} in this problem, we will examine a
 real-world algorithm used to improve the speed of calculating exponents.
 
 \begin{parts}
 
+\begin{blocksection}
 \part First, express the runtime of the naive exponentiation algorithm in big-O
 notation.
 \begin{lstlisting}
@@ -16,7 +17,9 @@ def exp(b, n):
 \begin{solution}[0.25in]
 $O(n)$. $n$ decreases by 1 each call, so there are naturally $n$ calls.
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part Now, express the runtime of the fast exponentiation algorithm in big-O
 notation.
 \begin{lstlisting}
@@ -32,7 +35,9 @@ def fast_exp(b, n):
 $O(\log n)$. $n$ is halved each call, so the number of calls is the number of
 times $n$ must be halved to get to 1. This is $\log n$.
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part What about this slightly modified version of \texttt{fast\char`_exp}?
 \begin{lstlisting}
 def fast_exp(b, n):
@@ -51,6 +56,7 @@ the second call will perform $n / 2$ operations, the third will perform $n / 4$
 operations, etc. Using geometric series, we see this adds up to $2n$, which is
 $n$ if we ignore constant terms.
 \end{solution}
+\end{blocksection}
 
 \end{parts}
-\end{blocksection}
+% \end{blocksection}

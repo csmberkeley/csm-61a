@@ -4,22 +4,20 @@ Draw the environment diagram for the following code.
 
 \begin{lstlisting}
 eggplant = 8
-carrot = 0
 def vegetable(kale):
-    carrot = 10
     def eggplant(spinach):
         nonlocal eggplant
         nonlocal kale
         kale = 9
-        carrot = 20
         eggplant = spinach
+        print(eggplant, kale)
     eggplant(kale)
     return eggplant
 
-spinach = vegetable(lambda kale: carrot*kale)(eggplant)
+spinach = vegetable('kale')
 \end{lstlisting}
 
 \begin{solution}[1.5in]
-\url{https://goo.gl/mh9ETW}
+\url{https://goo.gl/F43X2Q}
 \end{solution}
 \end{blocksection}
