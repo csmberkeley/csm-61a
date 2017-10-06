@@ -1,0 +1,58 @@
+\begin{blocksection}
+\question \textbf{(Optional)} Now write \texttt{reverse} by modifying the existing Links. Assume reverse returns the head of the new list (so the last \texttt{Link} object of the previous list).
+
+First, draw out the box and pointer for the following:
+\begin{lstlisting}
+>>> a = Link(1, Link(2))
+>>> a.rest.rest = a
+>>> a.rest = Link.empty
+\end{lstlisting}
+Observe how the pointers change, as well as the order in which they are
+modified.
+\begin{solution}[0.6in]
+\begin{lstlisting}
+   +---+---+  +---+---+
++->| 1 | / |  | 2 | --|--+
+|  +---+---+  +---+---+  |
+|                        |
++------------------------+
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Now, generalize this to reverse an entire linked list.
+\begin{lstlisting}
+def reverse(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3)))
+    >>> b = reverse(a)
+    >>> b
+    Link(3, Link(2, Link(1)))
+    >>> a
+    Link(3, Link(2, Link(1)))
+    """
+\end{lstlisting}
+\begin{solution}[1.25in]
+Here are two possible solutions.
+\begin{lstlisting}
+def reverse(lst):
+    if lst == Link.empty or lst.rest == Link.empty:
+        return lst
+    else:
+        new_start = reverse(lst.rest)
+        lst.rest.rest = lst
+        lst.rest = Link.empty
+        return new_start
+
+def reverse(lst):
+    if lst.rest is not Link.empty:
+        second, last = lst.rest, lst
+        lst = reverse(second)
+        second.rest, last.rest = last, Link.empty
+    return lst
+\end{lstlisting}
+\end{solution}
+
+
+\end{blocksection}

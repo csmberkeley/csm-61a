@@ -1,0 +1,80 @@
+\begin{blocksection}
+\question What will Python output? Draw box-and-pointer diagrams to help determine this.
+
+\begin{lstlisting}
+>>> a = Link(1, Link(2, Link(3)))
+\end{lstlisting}
+\begin{solution}[0in]
+\begin{lstlisting}
++---+---+  +---+---+  +---+---+
+| 1 | --|->| 2 | --|->| 3 | / |
++---+---+  +---+---+  +---+---+
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.first
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.first = 5
+\end{lstlisting}
+\begin{solution}[0in]
+\begin{lstlisting}
++---+---+  +---+---+  +---+---+
+| 5 | --|->| 2 | --|->| 3 | / |
++---+---+  +---+---+  +---+---+
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.first
+\end{lstlisting}
+\begin{solution}[.25in]
+5
+\end{solution}
+
+\begin{lstlisting}
+>>> a.rest.first
+\end{lstlisting}
+\begin{solution}[.25in]
+2
+\end{solution}
+
+\begin{lstlisting}
+>>> a.rest.rest.rest.rest.first
+\end{lstlisting}
+\begin{solution}[.25in]
+Error: âtupleâ object has no attribute ârestâ (Link.empty has no rest)
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a.rest.rest.rest = a
+\end{lstlisting}
+\begin{solution}[0in]
+\begin{lstlisting}
+   +---+---+  +---+---+  +---+---+
++->| 5 | --|->| 2 | --|->| 3 | --|--+
+|  +---+---+  +---+---+  +---+---+  |
+|                                   |
++-----------------------------------+
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.rest.rest.rest.rest.first
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

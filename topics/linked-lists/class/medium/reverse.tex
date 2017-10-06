@@ -1,0 +1,51 @@
+\begin{blocksection}
+\question Write a function \texttt{reverse}, which takes in a \texttt{Link} and
+returns a new \texttt{Link} that has the order of the contents reversed.\\
+\emph{Hint:} You may want to use a helper function if you're solving this
+recursively.
+\begin{lstlisting}
+def reverse(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3)))
+    >>> b = reverse(a)
+    >>> b
+    Link(3, Link(2, Link(1)))
+    >>> a
+    Link(1, Link(2, Link(3)))
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+There are quite a few different methods. We have listed some here -- can you
+think of any others?
+\begin{lstlisting}
+# Recursive w/ Helper
+def reverse(lst):
+    def helper(so_far, rest):
+        if rest is Link.empty:
+            return so_far
+        else:
+            return helper(Link(rest.first, so_far), rest.rest)
+    return helper(Link.empty, lst)
+
+# Recursive w/o Helper
+def reverse(lst):
+    if lst is Link.empty or lst.rest is Link.empty:
+        return lst
+    secondElement = lst.rest
+    lst.rest = Link.empty
+    reversedRest = reverse(secondElement)
+    secondElement.rest = lst
+    return reversedRest
+
+# Iterative
+def reverse(lst):
+    rev = Link.empty
+    while lst is not Link.empty:
+        rev = Link(lst.first, rev)
+        lst = lst.rest
+    return rev
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

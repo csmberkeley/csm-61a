@@ -1,0 +1,35 @@
+\begin{blocksection}
+\question \textbf{(Optional)} Write \texttt{has\char`_cycle} which takes in a
+\texttt{Link} and returns \texttt{True} if and only if there is a cycle in the
+\texttt{Link}.
+
+\begin{lstlisting}
+def has_cycle(s):
+    """
+    >>> has_cycle(Link.empty)
+    False
+    >>> a = Link(1, Link(2, Link(3)))
+    >>> has_cycle(a)
+    False
+    >>> a.rest.rest.rest = a
+    >>> has_cycle(a)
+    True
+    """
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+    if s is Link.empty:
+        return False
+    slow, fast = s, s.rest
+    while fast is not Link.empty:
+        if fast.rest is Link.empty:
+            return False
+        elif fast is slow or fast.rest is slow:
+            return True
+        slow, fast = slow.rest, fast.rest.rest
+    return False
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
