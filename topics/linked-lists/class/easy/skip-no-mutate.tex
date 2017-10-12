@@ -25,7 +25,7 @@ def skip(lst): # Iteratively
     if lst is Link.empty:
         return Link.empty
     original = lst
-    while lst.rest is not Link.empty:
+    while lst is not Link.empty and lst.rest is not Link.empty:
         lst.rest = lst.rest.rest
         lst = lst.rest
     return original
