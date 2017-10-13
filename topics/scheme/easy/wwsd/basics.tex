@@ -1,103 +1,141 @@
-\question What Would Scheme Display?
+\begin{blocksection}
+\question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
 
-\begin{parts}
-\part \lstinline$scm> 3.14$
+\begin{lstlisting}
+scm> 3.14
+\end{lstlisting}
+\begin{solution}[0.25in] 
+\texttt{3.14}
+\end{solution}
+
+\begin{lstlisting}
+scm> pi
+\end{lstlisting}
 \begin{solution}[0.25in]
-\lstinline$3.14$
+\texttt{Error}
 \end{solution}
 
-\part \lstinline$scm> pi$
+\begin{lstlisting}
+scm> (define pi 3.14)
+\end{lstlisting}
 \begin{solution}[0.25in]
-\lstinline$Error$
+\texttt{pi}
 \end{solution}
 
-\part \lstinline$scm> (define pi 3.14)$
-\begin{solution}[0.25in]
-\lstinline$pi$
-\end{solution}
-
-\part \lstinline$scm> pi$
+\begin{lstlisting}
+scm> pi
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$3.14$
+\texttt{3.14}
 \end{solution}
 
-\part \lstinline$scm> 'pi$
+\begin{lstlisting}
+scm> 'pi
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$pi$
+\texttt{pi}
 \end{solution}
 
-\part \lstinline$scm> (if 2 3 4)$
+\begin{lstlisting}
+scm> (if 2 3 4)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$3$
+\texttt{3}
 \end{solution}
 
-\part \lstinline$scm> (if 0 3 4)$
+\begin{lstlisting}
+scm> (if 0 3 4)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$3$
+\texttt{3}
 \end{solution}
 
-\part \lstinline$scm> (if #f 3 4)$
+\begin{lstlisting}
+scm> (if #f 3 4)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$4$
+\texttt{4}
 \end{solution}
 
-\part \lstinline$scm> (if nil 3 4)$
+\begin{lstlisting}
+scm> (if nil 3 4)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$3$
+\texttt{3}
 \end{solution}
 
-\part \lstinline$scm> (if (= 1 1) 'hello 'goodbye)$
+\begin{lstlisting}
+scm> (if (= 1 1) 'hello 'goodbye)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$hello$
+\texttt{hello}
 \end{solution}
+\end{blocksection}
 
-\part \begin{lstlisting}
+\begin{blocksection}
+\begin{lstlisting}
 scm> (define (factorial n)
         (if (= n 0)
             1
             (* n (factorial (- n 1)) )))
 \end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$factorial$
+\texttt{factorial}
 \end{solution}
 
-\part \lstinline$scm> (factorial 5)$
+\begin{lstlisting}
+scm> (factorial 5)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$120$
+\texttt{120}
 \end{solution}
 
-\part \lstinline$scm> (= 2 3)$
+\begin{lstlisting}
+scm> (= 2 3)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$#f$
+\texttt{\#f}
 \end{solution}
 
-\part \lstinline$scm> (= '() '())$
+\begin{lstlisting}
+scm> (= '() '())
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$Error$
+\texttt{Error}
 \end{solution}
 
-\part \lstinline$scm> (eq? '() '())$
+\begin{lstlisting}
+scm> (eq? '() '())
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$#t$
+\texttt{\#t}
 \end{solution}
 
-\part \lstinline$scm> (eq? nil nil)$
+\begin{lstlisting}
+scm> (eq? nil nil)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$#t$
+\texttt{\#t}
 \end{solution}
 
-\part \lstinline$scm> (eq? '() nil)$
+\begin{lstlisting}
+scm> (eq? '() nil)
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$#t$
+\texttt{\#t}
 \end{solution}
 
-\part \lstinline$scm> (pair? (cons 1 2))$
+\begin{lstlisting}
+scm> (pair? (cons 1 2))
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$#t$
+\texttt{\#t}
 \end{solution}
 
-\part \lstinline$scm> (list? (cons 1 2))$
+\begin{lstlisting}
+scm> (list? (cons 1 2))
+\end{lstlisting}
 \begin{solution}[.25in]
-\lstinline$#f$
+\texttt{\#f}
 \end{solution}
-\end{parts}
+\end{blocksection}

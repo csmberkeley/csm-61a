@@ -1,0 +1,103 @@
+\begin{lstlisting}
+scm> (cons 1 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{(1 . 2)}
+\begin{center}
+\includegraphics[scale=1]{scheme_lists_1}
+\end{center}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cons 1 (cons 2 nil))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{(1 2)}
+\begin{center}
+\includegraphics[scale=0.7]{scheme_lists_2}
+\end{center}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cons 1 '(2 3 4 5))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{(1 2 3 4 5)}
+\begin{center}
+\includegraphics[scale=0.7]{scheme_lists_3}
+\end{center}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cons 1 '(2 (cons 3 4))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{(1 2 (cons 3 4))}
+\begin{center}
+\includegraphics[scale=0.7]{scheme_lists_4}
+\end{center}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cons 1 (2 (cons 3 4)))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+eval: bad function in : (2 (cons 3 4))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+scm> (define a '(1 2 . 3))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+a
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> a
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+(1 2 . 3)
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (car a)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr a)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+(2 . 3)
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cadr a)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+
+How can we get the 3 out of a?
+\begin{solution}[.25in]
+\begin{lstlisting}
+(cddr a)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
