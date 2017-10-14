@@ -19,7 +19,7 @@
 
 %%% Question %%%
 
-\section{List Mutation}
+\section{List Mutation and Nonlocal}
 \begin{questions}
 
 \item Draw the Box and Pointer!
@@ -46,40 +46,44 @@
 >>> pom.extend(pompom)
 \end{lstlisting}
 
+\clearpage
+\vspace{4cm}
+\item What is the result of calling pop(pip)?
+
+\begin{lstlisting}
+
+pip = [8, 2]
+def pop(tart):
+    pop = tart[pip[1]:]
+    def pup(p):
+        nonlocal pop
+        pop = [pop.pop()] + [pop] + pop[:] 
+        return pop.append(9)
+    if pup(3):
+        return pop[2]
+    return pop[3]
+pip.extend([8, 3])
+pop(pip)
+\end{lstlisting}
+
 \end{questions}
 \clearpage
 
 \section{OOP}
 \begin{questions}
-\item The fOOd Chain
+\item An Energizing Example!
 \begin{lstlisting}
-class Animal:
-    kingdom = []
-    location = 'Earth'
-    def __init__(self, type, prey):
-        self.type = type
-        self.prey = prey
-        self.kingdom.append(self)
-        self.food_chain = [self]
-    def eat(self):
-        self.location = 'Mars'
+class Pokemon:
+    hp = 100
+    damage = 25
+    def __init__(self, name):
+        self.name = name
+    def attack(self, other):
+        other.hp -= self.damage
     def __repr__(self):
-        return self.type
-    
-class Predator(Animal):
-    def eat(self):
-        for animal in self.kingdom:
-            if repr(animal) == self.prey:
-                self.food_chain.extend(animal.food_chain)
-                self.kingdom.remove(animal)
-    def __str__(self):
-        return '{}s eat {}s.'.format(self.type, self.prey)
-
-grasshopper = Animal('Grasshopper', 'Grass')
-sparrow = Predator('Sparrow', 'Grasshopper')
-hawk = Predator('Hawk', 'Sparrow')
+        return self.name
+ 
 \end{lstlisting}
-\clearpage
 For each of the expressions in the table below, write the output displayed by the interactive Python interpreter when the expression is evaluated. The output may have multiple lines. If more than 3 lines are displayed, just write the first 3. If an error occurs, write âErrorâ. If evaulation would run forever, write âForeverâ.\\
 Assume that you have started \texttt{python3} and executed the following statements:
 
@@ -87,98 +91,173 @@ Assume that you have started \texttt{python3} and executed the following stateme
 \begin{tabular}{ |p{8cm}|p{6cm}| } 
  \hline
  \begin{lstlisting}
->>> sparrow.kingdom 
+>>> pika = Pokemon('Pikachu') 
+>>> pika.hp
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> print(grasshopper)
+>>>pika.damage
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> Animal.eat(grasshopper)
->>> grasshopper.location
+>>>pika.trainer = 'Kevin'
+>>>pika.trainer
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> hawk.location
+>>>Pokemon.trainer
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> print(hawk)
+>>>bulba = Pokemon('Bulbasaur')
+>>>bulba.hp -= pika.damage
+>>>Pokemon.hp
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> sparrow.eat()
->>> sparrow.food_chain
-\end{lstlisting} &  \\  \hline
- \begin{lstlisting}
->>> hawk.eat()
->>> hawk.location
-\end{lstlisting} &  \\  \hline
- \begin{lstlisting}
->>> hawk.kingdom
-\end{lstlisting} &  \\  \hline
- \begin{lstlisting}
->>> hawk.food_chain
-\end{lstlisting} &  \\  \hline
- \begin{lstlisting}
->>> grasshopper.food_chain
+>>>pika.hp, bulba.hp
 \end{lstlisting} &  \\  \hline
 \end{tabular}
 \end{center}
-
 \clearpage
-
-\item The fOOd Chain
-\begin{lstlisting}
-class Bird:
-    def __init__(self, call):
-        self.call = call
-        self.can_fly = True
-    def fly(self):
-        if self.can_fly:
-            return 'Don't stop me now!'
-        else:
-            return 'Ground control to Major Tom...'
-    def speak(self):
-        print(self.call)  
-\end{lstlisting}
-\begin{lstlisting}
-class Chicken(Bird):
-    def speak(self, other):
-        super().speak()
-        other.speak()
-
-class Penguin(Bird):
-    can_fly = False
-    def speak(self):
-        call = 'Ice to meet you'
-        print(call)
-
-andre = Chicken('cluck')
-gunter = Penguin('noot')
-\end{lstlisting}
-\clearpage
-For each of the expressions in the table below, write the output displayed by the interactive Python interpreter when the expression is evaluated. The output may have multiple lines. If more than 3 lines are displayed, just write the first 3. If an error occurs, write âErrorâ. If evaulation would run forever, write âForeverâ.\\
-Assume that you have started \texttt{python3} and executed the following statements.
-
 \begin{center}
 \begin{tabular}{ |p{8cm}|p{6cm}| } 
  \hline
  \begin{lstlisting}
->>> andre.speak(Bird('coo'))
+>>>pika.attack(bulba)
+>>>pika.hp, bulba.hp
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> andre.speak()
+>>>Pokemon.attack(pika, bulba)
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> gunter.fly()
+>>>pika.hp, bulba.hp
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> andre.speak(gunter)
+>>>pika.attack = lambda self, other: print("It doesn't affect " + other.name)
+>>>pika.attack(bulba)
 \end{lstlisting} &  \\  \hline
  \begin{lstlisting}
->>> Bird.speak(gunter)
+>>>pika.attack
+>>>pika.attack = bulba.attack
+>>>pika.attack(bulb)
+>>>pika.hip, bulba.hp
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.attack
 \end{lstlisting} &  \\  \hline
 \end{tabular}
 \end{center}
-\end{questions}
+
+
 \clearpage
+\item ElementPointer
+ 
+ \begin{lstlisting}
+ 
+"""Let's build a class ElementPointer* to keep track of the next element in a list: [1, 2, 3].
+Our class will yield the next element upon command.
+Our class also allows us to mark a point in our list so that ElementPointer yields the element at that point when we ask for the next element in our list.
+
+*This question is adapted from CS186. '"""
+
+class ElementPointer:
+
+	lst = [1, 2, 3]
+	
+	def __init__(self):
+	
+		self.curr_index = 0
+				
+		self.marked_index = -1
+
+def has_next(self):
+		
+		"""has_next returns True when there is another element in our list that has yet to be yielded.
+		
+		>>> a = ElementPointer()
+		
+		>>> a.next_elem()
+		
+			1
+		
+		>>> a.has_next()
+		
+			True		                           """
+		
+		____________________________________
+		
+ def next_elem(self):
+		
+		"""next_elem returns the next element of the list.
+		
+		>>> a = ElementPointer()
+		
+		>>> a.next_elem()
+		
+			1
+		
+		>>> a.next_elem()
+		
+			2                                      """
+		
+		____________________________________
+		
+		____________________________________
+		
+		____________________________________
+        
+def mark(self):
+		
+		"""mark remembers the current index of our iterator so that we can reset
+		
+		back to that mark. mark does nothing if the iterator has not yet yielded an
+		
+		element or has not yielded an element since the last reset.
+		
+		>>> a = ElementPointer()
+		
+		>>> a.next_elem()
+		
+			1	
+		
+		>>> a.mark()
+		
+		>>> a.reset()
+		
+		>>> a.next_elem()
+		
+			1      """
+		
+		____________________________________
+		
+		____________________________________
+		
+		____________________________________
+		
+def reset(self):
+		
+		"""reset resets the iterator such that the next element it yields is at the marked point.
+		
+		>>> a.next_elem()
+		
+			1	
+		
+		>>> a.mark()
+		
+		>>> a.reset()
+		
+		>>> a.next_elem()
+		
+			1 """
+		
+		____________________________________
+		
+		____________________________________
+		
+		____________________________________
+		
+		____________________________________
+\end{lstlisting}
+
+\end{questions}
+
+
 
 \section{Linked Lists and Trees}
 \begin{questions}
