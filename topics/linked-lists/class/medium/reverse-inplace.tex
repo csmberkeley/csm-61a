@@ -34,7 +34,7 @@ def reverse(lst):
     """
 \end{lstlisting}
 \begin{solution}[1.25in]
-Here are two possible solutions.
+Here are three possible solutions.
 \begin{lstlisting}
 def reverse(lst):
     if lst == Link.empty or lst.rest == Link.empty:
@@ -44,7 +44,16 @@ def reverse(lst):
         lst.rest.rest = lst
         lst.rest = Link.empty
         return new_start
-
+ 
+def reverse(lst):
+    if lst is Link.empty or lst.rest is Link.empty:
+        return lst
+    secondElement = lst.rest
+    lst.rest = Link.empty
+    reversedRest = reverse(secondElement)
+    secondElement.rest = lst
+    return reversedRest
+        
 def reverse(lst):
     if lst.rest is not Link.empty:
         second, last = lst.rest, lst

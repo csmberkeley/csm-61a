@@ -16,8 +16,10 @@ def skip(lst):
 \end{lstlisting}
 \begin{solution}[1in]
 \begin{lstlisting}
-    if lst is Link.empty or lst.rest is Link.empty:
-        return lst
+    if lst is Link.empty 
+    	return Link.empty
+     elif lst.rest is Link.empty:
+        return Link(lst.first)
     return Link(lst.first, skip(lst.rest.rest))
 \end{lstlisting}
 \end{solution}
