@@ -1,0 +1,84 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Tail Recursion, Interpreters, and Iterators}}
+\date{November 6 to November 10, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+
+
+\section{Tail Recursion}
+\begin{questions}
+\question What is a tail context/tail call? What is a tail recursive function?
+\begin{solution}[0.5in]
+A tail call is a call expression in a tail context. A tail context is usually the final action of a procedure/function.\newline
+\newline
+A tail recursive function is where all the recursive calls of the function are in tail contexts. \newline
+\newline
+An ordinary recursive function is like building up a long chain of domino pieces, then knocking down the last one. A tail recursive function is like putting a domino piece up, knocking it down, putting a domino piece up again, knocking it down again, and so on. This metaphor helps explain why tail calls can be done in constant space, whereas ordinary recursive calls need space linear to the number of frames (in the metaphor, domino pieces are equivalent to frames).
+\end{solution}
+\question Why are tail calls useful for recursive functions?
+\begin{solution}[0.5in]
+When a function is tail recursive, it can effectively discard all the past recursive frames and only keep the current frame in memory. This means we can use a constant amount of memory with recursion, and that we can deal with an unbounded number of tail calls with our Scheme interpreter.
+\end{solution}
+
+Answer the following questions with respect to the following function:
+\begin{lstlisting}
+(define (sum-list lst)
+  (if (null? lst)
+    0
+    (+ (car lst) (sum-list (cdr lst)))
+  )
+)
+\end{lstlisting}
+\question Why is sum-list not a tail call? Optional: draw out the environment diagram of this sum-list with list: (1 2 3). When do you add 2 and 3?
+\begin{solution}[0.5in]
+Sum list is not the last call we make, itâs actually the other addition which we do after we evaluate sum-list. Sum list is not the last expression we evaluate.
+\end{solution}
+\question Rewrite sum-list in a tail recursive context.
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (sum-list-tail lst)
+  (define (sum-list-helper lst sofar)
+    (if (null? lst)
+      sofar
+      (sum-list-helper (cdr lst) (+ sofar (car lst)))
+    )
+  )
+  (sum-list-helper lst 0)
+)
+\end{lstlisting}
+\end{solution}
+
+
+\section{Interpreters}
+\subimport{../../topics/interpreters/easy/}{eval-apply.tex}
+\subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\subimport{../../topics/interpreters/medium/}{hack-pi.tex}
+
+
+\section{Iterators}
+\subimport{../../topics/iterators/easy/}{iterator-vs-iterable.tex}
+
+
+
+\end{questions}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
