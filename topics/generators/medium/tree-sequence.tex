@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Define \lstinline$tree_sequence$, a generator that iterates through a tree by first yielding the root value and then yielding each branch.
+\question Define \lstinline$tree_sequence$, a generator that iterates through a tree by first yielding the root value and then yielding the values from each branch.
 
 \begin{lstlisting}
 def tree_sequence(t):
@@ -12,7 +12,7 @@ def tree_sequence(t):
 
 \begin{solution}[0.5in]
 \begin{lstlisting}
-	yield t.entry
+	yield t.label
 	for branch in t.branches:
 		for value in tree_sequence(branch):
 			yield value
