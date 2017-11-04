@@ -1,0 +1,237 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{9}
+\title{\textsc{Generators and Streams}}
+\date{November 13 to November 17, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+
+
+\section{Generators}
+\begin{questions}
+    \subimport{../../topics/generators/easy/}{foo.tex}
+    \newpage
+    \subimport{../../topics/generators/medium/}{hailstone.tex}
+    \subimport{../../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+
+
+\newpage
+%%% Question %%%
+\section{Streams}
+\begin{questions}
+\begin{blocksection}
+\question Whatâs the advantage of using a stream over a linked list?
+\begin{solution}[0.5in] 
+Lazy evaluation. We only evaluate up to what we need.
+\end{solution}
+
+\question Whatâs the maximum size of a stream?
+\begin{solution}[0.5in]
+Infinity
+\end{solution}
+
+\question Whatâs stored in first and rest? What are their types? 
+\begin{solution}[0.5in]
+First is a value, rest is another stream (either a method to calculate it, or an already calculated stream). In the case of Scheme, this is called a promise.
+\end{solution}
+
+\question When is the next element actually calculated?
+\begin{solution}[.5in]
+Only when it's requested (and hasn't already been calculated)
+\end{solution}
+\end{blocksection}
+
+
+\section{What Would Scheme Print?}
+\begin{blocksection}
+\question For each of the following lines of code, write what scheme would output.
+
+\begin{lstlisting}
+scm> (define x 1)
+\end{lstlisting}
+\begin{solution}[.45in]
+\texttt{x}
+\end{solution}
+
+\begin{lstlisting}
+scm> (if 2 3 4)
+\end{lstlisting}
+\begin{solution}[.45in]
+\texttt{3}
+\end{solution}
+
+\begin{lstlisting}
+scm> (delay (+ x 1))
+\end{lstlisting}
+\begin{solution}[.45in]
+\begin{lstlisting}
+#[promise]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 10))
+\end{lstlisting}
+\begin{solution}[.45in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define bar (cons-stream (foo 1) (cons-stream (foo 2) bar)))
+\end{lstlisting}
+\begin{solution}[.45in]
+\texttt{bar}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+scm> (car bar)
+\end{lstlisting}
+\begin{solution}[.45in]
+\texttt{11}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr bar)
+\end{lstlisting}
+\begin{solution}[.45in]
+\begin{lstlisting}
+#[promise]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 1))
+\end{lstlisting}
+\begin{solution}[.35in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr-stream bar)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(3 . #[promise])
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (foo x) (+ x 5))
+\end{lstlisting}
+\begin{solution}[.35in]
+\texttt{foo}
+\end{solution}
+
+\begin{lstlisting}
+scm> (car bar)
+\end{lstlisting}
+\begin{solution}[.35in]
+\texttt{11}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cdr-stream bar)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(3 . #[promise])
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\section{Code Writing for Streams}
+
+%%% Question %%%
+\begin{blocksection}
+\question Write out \texttt{double\_naturals}, which is a stream that evaluates to the sequence 1, 1, 2, 2, 3, 3, etc.
+\begin{lstlisting}
+(define (double_naturals)
+    (double_naturals_helper 1 0)
+)
+
+(define (double_naturals_helper first flag)
+
+
+
+
+
+
+
+
+
+
+)
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (double_naturals_helper first flag)
+    (if (= 1 flag)
+        (cons-stream first (double_naturals_helper (+ 1 first) 0))
+        (cons-stream first (double_naturals_helper first 1))
+    )
+)
+
+;Alternative Solutions
+(define (double_naturals_helper first flag)
+    (cons-stream first (double_naturals_helper (+ flag first) (- 1 flag)))
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question Write out \texttt{interleave}, which returns a stream that alternates between the values in stream1 and stream2. Assume that the streams are infinitely long.
+\begin{lstlisting}
+(define (interleave stream1 stream2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (interleave stream1 stream2)
+(cons-stream (car stream1) 
+ (interleave stream2 (cdr-stream stream1)))
+
+(cons-stream (car stream1)
+ (cons-stream (car stream2)
+  (interleave (cdr-stream stream1)
+  (cdr-stream stream2))))
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+
+\end{questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
