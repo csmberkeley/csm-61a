@@ -237,80 +237,8 @@ select yearly_species, yearly_pop from yearly_pop where N = 10;
 
 \rule{\textwidth}{0.15em}
 
-
-
-
-
-
-
-\section{What Would Python Print? Iterators}
-\begin{questions}
-
-\begin{blocksection}
-\question
-\begin{lstlisting}
-class SkipIterator:
-    def __init__(self, rng, n):
-        self.obj = rng
-        self.skip = n
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        result = self.obj.curr
-        self.obj.curr += self.skip
-        return result
-
-class SkippedNaturals:
-    def __init__(self):
-        self.curr = 0
-        self.skip = 1
-
-    def __iter__(self):
-        return SkipIterator(self, self.skip)
-\end{lstlisting}
-\end{blocksection}
-
-\begin{blocksection}
-\begin{tabular}{|l|l|}
-\hline
-\textbf{Expression} & \textbf{Interactive Output}\\\hline
-\begin{lstlisting}
-p = SkippedNaturals()
-twos = iter(p)
-p.skip = p.skip + 1
-threes = iter(p)
-next(twos)
-\end{lstlisting}
-& \\\hline
-\begin{lstlisting}
-next(twos)
-\end{lstlisting}
-& \\\hline
-\begin{lstlisting}
-next(threes)
-\end{lstlisting}
-& \\\hline
-\begin{lstlisting}
-next(threes)
-\end{lstlisting}
-& \\\hline
-\end{tabular}
-
-\begin{solution}
-\begin{tabular}{|c|}
-\hline
-0\\\hline
-1\\\hline
-2\\\hline
-4\\\hline
-\end{tabular}
-\end{solution}
-
-\end{blocksection}
-
 \section{Environment Diagrams}
+\begin{questions}
 
 \begin{blocksection}
 \question Draw the environment diagram for the following code snippet:
@@ -509,26 +437,6 @@ recursive.
 \end{solution}
 \end{blocksection}
 
-\section{Interpreters}
-\begin{blocksection}
-\question Circle the number of calls to \texttt{scheme\char`_eval} and
-\texttt{scheme\char`_apply} for the code below.
-
-\begin{lstlisting}[language=Scheme]
-(define (square x) (* x x))
-(+ (square 3) (- 3 2))
-\end{lstlisting}
-
-\begin{tabular}{l | r r r r}
-    Calls to \texttt{scheme\char`_eval} (circle one) & 2 & 5 & 14 & 24\\
-    \hline
-    Calls to \texttt{scheme\char`_apply} (circle one) & 1 & 2 & 3 & 4
-\end{tabular}
-\begin{solution}
-14 for eval, 4 for apply.
-\end{solution}
-\end{blocksection}
-
 \section{Recursive Select in SQL}
 \begin{blocksection}
 \question Create a \texttt{mod\char`_seven} table that has two columns, a number
@@ -615,63 +523,9 @@ def interleave(iter1, iter2):
 \end{blocksection}
 
 \begin{blocksection}
-\question \textbf{Stream Supreme}
-\begin{parts}
-\part You and your friends are preparing for the 61A final by streaming lectures. You get tired and want to take a rest from studying but first you realize you are hungry so you check the refrigerator. You notice that \textbf{every other food} (starting with the first food in the list) in there is stale! Write a function that takes in a \texttt{Linked List} of foods,
-called \texttt{foods} and outputs a stream that contains all your stale food.
-\textbf{Bonus:} Count all the puns in this question!
+\subimport{../../topics/streams/scheme/medium/}{puns.tex}
 
-\begin{lstlisting}[language=Python]
-def stale_foods(foods):
-
-\end{lstlisting}
-\begin{solution}[20mm]
-    \begin{lstlisting}[language=Python]
-def stale_foods(foods):
-  if foods is Link.empty:
-    return Stream.empty
-  if foods.rest is Link.empty
-    return Stream(foods.first)
-  return Stream(foods.first, lambda: stale_foods(foods.rest.rest))
-
-\end{lstlisting}
-\end{solution}
-
-\part Can you magically find a way to have infinite food? Find a way to cycle through the foods so that when the last food is exhausted, the stream loops back to the first food.
-
-\begin{lstlisting}[language=Python]
-def food_stream(foods):
-
-\end{lstlisting}
-\begin{solution}[40mm]
-\begin{lstlisting}[language=Python]
-def food_stream(foods):
-  def compute_rest():
-    curr = foods
-    while curr.rest is not Link.empty:
-      curr = curr.rest
-      curr.rest = foods.first
-    return food_stream(foods)
-  return Stream(foods.first, compute_rest)
-
-
-
-\end{lstlisting}
-\end{solution}
-\end{parts}
 \end{blocksection}
-
-\begin{solution}
-\begin{lstlisting}[language=Python]
-# Alternate: 
-def food_stream(foods):
-  def exhaust_link(lnk):
-    if lnk is Link.empty:
-      return exhaust_link(foods)
-    return Stream(lnk.first, lambda: exhaust_link(lnk.rest))
-  return exhaust_link(foods)
-\end{lstlisting}
-\end{solution}
 
 \end{questions}
 
