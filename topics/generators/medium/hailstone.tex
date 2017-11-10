@@ -5,12 +5,12 @@
 def hailstone_sequence(n):
     """
     >>> hs_gen = hailstone_sequence(10)
-    >>> hs_gen.__next__()
+    >>> next(hs_gen)
     10
-    >>> next(hs_gen) #equivalent to previous
+    >>> next(hs_gen)
     5
     >>> for i in hs_gen:
-    >>> print(i)
+   	    print(i)
     16
     8
     4
