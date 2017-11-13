@@ -108,21 +108,6 @@ select m1.name, m2.name
     where m1.language = m2.language and m1.name > m2.name;
 \end{lstlisting}
 \end{solution}
-
-\question Write a query that has the same data, but alphabetizes the rows by name. (Hint: Use order by.) \newline
-Output:
-\begin{lstlisting}
-Alfonso|Tacos|Blue|Vim|Python
-Allan|Sushi|Orange|Emacs|Ruby
-Diana|Pie|Green|Sublime|Java
-Kelly|Ramen|Green|Vim|Python
-Tiffany|Thai|Purple|Notepad++|Java
-\end{lstlisting}
-\begin{solution}[1in]
-\begin{lstlisting}[language=SQL]
-select * from mentors order by name;
-\end{lstlisting}
-\end{solution}
 \end{blocksection}
 
 
@@ -151,19 +136,21 @@ Table name: \texttt{fish}*
 \end{tabular}
 \end{center}
 *(This was made with fake data, do not actually sell fish at these rates)
-\question \textbf{Aggregation}
+\question \textbf{Aggregation} Hint: The aggregate functions \texttt{MAX}, \texttt{MIN}, \texttt{COUNT}, and \texttt{SUM} return the maximum, minimum, number, and sum of the values in a column. The  \texttt{GROUP BY} clause of a select statement is used to partition rows into groups.
+
 \begin{parts}
-\part Profit is good, but more profit is better. Write a query to select the species that yields the most number of pieces for each price. Your output should include the species, price, and pieces.
-\begin{solution}[0.5in]
-\begin{lstlisting}[language=SQL]
-select species, price, MAX(pieces) from fish GROUP BY price;
-\end{lstlisting}
-\end{solution}
 
 \part Write a query to find the three most populated fish species.
 \begin{solution}[0.5in]
 \begin{lstlisting}[language=SQL]
 select species from fish order by -pop LIMIT 3;
+\end{lstlisting}
+\end{solution}
+
+\part Profit is good, but more profit is better. Write a query to select the species that yields the most number of pieces for each price. Your output should include the species, price, and pieces.
+\begin{solution}[0.5in]
+\begin{lstlisting}[language=SQL]
+select species, price, MAX(pieces) from fish GROUP BY price;
 \end{lstlisting}
 \end{solution}
 
@@ -198,7 +185,7 @@ Table name: \texttt{competitor}
 \end{center}
 Write a query that returns, for each species, the difference between our hatcheryâs revenue versus the competitorâs revenue for one whole fish. For example, the table should contain the following row: \newline
 \texttt{Salmon | 60} \newline \newline
-Because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Finally, the difference is 60. Remember to do this for every species!
+We make 30 pieces of salmon at \$4 for a total revenue of \$120, whereas the competitor makes 30 pieces at \$2 a piece for a total revenue of \$60. The difference is \$60. Remember to do this for every species!
 \begin{solution}[1in]
 \begin{lstlisting}[language=SQL]
 select fish.species, (fish.price - competitor.price) * pieces
@@ -210,18 +197,18 @@ select fish.species, (fish.price - competitor.price) * pieces
 
 \end{blocksection}
 
-\question \textbf{Recursive Select} Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a recursive select function that creates a table of fish 10 years from now.
+\question \textbf{Recursive Select} Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a recursive select query that creates a table of fish 10 years from now.
 
 \begin{solution}[0.5in]
 \begin{lstlisting}[language=SQL]
 with
-  yearly_pop(yearly_species, yearly_pop, N) as (
+  annual_pop(yearly_species, yearly_pop, N) as (
      select species, pop, 0 from fish union
      select yearly_species, yearly_pop * rate, N + 1
-         from yearly_pop, fish
-         where yearly_species = species and N <= 10
+         from annual_pop, fish
+         where yearly_species = species and N < 10
   )
-select yearly_species, yearly_pop from yearly_pop where N = 10;
+select yearly_species, yearly_pop from annual_pop where N = 10;
 
 \end{lstlisting}
 \end{solution}
@@ -334,7 +321,7 @@ def double_tree(t):
 def double_link(lst):
     """
     Using mutation, replaces the second in each pair of items
-    with the first. The first of each pair stays as is.
+    with the first. The first of each pair stays as is. Returns the list.
     >>> double_link(Link(1, Link(2, Link(3, Link(4)))))
     Link(1, Link(1, Link(3, Link(3))))
     >>> double_link(
@@ -396,7 +383,7 @@ def shuffle(lst):
 \section{Scheme}
 
 \begin{blocksection}
-\question Write a Scheme function insert that creates a new list that would
+\question Write a Scheme function \texttt{insert} that creates a new list that would
 result from inserting an item into an existing list at the given index. Assume
 that the given index is between 0 and the length of the original list,
 inclusive.
@@ -485,40 +472,7 @@ select * from mod_seven;
 
 \section{Iterators, Generators, and Streams}
 \begin{blocksection}
-\question Write a generator that will take in two iterators and will compare the
-first element of each iterator and yield the smaller of the two values.
-
-\begin{lstlisting}
-def interleave(iter1, iter2):
-    """
-    >>> gen = interleave(iter([1, 3, 5, 7, 9]),
-                         iter([2, 4, 6, 8, 10]))
-    >>> for elem in gen:
-    ...     print(elem)
-    ...
-    1
-    2
-    3
-    4
-    5
-    6
-    7
-    8
-    9
-    """
-\end{lstlisting}
-\begin{solution}[1in]
-\begin{lstlisting}
- t1, t2 = next(iter1), next(iter2)
- while True:
-     if t1 > t2:
-         yield t2
-         t2 = next(iter2)
-     else:
-         yield t1
-         t1 = next(iter1)
-\end{lstlisting}
-\end{solution}
+\subimport{../../topics/generators/easy/}{run-length-decoder.tex}
 
 \end{blocksection}
 

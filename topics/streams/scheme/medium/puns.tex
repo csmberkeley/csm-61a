@@ -15,9 +15,10 @@ first food in the list when the list is exhausted.
 
 \begin{solution}[1in]
 \begin{lstlisting}
-  (cons-stream (car foods)
-               (food-stream (append (cdr foods)
-                                    (list (car foods))))
+(define (food-stream foods)
+     (cons-stream (car foods)
+          (food-stream (append (cdr foods)
+               (list (car foods))))
   )
 )
 \end{lstlisting}

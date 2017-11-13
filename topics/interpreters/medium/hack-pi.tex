@@ -8,7 +8,7 @@ scm> (define pi 3.14)
 pi
 scm> (define (hack x)
 	  (cond
-	    ((= x pi) ‘pwned)
+	    ((= x pi) 'pwned)
 	    ((< x 0) (hack pi))
 	    (else (hack (- x 1)))))
 hack
