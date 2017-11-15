@@ -154,16 +154,23 @@ select species, price, MAX(pieces) from fish GROUP BY price;
 \end{lstlisting}
 \end{solution}
 
-\part Write a query to find the total number of fish in the "ocean." Additionally, include the number of species we summed. Your output should have the number of species and the total population.
+\end{parts}
+
+\end{blocksection}
+
+\begin{blocksection}
+\vspace{10px}
+(c) Write a query to find the total number of fish in the "ocean." Additionally, include the number of species we summed. Your output should have the number of species and the total population.
 \begin{solution}[0.5in]
 \begin{lstlisting}[language=SQL]
 select COUNT(species), SUM(pop) from fish;
 \end{lstlisting}
 \end{solution}
-\end{parts}
+
 \end{blocksection}
 
 \begin{blocksection}
+\vspace{10px}
 (d) Business is good, but a bunch of competition has sprung up! Through some cunning corporate espionage, we have determined that one such competitor plans to open shop with the following rates:\newline
 \newline
 Table name: \texttt{competitor}
