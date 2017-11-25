@@ -1,0 +1,69 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{10}
+\title{\textsc{Spring 2018 Interview Questions}}
+\date{November 27 to December 5, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{questions}
+
+\begin{blocksection}
+\question Identify what the Scheme interpreter will display, and give the number of calls made to \lstinline$scheme_eval$ and \lstinline$scheme_apply$.
+\begin{lstlisting}
+
+scm> (define (compute x) 
+        (cond 
+          ((= (- x 13) 40) x) 
+          ((equal? x '(cons 7 4)) 7) 
+          ((= (remainder x 2) 0) true)
+        )
+      )
+
+scm> (compute 54)
+
+\end{lstlisting}
+
+\begin{solution}
+\lstinline$compute$ \linebreak
+\lstinline$true$ \linebreak
+24 \lstinline$scheme_eval$, 6 \lstinline$scheme_apply$
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+\question Write a function \lstinline$all_subsets$, which iteratively finds all possible subsets of a list (including the trivial and null subsets).
+\begin{lstlisting}
+
+def all_subsets(lst):
+    """
+    >>> all_subsets([1,2,3])
+    [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+    """
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def all_subsets(lst):
+    results = [[]]
+    while lst:
+        results += [q + [lst[0]] for q in results]
+        lst.pop(0)
+    return results
+\end{lstlisting}    
+\end{solution}
+
+\end{blocksection}
+
+
+
+\end{questions}
+\end{document}
