@@ -63,6 +63,97 @@ def all_subsets(lst):
 
 \end{blocksection}
 
+\begin{blocksection}
+\question When the following code is evaluated, what would Python display? Also, how could you modify the code so that the Python output is \lstinline$[5, 4, 3, 2, 1]$. 
+\begin{lstlisting}
+def jen(n):
+  if n == 0:
+    yield 0
+  jenerator = jen(n-1)
+  yield n
+  #do not modify anything above this line
+  yield next(jenerator)
+  
+
+a = jen(5)
+print(list(a))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+# The original output is [5, 4]
+
+# Corrected code: 
+
+def jen(n):
+  if n == 0:
+    yield 0
+  jenerator = jen(n-1)
+  yield n
+  #do not modify anything above this line
+  yield from jenerator
+
+#Alternative solution:
+
+def jen(n):
+  if n == 0:
+    yield 0
+  jenerator = jen(n-1)
+  yield n
+  #do not modify anything above this line
+  for i in jenerator:
+    yield i
+\end{lstlisting}    
+\end{solution}
+\end{blocksection}
+
+\pagebreak
+
+\begin{blocksection}
+\question In this question, you will behold one of nature's rarest wonders: The Function Tree. Your task is to complete the function \lstinline$forbidden_fruit$ so that it returns the number 17. However, there's one catch: you can only use functions from the Function Tree. You \textbf{must} use all of the functions in the function tree and are forbidden from using any other functions, operators (+, -, *, /, ==), or literals (0, 1, 17...). You are, however, allowed to use functions from the tree more than once, and you can also create temporary variables that reference the functions in the tree, and call those variables. 
+
+\begin{lstlisting}
+class Tree:
+    def __init__(self, label, branches=[]):
+        for c in branches:
+            assert isinstance(c, Tree)
+        self.label = label
+        self.branches = list(branches)
+
+functree = Tree(lambda t: t.branches[0])
+functree.branches.append(Tree(lambda t: t.branches[1]))
+functree.branches.append(Tree(lambda banana: banana // 2))
+functree.branches[0].branches.append(Tree(lambda adam, eve: int(str(adam) + str(eve))))
+functree.branches[1].branches.append(Tree(lambda: 9))
+functree.branches[1].branches.append(Tree(lambda apple: apple // 3))
+
+def forbidden_fruit(functree):
+  # YOUR CODE HERE
+
+
+
+
+
+
+
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def forbidden_fruit(functree):
+  first = functree.label
+  second = first(functree).label
+  div_2 = second(functree).label
+  combine = first(first(functree)).label
+  nine = first(second(functree)).label
+  div_3 = second(second(functree)).label
+
+  return div_2(combine(div_3(9), div_2(9)))
+\end{lstlisting}    
+\end{solution}
+\end{blocksection}
+
 
 
 \end{questions}
