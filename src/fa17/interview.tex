@@ -12,6 +12,8 @@
 \rule{\textwidth}{0.15em}
 \fontsize{12}{15}\selectfont
 
+Choose one question from questions 1 and 2 and one question from questions 3 and 4. Walk your interviewers through the problems as you work, making sure to explain your steps clearly, as you would to students.
+
 \begin{questions}
 
 \begin{blocksection}
@@ -34,31 +36,6 @@ scm> (compute 54)
 \lstinline$compute$ \linebreak
 \lstinline$true$ \linebreak
 24 \lstinline$scheme_eval$, 6 \lstinline$scheme_apply$
-\end{solution}
-
-\end{blocksection}
-
-\begin{blocksection}
-\question Write a function \lstinline$all_subsets$, which iteratively finds all possible subsets of a list (including the trivial and null subsets).
-\begin{lstlisting}
-
-def all_subsets(lst):
-    """
-    >>> all_subsets([1,2,3])
-    [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
-    """
-
-\end{lstlisting}
-
-\begin{solution}
-\begin{lstlisting}
-def all_subsets(lst):
-    results = [[]]
-    while lst:
-        results += [q + [lst[0]] for q in results]
-        lst.pop(0)
-    return results
-\end{lstlisting}    
 \end{solution}
 
 \end{blocksection}
@@ -105,6 +82,33 @@ def jen(n):
     yield i
 \end{lstlisting}    
 \end{solution}
+\end{blocksection}
+
+\pagebreak
+
+\begin{blocksection}
+\question Write a function \lstinline$all_subsets$, which iteratively finds all possible subsets of a list (including the trivial and null subsets).
+\begin{lstlisting}
+
+def all_subsets(lst):
+    """
+    >>> all_subsets([1,2,3])
+    [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+    """
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def all_subsets(lst):
+    results = [[]]
+    while lst:
+        results += [q + [lst[0]] for q in results]
+        lst.pop(0)
+    return results
+\end{lstlisting}    
+\end{solution}
+
 \end{blocksection}
 
 \pagebreak
