@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question The next day, the printers break down even more! Each time they are used, the first printer 
+prints a random \lstinline$x$ copies 50 \leq \lstinline$x$ \leq 60, and the second printer prints a 
+random \lstinline$y$ copies 130 \leq \lstinline$y$ \leq 140. James also relaxes his expectations: he's
+satisfied as long as there's at least \lstinline$lower$ copies so there are enough for everyone, but no
+more than \lstinline$upper$ copies to prevent waste. \\
+
+\begin{lstlisting}
+def sum_range(lower, upper):
+    """
+    >>> sum_range(45, 60) # Printer 1 prints within this range
+    True
+    >>> sum_range(40, 55) # Printer 1 can print a number 56-60
+    False
+    >>> sum_range(170, 201) # Printer 1 + 2 will print between 180 and 200 copies total
+    True
+    """
+    def copies(pmin, pmax):
+        if ________________________________________________:
+            return ____________________________________
+        elif ______________________________________________:
+            return ____________________________________
+        return ____________________________________________
+    return copies(0, 0)
+    
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+def sum_range(lower, upper):
+    def copies(pmin, pmax):
+        if lower <= pmin and pmax <= upper:
+            return True
+        elif upper < pmin:
+            return False
+        return copies(pmin + 50, pmax + 60) or copies(pmin + 130, pmax + 140)
+    return copies(0, 0)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
