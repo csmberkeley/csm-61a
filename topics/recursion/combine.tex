@@ -1,0 +1,38 @@
+\begin{blocksection}
+\question (Spring 2015 MT1 Q3C) Implement the \lstinline$combine$ function, which takes a non-negative integer
+\lstinline$n$, a two-argument function \lstinline$f$, and a number \lstinline$result$. It applies
+\lstinline$f$ to the first digit of \lstinline$n$ and the result of combining the rest of the digits of \lstinline$n$
+by repeatedly applying \lstinline$f$ (see the doctests). If \lstinline$n$ has no digits (because it is zero),
+\lstinline$combine$ returns \lstinline$result$.
+
+\begin{lstlisting}
+def combine(n, f, result):
+    """
+    Combine the digits in non-negative integer n using f.
+    
+    >>> combine(3, mul, 2) # mul(3, 2)
+    6
+    >>> combine(43, mul, 2) # mul(4, mul(3, 2))
+    24
+    >>> combine(6502, add, 3) # add(6, add(5, add(0, add(2, 3))))
+    16
+    >>> combine(239, pow, 0) # pow(2, pow(3, pow(9, 0))))
+    8
+    """
+    if n == 0:
+        return result
+    else:
+        return combine(____________ , ____________ , ____________________________________)
+    
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def combine(n, f, result):
+    if n == 0:
+        return result
+    else:
+        return combine(n // 10, f, f(n % 10, result))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
