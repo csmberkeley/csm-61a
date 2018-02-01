@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question James wants to print this week's discussion handouts for all the students in CS 61A.
+However, both printers are broken! The first printer only prints multiples of \lstinline$n$
+pages, and the second printer only prints multiples of \lstinline$m$ pages. Help James figure
+out whether or not it's possible to print exactly \lstinline$total$ number of handouts!
+
+\begin{lstlisting}
+def has_sum(total, n, m):
+    """
+    >>> has_sum(1, 3, 5)
+    False
+    >>> has_sum(5, 3, 5) # 0 * 3 + 1 * 5 = 5
+    True
+    >>> has_sum(11, 3, 5) # 2 * 3 + 1 * 5 = 11
+    """
+    if ____________________________________________________:
+        return ____________________________________
+    elif __________________________________________________:
+        return ____________________________________
+    return ________________________________________________
+    
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+def has_sum(total, n, m):
+    if total == 0: # (total == n or total == m) works too except when total equals 0
+        return True
+    elif total < 0: $ (total < min(n1, n2)) works given alternate base case
+        return False
+    return has_sum(total - n, n, m) or has_sum(total - m, n, m)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
