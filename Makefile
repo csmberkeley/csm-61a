@@ -1,10 +1,10 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
-RELEASED =
-SOLUTIONS =
+RELEASED = week4 week5
+SOLUTIONS = week4 week5
 
 DST = published
-SRC = src/fa17
+SRC = src/sp18
 
 DEPEND = python make_dependency.py
 TEX = pdflatex
@@ -32,7 +32,7 @@ $(DST)/%.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
 	cd $(SRC); $(TEX) $(TEX_FLAGS) $*.tex;
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
-	open $(DST)/$*.pdf
+	#open $(DST)/$*.pdf
 
 $(DST)/%_sol.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps

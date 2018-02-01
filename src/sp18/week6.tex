@@ -1,0 +1,34 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{2}
+\title{\textsc{Lists and Abstraction}}
+\date{September 25 to September 29, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lists}
+\begin{questions}
+\subimport{../../topics/lists/immutable/easy/wwpd/}{simple.tex}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+\end{blocksection}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\end{blocksection}
+
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+
+\end{questions}
+
+\end{document}

@@ -1,0 +1,41 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{1}
+\title{\textsc{Recursion and Tree Recursion}}
+\date{September 18 to September 22, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Recursion}
+\subimport{../../topics/recursion/text/}{introduction.tex}
+\begin{questions}
+\subimport{../../topics/recursion/easy/}{num-digits.tex}
+
+\begin{blocksection}
+\subimport{../../topics/recursion/medium/}{is-sorted.tex}
+
+\end{blocksection}
+
+% \begin{blocksection}
+\section{Tree Recursion}
+\subimport{../../topics/recursion/medium/}{mario-number.tex}
+% \pagebreak
+
+\subimport{../../topics/recursion/medium/}{make-change.tex}
+
+% \end{blocksection}
+
+
+% \section{Data Abstraction}
+% \subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+\end{questions}
+
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Training}
+% \SetWatermarkScale{1}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{1}
+\title{\textsc{Recursion and Higher Order Functions}}
+\date{Demo Mentor Training Questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Recursion}
+\subimport{../../topics/recursion/text/}{introduction.tex}
+\begin{questions}
+\subimport{../../topics/recursion/easy/}{num-digits.tex}
+\newpage
+\subimport{../../topics/recursion/medium/}{is-sorted.tex}
+\end{questions}
+
+\newpage
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/recursion/medium/env-diagram/}{foobar1.tex}
+%%%\subimport{../../topics/recursion/medium/env-diagram/}{foobar2.tex}
+
+\newpage
+\section{Higher Order Functions}
+\subimport{../../topics/hof/easy/}{make-skipper.tex}
+\subimport{../../topics/hof/medium/}{mystery.tex}
+\newpage
+\subimport{../../topics/hof/medium/wwpd/}{mystery.tex}
+\end{questions}
+
+\end{document}

@@ -1,0 +1,41 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{3}
+\title{\textsc{Trees and Orders of Growth}}
+\date{October 2 to October 6, 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\begin{questions}
+\subimport{../../topics/trees/adt/draw-tree/}{draw-tree.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{get-item.tex}
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+
+\section{Orders of Growth}
+\subimport{../../topics/growth/easy/}{jumpstart.tex}
+\\\\
+\subimport{../../topics/growth/easy/}{medley.tex}
+\subimport{../../topics/growth/medium/}{hailstone.tex}
+% \subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+% \subimport{../../topics/growth/medium/}{mysterious-loops.tex}
+\\\\
+\subimport{../../topics/growth/medium/}{trees.tex}
+
+
+
+\end{questions}
+
+\end{document}
