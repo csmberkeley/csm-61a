@@ -1,7 +1,7 @@
 \begin{blocksection}
 \question The next day, the printers break down even more! Each time they are used, the first printer 
-prints a random \lstinline$x$ copies 50 \leq \lstinline$x$ \leq 60, and the second printer prints a 
-random \lstinline$y$ copies 130 \leq \lstinline$y$ \leq 140. James also relaxes his expectations: he's
+prints a random \lstinline$x$ copies 50 <= \lstinline$x$ <= 60, and the second printer prints a 
+random \lstinline$y$ copies 130 <= \lstinline$y$ <= 140. James also relaxes his expectations: he's
 satisfied as long as there's at least \lstinline$lower$ copies so there are enough for everyone, but no
 more than \lstinline$upper$ copies to prevent waste. \\
 
@@ -26,6 +26,7 @@ def sum_range(lower, upper):
 \end{lstlisting}
 
 \begin{solution}[1.5in]
+\begin{lstlisting}
 def sum_range(lower, upper):
     def copies(pmin, pmax):
         if lower <= pmin and pmax <= upper:

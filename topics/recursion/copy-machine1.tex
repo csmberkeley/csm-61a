@@ -23,10 +23,11 @@ def has_sum(total, n, m):
 \end{lstlisting}
 
 \begin{solution}[1.5in]
+\begin{lstlisting}
 def has_sum(total, n, m):
     if total == 0: # (total == n or total == m) works too except when total equals 0
         return True
-    elif total < 0: $ (total < min(n1, n2)) works given alternate base case
+    elif total < 0: # (total < min(n1, n2)) works given alternate base case
         return False
     return has_sum(total - n, n, m) or has_sum(total - m, n, m)
 \end{lstlisting}
