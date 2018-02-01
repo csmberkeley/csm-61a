@@ -1,33 +1,39 @@
 \begin{blocksection}
-\question James wants to print this week's discussion handouts for all the students in CS 61A.
-However, both printers are broken! The first printer only prints multiples of \lstinline$n$
-pages, and the second printer only prints multiples of \lstinline$m$ pages. Help James figure
-out whether or not it's possible to print exactly \lstinline$total$ number of handouts!
+\question The next day, the printers break down even more! Each time they are used, the first printer 
+prints a random \lstinline$x$ copies 50 \leq \lstinline$x$ \leq 60, and the second printer prints a 
+random \lstinline$y$ copies 130 \leq \lstinline$y$ \leq 140. James also relaxes his expectations: he's
+satisfied as long as there's at least \lstinline$lower$ copies so there are enough for everyone, but no
+more than \lstinline$upper$ copies to prevent waste. \\
 
 \begin{lstlisting}
-def has_sum(total, n, m):
+def sum_range(lower, upper):
     """
-    >>> has_sum(1, 3, 5)
-    False
-    >>> has_sum(5, 3, 5) # 0 * 3 + 1 * 5 = 5
+    >>> sum_range(45, 60) # Printer 1 prints within this range
     True
-    >>> has_sum(11, 3, 5) # 2 * 3 + 1 * 5 = 11
+    >>> sum_range(40, 55) # Printer 1 can print a number 56-60
+    False
+    >>> sum_range(170, 201) # Printer 1 + 2 will print between 180 and 200 copies total
+    True
     """
-    if ____________________________________________________:
-        return ____________________________________
-    elif __________________________________________________:
-        return ____________________________________
-    return ________________________________________________
+    def copies(pmin, pmax):
+        if ________________________________________________:
+            return ____________________________________
+        elif ______________________________________________:
+            return ____________________________________
+        return ____________________________________________
+    return copies(0, 0)
     
 \end{lstlisting}
 
 \begin{solution}[1.5in]
-def has_sum(total, n, m):
-    if total == 0: # (total == n or total == m) works too except when total equals 0
-        return True
-    elif total < 0: $ (total < min(n1, n2)) works given alternate base case
-        return False
-    return has_sum(total - n, n, m) or has_sum(total - m, n, m)
+def sum_range(lower, upper):
+    def copies(pmin, pmax):
+        if lower <= pmin and pmax <= upper:
+            return True
+        elif upper < pmin:
+            return False
+        return copies(pmin + 50, pmax + 60) or copies(pmin + 130, pmax + 140)
+    return copies(0, 0)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
