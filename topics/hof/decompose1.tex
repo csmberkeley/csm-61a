@@ -4,11 +4,12 @@ which takes two functions \lstinline$f$ and \lstinline$h$ as arguments. It retur
 \lstinline$g$ that relates \lstinline$f$ to \lstinline$h$ in the following way: For any 
 non-negative integer \lstinline$x$, \lstinline$h(x)$ equals \lstinline$f(g(x))$. Assume that 
 \lstinline$decompose1$ will be called only on arguments for which such a function 
-\lstinline$g$ exists.
+\lstinline$g$ exists. \\
 
 \begin{lstlisting}
 def decompose1(f, h):
-    """Return g such that h(x) equals f(g(x)) for any non-negative integer x.
+    """
+    Return g such that h(x) equals f(g(x)) for any non-negative integer x.
     
     >>> add_one = lambda x: x + 1
     >>> square_then_add_one = lambda x: x * x + 1
