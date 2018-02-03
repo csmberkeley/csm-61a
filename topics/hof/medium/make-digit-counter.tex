@@ -1,47 +1,40 @@
 \begin{blocksection}
-\question Write a function, \texttt{make\char`_digit\char`_counter}, which takes in a positive integer, \texttt{n}. It returns another function which takes in a single integer argument from 0-9 inclusive and returns the number of times that number occurs as a digit of n.
-
+\question Write a function, \texttt{make\char`_digit\char`_remover}, which takes in an integer from 0-9, \texttt{i}. It returns another function which takes in an integer, and removes all digits from right to left up to and including the first occurance of \texttt{i}. If \texttt{i} does not occur in the integer, this function returns the original number. \\
 
 \begin{lstlisting}
-def make_digit_counter(n):
+def make_digit_remover(i):
     """
-    >>> today = make_digit_counter(232018)
-    >>> today(3)
-    2
-    >>> today(0)
-    1
-    >>> today(9)
+    >>> remove_two = make_digit_remover(2)
+    >>> remove_two(232018)
+    23
+    >>> remove_two(23)
     0
+    >>> remove_two(99)
+    99
     """
-
-
-	
-	
-	
-	
-
-
-
-
-	
-
-
+    def remove(_______):
+    	removed = _______________________
+        while _______________________ > 0:
+            _____________________________
+            removed = removed // 10
+            if __________________________:
+                _________________________
+        return __________________________
+    return remove
 \end{lstlisting}
 
 \begin{solution}
 \begin{lstlisting}
-def make_digit_counter(n):
-    def count(digit):
-	total = 0
-	while n != 0:
-	    curr = n % 10
-	    n = n // 10
-            if curr == digit:
-		total += 1
-	        return total
-	return count
-
-
+def make_digit_remover(i):
+    def remove(n):
+        removed = n
+        while removed > 0:
+            digit = removed % 10
+            removed = removed // 10
+            if digit == i:
+                return removed
+        return n
+    return remove
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
