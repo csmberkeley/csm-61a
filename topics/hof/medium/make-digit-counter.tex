@@ -1,31 +1,28 @@
 \begin{blocksection}
 \question Write a function, \texttt{make\char`_digit\char`_counter}, which takes in a positive integer, \texttt{n}. It returns another function which takes in a single integer argument from 0-9 inclusive and returns the number of times that number occurs as a digit of n.
+
+
 \begin{lstlisting}
 def make_digit_counter(n):
-	"""
-	>>> today = make_digit_counter(232018)
-	>>> today(3)
-	2
-	>>> today(0)
-	1
-	>>> today(9)
-	0
-	"""
+    """
+    >>> today = make_digit_counter(232018)
+    >>> today(3)
+    2
+    >>> today(0)
+    1
+    >>> today(9)
+    0
+    """
+
+
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
 	
 
 
@@ -34,23 +31,14 @@ def make_digit_counter(n):
 \begin{solution}
 \begin{lstlisting}
 def make_digit_counter(n):
-
-	def count(digit):
-	
-		total = 0
-		
-		while n != 0:
-		
-			curr = n % 10
-			
-			n = n // 10
-			
-			if curr == digit:
-			
-				total += 1
-				
-		return total
-		
+    def count(digit):
+	total = 0
+	while n != 0:
+	    curr = n % 10
+	    n = n // 10
+            if curr == digit:
+		total += 1
+	        return total
 	return count
 
 
