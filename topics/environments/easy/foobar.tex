@@ -2,18 +2,16 @@
 \question Draw the environment diagram that results from running the code.
 
 \begin{lstlisting}
-def dream1(f):
-    kick = lambda x: mind()
-    def dream2(secret):
-        mind = f(secret)
-        kick(2)
-    return dream2
+def foo(x):
+    def bar():
+        print(x)
+    return bar
 
-inception = lambda secret: lambda: secret
-real = dream1(inception)(42)
+x = foo(3)
+y = foo(4)
 \end{lstlisting}
 
 \begin{solution}[2in]
-\url{https://goo.gl/TbZ1ql}
+\url{https://goo.gl/hgi1d6}
 \end{solution}
 \end{blocksection}
