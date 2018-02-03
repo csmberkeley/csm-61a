@@ -1,0 +1,32 @@
+\begin{blocksection}
+\question The gibbonacci sequence is like the fibonacci sequence, but \texttt{f(n) = f(n//2) * f(n-5)} and
+\texttt{f(n <= 1) = 615} Write a program that calculates the nth gibbonacci number.
+
+\begin{lstlisting}
+def gibbonacci(n):
+    """
+    >>> gibbonacci(-512)
+    615
+    >>> gibbonacci(2)
+    378225
+    """
+    if _________________:
+		
+        return __________________
+				
+    else:
+		
+        return __________________
+
+				
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    if n <= 1:
+        return 615
+    else:
+        return gibbonacci(n//2) * gibbonacci(n-5)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

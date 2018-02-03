@@ -1,0 +1,38 @@
+\begin{blocksection}
+\question Complete the definition for \texttt{sum\char`_prime\char`_digits}, which returns the sum of  all the prime digits of \texttt{n}. Recall that 0 and 1 are not prime numbers. Assume you have the predicate \texttt{is\char`_prime} defined.
+
+
+\begin{lstlisting}
+def sum_prime_digits(n):
+    """
+    >>> sum_prime_digits(12345)
+    10
+    >>> sum_prime_digits(4681029)
+    2
+
+    """
+    if ____________:
+		
+        return __________
+			
+    else:
+		
+        _______________
+				
+        if __________:
+				
+            return _____________________
+						
+        return __________________
+				
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    if n < 10:
+        return 1
+    else:
+        return 1 + num_digits(n // 10)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
