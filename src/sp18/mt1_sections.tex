@@ -1,0 +1,48 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Training}
+% \SetWatermarkScale{1}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{1}
+\title{\textsc{Midterm 1 Review}}
+\date{February 5, 2018 - February 8, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/hof/medium/env-diagram/}{apple.tex}
+\newpage
+\subimport{../../topics/recursion/medium/env-diagram/}{foobar3.tex}
+\newpage
+\subimport{../../topics/hof/medium/env-diagram/}{inception.tex}
+\end{questions}
+%%%\subimport{../../topics/recursion/medium/env-diagram/}{foobar2.tex}
+
+\newpage
+\section{Higher Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/medium/}{mystery.tex}
+\\[4\baselineskip]
+\subimport{../../topics/hof/medium/wwpd/}{mystery.tex}
+\newpage
+\subimport{../../topics/hof/}{fox-says.tex}
+\subimport{../../topics/hof/medium/}{xyz.tex}
+\end{questions}
+
+\newpage
+\section{Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/}{combine.tex}
+\subimport{../../topics/recursion/}{copy-machine1.tex}
+\subimport{../../topics/recursion/}{copy-machine2.tex}
+\end{questions}
+\end{document}

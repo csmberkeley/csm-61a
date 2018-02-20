@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question (Fall 2015 MT1 Q4A) Implement the higher-order function \lstinline$decompose1$, 
+which takes two functions \lstinline$f$ and \lstinline$h$ as arguments. It returns a function
+\lstinline$g$ that relates \lstinline$f$ to \lstinline$h$ in the following way: For any 
+non-negative integer \lstinline$x$, \lstinline$h(x)$ equals \lstinline$f(g(x))$. Assume that 
+\lstinline$decompose1$ will be called only on arguments for which such a function 
+\lstinline$g$ exists. \\
+
+\begin{lstlisting}
+def decompose1(f, h):
+    """
+    Return g such that h(x) equals f(g(x)) for any non-negative integer x.
+    
+    >>> add_one = lambda x: x + 1
+    >>> square_then_add_one = lambda x: x * x + 1
+    >>> g = decompose1(add_one, square_then_add_one)
+    >>> g(5)
+    25
+    >>> g(10)
+    100
+    """
+    def g(x):
+        def r(y):
+            if ____________________________________________:
+                return ____________________________________
+            else:
+                return ____________________________________
+        return r(0)
+    _______________________________________________________
+    
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def decompose1(f, h):
+    def g(x):
+        def r(y):
+            if h(x) == f(y):
+                return y
+            else:
+                return r(y+1)
+        return r(0)
+    return g
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

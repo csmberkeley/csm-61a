@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question (Fall 2013 MT1 Q3D) The CS61A staff has developed a formula for determining what a fox might say.
+Given three strings, a start, a middle, and an end, a fox will say the start string, followed by the 
+middle string repeated a number of times, followed by the end string. These parts are all separated by hyphens.
+
+Complete the definition of \lstinline$fox_says$, which takes the three string parts of the fox's statement
+(\lstinline$start$, \lstinline$middle$, and \lstinline$end$) and a positive integer \lstinline$num$ indicating
+how many times to repeat \lstinline$middle$. It returns a string.
+
+You cannot use any \lstinline$for$ or \lstinline$while$ statements. Use recursion in \lstinline$repeat$. Moreover,
+you cannot use string operations other than the + operator to concatenate strings together.
+
+
+\begin{lstlisting}
+def fox_says(start, middle, end, num):
+    """    
+    >>> fox_says('wa', 'pa', 'pow', 3)
+    'wa-pa-pa-pa-pow'
+    >>> fox_says('fraka', 'kaka', 'kow', 4)
+    'fraka-kaka-kaka-kaka-kaka-kow'
+    """
+    def repeat(k):
+        
+        
+        
+        
+        
+        
+        
+        
+    return start + '-' + repeat(num) + '-' + end
+    
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def fox_says(start, middle, end, num):
+    def repeat(k):
+        if k == 1:
+            return middle
+        else:
+            return middle + '-' + repeat(k - 1)
+    return start + '-' + repeat(num) + '-' + end
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
