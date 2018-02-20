@@ -2,13 +2,13 @@
 
 \begin{lstlisting}
 def tree(label, branches=[]):
-    return [label] + list(branches)
+    return [label] + [branches]
 
 def label(tree):
-    return tree[0]
+    return tree[0] 
 
 def branches(tree):
-    return tree[1:]
-
+    return tree[1:] #returns a list of branches
+		
 \end{lstlisting}
 
