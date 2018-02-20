@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question Implement the function \texttt{combine}, which takes in a positive number \texttt{n}, two argument function \texttt{f}, and integer \texttt{base}. It returns the result of combining \texttt{base} and each digit of \texttt{n} using \texttt{f}. You may assume \texttt{f} is commutative (that is, it doesn't matter in which order you combine each value). \\
+
+\begin{lstlisting}
+def combine(n, f, result):
+    """
+    >>> combine(3, mul, 2) # mul(3, 2)
+    6
+    >>> combine(43, mul, 2) # mul(4, mul(3, 2))
+    24
+    >>> combine(650, add, 3) # add(6, add(5, add(0, 3)))
+    16
+    """
+    if _____________________________________:
+
+        ____________________________________
+
+    else:
+
+        ____________________________________
+
+				
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    if n == 0:
+        return result
+    else:
+        return combine(n // 10, f, f(n % 10, result))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,56 @@
+\begin{blocksection}
+\question
+
+\begin{lstlisting}
+def quick_maths(man, free):    
+    print(man)
+    if man % 2 == 0 and free:
+        return quick_maths(man + 2, not free)
+    else:
+        man -= 1
+        if man == 3:
+            print(man)
+        else:
+            return man
+big_shaq = 2
+    
+\end{lstlisting}
+
+\begin{center}
+\begin{tabular}{|p{10cm}|p{5cm}|} 
+\hline
+\textbf{Expression} & \textbf{Interactive Output} \\ 
+\hline
+\rule{0pt}{3ex}
+\begin{lstlisting}
+print(quick_maths(big_shaq, True))
+\end{lstlisting}
+&  \\ 
+\hline
+\end{tabular}
+\end{center}
+
+
+\begin{solution}[1.5in]
+\begin{center}
+\begin{tabular}{|p{8cm}|p{6cm}|} 
+\hline
+\textbf{Expression} & \textbf{Interactive Output} \\ 
+\hline
+\rule{0pt}{4ex}
+\begin{lstlisting}
+print(quick_maths(big_shaq, True))
+\end{lstlisting}
+&  
+\begin{lstlisting}
+2
+4
+3
+None
+\end{lstlisting}\\ 
+\hline
+\end{tabular}
+\end{center}
+
+\end{solution}
+\end{blocksection}
