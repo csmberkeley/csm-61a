@@ -2,10 +2,8 @@
 \question \textbf{Pingpong again...}\\
 \begin{nonsol}
 The ping-pong sequence counts up starting from 1 and is
-always either counting up or counting down.
-
-At element k, the direction switches if k is a multiple of 7 or contains the
-digit 7.
+always either counting up or counting down. At element k, the direction switches if k is a multiple of 7 or contains the
+digit 7. 
 
 The first 30 elements of the ping-pong sequence are listed below, with direction
 swaps marked using brackets at the 7th, 14th, 17th, 21st, 27th, and 28th
@@ -17,8 +15,7 @@ elements:
 \end{nonsol}
 
 Implement a function \texttt{make\char`_pingpong\char`_tracker} that returns the
-next value in the pingpong sequence each time it is called. In the body of
-\texttt{make\char`_pingpong\char`_tracker}, you can use assignment statements.
+next value in the pingpong sequence each time it is called. You may use assignment statements.
 \newline
 
 \begin{lstlisting}
@@ -55,7 +52,6 @@ def make_pingpong_tracker():
         __________________________
         __________________________
     return pingpong_tracker
-
 \end{lstlisting}
 \end{nonsol}
 
@@ -79,59 +75,4 @@ def make_pingpong_tracker():
 
 \end{blocksection}
 
-\begin{blocksection}
-\question \textbf{(Optional)} Instead of using nonlocal for pingpong, let's use OOP!
 
-\begin{nonsol}
-\begin{lstlisting}
->>> tracker1 = PingPongTracker()
->>> tracker2 = PingPongTracker()
->>> tracker1.next()
-1
->>> tracker1.next()
-2
->>> tracker2.next()
-1
-
-class PingPongTracker:
-    def __init__(self):
-        self.current = 0
-        self.index = 1
-        self.add = True
-    def next(self):
-        """*** Enter solution below ***"""
-\end{lstlisting}
-\end{nonsol}
-
-\begin{solution}[0.3in]
-\begin{lstlisting}
-class PingPongTracker:
-    def __init__(self):
-        self.current = 0
-        self.index = 1
-        self.add = True
-
-    def next(self):
-        if self.add:
-            self.current += 1
-        else:
-            self.current -= 1
-        if has_seven(self.index) or self.index % 7 == 0:
-            self.add = not self.add
-        self.index += 1
-        return self.current
-
-\end{lstlisting}
-Notice how the OOP approach is insanely similar to the non local function.
-Instead of using \texttt{nonlocal}, we use \texttt{self.varName} and the code
-becomes exactly the same. We just store the data in a slightly different way.
-This implies that OOP and functions are pretty similar, and it turns out you can
-even write your own OOP framework using just functions and \texttt{nonlocal}!
-
-In addition, there are a lot of python specific features that can be written
-using functions or using classes. If you are interested, check out the powerful
-python feature decorators, and note how we can write them both as functions and
-as classes!
-\end{solution}
-
-\end{blocksection}

@@ -1,7 +1,7 @@
 % \begin{blocksection}
 \question Given some list \texttt{lst}, possibly a deep list, mutate \texttt{lst} to have the accumulated sum of all elements so far in the list. If there is a nested list, mutate it to similarly reflect the accumulated sum of all elements so far in the nested list. Return the total sum of \texttt{lst}.
 
-\emph{Hint:} You may find it useful to use the \lstinline$isinstance$ function, which returns true for \lstinline$isinstance(l, list)$ if \texttt{l} is a list and false otherwise.
+\emph{Hint:} The \lstinline$isinstance$ function returns True for \lstinline$isinstance(l, list)$ if \texttt{l} is a list and False otherwise.
 
 \begin{lstlisting}
 def accumulate(lst):
@@ -12,10 +12,21 @@ def accumulate(lst):
     >>> l
     [1, 6, 19, 23]
     >>> deep_l = [3, 7, [2, 5, 6], 9]
+    >>> accumulate(deep_l)
     32
     >>> deep_l
     [3, 10, [2, 7, 13], 32]
     """
+    ____________________________________________
+    for ________________________________________:
+	________________________________________
+        if isinstance(___________________, list):
+	    inside = ___________________________
+            ____________________________________
+        else:
+            ____________________________________
+            ____________________________________
+    ____________________________________________
 \end{lstlisting}
 
 \begin{solution}[1in]

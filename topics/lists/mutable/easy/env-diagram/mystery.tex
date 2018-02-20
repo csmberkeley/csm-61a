@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the following code.
+
+\begin{lstlisting}
+a = [1, 2, [3]]
+def mystery(s, t):
+    s.pop(1)
+    return t.append(s)
+b = a
+a += [b[0]]
+a = mystery(b, a[1:])
+\end{lstlisting}
+
+\begin{solution}[1in]
+\url{https://goo.gl/s2XKiG}
+\end{solution}
+\end{blocksection}
