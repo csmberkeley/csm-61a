@@ -28,8 +28,8 @@ class BallHog(Baller):
 \begin{blocksection}
 
 \begin{lstlisting}
->>> paul = Baller('Paul', True)
->>> jason = BallHog('Jason')
+>>> ajay = Baller('Ajay', True)
+>>> surya = BallHog('Surya')
 >>> len(Baller.all_players)
 \end{lstlisting}
 \begin{solution}[.2in]
@@ -44,7 +44,7 @@ Error
 \end{solution}
 
 \begin{lstlisting}
->>> len(jason.all_players)
+>>> len(surya.all_players)
 \end{lstlisting}
 \begin{solution}[.2in]
 2
@@ -53,42 +53,42 @@ Error
 
 \begin{blocksection}
 \begin{lstlisting}
->>> paul.pass_ball()
+>>> ajay.pass_ball()
 \end{lstlisting}
 \begin{solution}[.2in]
 Error
 \end{solution}
 
 \begin{lstlisting}
->>> paul.pass_ball(jason)
+>>> ajay.pass_ball(surya)
 \end{lstlisting}
 \begin{solution}[.2in]
 True
 \end{solution}
 
 \begin{lstlisting}
->>> paul.pass_ball(jason)
+>>> ajay.pass_ball(surya)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> BallHog.pass_ball(jason, paul)
+>>> BallHog.pass_ball(surya, ajay)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> jason.pass_ball(paul)
+>>> surya.pass_ball(ajay)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> jason.pass_ball(jason, paul)
+>>> surya.pass_ball(surya, ajay)
 \end{lstlisting}
 \begin{solution}[.2in]
 Error
