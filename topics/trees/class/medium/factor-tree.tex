@@ -5,7 +5,7 @@
 def factor_tree(n):
     for i in ______________________:
         if ________________________:
-            return tree(_____, _____________________________)
+            return Tree(_____, _____________________________)
     _______________________________
 \end{lstlisting}
 
@@ -13,8 +13,8 @@ def factor_tree(n):
 \begin{lstlisting}
     for i in range(2, n):
         if n % i == 0:
-            return tree(n, [factor_tree(i), factor_tree(n // i)])
-    return tree(n)
+            return Tree(n, [factor_tree(i), factor_tree(n // i)])
+    return Tree(n)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

@@ -20,6 +20,8 @@ what(4, lambda x, y : x)
 \url{https://goo.gl/aGQF7c}
 \end{solution}
 
+\vspace{13\baselineskip}
+
 \part Write the simplest possible function that does the same thing as
 \lstinline$what$ for any input \lstinline$a$, \lstinline$b$.
 
@@ -29,6 +31,9 @@ def foo(a, b):
     a *= 2
     return b(a, a)
 \end{lstlisting}
+
+Note: Having the body of the function as just \texttt{return b(2 * a, 2 * a)} is incorrect. To test this out, try passing in \texttt{[1, 2, 3]} for \texttt{a} and \texttt{lambda x, y: x is y} for \texttt{b}.
+
 \end{solution}
 \end{parts}
 \end{blocksection}
