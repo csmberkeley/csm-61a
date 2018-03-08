@@ -2,9 +2,9 @@
 \usepackage{../../commonheader}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{3}
-\title{\textsc{Trees and Orders of Growth}}
-\date{October 2 to October 6, 2017}
+\discnumber{7}
+\title{\textsc{Mutation and Nonlocal}}
+\date{February 26 to February 28, 2018}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -13,29 +13,20 @@
 \fontsize{12}{15}\selectfont
 
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{Trees}
-\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\section{Mutation}
 \begin{questions}
-\subimport{../../topics/trees/adt/draw-tree/}{draw-tree.tex}
-\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
-\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
-\subimport{../../topics/trees/adt/construct-tree/}{get-item.tex}
-\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\subimport{../../topics/lists/mutable/easy/}{wwpd.tex}
+\newpage
+\subimport{../../topics/lists/mutable/easy/env-diagram/}{mystery.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+\end{questions}
 
-\section{Orders of Growth}
-\subimport{../../topics/growth/easy/}{jumpstart.tex}
-\\\\
-\subimport{../../topics/growth/easy/}{medley.tex}
-\subimport{../../topics/growth/medium/}{hailstone.tex}
-% \subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
-% \subimport{../../topics/growth/medium/}{mysterious-loops.tex}
-\\\\
-\subimport{../../topics/growth/medium/}{trees.tex}
-
-
-
+\newpage
+\section{Nonlocality}
+\begin{questions}
+\subimport{../../topics/nonlocal/easy/env-diagram/}{kale.tex}
+\subimport{../../topics/nonlocal/medium/}{pingpongv3.tex} 
 \end{questions}
 
 \end{document}
