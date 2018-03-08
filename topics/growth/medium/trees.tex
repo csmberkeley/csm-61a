@@ -1,8 +1,8 @@
 \begin{blocksection}
-\question \textbf{Orders of Growth and Trees:} Assume we are using the non-mutable tree implementation introduced in discussion. Consider the following function:
+\question \textbf{Orders of Growth and Trees:} Assume we are using the ADT tree implementation introduced in discussion. Consider the following function:
 \begin{lstlisting}
 def word_finder(t, p, word):
-    if root(t) == word:
+    if label(t) == word:
         p -= 1
         if p == 0:
             return True

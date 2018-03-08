@@ -1,0 +1,77 @@
+\begin{blocksection}
+\question \textbf{Flying the cOOP} What would Python display? Write the result of executing the code and the prompts below. If a function is returned, write "Function". If nothing is returned, write "Nothing". If an error occurs, write "Error".
+
+\vspace{2\baselineskip}
+
+\begin{lstlisting}
+class Bird:
+    def __init__(self, call):
+        self.call = call
+        self.can_fly = True
+    def fly(self):
+        if self.can_fly:
+            return "Don't stop me now!"
+        else:
+            return "Ground control to Major Tom..."
+    def speak(self):
+        print(self.call)
+
+class Chicken(Bird):
+    def speak(self, other):
+        Bird.speak(self)
+        other.speak()
+
+class Penguin(Bird):
+    can_fly = False
+    def speak(self):
+        call = "Ice to meet you"
+        print(call)
+
+andre = Chicken("cluck")
+gunter = Penguin("noot")
+\end{lstlisting}
+\end{blocksection}
+
+\newpage
+\begin{blocksection}
+\begin{lstlisting}
+>>> andre.speak(Bird("coo")) 
+\end{lstlisting}
+\begin{solution}[.2in]
+cluck \\
+coo
+\end{solution}
+
+\vspace{3\baselineskip}
+\begin{lstlisting}
+>>> andre.speak() 
+\end{lstlisting}
+\begin{solution}[.2in]
+Error
+\end{solution}
+
+\vspace{3\baselineskip}
+\begin{lstlisting}
+>>> gunter.fly() 
+\end{lstlisting}
+\begin{solution}[.2in]
+"Don't stop me now!"
+\end{solution}
+
+\vspace{3\baselineskip}
+\begin{lstlisting}
+>>> andre.speak(gunter) 
+\end{lstlisting}
+\begin{solution}[.2in]
+cluck \\
+Ice to meet you
+\end{solution}
+
+\vspace{3\baselineskip}
+\begin{lstlisting}
+>>> Bird.speak(gunter)
+\end{lstlisting}
+\begin{solution}[.2in]
+noot
+\end{solution}
+\end{blocksection}
