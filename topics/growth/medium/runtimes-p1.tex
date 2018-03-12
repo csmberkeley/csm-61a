@@ -1,0 +1,29 @@
+\begin{blocksection}
+\question Find the runtime for each of the following functions. \\
+
+\begin{center}
+\begin{tabular}{ |p{13cm}|p{2cm}| }
+\hline
+\begin{lstlisting}
+def mystery(n):
+    total = 0
+    for i in range(n // 2):
+        j = 1
+        while j < n:
+            j *= 2
+            total += i * j
+    return total
+\end{lstlisting} &  \\  \hline
+
+\begin{lstlisting}
+def foo(n):
+    if n == 0:
+        return
+    for i in range(n // 2):
+        print(i)
+    foo(n // 2)
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+\end{center}
+
+\end{blocksection}
