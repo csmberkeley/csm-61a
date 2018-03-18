@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question The following line of code does not work. Why? Write the lambda
+equivalent of the \texttt{let} expressions.
+
+\begin{lstlisting}
+(let ((foo 3)
+      (bar (+ foo 2)))
+    (+ foo bar))
+\end{lstlisting}
+\begin{solution}[0.5in]
+The above function will error because it is equivalent to:
+\begin{lstlisting}
+((lambda (foo bar) (+ foo bar)) 3 (+ foo 2))
+\end{lstlisting}
+
+In other words, foo has not been defined in the global frame. When bar is being
+assigned to \texttt{(+ foo 2)}, it will error. The assignment of foo to 3
+happens in the lambda?s frame when it's called, not the global frame (this is
+relevant to the Scheme project -- when the interpreter sees \texttt{lambda}, it
+will call a function to start a new frame).
+
+If we had the line \texttt{(define foo 3)} before the call to let, then it would
+return 8, because within let, foo would be 3 and bar would be \texttt{(+ 3 2)},
+since it would use the foo in the Global frame.
+\end{solution}
+
+\end{blocksection}

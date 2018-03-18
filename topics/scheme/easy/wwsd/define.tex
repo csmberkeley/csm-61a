@@ -1,0 +1,94 @@
+\begin{blocksection}
+\question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
+
+\begin{parts}
+
+\part
+\begin{lstlisting}
+(cons (cons 1 nil) (cons 2 (cons (cons 3 (cons 4 5)) (cons 6 nil))))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+((1) 2 (3 4 . 5) 6)
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(define a 4)
+((lambda (x y) (+ a)) 1 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+4
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+((lambda (x y z) (y x)) 2 / 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+0.5
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+((lambda (x) (x x)) (lambda (y) 4))
+\end{lstlisting}
+\begin{solution}[0.25in]
+4
+\end{solution}
+
+\part
+\begin{lstlisting}
+(define boom1 (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: Zero Division
+\end{solution}
+
+\part
+\begin{lstlisting}
+boom1
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: boom1 not defined
+\end{solution}
+
+\part
+\begin{lstlisting}
+(define boom2 (lambda () (/ 1 0)))
+\end{lstlisting}
+\begin{solution}[0.25in]
+boom2
+\end{solution}
+
+\part
+\begin{lstlisting}
+(boom2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: Zero Division
+\end{solution}
+
+\part Why/How are the two ``boom'' definitions above different?
+\begin{solution}[0.3in]
+The first line is setting boom1 to be equal to the value \texttt{(/ 1 0)}, which
+turns out to be an error. On the other hand, boom2 is defined as a lambda that
+takes in no arguments that, when called, will evaluate \texttt{(/ 1 0)}.
+\end{solution}
+
+\part How can we rewrite boom2 without using the lambda operator?
+\begin{solution}[0.2in]
+\begin{lstlisting}
+(define (boom2) (/ 1 0))
+\end{lstlisting}
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}
+
