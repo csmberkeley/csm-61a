@@ -1,7 +1,8 @@
 \begin{blocksection}
 \question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
-
+\end{blocksection}
 \begin{parts}
+\begin{blocksection}
 
 \part
 \begin{lstlisting}
@@ -11,6 +12,15 @@
 \begin{lstlisting}
 ((1) 2 (3 4 . 5) 6)
 \end{lstlisting}
+\end{solution}
+
+\part 
+\begin{lstlisting}
+(cons (cons (car '(1 2 3)) (list 2 3 4)) (cons 2 3))
+\end{lstlisting}
+
+\begin{solution}[.25in]
+\lstinline$((1 2 3 4) 2 . 3)$
 \end{solution}
 
 \part
@@ -74,12 +84,14 @@ boom2
 Error: Zero Division
 \end{solution}
 
+\begin{comment}
 \part Why/How are the two ``boom'' definitions above different?
 \begin{solution}[0.3in]
 The first line is setting boom1 to be equal to the value \texttt{(/ 1 0)}, which
 turns out to be an error. On the other hand, boom2 is defined as a lambda that
 takes in no arguments that, when called, will evaluate \texttt{(/ 1 0)}.
 \end{solution}
+\end{comment}
 
 \part How can we rewrite boom2 without using the lambda operator?
 \begin{solution}[0.2in]
@@ -88,7 +100,7 @@ takes in no arguments that, when called, will evaluate \texttt{(/ 1 0)}.
 \end{lstlisting}
 \end{solution}
 
-\end{parts}
-
 \end{blocksection}
+
+\end{parts}
 
