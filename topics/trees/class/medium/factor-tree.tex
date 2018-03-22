@@ -1,0 +1,25 @@
+\begin{blocksection}
+\question Define the function \lstinline$factor_tree$ which returns a \emph{factor tree}. Recall that in a factor tree, multiplying the leaves together is the prime factorization of the root, $n$. See below for an example of a factor tree for $n$ = 20.\\
+
+\begin{center}
+\includegraphics[scale=0.3]{factor_tree_20.png}
+\end{center}
+
+\vspace{2\baselineskip}
+\begin{lstlisting}
+def factor_tree(n):
+    for i in ______________________:
+        if ________________________:
+            return Tree(_____, _____________________________)
+    _______________________________
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+    for i in range(2, n):
+        if n % i == 0:
+            return Tree(n, [factor_tree(i), factor_tree(n // i)])
+    return Tree(n)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

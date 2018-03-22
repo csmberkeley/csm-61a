@@ -3,8 +3,8 @@
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{5}
-\title{\textsc{Linked Lists}}
-\date{October 16 to October 20, 2017}
+\title{\textsc{Linked Lists and Midterm Review}}
+\date{March 12 to March 14, 2018}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -13,20 +13,28 @@
 \fontsize{12}{15}\selectfont
 
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Linked Lists}
 \subimport{../../topics/linked-lists/class/text/}{implementation.tex}
 \begin{questions}
-\section{What Would Python Print?}
-
+\newpage
 \subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
-\section{Code Writing Questions}
+\newpage
 \subimport{../../topics/linked-lists/class/easy/}{skip.tex}
 \subimport{../../topics/linked-lists/class/easy/}{skip-no-mutate.tex}
+\newpage
 \subimport{../../topics/linked-lists/class/medium/}{reverse.tex}
-\subimport{../../topics/linked-lists/class/medium/}{reverse-inplace.tex}
-
-\pagebreak
-
-\subimport{../../topics/linked-lists/class/medium/}{has-cycle.tex}
 \end{questions}
 
+\section{Midterm Review}
+For each of the following problems, assume the Tree class is defined as follows:
+\vspace{2\baselineskip}
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\vspace{\baselineskip}
+\begin{questions}
+\subimport{../../topics/trees/class/hard/}{contains-n.tex}
+\newpage
+\subimport{../../topics/trees/class/medium/}{factor-tree.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{sing-a-song.tex}
+\end{questions}
 \end{document}
