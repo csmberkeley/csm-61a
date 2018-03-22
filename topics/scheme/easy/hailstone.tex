@@ -18,6 +18,8 @@ is even, divide by two. Else, multiply by 3 and add 1.
 \lstinline$(remainder 103 10)$ outputs 3
 \end{itemize}
 
+\vspace{\baselineskip}
+
 \ifprintanswers\else
 \begin{lstlisting}
 ; The hailstone sequence starting at seed = 10 would be
@@ -32,12 +34,23 @@ is even, divide by two. Else, multiply by 3 and add 1.
 16
 > (hailstone 5 1)
 16
-> (hailstone 5 5)
-1
+
+(define (hailstone seed n)
+
+
+
+
+
+
+
+
+
+
+)
 \end{lstlisting}
 \fi
 
-\begin{solution}[1in]
+\begin{solution}[0.1in]
 \begin{lstlisting}
 (define (hailstone seed n)
     (if (= n 0)

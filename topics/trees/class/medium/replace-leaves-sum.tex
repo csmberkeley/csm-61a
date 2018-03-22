@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question Given a tree \texttt{t}, mutate the tree so that each leaf's label becomes the sum of the labels of all nodes in the path from the leaf node to the root node. 
+\end{blocksection}
+
+\begin{lstlisting}
+def replace_leaves_sum(t):
+    """
+    >>> t = Tree(1, [Tree(3, [Tree(2), Tree(8)]), Tree(5)])
+    >>> replace_leaves_sum(t)
+    >>> t
+    Tree(1, [Tree(3, [Tree(6), Tree(12)]), Tree(6)])
+    """
+    def helper(______________ , _________________):
+
+        if t.is_leaf():
+
+            _____________________________________
+
+        else:
+
+            for b in t.branches:
+
+                _________________________________
+
+    _____________________________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def replace_leaves_sum(t):
+    def helper(t, total):
+        if t.is_leaf():
+            t.label = total + t.label
+        else:
+            for b in t.branches:
+                helper(b, total + t.label)
+    helper(t, 0)
+\end{lstlisting}
+\end{solution}

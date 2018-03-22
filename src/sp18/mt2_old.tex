@@ -1,0 +1,414 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{graphicx}
+\usepackage{color}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{}
+\title{\textsc{Midterm 2 Review}}
+\date{March 10, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Question %%%
+
+\section{List Mutation and Nonlocal}
+\begin{questions}
+
+\item Draw the Box and Pointer!
+\newline
+\begin{lstlisting}
+>>> corgi = [3, 15, 18, 7, 9]
+>>> husky = [8, 21, 19, 11, 25]
+>>> poodle = corgi.pop()
+>>> corgi += husky[-3:]
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+
+\end{lstlisting}
+\end{solution}
+\vspace{4cm}
+
+\item Draw the Box and Pointer!
+
+\begin{lstlisting}
+>>> pom = [16, 15, 13]
+>>> pompom = pom * 2
+>>> pompom.append(pom[:])
+>>> pom.extend(pompom)
+\end{lstlisting}
+
+\clearpage
+\vspace{4cm}
+\item What is the result of calling pop(pip)?
+
+\begin{lstlisting}
+
+pip = [8, 2]
+def pop(tart):
+    pop = tart[pip[1]:]
+    def pup(p):
+        nonlocal pop
+        pop = [pop.pop()] + [pop] + pop[:] 
+        return pop.append(9)
+    if pup(3):
+        return pop[2]
+    return pop[3]
+pip.extend([8, 3])
+pop(pip)
+\end{lstlisting}
+
+\end{questions}
+\clearpage
+
+\section{OOP}
+\begin{questions}
+\item An Energizing Example!
+\begin{lstlisting}
+class Pokemon:
+    hp = 100
+    damage = 25
+    def __init__(self, name):
+        self.name = name
+    def attack(self, other):
+        other.hp -= self.damage
+    def __repr__(self):
+        return self.name
+ 
+\end{lstlisting}
+For each of the expressions in the table below, write the output displayed by the interactive Python interpreter when the expression is evaluated. The output may have multiple lines. If more than 3 lines are displayed, just write the first 3. If an error occurs, write Ã¢ÂÂErrorÃ¢ÂÂ. If evaulation would run forever, write Ã¢ÂÂForeverÃ¢ÂÂ.\\
+Assume that you have started \texttt{python3} and executed the following statements:
+
+\begin{center}
+\begin{tabular}{ |p{8cm}|p{6cm}| } 
+ \hline
+ \begin{lstlisting}
+>>> pika = Pokemon('Pikachu') 
+>>> pika.hp
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.damage
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.trainer = 'Kevin'
+>>>pika.trainer
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>Pokemon.trainer
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>bulba = Pokemon('Bulbasaur')
+>>>bulba.hp -= pika.damage
+>>>Pokemon.hp
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.hp, bulba.hp
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+\end{center}
+\clearpage
+\begin{center}
+\begin{tabular}{ |p{8cm}|p{6cm}| } 
+ \hline
+ \begin{lstlisting}
+>>>pika.attack(bulba)
+>>>pika.hp, bulba.hp
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>Pokemon.attack(pika, bulba)
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.hp, bulba.hp
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.attack = lambda self, other: print("It doesn't affect " + other.name)
+>>>pika.attack(bulba)
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.attack
+>>>pika.attack = bulba.attack
+>>>pika.attack(bulb)
+>>>pika.hip, bulba.hp
+\end{lstlisting} &  \\  \hline
+ \begin{lstlisting}
+>>>pika.attack
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+\end{center}
+
+
+\clearpage
+\item ElementPointer
+ 
+ \begin{lstlisting}
+ 
+"""
+Let's build a class ElementPointer* to keep track of the 
+next element in a list: [1, 2, 3].
+Our class will yield the next element upon command.
+Our class also allows us to mark a point in our list so 
+that ElementPointer yields the element at that point 
+when we ask for the next element in our list.
+
+*This question is adapted from CS186. 
+"""
+
+class ElementPointer:
+
+    lst = [1, 2, 3]
+    def __init__(self):
+        self.curr_index = 0
+        self.marked_index = -1
+
+    def has_next(self):
+        """has_next returns True when there is another element in our list that has yet to be yielded.
+        >>> a = ElementPointer()
+        >>> a.next_elem()
+        1
+        >>> a.has_next()
+        True                                   
+        """
+        
+        ____________________________________
+\end{lstlisting}
+\newpage
+\begin{lstlisting}
+        
+     def next_elem(self):
+        """next_elem returns the next element of the list.
+        >>> a = ElementPointer()
+        >>> a.next_elem()
+        1
+        >>> a.next_elem()
+        2                                      
+        """
+        
+        ____________________________________
+        
+        ____________________________________
+        
+        ____________________________________
+            
+    def mark(self):
+        """mark remembers the current index of our iterator so that we can reset
+        back to that mark. mark does nothing if the iterator has not yet yielded an
+        element or has not yielded an element since the last reset.
+        >>> a = ElementPointer()
+        >>> a.next_elem()
+        1   
+        >>> a.mark()
+        >>> a.reset()
+        >>> a.next_elem()
+        1
+        """
+        
+        ____________________________________
+        
+        ____________________________________
+        
+        ____________________________________
+            
+
+
+
+
+    def reset(self):
+        """reset resets the iterator such that the next element it yields is at the marked point.
+        >>> a.next_elem()
+        1   
+        >>> a.mark()
+        >>> a.reset()
+        >>> a.next_elem()
+        1 
+        """
+        
+        ____________________________________
+        
+        ____________________________________
+        
+        ____________________________________
+        
+        ____________________________________
+\end{lstlisting}
+
+\end{questions}
+
+
+\newpage
+
+\section{Orders of Growth}
+\begin{questions}
+\item What do these runtimes simplify to? \newline
+\begin{tabular}{ |p{4cm}|p{4cm}| } 
+\hline 
+O($8n^{2}$)&  \\ \hline
+O($10000$) & \\ \hline
+O($100n^{2} + 10n^{3}$) & \\ \hline
+O($3n^{2}*2^{n}$) & \\ \hline
+O($n^{30}+3^{n}$) & \\ \hline
+O($n\log{n} + \log{n} + n$) & \\ \hline
+\end{tabular}
+
+\item What is the runtime?
+\begin{center}
+
+\begin{tabular}{ |p{13cm}|p{2cm}| } 
+ \hline
+ \begin{lstlisting}
+def mystery(n):
+    total = 0
+for i in range(n // 2):
+    j = 1
+    while j < n:
+        j *= 2
+        total += i * j
+return total
+\end{lstlisting} &  \\  \hline
+
+ \begin{lstlisting}
+def foo(n):
+    if n == 0:
+        return
+    for i in range(n // 2):
+        print(i)
+    foo(n // 2)
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+
+\begin{tabular}{ |p{13cm}|p{2cm}| } 
+ \begin{lstlisting}
+def print_a_bunch(n):
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                return
+            print(j)
+        print(i)
+    return
+\end{lstlisting} &  \\  \hline
+Give the runtime in terms of m, the size of lst1, and n, the size of lst2
+ \begin{lstlisting}
+def strange_combinations(lst1, lst2):
+    for e1 in lst1:
+        for e2 in lst2:
+            print([item for item in lst1 if item != e2 and item != e1])
+\end{lstlisting} &  \\  \hline
+Find the runtime of make\_forest
+ \begin{lstlisting}
+def make_tree(n):
+    return tree(n, [make_tree(n - 1), make_tree(n - 1)])
+
+def make_forest(n):
+    return [make_tree(n) for i in range(n)]
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+\section{Linked Lists}
+\question
+\begin{lstlisting}
+def zero_one(link):
+    """
+    Takes in a linked list and returns a new linked list with the zeros in one linked list and the ones in the other. The new linked list should be constructed as follows:
+    >>>l = Link(1, Link(0, Link(0, Link(1))))
+    >>>zero_one(l)
+    Link(Link(0, Link(0)), Link(Link(1, Link(1)))) 
+
+    link_zero = Link.empty
+    link_one = Link.empty
+
+    while _____________________________________________:
+
+        if ____________________________________________:
+
+            ___________________________________________
+
+        else:
+
+            ___________________________________________
+
+        link =_________________________________________
+
+    return Link(__________________, ___________________)
+
+\end{lstlisting}
+
+\newpage
+
+\section{}
+
+\begin{blocksection}
+\question
+\begin{lstlisting}
+def linky_paths(t):
+    """ 
+    Takes in a tree, t, and modifies each label to be the path from that node to the root
+    >>>t = Tree(1, [Tree(2)])
+    >>>pathify(t)
+    >>>t
+    Tree(Link(1), [Tree(Link(2, Link(1))]
+    """
+
+    def helper(t, path_so_far):
+
+        t.label = ___________________________________
+
+        for _________________________________________:
+
+            _________________________________________
+
+    helper(____________________, ____________________)
+
+
+
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\question
+\begin{lstlisting}
+def all_paths(t):
+    """Returns a list of all paths from root to leadf in a tree with one 
+    catch -- represent each path as a linked list
+    >>> t1 = Tree(1, [Tree(2), Tree(3)])
+    >>> t2 = Tree(1, [Tree(2), Tree(3, [Tree(4), Tree(5)])])
+    >>> all_paths(t1)
+    [Link(1, Link(2)), Link(1, Link(3))]
+    >>> all_paths(t2)
+    [Link(1, Link(2)), Link(1, Link(3, Link(4))), Link(1, Link(3, Link(5)))]
+    """
+
+    if _____________:
+
+        return _______________
+
+    result = []
+
+    for branch in t.branches:
+
+        result = ___________________________________________
+
+    return result
+
+\end{lstlisting}
+\end{blocksection}
+
+
+
+
+\end{questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
