@@ -33,13 +33,15 @@ scm> (quicksort (list 5 2 4 3 12 7))
 (define (quicksort lst)
     (define (helper lst pivot less greater )
         (cond
-            ((null? lst) (append (qs less) (list pivot) (qs greater)))
-                ((> pivot (car lst)) (helper (cdr lst) pivot (append (list (car lst)) less) greater))
-                ((< pivot (car lst)) (helper (cdr lst) pivot less (append (list (car lst)) greater)))
-        )
-    )
-    (if (or (null? lst) (null? (cdr lst))) lst (helper (cdr lst) (car lst) nil nil))
-)
+            ((null? lst) 
+                (append (qs less) (list pivot) (qs greater)))
+            ((> pivot (car lst)) 
+                (helper (cdr lst) pivot (append (list (car lst)) less) greater))
+            ((< pivot (car lst)
+                (helper (cdr lst) pivot less (append (list (car lst)) greater)))))
+    (if (or (null? lst) (null? (cdr lst))) 
+		        lst 
+            (helper (cdr lst) (car lst) nil nil)))
 
 \end{lstlisting}
 
@@ -47,11 +49,11 @@ Alternate solution using filter:
 
 \begin{lstlisting}
 (define (quicksort lst)
-	(if (null? lst)
-		nil
-		(let ((less (filter (lambda (x) (< x (car lst))) lst))
-			  (greater (filter (lambda (x) (> x (car lst))) lst)))
-			  (append (append (quicksort less) (list (car lst))) (quicksort greater)))))
+   (if (null? lst)
+       nil
+       (let ((less (filter (lambda (x) (< x (car lst))) lst))
+          (greater (filter (lambda (x) (> x (car lst))) lst)))
+          (append (append (quicksort less) (list (car lst))) (quicksort greater)))))
 \end{lstlisting}
 
 \end{solution}

@@ -1,10 +1,18 @@
 \begin{blocksection}
 \question
-\textbf{let} is a special form in Scheme which allows you to create local bindings. Consider the example \\
-\texttt{(let ((x 1)) (+ x 1))}\\
+\textbf{let} is a special form in Scheme which allows you to create local bindings. Consider the example 
+\newline
+\newline
+\texttt{(let ((x 1)) (+ x 1))}
+\newline
+\newline
 Here, we assign \texttt{x} to \texttt{1}, and then evaluate the expression \texttt{(x + 1)} using that binding, returning \texttt{2}. However, outside of this expression, \texttt{x} would not be bound to anything. \\
-Each \texttt{let} special form has a corresponding lambda equivalent. The equivalent lambda expression for the above example is \\
-\texttt{((lambda (x) (+ x 1)) 1)}\\
+Each \texttt{let} special form has a corresponding lambda equivalent. The equivalent lambda expression for the above example is 
+\newline
+\newline
+\texttt{((lambda (x) (+ x 1)) 1)}
+\newline
+\newline
 The following line of code does not work. Why? Write the lambda
 equivalent of the \texttt{let} expressions.
 
