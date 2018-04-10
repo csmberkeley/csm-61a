@@ -3,25 +3,8 @@
 \lstinline$scheme_apply$ for the code below.
 
 % \begin{parts}
- \begin{lstlisting}
-scm> (+ 1 2)
-3
-\end{lstlisting}
-
-\begin{tabular}{lrrrr}
-\lstinline$scheme_eval$ & 1 & 3 & 4 & 6 \\
-\lstinline$scheme_apply$ & 1 & 2 & 3 & 4
-\end{tabular}
-\\
-
-\begin{solution}
-4 \lstinline$scheme_eval$, 1 \lstinline$scheme_apply$.
-\end{solution}
-
-\vspace{2\baselineskip}
 \begin{lstlisting}
-scm> (if 1 (+ 2 3) (/ 1 0))
-5
+(if 1 (+ 2 3) (/ 1 0))
 \end{lstlisting}
 
 \begin{tabular}{lrrrr}
@@ -36,8 +19,7 @@ scm> (if 1 (+ 2 3) (/ 1 0))
 
 \vspace{2\baselineskip}
 \begin{lstlisting}
-scm> (or #f (and (+ 1 2) 'apple) (- 5 2))
-apple
+(or #f (and (+ 1 2) 'apple) (- 5 2))
 \end{lstlisting}
 
 \begin{tabular}{lrrrr}
@@ -52,10 +34,25 @@ apple
 
 \vspace{2\baselineskip}
 \begin{lstlisting}
-scm> (define (add x y) (+ x y))
-add
-scm> (add (- 5 3) (or 0 2))
-2
+(define (square x) (* x x))
+
+(+ (square 3) (- 3 2))
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$scheme_eval$ & 2 & 5 & 14 & 24 \\
+\lstinline$scheme_apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+14 \lstinline$scheme_eval$, 4 \lstinline$scheme_apply$.
+\end{solution}
+
+\vspace{2\baselineskip}
+\begin{lstlisting}
+(define (add x y) (+ x y))
+
+(add (- 5 3) (or 0 2))
 \end{lstlisting}
 
 \begin{tabular}{lrrrr}
@@ -67,5 +64,6 @@ scm> (add (- 5 3) (or 0 2))
 \begin{solution}
 13 \lstinline$scheme_eval$, 3 \lstinline$scheme_apply$.
 \end{solution}
+
 % \end{parts}
 \end{blocksection}
