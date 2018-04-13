@@ -1,0 +1,24 @@
+\question Draw the environment diagram for the following code snippet:
+\begin{lstlisting}
+def one(two):
+    three = two
+    def four(five):
+        nonlocal three
+        if len(three) < 1:
+            three.append(five)
+            five = lambda x: four(x)
+        else:
+            five = seven + 7
+        return five
+    two = two + [1]
+    seven = 8
+    return four(three)
+
+eight = one([])
+print(eight(9))
+\end{lstlisting}
+
+\begin{solution}
+\url{https://goo.gl/d71WTd}
+\end{solution}
+

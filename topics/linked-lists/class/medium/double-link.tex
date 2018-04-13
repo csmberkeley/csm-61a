@@ -2,7 +2,7 @@
 \question Fill in the implementation of \lstinline$double_link$.
 
 \begin{lstlisting}
-def double_link(lst):
+def double_link(lnk):
     """Using mutation, replaces the second in each pair of items
     with the first. The first of each pair stays as is.
 
@@ -15,25 +15,21 @@ def double_link(lst):
 
 \ifprintanswers\else
 \begin{lstlisting}
-    if __________________________________________________________________:
-
-        return __________________________________________________________
-
-    _____________________________________________________________________
-
-    _____________________________________________________________________
-
-    return ______________________________________________________________
+    if _____________________________________________________:
+        return _____________________________________________
+    ________________________________________________________
+    ________________________________________________________
+    return _________________________________________________
 \end{lstlisting}
 \fi
 
 \begin{solution}
 \begin{lstlisting}
-    if lst is Link.empty or lst.rest is Link.empty:
-        return lst
-    lst.rest.first = lst.first
-    double_link(lst.rest.rest)
-    return lst
+    if lnk is Link.empty or lnk.rest is Link.empty:
+        return lnk
+    lnk.rest.first = lnk.first
+    double_link(lnk.rest.rest)
+    return lnk
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
