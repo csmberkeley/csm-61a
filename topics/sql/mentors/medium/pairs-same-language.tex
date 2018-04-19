@@ -2,15 +2,15 @@
 \question Write a query that lists all the pairs of mentors who like the same language. (How can we make sure to remove duplicates?)
 
 \begin{lstlisting}
-Kelly|Alfonso
-Tiffany|Diana
+Catherine|Lindsay
+Keon|Shreya
 \end{lstlisting}
 
 \begin{solution}[1in]
 \begin{lstlisting}
 select m1.name, m2.name
     from mentors as m1, mentors as m2
-    where m1.language = m2.language and m1.name > m2.name;
+    where m1.language = m2.language and m1.name < m2.name;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

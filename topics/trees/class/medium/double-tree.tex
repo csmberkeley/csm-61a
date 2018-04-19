@@ -48,7 +48,7 @@ def double_tree(t):
         return Tree(t.label, [Tree(t.label)])
     else:
         dbl_branches = [double_tree(c) for c in t.branches]
-            return Tree(t.label,
-                        [Tree(t.label, dbl_branches)])
+        return Tree(t.label,
+                    [Tree(t.label, dbl_branches)])
 \end{lstlisting}
 \end{solution}

@@ -18,7 +18,10 @@ Assume that the given index is between 0 and the length of the original list, in
 (define (insert lst item index)
   (if (= index 0)
     (cons item lst)
-    (cons (car lst) (insert (cdr lst) item (- index 1))))
+    (cons (car lst) 
+          (insert (cdr lst) 
+                  item 
+                  (- index 1))))
 )
 \end{lstlisting}
 \end{solution}
