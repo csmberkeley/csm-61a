@@ -1,0 +1,52 @@
+\q{List Diagram}
+Fill in the environment diagram that results from executing each block of code below until the entire program
+is finished or an error occurs.
+ Use box-and-pointer notation for lists. You don't need to write index numbers
+or the word list. 
+Erase or cross out any boxes or pointers that are not part of a final diagram.
+
+\begin{itemize}[leftmargin=0em]
+\item[a.] (3 pt)
+
+\begin{minipage}[t]{1.5in}
+\noindent
+\begin{lstlisting}[frame=single]
+t = [5, [6, 7]]
+t.extend(t[1])
+\end{lstlisting}
+\end{minipage}
+
+\vfill
+\hrule
+
+\item[b.] (2 pt)
+
+\begin{minipage}[t]{1.5in}
+\noindent
+\begin{lstlisting}[frame=single]
+t = [5, [6, 7], 8]
+t.append(lambda: t.extend(t[-3:]))
+t[3]()
+\end{lstlisting}
+\end{minipage}
+
+\vfill
+\hrule
+
+\item[c.] (3 pt)
+
+\begin{minipage}[t]{2in}
+\noindent
+\begin{lstlisting}[frame=single]
+t = [5, [6, 7], lambda: t.append([[0]])]
+b = t + [1]
+b[2]()
+t.extend(b.pop(1))
+\end{lstlisting}
+\end{minipage}
+
+
+\vfill
+
+\end{itemize}
+
