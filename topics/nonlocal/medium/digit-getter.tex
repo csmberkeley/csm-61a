@@ -1,0 +1,56 @@
+\begin{blocksection}
+\question Write a function \texttt{make\char`_digit\char`_getter} that, given a positive integer \texttt{n}, returns a new function that returns the digits in the integer  
+one by one, starting from the rightmost digit. Once all digits have been removed, subsequant calls to the function should return the sum of all the digits in the original integer.
+
+\begin{lstlisting}
+def make_digit_getter(n):
+    """ Returns a function that returns the next digit in n
+    each time it is called, and the total value of all the integers
+    once all the digits have been returned.
+    >>> year = 8102
+    >>> get_year_digit = make_digit_generator(year)
+    >>> for _ in range(4):
+    ...     print(get_year_digit())
+    2
+    0
+    1
+    8
+    >>> get_year_digit()
+    11
+    """
+    ____________________________________
+
+    def get_next():
+        
+       ________________________________
+        
+       if ______________________________:
+
+                ______________________________
+        
+       ________________________________
+        
+       ________________________________
+       
+       return  __________________________
+
+    return ________________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def make_digit_getter(n):
+    total = 0
+    def get_next():
+        nonlocal n, total
+        if n == 0:
+             return total
+        val = n % 10
+        n = n // 10
+        total += val
+        return val
+    return get_next
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

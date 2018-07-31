@@ -1,16 +1,15 @@
 \begin{blocksection}
 \question \textbf{Pingpong again...}\\
 \begin{nonsol}
-The ping-pong sequence counts up starting from 1 and is
+Time for some more ping-pong!
+Remember, the ping-pong sequence counts up starting from 1 and is
 always either counting up or counting down. At element k, the direction switches if k is a multiple of 7 or contains the
 digit 7. 
 
-The first 30 elements of the ping-pong sequence are listed below, with direction
-swaps marked using brackets at the 7th, 14th, 17th, 21st, 27th, and 28th
-elements:
+The first 20 elements of the ping-pong sequence are listed below, with direction
+swaps marked using brackets at the 7th, 14th, and 17th elements
 \begin{lstlisting}
-1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0 [-1] 0 1 2 3 4
-[5] [4] 5 6
+1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0 
 \end{lstlisting}
 \end{nonsol}
 
@@ -30,6 +29,7 @@ def has_seven(k): # Use this function for your answer below
 
 \begin{nonsol}
 \begin{lstlisting}
+
 def make_pingpong_tracker():
     """ Returns a function that returns the next value in the
     pingpong sequence each time it is called.
@@ -42,15 +42,25 @@ def make_pingpong_tracker():
     """
     index, current, add = 1, 0, True
     def pingpong_tracker():
+
         ___________________________
+
         if add:
+
             ________________________
+
         else:
+
             ________________________
+
         if _______________________:
+
             add = not add
+
         __________________________
+
         __________________________
+
     return pingpong_tracker
 \end{lstlisting}
 \end{nonsol}

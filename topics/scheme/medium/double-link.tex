@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question Implement \texttt{double-link}, which takes in a list and replaces the second in 
+each pair of two consecutive items with the first using mutation and returns the mutated list. 
+The first of each pair of consecutive items is unchanged.
+
+\begin{lstlisting}
+scm> (define a '(1 2 3 4))
+a
+scm> (double-link a)
+(1 1 3 3)
+scm> a
+(1 1 3 3)
+scm> (double-link '(c s 6 1 a))
+(c c 6 6 a)
+
+(define (double-link lst)
+
+    (if ________________________________
+
+        ___________________________
+
+        (begin
+
+            ______________________________
+
+            ______________________________
+            
+            lst)))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (double-link lst)
+    (if (or (null? lst) (null? (cdr lst))) 
+        lst
+        (begin
+            (set-car! (cdr lst) (car lst))
+            (double-link (cdr (cdr lst)))
+            lst)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,32 @@
+\begin{blocksection}
+The following questions refer to the Scheme interpreter. Assume we're using the implementation seen in lecture and 
+in the Scheme project, as well as the Calculator subset seen in discussion.
+\question What's the purpose of the read stage in a Read-Eval-Print Loop? For our Scheme interpreter, what does it 
+take in, and what does it return?
+\begin{solution}[1in] 
+The read stage returns a representation of the code that is easier to process later in the interpreter by putting it in a new data structure. In our interpreter,
+it takes in a string of code, and outputs a Pair representing an expression (which is really just the same as a Scheme list).
+\end{solution}
+
+\question What are the two components of the read stage? What do they do?
+\begin{solution}[1in]
+The read stage consists of
+\begin{enumerate}[1.]
+\item The lexer, which breaks the input string and breaks it up into tokens (individual characters or symbols)
+\item The parser, which takes that string of tokens and puts it into the data structure that the read stage outputs (in our case, a Pair).
+\end{enumerate}
+\end{solution}
+
+\question Write out the constructor for the Pair object the read stage creates with the input string \texttt{(define (foo x) (+ x 1))}
+\begin{solution}[1in]
+Pair("define", Pair(Pair("foo", Pair("x", nil)), Pair(Pair("+", Pair("x", Pair(1, nil))), nil)))
+\end{solution}
+
+\question For the previous example, imagine we saved that Pair object to the variable \texttt{p}. How could we check that the expression 
+is a \texttt{define} special form? How would we access the name of the function and the body of the function?
+\begin{solution}[1in]
+We could check to see that it's a define special form by checking if \lstinline$p.first == "define"$. 
+\newline
+We could get its name by accessing \lstinline$p.second.first.first$ and get the body of the function with \lstinline$p.second.second.first$.
+\end{solution}
+\end{blocksection}

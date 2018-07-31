@@ -1,0 +1,81 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{$\infty$}
+\title{\textsc{RRR Week SQL Review}}
+\date{May 2, 2018}
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{enumerate}[1)]
+\item It’s RRR week, and instead of studying, you decide to throw a fancy party! In order to help you plan, you turn to SQL.
+\newline 
+Say you have two tables: guests and foods. 
+\newline 
+\textbf{guests}
+\newline
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Grade} \\
+ \hline
+ Jen & Pasta & Purple & 4 \\
+ \hline
+ Jennifer & Sushi & Blue & 2 \\
+ \hline
+  Jennie & Curry & Orange & 3 \\
+	\hline
+	... & ... & ... & ...
+\end{tabular}
+\newline
+\newline
+\textbf{foods}
+\newline
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ \textbf{Food} & \textbf{Price} \\
+ \hline
+ Pasta & 7\\
+ \hline
+ Sushi & 13 \\
+ \hline
+ Curry & 9 \\
+ \hline
+	... & ... 
+\end{tabular}
+\begin{enumerate}[a.]
+\item Write a query to select the names of all pairs of guests wearing the same color, as well as the associated color. Be sure each pair only appears once in your output.
+\vspace{2cm}
+\item Write a query to select the total number of people attending in each grade (your output should have two columns, the grade and the total number of people attending).
+\vspace{2cm}
+\item Write a query to output the total price of feeding each grade, assuming you feed each person their favorite food. Order your output from highest to lowest price.
+\vspace{2cm}
+\item You realize you don’t have the money to feed everyone. Instead of compromising and feeding people cheaper food, you decide to disinvite some people. First, write a query which outputs only the guests that want food cheaper than 10 dollars. 
+\vspace{2cm}
+\item You realize that people might catch on if you disinvite people based on their dietary preferences, so you decide to do it based on a different metric. Write a query that outputs only the colors where everyone wearing that color wants food cheaper than 10 dollars.
+\vspace{2cm}
+
+\end{enumerate}
+\newpage
+\item Now, you want to send some emails to everyone that attended! On the email server you use, each message is stored in a SQL database. Each message in this database will appear in the recipient’s inbox. When you run .schema, you see:
+\begin{lstlisting}
+CREATE TABLE emails (recipient, sender DEFAULT 'Party Committee', title DEFAULT 'no title', message);
+\end{lstlisting}
+For each of the following questions you have access to this table as well as the two tables in part one.
+\begin{enumerate}[a.]
+\item Send an email from the Party Committee to each person in your guests list saying "You are invited!". You can send it with the default title.
+\vspace{2cm}
+\item Whoops, you realized you probably should have actually included a title in the emails you just sent. Update the emails sent by the Party Committee with a default title to have the new title "Invitation".
+\vspace{2cm}
+\item Your email client added a nifty feature where you can set a reminder by sending yourself an email! The body of the email will be pinned as a memo.
+\newline
+Set yourself one memo for each food item you're buying. The title of the memo should be the food item and the message in the memo should be the total amount you need to spend on the item.
+\vspace{2cm}
+\item The party ends up falling apart, and you need to go off the grid. Delete every email sent to or from the Party Committee.
+\vspace{2cm}
+\end{enumerate}
+\end{enumerate}
+\end{document}

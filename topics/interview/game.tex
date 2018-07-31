@@ -1,0 +1,26 @@
+\begin{blocksection}
+\question Imagine we have a game where there are multiple cards with numbers laid out in a straight line. 
+Each turn, a player can take a card from the very left, or the very right. 
+\newline
+We want to write a function, \texttt{game}, that determines whether or not it is possible for a sequence of valid 
+moves to result in both players getting an equal score once all cards are used.
+\newline
+We represent the cards as a list. Say \texttt{lst = [0, 2, 2, 4]}. In this case, our function should return True. 
+The current player (\texttt{curr}) can pick the last card (4) on their first turn. After that, the two players switch. 
+On the next turn, the new current player (previously the opponent) can pick 2. Then the original player picks 0, 
+and the other player picks 2.
+\newline
+\texttt{Game} takes in the scores of both players (initially 0) and a list representing the cards.
+\newline
+\begin{lstlisting}
+def game(curr, opp, lst):
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+   if not lst:
+      return curr == opp
+   else:
+      return game(opp, curr + lst[0], lst[1:]) or game(opp, curr + lst[-1], lst[:-1])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

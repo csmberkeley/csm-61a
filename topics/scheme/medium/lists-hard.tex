@@ -1,0 +1,124 @@
+\question What will Scheme output? If it outputs a list, draw a box-and-pointer diagram. If a part contains multiple expressions, only
+give the output of the final expression. Assume each expression is evaluated sequentially.
+
+\begin{parts}
+\begin{blocksection}
+\part
+\begin{lstlisting}
+scm> (cons 3 4)
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\begin{lstlisting}
+(3 . 4)
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+scm> (cons 3 (cons (cons 4 5) nil))
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(3 (4 . 5))$
+\end{solution}
+
+\part 
+\begin{lstlisting}
+scm> (3 . 4)
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$Error$
+\end{solution}
+
+\part 
+\begin{lstlisting}
+scm> '(3 . 4)
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(3 . 4)$
+\end{solution}
+
+\part
+\begin{lstlisting}
+scm> (list 3 4 5)
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(3 4 5)$
+\end{solution}
+
+\part 
+\begin{lstlisting}
+scm> (list 3 '(4 5) 6)
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(3 (4 5) 6)$
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+
+\part 
+\begin{lstlisting}
+scm> (define a '(5 (6) . (7)))
+scm> a
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(5 (6) 7)$
+\end{solution}
+
+\part
+\begin{lstlisting}
+scm> (set-car! a 2)
+scm> (define b (list 3 a))
+scm> b
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(3 (2 (6) 7))$
+\end{solution}
+
+\part
+\begin{lstlisting}
+scm> (set-cdr! (cdr (cdr a)) 8)
+scm> b
+\end{lstlisting}
+
+\begin{solution}[.5in]
+\lstinline$(3 (2 (6) 7 . 8))$
+\end{solution}
+
+\part 
+\begin{lstlisting}
+scm> (define c 2)
+\end{lstlisting}
+
+\begin{solution}[.5in]
+c
+\end{solution}
+
+\part \lstinline $scm> (eval 'c)$
+
+\begin{solution}[.5in]
+\lstinline$2$
+\end{solution}
+
+\part \lstinline $scm> '(cons 1 2)$
+
+\begin{solution}[.5in]
+\lstinline$(cons 1 2)$
+\end{solution}
+
+\part \lstinline $scm> (eval '(cons 1 2))$
+
+\begin{solution}[.5in]
+\lstinline$(1 . 2)$
+\end{solution}
+\end{blocksection}
+\end{parts}

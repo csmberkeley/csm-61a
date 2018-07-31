@@ -1,0 +1,38 @@
+\begin{blocksection}
+\question What would Python Display?
+\begin{lstlisting}
+
+class Dog:
+    rating = 11
+    def __init__(self, name)
+        self.name = name
+    def speak(self):
+        print("woof!")
+    def praise(self):
+        self.rating = self.rating + 1
+		
+class Pom(Dog):
+    def __init__(self, speech):
+        self.speech = speech
+    def speak(self):
+        print(self.speech)
+
+>>> chloe = Dog("Chloe")
+>>> missile = Pom("yip!")
+>>> chloe.praise()
+>>> chloe.rating
+
+>>> missile.praise()
+>>> missile.rating
+
+>>> Dog.rating
+
+>>> missile.speak()
+
+>>> missile.rating += 1
+>>> missile.rating
+
+>>> missile.speak = lambda x: print("yap!")
+>>> missile.speak()
+\end{lstlisting}
+\end{blocksection}

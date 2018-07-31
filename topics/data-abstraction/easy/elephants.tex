@@ -17,7 +17,11 @@ def elephant(name, age, can_fly):
     True
     """
     return [name, age, can_fly]
+
 \end{lstlisting}
+
+\end{blocksection}
+\begin{blocksection}
 
 \begin{lstlisting}
 def elephant_name(e):
@@ -27,6 +31,8 @@ def elephant_name(e):
     return e[0]
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+\begin{blocksection}
 
 \begin{lstlisting}
 def elephant_age(e):
@@ -36,6 +42,8 @@ def elephant_age(e):
     return e[1]
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+\begin{blocksection}
 
 \begin{lstlisting}
 def elephant_can_fly(e):
@@ -61,9 +69,12 @@ def elephant_roster(elephants):
     return [elephant[0] for elephant in elephants]
 \end{lstlisting}
 \begin{solution}[1in]
-\begin{lstlisting}[language=HTML]
-elephant[0] is a Data Abstraction Violation (DAV).
+\lstinline{elephant[0]} is a Data Abstraction Violation (DAV).
 We should use a selector instead.
+The corrected function looks like:
+\begin{lstlisting}
+def elephant_roster(elephants):
+	return [elephant_name(elephant) for elephant in elephants]
 \end{lstlisting}
 \end{solution}
 
@@ -106,7 +117,7 @@ def elephant_can_fly(e):
 \question How can we write the fixed \texttt{elephant\char`_roster} function for
 the constructors and selectors in the previous question?
 
-\begin{solution}[2in]
+\begin{solution}[1.5in]
 No change is necessary to fix \texttt{elephant\char`_roster} since using the
 \texttt{elephant} selectors ``protects'' the roster from constructor definition
 changes.
@@ -131,7 +142,7 @@ def elephant(name, age, can_fly):
     """
     def select(command)
 \end{lstlisting}
-\begin{solution}[3in]
+\begin{solution}[2in]
 \begin{lstlisting}
         if command == "name":
             return name

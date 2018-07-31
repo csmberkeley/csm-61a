@@ -1,0 +1,26 @@
+\begin{blocksection}
+\question Implement rotate, which takes in a tree and rotates the labels at each level of the tree by one to the right destructively. This rotation should be modular (That is, the rightmost label at a level will become the leftmost label after running rotate).
+\newline
+\begin{lstlisting}
+def rotate(t):
+    """
+    >>> t1 = Tree(1, [Tree(2), Tree(3, [Tree(4)]), Tree(5)])
+    >>> rotate(t1)
+    >>> t1
+    Tree(1, [Tree(5), Tree(2, [Tree(4)]), Tree(3)])
+    >>> t2 = Tree(1, [Tree(2, [Tree(3), Tree(4)]), Tree(5)])
+    >>>rotate(t2)
+    >>> t2
+    Tree(1, [Tree(5, [Tree(4), Tree(3)]), Tree(2)])
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+def rotate(t):
+   branch_labels = [b.label for b in t.branches]
+   len_branches = len(t.branches)
+   for i in range(len_branches):
+      t.branches[i].label = branch_labels[(i + i) \% len_branches]
+      rotate(t.branches[i])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,14 @@
+\begin{blocksection}
+\question What Would Python Display?
+\newline
+\begin{lstlisting}
+>>> s = lambda x: lambda n: lambda y, z: lambda: y(x, n) + z
+>>> a = s(5)(6)(lambda t, v: t * v, 3)
+>>> a
+<Function lambda ...>
+>>> a()
+33
+\end{lstlisting}
+\begin{solution}
+\end{solution}
+\end{blocksection}
