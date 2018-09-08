@@ -1,0 +1,29 @@
+\begin{blocksection}
+\question Implement rotate, which rotates the branches of a tree by one position. It should also rotate any sub-branches.
+\newline
+\begin{lstlisting}
+def rotate(t):
+    """
+    >>> t1 = Tree(1, [Tree(2, []), Tree(3, [])])
+    >>> t2 = Tree(1, [Tree(2, []), Tree(3, []), Tree(4, [])])
+    >>> rotate(t1)
+    >>> rotate(t2)
+    >>> t1
+    Tree(1, [Tree(3, []), Tree(2, [])])
+    >>> t2
+    Tree(1, [Tree(4, []), Tree(3, []), Tree(2, [])])
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+def rotate(t):
+   for b in t.branches:
+      rotate(b)
+   t.branches = t.branches[1:] + [t.branches[0]]
+
+
+
+
+
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,23 @@
+\begin{blocksection}
+\question Define \lstinline$filter_gen$, a generator that takes in iterable \lstinline$s$ and one-argument function  \lstinline$f$ and yields every value
+from  \lstinline$s$ for which \lstinline$f$ returns  \lstinline$True$
+
+\begin{lstlisting}
+def filter_gen(s, f):
+    """
+    >>> list(filter_gen([1, 2, 3, 4, 5],
+                                lambda x: x % 2 == 0))
+    [2, 4]
+    >>> list(filter_gen((1, 2, 3, 4, 5), lambda x: x < 3))
+    [1, 2]
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+	for x in s:
+            if f(x):
+                yield x
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

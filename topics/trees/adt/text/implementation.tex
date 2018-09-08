@@ -2,7 +2,7 @@
 
 \begin{lstlisting}
 def tree(label, branches=[]):
-    return [label] + [branches]
+    return [label] + list(branches)
 
 def label(tree):
     return tree[0] 

@@ -1,0 +1,23 @@
+\begin{blocksection}
+\question Implement \lstinline$height$ which takes in a 
+tree and returns the height of that tree. Recall that the
+height of a tree is defined as the depth of the lowest leaf,
+where the depth of the top node of the tree is 0.
+
+\begin{lstlisting}
+def tree_sum(t):
+    """
+    >>> t = Tree(1, [Tree(4), Tree(2, [Tree(3)])])
+    >>> height(t)
+    2
+    """
+\end{lstlisting}
+
+\begin{solution}[2in]
+\begin{lstlisting}
+    if t.is_leaf():
+        return 0
+    return 1 + max([height(b) for b in t.branches])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

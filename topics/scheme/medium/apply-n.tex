@@ -1,0 +1,53 @@
+\question Define \lstinline{apply-multiple} which takes in a single argument function \lstinline{f}, 
+a nonnegative integer \lstinline{n}, and a value \lstinline{x} and returns the result of applying 
+\lstinline{f} to \lstinline{x} a total of \lstinline{n} times.
+
+\begin{lstlisting}
+;doctests
+scm> (apply-multiple (lambda (x) (* x x)) 3 2)
+256
+scm> (apply-multiple (lambda (x) (+ x 1)) 10 1)
+11
+scm> (apply-multiple (lambda (x) (* 1000 x)) 0 5)
+5
+
+
+(define apply-multiple (f n x)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+(define (apply-multiple f n x)
+    (if (= n 0)
+        x
+        (f (apply-multiple f (- n 1) x))))
+\end{lstlisting}
+
+Alternate solution:
+
+\begin{lstlisting}
+(define (apply-multiple f n x)
+    (if (= n 0)
+        x
+        (apply-multiple f (- n 1) (f x))))
+\end{lstlisting}
+
+
+\end{solution}

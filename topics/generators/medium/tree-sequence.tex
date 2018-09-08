@@ -1,5 +1,6 @@
 \begin{blocksection}
 \question Define \lstinline$tree_sequence$, a generator that iterates through a tree by first yielding the root value and then yielding the values from each branch.
+ Use the object-oriented representation of trees in your solution.
 
 \begin{lstlisting}
 def tree_sequence(t):
@@ -10,12 +11,18 @@ def tree_sequence(t):
     """
 \end{lstlisting}
 
-\begin{solution}[0.5in]
+\begin{solution}[1.5in]
 \begin{lstlisting}
 	yield t.label
 	for branch in t.branches:
 		for value in tree_sequence(branch):
 			yield value
+\end{lstlisting}
+Alternate solution:
+\begin{lstlisting}
+        yield t.label
+	for branch in t.branches:
+		yield from tree_sequence(branch)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

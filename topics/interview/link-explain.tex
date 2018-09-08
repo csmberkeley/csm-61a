@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question What Would Python Display?
+\newline
+\begin{lstlisting}
+>>> a = Link(1, Link(2, Link(3)))
+>>> b = a
+>>> c = Link(b, Link(a))
+>>> c
+Link(Link(1, Link(2, Link(3))), 
+         Link(Link(1, Link(2, Link(3)))))
+>>> b.rest.rest = a
+>>> a.rest.rest.first
+1
+\end{lstlisting}
+\begin{solution}
+\end{solution}
+\end{blocksection}
