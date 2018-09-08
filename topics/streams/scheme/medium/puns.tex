@@ -9,6 +9,16 @@ first food in the list when the list is exhausted.
 
 \ifprintanswers\else
 \begin{lstlisting}
+;Doctests
+scm> (define fruit (food-stream '(apple banana orange)))
+fruit
+scm> (car fruit)
+apple
+scm> (car (cdr-stream fruit))
+banana
+scm> (car (cdr-stream (cdr-stream (cdr-stream fruit))))
+apple
+
 (define (food-stream foods)
 \end{lstlisting}
 \fi
@@ -18,18 +28,25 @@ first food in the list when the list is exhausted.
 (define (food-stream foods)
      (cons-stream (car foods)
           (food-stream (append (cdr foods)
-               (list (car foods))))
-  )
-)
+               (list (car foods))))))
 \end{lstlisting}
 \end{solution}
 
 \part We discover that some of our food is stale! Every other food that we go
 through is stale, so put it into a new stale food stream. Assume
-\lstinline$is-stale$ starts off at 0.
+\lstinline$is-stale$ starts off as \lstinline$#f$.
 
 \ifprintanswers\else
 \begin{lstlisting}
+;Doctests
+scm> (define cookies (stale-stream '(oatmeal chocolate sugar oreo)))
+cookies
+scm> (car cookies)
+chocolate
+scm> (car (cdr-stream cookies))
+oreo
+
+
 (define (stale-stream foods is-stale)
 \end{lstlisting}
 \fi
@@ -38,12 +55,10 @@ through is stale, so put it into a new stale food stream. Assume
 \begin{lstlisting}
 (define (stale-stream foods is-stale)
   (cond ((null? foods) nil)
-        ((= is-stale 1)
+        (is-stale
           (cons-stream (car foods)
-                       (stale-stream (cdr foods) 0)))
-        (else (stale-stream (cdr foods) 1))
-  )
-)
+                       (stale-stream (cdr foods) #f)))
+        (else (stale-stream (cdr foods) #t))))
 \end{lstlisting}
 \end{solution}
 \end{parts}
