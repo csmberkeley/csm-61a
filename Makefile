@@ -4,7 +4,7 @@ RELEASED = mt1
 SOLUTIONS = mt1
 
 DST = published
-SRC = src/su18
+SRC = src/fa18
 
 DEPEND = python make_dependency.py
 TEX = pdflatex
