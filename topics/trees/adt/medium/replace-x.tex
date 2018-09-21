@@ -46,11 +46,11 @@ def replace_x(t, x):
 
 \begin{solution}
 \begin{lstlisting}
-    new_label = label(t)
-    if new_label == x:
+   new_label = label(t)
+   if new_label == x:
         new_label = 0
    new_branches = [replace_x(b, x) for b in branches(t)]
-   return tree(label, new_branches)
+   return tree(new_label, new_branches)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

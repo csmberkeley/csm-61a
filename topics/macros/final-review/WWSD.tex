@@ -1,0 +1,109 @@
+\begin{blocksection}
+\question What will Scheme output?
+
+
+\begin{lstlisting}
+scm> (define a 1)
+\end{lstlisting}
+\begin{solution}[0.25in] 
+\texttt{a}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define b 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{b}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(cons a b)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{(cons a b)}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(cons ,a ,b)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(cons 1 2)}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(a ,(cons ,a ,b) b)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{Error}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(a ,(cons a b) b)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(a (1 . 2) b)}
+\end{solution}
+
+\begin{lstlisting}
+scm> (eval `(cons ,a ,b))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(1 . 2)}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+
+\question What will Scheme output?
+
+
+\begin{lstlisting}
+scm> (define (if-func cond if-expr else-expr)
+		(if cond if-expr else-expr))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{if-func}
+\end{solution}
+
+\begin{lstlisting}
+scm> (if-func (= 1 0) (print 'a) (print 'b))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{a}
+\newline
+\texttt{b}
+\end{solution}
+
+\end{blocksection}
+\begin{blocksection}
+
+\begin{lstlisting}
+scm> (define-macro (if-macro-one cond if-expr else-expr)
+             (if cond if-expr else-expr))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{if-macro-one}
+\end{solution}
+
+\begin{lstlisting}
+scm> (if-macro-one (= 1 0) (print 'a) (print 'b))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{a}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define-macro (if-macro-two cond if-expr else-expr)
+          `(if ,cond ,if-expr ,else-expr))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{if-macro-two}
+\end{solution}
+
+\begin{lstlisting}
+scm> (if-macro-two (= 1 0) (print 'a) (print 'b))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{b}
+\end{solution}
+\end{blocksection}

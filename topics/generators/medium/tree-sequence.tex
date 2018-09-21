@@ -1,11 +1,10 @@
 \begin{blocksection}
 \question Define \lstinline$tree_sequence$, a generator that iterates through a tree by first yielding the root value and then yielding the values from each branch.
- Use the object-oriented representation of trees in your solution.
 
 \begin{lstlisting}
 def tree_sequence(t):
     """
-    >>> t = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
+    >>> t = tree(1, [tree(2, [tree(5)]), tree(3, [tree(4)])])
     >>> print(list(tree_sequence(t)))
     [1, 2, 5, 3, 4]
     """
@@ -13,15 +12,15 @@ def tree_sequence(t):
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-	yield t.label
-	for branch in t.branches:
+	yield label(t)
+	for branch in branches(t):
 		for value in tree_sequence(branch):
 			yield value
 \end{lstlisting}
 Alternate solution:
 \begin{lstlisting}
-        yield t.label
-	for branch in t.branches:
+        yield label(t)
+	for branch in branches(t):
 		yield from tree_sequence(branch)
 \end{lstlisting}
 \end{solution}
