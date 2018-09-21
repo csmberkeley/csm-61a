@@ -1,0 +1,57 @@
+\begin{blocksection}
+\question 
+We'll define an order-n function as a function which returns an order-$n-1$ function if $n > 1$. An order-1 function can return any value. 
+\newline
+\newline
+Therefore, if \texttt{f} is an order-3 function, we could call \texttt{f} like \lstinline{f(1)(2)(3)}. 
+\newline
+\newline
+Implement the function \texttt{apply\_n}, which takes an integer \texttt{n}, a one argument function \texttt{base\_fn},
+and a value \texttt{x}. This function returns an order-n function which takes in one argument, a function. If this order-n function is called on the sequence of functions $f_1, f_2, \ldots, f_n$, it should return the value equivalent to calling
+$f_n(f_{n - 1}(\ldots (f_1(base\_fn(x)))))$. You should make sure to apply the functions in exactly this order. See the doctests for examples.
+\newline 
+\newline
+Since an order-0 function is not defined, if \texttt{n == 0}, \texttt{apply\_n} should return the result of calling
+\texttt{base\_fn} on \texttt{x}
+\newline
+\begin{lstlisting}
+def apply_n(n, base_fn, x): 
+  """ 
+  >>> incr = lambda x: x + 1
+  >>> double = lambda x: x * 2
+  >>> apply_n(2, double, 1)(incr)(incr) 
+  4
+  >>> apply_n(0, incr, 1)
+  2
+  >>> make_print = apply_n(1, lambda x: print(x + 1), 1)
+  >>> make_print(lambda x: print(x))
+  2
+	None
+  """
+	
+  def take_fn(f):
+	    
+      return apply_n(_______________________________________)
+			
+  if n == 0:
+	
+      return ___________________________
+			
+  else:
+	
+      return ___________________________		
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+
+\begin{solution}[0in]
+\begin{lstlisting}:
+  def take_fn(f):
+       return apply_n(n - 1, lambda x: f(base_fn(x)), x)
+  if n == 0:
+      return base_fn(x)
+  else:
+      return take_fn
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

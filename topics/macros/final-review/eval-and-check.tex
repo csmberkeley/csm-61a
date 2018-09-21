@@ -1,0 +1,67 @@
+\begin{blocksection}
+
+\question Define a macro, \texttt{eval-and-check} that takes in three expressions and evaluates each expression in order. 
+If the last expression evaluates to a truth-y value, return the symbol ok. Otherwise, return fail.
+
+\begin{lstlisting}
+;Doctests
+scm> (eval-and-check #f #f #t)
+ok
+scm> (eval-and-check (+ 2 3) (print 2) (> 2 3))
+2
+fail
+scm> (eval-and-check (define x 1) (print x) (> x 0))
+1
+ok
+
+
+(define-macro (eval-and-check expr1 expr2 expr3)
+     
+     _______________________________________
+
+     _______________________________________
+
+     _______________________________________)
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}[.25in]
+\begin{lstlisting}
+(define-macro (eval-and-check expr1 expr2 expr3)
+      `(if (begin ,expr1 ,expr2 ,expr3)
+            'ok
+            'fail))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+\question Now expand \texttt{eval-and-check} to take in any number of expressions (as long as there is at least one).
+
+\begin{lstlisting}
+;Doctests
+scm> (eval-and-check #f #f #f #f #t)
+ok
+scm> (eval-and-check (print 2) (> 2 3))
+2
+fail
+
+
+(define-macro (eval-and-check expr1 . args)
+     
+     _______________________________________
+
+     _______________________________________
+
+     _______________________________________)
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+(define-macro (eval-and-check expr1 . args)
+        `(if ,(cons 'begin (cons expr1 args))
+                'ok
+                'fail))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

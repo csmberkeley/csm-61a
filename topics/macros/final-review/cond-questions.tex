@@ -1,0 +1,31 @@
+\begin{blocksection}
+For the following question, in addition to primitive (built-in) procedures such as \texttt{map} and \texttt{filter}, you have access to the procedure \texttt{cadr} defined as follows:
+
+\begin{lstlisting}
+(define (cadr lst) (car (cdr lst)))
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\question Define a macro, \texttt{eval-all-cond}, which takes in a \texttt{cond} expression and evaluates all the non-predicate sub-expressions. It should additionally not evaluate any predicate sub-expressions.
+\begin{lstlisting}
+;Doctests
+scm> (eval-all-cond (cond ((= 1 0) (print 'a))
+                          ((print 'no) (print 'b))
+                          (else (print 'c))))
+a
+b
+c
+
+(define-macro (eval-all-cond cond-expr)
+\end{lstlisting}
+
+
+\begin{solution}[1in]
+\begin{lstlisting}
+(define-macro (eval-all-cond cond-expr)
+    (cons 'begin
+                 (map cadr (cdr cond-expr))))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
