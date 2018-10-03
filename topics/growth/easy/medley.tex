@@ -2,6 +2,7 @@
 big-$\Theta$ notation.
 \begin{parts}
 
+\begin{comment}
 \part
 \begin{lstlisting}
 def strange_add(n):
@@ -15,7 +16,9 @@ $\Theta(2^n)$. To see this, try drawing out the call tree. Each level will creat
 two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
 Therefore, $2^n$ calls.
 \end{solution}
+\end{comment}
 
+\begin{comment}
 \part
 \begin{lstlisting}
 def stranger_add(n):
@@ -34,6 +37,7 @@ If $n$ is a multiple of 3, then neither $n - 1$ nor $n - 2$ are multiples of 3
 so those calls will take constant time. Therefore, we just run
 \texttt{stranger\char`_add}, decrementing the argument by 3 each time.
 \end{solution}
+\end{comment}
 
 \newpage
 \part
