@@ -2,6 +2,7 @@
 big-$\Theta$ notation.
 \begin{parts}
 
+\begin{comment}
 \part
 \begin{lstlisting}
 def strange_add(n):
@@ -15,7 +16,9 @@ $\Theta(2^n)$. To see this, try drawing out the call tree. Each level will creat
 two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
 Therefore, $2^n$ calls.
 \end{solution}
+\end{comment}
 
+\begin{comment}
 \part
 \begin{lstlisting}
 def stranger_add(n):
@@ -34,8 +37,9 @@ If $n$ is a multiple of 3, then neither $n - 1$ nor $n - 2$ are multiples of 3
 so those calls will take constant time. Therefore, we just run
 \texttt{stranger\char`_add}, decrementing the argument by 3 each time.
 \end{solution}
+\end{comment}
 
-\newpage
+\begin{comment}
 \part
 \begin{lstlisting}
 def waffle(n):
@@ -51,6 +55,7 @@ def waffle(n):
 $\Theta(n^2)$. Ignore the constant term in $50 * n$, and it because just two for
 loops.
 \end{solution}
+\end{comment}
 
 \part
 \begin{lstlisting}
@@ -58,7 +63,7 @@ def belgian_waffle(n):
     i = 0
     total = 0
     while i < n:
-        for j in range(n ** 2):
+        for j in range(50 * n ** 2):
             total += 1
         i += 1
     return total
@@ -84,9 +89,7 @@ similar to fib! (which is $2^n$)
 \part
 \begin{lstlisting}
 def toast(n):
-    i = 0
-    j = 0
-    stack = 0
+    i, j, stack = 0, 0, 0
     while i < n:
         stack += pancake(n)
         i += 1
@@ -101,6 +104,7 @@ time (due to pancake), for a total of $n 2^n$. The second loop runs $n$ times.
 When calculating orders of growth however, we focus on the dominating term -- in
 this case, $n 2^n$.
 \end{solution}
+
 
 \end{parts}
 

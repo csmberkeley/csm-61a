@@ -14,12 +14,12 @@ class Tree:
         else:
             branch_str = ''
         return 'Tree({0}{1})'.format(self.label, branch_str)
-
-    def __str__(self):
-        def print_tree(t, indent=0):
-            tree_str = '  ' * indent + str(t.label) + '\n'
-            for b in t.branches:
-                tree_str += print_tree(b, indent + 1)
-            return tree_str
-        return print_tree(self).rstrip()
 \end{lstlisting}
+    %def __str__(self):
+    %    def print_tree(t, indent=0):
+    %        tree_str = '  ' * indent + str(t.label) + '\n'
+    %        for b in t.branches:
+    %            tree_str += print_tree(b, indent + 1)
+    %        return tree_str
+    %    return print_tree(self).rstrip()
+

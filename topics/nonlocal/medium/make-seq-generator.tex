@@ -1,12 +1,12 @@
 \begin{blocksection}
-\question Write a function \texttt{make\char`_seq\char`_generator} that, given a sequence \texttt{seq}, returns a new function that returns the elements of the sequence one by one. Assume the returned function will only be called until the sequences has no more elements. The sequence \texttt{seq} does not have to be a list.
+\question Write a function \texttt{make\char`_seq\char`_getter} that, given a sequence \texttt{seq}, returns a new function that returns the elements of the sequence one by one. Assume the returned function will only be called until the sequences has no more elements. The sequence \texttt{seq} does not have to be a list.
 
 \begin{lstlisting}
-def make_seq_generator(seq):
+def make_seq_getter(seq):
     """ Returns a function that returns the next value in seq
     each time it is called.
-    >>> evens = [0, 2, 4, 6, 8, 10]
-    >>> generate_evens = make_seq_generator(evens)
+    >>> evens = (0, 2, 4, 6, 8, 10)
+    >>> get_evens = make_seq_getter(evens)
     >>> for _ in range(4):
     ...     print(generate_evens())
     0
@@ -29,7 +29,7 @@ def make_seq_generator(seq):
 
 \begin{solution}
 \begin{lstlisting}
-def make_seq_geenrator(seq):
+def make_seq_etter(seq):
     def get_next():
         nonlocal seq
         val = seq[0]

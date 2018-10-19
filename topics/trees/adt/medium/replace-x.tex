@@ -46,11 +46,30 @@ def replace_x(t, x):
 
 \begin{solution}
 \begin{lstlisting}
-   new_label = label(t)
-   if new_label == x:
-        new_label = 0
    new_branches = [replace_x(b, x) for b in branches(t)]
-   return tree(new_label, new_branches)
+   if label(t) == x:
+        return tree(0, new_branches)
+   return tree(label(t), new_branches)
 \end{lstlisting}
+
+Here, we construct and return a new tree. First, we make 
+a new list of branches where each branch is the same
+as the previous branch but all occurrences of x have been
+replaced with 0 (this is what the output of \lstinline$replace_x$
+is defined to be.)
+\newline
+\newline
+If the label of our tree is equal to x, we will additionally need 
+to "replace" our current label with 0 in the tree we return. Otherwise,
+we can keep our previous label.
+\newline
+\newline
+These two steps guarantee that each occurrence of x is replaced.
+\newline
+\newline
+We do not need a base case here, as if we are at a leaf, the list
+comprehension we use to create the new branches will evaluate to an 
+empty list. Then we will either return \lstinline$tree(0, [])$ or
+\lstinline$tree(label(t), [])$ as appropriate. 
 \end{solution}
 \end{blocksection}
