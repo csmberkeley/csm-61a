@@ -73,26 +73,26 @@ scm> a
 \lstinline$(5 (6) 7)$
 \end{solution}
 
-\part
-\begin{lstlisting}
-scm> (set-car! a 2)
-scm> (define b (list 3 a))
-scm> b
-\end{lstlisting}
+%\part
+%\begin{lstlisting}
+%scm> (set-car! a 2)
+%scm> (define b (list 3 a))
+%scm> b
+%\end{lstlisting}
 
-\begin{solution}[.5in]
-\lstinline$(3 (2 (6) 7))$
-\end{solution}
+%\begin{solution}[.5in]
+%\lstinline$(3 (2 (6) 7))$
+%\end{solution}
 
-\part
-\begin{lstlisting}
-scm> (set-cdr! (cdr (cdr a)) 8)
-scm> b
-\end{lstlisting}
+%\part
+%\begin{lstlisting}
+%scm> (set-cdr! (cdr (cdr a)) 8)
+%scm> b
+%\end{lstlisting}
 
-\begin{solution}[.5in]
-\lstinline$(3 (2 (6) 7 . 8))$
-\end{solution}
+%\begin{solution}[.5in]
+%\lstinline$(3 (2 (6) 7 . 8))$
+%\end{solution}
 
 \part 
 \begin{lstlisting}
@@ -120,5 +120,11 @@ c
 \begin{solution}[.5in]
 \lstinline$(1 . 2)$
 \end{solution}
+
+\part \lstinline $scm> (eval (list 'if '(even? c) 1 2))$
+\begin{solution}[.5in]
+\lstinline$1$
+\end{solution}
+
 \end{blocksection}
 \end{parts}

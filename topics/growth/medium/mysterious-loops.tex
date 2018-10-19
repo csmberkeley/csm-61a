@@ -1,35 +1,31 @@
 \begin{blocksection}
-\question \textbf{Mysterious loops:} What is the order of growth in time for the following functions? Use big-O notation.
+\question What is the order of growth in time for the following functions? Use Θ notation.
 
 \begin{parts}
 
 \part
 \begin{lstlisting}
-def mystery(n):
-    for i in range(n):
-        while i % 2 != 0:
-            print(i)
-            i = i - 1
-        print("Done")
+def bar(n):
+    if n == 3:
+        return 'three!'
+    for i in range(n / 2):
+        bar(3)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$. The work for when $i$ is divisible by two is constant. Subtracting one
-will immediately allow us to exit the \texttt{while} loop. Therefore, we can
-concentrate on just the outer loop.
+$O(n)$. bar(3) takes constant time (even if we did not have the base case, bar(3) takes time independent from n). We do bar(3) n times.
 \end{solution}
 
 \part
 \begin{lstlisting}
-def fun(n):
-    for i in range(n):
-        for j in range(n * n):
-            if j == 4:
-                return -1
-            print("Fun!")
+def repeat_digits(n):
+    last, rest = n % 10, n // 10
+		if rest == 0:
+        return last * 11
+    return repeat_digits(rest) * 100 + last * 11
 \end{lstlisting}
+What is the runtime in terms of d, the number of digits in n?
 \begin{solution}[0.25in]
-$O(1)$. Inner loop always immediately exits after running for 4 iterations,
-independent of $n$.
+$O(d)$. We make one recursive call with constant work per digit.
 \end{solution}
 
 \end{parts}
