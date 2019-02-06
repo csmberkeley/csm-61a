@@ -1,5 +1,6 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
+
 RELEASED = mentor05
 SOLUTIONS = mentor05
 
