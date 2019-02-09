@@ -1,0 +1,62 @@
+\begin{blocksection}
+\question Write a function, \texttt{kill\_the}, which takes in an integer \texttt{n}. It returns another function that takes in integer \texttt{x}, and removes the smallest (right-most) occurrence of the appearance of x in n.
+
+\begin{lstlisting}
+def kill_the_n(n):
+  """
+  >>> kill_the_n(99)(10990990)
+  109900
+  >>> kill_the_n(99)(900999)
+  9009
+  >>> kill_the_n(99)(989)
+  989
+  """
+ def kill(x):
+ 
+   _________________________________________________
+   
+   for i in range(___________ - ___________, 0, -1):
+   
+     if ______[______:_________+num_digits(n)] == ___________:
+     
+        return int(_________[:i] + ________[i+num_digits(n):])
+       
+   return int(___________)
+   
+ return ___________
+
+def num_digits(n):
+    #Finds the number of digits in the positive number n
+    if n == 0:
+        return 0
+    return 1 + num_digits(n//10)
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def kill_the_n(n):
+ #removes smallest occurence of the digits of x in n.
+ #ex: kill_the_n(99)(10990990) ==> 109900
+ #ex: kill_the_n(99)(900999) ==> 9009
+ #ex: kill_the_n(99)(989) ==> 989
+ def kill(x):
+   x_str = str(x)
+   for i in range(len(x_str) - num_digits(n), 0, -1):
+     if x_str[i:i+num_digits(n)] == str(n):
+       return int(x_str[:i] + x_str[i+num_digits(n):])
+   return int(x_str)
+ return kill
+
+def num_digits(n):
+ #Finds the number of digits in the positive number n
+ if n == 0:
+   return 0
+ return 1 + num_digits(n//10)
+
+
+
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
