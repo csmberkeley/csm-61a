@@ -11,15 +11,26 @@ def all_ways_gen(lst, n):
     >>> list(g2)
     []
     """
+    if ______________________:
+		
+        yield _________________
+				
+    elif _____________________:
+
+         __________________________________
+
+         yield from _______________________
+    
+         for ______________________________:
+
+             yield _________________________
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}
 def all_ways_gen(lst, n):
    if n == 0:
       yield []
-   elif not lst:
-      return
-   else:
+   elif lst:
       first_el = lst[0]
       yield from all_ways_gen(lst[1:], n)
       for s in all_ways_gen(lst[2:], n - first_el):

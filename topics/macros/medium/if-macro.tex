@@ -3,7 +3,7 @@
 \question Implement \texttt{if-macro}, which behaves similarly to the \texttt{if} special form in Scheme
 but has some additional properties. Here's how the \texttt{if-macro} is called:
 \newline
-\texttt{if <cond1> <expr1> elif <cond2> <expr2> else <expr3>}
+\texttt{(if-macro <cond1> <expr1> elif <cond2> <expr2> else <expr3>)}
 \newline
 If cond1 evaluates to a truth-y value, expr1 is evaluated and returned. Otherwise, if cond2 evaluates
 to a truth-y value, expr2 is evaluated and returned. If neither condition is true, expr3 is evaluted and returned.
@@ -59,7 +59,7 @@ Alternate solution with quasiquoting:
 \end{blocksection}
 
 \begin{blocksection}
-\question Could we have implemented \texttt{if-macro} using a function instead of a macro? Why or why not?
+\question Could we have implemented \texttt{if-macro} using a function instead of a macro and used it the same way? Why or why not?
 \begin{solution}
 Without using macros, the inputs would be evaluated when we evaluated the function call. This is problematic for two reasons:
 \newline

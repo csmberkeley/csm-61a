@@ -32,10 +32,7 @@ Examine the table, \texttt{mentors}, depicted below.
  \hline
 \end{tabular}
 \end{center}
-\begin{questions}
-\question Create a new table \textbf{mentors} that contains all the information above.
-(You only have to write out the first two rows.)
-\begin{solution}
+We could have created this table with the following select statement. Make sure you're comfortable with this syntax!
 \begin{lstlisting}[language=SQL]
 create table mentors as
     select 'Tiffany' as name, 'Thai' as food, 'Purple' as color, 'Notepad++' as editor, 'Java' as language union
@@ -44,11 +41,10 @@ create table mentors as
     select 'Alfonso', 'Tacos', 'Blue', 'Vim', 'Python' union
     select 'Kelly', 'Ramen', 'Green', 'Vim', 'Python';
 \end{lstlisting}
-\end{solution}
-
 \clearpage
 
 %%% Question %%%
+\begin{questions}
 \begin{blocksection}
 \question Write a query that lists all the mentors along with their favorite food if their favorite color is green.\newline
 Output:

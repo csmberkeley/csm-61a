@@ -16,14 +16,12 @@ scm> (square 2)
 
 
 
-
-
 )
 
 \end{lstlisting}
 \end{blocksection}
 \begin{blocksection}
-\begin{solution}[0.5in]
+\begin{solution}[0in]
 \begin{lstlisting}
 (define-macro (make-fn name expr)
     `(define (,name x) ,expr))

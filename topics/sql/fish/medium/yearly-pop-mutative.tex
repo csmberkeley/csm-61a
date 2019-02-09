@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a series of SQL statements which will create a table containing each species of fish, their population, and the year (n) for this year (year 0), next year, and the year after.
+\question Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a series of SQL statements which will create a table containing each species of fish, their population, and the year (\texttt{n}) for this year (year 0), next year, and the year after.
 You have access to all tables defined in previous parts.
 
 \begin{lstlisting}
@@ -10,10 +10,10 @@ CREATE TABLE yearly_pop(species, pop, n);
 INSERT INTO yearly_pop SELECT species, pop, 0 FROM fish;
 
 INSERT INTO yearly_pop SELECT yearly_pop.species, yearly_pop.pop * rate, n + 1 
-                                     FROM fish, yearly_pop WHERE yearly_pop.species = fish.species;
+    FROM fish, yearly_pop WHERE yearly_pop.species = fish.species;
 
 INSERT INTO yearly_pop SELECT yearly_pop.species, yearly_pop.pop * rate, n + 1 
-                                     FROM fish, yearly_pop WHERE yearly_pop.species = fish.species and n = 1;
+    FROM fish, yearly_pop WHERE yearly_pop.species = fish.species and n = 1;
 \end{lstlisting}
 \end{solution}
 

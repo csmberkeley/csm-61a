@@ -106,4 +106,34 @@ scm> (if-macro-two (= 1 0) (print 'a) (print 'b))
 \begin{solution}[.25in]
 \texttt{b}
 \end{solution}
+
+\begin{lstlisting}
+scm> (define-macro (mystery)
+          (define class 'b)
+          'class)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{mystery}
+\end{solution}
+
+\begin{lstlisting}
+scm> (list 6 1 (mystery))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{Error}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define class 'a)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{class}
+\end{solution}
+
+\begin{lstlisting}
+scm> (list 6 1 (mystery))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(6 1 a)}
+\end{solution}
 \end{blocksection}

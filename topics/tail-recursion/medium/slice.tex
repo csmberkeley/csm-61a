@@ -1,7 +1,7 @@
 \begin{blocksection}
 
-\question Implement \texttt{slice}, which takes in a a list \texttt{lst}, a starting index \texttt{i}, and an ending index \texttt{j},
-and returns a new list containing the elements of \texttt{lst} from index \texttt{i} to \texttt{j - 1}.
+\question Implement \texttt{slice}, which takes in a a list \texttt{lst}, a starting index \texttt{start}, and an ending index \texttt{end},
+and returns a new list containing the elements of \texttt{lst} from index \texttt{start} to \texttt{end - 1}.
 
 \begin{lstlisting}
 ;Doctests
@@ -12,7 +12,7 @@ scm> (slice '(0 1 2 3 4) 3 5)
 scm> (slice '(0 1 2 3 4) 3 1)
 ()
 
-(define (slice lst i j)
+(define (slice lst start end)
     
 
 
@@ -29,23 +29,23 @@ scm> (slice '(0 1 2 3 4) 3 1)
 
 \begin{solution}
 \begin{lstlisting}
-(define (slice lst i j)
-      (cond ((or (null? lst) (>= i j)) nil)
-               ((= i 0) (cons (car lst) (slice (cdr lst) i (- j 1))))
-               (else (slice (cdr lst) (- i 1) (- j 1)))))
+(define (slice lst start end)
+      (cond ((or (null? lst) (>= start end)) nil)
+               ((= start 0) (cons (car lst) (slice (cdr lst) start (- end 1))))
+               (else (slice (cdr lst) (- start 1) (- end 1)))))
 \end{lstlisting}
 \end{solution}
 
 \end{blocksection}
 \begin{blocksection}
 
-\question Now implement slice with the same specifications, but make you implementation tail recurisve.
+\question Now implement slice with the same specifications, but make your implementation tail recursive.
 \newline
 You may wish to use the built-in append function, which takes in two lists and returns a 
 new list containing the elements of the two lists concatenated together.
 
 \begin{lstlisting}
-(define (slice lst i j)
+(define (slice lst start end)
     
 
 
@@ -64,21 +64,21 @@ new list containing the elements of the two lists concatenated together.
 \begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
-(define (slice lst i j)
-  (define (slice-tail lst i j lst-so-far)
-      (cond ((or (null? lst) (>= i j)) lst-so-far)
-               ((= i 0) (slice-tail (cdr lst) i (- j 1) (append lst-so-far (list (car lst)))))
-               (else (slice-tail (cdr lst) (- i 1) (- j 1) lst-so-far))))
-  (slice-tail lst i j nil))
+(define (slice lst start end)
+  (define (slice-tail lst start end lst-so-far)
+      (cond ((or (null? lst) (>= start end)) lst-so-far)
+               ((= start 0) (slice-tail (cdr lst) start (- end 1) (append lst-so-far (list (car lst)))))
+               (else (slice-tail (cdr lst) (- start 1) (- end 1) lst-so-far))))
+  (slice-tail lst start end nil))
 \end{lstlisting}
 Alternate Solution:
 \begin{lstlisting}
-(define (slice lst i j)
+(define (slice lst start end)
   (define (slice-tail lst index lst-so-far)
-      (cond ((or (null? lst) (= index j)) lst-so-far)
-               ((<= i index) (slice-tail (cdr lst) (+ index 1) (append lst-so-far (list (car lst)))))
+      (cond ((or (null? lst) (= index end)) lst-so-far)
+               ((<= start index) (slice-tail (cdr lst) (+ index 1) (append lst-so-far (list (car lst)))))
                (else (slice-tail (cdr lst) (+ index 1) lst-so-far))))
-  (if (< i j) (slice-tail lst 0 nil) nil))
+  (if (< start end) (slice-tail lst 0 nil) nil))
 \end{lstlisting}
 \end{solution}
 
