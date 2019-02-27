@@ -6,8 +6,7 @@ Draw the environment diagram for the following code.
 eggplant = 8
 def vegetable(kale):
     def eggplant(spinach):
-        nonlocal eggplant
-        nonlocal kale
+        nonlocal eggplant, kale
         kale = 9
         eggplant = spinach
         return eggplant + kale
