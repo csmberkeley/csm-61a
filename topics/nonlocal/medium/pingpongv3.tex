@@ -4,12 +4,12 @@
 Time for some more ping-pong!
 Remember, the ping-pong sequence counts up starting from 1 and is
 always either counting up or counting down. At element k, the direction switches if k is a multiple of 7 or contains the
-digit 7. 
+digit 7.
 
 The first 20 elements of the ping-pong sequence are listed below, with direction
 swaps marked using brackets at the 7th, 14th, and 17th elements
 \begin{lstlisting}
-1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0 
+1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0
 \end{lstlisting}
 \end{nonsol}
 
@@ -42,23 +42,14 @@ def make_pingpong_tracker():
     """
     index, current, add = 1, 0, True
     def pingpong_tracker():
-
         ___________________________
-
         if add:
-
             ________________________
-
         else:
-
             ________________________
-
         if _______________________:
-
             add = not add
-
         __________________________
-
         __________________________
 
     return pingpong_tracker
@@ -84,5 +75,3 @@ def make_pingpong_tracker():
 \end{solution}
 
 \end{blocksection}
-
-

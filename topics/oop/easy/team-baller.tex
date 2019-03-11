@@ -5,12 +5,12 @@
 \begin{lstlisting}
 class TeamBaller(_______________):
     """
-    >>> alex = BallHog('Alex')
-    >>> cheerballer = TeamBaller('Allan', has_ball=True)
-    >>> cheerballer.pass_ball(alex)
+    >>> samy = BallHog('Samy')
+    >>> cheerballer = TeamBaller('Mary', has_ball=True)
+    >>> cheerballer.pass_ball(samy)
     Yay!
     True
-    >>> cheerballer.pass_ball(alex)
+    >>> cheerballer.pass_ball(samy)
     I don't have the ball
     False
     """
@@ -22,11 +22,12 @@ class TeamBaller(_______________):
 \begin{lstlisting}
 class TeamBaller(Baller):
     """
-    >>> cheerballer = TeamBaller('Chris', has_ball=True)
-    >>> cheerballer.pass_ball(mitas)
+    >>> samy = BallHog('Samy')
+    >>> cheerballer = TeamBaller('Mary', has_ball=True)
+    >>> cheerballer.pass_ball(samy)
     Yay!
     True
-    >>> cheerballer.pass_ball(mitas)
+    >>> cheerballer.pass_ball(samy)
     I don't have the ball
     False
     """
