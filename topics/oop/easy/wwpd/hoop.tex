@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question \textbf{(H)OOP} \newline
-Given the following code, what will Python output for the following prompts? 
+Given the following code, what will Python output for the following prompts?
 
 \begin{lstlisting}
 class Baller:
@@ -9,7 +9,7 @@ class Baller:
        self.name = name
        self.has_ball = has_ball
        Baller.all_players.append(self)
-    
+
     def pass_ball(self, other_player):
        if self.has_ball:
           self.has_ball = False
@@ -19,9 +19,9 @@ class Baller:
           return False
 
 class BallHog(Baller):
-    def pass_ball(self, other_player):  
-       return False 
-       
+    def pass_ball(self, other_player):
+       return False
+
 \end{lstlisting}
 \end{blocksection}
 \newline
@@ -30,8 +30,8 @@ class BallHog(Baller):
 \begin{blocksection}
 
 \begin{lstlisting}
->>> neil = Baller('Neil', True)
->>> michelle = BallHog('Michelle')
+>>> richard = Baller('Richard', True)
+>>> albert = BallHog('Albert')
 >>> len(Baller.all_players)
 \end{lstlisting}
 \begin{solution}[.2in]
@@ -46,7 +46,7 @@ Error
 \end{solution}
 
 \begin{lstlisting}
->>> len(michelle.all_players)
+>>> len(albert.all_players)
 \end{lstlisting}
 \begin{solution}[.2in]
 2
@@ -55,42 +55,42 @@ Error
 
 \begin{blocksection}
 \begin{lstlisting}
->>> neil.pass_ball()
+>>> richard.pass_ball()
 \end{lstlisting}
 \begin{solution}[.2in]
 Error
 \end{solution}
 
 \begin{lstlisting}
->>> neil.pass_ball(michelle)
+>>> richard.pass_ball(albert)
 \end{lstlisting}
 \begin{solution}[.2in]
 True
 \end{solution}
 
 \begin{lstlisting}
->>> neil.pass_ball(michelle)
+>>> richard.pass_ball(albert)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> BallHog.pass_ball(michelle, neil)
+>>> BallHog.pass_ball(albert, richard)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> michelle.pass_ball(neil)
+>>> albert.pass_ball(richard)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
 \end{solution}
 
 \begin{lstlisting}
->>> michelle.pass_ball(michelle, neil)
+>>> albert.pass_ball(albert, richard)
 \end{lstlisting}
 \begin{solution}[.2in]
 Error

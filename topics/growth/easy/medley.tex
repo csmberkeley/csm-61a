@@ -79,11 +79,12 @@ def pancake(n):
     if n == 0 or n == 1:
         return n
     # Flip will always perform three operations and return -n.
-    return flip(n) + pancake(n - 1) + pancake(n - 2)
+    return flip(n) + pancake(n - 1) + pancake(n - 1)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$\Theta(2^n)$. Flip will run in constant time. Therefore, this call tree looks very
-similar to fib! (which is $2^n$)
+  $\Theta(2^n)$. Flip will run in constant time so the recursive calls are what end up contributing to the total runtime. \\
+
+  The runtime can be calculated by the equation $f(n)=f(n-1)+f(n-1)=2f(n-1)$ and $f(1)=1$ which together gives us that $f(n)=2*2*2*\cdots*2*f(1)$. Rewritten: $f(n)=2^n$
 \end{solution}
 
 \part
@@ -107,4 +108,3 @@ this case, $n 2^n$.
 
 
 \end{parts}
-
