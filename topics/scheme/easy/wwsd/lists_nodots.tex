@@ -39,7 +39,7 @@ scm> (cons 1 '(2 3 4 5))
 \end{solution}
 
 \begin{lstlisting}
-scm> (cons 1 '(2 (cons 3 (cons 4 nil))))
+scm> (cons 1 '(2 (cons 3 nil)))
 \end{lstlisting}
 \begin{solution}[0.25in]
 \texttt{(1 2 (cons 3 ()))}
