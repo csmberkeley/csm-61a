@@ -13,7 +13,7 @@ Scheme has linked lists built in. You can make the following analogy:
 \end{tabular}
 
 \end{center}
-However, \textbf{Scheme \texttt{cons} is more powerful}, as it allows its second argument to not be a list. Try the following out in the interpreter. Draw box and pointers when appropriate. Ask your mentor if you're unsure what's going on. You aren't expected to understand this completely on your own.
+ Draw box and pointers when appropriate. Ask your mentor if you're unsure what's going on. You aren't expected to understand this completely on your own.
 \question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
 \end{nonsol}
 
@@ -39,21 +39,21 @@ scm> (cons 1 '(2 3 4 5))
 \end{solution}
 
 \begin{lstlisting}
-scm> (cons 1 '(2 (cons 3 4)))
+scm> (cons 1 '(2 (cons 3 (cons 4 nil))))
 \end{lstlisting}
 \begin{solution}[0.25in]
-\texttt{(1 2 (cons 3 4))}
+\texttt{(1 2 (cons 3 ()))}
 \begin{center}
 \includegraphics[scale=0.7]{scheme_lists_4}
 \end{center}
 \end{solution}
 
 \begin{lstlisting}
-scm> (cons 1 (2 (cons 3 4)))
+scm> (cons 1 (2 (cons 3 nil)))
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-eval: bad function in : (2 (cons 3 4))
+eval: bad function in : (2 (cons 3 nil))
 \end{lstlisting}
 \end{solution}
 
