@@ -1,0 +1,35 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\usepackage{tikz}
+
+\discnumber{7}
+\title{Nonlocal, Iterators, and Generators}
+\date{October 1, 2018}
+
+\begin{document}
+\maketitle
+
+\section{Mutable Functions}
+\begin{questions}
+\subimport{../../topics/nonlocal/easy/env-diagram/}{kale.tex}
+\newpage
+\subimport{../../topics/nonlocal/medium/}{digit-getter.tex}
+\end{questions}
+
+\section{Iterators and Generators}
+\begin{questions}
+\subimport{../../topics/generators/easy/}{foo.tex}
+\newpage
+\subimport{../../topics/generators/medium/}{filter-gen.tex}
+\end{questions}
+
+\newpage
+
+\section{Optional Questions}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{sing-a-song.tex}
+\newpage
+\subimport{../../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+
+\end{document}

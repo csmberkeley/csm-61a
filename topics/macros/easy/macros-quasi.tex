@@ -1,0 +1,94 @@
+\begin{blocksection}
+\question What will Scheme output?
+
+
+\begin{lstlisting}
+scm> (define x 6)
+\end{lstlisting}
+\begin{solution}[0.25in] 
+\texttt{x}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define y 1)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{y}
+\end{solution}
+
+\begin{lstlisting}
+scm> '(x y a)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\texttt{(x y a)}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(,x ,y a)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(6 1 a)}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(,x y a)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(6 y a)}
+\end{solution}
+
+\begin{lstlisting}
+scm> `(,(if (- 1 2) '+ '-) 1 2)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(+ 1 2)}
+\end{solution}
+
+\begin{lstlisting}
+scm> (eval `(,(if (- 1 2) '+ '-) 1 2))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{3}
+\end{solution}
+
+
+\begin{lstlisting}
+scm> (define (add-expr a1 a2)
+              (list '+ a1 a2))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{add-expr}
+\end{solution}
+
+\begin{lstlisting}
+scm> (add-expr 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{(+ 3 4)}
+\end{solution}
+
+\end{blocksection}
+\begin{blocksection}
+
+\begin{lstlisting}
+scm> (eval (add-expr 3 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{7}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define-macro (add-macro a1 a2)
+            (list '+ a1 a2))
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{add-macro}
+\end{solution}
+
+\begin{lstlisting}
+scm> (add-macro 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+\texttt{7}
+\end{solution}
+\end{blocksection}

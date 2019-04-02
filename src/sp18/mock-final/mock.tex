@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  _______  _______  ___      ____   _______
+% |       ||       ||   |    |    | |   _   |
+% |       ||  _____||   |___  |   | |  |_|  |
+% |       || |_____ |    _  | |   | |       |
+% |      _||_____  ||   | | | |   | |       |
+% |     |_  _____| ||   |_| | |   | |   _   |
+% |_______||_______||_______| |___| |__| |__|
+%
+% TeX file for CS61A Exams
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[twoside]{article}
+\usepackage{exam}
+
+\pagestyle{myheadings}
+\markboth{}{{\large Name: }\sp{4in}}
+
+% For Python code
+\lstset{%
+  language=Python,
+  basicstyle=\ttfamily,
+  showstringspaces=false
+  keywordstyle=\color{black},
+  commentstyle=\color{black},
+  stringstyle=\color{black},
+}
+
+\def\semester{Spring 2018}
+
+%%% Showing solutions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\showsolution{1}
+\def\doshow{1}
+\ifx\doshow\showsolution%
+\newcommand{\solution}[1]{{\color{red}#1}}
+\newcommand{\solutioncircle}[1]{{\color{red}#1}}
+\newcommand{\solutionimage}[2]{#2}  % First arg is question, second is solution
+\else%
+\newcommand\solution[1]{} % excludes
+\newcommand{\solutioncircle}[1]{#1} % don't color text but still display it
+\newcommand{\solutionimage}[2]{#1} % First arg is question, second is solution
+\fi
+
+%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\sc Midterm 2 \solution{Solutions}}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+\medskip
+
+\textbf{INSTRUCTIONS}
+
+\begin{itemize}
+\item You have 3 hours to complete the exam.
+
+\item The exam is closed book, closed notes, closed computer, closed calculator,
+except three hand-written 8.5"~$\times$~11" crib sheet of your own creation and
+the official CS 61A study guides.
+
+\item Mark your answers \textbf{on the exam itself}. We will \emph{not} grade
+answers written on scratch paper.
+\end{itemize}
+
+\medskip
+
+\begin{center}
+\begin{tabular}{|m{6cm}|m{8cm}|}
+\hline
+Last name & \\ [0.8cm]
+\hline
+First name & \\ [0.8cm]
+\hline
+Student ID number & \\ [0.8cm]
+\hline
+CalCentral email (\href{http://berkeley.edu}{\nolinkurl{\_@berkeley.edu}}) & \\ [0.8cm]
+\hline
+TA & \\ [0.8cm]
+\hline
+Name of the person to your left & \\ [0.8cm]
+\hline
+Name of the person to your right & \\ [0.8cm]
+\hline
+\emph{All the work on this exam is my own.} \textbf{(please sign)} & \\ [0.8cm]
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{POLICIES \& CLARIFICATIONS}
+
+\begin{itemize}
+
+\item You may use built-in Python functions that do not require import, such as
+\lstinline$min$, \lstinline$max$, \lstinline$pow$, \lstinline$len$, and
+\lstinline$abs$.
+
+\item You \textbf{may not} use example functions defined on your study guides
+unless clearly specified by the question.
+
+\item For fill-in-the blank coding problems, we will only grade work written in
+the provided blanks. You may only write one Python statement per blank line, and
+it must be indented to the level that the blank is indented.
+
+\item Unless otherwise specified, you are allowed to reference functions
+defined in previous parts of the same question.
+
+\item You may use the \lstinline$Tree$, \lstinline$Link$, and \lstinline$BTree$
+classes defined on Page 2 (left column) of the Midterm 2 Study Guide.
+
+\end{itemize}
+
+
+\newpage
+\begin{enumerate}
+    \input{call}
+    \clearpage
+    \input{env}
+    \clearpage
+    \input{code}
+    \clearpage
+\end{enumerate}
+
+% \newpage
+% \begin{center}
+%   \textbf{No more questions.}
+% \end{center}
+% \newpage
+%
+
+\end{document}

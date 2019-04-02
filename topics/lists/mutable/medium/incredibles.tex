@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question Draw the box-and-pointer diagram. \\
+
+\begin{lstlisting}
+>>> violet = [7, 77, 17]
+>>> violet.append([violet.pop(1)])
+
+>>> dash = violet * 2
+>>> jack = dash[3:5]
+>>> jackjack = jack.extend(jack)
+
+>>> helen = list(violet)
+>>> helen += [jackjack]
+>>> helen[2].append(violet)
+\end{lstlisting}
+
+\begin{solution}[1in]
+\url{https://goo.gl/EAmZBW}
+\end{solution}
+\end{blocksection}

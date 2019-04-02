@@ -1,0 +1,13 @@
+\begin{blocksection}
+
+\question Challenge: You decide you want to try implementing streams on your own. You know that you need some way 
+to enforce lazy evaluation, so you come up with the following strategy:
+\begin{enumerate}[1.]
+\item To create the stream, you'll use a macro, \texttt{cons-stream-macro} which takes in two argument and returns a 
+pair where the first element is the first argument and the second element is the second argument put inside a parameter-less
+lambda function.
+\item To access the second element of the stream, you'll create a procedure, \texttt{cdr-stream-macro} which evaluates the
+function you put in the \texttt{cdr} of the stream in \texttt{cons-stream-macro}. It also replaces the second element of the stream
+with a new paramater-less lambda function which returns the value you just computed.
+\end{enumerate}
+\end{blocksection}

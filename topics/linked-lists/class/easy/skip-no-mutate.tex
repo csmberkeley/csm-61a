@@ -5,9 +5,7 @@
 def skip(lst):
     """
     >>> a = Link(1, Link(2, Link(3, Link(4))))
-    >>> b = skip(a)
-    >>> b
-    Link(1, Link(3))
+    >>> skip(a)
     >>> a
     Link(1, Link(3))
     """
@@ -17,18 +15,16 @@ def skip(lst):
 \begin{lstlisting}
 def skip(lst): # Recursively
     if lst is Link.empty or lst.rest is Link.empty:
-        return lst
-    lst.rest = skip(lst.rest.rest)
-    return lst
+        return
+    lst.rest = lst.rest.rest
+    skip(lst.rest)
 
 def skip(lst): # Iteratively
     if lst is Link.empty:
-        return lst
-    original = lst
+        return
     while lst is not Link.empty and lst.rest is not Link.empty:
         lst.rest = lst.rest.rest
         lst = lst.rest
-    return original
 \end{lstlisting}
 \end{solution}
 

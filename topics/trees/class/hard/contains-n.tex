@@ -1,0 +1,52 @@
+\begin{blocksection}
+\question Write a function that returns true only if there exists a path from root to leaf that contains at least \lstinline$n$ instances of \lstinline$elem$ in a tree \lstinline$t$.
+
+\begin{lstlisting}
+def contains_n(elem, n, t):
+    """
+    >>> t1 = Tree(1, [Tree(1, [Tree(2)])])
+    >>> contains(1, 2, t1)
+    True
+    >>> contains(2, 2, t1)
+    False
+    >>> contains(2, 1, t1)
+    True
+    >>> t2 = Tree(1, [Tree(2), Tree(1, [Tree(1), Tree(2)])])
+    >>> contains(1, 3, t2)
+    True
+    >>> contains(2, 2, t2) # Not on a path
+    False
+    """
+    if n == 0:
+		
+        return True
+				
+    elif ___________________________________________:
+		
+        return _____________________________________
+				
+    elif ___________________________________________:
+		
+        return _____________________________________
+				
+    else:
+		
+        return _____________________________________
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+    if n == 0:
+        return True
+    elif t.is_leaf():
+        return n == 1 and t.label == elem
+    elif t.label == elem:
+        return True in [contains_n(elem, n - 1, b) for b in     
+          t.branches]
+    else:
+        return True in [contains_n(elem, n, b) for b in 
+          t.branches]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

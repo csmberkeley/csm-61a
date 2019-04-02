@@ -1,5 +1,10 @@
 \begin{blocksection}
-\question What would this output?
+\question What do the following expressions evaluate to?
+If the expressions evaluates to a tree, format your answer as
+\lstinline{tree(... , ...)}. 
+(Note that the python interpreter wouldn't display trees like this.
+We ask you to do this in order to think about trees as an ADT 
+instead of worrying about their implementation.)
 
 \begin{lstlisting}
 >>> label(t)
@@ -13,7 +18,7 @@
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-tree(4, [tree(7, []), tree(3, [])])
+tree(4, [tree(7), tree(3)])
 \end{lstlisting}
 \end{solution}
 
@@ -22,7 +27,7 @@ tree(4, [tree(7, []), tree(3, [])])
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-tree(7, [])
+tree(7)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

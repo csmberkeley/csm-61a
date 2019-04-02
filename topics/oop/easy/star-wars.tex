@@ -1,0 +1,82 @@
+\begin{blocksection}
+\question What would Python display? Write the result of executing the following code and prompts. If nothing would happen, write "Nothing". If an error occurs, write "Error".
+
+\vspace{1.5\baselineskip}
+
+\begin{lstlisting}
+class Jedi:
+    lightsaber = "blue"
+    force = 25
+    def __init__(self, name):
+        self.name = name
+    def train(self, other):
+        other.force += self.force / 5
+    def __repr__(self):
+        return "Jedi " + self.name
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> anakin = Jedi("Anakin")
+>>> anakin.lightsaber, anakin.force
+\end{lstlisting}
+\begin{solution}[.2in]
+("blue", 25)
+\end{solution}
+
+\begin{lstlisting}
+>>> anakin.lightsaber = "red"
+>>> anakin.lightsaber 
+\end{lstlisting}
+\begin{solution}[.2in]
+"red"
+\end{solution}
+
+\begin{lstlisting}
+>>> Jedi.lightsaber 
+\end{lstlisting}
+\begin{solution}[.2in]
+"blue"
+\end{solution}
+
+\begin{lstlisting}
+>>> obiwan = Jedi("Obi-wan")
+>>> anakin.master = obiwan
+>>> anakin.master
+\end{lstlisting}
+\begin{solution}[.2in]
+Jedi Obi-wan
+\end{solution}
+
+\begin{lstlisting}
+>>> Jedi.master
+\end{lstlisting}
+\begin{solution}[.2in]
+Error
+\end{solution}
+
+\begin{lstlisting}
+>>> obiwan.force += anakin.force
+>>> obiwan.force, anakin.force
+\end{lstlisting}
+\begin{solution}[.2in]
+(50, 25)
+\end{solution}
+
+\begin{lstlisting}
+>>> obiwan.train(anakin)
+>>> obiwan.force, anakin.force
+\end{lstlisting}
+\begin{solution}[.2in]
+(50, 35)
+\end{solution}
+
+\begin{lstlisting}
+>>> Jedi.train(obiwan, anakin)
+>>> obiwan.force, anakin.force
+\end{lstlisting}
+\begin{solution}[.2in]
+(50, 45)
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,38 @@
+\begin{blocksection}
+
+\question Write a macro \texttt{make-fn} which takes in a name and an expression and creates
+a one-argument function bound to that name and with the expression as its body. You should use
+the symbol x as the parameter name.
+
+\begin{lstlisting}
+;Doctests
+scm> (make-fn square (* x x))
+square
+scm> (square 2)
+4
+
+(define-macro (make-fn name expr)
+
+
+
+
+
+
+)
+
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define-macro (make-fn name expr)
+    `(define (,name x) ,expr))
+\end{lstlisting}
+Alt solution using lambdas:
+\begin{lstlisting}
+(define-macro (make-fn name expr)
+    `(define ,name (lambda (x) ,expr)))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

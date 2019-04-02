@@ -1,22 +1,47 @@
 \begin{blocksection}
-\question Define \lstinline$is-prefix$, which takes in a list \lstinline$p$ and a list \lstinline$lst$ and determines if \lstinline$p$ is a prefix of \lstinline$lst$.
+\question Define \lstinline$is-prefix$, which takes in a list \lstinline$p$ and a list \lstinline$lst$ and determines 
+if \lstinline$p$ is a prefix of \lstinline$lst$.
+That is, it determines if \lstinline$lst$ starts with all the elements in \lstinline$p$.
 
 \begin{lstlisting}
 ; Doctests:
-> (is-prefix '() '())
-true
-> (is-prefix '() '(1 2))
-true
-> (is-prefix '(1) '(1 2))
-true
-> (is-prefix '(2) '(1 2))
-false
+scm> (is-prefix '() '())
+#t
+scm> (is-prefix '() '(1 2))
+#t
+scm> (is-prefix '(1) '(1 2))
+#t
+scm> (is-prefix '(2) '(1 2))
+#f
 ; Note here p is longer than lst
-> (is-prefix '(1 2) '(1))
-false
-\end{lstlisting}
+scm> (is-prefix '(1 2) '(1))
+#f
 
-\begin{solution}[1.5in]
+(define (is-prefix p lst)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}[.25in]
 \begin{lstlisting}
 ; is-prefix with nested if statements
 (define (is-prefix p lst)

@@ -1,0 +1,37 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{\textsc{Extra Midterm Review}}
+\date{March 12 to March 14, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Midterm Review}
+This worksheet contains some extra problems beyond the weekly worksheet that may be good practice. The topics covered include:
+
+\begin{itemize}
+\item Lists (non-mutation)
+\item List Comprehensions
+\item Nonlocal
+\item Orders of Growth
+\end{itemize}
+
+This list is by no means exhaustive, and as we are not officially affiliated with the course, we cannot guarantee that these topics will show up on the midterm either. However, these are topics that historically do show up.
+\newpage
+\begin{questions}
+\subimport{../../topics/lists/immutable/medium/wwpd/}{assignment-and-slicing.tex}
+\subimport{../../topics/lists/immutable/medium/}{comprehensions.tex}
+\newpage
+\subimport{../../topics/nonlocal/easy/env-diagram/}{what.tex}
+\newpage
+\subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+\subimport{../../topics/growth/medium/}{mysterious-loops.tex}
+\end{questions}
+\end{document}

@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question Find the runtime for each of the following functions. \\
+
+\begin{center}
+\begin{tabular}{ |p{13cm}|p{2cm}| }
+\hline
+\begin{lstlisting}
+def print_a_bunch(n):
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                return
+            print(j)
+        print(i)
+    return
+\end{lstlisting} &  \\  \hline
+
+\vspace{\baselineskip}
+Give the runtime in terms of m, the size of lst1, and n, the size of lst2. 
+\vspace{\baselineskip}
+\begin{lstlisting}
+def strange_combinations(lst1, lst2):
+    for e1 in lst1:
+        for e2 in lst2:
+            print([item for item in lst1 \
+			 if item != e2  \
+			 and item != e1])
+\end{lstlisting} &  \\  \hline
+
+\vspace{\baselineskip}
+Find the runtime of make\_forest.
+\vspace{\baselineskip}
+\begin{lstlisting}
+def make_tree(n):
+    if n == 0:
+        return
+    return tree(n, [make_tree(n - 1), \
+		    make_tree(n - 1)])
+
+def make_forest(n):
+    return [make_tree(n) for i in range(n)]
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+\end{center}
+
+\end{blocksection}

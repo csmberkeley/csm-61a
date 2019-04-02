@@ -1,20 +1,39 @@
 \begin{blocksection}
-\question Define \lstinline$well-formed$, which determines whether \lstinline$lst$ is a well-formed list or not. Assume that \lstinline$lst$ only contains numbers.
+\question Define \lstinline$well-formed$, which determines whether \lstinline$lst$ is a well-formed list or not. Assume that \lstinline$lst$ only contains numbers
+and no nested lists.
 
 \begin{lstlisting}
 ; Doctests
-> (well-formed '())
-true
-> (well-formed '(1 2 3))
-true
+scm> (well-formed '())
+#t
+scm> (well-formed '(1 2 3))
+#t
 ; List doesn't end in nil
-> (well-formed (cons 1 2))
-false
-; You do NOT need to check nested lists
-> (well-formed (cons (cons 1 2) nil))
-true
-\end{lstlisting}
+scm> (well-formed (cons 1 2))
+#f
 
+(define (well-formed lst)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\newpage
 \begin{solution}[1.5in]
 \begin{lstlisting}
 ; well-formed with nested if statements

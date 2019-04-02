@@ -1,0 +1,54 @@
+\begin{blocksection}
+\question Consider the following function:
+
+\begin{lstlisting}
+(define (count-instance lst x)
+  (cond ((null? lst) 0)
+        ((equal? (car lst) x) (+ 1 (count-instance 
+                                          (cdr lst) x)))
+        (else (count-instance (cdr lst) x))))
+\end{lstlisting}
+
+\vspace{2\baselineskip}
+
+What is the purpose of \texttt{count-instance}? Is it tail recursive? Why or why not?
+\newline
+Optional: draw out the environment diagram of this sum-list with \texttt{lst = (1 2 1)} and \texttt{x = 1}.
+
+\begin{solution}[0.5in]
+\texttt{count-instance} returns the number of time \texttt{x} appears in \texttt{lst}. It is not tail recursive. The call to \texttt{count-instance} appears as one of the arguments to a function call, so it will not be the final thing we do in every frame (we will have to apply \texttt{+} after evaluating it.)
+\end{solution}
+\end{blocksection}
+
+\newpage
+
+\begin{blocksection}
+\question Rewrite count-instance to be tail recursive.
+
+\begin{lstlisting}
+(define (count-tail lst x)
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (count-tail lst x)
+    (define (count-helper lst x instances)
+		    (cond ((null? lst) instances)
+              ((equal? (car lst) x) (count-helper (cdr lst) x (+ instances 1)))
+              (else (count-helper (cdr lst) x instances))))
+    (count-helper lst x 0))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

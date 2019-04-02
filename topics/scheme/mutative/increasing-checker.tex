@@ -1,0 +1,55 @@
+\begin{blocksection}
+\question
+Define \texttt{make-increasing-checker}, which takes in no arguments and returns a function which takes in a positive integer. 
+Each time this function is called, if its argument is strictly larger than every integer passed in previously, it should return \texttt{\#t}, 
+and \texttt{\#f} otherwise. 
+\begin{lstlisting}
+scm> (define increasing (make-increasing-checker))
+scm> (increasing 1)
+#t
+scm> (increasing 2)
+#t
+scm> (increasing 0)
+#f
+scm> (increasing 2)
+#f
+scm> (increasing 3)
+#t
+
+(define (make-increasing-checker n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (make-increasing-checker)
+    (define largest 0)
+    (lambda (x)
+        (if (> x largest)
+            (begin 
+                (set! largest x) 
+                #t)
+            #f)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

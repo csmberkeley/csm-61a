@@ -1,0 +1,53 @@
+\begin{blocksection}
+\question 
+For our purposes, an order-n function returns an order-$n-1$ function if $n > 1$. An $order-1$ function can return any value. 
+\newline
+Therefore, if \texttt{f} is an order-3 numeric function, we could call \texttt{f} like \lstinline{f(1)(2)(3)}. 
+\newline
+Implement the function \texttt{apply\_n}, which takes an integer \texttt{n}, a one argument function \texttt{base\_fn},
+and a value \texttt{x}. This function returns an order-n function which takes in one argument. This order-n function takes in
+a single function. If this order-n function is called on $f_1, f_2, \ldots, f_n$, it should return the value equivalent to calling
+$f_n(f_{n - 1}(\ldots (f_1(base_fn(x)))))$. Since an order-0 function is not defined, if \texttt{n == 0}, \texttt{apply\_n} should return the result of calling
+\texttt{base\_fn} on \texttt{x}
+\begin{lstlisting}
+def apply_n(n, base_fn, x): 
+  """ 
+  >>> incr = lambda x: x + 1
+  >>> double = lambda x: x * 2
+	>>> identity = lambda x: x
+  >>> apply_n(2, identity, 1)(double)(incr) # incr(double(identity(1)))
+  3
+  >>> apply_n(0, identity, 2) # identity(2)
+	2
+	>>> apply_n(1, double, 2)(incr) #incr(double(2))
+	5
+  """
+	
+	def take_fn(f):
+	    
+			return apply_n(_______________________________________)
+			
+	if n == 0:
+	
+	    return ___________________________
+			
+	else:
+	
+	    return ___________________________
+	    
+			
+
+				
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+  def take_fn(f):
+	    return apply_n(n - 1, lambda x: f(base_fn(x)), x)
+	if n == 0:
+	    return base_fn(x)
+	else:
+	    return take_fn
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

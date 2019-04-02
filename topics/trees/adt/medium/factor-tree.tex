@@ -1,37 +1,15 @@
 \begin{blocksection}
-\question Define the function \lstinline$factor_tree$ which returns a \emph{factor tree}. Recall that in a factor tree, multiplying the leaves together is the prime factorization of the root, n.
-
-\begin{center}
-\begin{tikzpicture}[very thick,level/.style={sibling distance=20mm/#1},level distance=24pt]
-\node[vertex] at (0,-1){$2$};
-\node[vertex] at (3,-0.5){$6$}
-child {
-    node[vertex]{$2$}
-}
-child {
-    node[vertex]{$3$}
-};
-\node[vertex] at (7,0){$12$}
-child {
-    node[vertex]{$2$}
-}
-child {
-    node[vertex]{$6$}
-    child {
-        node[vertex]{$2$}
-    }
-    child {
-        node[vertex]{$3$}
-    }
-};
-\end{tikzpicture}
-\end{center}
+\question Define the function \lstinline$factor_tree$ which returns a \emph{factor tree}. Recall that in a factor tree, multiplying the leaves together is the prime factorization of the root, $n$. \\
 
 \begin{lstlisting}
 def factor_tree(n):
+    for i in ______________________:
+        if ________________________:
+            return tree(_____, _____________________________)
+    _______________________________
 \end{lstlisting}
 
-\begin{solution}[1.5in]
+\begin{solution}[0.5in]
 \begin{lstlisting}
     for i in range(2, n):
         if n % i == 0:

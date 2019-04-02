@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question What's the advantage of using a stream over a scheme list?
+\begin{solution}[0.5in] 
+Lazy evaluation. We only evaluate up to what we need.
+\end{solution}
+
+\question What's the maximum size of a stream?
+\begin{solution}[0.5in]
+Infinity
+\end{solution}
+
+\question What's stored in the car and cdr of a stream? What are their types? 
+\begin{solution}[0.5in]
+First is a value, rest is another stream encapsulated in a promise. The promise in the cdr of a stream may be forced (evaluated) or unforced (yet to be evaluated)
+\end{solution}
+
+\question When is the next element actually calculated?
+\begin{solution}[.5in]
+Only when it's requested (and hasn't already been calculated)
+\end{solution}
+\end{blocksection}

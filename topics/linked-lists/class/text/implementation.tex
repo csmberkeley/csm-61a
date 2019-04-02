@@ -3,15 +3,13 @@ For each of the following problems, assume linked lists are defined as follows:
 \newline
 \begin{lstlisting}
 class Link:
-
     empty = ()
-
     def __init__(self, first, rest=empty):
         assert rest is Link.empty or isinstance(rest, Link)
         self.first = first
         self.rest = rest
 \end{lstlisting}
-
+\vspace{\baselineskip}
 To check if a \texttt{Link} is empty, compare it against the class attribute \texttt{Link.empty}:
 \newline
 \begin{lstlisting}

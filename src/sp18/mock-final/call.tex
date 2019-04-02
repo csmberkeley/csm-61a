@@ -1,0 +1,45 @@
+\q{10}{WWPD}
+
+For each of the expressions in the table below, write the output displayed by
+the interactive Python interpreter when the expression is evaluated. The output
+may have multiple lines.
+The interactive interpreter displays the repr string of the value of a successfully
+evaluated expression, unless it is \lstinline$None$.
+Write ``FUNC'' to indicate a functional value.
+
+The first two rows have been provided as an example.
+
+Assume that you have started \lstinline$python3$ and executed all the code to the
+left of the table first.
+
+
+\newcommand{\mlst}{\begin{tabular}{l}}\newcommand{\emlst}{\end{tabular}}
+\hspace*{-0.5in}
+\begin{minipage}[t]{0.45\textwidth}
+\lstinputlisting{call.py}
+\end{minipage} %
+\begin{tabular}[t]{|m{5cm}|m{4.2cm}|}
+\hline
+\textbf{Expression} & \textbf{Interactive Output} \\
+\hline
+\lstinline$[2, 3]$ & [2, 3] \\
+\hline
+\lstinline$print((2, 3))$ & (2, 3) \\
+\hline
+\lstinline$a.a $   &
+   \solution{\mlst\lstinline$FUNC$\\
+   \lstinline$[FUNC, None]$\emlst}  \\ [\solutionimage{18ex}{17ex}] \hline
+\lstinline$c.a $   &
+     \solution{\mlst
+                \lstinline$ FUNC$ \\
+                \lstinline$ 17 $ \\
+                \lstinline$ 1 $ \\
+                \lstinline$ 1 $\emlst} \\ [\solutionimage{18ex}{17ex}] \hline
+\lstinline$a.update() \\ b.update() \\ A.a$  & \solution{\lstinline$[0, -1, 1, -1] $} \\ [\solutionimage{18ex}{18ex}] \hline
+\lstinline$A2.a$   & \solution{\lstinline$[2, [4, [9, 2]]]$} \\ [\solutionimage{18ex}{17ex}] \hline
+\mlst\lstinline$z=4$ \\ \lstinline$mx(z)$ \\ \lstinline$print(z)$\emlst   & \solution{\lstinline$ 4$} \\ [\solutionimage{18ex}{17ex}] \hline
+\lstinline$a.lst$ & \solution{\lstinline$[0, -1, 1, -1] $} \\ [\solutionimage{18ex}{18ex}] \hline
+\lstinline$B(a).a.a$ & \solution{\lstinline$[0, -1, 1, -1] $} \\ [\solutionimage{18ex}{18ex}] \hline
+\lstinline$B(A).a.update()$ & \solution{\lstinline$[0, -1, 1, -1] $} \\ [\solutionimage{18ex}{18ex}] \hline
+\end{tabular}
+

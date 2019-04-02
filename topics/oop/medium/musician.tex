@@ -1,0 +1,110 @@
+\begin{blocksection}
+\question What would Python display? Write the result of executing the code and the prompts below. If a function is returned, write "Function". If nothing is returned, write "Nothing". If an error occurs, write "Error".
+
+\vspace{2\baselineskip}
+
+\begin{lstlisting}
+class Musician:
+    popularity = 0
+    def __init__(self, instrument):
+        self.instrument = instrument
+    def perform(self):
+        print("a rousing " + self.instrument + " performance")
+        self.popularity = self.popularity + 2
+    def __repr__(self):
+        return self.instrument
+
+class BandLeader(Musician):
+    def __init__(self):
+        self.band = []
+    def recruit(self, musician):
+        self.band.append(musician)
+    def perform(self, song):
+        for m in self.band:
+            m.perform()
+        Musician.popularity += 1
+        print(song)
+    def __str__(self):
+        return "Here's the band!"
+    def __repr__(self):
+        band = ""
+        for m in self.band:
+            band += str(m) + " "
+        return band[:-1]
+
+miles = Musician("trumpet")
+goodman = Musician("clarinet")
+ellington = BandLeader()
+\end{lstlisting}
+\end{blocksection}
+
+\newpage
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> ellington.recruit(goodman)
+>>> ellington.perform()
+\end{lstlisting}
+\begin{solution}[.2in]
+Error
+\end{solution}
+
+\vspace{1\baselineskip}
+
+\begin{lstlisting}
+>>> ellington.perform("sing, sing, sing")
+\end{lstlisting}
+\begin{solution}[.2in]
+a rousing clarinet performance \\
+sing, sing, sing
+\end{solution}
+
+\vspace{2\baselineskip}
+
+\begin{lstlisting}
+>>> goodman.popularity, miles.popularity
+\end{lstlisting}
+\begin{solution}[.2in]
+(2, 1)
+\end{solution}
+
+\vspace{1\baselineskip}
+
+\begin{lstlisting}
+>>> ellington.recruit(miles)
+>>> ellington.perform("caravan")
+\end{lstlisting}
+\begin{solution}[.2in]
+a rousing clarinet performance\\
+a rousing trumpet performance\\
+caravan
+\end{solution}
+
+\vspace{2\baselineskip}
+
+\begin{lstlisting}
+>>> ellington.popularity, goodman.popularity, miles.popularity
+\end{lstlisting}
+\begin{solution}[.2in]
+(2, 4, 3)
+\end{solution}
+
+\vspace{2\baselineskip}
+
+\begin{lstlisting}
+>>> print(ellington)
+\end{lstlisting}
+\begin{solution}[.2in]
+Here's the band!
+\end{solution}
+
+\vspace{2\baselineskip}
+
+\begin{lstlisting}
+>>> ellington
+\end{lstlisting}
+\begin{solution}[.2in]
+clarinet trumpet
+\end{solution}
+
+\end{blocksection}

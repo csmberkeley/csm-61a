@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question (Spring 2018 Final) 
+\newline
+Implement \texttt{lambda-macro}, a macro that creates anonymous macros. A lambda-macro expression has
+a list of formal parameters and one body expression. It creates a \emph{macro} with those formal parameters and
+that body. Assume that the symbol anon is not use anywhere else in a program that contains lambda-macro.
+
+
+\begin{lstlisting}
+;Doctests
+scm> (define mac (lambda-macro (x) `(begin ,x ,x)))
+mac
+scm> (mac (print 1))
+1
+1
+(define-macro (lambda-macro bindings body)
+
+      `(begin (__________________________
+                   
+               __________________________ 
+
+               __________________________)
+
+         anon))
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+`(begin 
+   (define-macro ,(cons 'anon bindings) ,body)
+   anon))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

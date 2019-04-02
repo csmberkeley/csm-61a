@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Circle the number of calls to \lstinline$scheme_eval$ and
+\question Write the number of calls to \lstinline$scheme_eval$ and
 \lstinline$scheme_apply$ for the code below.
 
 % \begin{parts}
@@ -8,13 +8,7 @@ scm> (+ 1 2)
 3
 \end{lstlisting}
 
-\begin{tabular}{lrrrr}
-\lstinline$scheme_eval$ & 1 & 3 & 4 & 6 \\
-\lstinline$scheme_apply$ & 1 & 2 & 3 & 4
-\end{tabular}
-\\
-
-\begin{solution}
+\begin{solution}[1in]
 4 \lstinline$scheme_eval$, 1 \lstinline$scheme_apply$.
 \end{solution}
 
@@ -23,13 +17,7 @@ scm> (if 1 (+ 2 3) (/ 1 0))
 5
 \end{lstlisting}
 
-\begin{tabular}{lrrrr}
-\lstinline$scheme_eval$ & 1 & 3 & 4 & 6 \\
-\lstinline$scheme_apply$ & 1 & 2 & 3 & 4
-\end{tabular}
-\\
-
-\begin{solution}
+\begin{solution}[1in]
 6 \lstinline$scheme_eval$, 1 \lstinline$scheme_apply$.
 \end{solution}
 
@@ -38,14 +26,19 @@ scm> (or #f (and (+ 1 2) 'apple) (- 5 2))
 apple
 \end{lstlisting}
 
-\begin{tabular}{lrrrr}
-\lstinline$scheme_eval$ & 6 & 8 & 9 & 10 \\
-\lstinline$scheme_apply$ & 1 & 2 & 3 & 4
-\end{tabular}
-\\
-
-\begin{solution}
+\begin{solution}[1in]
 8 \lstinline$scheme_eval$, 1 \lstinline$scheme_apply$.
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (square x) (* x x))
+square
+scm> (+ (square 3) (- 3 2))
+10
+\end{lstlisting}
+
+\begin{solution}[1in]
+14 \lstinline$scheme_eval$, 4 \lstinline$scheme_apply$.
 \end{solution}
 
  \begin{lstlisting}
@@ -55,13 +48,7 @@ scm> (add (- 5 3) (or 0 2))
 2
 \end{lstlisting}
 
-\begin{tabular}{lrrrr}
-\lstinline$scheme_eval$ & 12 & 13 & 14 & 15 \\
-\lstinline$scheme_apply$ & 1 & 2 & 3 & 4
-\end{tabular}
-\\
-
-\begin{solution}
+\begin{solution}[1in]
 13 \lstinline$scheme_eval$, 3 \lstinline$scheme_apply$.
 \end{solution}
 % \end{parts}

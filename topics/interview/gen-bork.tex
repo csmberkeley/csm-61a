@@ -1,0 +1,31 @@
+\begin{blocksection}
+\question What Would Python Display?
+\begin{lstlisting}
+
+def dog_generator(dogs):
+   while True:
+      yield next(dogs)
+ 
+lst = [3, 7, 4]
+i = iter(lst)
+
+>>> next(i)
+
+>>> next(i)
+
+>>> next(i)
+
+>>> next(i)
+
+>>> next(iter(lst))
+
+>>> list(iter(lst))
+
+>>> dogs = ["Samosa", "Moe", "Jojo"]
+>>> dg = dog_generator(iter(dogs))
+>>> next(dg)
+
+>>> list(dg)
+
+\end{lstlisting}
+\end{blocksection}

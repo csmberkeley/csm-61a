@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question 
+\begin{lstlisting}
+def square(x): 
+    return x * x 
+		
+def argentina(n):
+    print(n) 
+    if n > 0: 
+        return lambda k: k(n+1) 
+    else: 
+        return 1 / n
+\end{lstlisting}
+
+After executing the above code, what will Python
+display when evaluating each of the following expressions?
+
+\begin{lstlisting}
+>>> print(1, print(2))
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+2
+1 None
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> argentina(0)
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+0
+Error
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> argentina(1)(square)
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+1
+4
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,8 +1,7 @@
 \begin{blocksection}
 \question Implement \lstinline$tree_sum$ which takes in a Tree
-object and replaces the root value with the sum of all the values
-in the tree. \lstinline$tree_sum$ should also return the new root
-value.
+object and replaces the label of the tree with the sum of all the values
+in the tree. \lstinline$tree_sum$ should also return the new label.
 
 \begin{lstlisting}
 def tree_sum(t):
@@ -10,11 +9,11 @@ def tree_sum(t):
     >>> t = Tree(1, [Tree(2, [Tree(3)]), Tree(4)])
     >>> tree_sum(t)
     10
-    >>> t.root
+    >>> t.label
     10
-    >>> t.branches[0].root
+    >>> t.branches[0].label
     5
-    >>> t.branches[1].root
+    >>> t.branches[1].label
     4
     """
 \end{lstlisting}
@@ -22,8 +21,8 @@ def tree_sum(t):
 \begin{solution}[1in]
 \begin{lstlisting}
     for b in t.branches:
-        t.root += tree_sum(b)
-    return t.root
+        t.label += tree_sum(b)
+    return t.label
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

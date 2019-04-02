@@ -1,0 +1,29 @@
+\begin{blocksection}
+\question Implement all\textunderscore ways\textunderscore gen, which takes in a list \texttt{lst} and integer \texttt{n} and returns a generator which yields all possible ways to add together non-consecutive elements of lst to sum up to n. You can assume all elements of lst are positive.
+\newline
+\begin{lstlisting}
+def all_ways_gen(lst, n):
+    """
+    >>> g = all_ways_gen([1, 6, 4, 7, 2, 3], 7)
+    >>> sorted(g)
+    [[1, 4, 2], [4, 3], [7]]
+    >>> g2 = all_ways_gen([1], 2)
+    >>> list(g2)
+    []
+    """
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+def all_ways_gen(lst, n):
+   if n == 0:
+      yield []
+   elif not lst:
+      return
+   else:
+      first_el = lst[0]
+      yield from all_ways_gen(lst[1:], n)
+      for s in all_ways_gen(lst[2:], n - first_el):
+         yield [first_el] + s
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
