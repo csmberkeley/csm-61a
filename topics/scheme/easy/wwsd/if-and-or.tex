@@ -1,0 +1,101 @@
+\begin{blocksection}
+\question What will Scheme output?.
+
+\begin{parts}
+\begin{comment}
+\part
+\begin{lstlisting}
+(if (/ 1 0) 1 0)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+Error: Zero Division
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(if 1 1 (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+\end{comment}
+
+\part
+\begin{lstlisting}
+(if 0 (/ 1 0) 1)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+Error: Zero Division
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(and 1 #f (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+#f
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(and 1 2 3)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(or #f #f 0 #f (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+0
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(or #f #f (/ 1 0) 3 4)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+Error: Zero Division
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(and (and) (or))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+#f
+\end{lstlisting}
+\end{solution}
+
+\begin{comment}
+\part Given the lines above, what can we say about interpreting \texttt{if}
+expressions and booleans in Scheme?
+\begin{solution}[0.5in]
+\texttt{if} functions and boolean expressions will short-circuit, just like in
+Python. All values have a boolean value of \texttt{\#t} unless they are
+specifically \texttt{\#f}. This means that unlike in Python, 0 and 1 are both
+considered \texttt{\#t}!
+\end{solution}
+\end{comment}
+
+\end{parts}
+
+\end{blocksection}
+

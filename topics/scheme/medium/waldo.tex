@@ -1,4 +1,3 @@
-\begin{comment}
 \begin{blocksection}
 \question Implement \texttt{waldo}. \texttt{waldo} returns \texttt{\#t} if the
 symbol waldo is in a list. You may assume that the list passed in is
@@ -23,14 +22,10 @@ scm> (waldo '(1 4 9))
 
 
 
-
-
-
-
-)
 \end{lstlisting}
 
-\begin{solution}
+\begin{solution}[0.5in]
+
 \begin{lstlisting}
 (define (waldo lst)
     (cond ((null? lst) #f)
@@ -39,14 +34,15 @@ scm> (waldo '(1 4 9))
       )
   )
 \end{lstlisting}
+
 \end{solution}
 \end{blocksection}
-\end{comment}
 
 \begin{blocksection}
-\question Define \texttt{waldo} which takes in a list. If that list contains the
-symbol waldo, it returns the index where waldo first appears. Otherwise, it
-returns \texttt{\#f}.
+
+\question \textbf{Extra challenge:} Define \texttt{waldo} so that it returns the index of
+the list where the symbol waldo was found (if waldo is not in the list, return
+\texttt{\#f}).
 \begin{lstlisting}
 scm> (waldo '(1 4 waldo))
 2
@@ -80,8 +76,12 @@ scm> (waldo '(1 4 9))
     (define (helper lst index)
         (cond ((null? lst) #f)
               ((eq? (car lst) 'waldo) index)
-              (else (helper (cdr lst) (+ index 1)))))
-    (helper lst 0))
+              (else (helper (cdr lst) (+ index 1)))
+          )
+      )
+    (helper lst 0)
+  )
 \end{lstlisting}
 \end{solution}
+
 \end{blocksection}
