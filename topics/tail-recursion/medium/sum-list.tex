@@ -1,0 +1,59 @@
+\begin{blocksection}
+\question Consider the following function:
+
+\begin{lstlisting}
+(define (sum-list lst)
+  (if (null? lst)
+    0
+    (+ (car lst) (sum-list (cdr lst)))
+  )
+)
+\end{lstlisting}
+
+\vspace{2\baselineskip}
+
+Why is sum-list not a tail call? Optional: draw out the environment diagram of this sum-list with list: (1 2 3
+). When do you add 2 and 3?
+
+\begin{solution}[0.5in]
+Sum list is not the last call we make, it's actually the other addition which we do after we evaluate sum-list.
+Sum list is not the last expression we evaluate.
+\end{solution}
+\end{blocksection}
+
+\newpage
+
+\begin{blocksection}
+\question Rewrite sum-list in a tail recursive context.
+
+\begin{lstlisting}
+(define (sum-list-tail lst)
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (sum-list-tail lst)
+  (define (sum-list-helper lst sofar)
+    (if (null? lst)
+      sofar
+      (sum-list-helper (cdr lst) (+ sofar (car lst)))
+    )
+  )
+  (sum-list-helper lst 0)
+)
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
