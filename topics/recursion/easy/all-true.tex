@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question Complete the definition for \texttt{all\char`_true}, which takes in a list \texttt{lst}
+and returns \texttt{True} if there are no False-y values in the list and \texttt{False} otherwise.
+Make sure that your implementation is recursive.
+
+\begin{lstlisting}
+def all_true(lst):
+    """
+    >>> all_true([True, 1, "True"])
+    True
+    >>> all_true([1, 0, 1])
+    False
+    >>> all_true([])
+    True
+    """
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    if not lst:
+        return True
+    elif not lst[0]:
+        return False
+    else:
+        return all_true(lst[1:])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,43 @@
+\begin{blocksection}
+\question Write a function, \texttt{whole\char`sum}, which takes in an integer, \texttt{n}. It returns another function which takes in an integer, and returns \textt{True} if the digits of that integer sum to \texttt{n} and \texttt{False} otherwise.
+
+\begin{lstlisting}
+def whole_sum(n): 
+    """ 
+    >>> whole_sum(21)(777)
+    True
+    >>> whole_sum(142)(10010101010)
+    False
+    """
+    def check(x):
+
+        ___________________
+		
+        while _____________:
+		
+            last = __________________
+				
+            _________________________
+				
+            _________________________
+				
+        return __________________
+		
+    return _________________
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def whole_sum(n):
+    def check(x):
+        total = 0
+        while x > 0:
+            last = removed % 10
+            x = x // 10
+            total += last
+        return total == n
+    return check
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

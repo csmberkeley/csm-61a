@@ -1,10 +1,11 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
-RELEASED = mt1
-SOLUTIONS = mt1
+
+RELEASED = mentor05 mentor06 mentor07 mentor08 mentor09 mentor10
+SOLUTIONS = mentor05 mentor06 mentor07 mentor08 mentor09 mentor10
 
 DST = published
-SRC = src/sp18
+SRC = src/sp19
 
 DEPEND = python make_dependency.py
 TEX = pdflatex
@@ -38,7 +39,7 @@ $(DST)/%_sol.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
 	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_sol" "\def\discussionsolutions{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
-	open $(DST)/$*_sol.pdf
+	#open $(DST)/$*_sol.pdf
 
 $(DST):
 	mkdir -p $@

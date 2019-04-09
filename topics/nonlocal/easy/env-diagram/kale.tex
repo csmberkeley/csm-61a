@@ -6,18 +6,17 @@ Draw the environment diagram for the following code.
 eggplant = 8
 def vegetable(kale):
     def eggplant(spinach):
-        nonlocal eggplant
-        nonlocal kale
+        nonlocal eggplant, kale
         kale = 9
         eggplant = spinach
-        print(eggplant, kale)
+        return eggplant + kale
     eggplant(kale)
     return eggplant
 
-spinach = vegetable('kale')
+spinach = vegetable(10)
 \end{lstlisting}
 
 \begin{solution}[1.5in]
-\url{https://goo.gl/F43X2Q}
+\url{https://goo.gl/2bmMk9}
 \end{solution}
 \end{blocksection}

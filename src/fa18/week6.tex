@@ -1,0 +1,48 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{2}
+\title{\textsc{Lists and Trees}}
+\date{February 19 to February 21, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lists}
+\begin{questions}
+\subimport{../../topics/lists/mutable/easy/}{wwpd-mixed.tex}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+\end{blocksection}
+
+\newpage
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\end{blocksection}
+\end{questions}
+
+\newpage
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\vspace{2\baselineskip}
+\subimport{../../topics/trees/adt/text/}{draw-tree.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+\vspace{2\baselineskip}
+\subimport{../../topics/trees/adt/construct-tree/}{get-item.tex}
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\newpage
+\subimport{../../topics/trees/adt/medium/}{replace-x.tex}
+
+\end{questions}
+
+\end{document}

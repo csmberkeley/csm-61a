@@ -1,0 +1,35 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{verbatim}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{\textsc{Introduction to Scheme}}
+\date{July 11, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{questions}
+\section{What Would Scheme Print?}
+\subimport{../../topics/scheme/easy/wwsd/}{basics.tex}
+
+
+\section{Code Writing in Scheme}
+\subimport{../../topics/scheme/easy/}{hailstone.tex}
+
+
+\section{Special Forms}
+\subimport{../../topics/scheme/easy/wwsd/}{special-forms.tex}
+
+\section{More Code Writing}
+\subimport{../../topics/scheme/medium/}{apply-n.tex}
+
+\end{questions}
+
+\end{document}

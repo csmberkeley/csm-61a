@@ -4,18 +4,24 @@
 \begin{lstlisting}
 def tree_sequence(t):
     """
-    >>> t = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
+    >>> t = tree(1, [tree(2, [tree(5)]), tree(3, [tree(4)])])
     >>> print(list(tree_sequence(t)))
     [1, 2, 5, 3, 4]
     """
 \end{lstlisting}
 
-\begin{solution}[0.5in]
+\begin{solution}[1.5in]
 \begin{lstlisting}
-	yield t.label
-	for branch in t.branches:
+	yield label(t)
+	for branch in branches(t):
 		for value in tree_sequence(branch):
 			yield value
+\end{lstlisting}
+Alternate solution:
+\begin{lstlisting}
+        yield label(t)
+	for branch in branches(t):
+		yield from tree_sequence(branch)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

@@ -1,0 +1,21 @@
+\question Write a macro, \texttt{zero-cond} that takes in a list of condition-value pairs where each pair contains only numbers or arithmetic expressions that evaluate to numbers. It should evaluate each condition, \emph{treating expressions that evaluate to 0 as false-y} and then return the value corresponding to the first truth-y value.
+
+\begin{lstlisting}
+;Doctests
+scm> (zero-cond
+              ((0 'wrong)
+               ((- 1 1) 'wrong)
+               ((* 1 1) 'correct!)
+               (2 'wrong)))
+correct!
+
+(define-macro (zero-cond conditions)
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+(define-macro (zero-cond conditions)
+     (cons 'cond 
+              (map (lambda (pair) (cons (not (= 0 (eval (car pair)))) (cdr pair))) 
+                       conditions)))
+\end{lstlisting}
+\end{solution}

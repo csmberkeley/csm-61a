@@ -1,0 +1,49 @@
+\q{12}{Clever Pun No. 5}
+
+Suppose Samo the dog needs to make his way across an n x n grid to get back to Professor DeNero. 
+Samo is a very loyal dog and wants to reach the Professor in the fewest moves possibles, but at 
+the same time, Samo is an opportunist, and notices treats scattered throughout the grid.
+\newline
+Suppose Samo starts at location (0, 0) on the grid G and Professor DeNero is at location (n, n) 
+on the grid; that is, they are on opposite corners. Our input grid G tells us how many treats are 
+at any location - for a location (x, y), the number of treats in that location can be found with G[x][y]. 
+Given that Samo can move up, down, left, or right (no diagonals), and that Samo will eat all the treats 
+in a location as he leaves it, fill in the function trail\textunderscore of\textunderscore treats to return 
+the maximum amount of treats Samo can eat if he takes the minimum moves to get to Professor DeNero. 
+(Samo will also eat all the treats at Professor DeNeros location when he reaches it.)
+
+
+
+\vfill
+\makebox{\hspace*{-1.8cm}\solutionimage{\lstinputlisting{clever_pun_no5.py}}{\lstinputlisting{clever_pun_no5_sol.py}}}
+\vfill
+
+
+% \newpage
+%
+% \q{6}{Binary Trees}
+%
+% \textbf{Definition}. A \emph{binary search tree} is a \lstinline$BTree$ instance
+% for which the label of each node is larger than all labels in its left branch
+% and smaller than all labels in its right branch.
+%
+% \begin{enumerate}[leftmargin=1em]
+%
+% \subq{4} Implement \lstinline$largest$, which takes a binary search tree
+% \lstinline$t$ and a number \lstinline$x$. It returns the largest label in
+% \lstinline$t$ that is smaller than \lstinline$x$. If no such label exists, it
+% returns 0. \textbf{Assume that \lstinline$t$ contains only positive numbers as
+% labels.}
+%
+% \makebox{\hspace*{-1.8cm}\solutionimage{\lstinputlisting{largest.py}}{\lstinputlisting{largest_sol.py}}}
+% \makebox{\hspace*{-2.5cm}\includegraphics[width=1.35in]{btreeex.png}}
+% \vfill
+%
+% \subq{2} Implement \lstinline$second$, which takes a binary search tree
+% \lstinline$t$ \textbf{containing only positive numbers}, and a number
+% \lstinline$x$. It returns the \textbf{second largest} label in \lstinline$t$
+% that is smaller than \lstinline$x$.
+%
+% \makebox{\hspace*{-1.8cm}\solutionimage{\lstinputlisting{second.py}}{\lstinputlisting{second_sol.py}}}
+%
+% \end{enumerate}

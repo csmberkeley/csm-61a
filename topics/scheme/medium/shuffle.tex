@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question Fill in the implementation of \lstinline$shuffle$, which takes in a Scheme list and modifies the list
+such that each pair of elements in the list is swapped. It should additionally return the new list.
+
+\begin{lstlisting}
+;Doctests
+scm> (shuffle '(1 2 3 4)
+(2 1 4 3)
+scm> shuffle('(s c 1 6 a))
+(c s 6 1 a)
+
+(define (shuffle lst)
+\end{lstlisting}
+
+\ifprintanswers\else
+\begin{lstlisting}
+   (if ___________________________________________
+
+       ___________________________________________
+
+       (begin 
+
+           (define front _______________________________ )
+
+           (set-cdr! lst ________________________________ )
+ 
+           ___________________________________________
+
+           front)))
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{lstlisting}
+    (if (or (null? lst) (null? (cdr lst)))
+	lst
+	(begin
+		(define front (cdr lst))
+		(set-cdr! lst (shuffle (cdr front)))
+		(set-cdr! front lst)
+		front)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

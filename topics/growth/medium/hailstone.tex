@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Consider the following functions: 
+\question Consider the following functions:
 \begin{lstlisting}
 def hailstone(n):
     print(n)
@@ -20,11 +20,11 @@ def foo(n, f):
 \end{lstlisting}
 In big-$\Theta$ notation, describe the runtime for the following with respect to the input $n$:
 \begin{parts}
-\part \texttt{foo(10, hailstone)}
+\part \texttt{foo(n, hailstone)}
 \begin{solution}[0in]
-$\Theta(1)$. $f(500)$ is independent of the size of the input $n$.
+$\Theta(1)$. $f(n)$ is independent of the size of the input $n$.
 \end{solution}
-\part \texttt{foo(3000, fib)}
+\part \texttt{foo(n, fib)}
 \begin{solution}[0in]
 $\Theta(1)$. See above.
 \end{solution}
