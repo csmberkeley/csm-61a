@@ -13,10 +13,19 @@ and the other player picks 2.
 \texttt{Game} takes in the scores of both players (initially 0) and a list representing the cards.
 \newline
 \begin{lstlisting}
-def game(curr, opp, lst):
+def game(cards):
+    """
+    >>> game([1,2,3]) #1, then 3, then 2
+    True
+    >>> game([1, 1, 1])
+    False
+    >>> game([])
+    True
+    """
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}
+def game_helper(curr, opp, lst):
    if not lst:
       return curr == opp
    else:
