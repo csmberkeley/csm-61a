@@ -46,7 +46,10 @@ either \emph{step} (move forward one space) or \emph{jump} (move forward two
 spaces) from each position. How many different ways can Mario traverse a level
 without stepping or jumping into a Piranha plant? Assume that every level begins
 with a 1 (where Mario starts) and ends with a 1 (where
-Mario must end up). \\
+Mario must end up).
+\newline
+Hint: Does it matter whether Mario goes from left to right or right to left? Which
+one is easier to check?
 
 \begin{lstlisting}
 def mario_number(level):
@@ -54,8 +57,8 @@ def mario_number(level):
     Return the number of ways that Mario can traverse the
     level, where Mario can either hop by one digit or two
     digits each turn. A level is defined as being an integer
-    with digits where a 1 is something Mario can step on and 0 is 
-    something Mario cannot step on. 
+    with digits where a 1 is something Mario can step on and 
+    0 is something Mario cannot step on. 
     >>> mario_number(10101)
     1
     >>> mario_number(11101)
@@ -64,10 +67,15 @@ def mario_number(level):
     0
     """
     if ___________:
+		
         _________
+				
     elif ________________:
+		
         _________
+				
     else:
+		
         ___________________________________________________
 \end{lstlisting}
 \end{blocksection}

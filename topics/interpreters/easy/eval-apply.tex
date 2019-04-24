@@ -2,17 +2,18 @@
 \question Circle the number of calls to \lstinline$scheme_eval$ and
 \lstinline$scheme_apply$ for the code below.
 
-\begin{lstlisting}
-(define (square x) (* x x))
-(+ (square 3) (- 3 2))
+ \begin{lstlisting}
+(+ 1 2)
 \end{lstlisting}
 
 \begin{tabular}{lrrrr}
-\lstinline$scheme_eval$ & 2 & 5 & 14 & 24 \\
+\lstinline$scheme_eval$ & 1 & 3 & 4 & 6 \\
 \lstinline$scheme_apply$ & 1 & 2 & 3 & 4
 \end{tabular}
+\\
 
 \begin{solution}
-14 \lstinline$scheme_eval$, 4 \lstinline$scheme_apply$.
+4 \lstinline$scheme_eval$, 1 \lstinline$scheme_apply$.
 \end{solution}
+
 \end{blocksection}

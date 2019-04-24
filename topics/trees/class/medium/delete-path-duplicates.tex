@@ -1,0 +1,35 @@
+\begin{blocksection}
+\question
+Define \texttt{delete\_path\_duplicates}, which takes in \texttt{t}, a tree
+with non-negative labels. If there are any duplicate labels on any path 
+from root to leaf, the function should mutate the label of the occurrences
+deeper in the tree (i.e. farther from the root) to be the value \texttt{-1}.
+
+\begin{lstlisting}
+def delete_path_duplicates(t):
+   """
+   >>> t = Tree(1, [Tree(2, [Tree(1), Tree(1)])])
+   >>> delete_path_duplicates(t)
+   >>> t
+   Tree(1, [Tree(2, [Tree(-1), Tree(-1)])])
+   >>> t2 = Tree(1, [Tree(2), Tree(2, [Tree(2, [Tree(1)])])])
+   >>> delete_path_duplicates(t2)
+   >>> t2
+   Tree(1, [Tree(2), Tree(2, [Tree(-1, [Tree(-1)])])])
+   """
+\end{lstlisting}
+
+\begin{solution}[2in]
+\begin{lstlisting}
+def delete_path_duplicates(t):
+    def helper(t, seen_so_far):
+        if t.label in seen_so_far:
+            t.label = -1
+        else:
+            seen_so_far = seen_so_far + [t.label]
+        for b in t.branches:
+            helper(b, seen_so_far)
+    helper(t, [])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

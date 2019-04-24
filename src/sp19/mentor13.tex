@@ -1,0 +1,36 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Iterators, Generators, and Streams}}
+\date{April 22 to April 24, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Iterators and Generators}
+\begin{questions}
+\subimport{../../topics/iterators/easy/}{skipmachine.tex}
+\subimport{../../topics/generators/easy/}{foo.tex}
+\subimport{../../topics/generators/medium/}{filter-gen.tex}
+\subimport{../../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+\section{Streams}
+\begin{questions}
+\subimport{../../topics/streams/}{basic.tex}
+\newpage
+\subimport{../../topics/streams/scheme/easy/}{wwsd.tex}
+\end{questions}
+\section{Code Writing for Streams}
+\begin{questions}
+\subimport{../../topics/streams/scheme/easy/}{double-naturals.tex}
+\subimport{../../topics/streams/scheme/easy/}{interleave.tex}
+\end{questions}
+
+
+\end{document}
+

@@ -1,0 +1,87 @@
+\begin{blocksection}
+\question Implement \texttt{waldo}. \texttt{waldo} returns \texttt{\#t} if the
+symbol waldo is in a list. You may assume that the list passed in is
+well-formed.\\
+
+\begin{lstlisting}
+scm> (waldo '(1 4 waldo))
+#t
+scm> (waldo '())
+#f
+scm> (waldo '(1 4 9))
+#f
+
+(define (waldo lst)
+
+
+
+
+
+
+
+
+
+
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+
+\begin{lstlisting}
+(define (waldo lst)
+    (cond ((null? lst) #f)
+          ((eq? (car lst) 'waldo) #t)
+          (else (waldo (cdr lst)))
+      )
+  )
+\end{lstlisting}
+
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+
+\question \textbf{Extra challenge:} Define \texttt{waldo} so that it returns the index of
+the list where the symbol waldo was found (if waldo is not in the list, return
+\texttt{\#f}).
+\begin{lstlisting}
+scm> (waldo '(1 4 waldo))
+2
+scm> (waldo '())
+#f
+scm> (waldo '(1 4 9))
+#f
+
+(define (waldo lst)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (waldo lst)
+    (define (helper lst index)
+        (cond ((null? lst) #f)
+              ((eq? (car lst) 'waldo) index)
+              (else (helper (cdr lst) (+ index 1)))
+          )
+      )
+    (helper lst 0)
+  )
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

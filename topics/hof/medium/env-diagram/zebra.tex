@@ -1,0 +1,17 @@
+\question Draw the environment diagram that results from running the following code.
+
+\begin{lstlisting}
+def yak(zebra):
+    return 20 // zebra
+def llama(alpaca):
+    zebra = 0
+    def yak(zebra):
+        return alpaca(zebra)
+    return yak
+		
+llama(yak)(4)
+\end{lstlisting}
+
+\begin{solution}[1in]
+\url{https://goo.gl/T2wg4r}
+\end{solution}

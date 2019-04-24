@@ -1,0 +1,52 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{}
+\title{\textsc{Midterm 1 Review}}
+\date{February 10, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{WWPD}
+\begin{questions}
+\subimport{../../topics/functions-and-expressions/easy/wwpd/}{printer.tex}
+\subimport{../../topics/functions-and-expressions/medium/}{quick-maths.tex}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{argentina.tex}
+\end{questions}
+
+\newpage
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/functions-and-expressions/easy/env-diagram/}{ab.tex}
+\newpage
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{snowflake.tex}
+
+\end{questions}
+
+\newpage
+\section{Higher Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/medium/wwpd/}{lambda-wwpd.tex}
+\subimport{../../topics/hof/medium/env-diagram/}{zebra.tex}
+\newpage
+\subimport{../../topics/hof/medium/}{check-sum.tex}
+\end{questions}
+
+
+\section{Challenge Question}
+\begin{questions}
+\subimport{../../topics/hof/medium/}{apply-n.tex}
+\subimport{../../topics/hof/medium/}{kill_the.tex}
+\end{questions}
+
+
+\end{document}
+

@@ -3,13 +3,13 @@ As shown above, the tree constructor takes in a label and a list of branches (wh
 \begin{lstlisting}
 
 tree(4,
-    [tree(5, []),
+    [tree(5),
      tree(2,
-        [tree(2, []),
-         tree(1, [])]),
-     tree(1, []),
+        [tree(2),
+         tree(1)]),
+     tree(1),
      tree(8,
-        [tree(4, [])])])
+        [tree(4)])])
 \end{lstlisting}
 
 This creates a tree that looks like this:

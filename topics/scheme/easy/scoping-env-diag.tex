@@ -1,0 +1,30 @@
+\begin{blocksection}
+\question What would this print using lexical scoping? What would it print using
+dynamic scoping?
+
+\begin{lstlisting}[language=Python]
+a = 2
+def foo():
+    a = 10
+    return lambda x: x + a
+bar = foo()
+bar(10)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{itemize}
+    \item \textbf{Lexical:} 20
+    \item \textbf{Dynamic:} 12
+\end{itemize}
+\end{solution}
+
+\question How would you modify an environment diagram to represent dynamic
+scoping?
+
+\begin{solution}[0.5in]
+Assign parents when you create a frame (do not set parents when defining
+functions!). The parent in this case is the frame in which you called this
+function.
+\end{solution}
+
+\end{blocksection}
+

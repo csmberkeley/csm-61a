@@ -1,0 +1,42 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{10}
+\title{\textsc{Interpreters and Macros}}
+\date{July 30, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+
+\section{Let in Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/easy/}{let-issues.tex}
+
+
+\newpage
+%%% Question %%%
+
+\section{Interpreters}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+\subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\begin{questions}
+\section{Macros}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/medium/}{if-macro.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
+\end{questions}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

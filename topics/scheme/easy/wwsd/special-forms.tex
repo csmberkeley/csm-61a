@@ -1,0 +1,103 @@
+\begin{blocksection}
+\question What will Scheme output?
+
+\begin{lstlisting}
+scm> (if 1 1 (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (and 1 #f (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+#f
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (or #f #f 0 #f (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+0
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define a 4)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+a
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> ((lambda (x y) (+ a x y)) 1 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+7
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> ((lambda (x y z) (y x z)) 2 / 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> ((lambda (x) (x x)) (lambda (y) 4))
+\end{lstlisting}
+\begin{solution}[0.25in]
+4
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+scm> (define boom1 (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: Zero Division
+\end{solution}
+
+\begin{lstlisting}
+scm> (define boom2 (lambda () (/ 1 0)))
+\end{lstlisting}
+\begin{solution}[0.25in]
+boom2
+\end{solution}
+
+\begin{lstlisting}
+scm> (boom2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: Zero Division
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Why/How are the two ``boom'' definitions above different?
+\begin{solution}[1in]
+The first line is setting boom1 to be equal to the value \texttt{(/ 1 0)}, which
+turns out to be an error. On the other hand, boom2 is defined as a lambda that
+takes in no arguments that, when called, will evaluate \texttt{(/ 1 0)}.
+\end{solution}
+
+How can we rewrite boom2 without using the lambda operator?
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (boom2) (/ 1 0))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

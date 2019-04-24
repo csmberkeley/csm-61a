@@ -1,6 +1,7 @@
 \begin{blocksection}
 \question Profit is good, but more profit is better. Write a query to select the species that yields the most number of pieces for each price. Your output should include the species, price, and pieces.
 
+
 \begin{solution}[0.7in]
 \begin{lstlisting}
 select species, price, MAX(pieces) from fish GROUP BY price;

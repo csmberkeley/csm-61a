@@ -1,0 +1,53 @@
+\begin{blocksection}
+\question Implement the function \texttt{replace}, which takes in 3 integers, \texttt{n}, \texttt{old}, and \texttt{new} and returns a number that is identical to \texttt{n} except that all instances of \texttt{old} in \texttt{n} are replaced with \texttt{new}. Assume that \texttt{old} and \texttt{new} are both positive integers and less than 10.
+
+\begin{lstlisting}
+def replace(n, old, new): 
+  """ 
+  >>> replace(1294, 9, 3)
+  1234
+  >>> replace(555, 5, 8)
+  888
+  >>> replace(1, 1, 2)
+  2
+  >>> replace(0, 1, 2)
+  0
+  >>> replace(12345123, 6, 9)
+  12345123
+  """
+	
+  if ___________:
+	
+    return 0
+		
+  last = _________
+	
+  rest = _________
+	
+  if last == old:
+	
+    ____________________________________________
+		
+  else:
+	
+    ____________________________________________
+
+
+				
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+
+\begin{solution}[.25in]
+\begin{lstlisting}:
+  if n == 0:
+    return 0		
+  last = n % 10
+  rest = n // 10
+  if last == old:
+    return replace(rest, old, new) * 10 + new	
+  else:
+    return replace(rest, old, new) * 10 + last
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

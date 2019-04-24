@@ -2,20 +2,20 @@
 
 \begin{parts}
 
-\part \lstinline$scm> (define x 1)$
-\begin{solution}[0.25in]
-\lstinline$x$
-\end{solution}
+%\part \lstinline$scm> (define x 1)$
+%\begin{solution}[0.25in]
+%\lstinline$x$
+%\end{solution}
 
-\part \lstinline$scm> (if 2 3 4)$
-\begin{solution}[0.25in]
-\lstinline$3$
-\end{solution}
+%\part \lstinline$scm> (if 2 3 4)$
+%\begin{solution}[0.25in]
+%\lstinline$3$
+%\end{solution}
 
-\part \lstinline$scm> (delay (+ x 1))$
-\begin{solution}[.25in]
-\lstinline$#[promise]$
-\end{solution}
+%\part \lstinline$scm> (delay (+ x 1))$
+%\begin{solution}[.25in]
+%\lstinline$#[promise]$
+%\end{solution}
 
 \part \lstinline$scm> (define (foo x) (+ x 10))$
 \begin{solution}[0.25in]
@@ -34,7 +34,7 @@
 
 \part \lstinline$scm> (cdr bar)$
 \begin{solution}[0.25in]
-\lstinline$#[promise]$
+\lstinline$#[promise (not forced)]$
 \end{solution}
 
 \part \lstinline$scm> (define (foo x) (+ x 1))$
@@ -44,7 +44,7 @@
 
 \part \lstinline$scm> (cdr-stream bar)$
 \begin{solution}[0.25in]
-\lstinline$(3 . #[promise])$
+\lstinline$(3 . #[promise (not forced)])$
 \end{solution}
 
 \part \lstinline$scm> (define (foo x) (+ x 5))$
@@ -59,6 +59,11 @@
 
 \part \lstinline$scm> (cdr-stream bar)$
 \begin{solution}[0.25in]
-\lstinline$(3 . #[promise])$
+\lstinline$(3 . #[promise (not forced)])$
+\end{solution}
+
+\part \lstinline$scm> (cdr bar)$
+\begin{solution}[0.25in]
+\lstinline$#[promise (forced)]$
 \end{solution}
 \end{parts}

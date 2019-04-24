@@ -1,0 +1,22 @@
+\hspace*{0in}\begin{minipage}[t]{3in}
+\noindent
+\begin{numberedprog}{14}{2.5in}
+\begin{lstlisting}
+def f(f):
+    def h(x, y):
+        nonlocal f
+        z = 4
+        return lambda z: (x + y) * z
+  
+    def g(y):
+        nonlocal g, h
+        g = lambda y: y[:4]
+        h = lambda x, y: lambda f: lambda z: f(f(x) + y + z)
+        return y[3] + y[5:8]
+
+    return h(g("sarcasm!"), g("why would you do this?"))
+
+f = f(lambda f: f(f))(2)
+\end{lstlisting}
+\end{numberedprog}
+\end{minipage}

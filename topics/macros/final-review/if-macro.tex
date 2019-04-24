@@ -1,0 +1,74 @@
+\begin{blocksection}
+
+\question Implement \texttt{if-macro}, which behaves similarly to the \texttt{if} special form in Scheme
+but has some additional properties. Here's how the \texttt{if-macro} is called:
+\newline
+\texttt{if <cond1> <expr1> elif <cond2> <expr2> else <expr3>}
+\newline
+If cond1 evaluates to a truth-y value, expr1 is evaluated and returned. Otherwise, if cond2 evaluates
+to a truth-y value, expr2 is evaluated and returned. If neither condition is true, expr3 is evaluted and returned.
+
+\begin{lstlisting}
+;Doctests
+scm> (if-macro (= 1 0) 1 elif (= 1 1) 2 else 3)
+2
+scm> (if-macro (= 1 1) 1 elif (= 2 2) 2 else 3)
+1
+scm> (if-macro (= 1 0) (/ 1 0) elif (= 2 0) (/ 1 0) else 3)
+3
+
+(define-macro (if-macro cond1 expr1 elif cond2 expr2 else expr3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define-macro (if-macro cond1 expr1 elif cond2 expr2 else expr3)
+    (list 'cond (list cond1 expr1)
+             (list cond2 expr2)
+             (list 'else expr3)))
+\end{lstlisting}
+Alternate solution with nested ifs:
+\begin{lstlisting}
+(define-macro (if-macro cond1 expr1 elif cond2 expr2 else expr3)
+    (list 'if cond1 expr1 (list 'if cond2 expr2 expr3)))
+\end{lstlisting}
+Alternate solution with quasiquoting:
+\begin{lstlisting}
+(define-macro (if-macro cond1 expr1 elif cond2 expr2 else expr3)
+    `(cond (,cond1 ,expr1)
+             (,cond2 ,expr2)
+             (else ,expr3)))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+\question Could we have implemented \texttt{if-macro} using a function instead of a macro? Why or why not?
+\begin{solution}
+Without using macros, the inputs would be evaluated when we evaluated the function call. This is problematic for two reasons:
+\newline
+First, we only want to evaluate the expressions under certain conditions. If cond1 was false, we would not want to evaluate expr1. This might lead to errors!
+\newline
+Secondly, some of the inputs to the call would be names which have no binding in the global frame. Elif, for example, is not supposed to be interpreted as a name
+but rather as a symbol. This would cause our code to error if we ran it as is!
+\newline
+Of course, we could have written out a \texttt{cond} or nested \texttt{if} expression instead of defining an \texttt{if-macro}. But the syntax for \texttt{if-macro} 
+is more familiar, which is why we might want to do something like this!
+\end{solution}
+\end{blocksection}
