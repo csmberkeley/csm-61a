@@ -1,6 +1,7 @@
 \begin{blocksection}
-\question \begin{parts}
-\part You and your CS 61A friends are cons.
+
+\question
+You and your CS 61A friends are cons.
 You cdr'd just studied for the final, but instead you scheme to drive away across a stream in a car during dead week.
 Of course, you would like a variety of food to eat on your road trip.
 
@@ -8,6 +9,7 @@ Write an infinite stream that takes in a list of foods and loops back to the
 first food in the list when the list is exhausted.
 
 \ifprintanswers\else
+
 \begin{lstlisting}
 ;Doctests
 scm> (define fruit (food-stream '(apple banana orange)))
@@ -18,7 +20,6 @@ scm> (car (cdr-stream fruit))
 banana
 scm> (car (cdr-stream (cdr-stream (cdr-stream fruit))))
 apple
-
 (define (food-stream foods)
 
 
@@ -26,7 +27,25 @@ apple
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 )
+
 \end{lstlisting}
 \fi
 
@@ -38,8 +57,12 @@ apple
                (list (car foods))))))
 \end{lstlisting}
 \end{solution}
+\newpage
+\\
+\end{blocksection}
+\begin{blocksection}
 
-\part We discover that some of our food is stale! Every other food that we go
+We discover that some of our food is stale! Every other food that we go
 through is stale, so put it into a new stale food stream. Assume
 \lstinline$is-stale$ starts off as \lstinline$#f$.
 
@@ -52,7 +75,6 @@ scm> (car cookies)
 chocolate
 scm> (car (cdr-stream cookies))
 oreo
-
 
 (define (stale-stream foods is-stale)
 \end{lstlisting}
@@ -68,5 +90,8 @@ oreo
         (else (stale-stream (cdr foods) #t))))
 \end{lstlisting}
 \end{solution}
-\end{parts}
+
+
 \end{blocksection}
+
+

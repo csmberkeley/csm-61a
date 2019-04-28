@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the following code.
+\begin{lstlisting}
+def f(f):
+    def h(x, y):
+        z = 4
+        return lambda z:  (x + y) * z
+  
+    def g(y):
+        nonlocal g, h
+        g = lambda y: y[:4]
+        h = lambda x, y: lambda f: f(x + y)
+        return y[3] + y[5:8]
+
+    return h(g("sarcasm!"), g("why?"))
+
+f = f("61a")(2)
+\end{lstlisting}
+
+\begin{solution}[1in]
+\url{https://tinyurl.com/env-prog}
+\end{solution}
+\end{blocksection}
+

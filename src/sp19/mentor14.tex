@@ -1,0 +1,108 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{10}
+\title{\textsc{SQL and Final Review}}
+\date{April 29 to May 1, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\section{Creating Tables, Querying Data}
+Examine the table, \texttt{mentors}, depicted below.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Editor} & \textbf{Language} \\
+ \hline
+ Jade & Thai & Purple & Notepad++ & Java \\
+ \hline
+ Evan & Pie & Green & Sublime & Java \\
+ \hline
+ Jack & Sushi & Orange & Emacs & Ruby \\
+ \hline
+ Kevin & Tacos & Blue & Vim & Python \\
+ \hline
+ Jemmy & Ramen & Green & Vim & Python \\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{questions}
+\subimport{../../topics/sql/mentors/}{create-table.tex}
+\newpage
+\subimport{../../topics/sql/mentors/easy/}{food-if-color-green.tex}
+\subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+\subimport{../../topics/sql/mentors/medium/}{pairs-same-language.tex}
+\end{questions}
+
+\newpage
+\section{Aggregation}
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+
+Hint: The aggregate functions \texttt{MAX}, \texttt{MIN}, \texttt{COUNT}, and \texttt{SUM} return the maximum, minimum, number, and sum of the values in a column. The  \texttt{GROUP BY} clause of a select statement is used to partition rows into groups.
+
+\begin{questions}
+\subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+\subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+\subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+
+\newpage
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
+\subimport{../../topics/sql/fish/medium/}{competitor.tex}
+\end{questions}
+
+\newpage
+{\huge \vspace*{0.5cm} \textsc{Final Review}}
+
+\rule{\textwidth}{0.15em}
+
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{env-prog.tex}
+\end{questions}
+\newpage
+\section{Recursive Data Structures}
+\begin{questions}
+\subimport{../../topics/interview/}{rot.tex}
+
+\newpage
+\subimport{../../topics/linked-lists/class/medium/}{shuffle.tex}
+\end{questions}
+
+\newpage
+\section{Recursion}
+\begin{questions}
+\subimport{../../topics/interview/}{game.tex}
+\end{questions}
+
+\newpage
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{insert.tex}
+\end{questions}
+
+
+\newpage
+\section{Iterators, Generators, and Streams}
+\begin{questions}
+\subimport{../../topics/interview/}{all-ways-skeleton.tex}
+\newpage
+\subimport{../../topics/streams/scheme/medium/}{puns.tex}
+\end{questions}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
