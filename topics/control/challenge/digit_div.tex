@@ -1,4 +1,4 @@
-\question Fill out the function \lstinline{digit_div} which returns an integer that contains in any order all the digits of \lstinline{k} that divide evenly into \lstinline{n}. If no such digit of \lstinline{k} exists, the function should return 0. Assume that both \lstinline{n} and \lstinline{k} are positive integers.
+\question Fill out the function \lstinline{digit_div} which returns an integer that contains in any order all the digits of \lstinline{k} that divide \lstinline{n} evenly. If no such digit of \lstinline{k} exists, the function should return 0. Assume that both \lstinline{n} and \lstinline{k} are positive integers.
 
 \begin{blocksection}
 \begin{lstlisting}
@@ -24,13 +24,6 @@ def digit_div (n, k):
 \begin{solution}
 \begin{lstlisting}
 def digit_div (n, k):
-    >>> digit_div(4, 1234567890)
-    421
-    >>> digit_div(4, 2323)
-    22
-    >>> digit_div(7, 2323)
-    0
-    """
     digits = 0
     while k > 0:
         curr_digit = k % 10
@@ -39,6 +32,6 @@ def digit_div (n, k):
         k //= 10
     return digits
 \end{lstlisting}
-Notice that in the condition for the if statement, we must check if \lstinline{curr_digit} is 0 before we divide \lstinline{n} by \lstinline{curr_digit} otherwise, we may try to divide\lstinline{n} by 0 which would error! This line works because of short circuiting; if the first expression in an \lstinline{and} expression is a false value, then the second expression is never evaluated.
+Notice that in the condition for the \lstinline{if} statement, we must check if \lstinline{curr_digit} is 0 before we divide \lstinline{n} by \lstinline{curr_digit} otherwise, we may try to divide \lstinline{n} by 0 which would error! This line works because of short circuiting; if the first expression in an \lstinline{and} expression is a false value, then the second expression is never evaluated.
 \end{solution}
 \end{blocksection}
