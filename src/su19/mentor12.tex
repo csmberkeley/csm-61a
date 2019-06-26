@@ -1,0 +1,40 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{\textsc{Final Review}}
+\date{April 23 to April 25, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\section{Environment Diagrams, Nonlocal, and Mutation}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{sing-a-song.tex}
+\end{questions}
+
+\newpage
+\section{Trees}
+\begin{questions}
+\subimport{../../topics/trees/class/medium/}{factor-tree.tex}
+\subimport{../../topics/interview/}{rot.tex}
+\end{questions}
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\subimport{../../topics/scheme/medium/}{shuffle.tex}
+\end{questions}
+
+\newpage
+\section{Iterators, Generators, and Streams}
+\begin{questions}
+\subimport{../../topics/iterators/easy/}{skipmachine.tex}
+\newpage
+\subimport{../../topics/streams/scheme/medium/}{puns.tex}
+\end{questions}
+\end{document}
