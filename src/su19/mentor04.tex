@@ -1,0 +1,39 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{\textsc{Data Abstraction and Trees}}
+\date{July 5, 2018}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Data Abstraction}
+\begin{questions}
+\subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+\end{questions}
+
+\newpage
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\vspace{2\baselineskip}
+\subimport{../../topics/trees/adt/text/}{draw-tree.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+\vspace{2\baselineskip}
+\subimport{../../topics/trees/adt/construct-tree/}{get-item.tex}
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\subimport{../../topics/trees/adt/medium/}{replace-x.tex}
+\subimport{../../topics/trees/adt/hard/}{contains-n.tex}
+
+\end{questions}
+
+\end{document}
