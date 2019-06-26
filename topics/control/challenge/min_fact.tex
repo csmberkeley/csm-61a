@@ -1,0 +1,44 @@
+\question Fill out the function \lstinline{min_fact} which calculates the product of consecutive positive numbers starting from \lstinline{n} and working downwards until the first point at which the product becomes greater than \lstinline{margin}. It should return -1 if there is no product that is greater than margin.
+
+\begin{blocksection}
+\begin{lstlisting}
+def min_fact(n, margin):
+    """
+    >>> min_fact(5, 20) # 5 * 4 * 3
+    60
+    >>> min_fact(5, 200)
+    -1
+    >>> min_fact(5, 0)
+    5
+    """
+    total, ________________ = n, ________________
+    while ________________:
+        if ________________:
+           ________________
+        ____________, ____________ = ____________, ____________
+    return ________________
+
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def min_fact(n, margin):
+    """
+    >>> min_fact(5, 20) # 5 * 4 * 3
+    60
+    >>> min_fact(5, 200)
+    -1
+    >>> min_fact(5, 0)
+    5
+    """
+    total, n = n, n - 1
+    while total <= margin:
+        if n <= 0: # could also be n == 0
+            return -1
+        total, n = total * n, n - 1
+    return total
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
