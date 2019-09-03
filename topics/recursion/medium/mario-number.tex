@@ -48,8 +48,8 @@ without stepping or jumping into a Piranha plant? Assume that every level begins
 with a 1 (where Mario starts) and ends with a 1 (where
 Mario must end up).
 \newline
-Hint: Does it matter whether Mario goes from left to right or right to left? Which
-one is easier to check?
+\textit{Hint: Does it matter whether Mario goes from left to right or right to left? Which
+one is easier to check?}
 
 \begin{lstlisting}
 def mario_number(level):
@@ -66,13 +66,13 @@ def mario_number(level):
     >>> mario_number(100101)
     0
     """
-    if ___________:
+    if _______________________:
 		
-        _________
+        ______________________
 				
-    elif ________________:
+    elif _____________________:
 		
-        _________
+        ______________________
 				
     else:
 		
@@ -84,19 +84,6 @@ def mario_number(level):
 \begin{solution}
 \begin{lstlisting}
 def mario_number(level):
-    """
-    Return the number of ways that mario can traverse the
-    level where mario can either hop by one digit or two
-    digits each turn a level is defined as being an integer
-    where a 1 is something mario can step on and 0 is 
-    something mario cannot step on. 
-    >>> mario_number(10101)
-    1
-    >>> mario_number(11101)
-    2   
-    >>> mario_number(100101)
-    0
-    """
     if level == 1:
         return 1
     elif level % 10 == 0:

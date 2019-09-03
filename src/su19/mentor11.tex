@@ -4,8 +4,8 @@
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{11}
-\title{\textsc{SQL}}
-\date{August 1st, 2018}
+\title{\textsc{Macros, Tail Recursion, and Interpreters}}
+\date{August 5, 2019}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -13,56 +13,34 @@
 \rule{\textwidth}{0.15em}
 \fontsize{12}{15}\selectfont
 
-\section{Creating Tables, Querying Data}
-Examine the table, \texttt{mentors}, depicted below.
 
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
- \hline
- \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Editor} & \textbf{Language} \\
- \hline
- Jacob & Thai & Purple & Notepad++ & Java \\
- \hline
- Rachel & Pie & Green & Sublime & Java \\
- \hline
- Jemmy & Sushi & Orange & Emacs & Ruby \\
- \hline
- Daniel & Tacos & Blue & Vim & Python \\
- \hline
- Amy & Ramen & Green & Vim & Python \\
- \hline
-\end{tabular}
-\end{center}
+% \section{Let in Scheme}
+% \begin{questions}
+% \subimport{../../topics/scheme/easy/}{let-issues.tex}
 
+
+% \newpage
+%%% Question %%%
+
+\section{Macros}
 \begin{questions}
-\subimport{../../topics/sql/mentors/}{create-table.tex}
-\newpage
-\subimport{../../topics/sql/mentors/easy/}{food-if-color-green.tex}
-\subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
-\subimport{../../topics/sql/mentors/medium/}{pairs-same-language.tex}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/medium/}{if-macro.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
 \end{questions}
 
-\newpage
-\section{Aggregation and Mutating Tables}
-\subimport{../../topics/sql/fish/text/}{intro.tex}
-\subimport{../../topics/sql/fish/tables/}{fish.tex}
-
-Hint: The aggregate functions \texttt{MAX}, \texttt{MIN}, \texttt{COUNT}, and \texttt{SUM} return the maximum, minimum, number, and sum of the values in a column. The  \texttt{GROUP BY} clause of a select statement is used to partition rows into groups.
-
+\section{Tail Recursion}
 \begin{questions}
-\subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
-\subimport{../../topics/sql/fish/easy/}{number-fish.tex}
-\subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
-
-\newpage
-\subimport{../../topics/sql/fish/text/}{competitor.tex}
-\subimport{../../topics/sql/fish/tables/}{competitor.tex}
-\subimport{../../topics/sql/fish/medium/}{competitor.tex}
-\subimport{../../topics/sql/fish/medium/}{yearly-pop-mutative.tex}
+\subimport{../../topics/tail-recursion/easy/}{intro.tex}
+\subimport{../../topics/tail-recursion/medium/}{count-instance.tex}
+\subimport{../../topics/tail-recursion/medium/}{filter.tex}
 \end{questions}
 
-
-
+\section{Interpreters}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+% \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question Implement \lstinline$pow_of_two$, which takes in an integer \lstinline$n$ and
+prints all the positive, integer powers of two less than or equal to n. This function should return \lstinline$None$.
+\newline
+\newline
+\textit{Follow up question: What would you change about your solution if the question asked to print all the powers of two \textbf{strictly less than} \lstinline$n$?}
+\begin{lstlisting}
+def pow_of_two(n):
+    """
+    >>> pow_of_two(6)
+    1
+    2
+    4
+    >>> result = pow_of_two(16)
+    1
+    2
+    4
+    8
+    16
+    >>> result is None
+    True
+    """
+\end{lstlisting}
+\begin{solution}[2in]
+\begin{lstlisting}
+    curr = 1
+    while curr <= n:
+        print(curr)
+        curr *= 2 # equivalent to curr = curr * 2
+\end{lstlisting}
+Since we are multiplying curr by 2 on each iteration of the while loop, curr holds values that are powers of 2.
+Notice that since there is no return statement in this function, when Python reaches the end of the function, it automatically returns None.
+
+The answer to the follow up question is that the condition of our while loop would change to \lstinline$curr < n$.
+Walk through the code for \lstinline$pow_of_two(16)$ with both of the conditions to see why they produce different outputs!
+
+Another way you could have written this function is by using pow or the ** operator. That solution would look something like this where you would keep track of the exponent itself:
+
+\begin{lstlisting}
+    exponent = 0
+    while (2 ** exponent) <= n:
+        print(2 ** exponent)
+        exponent += 1
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

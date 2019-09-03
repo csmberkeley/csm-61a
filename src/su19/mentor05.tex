@@ -1,12 +1,10 @@
 \documentclass{exam}
 \usepackage{../../commonheader}
-\usepackage{verbatim}
-\lstset{language=Scheme}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{5}
-\title{\textsc{Introduction to Scheme}}
-\date{July 11, 2018}
+\title{\textsc{Trees and Mutability}}
+\date{July 15 to July 16, 2019}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -15,21 +13,26 @@
 \fontsize{12}{15}\selectfont
 
 %%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\newpage
 \begin{questions}
-\section{What Would Scheme Print?}
-\subimport{../../topics/scheme/easy/wwsd/}{basics.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+\vspace{2\baselineskip}
+\subimport{../../topics/trees/adt/construct-tree/}{get-item.tex}
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\subimport{../../topics/trees/adt/medium/}{replace-x.tex}
+\subimport{../../topics/trees/adt/hard/}{contains-n.tex}
+\end{questions}
 
-
-\section{Code Writing in Scheme}
-\subimport{../../topics/scheme/easy/}{hailstone.tex}
-
-
-\section{Special Forms}
-\subimport{../../topics/scheme/easy/wwsd/}{special-forms.tex}
-
-\section{More Code Writing}
-\subimport{../../topics/scheme/medium/}{apply-n.tex}
-
+\section{Mutability}
+\subimport{../../topics/lists/mutable/text/}{mutable-vs-immutable.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
 \end{questions}
 
 \end{document}

@@ -12,10 +12,10 @@ def delete_path_duplicates(t):
    >>> delete_path_duplicates(t)
    >>> t
    Tree(1, [Tree(2, [Tree(-1), Tree(-1)])])
-   >>> t2 = Tree(1, [Tree(2), Tree(2, [Tree(2, [Tree(1)])])])
+   >>> t2 = Tree(1, [Tree(2), Tree(2, [Tree(2, [Tree(1, Tree(5))])])])
    >>> delete_path_duplicates(t2)
    >>> t2
-   Tree(1, [Tree(2), Tree(2, [Tree(-1, [Tree(-1)])])])
+   Tree(1, [Tree(2), Tree(2, [Tree(-1, [Tree(-1, Tree(5))])])])
    """
 \end{lstlisting}
 

@@ -6,16 +6,16 @@ removing, or otherwise modifying the list itself.
 \item \lstinline$lst.append(element)$
 \item \lstinline$lst.extend(lst)$
 \item \lstinline$lst.pop(index)$
-\item \lstinline$lst += lst$ (\textbf{not} \lstinline$lst = lst + lst$)
+\item \lstinline$lst += lst$ (\textbf{Note - this is different than:} \lstinline$lst = lst + lst$)
 \item \lstinline$lst[i] = x$
-\item \lstinline$lst[i:j] = lst$
+% \item \lstinline$lst[i:j] = lst$
 \end{itemize}
 \end{blocksection}
 
 \vspace{\parskip}
 
 \begin{blocksection}
-Non-mutative (\emph{non-destructive}) operations include the following.
+Non-mutative (\emph{non-destructive}) operations do not change the original list but create a new list insteads.
 
 \begin{itemize}
 \item \lstinline$lst + lst$
