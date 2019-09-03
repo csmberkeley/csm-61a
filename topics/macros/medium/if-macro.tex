@@ -60,7 +60,7 @@ Alternate solution with quasiquoting:
 
 \begin{blocksection}
 \question Could we have implemented \texttt{if-macro} using a function instead of a macro? Why or why not?
-\begin{solution}
+\begin{solution}[0.5in]
 Without using macros, the inputs would be evaluated when we evaluated the function call. This is problematic for two reasons:
 \newline
 First, we only want to evaluate the expressions under certain conditions. If cond1 was false, we would not want to evaluate expr1. This might lead to errors!

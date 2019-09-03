@@ -1,0 +1,50 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{13}
+\title{\textsc{Final Review}}
+\date{August 12, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{env-prog.tex}
+\end{questions}
+
+\newpage
+\section{Recursive Data Structures}
+\begin{questions}
+\subimport{../../topics/interview/}{rot.tex}
+
+\newpage
+\subimport{../../topics/linked-lists/class/medium/}{shuffle.tex}
+\end{questions}
+
+\newpage
+\section{Recursion}
+\begin{questions}
+\subimport{../../topics/interview/}{game.tex}
+\end{questions}
+
+\newpage
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{insert.tex}
+\end{questions}
+
+
+\newpage
+\section{Iterators, Generators, and Streams}
+\begin{questions}
+\subimport{../../topics/interview/}{all-ways-skeleton.tex}
+\newpage
+\subimport{../../topics/streams/scheme/medium/}{puns.tex}
+\end{questions}
+\end{document}

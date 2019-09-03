@@ -20,8 +20,6 @@ def skip(lst): # Recursively
     skip(lst.rest)
 
 def skip(lst): # Iteratively
-    if lst is Link.empty:
-        return
     while lst is not Link.empty and lst.rest is not Link.empty:
         lst.rest = lst.rest.rest
         lst = lst.rest

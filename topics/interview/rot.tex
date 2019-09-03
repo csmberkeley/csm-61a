@@ -25,7 +25,7 @@ calling rotate on \texttt{t} should mutate it to give us
         child {node [circle, draw] (b) {$2$}};
 \end{tikzpicture}
 
-Fill in your implementation on the next page.
+Fill in your implementation on the next page. You may not need to use all the lines.
 \end{blocksection}
 
 \begin{blocksection}
@@ -51,7 +51,7 @@ def rotate(t):
 
     for ______________________________________________:
 
-         branch = ______________________________________
+         ______________________________________________
 
          ______________________________________________
 
@@ -65,8 +65,8 @@ def rotate(t):
    branch_labels = [b.label for b in t.branches]
    n = len(t.branches)
    for i in range(n):
-      branch = t.branches(i)
-      branch.label = branch_labels[(i + 1) \% n]
+      branch = t.branches[i]
+      branch.label = branch_labels[(i + 1) % n]
       rotate(branch)
 \end{lstlisting}
 \end{solution}

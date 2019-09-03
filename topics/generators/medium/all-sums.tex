@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question Define \lstinline$all_sums$, a generator that iterates through all the sums that can be formed by adding the elements in \lstinline$lst$.
+\begin{lstlisting}
+def all_sums(lst):
+    """
+    >>> gen = all_sums([1, 2, 3])
+    >>> sorted(gen)
+    [0, 1, 2, 3, 3, 4, 5, 6]
+    """
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+    if not lst:
+        yield 0
+    else:
+        for sum_of_rest in all_sums(lst[1:]):
+            yield sum_of_rest + lst[0]
+            yield sum_of_rest
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
