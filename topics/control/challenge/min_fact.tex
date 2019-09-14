@@ -13,9 +13,9 @@ def min_fact(n, margin):
     """
     total, ________________ = n, ________________
     while ________________:
-        if ________________:
-           ________________
         ____________, ____________ = ____________, ____________
+    if ________________:
+       ________________
     return ________________
 
 \end{lstlisting}
@@ -26,10 +26,10 @@ def min_fact(n, margin):
 \begin{lstlisting}
 def min_fact(n, margin):
     total, n = n, n - 1
-    while total <= margin:
-        if n <= 0: # could also be n == 0
-            return -1
+    while total <= margin and n > 0:
         total, n = total * n, n - 1
+    if total < margin:
+        return -1
     return total
 \end{lstlisting}
 \end{solution}
