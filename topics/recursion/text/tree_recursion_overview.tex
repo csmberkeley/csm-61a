@@ -1,0 +1,13 @@
+\textbf{Tree Recursion vs Recursion}
+
+
+In most recursive problems we've seen so far, the solution function contains only one call to itself. However, some problems will require multiple recursive calls -- we colloquially call this type of recursion tree recursion, since the propagation of function frames reminds us of the branches of a tree. "Tree recursive" or not, these problems are still solved the same way as those requiring a single function call: a base case, the recursive leap of faith on a subproblem, and solving the original problem with the solution to our subproblems. The difference? We simply may need to use multiple subproblems to solve our original problem.  
+
+Tree recursion will often be needed when solving counting (how many ways are there of doing something?) problems and optimization (what is the maximum or minimum number of ways of doing something?) problems, but remember there are all sorts of problems that may need multiple recursive calls! Always come back to the recursive leap of faith.
+
+Two rules that are often useful in solving counting problems:
+\begin{enumerate}
+\item If there are \textit{a ways} of doing something and \textit{b ways} of doing another thing, there are \textit{ab ways} of doing \textbf{both} at the same time.
+
+\item If there are \textit{a ways} of doing one thing and \textit{b ways} of doing another, but we can't do both things at the same time, there are \textit{a + b} ways of doing either the first thing \textbf{or} the second thing.
+\end{enumerate}

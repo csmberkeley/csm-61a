@@ -1,10 +1,11 @@
+
 \begin{blocksection}
 \question Implement \texttt{compound}, which takes in a single-argument function \texttt{base\_func} and returns a two-argument compounder function \texttt{g}. The function \texttt{g} takes in an integer \texttt{x} and positive integer \texttt{n}.
 
 Each call to \texttt{g} will print the result of calling \texttt{f} repeatedly 0,1,.., n-1 times on \texttt{x}. That is, \texttt{g(x, 2)} prints \texttt{x}, then \texttt{f(x)}. Then, \texttt{g} will return the next two-argument compounder function.
 
 \begin{lstlisting}
-def compound(base_func, prev_compound=None):
+def compound(base_func, prev_compound=lambda x: x):
     """
     >>> add_one = lambda x: x + 1
     >>> adder = compound(adder)
@@ -18,20 +19,19 @@ def compound(base_func, prev_compound=None):
     9       # f(f(f(f(f(4)))))
     """
     def g(x, n):
-        new_comp = ____________________________
-        while n > 0:
-          print(____________________________)
-          new_comp = (lambda save_comp: \
-                      _______________________)(____________)
-          ___________________________________________________
-        return ______________________________________________
-    return ___________________________________
-    
+      new_comp = ____________________________
+      while n > 0:
+        print(____________________________)
+        new_comp = (lambda save_comp: \
+                    _______________________)(____________)
+        ___________________________________________________
+      return ______________________________________________
+    return ___________________________________  
 \end{lstlisting}
 
 \begin{solution}[1in]
 \begin{lstlisting}
-def compound(base_func, prev_compound=None):
+def compound(base_func, prev_compound=lambda x : x):
   def g(x, n):
     new_comp = prev_compound
     while n > 0:
