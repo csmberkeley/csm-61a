@@ -47,7 +47,8 @@ spaces) from each position. How many different ways can Mario traverse a level
 without stepping or jumping into a Piranha plant? Assume that every level begins
 with a 1 (where Mario starts) and ends with a 1 (where
 Mario must end up).
-\newline
+
+
 \textit{Hint: Does it matter whether Mario goes from left to right or right to left? Which
 one is easier to check?}
 
@@ -91,6 +92,16 @@ def mario_number(level):
     else:
         return mario_number(level // 10) + mario_number((level // 10) // 10)
 \end{lstlisting}
+You can think about this tree recursion problem as testing out all of the possible ways Mario can traverse the level, and adding 1 every time you find a possible traversal.
+
+Here it doesn’t matter whether Mario goes left to right or right to left, either way we’ll end up with the same number of ways to traverse the \lstinline{level}. In that case, we can simply choose for Mario to start from the right, then we can process the level like we process other numbers in digit-parsing related questions by using floor div (\lstinline{//}) and modulo (\lstinline{%})
+
+At every time step, Mario can either take one or two steps, and these would take form in two corresponding recursive calls. A single floor division (\lstinline{//}) of \lstinline{level} by 10 means taking one step at this point in the \lstinline{level} (if we took a step, then the entire \lstinline{level} would be left except for the last number), while two floor divisions by 10 (or equivalently one floor division by 100) corresponds to a jump at this point in the \lstinline{level} (if we took a jump, then the entire \lstinline{level} would be left except for the last two numbers).
+
+To think of the base cases, you can consider the two ways that Mario ends his journey. The first, corresponding to \lstinline{level == 1}, means that Mario has successfully reached the end of the level. You can \lstinline{return 1} here, because this means you’ve found one additional path to the end. The second, corresponding to \lstinline{level % 10 == 0}, means that Mario has landed on a Piranha plant. This returns 0 because it’s a failed traversal of the \lstinline{level}, so you don’t want to add anything to your result. 
+
+In tree recursion, you need to find a way to combine separate recursive calls. In this case, because \lstinline{mario_number} returns an integer and the base cases are integers and you’re trying to count the total number of ways of traversal, it makes sense to add your recursive calls.
+
 \end{solution}
 \end{blocksection}
 
