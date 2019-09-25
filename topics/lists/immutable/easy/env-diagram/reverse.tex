@@ -13,5 +13,10 @@ rev = reverse(lst)
 
 \begin{solution}[2in]
 \url{https://goo.gl/6vPeX9}
+We call reverse recursively 3 times and open 3 new frames, each time passing through a shallow copy of the list without the first element lst[1:]. We then return the list `[4]` back up after hitting the base case of a length 1 list. At each level, we take the list returned from the smaller recursive call and append `lst[0]` to the end of returned list.
+When you pass in a list as an argument to a function the new frame’s argument points to the same list passed in (does not create a new list)
+List slices create shallow copies (a new list is created but any pointers in the new list still point to the same thing that the original list that was sliced is pointing to)
+Keep in mind that the return value of the reverse function is a new list because of the `+ [lst[0]]`
+
 \end{solution}
 \end{blocksection}
