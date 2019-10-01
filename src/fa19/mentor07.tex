@@ -1,0 +1,41 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Mutation, Nonlocal, and Generators}}
+\date{October 7 to October 9, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mutation}
+\begin{questions}
+% \subimport{../../topics/lists/mutable/easy/}{wwpd.tex}
+\subimport{../../topics/lists/mutable/easy/}{dogs.tex}
+\newpage
+\subimport{../../topics/lists/mutable/easy/env-diagram/}{mystery.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+\end{questions}
+
+\newpage
+\section{Nonlocal}
+\begin{questions}
+\subimport{../../topics/nonlocal/easy/env-diagram/}{kale.tex}
+\subimport{../../topics/nonlocal/medium/}{pingpongv3.tex}
+\end{questions}
+
+\section{Iterators and Generators}
+\begin{questions}
+\subimport{../../topics/iterators/easy/}{skipmachine.tex}
+\subimport{../../topics/generators/easy/}{foo.tex}
+\subimport{../../topics/generators/medium/}{filter-gen.tex}
+\subimport{../../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+
+\end{document}
