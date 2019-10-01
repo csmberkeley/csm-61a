@@ -1,0 +1,13 @@
+\textbf{What are trees?}
+
+A tree has a root label and a sequence of branches. Each branch of a tree is a tree. A tree with no branches is called a leaf. Any tree contained within a tree is called a sub-tree of that tree (such as a branch of a branch). The root of each sub-tree of a tree is called a node in that tree. 
+Trees are a recursive data abstraction, since trees have branches that are trees themselves
+
+Because of this, it often makes sense to solve tree problems using recursion:
+\begin{enumerate}
+	\item Base case is often when we reach a leaf node
+	\item Recursive case is often when we still need to recurse down, e.g. we haven’t hit a leaf yet. Recursive calls need to break the problem into smaller parts, which for trees often means passing in each branch as an input.
+\end{enumerate}
+
+When trying to understand and solve tree problems, it is helpful to draw out the tree.
+
