@@ -1,0 +1,74 @@
+\begin{blocksection}
+\question What would Python display? If an error occurs, write "Error". If a function is displayed, write "Function". If nothing is returned, write "Nothing".
+
+\begin{lstlisting}
+>>> a = [1, 2]
+>>> b = a
+>>> print(a.append([3, 4]))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+None
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[1, 2, [3, 4]]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> b
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[1, 2, [3, 4]]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> c = list(a)
+>>> a[0] = 5
+>>> a[2][0] = 6
+>>> c
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[1, 2, [6, 4]]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a.extend([7, 8])
+>>> a += [9]
+>>> a += 10
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+TypeError: 'int' object is not iterable
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[5, 2, [6, 4], 7, 8, 9]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+\begin{blocksection}
+\begin{lstlisting}
+>>> print(c.pop(), c)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+[6, 4] [1, 2]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
