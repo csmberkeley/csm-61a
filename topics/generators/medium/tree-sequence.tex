@@ -23,5 +23,12 @@ Alternate solution:
 	for branch in branches(t):
 		yield from tree_sequence(branch)
 \end{lstlisting}
+Thinking about the solution in terms of the recursive leap of faith: assume that each call to \lstinline{tree_sequence(branch)} yields the values in that branch in the proper order. Then all we have to do is yield each value from that branch for each branch in order after yielding the root value. 
+
+This question has a very similar logic in \lstinline{sum_of_nodes} from last week; namely performing an action on the current node’s value, and then using tree recursion to repeat this action for each branch of the list of branches.
+
+In the alternate solution, \lstinline{yield from} allows us to yield a list of values, aka the list of all results from recursively calling \lstinline{tree_sequence}. This is equivalent to yielding each element through a for loop.
 \end{solution}
+
+
 \end{blocksection}
