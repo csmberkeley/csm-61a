@@ -1,6 +1,5 @@
 \begin{blocksection}
-\question \textbf{(Optional)} 
-Let the path sum of any node in the tree be equal to the sum of its label and the labels of all nodes on the path from the root to that node. For example, for the following tree:
+\question Let the path sum of any node in the tree be equal to the sum of its label and the labels of all nodes on the path from the root to that node. For example, for the following tree:
 \begin{tikzpicture}[scale=1.5, transform shape]
     \node [circle, draw] (z){$4$}
         child {node [circle, draw] (a) {$5$}}
@@ -29,34 +28,31 @@ The path sum of each node in the tree is as follows:
         };
 \end{tikzpicture}
 
-Write a generator that takes in a tree and yields the path sum of each node in the tree. The path sum of a node should be yielded only after the path sum of all of its children have been yielded. (Tangential note: this ordering is called post-order DFS). See doctests.
+Write a generator that takes in a Tree object and yields the path sum of each node in the tree. The path sum of a node should be yielded only after the path sum of all of its children have been yielded. (Tangential note: this ordering is called post-order DFS). See doctests.
 
-\newline
 
 \begin{lstlisting}
 def gen_path_sums(t):
     """
-    >>> t = tree(1, [tree(2, [tree(5)]), tree(3, [tree(4)])])
+    >>> t = Tree(1, [Tree(2, [Tree(5)]), Tree(3, [Tree(4)])])
     >>> print(list(gen_path_sums(t)))
-       	[8, 3, 8, 4, 1]  	# draw out the tree and check your understanding!
+       	[8, 3, 8, 4, 1] # draw out the tree and check your understanding!
     >>> 
     """    
-    _____________________________
-    	_______________________________
-    		yield _____________________
-    yield _______________________
+    for _____________________________
+    	for _______________________________
+    		_______________________________
+    _______________________
 \end{lstlisting}
 
 \begin{solution}[0.5in]
 \begin{lstlisting}
 def gen_path_sums(t):
-    for b in branches(t):
+    for b in t.branches:
         for branch_sum in gen_path_sums(b):
-            yield label(t) + x
-    yield label(t)
+            yield t.label + x
+    yield t.label
 \end{lstlisting}
 
 \end{solution}
 \end{blocksection}
-
-]

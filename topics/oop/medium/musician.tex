@@ -1,8 +1,6 @@
 \begin{blocksection}
 \question What would Python display? Write the result of executing the code and the prompts below. If a function is returned, write "Function". If nothing is returned, write "Nothing". If an error occurs, write "Error".
 
-\vspace{2\baselineskip}
-
 \begin{lstlisting}
 class Musician:
     popularity = 0
@@ -41,12 +39,24 @@ ellington = BandLeader()
 \newpage
 
 \begin{blocksection}
+\begin{solution}
+Some Quick Refreshers \\
+\textbf{Defining attributes:} Instance attributes are defined with the \lstinline{self.attr_name} notation (usually in \lstinline{__init__} but could be elsewhere like in this problem).
+Class attributes are defined outside of methods in the body of the class definition, like the variable \lstinline{popularity} in the class \lstinline{Musician}. \\
+\textbf{Accessing attributes:}
+Instance attributes are referred to using \lstinline{self.attr_name} Class attributes can be referred to using \lstinline{classname.attr_name} or \lstinline{self.attr_name} (Note: using the latter will only work if there are no instance attributes bound with the name \lstinline{attr_name}). \\
+
+Before running any of the code below, \lstinline{miles} and \lstinline{goodman} are set to the musicians created as a result of calling the \lstinline{__init__} constructor method in \lstinline{Musician}. \lstinline{ellington} uses \lstinline{BandLeader's} \lstinline{__init__} method, since \lstinline{BandLeader} is the subclass and has \lstinline{__init__} defined.
+\end{solution}
+
 \begin{lstlisting}
 >>> ellington.recruit(goodman)
 >>> ellington.perform()
 \end{lstlisting}
 \begin{solution}[.2in]
 Error
+
+\lstinline{ellington.recruit(goodman)} adds \lstinline{goodman} to the end of \lstinline{ellington's} instance attribute, \lstinline{band}. Then, \lstinline{ellington} checks its class (\lstinline{BandLeader}) for the \lstinline{perform()} method. But this \lstinline{perform()} is expecting an argument, so this errors.
 \end{solution}
 
 \vspace{1\baselineskip}
@@ -57,15 +67,21 @@ Error
 \begin{solution}[.2in]
 a rousing clarinet performance \\
 sing, sing, sing
+
+Using the same \lstinline{perform()} method, now providing the correct number of arguments. First, going through the band list, \lstinline{goodman} calls its \lstinline{perform()} method, which is defined in \lstinline{Musician}. Here, we print \lstinline{"a rousing"} + \lstinline{goodman}'s instrument + \lstinline{" performance"}, and then \lstinline{goodman}'s \lstinline{self.popularity = self.popularity + 2} happens. The \lstinline{self.popularity} on the right of the equal sign is \lstinline{Musician.popularity} because \lstinline{goodman} doesn't have its own instance attribute named \lstinline{popularity} yet; then it becomes \lstinline{self.popularity = 0 + 2}, and this creates the instance attribute \lstinline{popularity} for \lstinline{goodman}. Then \lstinline{Musician.popularity}, the class attribute, in incremented by 1.
 \end{solution}
+\end{blocksection}
 
 \vspace{2\baselineskip}
 
+\begin{blocksection}
 \begin{lstlisting}
 >>> goodman.popularity, miles.popularity
 \end{lstlisting}
 \begin{solution}[.2in]
 (2, 1)
+
+First, we try to get the value of \lstinline{goodman.popularity}. In our environment diagram, we see that \lstinline{goodman} has the instance variable \lstinline{popularity} already defined. Therefore, we get that value, 2, back. Then, we try to access \lstinline{miles.popularity}. In this case, \lstinline{miles} doesn’t have a \lstinline{popularity} instance variable defined, so we default to the class variable. There, we see it defined as 1, so we get that value. Finally, since commas in Python define a tuple, we return the two values as \lstinline{(2, 1)}.
 \end{solution}
 
 \vspace{1\baselineskip}
@@ -78,6 +94,8 @@ sing, sing, sing
 a rousing clarinet performance\\
 a rousing trumpet performance\\
 caravan
+
+First, we call \lstinline{ellington.recruit(miles)}. This appends \lstinline{miles} to \lstinline{ellington}'s instance variable, \lstinline{band}. After that, we call \lstinline{ellington.perform("caravan")}. Similar to the previous call on perform, we will loop through all of the values in \lstinline{ellington.band}, calling their perform methods in order. This causes the first two lines to be printed. Next, we increment \lstinline{Musician.popularity} (the class variable of \lstinline{Musician} called \lstinline{popularity}). Lastly, we print the \lstinline{song} variable that was passed in, completing the last line.
 \end{solution}
 
 \vspace{2\baselineskip}
@@ -96,6 +114,8 @@ caravan
 \end{lstlisting}
 \begin{solution}[.2in]
 Here's the band!
+
+\lstinline{print()} expects the string representation of \lstinline{ellington}, which is given by calling the \lstinline{__str__()} method of \lstinline{ellington}. \lstinline{ellington} checks to see if \lstinline{BandLeader} has a \lstinline{__str__()} method, which it does. So, \lstinline{print(ellington)} then becomes \lstinline{print("Here's the band!")}.
 \end{solution}
 
 \vspace{2\baselineskip}
@@ -105,6 +125,9 @@ Here's the band!
 \end{lstlisting}
 \begin{solution}[.2in]
 clarinet trumpet
+
+When prompting for \lstinline{ellington}’s value, we return the representation of ellington given by \lstinline{__repr__()}. So, we call \lstinline{BandLeader}’s \lstinline{__repr__()} method.
+
 \end{solution}
 
 \end{blocksection}
