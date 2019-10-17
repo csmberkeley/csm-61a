@@ -5,16 +5,16 @@
 def contains_n(elem, n, t):
     """
     >>> t1 = Tree(1, [Tree(1, [Tree(2)])])
-    >>> contains(1, 2, t1)
+    >>> contains_n(1, 2, t1)
     True
-    >>> contains(2, 2, t1)
+    >>> contains_n(2, 2, t1)
     False
-    >>> contains(2, 1, t1)
+    >>> contains_n(2, 1, t1)
     True
     >>> t2 = Tree(1, [Tree(2), Tree(1, [Tree(1), Tree(2)])])
-    >>> contains(1, 3, t2)
+    >>> contains_n(1, 3, t2)
     True
-    >>> contains(2, 2, t2) # Not on a path
+    >>> contains_n(2, 2, t2) # Not on a path
     False
     """
     if n == 0:
