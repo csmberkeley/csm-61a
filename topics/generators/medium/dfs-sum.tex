@@ -44,13 +44,15 @@ def gen_path_sums(t):
     		_______________________________
     _______________________
 \end{lstlisting}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{solution}[0.5in]
 \begin{lstlisting}
 def gen_path_sums(t):
     for b in t.branches:
         for branch_sum in gen_path_sums(b):
-            yield t.label + x
+            yield t.label + branch_sum
     yield t.label
 \end{lstlisting}
 
