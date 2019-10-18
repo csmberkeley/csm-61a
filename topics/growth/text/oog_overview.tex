@@ -1,0 +1,30 @@
+\begin{blocksection}
+When describing the runtime of a program, it’s often most useful to describe the runtime with respect to the size of the input; we can characterize this runtime with an order of growth (OOG).  An order growth characterizes the runtime of a program as its input becomes extremely large.  Since we’re interested in the asymptotic behavior of a program’s runtime when identifying its order of growth, we use only the dominant term without additive or multiplicative constants (e.g. $\theta(3x^5 + 2x^2 - log n)$ is simplified to $\theta(x^5)$).
+
+Common runtimes, in increasing order of time, are $\theta(1) \text{(constant)} < \theta(log n) < \theta(n) < \theta(n^2) < \theta(2^n)$, and $\theta(n^a) < \theta(n^b)$ if $a < b$. A polynomial order of growth is dominated by an exponential order of growth.
+
+\textbf{Examples:}
+
+Constant time means that no matter the size of the input, the runtime of your program is consistent. In the function \lstinline{f} below, no matter what you pass in for \lstinline{x}, the runtime is the same, which means its order of growth is $\theta(1)$.
+\vspace{1.5mm}
+\begin{lstlisting}
+def f(n):
+   return 1 + 2
+\end{lstlisting}
+A common example of a $\theta(n)$ runtime, sometimes called linear time, is a simple for loop or while loop. As n gets larger, the amount of time to run the function grows proportionally.
+\begin{lstlisting}
+def f(n):
+   while n > 0:
+      print(n)
+      n -= 1
+\end{lstlisting}
+An example of a $\theta(n^2)$ runtime is a nested for loop. For every value of \lstinline{n}, an additional \lstinline{n} amount of work is being done, which means that the runtime is $n*n$ or $n^2$.
+\vspace{1.5mm}
+\begin{lstlisting}
+def f(n):
+   for i in range(n):
+      for j in range(n):
+         print(i*j)
+\end{lstlisting}
+
+\end{blocksection}
