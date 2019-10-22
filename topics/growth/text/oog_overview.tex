@@ -1,5 +1,5 @@
 \begin{blocksection}
-When describing the runtime of a program, it’s often most useful to describe the runtime with respect to the size of the input; we can characterize this runtime with an order of growth (OOG).  An order growth characterizes the runtime of a program as its input becomes extremely large.  Since we’re interested in the asymptotic behavior of a program’s runtime when identifying its order of growth, we use only the dominant term without additive or multiplicative constants (e.g. $\theta(3x^5 + 2x^2 - log n)$ is simplified to $\theta(x^5)$).
+When describing the runtime of a program, it’s often most useful to describe the runtime with respect to the size of the input; we can characterize this runtime with an order of growth (OOG).  An order growth characterizes the runtime of a program as its input becomes extremely large.  Since we’re interested in the asymptotic behavior of a program’s runtime when identifying its order of growth, we use only the dominant term without additive or multiplicative constants (e.g. $\theta(3n^5 + 2n^2 - log n)$ is simplified to $\theta(n^5)$).
 
 Common runtimes, in increasing order of time, are $\theta(1) \text{(constant)} < \theta(log n) < \theta(n) < \theta(n^2) < \theta(2^n)$, and $\theta(n^a) < \theta(n^b)$ if $a < b$. A polynomial order of growth is dominated by an exponential order of growth.
 
