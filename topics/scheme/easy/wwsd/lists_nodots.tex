@@ -35,6 +35,7 @@ scm> (cons 1 '(2 3 4 5))
 \texttt{(1 2 3 4 5)}
 \begin{center}
 \includegraphics[scale=0.7]{scheme_lists_3}
+When we use the quote before the list, we are saying that we should put the literal list (1 2 3 4 5) in the cdr of this list. So in this case we create a list where the first element (car) is 1, and the cdr is the list (2 3 4 5).
 \end{center}
 \end{solution}
 
@@ -45,6 +46,7 @@ scm> (cons 1 '(2 (cons 3 nil)))
 \texttt{(1 2 (cons 3 ()))}
 \begin{center}
 \includegraphics[scale=0.7]{scheme_lists_5}
+Since we also used a quote here, we do not evaluate the \texttt{(cons 3 nil)}. We keep everything inside the quotes the same so the \texttt{cdr} of this list is the list \texttt{(2 (cons 3 nil))}. That means that we add the element 2, and then the nested list \texttt{(cons 3 nil)}.
 \end{center}
 \end{solution}
 
@@ -55,6 +57,7 @@ scm> (cons 1 (2 (cons 3 nil)))
 \begin{lstlisting}
 eval: bad function in : (2 (cons 3 nil))
 \end{lstlisting}
+While evaluating the operands, Scheme will try to evaluate the expression \texttt{(2 (cons 3 nil))}. Since 2 is not a valid operator, this expression Errors.
 \end{solution}
 
 \begin{lstlisting}
@@ -74,6 +77,7 @@ scm> (define a '(1 2 3))
 \begin{lstlisting}
 a
 \end{lstlisting}
+Defines a list of elements of \texttt{(1 2 3)} and binds the list to the variable \texttt{a}. Recall that define returns the name of the symbol.
 \end{solution}
 
 \begin{lstlisting}
@@ -111,6 +115,7 @@ scm> (cadr a)
 \begin{lstlisting}
 2
 \end{lstlisting}
+Recall that cadr is short for \texttt{(car (cdr a))}. From above, we know that \texttt{(cdr a)} is \texttt{(2 3)}. From that, we can evaluate \texttt{(car (cdr a))} to 2.
 \end{solution}
 
 How can we get the 3 out of a?
@@ -118,5 +123,6 @@ How can we get the 3 out of a?
 \begin{lstlisting}
 (car (cdr (cdr a)))
 \end{lstlisting}
+To get to the pair that contains 3, we need to call \texttt{(cdr (cdr a))}. To get the element 3, we need the \texttt{car} of \texttt{(cdr (cdr a))}. 
 \end{solution}
 % \end{blocksection}
