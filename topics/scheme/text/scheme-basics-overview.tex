@@ -1,0 +1,69 @@
+Scheme is a \textit{functional} language, as opposed to Python, which is an \textit{imperative} language; whereas a Python program is comprised of \textit{statements} or "instructions" which do not evaluate to a value (an example of a statement would be something like \lstinline{x = 3} in Python. This does not evaluate to any value but just instructs Python to create a variable \lstinline{x} with the value 3), a Scheme program is comprised solely of \textit{expressions}, each of which simply evaluates to a value. Remember that the term evaluate means to find the value of something. A variable is evaluated by looking up the name in the current frame, and a function call expression is evaluated using the three steps listed below. The thing to notice is that different types of expressions have different rules for how to evaluate those expressions, and this goes for both Python and Scheme. 
+
+The four basic types of expressions in Scheme are literals (i.e., a value itself), call expressions (procedure calls), special forms (language features), and variables.  A call expression or special form is denoted by a pair of parentheses and takes prefix notation, i.e., it is formed as so:
+\vspace{0.5mm}
+\begin{lstlisting}
+(operator operand_0, operand_1, ... , operand_n)
+\end{lstlisting}
+
+(Keep in mind each item in a call expression is also an expression)
+
+Evaluation of a call expression progresses so:
+\begin{enumerate}
+\item Evaluate operator (returning a procedure)
+\item Evaluate operands
+\item Apply operator on operands
+\end{enumerate}
+
+\newpage 
+
+\textbf{If Expression: }
+The if keyword is similar to if/else statements in Python. It works as follows:
+
+\begin{lstlisting}
+(if <predicate> <do if true> <do if false>)
+\end{lstlisting}
+
+This is similar to the following code in Python:
+
+\begin{lstlisting}
+if <predicate>:
+    <do if true>
+else:
+    <do if false>
+\end{lstlisting}
+
+Note that in Python, the if is a statement where as in Scheme, the if is an expression and evaluates to a value like any other expression would. This means that in Scheme you could write something like this where the if expression can be placed as an operand in a function call expression:
+
+\begin{lstlisting}
+scm> (+ 1 (if #t 9 99))
+10
+\end{lstlisting}
+
+Just like in Python, the \lstinline{<do if false>} (in Python this would be the equivalent to the else clause) is optional. If there is no \lstinline{<do if false>} and the \lstinline{<predicate>} evaluates to false then the if expression evaluates to \lstinline{undefined}.
+
+\vspace{4mm}
+
+\textbf{Define Expression: }
+\lstinline{define} does two things in Scheme. The first is that it defines variables using the following syntax:
+
+\begin{lstlisting}
+(define <name> <expression>)
+\end{lstlisting}
+
+The way this works is Schme will evaluates \lstinline{<expression>} and binds the value to \lstinline{<name>} in the current environment. \lstinline{<name>} must be a valid Scheme symbol (you can think of a symbol as an identifier or variable name).
+
+\lstinline{define} is also used to define functions using the following syntax (note that this is different from using \lstinline{define} to create variables as there is an extra pair of parentheses around \lstinline{<name> [param] ...}):
+
+\begin{lstlisting}
+(define (<name> [param] ...) <body> ...)
+\end{lstlisting}
+
+Either way, after the \lstinline{<name>} is bound to either a function or value, the define expression evaluates to the symbol \lstinline{<name>}.
+
+\begin{lstlisting}
+scm> (define x 3)
+x
+\end{lstlisting}
+
+\url{links.cs61a.org/schemespec} will direct you to a page with all of the explanations and syntax descriptions of Scheme. Use it when filling out the WWSD section!
