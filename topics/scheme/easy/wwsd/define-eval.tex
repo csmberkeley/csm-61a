@@ -1,0 +1,59 @@
+\begin{blocksection}
+\question What will Scheme output?.
+
+\begin{parts}
+
+\part
+\begin{lstlisting}
+(define c 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+c
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(eval 'c)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+'(cons 1 nil)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+(cons 1 nil)
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(eval '(cons 1 nil))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+(1)
+\end{lstlisting}
+\end{solution}
+
+\part
+\begin{lstlisting}
+(eval (list 'if '(even? c) 1 2))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}
+
