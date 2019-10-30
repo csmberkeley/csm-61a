@@ -36,7 +36,7 @@ scm> (waldo '(1 4 9))
 \end{lstlisting}
 Similar to how we focus just think about  first and rest when working with linked lists, we want to think about solving this question in terms of car and cdr in scheme. At a high level, we can check we can check (car lst) is equal to waldo. If it is, we can return true. Otherwise, we check the rest of the list: (cdr lst). Last, we conclude that waldo is not in the list when we have checked every element but still not found at match.
 
-Observe that the second doctest is essentially the simplest input we can give. From here, we get our first base case-- if we are given an empty Scheme list, then return \texttt{\#f}. Otherwise, notice that regardless of where in the list we find ‘waldo, our function should return \texttt{\#t}. So our function can just stop after we find the first instance of ‘waldo in the list, if it exists. Therefore, our second base case checks if our current element (the car of lst) is ‘waldo and returns \texttt{\#t} if this is true. Finally, if neither base case is satisfied, then we must search through the rest of lst, excluding the first element we just checked, for the string ‘waldo. So, we make a recursive call using the cdr of lst.
+Observe that the second doctest is essentially the simplest input we can give. From here, we get our first base case-- if we are given an empty Scheme list, then return \texttt{\#f}. Otherwise, notice that regardless of where in the list we find 'waldo', our function should return \texttt{\#t}. So our function can just stop after we find the first instance of 'waldo in the list, if it exists. Therefore, our second base case checks if our current element (the car of lst) is 'waldo and returns \texttt{\#t} if this is true. Finally, if neither base case is satisfied, then we must search through the rest of lst, excluding the first element we just checked, for the string 'waldo. So, we make a recursive call using the cdr of lst.
 
 Many problems that involve traversing through a Scheme list will have a similar structure to this solution. Recursive calls on (cdr lst) are also common, similar to recursive calls on link.rest.  Note that you can also write a solution using two nested ifs instead of cond, but cond is often a little cleaner to read.
 
@@ -88,11 +88,14 @@ scm> (waldo '(1 4 9))
     (helper lst 0)
   )
 \end{lstlisting}
+\end{solution}
+\end{blocksection}
 
+\begin{blocksection}
+\begin{solution}
+Recall HW3, \href{https://cs61a.org/hw/hw03/#q2}{problem 2}, "pingpong" without assignment. To get around the assignment restriction, we introduced a new variable to keep track of state. We passed some state into a helper function to keep track of our iteration. In this problem, we will use the same idea for our implementation.
 
-Recall HW3, \href{https://cs61a.org/hw/hw03/#q2}{problem 2}, “pingpong” without assignment. To get around the assignment restriction, we introduced a new variable to keep track of state. We passed some state into a helper function to keep track of our iteration. In this problem, we will use the same idea for our implementation.
-
-Inside our recursive helper function, we use the same logic as the original waldo question. Specifically, if the list is empty, we return false. If the first element we see is equal to waldo, we now return the index we have been tracking instead of true. Finally, to recursively search, we call the helper function on the rest of the list and increment the index by 1, returning the result of that call. We call this helper function initially with arguments `lst` and index 0 to start from the beginning of the list. 
+Inside our recursive helper function, we use the same logic as the original waldo question. Specifically, if the list is empty, we return false. If the first element we see is equal to waldo, we now return the index we have been tracking instead of true. Finally, to recursively search, we call the helper function on the rest of the list and increment the index by 1, returning the result of that call. We call this helper function initially with arguments 'lst' and index 0 to start from the beginning of the list. 
 
 A logical alternate solution would be to increment 1 after the recursive call to helper (without incrementing index), instead of adding one to the index, and then recursing. This solution would actually be incorrect. When we increment by one, if the element is not found, \texttt{\#f} would not be properly returned. At the end of recursion, we would try to add 1 to \texttt{\#f}, which results in an error.
 \end{solution}

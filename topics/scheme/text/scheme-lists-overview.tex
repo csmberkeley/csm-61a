@@ -1,0 +1,24 @@
+Unlike Python, all Scheme lists are linked lists. Recall a linked list is made up of Links that have a first and a rest, where the rest is another Link. Similarly, Scheme lists are made up of pairs with a first and a rest, where the rest is another pair.
+
+\textbf{Ways to make scheme lists:}
+\begin{itemize}
+\item Cons \\
+\textbf{Syntax:} \lstinline{(cons <car-elem> <cdr-elem>)} \\
+Takes in a pair of two elements; similar to how a python linked list has 2 elements as well- first and rest
+\item List \\
+\textbf{Syntax:} \lstinline{(list <elem1> <elem2> ...)} \\
+Takes in an arbitrary number of elements/arguments, and construct a where each elem is the first of its own pair. Note how this differs from \lstinline{cons} where you specify a first and rest rather than just specifying the first of each pair. All the arguments will be evaluated before being collected into the scheme list.
+\item ' (aka single quote) \\
+\textbf{Syntax:} \lstinline{'(<elem1> <elem2> ...)} \\
+Also takes in an arbitrary number of elements and construct a list out of the elements, but the arguments are not evaluated.
+\end{itemize}
+
+\textbf{Ways to access list items:}
+\begin{itemize}
+\item Car \\
+\textbf{Syntax:} \lstinline{(car <pair>)} \\
+Gets you the first item of a pair
+\item Cdr \\ 
+\textbf{Syntax:} \lstinline{(cdr <pair>)} \\
+Gets you the second item of a pair
+\end{itemize}
