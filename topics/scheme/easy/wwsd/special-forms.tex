@@ -8,6 +8,7 @@ scm> (if 1 1 (/ 1 0))
 \begin{lstlisting}
 1
 \end{lstlisting}
+If statements in Scheme have the form (if cond true-result false-result). Since 1 is a truthy value, we return the second argument, 1, and never evaluate the third argument due to short circuiting.
 \end{solution}
 
 \begin{lstlisting}
@@ -17,6 +18,7 @@ scm> (and 1 #f (/ 1 0))
 \begin{lstlisting}
 #f
 \end{lstlisting}
+And statements return the first falsey value it encounters. In this case, the second argument is #f, so it returns that and never reaches the third argument.
 \end{solution}
 
 \begin{lstlisting}
@@ -26,6 +28,7 @@ scm> (or #f #f 0 #f (/ 1 0))
 \begin{lstlisting}
 0
 \end{lstlisting}
+On the other hand, or statements return the first truthy value it encounters. In this case, that is the third argument, 0, and does not evaluate anything after.
 \end{solution}
 
 \begin{lstlisting}
@@ -35,6 +38,7 @@ scm> (define a 4)
 \begin{lstlisting}
 a
 \end{lstlisting}
+The define statement in Scheme always returns the name of the variable defined, in this case, a.
 \end{solution}
 
 \begin{lstlisting}
@@ -44,6 +48,7 @@ scm> ((lambda (x y) (+ a x y)) 1 2)
 \begin{lstlisting}
 7
 \end{lstlisting}
+We make a new lambda that takes in two arguments, x and y. The set of parentheses around the lambda evaluates it with the arguments 1 and 2, so we evaluate the body of the lambda with arguments 1 and 2, which adds them together.
 \end{solution}
 
 \begin{lstlisting}
@@ -53,6 +58,7 @@ scm> ((lambda (x y z) (y x z)) 2 / 2)
 \begin{lstlisting}
 1
 \end{lstlisting}
+We make a new lambda that takes in three arguments, x, y and z. The set of parentheses around the lambda evaluates it with the arguments 2, / and 2 respectively, so we evaluate the body of the lambda with x as 2, y as /, and z as 2. The body of the lambda is equivalent to (/ 2 2), and that’s what gets evaluated and returned.
 \end{solution}
 
 \begin{lstlisting}
@@ -60,6 +66,8 @@ scm> ((lambda (x) (x x)) (lambda (y) 4))
 \end{lstlisting}
 \begin{solution}[0.25in]
 4
+
+We make a new lambda that takes in one argument x. The set of parentheses around the lambda evaluates it with an argument of another lambda function, so we run the body (x x) with x as the (lambda (y) 4). Recall that evaluating an operator happens by putting parentheses around the operator and passing in an operand. When we do (x x), we’re evaluating the operator x with the parameter x. Therefore we’re now doing (lambda (y) 4) evaluated with the argument y as (lambda (y) 4). Since we evaluate the lambda, we evaluate the body and return it, which is 4. 
 \end{solution}
 \end{blocksection}
 
@@ -69,6 +77,9 @@ scm> (define boom1 (/ 1 0))
 \end{lstlisting}
 \begin{solution}[0.25in]
 Error: Zero Division
+
+Unlike Python, when we define in Scheme, we have to evaluate the body expression and bind it to the name boom1. Evaluating the body gives us an error.
+
 \end{solution}
 
 \begin{lstlisting}
@@ -76,6 +87,9 @@ scm> (define boom2 (lambda () (/ 1 0)))
 \end{lstlisting}
 \begin{solution}[0.25in]
 boom2
+
+We are defining another variable boom2. The value of boom2 is a lambda expression. Note that since boom2 is only being defined, not called, we do not evaluate the body of the lambda expression. So, this line will return the function name, boom2.
+
 \end{solution}
 
 \begin{lstlisting}
@@ -83,6 +97,8 @@ scm> (boom2)
 \end{lstlisting}
 \begin{solution}[0.25in]
 Error: Zero Division
+
+Now we are trying to call the function boom2, and so we are evaluating the body of the lambda expression. This expression is (/ 1 0), so just as we had before, we get an error from attempting to divide by 0.
 \end{solution}
 \end{blocksection}
 
@@ -93,11 +109,12 @@ The first line is setting boom1 to be equal to the value \texttt{(/ 1 0)}, which
 turns out to be an error. On the other hand, boom2 is defined as a lambda that
 takes in no arguments that, when called, will evaluate \texttt{(/ 1 0)}.
 \end{solution}
-
 How can we rewrite boom2 without using the lambda operator?
 \begin{solution}[0.5in]
 \begin{lstlisting}
 (define (boom2) (/ 1 0))
 \end{lstlisting}
+boom2’s initial definition defines a variable that evaluates to a function. Instead, let’s define boom2 as a function. When we do this, then the body of the function is not evaluated upon definition, but rather, when we call the function.
+
 \end{solution}
 \end{blocksection}
