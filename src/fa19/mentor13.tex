@@ -1,0 +1,56 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Streams And Introduction to SQL}}
+\date{November 18 - November 21, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Streams}
+\begin{questions}
+\subimport{../../topics/streams/}{basic.tex}
+\newpage
+\subimport{../../topics/streams/scheme/easy/}{wwsd.tex}
+\end{questions}
+\section{Code Writing for Streams}
+\begin{questions}
+\subimport{../../topics/streams/scheme/easy/}{double-naturals.tex}
+\subimport{../../topics/streams/scheme/easy/}{interleave.tex}
+\end{questions}
+
+\section{Creating Tables, Querying Data}
+Examine the table, \texttt{mentors}, depicted below.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Editor} & \textbf{Language} \\
+ \hline
+ Jacob & Thai & Purple & Notepad++ & Java \\
+ \hline
+ Rachel & Pie & Green & Sublime & Java \\
+ \hline
+ Jemmy & Sushi & Orange & Emacs & Ruby \\
+ \hline
+ Daniel & Tacos & Blue & Vim & Python \\
+ \hline
+ Amy & Ramen & Green & Vim & Python \\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{questions}
+\subimport{../../topics/sql/mentors/}{create-table.tex}
+\newpage
+\subimport{../../topics/sql/mentors/easy/}{food-if-color-green.tex}
+\subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+\subimport{../../topics/sql/mentors/medium/}{pairs-same-language.tex}
+\end{questions}
+
+\end{document}
