@@ -29,6 +29,39 @@ undefined
             (operand ,(car (cdr call-expr))))
           (operator (operator operand))))
 \end{lstlisting}
+Recall that the \lstinline{let} special form allows us to define temporary variables— in this case, 
+we have \lstinline{operator} and \lstinline{operand}. Since we are working with macros, we do not evaluate the 
+operands when we call \lstinline{apply-twice}. So, we will treat our input as an unevaluated 
+expression, more specifically, a list. By Scheme syntax standards, we know that the 
+first element of this expression must be the operator, and the second element the 
+operand, and we can get these using \lstinline{car} and \lstinline{cadr}, respectively. Once we have these, 
+we simply have to apply the operator to the operand twice in the body of our let 
+statement.
+
+
+The order of evaluation of the actual macro can get extremely tricky. 
+Here’s a breakdown of what happens when we create a macro:
+
+\begin{itemize}
+  \item When a macro is created, none of the body evaluated. (This is analogous to a 
+  function body, where it is only evaluated when called.)
+\end{itemize}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{itemize}
+  \item When we apply the macro on some inputs, the macro’s body is then evaluated. 
+  (Note that the macro’s input does not get evaluated before the macro is evaluated! 
+  For example, a call on \lstinline{(apply-twice (add-one 1))} causes the lstinline{(add-one 1)} list to be 
+  parsed by \lstinline{apply-twice}.) This means that we create a list (because of the quasiquote 
+  operator). Inside the list, we will need to unquote some things (ie. substitute some 
+  values in). Here, the values are the operator and the operand, both bound in the let 
+  statement.
+  \item When we bind this, this transforms the body into a "new body" that will cause a 
+  function to be applied to its input.
+\end{itemize}
 \end{solution}
 
 \end{blocksection}
