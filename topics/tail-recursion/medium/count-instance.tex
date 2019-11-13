@@ -47,5 +47,34 @@ Optional: draw out the environment diagram of this sum-list with \texttt{lst = (
   (count-helper lst 0))
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+A common approach to converting non tail-recursive functions into 
+tail-recursive functions is to keep track of the return value as a 
+parameter.
+To keep track of an extra parameter in recursion, we learned earlier 
+in the class to use helper functions. In this case, we're trying to 
+keep track of the count of \lstinline{x} we see inside \lstinline{lst}. Rather than adding 1 
+to the recursive call of \lstinline{(cdr lst)}, we can keep track of this return 
+value as a parameter--in this case \lstinline{instances}. We let \lstinline{instances} 
+represent the count of \lstinline{x}. In each recursive call, we increment 
+\lstinline{instances} if \lstinline{(car lst)} is equal to \lstinline{x}, otherwise we keep it the same. 
+Thus, at each step of the recursion, \lstinline{instances} should represent the 
+count of \lstinline{x} that we have seen up to that point. In our initial call 
+to helper, we default \lstinline{instances} to 0 because we haven't seen any \lstinline{x}'s 
+yet.
+
+The logic between the tail-recursive version and the original 
+function is mostly the same; we just need to change the return 
+values to account for the parameter \lstinline{instances}. For the base case, 
+rather than returning 0, we should instead return \lstinline{instances}, which 
+represents the count of \lstinline{x} in \lstinline{lst} (that we've seen up to that point). 
+This makes sense because if \lstinline{lst} is empty, then the default value of 
+\lstinline{instances} is just 0. Otherwise, we make recursive calls and change 
+\lstinline{instances} accordingly.
+
+\end{solution}
 
 \end{blocksection}
