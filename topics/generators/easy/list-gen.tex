@@ -1,0 +1,54 @@
+\begin{blocksection}
+\question Implement \texttt{n\_apply}, which takes in 3 inputs \texttt{f}, \texttt{n}, \texttt{x}, and outputs the result of applying \texttt{f}, a function, \texttt{n} times to \texttt{x}. For example, for \texttt{n = 3}, output the result of \texttt{f(f(f(x)))}. 
+
+\begin{lstlisting}
+def n_apply(f, n, x):
+   """
+   >>> n_apply(lambda x: x + 1, 3, 2)
+   5
+   """
+   for __________________:
+       x = ______________
+   return _______________
+\end{lstlisting}
+
+\begin{solution}[0.7in]
+\begin{lstlisting}
+def n_apply(f, n, x):
+   """
+   >>> n_apply(lambda x: x + 1, 3, 2)
+   5
+   """
+   for i in range(n):
+       x = f(x)
+   return x
+\end{lstlisting}
+\end{solution}
+
+\question Now Implement \texttt{list\_gen}, which takes in some list of integers \texttt{lst} and a \texttt{function f}. For the element at index \texttt{i} of \texttt{lst}, \texttt{list\_gen} should apply \texttt{f} to the element \texttt{i} times and yield this value \texttt{lst[i]} times.
+
+
+\begin{lstlisting}
+def list_gen(lst, f):
+   """
+   >>> a = list_gen([1, 2, 3], lambda x: x + 1)
+   >>> list(a)
+   [1, 3, 3, 5, 5, 5]
+   """
+   for _________________:
+       yield from [___________________________________]
+\end{lstlisting}
+
+\begin{solution}[0.7in]
+\begin{lstlisting}
+def list_gen(lst, f):
+   """
+   >>> a = list_gen([1, 2, 3], lambda x: x + 1)
+   >>> list(a)
+   [1, 3, 3, 5, 5, 5]
+   """
+   for i in range(len(lst)):
+       yield from [n_apply(f, i, lst[i]) for j in range(lst[i])]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
