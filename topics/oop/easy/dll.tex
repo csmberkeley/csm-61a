@@ -1,0 +1,84 @@
+\begin{blocksection}
+\question The DLList class is a spin off of the normal Linked List which we learned in class. A DLList also has a prev instance variable that keeps track of what is before the DLList, in addition to its next variable which keeps track of the rest of the DLList. Help fill in the methods add_last and add_first in the DLList class below! (You might not need to use all lines.)
+
+\begin{lstlisting}
+Class DLList:
+	“””
+	>>> lst = DLList(6, DLList(1))
+	>>> lst.value
+	    6
+	>>> lst.next.value
+	    1
+	>>> lst.prev.value
+	    Error: None object does not have attribute ‘value’
+	“””
+	empty = None
+	def __init__(self, value, next=empty, prev=empty):
+		____________________________
+		____________________________
+		____________________________
+		____________________________
+	def add_last(self, value):
+	“””
+	>>> lst = DLList(6)
+	>>> lst.add_last(1)
+	>>> lst.value
+	    6
+	>>> lst.next.value
+	    1
+	>>> lst.next.prev.value
+	    6
+	>>> lst.add_last(‘A’)
+	>>> lst.next.next.value
+	    ‘A’
+	“””
+		pointer = self
+		while __________:
+			________________
+		_______________ = DLList(_______, ________, _________)
+	def add_first(self, value):
+		“””
+		>>> lst = DLList(‘A’)
+		>>> lst.add_first(1)
+		>>> lst.value
+		1
+		>>> lst.next.value
+		‘A’
+		>>> lst.next.prev.value
+		1
+		>>> lst.add_first(6)
+		>>> lst.value
+		6
+		>>> lst.next.next.prev.value
+		1
+		“””
+		____________ = DLList(______, ________, _______)
+		______________ = _____________
+		______________ = _____________
+		if ______________:
+		   ___________________________
+\end{lstlisting}
+
+\begin{solution}[0.7in]
+\begin{lstlisting}
+class DLList:
+	empty = None
+	def __init__(self, value, next=empty, prev=empty):
+    	self.value = value
+    	self.next = next
+    	self.prev = prev
+  	def add_last(self, value):
+    	pointer = self
+    	while pointer.next != DLList.empty:
+      		pointer = pointer.next
+   		pointer.next = DLList(value, DLList.empty, pointer)
+  	def add_first(self, value):
+    	old_first = DLList(self.value, self.next, self)
+    	self.value = value
+    	self.next = old_first
+    	if old_first.next != DLList.empty:
+      		old_first.next.prev = old_first
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
