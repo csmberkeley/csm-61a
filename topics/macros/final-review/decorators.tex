@@ -1,0 +1,104 @@
+\begin{blocksection}
+\question Python supports a feature called function decoration, which wraps a higher-order function around a given function by appending a heading to a function definition. Given a higher-order function \lstinline{d} we can decorate \lstinline{f} with \lstinline{d} as follows:
+\begin{lstlisting}
+@d
+def f(...):
+    ...
+\end{lstlisting}
+
+which is equivalent to the following code:
+
+\begin{lstlisting}
+def f(...):
+    ...
+f = d(f)
+\end{lstlisting}
+
+Write a macro called \lstinline{@} in Scheme that accomplishes this behavior. We should be able to decorate a procedure \lstinline{f} as follows:
+
+\begin{lstlisting}
+(@ d define (f ...) ...)
+\end{lstlisting}
+
+(i.e., we need only prepend \lstinline{@ d} before \lstinline{define})
+
+Start by filling out the following function \lstinline{@} which implements applying one decorator function
+
+\begin{lstlisting}
+;Doctests
+scm> (define (d f) (lambda (x) (print 'hello) (f x)))
+d
+scm> (@ d define (f x) (+ x 1))
+f
+scm> (f 2)
+hello
+3
+
+(define-macro (@ decorator define params body) 
+    `(____________________________
+      (___________________________)
+      (___________________________)
+     )
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+(define-macro (@ decorator define params body) 
+  `(begin 
+    (define ,params ,body)
+    (define ,(car params) (,decorator ,(car params)))
+  )
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Now implement \lstinline{@-all} which applies a list of decorator functions to \lstinline{f}
+\begin{lstlisting}
+;Doctests
+scm> (define (d f) (lambda (x) (print 'd) (f x)))
+d
+scm> (define (e f) (lambda (x) (print 'e) (f x)))
+e
+scm> (@ (d e) define (f x) (+ x 1))
+f
+scm> (f 1)
+d
+e
+2
+(define-macro (@-all decorators define params body)
+  (if _______________________
+    `(_________________________)
+    `(_________________________
+      (define __________________
+             (______________ (@-all ______________________)))
+      (define ______________ 
+              (____________________________________________))
+    )
+  )
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+(define-macro (@-all decorators define params body)
+  (if (null? decorators)
+    `(define ,params ,body)
+    `(begin 
+      (define ,(car params) (eval (@-all ,(cdr decorators) 
+                                          define 
+                                          ,params 
+                                          ,body)))
+      (define ,(car params) (,(car decorators) ,(car params)))
+    )
+  )
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
