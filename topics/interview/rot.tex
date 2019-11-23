@@ -25,49 +25,39 @@ calling rotate on \texttt{t} should mutate it to give us
         child {node [circle, draw] (b) {$2$}};
 \end{tikzpicture}
 
-Fill in your implementation on the next page. You may not need to use all the lines.
-\end{blocksection}
-
-\begin{blocksection}
-
 \begin{lstlisting}
 def rotate(t):
-    """
-    >>> t1 = Tree(1, [Tree(2), Tree(3, [Tree(4)]), Tree(5)])
-    >>> rotate(t1)
-    >>> t1
-    Tree(1, [Tree(3), Tree(5, [Tree(4)]), Tree(2)])
-    >>> t2 = Tree(1, [Tree(2, [Tree(3), Tree(4)]), 
-                      Tree(5, [Tree(6)])])
-    >>> rotate(t2)
-    >>> t2
-    Tree(1, [Tree(5, [Tree(4), Tree(3)]), 
-                     Tree(2, [Tree(6)])])
-    """
-
-    branch_labels = ___________________________________
-
-    n = len(t.branches)
-
-    for ______________________________________________:
-
-         ______________________________________________
-
-         ______________________________________________
-
-         ______________________________________________ 
+  """
+  >>> t1 = Tree(1, [Tree(2), Tree(3, [Tree(4)]), Tree(5)])
+  >>> rotate(t1)
+  >>> t1
+  Tree(1, [Tree(3), Tree(5, [Tree(4)]), Tree(2)])
+  >>> t2 = Tree(1, [Tree(2, [Tree(3), Tree(4)]), 
+                    Tree(5, [Tree(6)])])
+  >>> rotate(t2)
+  >>> t2
+  Tree(1, [Tree(5, [Tree(4), Tree(3)]), 
+                    Tree(2, [Tree(6)])])
+  """
+  branch_labels = ___________________________________
+  n = len(t.branches)
+  for ______________________________________________:
+    ______________________________________________
+    ______________________________________________
+    ______________________________________________ 
 \end{lstlisting}
 \end{blocksection}
+
 \begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
 def rotate(t):
-   branch_labels = [b.label for b in t.branches]
-   n = len(t.branches)
-   for i in range(n):
-      branch = t.branches[i]
-      branch.label = branch_labels[(i + 1) % n]
-      rotate(branch)
+  branch_labels = [b.label for b in t.branches]
+  n = len(t.branches)
+  for i in range(n):
+    branch = t.branches[i]
+    branch.label = branch_labels[(i + 1) % n]
+    rotate(branch)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

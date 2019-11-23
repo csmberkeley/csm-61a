@@ -1,46 +1,43 @@
 \begin{blocksection}
-\question Complete the implementation of \texttt{iter_link}, which takes in a linked list and returns a generator which will iterate over the values of the linked list in order. Your function should support deep linked lists.
-
+\question Complete the implementation of \lstinline{iter_link}, which takes in a linked list and returns a generator which will iterate over the values of the linked list in order. Your function should support deep linked lists.
 
 \begin{lstlisting}
 def iter_link(lnk):
-	""" 
-	Yield the values of a linked list in order; your function should support deep linked lists.
-	>>> lst1 = Link(1, Link(2, Link(3, Link(4))))
-	>>> list(iter_link(lst1))
-	[1, 2, 3, 4]
-	>>> lst2 = Link(1, Link(Link(2, Link(3)), Link(4, Link(5))))
-	>>> print(lst2)
-	<1 <2 3> 4 5>
-	>>> iter_lst2 = iter_link(lst2)
-	>>> next(iter_lst2)
-	1
-	>>> next(iter_lst2)
-	2
-	>>> next(iter_lst2) 
-	3
-	>>> next(iter_lst2)
-	4
-	"""
-	if lnk is not Link.empty:
-		if type(______) is Link:
-			__________________
-		else:
-			__________________
-		_______________________
-
+  """ 
+  Yield the values of a linked list in order; your function should support deep linked lists.
+  >>> lst1 = Link(1, Link(2, Link(3, Link(4))))
+  >>> list(iter_link(lst1))
+  [1, 2, 3, 4]
+  >>> lst2 = Link(1, Link(Link(2, Link(3)), Link(4, Link(5))))
+  >>> print(lst2)
+  <1 <2 3> 4 5>
+  >>> iter_lst2 = iter_link(lst2)
+  >>> next(iter_lst2)
+  1
+  >>> next(iter_lst2)
+  2
+  >>> next(iter_lst2) 
+  3
+  >>> next(iter_lst2)
+  4
+  """
+  if lnk is not Link.empty:
+    if type(___________) is Link:
+      ___________________________
+    else:
+      ___________________________
+    _____________________________
 \end{lstlisting}
 
 \begin{solution}[0.7in]
 \begin{lstlisting}
 def iter_link(lnk):
-	if lnk is not Link.empty:
-		if type(lnk.first) is Link:
-			yield from iter_link(lnk.first)
-		else:
-			yield lnk.first
-		yield from iter_link(lnk.rest)
-
+  if lnk is not Link.empty:
+    if type(lnk.first) is Link:
+      yield from iter_link(lnk.first)
+    else:
+      yield lnk.first
+    yield from iter_link(lnk.rest)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
