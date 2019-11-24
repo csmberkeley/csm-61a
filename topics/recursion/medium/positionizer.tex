@@ -1,0 +1,89 @@
+\begin{blocksection}
+\question \lstinline{positionizer} takes in a number, and for each digit, either change the digit \lstinline{d} to the remainder of \lstinline{d} divided by its position from the right, or leave the digit the same if it's equal to its position. The position of each digit is defined starting at 1 and increasing from right to left. (i.e. The rightmost digit has a position of 1)
+
+\begin{lstlisting}
+def positionizer(n):
+   """
+   >>> positionizer(12)
+   10
+   >>> positionizer(23)
+   20
+   >>> positionizer(12345)
+   12300
+   """
+   def helper(n, pos):
+      if ___________________________________:
+        return _____________________________
+      rest = _______________________________
+      if n % 10 == pos:
+        return rest + ______________________
+      else:
+        return rest + ______________________
+   return helper(_________, __________)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}:
+def positionizer(n):
+  def helper(n, pos):
+    if n == 0:
+      return 0
+    rest = helper(n // 10, pos + 1) * 10
+    if n % 10 == pos:
+      return rest + n % 10
+    else:
+      return rest + (n % 10) % pos
+  return helper(n, 1)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Now, given a list of digits, return the k-digit number that has the highest value when positionized. The digits must stay in the same order. (If \lstinline{k=2}, and \lstinline{lst = [1,2,3]}, you can't form 21). You may use \lstinline{positionizer} in your solution.
+
+\textit{Hint: Use the helper function to create a list of all possible k digit numbers formed from the list.}
+
+\begin{lstlisting}
+def max_positionizer(k, lst):
+  """
+  >>> max_positionizer(2, [1, 2, 3]) # positionized version 
+                                     # of 12, 13, 23 are 
+                                     # 10, 10, 20 
+  23
+  >>> max_positionizer(3, [2, 5, 3, 1])
+  251
+  """
+  def make_nums(k,lst):
+    if ________________________________:
+      return __________________________
+    elif ______________________________:
+      return []
+    a =  [_______________________ \
+              for rest in ____________________]
+    b = _______________________________________
+    return a + b
+  return _______(make_nums(____, ____), ____________)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def max_positionizer(k, lst):
+  def make_nums(k,lst):
+    if k == 0: # Note that the check for k must come first 
+               # (what should be returned if k == 0 and 
+               # len(lst) == 0?)
+      return [0]
+    elif len(lst) == 0:
+      return []
+    a =  [lst[0] * 10**(k - 1) + rest \
+            for rest in make_nums(k - 1, lst[1:])]
+    b = make_nums(k, lst[1:])
+    return a + b
+  return max(make_nums(k, lst), key=positionizer)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
