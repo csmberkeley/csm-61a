@@ -1,0 +1,49 @@
+
+\begin{blocksection}
+\question Write a function, \texttt{print\_sum}, that takes in a positive integer, \texttt{a}, and return a function that does the following: \\
+(1) takes in a positive integer, \texttt{b} \\
+(2) prints the sum of all natural numbers from 1 to \texttt{a*b} \\
+(3) returns a higher-order function that, when called, prints the sum of all natural numbers from 1 to \texttt{(a+b)*c}, where \texttt{c} is another positive integer. \\
+
+\begin{lstlisting}
+def print_sum(a):
+    """
+    >>> f = print_sum(1)
+    >>> g = f(2) # 1*2 => 1 + 2
+    3
+    >>> h = g(4) # (1+2)*4 => 1 + 2 + ... + 11 + 12
+    78
+    >>> i = h(5) # (3+4)*5 => 1 + 2 + ... + 34 + 35
+    630
+    """
+    def helper(b):
+
+        i, total = ____________________________
+
+        while ____________________________:
+
+            ____________________________
+
+            ____________________________
+
+        print(____________________________)
+
+        return _____________________________
+
+    return _______________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def print_sum(a):
+    def helper(b):
+        i, total = 0, 0
+        while i <= a*b:
+            total += i
+            i += 1
+        print(total)
+        return print_sum(a+b)
+    return helper
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
