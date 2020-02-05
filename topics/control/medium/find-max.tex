@@ -1,0 +1,18 @@
+\begin{blocksection}
+\question Write a function \texttt{find\_max} that will take in 3 numbers, \texttt{x}, \texttt{y}, \texttt{z}, and return the max value. Assume that \texttt{x}, \texttt{y}, and \texttt{z} are unique. Do not use Python's built-in \texttt{max} function.
+
+\begin{lstlisting}
+def find_max(x, y, z):
+\end{lstlisting}
+\begin{solution}[2in]
+\begin{lstlisting}
+def find_max(x, y, z):
+    if x > y and x > z:
+        return x
+    elif y > x and y > z:
+        return y
+    else:
+    	return z
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

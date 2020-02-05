@@ -1,0 +1,97 @@
+\question What Would Python Display?
+
+\begin{lstlisting}
+>>> 3
+\end{lstlisting}
+\begin{solution}[.2in]
+3
+\end{solution}
+
+\begin{lstlisting}
+>>> "csm"
+\end{lstlisting}
+\begin{solution}[.2in]
+'csm'
+\end{solution}
+
+\begin{lstlisting}
+>>> x = 3
+>>> x
+\end{lstlisting}
+\begin{solution}[.2in]
+3
+\end{solution}
+
+\begin{lstlisting}
+>>> def f1(x):
+...	return x + 1
+>>> f1(3)
+\end{lstlisting}
+\begin{solution}[.2in]
+4
+\end{solution}
+
+\begin{lstlisting}
+>>> def f2(y):
+...	return y / 0
+>>> f2(4)
+\end{lstlisting}
+\begin{solution}[.2in]
+ZeroDivisionError: division by zero
+\end{solution}
+
+\begin{lstlisting}
+>>> def f3(x, y):
+...	if x > y:
+...		return x
+...	elif x == y:
+...		return x + y
+...	else:
+...		return y
+>>> f3(1, 2)
+\end{lstlisting}
+\begin{solution}[.2in]
+2
+\end{solution}
+
+\begin{lstlisting}
+>>> f3(4, 3)
+\end{lstlisting}
+\begin{solution}[.2in]
+4
+\end{solution}
+
+\begin{lstlisting}
+>>> f3(5, 5)
+\end{lstlisting}
+\begin{solution}[.2in]
+10
+\end{solution}
+
+\begin{lstlisting}
+>>> 1 or 2 or 3
+\end{lstlisting}
+\begin{solution}[.2in]
+1
+\end{solution}
+
+\begin{lstlisting}
+>>> 1 or 0 or 3
+\end{lstlisting}
+\begin{solution}[.2in]
+1
+\end{solution}
+
+\begin{lstlisting}
+>>> 4 and (2 or 1/0)
+\end{lstlisting}
+\begin{solution}[.2in]
+2
+\end{solution}
+
+\begin{lstlisting}
+>>> not 1
+\end{lstlisting}
+\begin{solution}[.2in]
+False
+\end{solution}
