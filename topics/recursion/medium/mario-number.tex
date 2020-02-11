@@ -94,7 +94,7 @@ def mario_number(level):
 \end{lstlisting}
 You can think about this tree recursion problem as testing out all of the possible ways Mario can traverse the level, and adding 1 every time you find a possible traversal.
 
-Here it doesn’t matter whether Mario goes left to right or right to left, either way we’ll end up with the same number of ways to traverse the \lstinline{level}. In that case, we can simply choose for Mario to start from the right, then we can process the level like we process other numbers in digit-parsing related questions by using floor div (\lstinline{//}) and modulo (\lstinline{%})
+Here it doesn’t matter whether Mario goes left to right or right to left; either way we’ll end up with the same number of ways to traverse the \lstinline{level}. In that case, we can simply choose for Mario to start from the right, then we can process the level like we process other numbers in digit-parsing related questions by using floor div (\lstinline{//}) and modulo (\lstinline{%})
 
 At every time step, Mario can either take one or two steps, and these would take form in two corresponding recursive calls. A single floor division (\lstinline{//}) of \lstinline{level} by 10 means taking one step at this point in the \lstinline{level} (if we took a step, then the entire \lstinline{level} would be left except for the last number), while two floor divisions by 10 (or equivalently one floor division by 100) corresponds to a jump at this point in the \lstinline{level} (if we took a jump, then the entire \lstinline{level} would be left except for the last two numbers).
 
