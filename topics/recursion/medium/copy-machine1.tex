@@ -44,7 +44,6 @@ def has_sum(total, n, m):
         return False
     return has_sum(total - n, n, m) or has_sum(total - m, n, m)
 \end{lstlisting}
-When thinking about the recursive calls, we need to think about how each step of the problem works. Tree recursion allows us to explore the two options we have while printing: either print \lstinline{m} papers at this step or print \lstinline{n} papers at this step and can combine the results after exploring both options. Inside the recursive call for \lstinline{has_sum(total - n, n, m)}, which represents printing \lstinline{n} papers, we again consider printing either \lstinline{n} or \lstinline{m} papers.
 
 \textbf{(Solution continues on the next page)}
 \end{solution}
@@ -52,6 +51,8 @@ When thinking about the recursive calls, we need to think about how each step of
 
 \begin{blocksection}
 \begin{solution}
+When thinking about the recursive calls, we need to think about how each step of the problem works. Tree recursion allows us to explore the two options we have while printing: either print \lstinline{m} papers at this step or print \lstinline{n} papers at this step and can combine the results after exploring both options. Inside the recursive call for \lstinline{has_sum(total - n, n, m)}, which represents printing \lstinline{n} papers, we again consider printing either \lstinline{n} or \lstinline{m} papers.
+
 Once we have these recursive calls we need to think about how to put them together. We know the return should be a boolean so we want to use either \lstinline{and} or \lstinline{or} to combine the values for a final result. Given that we only need one of the calls to work, we can use \lstinline{or} to reach our final answer. 
 
 In the base cases we also need to make sure we return the correct data type. Given that the final return should be a boolean we want to return booleans in the base cases. 
