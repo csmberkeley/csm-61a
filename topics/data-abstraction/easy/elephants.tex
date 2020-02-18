@@ -134,11 +134,13 @@ def elephant(name, age, can_fly):
     """
     >>> chris = elephant("Chris Martin", 38, False)
     >>> elephant_name(chris)
-        "Chris Martin"
+    "Chris Martin"
     >>> elephant_age(chris)
-        38
+    38
     >>> elephant_can_fly(chris)
-        False
+    False
+    >> chris("size")
+    "Breaking abstraction barrier!"
     """
     def select(command)
 \end{lstlisting}
