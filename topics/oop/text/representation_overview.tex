@@ -1,4 +1,4 @@
-\textbf{Representation overview: \lstinline{__repr__} and \lstinline{__str__}}
+\textbf{Representation Overview: \lstinline{__repr__} and \lstinline{__str__}}
 
 The goal of \lstinline{__str__} is to convert an object to a human-readable string. The \lstinline{__str__} function is helpful for printing objects and giving us information that's more readable than \lstinline{__repr__}. Whenever we call \lstinline{print()} on an object, it will call the \lstinline{__str__} method of that object and print whatever value the \lstinline{__str__} call returned. For example, if we had a \lstinline{Person} class with a name instance variable, we can create a \lstinline{__str__} method like this:
 \begin{lstlisting}
