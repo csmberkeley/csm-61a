@@ -12,16 +12,18 @@ def tree_sequence(t):
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-	yield label(t)
-	for branch in branches(t):
-		for value in tree_sequence(branch):
-			yield value
+def tree_sequence(t):
+    yield label(t)
+    for branch in branches(t):
+        for value in tree_sequence(branch):
+            yield value
 \end{lstlisting}
 Alternate solution:
 \begin{lstlisting}
-        yield label(t)
-	for branch in branches(t):
-		yield from tree_sequence(branch)
+def tree_sequence(t):
+    yield label(t)
+    for branch in branches(t):
+        yield from tree_sequence(branch)
 \end{lstlisting}
 Thinking about the solution in terms of the recursive leap of faith: assume that each call to \lstinline{tree_sequence(branch)} yields the values in that branch in the proper order. Then all we have to do is yield each value from that branch for each branch in order after yielding the root value. 
 
