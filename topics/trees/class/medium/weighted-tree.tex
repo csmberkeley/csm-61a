@@ -1,0 +1,78 @@
+\begin{blocksection}
+\question The total weight of a tree is defined as the sum of the labels of all its nodes. A tree is defined to be \lstinline{equally_weighted} if the total weight of each of its branches are equal. A leaf is assumed to be equally weighted.
+
+Complete the following functions for \lstinline{equally_weighted} and \lstinline{num_eq_weight}. You may use the below definition of the \lstinline{total_weight} function in your answer.
+
+\begin{lstlisting}
+def total_weight(t):
+  """
+  Return the total weight of a tree, i.e. the sum of all its labels.
+  >>>total_weight(Tree(1, [Tree(2), Tree(3,[Tree(4)])]))
+  10
+  """
+  weight =  t.label + sum([total_weight(branch) for branch in t.branches])
+  return weight
+    
+def equally_weighted(t):
+  """
+  Return whether a tree is equally weighted.
+  >>>equally_weighted(Tree(1))
+  True
+  >>>equally_weighted(Tree(1,[Tree(2), Tree(1, [Tree(1)])]))
+  True
+  >>>equally_weighted(Tree(0, [Tree(3), Tree(2, [Tree(3)])]))
+  False
+  """
+  _______________________ = [_________________________]
+  for ___________________ in _________________________:
+    if ___________________________:
+      return ______________________________________
+  return __________________________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def equally_weighted(t):
+  all_weights = [total_weight(b) for b in t.branches]
+  for weight in all_weights[1:]:
+    if weight != all_weights[0]:
+      return False
+  return True
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+def num_eq_weight(t):
+  """
+  Return the number of equally weighted subtrees of t. Note that t is considered a subtree of itself.
+  >>> num_eq_weight(Tree(1, [Tree(4), Tree(3,[Tree(1)])]))
+  4
+  >>> num_eq_weight(Tree(1, [Tree(9), 
+                             Tree(1, [Tree(4), 
+                                      Tree(3,[Tree(1)])])]))
+  6
+  >>> num_eq_weight(Tree(1, [Tree(8, [Tree(1)]), 
+                             Tree(1, [Tree(4), 
+                                      Tree(3,[Tree(1)])])]))
+  7
+  """
+  val = ________________________________ 
+  if ____________________________________:
+    return ________________________________________________
+  else:
+    return val
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def num_eq_weight(t):
+  val = sum([num_eq_weight(b) for b in t.branches])
+  if equally_weighted(t):
+    return 1 + val
+  else:
+    return val
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

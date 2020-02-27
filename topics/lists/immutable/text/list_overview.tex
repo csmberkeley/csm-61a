@@ -1,0 +1,34 @@
+\textbf{Lists Introduction:}
+
+Lists are type of sequence, which means they are an ordered collection of values that has both length and the ability to select elements. 
+
+\begin{lstlisting} 
+>>> lst = [1, False, [2, 3], 4] # a list can contain anything
+>>> len(lst) 	
+4
+>>> lst[0] 	
+1
+>>> lst[4] 	# Indices of a list only go up to the len(lst)
+Error: list index out of range
+\end{lstlisting}
+
+We can iterate over lists using their index, or iterate of elements directly
+
+\begin{lstlisting}
+for index in range(len(lst)):
+	# do things
+for item in lst:
+	# do things
+\end{lstlisting}
+
+\textbf{List comprehensions} are a useful way to iterate over lists when your desired result is a list.
+\begin{lstlisting}
+new_list2 = [<expression> for <element> in <sequence> if <condition>]
+\end{lstlisting}
+
+We can use \textbf{list splicing} to create a copy of a certain portion or all of a list 
+
+\begin{lstlisting}
+new_list = lst[<starting index>:<ending index>]
+\end{lstlisting}
+

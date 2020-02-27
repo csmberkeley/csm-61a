@@ -1,27 +1,58 @@
 \begin{blocksection}
-\question What does the following code block output?
+\question Given the following code block, what is outputted by the lines that follow?
 
 \begin{lstlisting}
 def foo():
     a = 0
-    if a < 10:
+    if a == 0:
         print("Hello")
         yield a
         print("World")
 
-for i in foo():
-    print(i)
+>>> foo()
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+<generator object>
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> foo_gen = foo()
+>>> next(foo_gen)
 \end{lstlisting}
 
-\begin{solution}[0.75in]
+\begin{solution}[0.5in]
+\begin{lstlisting}
+Hello
+0
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(foo_gen)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
+\begin{lstlisting}
+World
+StopIteration
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{lstlisting}
+>>> for i in foo():
+...   print(i)
+\end{lstlisting}
+
+\begin{solution}[0.5in]
 \begin{lstlisting}
 Hello
 0
 World
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
-
 \begin{blocksection}
 \question How can we modify \lstinline$foo$ so that it satisfies the following doctests?
 \begin{lstlisting}

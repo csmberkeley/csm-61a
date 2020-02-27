@@ -6,7 +6,7 @@ tree and outputs the sum of all the elements in the tree.
 \begin{lstlisting}
 def sum_of_nodes(t):
     """
-    >>> t = tree(...) # Tree from question 2.
+    >>> t = tree(...) # Tree from question 1.
     >>> sum_of_nodes(t) # 9 + 2 + 4 + 4 + 1 + 7 + 3 = 30
     30
     """
@@ -22,4 +22,10 @@ def sum_of_nodes(t):
     return label(t) +\
            sum([sum_of_nodes(b) for b in branches(t)])
 \end{lstlisting}
+\textbf{Explanation:}
+Given that trees are an inherently recursive data type, we can approach this problem similar to a recursion problem. The first thing we want to look at is the base case. The smallest possible input is just passing in a leaf into the function. In this case our return should just be the label of the leaf so we save that as variable “total”. Now we approach the recursive element of the problem where we need to look at all the branches of the tree. All the branches are also trees and we need to find the sums of the branches to add to our total so we can call our function on each branch. To individually get each branch, we use a for loop iterating over branches(t) and call the function on each branch. Once we have the result of calling the function, we can add it to our total result which is keeping track of the total sum. Finally, we can return the total. The reason why we don’t need a base case of `if is\_leaf(t)` is because our foor loop will only run if there are branches and if it is a leaf, it will not run and will skip it and just return the total value which is just the label of the tree. 
+
+\textbf{Note}: `for branch in branches(t)` is a useful way to recurse through a tree and is commonly used in many tree problems!
+The alternate solution contains the same logic but makes effective use of list comprehension. `sum` is a useful built-in function in Python to return the sum of a list.
+
 \end{solution}

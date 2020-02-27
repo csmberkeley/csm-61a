@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question Write a function, \texttt{curry\_forever}, which takes in a two-argument function, \texttt{f}, and an integer, \texttt{arg\_num}. It returns another function that allows us to enter arg\_num amount of numbers into f one by one.
+
+\begin{lstlisting}
+def curry_forever (f, arg_num, base=0):
+    """
+    >>> add = lambda x, y: x + y
+    >>> g = curry_forever(add, 4)
+    >>> g(1)(2)(3)(4) # 1 + 2 + 3 + 4
+    10 
+    """
+    def curr(x):
+        return ___________________________________
+    if ___________________________________________:
+        return base
+    else:
+        return ___________________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def curry_forever (f, arg_num, base=0):
+    def curr(x):
+        return curry_forever(f, arg_num - 1, f(x, base))
+    if arg_num == 0:
+        return base
+    else:
+        return curr
+
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+

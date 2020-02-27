@@ -5,10 +5,10 @@ height of a tree is defined as the depth of the lowest leaf,
 where the depth of the top node of the tree is 0.
 
 \begin{lstlisting}
-def tree_sum(t):
+def tree_height(t):
     """
     >>> t = Tree(1, [Tree(4), Tree(2, [Tree(3)])])
-    >>> height(t)
+    >>> tree_height(t)
     2
     """
 \end{lstlisting}
@@ -17,7 +17,7 @@ def tree_sum(t):
 \begin{lstlisting}
     if t.is_leaf():
         return 0
-    return 1 + max([height(b) for b in t.branches])
+    return 1 + max([tree_height(b) for b in t.branches])
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

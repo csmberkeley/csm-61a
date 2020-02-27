@@ -1,0 +1,65 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Streams, Scheme, And Introduction to SQL}}
+\date{November 18 - November 21, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Streams}
+\begin{questions}
+\subimport{../../topics/streams/}{basic.tex}
+\newpage
+\subimport{../../topics/streams/scheme/easy/}{wwsd.tex}
+\end{questions}
+\section{Code Writing for Streams}
+\begin{questions}
+\subimport{../../topics/streams/scheme/easy/}{double-naturals.tex}
+\subimport{../../topics/streams/scheme/easy/}{interleave.tex}
+\end{questions}
+
+\section{More Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/easy/}{let-issues.tex}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\newpage
+\subimport{../../topics/macros/final-review/}{cond-questions.tex}
+\end{questions}
+
+
+\section{Intro to SQL: Creating Tables, Querying Data}
+Examine the table, \texttt{mentors}, depicted below.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ \textbf{Name} & \textbf{Food} & \textbf{Color} & \textbf{Editor} & \textbf{Language} \\
+ \hline
+ Olivia & Thai & Purple & Notepad++ & Java \\
+ \hline
+ Patricia & Pie & Green & Sublime & Java \\
+ \hline
+ Jemmy & Sushi & Orange & Emacs & Ruby \\
+ \hline
+ Addison & Tacos & Blue & Vim & Python \\
+ \hline
+ Lucas & Ramen & Green & Vim & Python \\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{questions}
+\subimport{../../topics/sql/mentors/}{create-table.tex}
+\newpage
+\subimport{../../topics/sql/mentors/easy/}{food-if-color-green.tex}
+\subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+\subimport{../../topics/sql/mentors/medium/}{pairs-same-language.tex}
+\end{questions}
+
+\end{document}

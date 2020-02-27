@@ -29,12 +29,12 @@ scm> (filter (lambda (x) (> x 2)) '(1 2 3 4 5))
 \begin{solution}[0.5in]
 \begin{lstlisting}
 (define (filter f lst)
-  (define (filter-tail f lst so-far)
+  (define (filter-tail lst so-far)
      (cond ((null? lst) so-far)
-           ((f (car lst)) (filter-tail f (cdr lst) 
+           ((f (car lst)) (filter-tail (cdr lst) 
                           (append so-far (list (car lst)))))
-           (else (filter-tail f (cdr lst) so-far))))
-  (filter-tail f lst nil))
+           (else (filter-tail (cdr lst) so-far))))
+  (filter-tail lst nil))
 \end{lstlisting}
 \end{solution}
 

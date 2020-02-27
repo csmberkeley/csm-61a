@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question Imagine we have a game where there are multiple cards with numbers laid out in a straight line. 
-Each turn, a player can take a card from the very left, or the very right. 
+Each turn, a player can take a card from the very left or the very right. 
 \newline
 We want to write a function, \texttt{game}, that determines whether or not it is possible for a sequence of valid 
 moves to result in both players getting an equal score once all cards are used.
@@ -10,7 +10,7 @@ The current player (\texttt{curr}) can pick the last card (4) on their first tur
 On the next turn, the new current player (previously the opponent) can pick 2. Then the original player picks 0, 
 and the other player picks 2.
 \newline
-\texttt{Game} takes in the scores of both players (initially 0) and a list representing the cards.
+\texttt{game} takes in a list representing the cards.
 \newline
 \begin{lstlisting}
 def game(cards):
@@ -22,14 +22,22 @@ def game(cards):
     >>> game([])
     True
     """
+    def game_helper(curr, opp, lst):
+      if _______________________________________:
+         _______________________________________
+      __________________________________________
+    return ________________________________
 \end{lstlisting}
+
 \begin{solution}
 \begin{lstlisting}
 def game_helper(curr, opp, lst):
    if not lst:
       return curr == opp
    else:
-      return game(opp, curr + lst[0], lst[1:]) or game(opp, curr + lst[-1], lst[:-1])
+      return game_helper(opp, curr + lst[0], lst[1:]) or \
+               game_helper(opp, curr + lst[-1], lst[:-1])
+return game_helper(0, 0, cards)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

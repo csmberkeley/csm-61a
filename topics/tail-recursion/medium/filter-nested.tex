@@ -1,0 +1,53 @@
+\begin{blocksection}
+
+\question Write a tail recursive function, \lstinline{skip-list}, that takes in a potentially nested list \lstinline{lst} and a filter function \lstinline{filter-fn}, goes through each element in order, and returns a new list that contains all elements that pass the \lstinline{filter-fn}. The returned list is \textit{not nested}.
+
+\begin{lstlisting}
+;Doctests
+scm> (skip-list '(1 (3)) even?)
+()
+scm> (skip-list '(1 (2 (3 4) 5) 6 (7) 8 9) odd?)
+(1 3 5 7 9)
+
+(define (skip-list lst filter-fn) 
+  (define (skip-list-tail ________ ________ next)
+    (cond
+        ((null? lst) (if (null? ________) 
+                          ________________________________
+                          ________________________________))
+        ((pair? _______) (________________________________))
+        ((_____________) _________________________________)
+        (else _____________________________)
+    )
+  )
+  (skip-list-tail __________ __________ __________)
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+(define (skip-list lst filter-fn) 
+  (define (skip-list-tail lst lst-so-far next)
+    (cond
+      ((null? lst) (if (null? next) 
+                    lst-so-far
+                    (skip-list-tail (car next) lst-so-far (cdr next))))
+      ((pair? (car lst)) 
+        (skip-list-tail (car lst) 
+                        lst-so-far 
+                        (cons (cdr lst) next)))
+      ((filter-fn (car lst)) 
+        (skip-list-tail (cdr lst) 
+                       (append lst-so-far (list (car lst))) 
+                       next))
+      (else (skip-list-tail (cdr lst) lst-so-far next)))
+    )
+  (skip-list-tail lst nil nil)
+)
+
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

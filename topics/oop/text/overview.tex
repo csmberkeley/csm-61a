@@ -1,0 +1,25 @@
+OOP is a way of organizing programs so that we use objects to communicate statuses with each other about the state of the program. As an example:
+class Car:
+    wheels = 4
+    def __init__(self):
+        self.gas = 100
+
+    def drive(self):
+        if self.gas <= 0:
+      print(“Can’t drive, need to go to the gas station!”)
+        else:
+	      self.gas -= 10
+		
+What is self? The self you see in the arguments in all the methods/dot notation refers to the current instance of a class. Dot notation with an instance before the dot automatically supplies the first argument to a method, so we don’t have to explicitly pass in a parameter for the self argument.
+For example, there’s two ways of calling a method. These do the same thing:
+my_car = Car()
+Car.drive(my_car) # explicitly passes in argument to self
+my_car.drive() # implicitly supplies value of self with dot notation
+The method __init__ of a class, which we call the constructor, is called to create a new instance of that class.
+In our code above, Car() makes a new instance of the Car class by calling the __init__ method of the car class. 
+Again, if the __init__ method takes in only the self argument, nothing needs to be passed in to the constructor.
+Class attributes vs. instance attributes
+In the example above, the attribute wheels is shared by all instances of the Car class; while gas is an instance attribute that’s specific to the instance my_car
+my_car.wheels and Car.wheels both return the value 4 in this case
+Order of looking up an attribute: instance → class → parent class (if there is one)
+Stop looking after finding the attribute

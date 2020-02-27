@@ -1,0 +1,41 @@
+\begin{blocksection}
+\question
+
+\begin{lstlisting}
+def quick_maths(fast, maths): 
+    return fast ** maths
+def maths(fast, maths):
+    return fast(maths, 2)
+quick_maths, maths = maths, quick_maths
+\end{lstlisting}
+
+After executing the above code, what will Python
+display when evaluating each of the following expressions?
+
+\begin{lstlisting}
+>>> maths(2, 3)
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+8
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> quick_maths(print, 10)
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+10 2
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> quick_maths(maths, 10)
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+100
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

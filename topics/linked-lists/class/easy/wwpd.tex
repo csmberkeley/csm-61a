@@ -50,7 +50,7 @@
 >>> a.rest.rest.rest.rest.first
 \end{lstlisting}
 \begin{solution}[.25in]
-Error: âtupleâ object has no attribute ârestâ (Link.empty has no rest)
+Error: tuple object has no attribute rest (Link.empty has no rest)
 \end{solution}
 \end{blocksection}
 
@@ -74,6 +74,42 @@ Error: âtupleâ object has no attribute ârestâ (Link.empty ha
 \begin{solution}[.25in]
 \begin{lstlisting}
 2
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> repr(Link(1, Link(2, Link(3, Link.empty))))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+"Link(1, Link(2, Link(3)))"
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> Link(1, Link(2, Link(3, Link.empty)))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+Link(1, Link(2, Link(3)))
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> print(Link(1, Link(2, Link(3))))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+<1 2 3>
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> print(Link(Link(1), Link(2, Link(3))))
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+<<1> 2 3>
 \end{lstlisting}
 \end{solution}
 

@@ -15,39 +15,32 @@ def replace(n, old, new):
   >>> replace(12345123, 6, 9)
   12345123
   """
-	
-  if ___________:
-	
-    return 0
-		
-  last = _________
-	
-  rest = _________
-	
-  if last == old:
-	
-    ____________________________________________
-		
+  if _____________________________:
+  
+     return ______________________
+     
+  last, rest = n % 10, n // 10
+  
+  if _____________________________:
+  
+     _____________________________
+	 
   else:
-	
-    ____________________________________________
-
-
-				
+     _____________________________
 \end{lstlisting}
 \end{blocksection}
 \begin{blocksection}
 
 \begin{solution}[.25in]
 \begin{lstlisting}:
-  if n == 0:
-    return 0		
-  last = n % 10
-  rest = n // 10
-  if last == old:
-    return replace(rest, old, new) * 10 + new	
-  else:
-    return replace(rest, old, new) * 10 + last
+def replace(n, old, new): 
+    if n == 0:
+        return 0		
+    last, rest = n % 10, n // 10
+    if last == old:
+        return replace(rest, old, new) * 10 + new	
+    else:
+        return replace(rest, old, new) * 10 + last
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

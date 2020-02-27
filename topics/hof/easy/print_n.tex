@@ -1,0 +1,37 @@
+\begin{blocksection}
+\question Make a function \texttt{print\_n} which returns a repeatable print function that can print the next \texttt{n} parameters. When there are no parameters left, it prints "done" each time the function is called.
+\begin{lstlisting}
+def print_n(n):
+    """
+    >>> f = print_n(2)
+    >>> f = f("hi")
+    hi
+    >>> f = f("hello")
+    hello
+    >>> f = f("bye")
+    done
+    >>> f = f("no, not done")
+    done
+    """
+    def inner_print(print_str):
+        if ___________________:
+           ___________________
+        else:
+           ____________________
+        return ________________
+    return ____________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def print_n(n):
+    def inner_print(print_str):
+        if n > 0:
+            print(print_str)
+        else:
+            print("done")
+        return print_n(n - 1)
+    return inner_print
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,8 @@
+\textbf{Tail Recursion Overview }
+
+
+Often times, when we write recursive functions, they can take up a lot of space by opening a bunch of frames.  Think about \texttt{factorial(6)}.  In order to solve it, we will have to open 6 frames.  Now what if we tried \texttt{factorial(1000000)}?  That would open tons of frames.  Tail recursion solves this problem by only using a constant amount of space.  The key to defining a tail recursive function is that you have to make sure that no further calculations are done after the recursive call, so that none of the values in the current frame have to be saved.  If we don’t have to save any values in the current frame, we can close it as we make the next recursive call, ensuring that we only have one frame open.
+
+In order to identify whether a function is tail recursive, first find the recursive call in your function. Then, check whether you return the exact result of your recursive call, or if you do work on the result. If you simply return the result of your recursive call, then your function is tail recursive! However, if you do additional work to the result of your recursive call, then it is not tail recursive. Additional work could be adding one to the result of your recursive call and returning the new value, or appending it to a list and returning the resulting list. 
+
+The general way we convert a recursive function to a tail recursive one is to move the calculation outside the recursive call into one of the recursive call arguments to accumulate the results. However, this is not always possible if our function doesn’t have an argument that accumulates the results, so we may have to create a helper function with an accumulating argument and have the helper be a tail recursive function. 

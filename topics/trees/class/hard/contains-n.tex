@@ -5,16 +5,16 @@
 def contains_n(elem, n, t):
     """
     >>> t1 = Tree(1, [Tree(1, [Tree(2)])])
-    >>> contains(1, 2, t1)
+    >>> contains_n(1, 2, t1)
     True
-    >>> contains(2, 2, t1)
+    >>> contains_n(2, 2, t1)
     False
-    >>> contains(2, 1, t1)
+    >>> contains_n(2, 1, t1)
     True
     >>> t2 = Tree(1, [Tree(2), Tree(1, [Tree(1), Tree(2)])])
-    >>> contains(1, 3, t2)
+    >>> contains_n(1, 3, t2)
     True
-    >>> contains(2, 2, t2) # Not on a path
+    >>> contains_n(2, 2, t2) # Not on a path
     False
     """
     if n == 0:
@@ -48,5 +48,9 @@ def contains_n(elem, n, t):
         return True in [contains_n(elem, n, b) for b in 
           t.branches]
 \end{lstlisting}
+\textbf{Base cases}: The simplest case we have is when \lstinline{n == 0}, or when we want at least 0 instances of \lstinline{elem} in \lstinline{t}. In this case, we always return \lstinline{True}. The other simple case we consider is when the tree is only a leaf — there is nothing left to recurse on. In that case, we simply check to see that both \lstinline{n == 1} and that \lstinline{t.label == elem}, meaning that we have one element left to satisfy, and the leaf label satisfies the final element we are looking for. If we have more elements to search for (ie. n > 1), then we will not satisfy that many elements at the leaf node; conversely, if we have fewer (ie. \lstinline{n == 0}), then the case would already be covered by the first base case.
+
+\textbf{Recursive cases}: If the current node isn't a leaf, then there's two different cases we should consider. Either the label of the current node is equal to \lstinline{elem} or the label is not equal to \lstinline{elem}. For the former, we would have to search for \lstinline{n} more \lstinline{elems} in each branch of \lstinline{t} and return \lstinline{True} if any of the branches contain \lstinline{n} elems. For the latter, we would have \lstinline{(n - 1)} elements remaining, so we would search for \lstinline{(n - 1)} more \lstinline{elems} in each branch of \lstinline{t} and return \lstinline{True} if any of the branches contain \lstinline{(n - 1)} \lstinline{elems}. Since there is not room to do a for loop, we can use a list comprehension to recursively call the function on each branch. Thus, our two list comprehension statements would be \lstinline{[contains_n(elem, n, b) for b in t.branches]} and \lstinline{[contains_n(elem, n - 1, b) for b in t.branches]}. To determine if any of the branches contain either \lstinline{n} elems or \lstinline{(n - 1)} elems, we can check if there's a \lstinline{True} element in the respective lists.
+
 \end{solution}
 \end{blocksection}
