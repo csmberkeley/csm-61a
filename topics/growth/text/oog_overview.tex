@@ -1,24 +1,24 @@
 \begin{blocksection}
-When describing the runtime of a program, it’s often most useful to describe the runtime with respect to the size of the input; we can characterize this runtime with an order of growth (OOG).  An order growth characterizes the runtime of a program as its input becomes extremely large.  Since we’re interested in the asymptotic behavior of a program’s runtime when identifying its order of growth, we use only the dominant term without additive or multiplicative constants (e.g. $\theta(3n^5 + 2n^2 - log n)$ is simplified to $\theta(n^5)$).
+\textbf{Important Note:} Orders of growth are not heavily emphasized on exams, historically appearing as a single multiple-choice question worth 1-2 points.
 
-Common runtimes, in increasing order of time, are $\theta(1) \text{(constant)} < \theta(log n) < \theta(n) < \theta(n^2) < \theta(2^n)$, and $\theta(n^a) < \theta(n^b)$ if $a < b$. A polynomial order of growth is dominated by an exponential order of growth.
+An order of growth (OOG) characterizes the runtime of a program as its input becomes extremely large. Common runtimes, in increasing order of time, are: constant, logarithmic, linear, quadratic, and exponential.
 
 \textbf{Examples:}
 
-Constant time means that no matter the size of the input, the runtime of your program is consistent. In the function \lstinline{f} below, no matter what you pass in for \lstinline{x}, the runtime is the same, which means its order of growth is $\theta(1)$.
+Constant time means that no matter the size of the input, the runtime of your program is consistent. In the function \lstinline{f} below, no matter what you pass in for \lstinline{n}, the runtime is the same. \\
 \vspace{1.5mm}
 \begin{lstlisting}
 def f(n):
    return 1 + 2
 \end{lstlisting}
-A common example of a $\theta(n)$ runtime, sometimes called linear time, is a simple for loop or while loop. As n gets larger, the amount of time to run the function grows proportionally.
+A common example of a linear OOG involves a single for/while loop. In the example below, as \lstinline{n} gets larger, the amount of time to run the function grows proportionally. \\
 \begin{lstlisting}
 def f(n):
    while n > 0:
       print(n)
       n -= 1
 \end{lstlisting}
-An example of a $\theta(n^2)$ runtime is a nested for loop. For every value of \lstinline{n}, an additional \lstinline{n} amount of work is being done, which means that the runtime is $n*n$ or $n^2$.
+An example of a quadratic runtime involves nested for loops. If you increment the value of \lstinline{n} by only 1, an additional \lstinline{n} amount of work is being done, since the inner for loop will run one more time. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
 \vspace{1.5mm}
 \begin{lstlisting}
 def f(n):
