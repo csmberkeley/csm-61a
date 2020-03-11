@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Let the path sum of any node in the tree be equal to the sum of its label and the labels of all nodes on the path from the root to that node. For example, for the following tree:
+\question The path sum of any node in the tree is the sum of its label and the labels of all nodes on the path from the root to that node. For example, for the following tree:
 \begin{tikzpicture}[scale=1.5, transform shape]
     \node [circle, draw] (z){$4$}
         child {node [circle, draw] (a) {$5$}}
@@ -28,9 +28,10 @@ The path sum of each node in the tree is as follows:
         };
 \end{tikzpicture}
 
-Write a generator that takes in a Tree object and yields the path sum of each node in the tree. The path sum of a node should be yielded only after the path sum of all of its children have been yielded. (Tangential note: this ordering is called post-order DFS). See doctests.
+Write a generator that takes in a Tree object and yields the path sum of each node in the tree. The path sum of a node should be yielded only after the path sum of all of its children have been yielded. (Tangential note: this ordering is called post-order DFS).
+\end{blocksection}
 
-
+\begin{blocksection}
 \begin{lstlisting}
 def gen_path_sums(t):
     """
@@ -39,10 +40,13 @@ def gen_path_sums(t):
        	[8, 3, 8, 4, 1] # draw out the tree and check your understanding!
     >>> 
     """    
-    for _____________________________
-    	for _______________________________
-    		_______________________________
-    _______________________
+    for _____________________________:
+
+    	for _______________________________:
+
+            ________________________________
+
+    ________________________________________
 \end{lstlisting}
 \end{blocksection}
 

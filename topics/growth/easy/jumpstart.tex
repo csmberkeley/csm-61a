@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question
-In big-$\Theta$ notation, what is the runtime for \texttt{foo}?
+What is the order of growth for \texttt{foo}?
 \begin{parts}
 \part
 \begin{lstlisting}
@@ -9,27 +9,25 @@ def foo(n):
         print('hello')
 \end{lstlisting}
 \begin{solution}[0.25in]
-$\Theta(n)$. This is simple loop that will run $n$ times.
+Linear. This is a for loop that will run \texttt{n} times.
 \end{solution}
 
-\part What's the runtime of \texttt{foo} if we change \texttt{range(n)}:
+\part What's the order of growth of \texttt{foo} if we change \texttt{range(n)}:
 \begin{subparts}
 
-\subpart To \texttt{range(n / 2)}?
+\subpart To \texttt{range(n/2)}?
 \begin{solution}[0in]
-$\Theta(n)$. The loop runs $n / 2$ times, but we ignore constant factors.
+Linear. The loop runs \texttt{n/2} times, but the runtime still scales linearly proportionally to \lstinline{n}.
 \end{solution}
 
-\subpart To \texttt{range(10)}?
+\subpart To \texttt{range(n**2 + 5)}?
 \begin{solution}[0in]
-$\Theta(1)$. No matter the size of $n$, we will run the loop the same number of
-times.
+Quadratic. The number of times the loop runs is proportional to \lstinline{n}$^{2}$.
 \end{solution}
 
 \subpart To \texttt{range(10000000)}?
-\begin{solution}[0in]
-$\Theta(1)$. No matter the size of $n$, we will run the loop the same number of
-times.
+\begin{solution}[0.25in]
+Constant. No matter the size of \texttt{n}, we will run the loop the same number of times.
 \end{solution}
 
 \end{subparts}

@@ -15,7 +15,7 @@
 \begin{lstlisting}
 >>> a.first
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 \begin{lstlisting}
 1
 \end{lstlisting}
@@ -35,21 +35,21 @@
 \begin{lstlisting}
 >>> a.first
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 5
 \end{solution}
 
 \begin{lstlisting}
 >>> a.rest.first
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 2
 \end{solution}
 
 \begin{lstlisting}
 >>> a.rest.rest.rest.rest.first
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 Error: tuple object has no attribute rest (Link.empty has no rest)
 \end{solution}
 \end{blocksection}
@@ -71,7 +71,7 @@ Error: tuple object has no attribute rest (Link.empty has no rest)
 \begin{lstlisting}
 >>> a.rest.rest.rest.rest.first
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 \begin{lstlisting}
 2
 \end{lstlisting}
@@ -80,7 +80,7 @@ Error: tuple object has no attribute rest (Link.empty has no rest)
 \begin{lstlisting}
 >>> repr(Link(1, Link(2, Link(3, Link.empty))))
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 \begin{lstlisting}
 "Link(1, Link(2, Link(3)))"
 \end{lstlisting}
@@ -89,18 +89,18 @@ Error: tuple object has no attribute rest (Link.empty has no rest)
 \begin{lstlisting}
 >>> Link(1, Link(2, Link(3, Link.empty)))
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 \begin{lstlisting}
 Link(1, Link(2, Link(3)))
 \end{lstlisting}
 \end{solution}
 
 \begin{lstlisting}
->>> print(Link(1, Link(2, Link(3))))
+>>> str(Link(1, Link(2, Link(3))))
 \end{lstlisting}
-\begin{solution}[.25in]
+\begin{solution}[.5in]
 \begin{lstlisting}
-<1 2 3>
+'<1 2 3>'
 \end{lstlisting}
 \end{solution}
 

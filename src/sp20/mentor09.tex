@@ -1,0 +1,53 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{\textsc{Linked Lists and Midterm Review}}
+\date{March 16, 2020 - March 18, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Linked Lists}
+\subimport{../../topics/linked-lists/class/text/}{linked_list_overview.tex}
+\subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+\newpage
+\subimport{../../topics/linked-lists/class/easy/}{skip.tex}
+\subimport{../../topics/linked-lists/class/easy/}{skip-no-mutate.tex}
+\end{questions}
+\newpage
+
+\section{Orders of Growth}
+\subimport{../../topics/growth/text/}{oog_overview.tex}
+\begin{questions}
+\subimport{../../topics/growth/easy/}{jumpstart.tex}
+\subimport{../../topics/growth/easy/}{belgian-waffle.tex}
+\end{questions}
+
+\section{Midterm Review}
+\begin{questions}
+%\subimport{../../topics/recursion/medium/}{replace.tex}
+\subimport{../../topics/recursion/medium/}{coin-game.tex}
+\subimport{../../topics/recursion/medium/}{subsets.tex}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{sing-a-song.tex}
+\end{questions}
+\newpage
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\subimport{../../topics/trees/class/text/}{adt_vs_class_overview.tex}
+\vspace{\baselineskip}
+\begin{questions}
+\subimport{../../topics/trees/class/hard/}{contains-n.tex}
+\subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
+\newpage
+\subimport{../../topics/generators/medium/}{all-paths.tex}
+
+\end{questions}
+\end{document}
