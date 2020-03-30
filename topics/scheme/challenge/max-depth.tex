@@ -1,3 +1,4 @@
+\begin{blocksection}
 \question Finish the functions \lstinline{max} and \lstinline{max-depth}. \lstinline{max} takes in two numbers and returns the larger. Function \lstinline{max-depth} takes in a list \lstinline{lst} and returns the maximum depth of the list. In a nested scheme list, we define the depth as the number of scheme lists a sublist is nested within. A scheme list with no nested lists has a \lstinline{max-depth} of 0. 
 
 \begin{lstlisting}
@@ -11,21 +12,23 @@ scm> (max-depth '(1 2 (3 (4) 5)))
 scm> (max-depth '(0 (1 (2 (3 (4) 5) 6) 7))
 4
 
-(define (max x y) _______________ )
+(define (max x y) _____________________________________)
 
 (define (max-depth lst)
     (define (helper lst curr)
-            (cond 
-              ((__________)__________________________)
-              ((__________) (max ___________________________
-                                 ___________________________))
-              (else (helper _______________))
-            )
-      )
-    (______________)
+        (cond 
+            ((__________) ________________________)
+            ((__________) (max ______________________________
+                            ________________________________))
+            (else (helper ________________________))
+        )
+    )
+    (____________________________)
 )
 \end{lstlisting}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
 (define (max x y) (if (> x y) x y))
@@ -45,3 +48,4 @@ scm> (max-depth '(0 (1 (2 (3 (4) 5) 6) 7))
 
 \end{lstlisting}
 \end{solution}
+\end{blocksection}

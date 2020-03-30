@@ -1,5 +1,5 @@
-\begin{blocksection}
-\question Python supports a feature called function decoration, which wraps a higher-order function around a given function by appending a heading to a function definition. Given a higher-order function \lstinline{d} we can decorate \lstinline{f} with \lstinline{d} as follows:
+\question 
+Python supports a feature called function decoration, which wraps a higher-order function around a given function by appending a heading to a function definition. Given a higher-order function \lstinline{d} we can decorate \lstinline{f} with \lstinline{d} as follows:
 \begin{lstlisting}
 @d
 def f(...):
@@ -13,7 +13,8 @@ def f(...):
     ...
 f = d(f)
 \end{lstlisting}
-
+\begin{parts}
+\part
 Write a macro called \lstinline{@} in Scheme that accomplishes this behavior. We should be able to decorate a procedure \lstinline{f} as follows:
 
 \begin{lstlisting}
@@ -22,8 +23,7 @@ Write a macro called \lstinline{@} in Scheme that accomplishes this behavior. We
 
 (i.e., we need only prepend \lstinline{@ d} before \lstinline{define})
 
-Start by filling out the following function \lstinline{@} which implements applying one decorator function
-
+Start by filling out the following function \lstinline{@}, which implements applying one decorator function.
 \begin{lstlisting}
 ;Doctests
 scm> (define (d f) (lambda (x) (print 'hello) (f x)))
@@ -41,9 +41,6 @@ hello
      )
 )
 \end{lstlisting}
-\end{blocksection}
-
-\begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
 (define-macro (@ decorator define params body) 
@@ -54,10 +51,9 @@ hello
 )
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
-
-\begin{blocksection}
-Now implement \lstinline{@-all} which applies a list of decorator functions to \lstinline{f}
+\newpage
+\part
+Now implement \lstinline{@-all}, which applies a list of decorator functions to \lstinline{f}.
 \begin{lstlisting}
 ;Doctests
 scm> (define (d f) (lambda (x) (print 'd) (f x)))
@@ -82,9 +78,6 @@ e
   )
 )
 \end{lstlisting}
-\end{blocksection}
-
-\begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
 (define-macro (@-all decorators define params body)
@@ -101,4 +94,4 @@ e
 )
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+\end{parts}

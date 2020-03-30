@@ -55,7 +55,8 @@ scm> (is-prefix '(1 2) '(1))
 
 ; is-prefix with a cond statement
 (define (is-prefix p lst)
-    (cond ((null? p) #t)
+    (cond 
+        ((null? p) #t)
         ((null? lst) #f)
         (else (and (= (car p) (car lst))
             (is-prefix (cdr p) (cdr lst))))))

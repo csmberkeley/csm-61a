@@ -36,16 +36,16 @@ def coin_game(lst, player):
 \begin{blocksection}
 \begin{solution}[0in]
 \begin{lstlisting}
-def coin_game(lst, player=True):
-    if len(lst) <= 1 and player:
+def coin_game(lst, player):
+    if len(lst) <= 2 and player:
         return sum(lst)
-    elif len(lst) <= 1 and not player:
+    elif len(lst) <= 2 and not player:
         return 0
     else:
         if player:
             last = lst[len(lst) - 1]
             second_to_last = lst[len(lst) - 2]
-            return max(coin_game(lst[:len(lst) - 1], not player), coin_game(lst[:len(lst) - 2], not player) + last + second_to_last)
+            return max(coin_game(lst[:len(lst) - 1], not player) + last, coin_game(lst[:len(lst) - 2], not player) + last + second_to_last)
         else:
             return min(coin_game(lst[:len(lst) - 1]), coin_game(lst[:len(lst) - 2]))
 \end{lstlisting}
