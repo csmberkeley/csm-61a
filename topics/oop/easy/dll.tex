@@ -1,6 +1,8 @@
-\begin{blocksection}
-\question The \lstinline{DLList} class is a spin off of the normal Linked List which we learned in class. A \lstinline{DLList} also has a \lstinline{prev} instance variable that keeps track of what is before the \lstinline{DLList}, in addition to its \lstinline{next} variable which keeps track of the rest of the DLList. Help fill in the methods \lstinline{add_last} and \lstinline{add_first} in the \lstinline{DLList} class below! (You might not need to use all lines.)
+\question 
+The \lstinline{DLList} class is a spin off of the normal Linked List which we learned in class. A \lstinline{DLList} also has a \lstinline{prev} instance variable that keeps track of what is before the \lstinline{DLList}, in addition to its \lstinline{next} variable which keeps track of the rest of the DLList. Help fill in the methods \lstinline{add_last} and \lstinline{add_first} in the \lstinline{DLList} class below! (You might not need to use all lines.)
 
+\begin{parts}
+\part
 \begin{lstlisting}
 class DLList:
   """
@@ -20,7 +22,7 @@ class DLList:
     ____________________________
 \end{lstlisting}
 
-\begin{solution}
+\begin{solution}[0.5in]
 \begin{lstlisting}
 def __init__(self, value, next=empty, prev=empty):
   self.value = value
@@ -28,9 +30,8 @@ def __init__(self, value, next=empty, prev=empty):
   self.prev = prev
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
 
-\begin{blocksection}
+\part
 \begin{lstlisting}
   def add_last(self, value):
     """
@@ -58,9 +59,8 @@ def add_last(self, value):
   pointer.next = DLList(value, DLList.empty, pointer)
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
 
-\begin{blocksection}
+\part
 \begin{lstlisting}
   def add_first(self, value):
     """
@@ -95,5 +95,5 @@ def add_first(self, value):
     old_first.next.prev = old_first
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+\end{parts}
 

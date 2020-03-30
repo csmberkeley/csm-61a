@@ -1,5 +1,8 @@
-\begin{blocksection}
-\question \lstinline{positionizer} takes in a number, and for each digit, either change the digit \lstinline{d} to the remainder of \lstinline{d} divided by its position from the right, or leave the digit the same if it's equal to its position. The position of each digit is defined starting at 1 and increasing from right to left. (i.e. The rightmost digit has a position of 1)
+\question
+Suppose the \textbf{position} of the rightmost digit of a number is defined as 1. The position of a digit increases from right to left.
+\begin{parts}
+\part
+Fill in the \lstinline{positionizer} function below. It takes in a number, and for each digit, either changes digit \lstinline{d} to be the remainder of \lstinline{d} divided by its position, or leaves \lstinline{d} the same if it is equal to its position. 
 
 \begin{lstlisting}
 def positionizer(n):
@@ -21,9 +24,6 @@ def positionizer(n):
         return rest + ______________________
    return helper(_________, __________)
 \end{lstlisting}
-\end{blocksection}
-
-\begin{blocksection}
 \begin{solution}
 \begin{lstlisting}:
 def positionizer(n):
@@ -38,12 +38,12 @@ def positionizer(n):
   return helper(n, 1)
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+\newpage
 
-\begin{blocksection}
-Now, given a list of digits, return the k-digit number that has the highest value when positionized. The digits must stay in the same order. (If \lstinline{k=2}, and \lstinline{lst = [1,2,3]}, you can't form 21). You may use \lstinline{positionizer} in your solution.
+\part
+Now fill in the \lstinline{max_positionizer} function below. Given a list of digits, it returns the k-digit number with the highest value when positionized. The digits must stay in the same order. (ex: if \lstinline{k=2}, and \lstinline{lst = [1,2,3]}, you can't form 21). You may use \lstinline{positionizer} in your solution.
 
-\textit{Hint: Use the helper function to create a list of all possible k digit numbers formed from the list.}
+\textit{Hint: Use the helper to create a list of all possible k digit numbers formed from \lstinline{lst}.}
 
 \begin{lstlisting}
 def max_positionizer(k, lst):
@@ -66,9 +66,6 @@ def max_positionizer(k, lst):
     return a + b
   return _______(make_nums(____, ____), ____________)
 \end{lstlisting}
-\end{blocksection}
-
-\begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
 def max_positionizer(k, lst):
@@ -86,4 +83,4 @@ def max_positionizer(k, lst):
   return max(make_nums(k, lst), key=positionizer)
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+\end{parts}

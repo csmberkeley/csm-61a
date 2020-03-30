@@ -1,5 +1,5 @@
-\begin{blocksection}
-\question The total weight of a tree is defined as the sum of the labels of all its nodes. A tree is defined to be \lstinline{equally_weighted} if the total weight of each of its branches are equal. A leaf is assumed to be equally weighted.
+\question 
+The total weight of a tree is defined as the sum of the labels of all its nodes. A tree is defined to be \lstinline{equally_weighted} if the total weight of each of its branches are equal. A leaf is assumed to be equally weighted.
 
 Complete the following functions for \lstinline{equally_weighted} and \lstinline{num_eq_weight}. You may use the below definition of the \lstinline{total_weight} function in your answer.
 
@@ -12,7 +12,10 @@ def total_weight(t):
   """
   weight =  t.label + sum([total_weight(branch) for branch in t.branches])
   return weight
-    
+\end{lstlisting}
+\begin{parts}
+\part
+\begin{lstlisting}
 def equally_weighted(t):
   """
   Return whether a tree is equally weighted.
@@ -40,9 +43,9 @@ def equally_weighted(t):
   return True
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+\newpage
 
-\begin{blocksection}
+\part
 \begin{lstlisting}
 def num_eq_weight(t):
   """
@@ -75,4 +78,4 @@ def num_eq_weight(t):
     return val
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
+\end{parts}

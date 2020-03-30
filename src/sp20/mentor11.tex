@@ -1,0 +1,44 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{More Scheme, Scoping, and Interpreters}}
+\date{April 6, 2020 - April 8, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subimport{../../topics/scheme/text/}{special-forms.tex}
+\section{What Would Scheme Print?}
+\begin{questions}
+\subimport{../../topics/scheme/easy/wwsd/}{special-forms.tex}
+\subimport{../../topics/scheme/easy/wwsd/}{boom.tex}
+\subimport{../../topics/scheme/easy/wwsd/}{define-eval.tex}
+\end{questions}
+
+\section{Scoping}
+\begin{questions}
+\subimport{../../topics/scheme/easy/}{scoping-intro.tex}
+\subimport{../../topics/scheme/easy/}{scoping-env-diag.tex}
+\end{questions}
+
+\section{Interpreters}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+% \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\section{Code Writing}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{is-prefix.tex}
+%\newpage
+\subimport{../../topics/scheme/medium/}{apply-n.tex}
+\subimport{../../topics/scheme/challenge/}{max-depth.tex}
+\end{questions}
+
+\end{document}

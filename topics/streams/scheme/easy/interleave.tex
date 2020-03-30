@@ -6,10 +6,27 @@ Assume that the streams are infinitely long.
 \begin{lstlisting}
 
 (define (interleave stream1 stream2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
 \end{lstlisting}
 \fi
 
-\begin{solution}[1in]
+\begin{solution}
 \begin{lstlisting}
 (define (interleave stream1 stream2)
     (cons-stream
@@ -18,6 +35,7 @@ Assume that the streams are infinitely long.
     )
 )
 
+Alternate Solution:
 (define (interleave stream1 stream2)
     (cons-stream (car stream1)
         (cons-stream (car stream2)

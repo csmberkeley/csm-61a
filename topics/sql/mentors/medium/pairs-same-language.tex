@@ -2,11 +2,11 @@
 \question Write a query that lists all the pairs of mentors who like the same language. (How can we make sure to remove duplicates?)
 
 \begin{lstlisting}
-Olivia|Patricia
-Addison|Lucas
+Jemmy|Matthew
+Ivan|Owen
 \end{lstlisting}
 
-\begin{solution}[1in]
+\begin{solution}
 \begin{lstlisting}
 select m1.name, m2.name
     from mentors as m1, mentors as m2
