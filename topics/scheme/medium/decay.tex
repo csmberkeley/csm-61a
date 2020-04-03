@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question
+Define a positive integer as \textbf{decayed} if it equals 0. Fill in \lstinline{decay}, which takes in a list of numbers \lstinline{lst} and a positive integer \lstinline{n}, and returns a list. Specifically, this function decrements elements of \lstinline{lst} starting from the first element. If a decrement causes an element to decay, continue decrementing the next element of \lstinline{lst}.
+
+\begin{lstlisting}
+; doctests
+scm> (define a '(1 2 3 4))
+a
+scm> (decay a 1)
+(0 2 3 4)
+scm> (decay a 2)
+(0 1 3 4)
+scm> (decay a 5)
+(0 0 1 4)
+
+(define (decay lst n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+(define (decay lst n)
+    (cond 
+        ((null? lst) nil)
+        ((< total (car lst)) (cons (- (car lst) n) (cdr lst)))
+        (else (cons 0 (decay (cdr lst) (- n (car lst)))))
+    )
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

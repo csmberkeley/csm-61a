@@ -1,0 +1,38 @@
+\begin{blocksection}
+\question
+Define a generator function \lstinline{in_order}, which takes in a tree \lstinline{t}, and assume that \lstinline{t} has either 0 or 2 branches only. Fill in \lstinline{in_order} so that it returns a generator that yields the labels of \lstinline{t} in the following order: first branch node, parent node, second branch node.
+
+\begin{lstlisting}
+def in_order(t):
+    """
+    >>> t = Tree(0, [Tree(1), Tree(2, [Tree(3), Tree(4)])])
+    >>> list(in_order(t))
+    [1, 0, 3, 2, 4]
+    """
+
+    if _____________________:
+
+        yield ______________________________
+    else:
+
+        lst = ______________________________
+
+        for ________________________________:
+
+            _________________________________
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def in_order(t):
+    if t.is_leaf():
+        yield t.label
+    else:
+        lst = [in_order(t.branches[0]), [t.label], in_order(t.branches[1])]
+        for elem in lst:
+            yield from elem
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
