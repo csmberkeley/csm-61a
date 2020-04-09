@@ -35,6 +35,7 @@ will call a function to start a new frame).
 If we had the line \texttt{(define foo 3)} before the call to let, then it would
 return 8, because within let, foo would be 3 and bar would be \texttt{(+ 3 2)},
 since it would use the foo in the Global frame.
-\end{solution}
 
+Another way to think about why this code errors is to recall that \texttt{let} assigns all local bindings simultaneously. Hence, \texttt{foo} has not yet been defined when \texttt{bar} attempts to reference it.
+\end{solution}
 \end{blocksection}

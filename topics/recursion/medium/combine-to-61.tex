@@ -13,7 +13,7 @@ def combine_to_61(lst):
     False # elements must be contiguous
     """
 
-    def helper(lst, num):
+    def helper(lst, num_so_far):
 
         if _______________________________:
             return True
@@ -38,13 +38,13 @@ def combine_to_61(lst):
 \begin{solution}
 \begin{lstlisting}
 def combine_to_61(lst): 
-    def helper(lst, num): 	
-        if num == 61: 
+    def helper(lst, num_so_far): 	
+        if num_so_far == 61: 
             return True 
         elif not lst: 
             return False 
-        with_sum = num + lst[0] <= 61 and helper(lst[1:], num + lst[0]) 
-        with_mul =  num * lst[0] <= 61 and helper(lst[1:], num * lst[0]) 
+        with_sum = num_so_far + lst[0] <= 61 and helper(lst[1:], num_so_far + lst[0]) 
+        with_mul =  num_so_far * lst[0] <= 61 and helper(lst[1:], num_so_far * lst[0]) 
         return with_sum or with_mul 
     return helper(lst, 0)
 \end{lstlisting}

@@ -36,7 +36,7 @@ scm> (backwards-sum '(2 -1 3 7))
 (define (backwards-sum lst)
     (cond 
         ((null? lst) nil)
-        ((null? (cdr lst)) (cons (car lst) nil))
+        ((null? (cdr lst)) (list (car lst)))
         (else (cons
             (+ (car lst) (car (backwards-sum (cdr lst))))
             (backwards-sum (cdr lst))))
