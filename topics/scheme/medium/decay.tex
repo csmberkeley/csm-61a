@@ -1,19 +1,21 @@
 \begin{blocksection}
 \question
-Define a positive integer as \textbf{decayed} if it equals 0. Fill in \lstinline{decay}, which takes in a list of numbers \lstinline{lst} and a positive integer \lstinline{n}, and returns a list. Specifically, this function decrements elements of \lstinline{lst} starting from the first element. If a decrement causes an element to decay, continue decrementing the next element of \lstinline{lst}.
+Suppose Isabelle bought turnips from the Stalk Market and has stored them in random amounts among an ordered sequence of boxes. By the magic of time travel, Isabelle's friend Tom Nook can fast-forward one week into the future and determine exactly how many of Isabelle's turnips will rot over the week and have to be discarded.
+
+Assuming that boxes of turnips will rot in order, i.e. all of box 1's turnips will rot before any of box 2's turnips, help Isabelle determine which turnips will still be fresh by week's end. Specifically, fill in \lstinline{decay}, which takes in a list of positive integers \lstinline{boxes}, which represents how many turnips are in each box, and a positive integer \lstinline{rotten} representing the number of turnips that will rot, and returns a list of non-negative integers that represents how many fresh turnips will remain in each box.
 
 \begin{lstlisting}
 ; doctests
-scm> (define a '(1 2 3 4))
+scm> (define a '(1 6 3 4))
 a
 scm> (decay a 1)
-(0 2 3 4)
-scm> (decay a 2)
-(0 1 3 4)
+(0 6 3 4)
 scm> (decay a 5)
+(0 2 3 4)
+scm> (decay a 9)
 (0 0 1 4)
 
-(define (decay lst n)
+(define (decay boxes rotten)
 
 
 
@@ -33,11 +35,11 @@ scm> (decay a 5)
 \begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
-(define (decay lst n)
+(define (decay boxes rotten)
     (cond 
-        ((null? lst) nil)
-        ((< total (car lst)) (cons (- (car lst) n) (cdr lst)))
-        (else (cons 0 (decay (cdr lst) (- n (car lst)))))
+        ((null? boxes) nil)
+        ((< rotten (car boxes)) (cons (- (car boxes) rotten) (cdr boxes)))
+        (else (cons 0 (decay (cdr boxes) (- rotten (car boxes)))))
     )
 )
 \end{lstlisting}
