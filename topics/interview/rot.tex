@@ -1,7 +1,7 @@
 \begin{blocksection}
 \question Implement \texttt{rotate}, which takes in a tree and rotates the labels at each level of the tree by one to the left destructively. This rotation should be modular (That is, the leftmost label at a level will become the rightmost label after running rotate). You do NOT need to rotate across different branches.
 
-For example, given the following tree,\texttt{t}
+For example, given tree \texttt{t} on the left, \texttt{rotate(t)} should mutate \texttt{t} to give us the right.
 
 \begin{tikzpicture}[scale=1, transform shape]
 \tikzstyle{level 2}=[sibling distance=10mm]
@@ -12,9 +12,6 @@ For example, given the following tree,\texttt{t}
         }
         child {node [circle, draw] (b) {$5$}};
 \end{tikzpicture}
-
-calling rotate on \texttt{t} should mutate it to give us 
-
 \begin{tikzpicture}[scale=1, transform shape]
 \tikzstyle{level 2}=[sibling distance=10mm]
     \node [circle, draw] (z){$1$}
@@ -40,10 +37,15 @@ def rotate(t):
                     Tree(2, [Tree(6)])])
   """
   branch_labels = ___________________________________
+
   n = len(t.branches)
-  for ______________________________________________:
+
+  for ______________________________________:
+
     ______________________________________________
+
     ______________________________________________
+    
     ______________________________________________ 
 \end{lstlisting}
 \end{blocksection}

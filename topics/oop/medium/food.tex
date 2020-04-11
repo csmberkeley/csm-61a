@@ -1,0 +1,75 @@
+\question 
+What would Python display? The questions continue on the next page.
+
+\begin{lstlisting}
+class Food:
+    def __init__(self, name, spoiled = False):
+        self.name = name
+        self.num_days = 0
+        self.spoiled = spoiled
+
+    def can_eat(self):
+        self.num_days += 1
+        if self.num_days >= 3:
+            self.spoiled = True
+            print("Oh no! Your food is spoiled!")
+        return not self.spoiled
+
+    def mix_food(self, other_food):
+        self.num_days = self.num_days + other_food.num_days
+        self.name += " " + other_food.name
+        self.spoiled = self.spoiled and other_food.spoiled
+
+class Salad(Food):
+    def __init__(self, ingredients):
+        super().__init__("salad", False)
+        self.ingredients = ingredients
+		
+    def add_ingredients(self, ingredient):
+        self.ingredients.append(ingredient)
+        print(ingredient.name + " has been added")
+
+    def mix_ingredients(self):
+        for ingredient in self.ingredients:
+            self.mix_food(ingredient)
+        print("Your salad has been mixed.")
+
+lettuce = Food("lettuce")
+tomatoes = Food("tomatoes")
+chicken = Food("chicken")
+ingredients = [lettuce, tomatoes]
+my_salad = Salad(ingredients)
+\end{lstlisting}
+
+\vspace{9\baselineskip}
+\begin{solution}
+See visualizations for solutions: \url{https://docs.google.com/presentation/d/1t1yE9DuT8a2ij_QszLOxzUu6-unN46PY1SA_Q48fLz4/edit?usp=sharing}
+\end{solution}
+
+\begin{lstlisting}
+>>> lettuce.can_eat()
+\end{lstlisting}
+\begin{solution}[.2in]
+True
+\end{solution}
+
+\begin{lstlisting}
+>>> my_salad.can_eat()
+\end{lstlisting}
+\begin{solution}[.2in]
+True
+\end{solution}
+
+\begin{lstlisting}
+>>> my_salad.mix_ingredients()
+\end{lstlisting}
+\begin{solution}[.2in]
+Your salad has been mixed.
+\end{solution}
+
+\begin{lstlisting}
+>>> my_salad.name
+\end{lstlisting}
+\begin{solution}[.3in]
+"salad lettuce tomatoes"
+\end{solution}
