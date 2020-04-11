@@ -9,9 +9,12 @@ def n_apply(f, n, x):
   >>> n_apply(lambda x: x + 1, 3, 2)
   5
   """
-  for __________________:
-    x = ______________
-  return _______________
+
+  for __________________________:
+
+    x = ________________________
+
+  return _______________________
 \end{lstlisting}
 
 \begin{solution}
@@ -24,7 +27,7 @@ def n_apply(f, n, x):
 \end{solution}
 
 \part
-Now implement \texttt{list\_gen}, which takes in some list of integers \texttt{lst} and a \texttt{function f}. For the element at index \texttt{i} of \texttt{lst}, \texttt{list\_gen} should apply \texttt{f} to the element \texttt{i} times and yield this value \texttt{lst[i]} times.
+Now implement \texttt{list\_gen}, which takes in some list of integers \texttt{lst} and a \texttt{function f}. For the element at index \texttt{i} of \texttt{lst}, \texttt{list\_gen} should apply \texttt{f} to the element \texttt{i} times and yield this value \texttt{lst[i]} times. You may use \texttt{n\_apply} from the previous part.
 
 \begin{lstlisting}
 def list_gen(lst, f):
@@ -33,8 +36,10 @@ def list_gen(lst, f):
   >>> list(a)
   [1, 3, 3, 5, 5, 5]
   """
-  for _________________:
-    yield from [___________________________________]
+
+  for __________________________:
+
+    yield from [_______________________________________]
 \end{lstlisting}
 
 \begin{solution}

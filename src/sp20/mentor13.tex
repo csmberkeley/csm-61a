@@ -2,43 +2,75 @@
 \usepackage{../../commonheader}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{10}
-\title{\textsc{More Scheme, Scoping, and Interpreters}}
-\date{April 13, 2020 - April 15, 2020}
+\discnumber{12}
+\title{\textsc{Final Review}}
+\date{April 20, 2020 - April 22, 2020}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\maketitle
-\rule{\textwidth}{0.15em}
+\maketitle\rule{\textwidth}{0.15em}
 \fontsize{12}{15}\selectfont
 
 %%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subimport{../../topics/scheme/text/}{special-forms.tex}
-\section{What Would Scheme Print?}
+\section{Environment Diagrams}
 \begin{questions}
-\subimport{../../topics/scheme/easy/wwsd/}{special-forms.tex}
-\subimport{../../topics/scheme/easy/wwsd/}{boom.tex}
-\subimport{../../topics/scheme/easy/wwsd/}{define-eval.tex}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{env-prog.tex}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{spooky-list.tex}
+\end{questions}
+\newpage
+
+\section{Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{positionizer.tex}
+\end{questions}
+\newpage
+
+\section{OOP}
+\begin{questions}
+\subimport{../../topics/oop/medium/}{food.tex}
+\newpage
+\subimport{../../topics/oop/easy/}{dll.tex}
+\end{questions}
+\newpage
+
+\section{Trees}
+\begin{questions}
+\subimport{../../topics/trees/class/medium/}{weighted-tree.tex}
+\subimport{../../topics/interview/}{rot.tex}
+\end{questions}
+\newpage
+
+\section{Generators}
+\begin{questions}
+\subimport{../../topics/generators/easy/}{list-gen.tex}
+\subimport{../../topics/generators/easy/}{iter-link.tex}
+\end{questions}
+\newpage
+
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{skip-list.tex}
+\newpage
+\subimport{../../topics/scheme/medium/}{quicksort.tex}
 \end{questions}
 
-\section{Scoping}
-\begin{questions}
-\subimport{../../topics/scheme/easy/}{scoping-intro.tex}
-\subimport{../../topics/scheme/easy/}{scoping-env-diag.tex}
-\end{questions}
+\section{SQL}
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
 
-\section{Interpreters}
 \begin{questions}
-\subimport{../../topics/interpreters/easy/}{intro.tex}
-% \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\subimport{../../topics/sql/fish/medium/}{competitor.tex}
 \end{questions}
+\newpage
 
-\section{Code Writing}
+\subimport{../../topics/sql/outfits/}{text.tex}
+\subimport{../../topics/sql/outfits/tables/}{grades.tex}
+\subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+
 \begin{questions}
-\subimport{../../topics/scheme/medium/}{is-prefix.tex}
-%\newpage
-\subimport{../../topics/scheme/medium/}{apply-n.tex}
-\subimport{../../topics/scheme/challenge/}{max-depth.tex}
+\subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+\subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
 \end{questions}
-
 \end{document}

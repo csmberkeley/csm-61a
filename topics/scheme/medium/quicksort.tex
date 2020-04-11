@@ -1,34 +1,45 @@
-\begin{blocksection}
-\section{Challenge Question}
-\question \textbf{(Optional)} The quicksort sorting algorithm is an efficient and commonly used algorithm to
+\question 
+The quicksort sorting algorithm is an efficient and commonly used algorithm to
 order the elements of a list. We choose one element of the list to be the pivot
 element and partition the remaining elements into two lists: one of elements less
-than the pivot and one of elements greater than the pivot. We recursively sort the
-two lists, which gives us a sorted list of all the elements less than the pivot and all
-the elements greater than the pivot, which we can then combine with the pivot for
-a completely sorted list.
+than the pivot and one of elements greater than the pivot. We recursively sort the two smaller lists, which will give us a sorted list of all the elements less than the pivot and all the elements greater than the pivot. Lastly, we can combine these sorted lists with the pivot to get a completely sorted list.
 \newline
 \newline
-Implement \texttt{quicksort} in Scheme. Choose the first element of the list
-as the pivot. You may assume that all elements are distinct. Hint: you may want to use a helper function.
-\newline
-\newline
-You may additionally want to use the built-in \texttt{append} function, which takes in two lists and returns 
-a new list containing the elements of the first list followed by the elements of the second list. 
-You can also use \texttt{filter} procedure, which takes in a one-argument function and a list and returns a new 
-list containing only the elements of the original list for which the function returns true, although it is not required.
+Implement the \texttt{quicksort} function, which takes in a list of integers and returns the sorted list after performing the above procedure. Always choose the first element of the list as the pivot, and you may assume that all elements are distinct. 
 \newline
 
 \begin{lstlisting}
+; doctests
 scm> (quicksort (list 5 2 4 3 12 7))
 (2 3 4 5 7 12)
+
+(define (quicksort lst)
+    (define (helper lst pivot less greater)
+        (cond
+            ((null? lst) 
+
+                __________________________________________)
+
+            ((_____________________________)
+
+                __________________________________________)
+
+            ((_____________________________)
+
+                __________________________________________)
+        )
+    )
+
+    (if (____________________________________________)
+
+        ______________________________________________
+
+        ______________________________________________
+    )
+)
 \end{lstlisting}
 
-\end{blocksection}
-
-\begin{blocksection}
-
-\begin{solution}[0.5in]
+\begin{solution}
 \begin{lstlisting}
 (define (quicksort lst)
     (define (helper lst pivot less greater )
@@ -45,16 +56,14 @@ scm> (quicksort (list 5 2 4 3 12 7))
 
 \end{lstlisting}
 
-Alternate solution using filter:
+%Alternate solution using filter:
 
-\begin{lstlisting}
-(define (quicksort lst)
-   (if (null? lst)
-       nil
-       (let ((less (filter (lambda (x) (< x (car lst))) lst))
-          (greater (filter (lambda (x) (> x (car lst))) lst)))
-          (append (append (quicksort less) (list (car lst))) (quicksort greater)))))
-\end{lstlisting}
-
+%\begin{lstlisting}
+%(define (quicksort lst)
+%   (if (null? lst)
+%       nil
+%       (let ((less (filter (lambda (x) (< x (car lst))) lst))
+%          (greater (filter (lambda (x) (> x (car lst))) lst)))
+%          (append (append (quicksort less) (list (car lst))) (quicksort greater)))))
+%\end{lstlisting}
 \end{solution}
-\end{blocksection}

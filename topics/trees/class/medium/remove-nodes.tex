@@ -1,0 +1,24 @@
+/question
+
+\begin{lstlisting}
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def remove_nodes(t, vals):
+    if t.is_leaf() and t.label not in node_vals:
+        return t
+    elif t.is_leaf():
+        return None
+    new_branches = []
+    for branch in t.branches:
+        new_branch = remove_nodes(branch, vals)
+        if new_branch:
+            if new_branch.label in vals:
+                new_branches += [b for b in new_branch.branches]
+            else:
+                new_branches.append(new_branch)
+    t.branches = new_branches
+    return t
+\end{lstlisting}
+\end{solution}
