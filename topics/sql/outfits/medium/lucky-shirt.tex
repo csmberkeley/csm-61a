@@ -7,7 +7,7 @@ Write a query that will output each class and the color shirt you wore to the mi
 \begin{solution}[1.5in]
 \begin{lstlisting}
 select class, color, max(score)
-    from from colors as c, grades as g
+    from colors as c, grades as g
     where c.day = g.day group by class;
 \end{lstlisting}
 \end{solution}
