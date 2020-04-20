@@ -1,0 +1,34 @@
+\question
+Fill in \lstinline{root_subtraction}, which takes in a tree \lstinline{t} and returns the number resulting from subtracting all node values, except for leaves, in \lstinline{t} from the root's label value. Use the \lstinline{Tree} class definition.
+
+\begin{lstlisting}
+def root_subtraction(t):
+    """
+    >>> t1 = Tree(10, [Tree(1, [Tree(2)]), Tree(3)])
+    9
+    >>> t2 = Tree(20, [Tree(4, [Tree(1)]), Tree(5, [Tree(2), Tree(3)])])
+    >>> root_subtraction(t)
+    11
+    """
+
+    total = _________________________
+
+    for ___________________________________:
+
+        if ________________________________:
+
+            ______________________________________
+
+    return ___________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def root_subtraction(t):
+    total = t.label
+    for b in t.branches:
+        if not b.is_leaf():
+            total -= root_subtraction(b)
+    return total
+\end{lstlisting}
+\end{solution}

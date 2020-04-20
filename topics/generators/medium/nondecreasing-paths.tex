@@ -1,0 +1,71 @@
+\question
+Define a \textbf{non-decreasing path} as a path from the root where each node's label is greater than or equal to the previous node along the path. A \textbf{subpath} is a path between nodes X and Y, where Y must be a descendent of X (ex: Y is a branch of a branch of X).
+\begin{parts}
+\part
+Write a generator function \lstinline{root_to_leaf} that takes in a tree \lstinline{t} and yields all non-decreasing paths from the root to a leaf node, in any order. Assume that \lstinline{t} has at least one node.
+
+\begin{lstlisting}
+def root_to_leaf(t):
+    """
+    >>> t1 = Tree(3, [Tree(5), Tree(4)])
+    >>> list(root_to_leaf(t1))
+    [[3, 5], [3, 4]]
+    >>> t2 = Tree(5, [Tree(2, [Tree(7), Tree(8)]), Tree(5, [Tree(6)])])
+    [[5, 5, 6]]
+    """
+
+    if ____________________:
+
+        _________________________
+
+    for _________________________:
+
+        if __________________________:
+
+            for __________________________:
+
+                ______________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def root_to_leaf(t):
+    if t.is_leaf():
+        yield [t.label]
+    for b in t.branches:
+        if t.label <= b.label:
+            for path in root_to_leaf(b):
+                yield [t.label] + path
+\end{lstlisting}
+
+The easiest way to approach this is to notice the two blocks of code that are provided: first an if statement, probably referring to a base case, and a for loop, which will probably be the recursive case. From the doctests, we can see that giving the function a tree that just has one node, or in other words \lstinline{is_leaf()}, returns a list containing just that node.
+
+In our recursive case we want to do two things. First, we want to check if the next branch value really is non-decreasing. Then, if it is, we want to append the result of calling \lstinline{root_to_leaf} on the branch to the value of our current tree to create a complete path. So we recurse through each of the branches in \lstinline{t} (\lstinline{for b in t.branches}), then check if it is nondecreasing (\lstinline{t.label <= b.label}), then yield our tree’s label appended to the recursive call (the last two lines).
+\end{solution}
+
+\part
+Write a generator function \lstinline{subpaths} that takes in a tree \lstinline{t} and yields all non-decreasing subpaths that end with a leaf node, in any order. You may use the \lstinline{root_to_leaf} function above, and assume again that \lstinline{t} has at least one node.
+
+\begin{lstlisting}
+def subpaths(t):
+    
+    yield from _______________________
+
+    for b in t.branches:
+
+        ______________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def subpaths(t):
+    yield from root_to_leaf(t)
+    for b in t.branches:
+        yield from subpaths(b)
+\end{lstlisting}
+
+We can split this problem into two steps -- yielding all subpaths for the current tree that we have, then yielding all subpaths for all other trees within this tree. It is important to realize that each node in the tree is merely a subtree of the original tree to solve this problem.
+
+To yield all non-decreasing subpaths for our current tree (that is all non-decreasing subpaths that start at our current node and end at the leaf nodes), we can just yield from our previous function, \lstinline{root_to_leaf}, called on that node. For the rest of the subpaths, we want to recursively call \lstinline{subpaths} on all our child nodes. This will give us all paths that end on the leaf nodes (because \lstinline{root_to_leaf} ends on the leaf nodes) that start from any child on this tree. It is important to realize that the base case in this situation is implicit. If a leaf node is passed in and reaches the for loop, the for loop finds no items in \lstinline{t.branches}, and will just terminate without calling the clause inside.
+\end{solution}
+\end{parts}

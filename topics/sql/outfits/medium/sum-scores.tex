@@ -8,7 +8,7 @@ Write a query that will output the sum of your midterm scores for each class alo
 \begin{lstlisting}
 select sum(score), class
     from grades group by class
-    where min(score) < 80 order by -sum(score);
+    having min(score) < 80 order by -sum(score);
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
