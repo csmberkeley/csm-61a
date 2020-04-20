@@ -1,0 +1,47 @@
+\question
+The \textbf{level} of a tree node is the length of the path from the node to the root. We consider the root to be level 0, its immediate branches as level 1, and so on.
+
+Fill in \lstinline{search_level}, which takes in a tree \lstinline{t} and a number \lstinline{goal}, and either returns the level at which \lstinline{goal} appears in \lstinline{t}, or -1 if \lstinline{goal} does not exist in \lstinline{t}. Assume that all labels of \lstinline{t} are unique, and use the tree abstract data type definition.
+
+\begin{lstlisting}
+def search_level(t, goal):
+    """
+    >>> t = tree(1, [tree(2), tree(3, [tree(0), tree(25)])])
+    >>> search_level(t, 0)
+    2
+    >>> search_level(t, 4)
+    -1
+    """
+    def search_helper(t, level):
+
+        if ______________________________:
+
+            _____________________________
+        else:
+
+            for _________________________________:
+
+                _______________________________________
+
+                if __________________________:
+
+                    ___________________________________
+            return -1
+    return search_helper(t, 0)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def search_level(t, goal):
+    def search_helper(t, level):
+        if label(t) == goal:
+            return level
+        else:
+            for b in branches(t):
+                val = search_helper(b, level + 1)
+                if val != -1:
+                    return val
+            return -1
+    return search_helper(t, 0)
+\end{lstlisting}
+\end{solution}

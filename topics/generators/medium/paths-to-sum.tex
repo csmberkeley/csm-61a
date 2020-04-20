@@ -1,0 +1,44 @@
+\question
+Write a generator function \lstinline{paths_to_sum} that takes in a tree \lstinline{t} and a positive integer \lstinline{x}, and yields all possible paths such that the sum of the nodes on each path equals \lstinline{x}. Assume all labels of \lstinline{t} are positive integers and \lstinline{t} has at least one node.
+
+\begin{lstlisting}
+def paths_to_sum(t, x):
+    """
+    >>> t = Tree(3, [Tree(4, [Tree(1)]), Tree(2, [Tree(4), Tree(3)])])
+    >>> list(paths_to_sum(t, 8))
+    [[3, 4, 1], [3, 2, 3]]
+    >>> list(paths_to_sum(t, 5))
+    [[3, 2]]
+    """
+
+    if ____________________:
+
+        _____________________________
+    else:
+
+        for ______________________________:
+
+            for ______________________________:
+
+                ______________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def paths_to_sum(t, x):
+    if t.label == x:
+        yield [t.label]
+    else:
+        for b in t.branches:
+            for subpath in paths_to_sum(b, x - t.label):
+                yield [t.label] + subpath
+\end{lstlisting}
+
+This question is a recursive generator. The base case checks for whether the sum of currently processed nodes is correct. For the recursive call, we want to yield the label and all correct subpaths in its branches that sum to \lstinline{x - t.label} using two for loops to iterate over the generators of the branches.
+
+Some notes:
+It is important to yield \lstinline{[t.label]} as a list element, as the generator should be yielding lists!
+
+The double for-loop structure is extremely common for recursive generator problems: the first for loop iterates over the branches, while the second for loop iterates over the generators.
+
+\end{solution}

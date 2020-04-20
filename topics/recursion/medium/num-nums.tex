@@ -1,0 +1,48 @@
+\question
+Fill in \lstinline{num_nums}, which finds the number of \lstinline{d}-digit numbers with digits 1 through 9 such that digit \lstinline{x} is repeated exactly \lstinline{t} times.
+
+\begin{lstlisting}
+def num_nums(d, x, t):
+    """
+    >>> num_nums(2, 1, 2)
+    1 # only 11 satisfies criteria
+    >>> num_nums(2, 1, 1)
+    16 # 12, 13, 14, 15, 16, 17, 18, 19, 21, 31, 41, 51, 61, 71, 81, 91
+    """
+
+    if __________________ and _________________:
+
+        ______________________________________
+
+    elif _________________ and _________________:
+
+        ______________________________________
+
+    elif ____________________:
+
+        ______________________________________
+    else:
+
+        with_d_here = _______________________________________
+
+        without_d_here = ____________________________________
+        return with_d_here + without_d_here
+\end{lstlisting}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def num_nums(d, x, t):
+    if d == 0 and t > 0:
+        return 0
+    elif d == 0 and t == 0:
+        return 1
+    elif t < 0:
+        return 0
+    else:
+        with_d_here = num_nums(d - 1, x, t - 1)
+        without_d_here = 8 * num_nums(d - 1, x, t)
+        return with_d_here + without_d_here
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

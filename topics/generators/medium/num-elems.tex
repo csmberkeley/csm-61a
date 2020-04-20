@@ -1,0 +1,46 @@
+\question
+Write a generator function \lstinline{num_elems} that takes in a possibly nested list of numbers \lstinline{lst} and yields the number of elements in each nested list before finally yielding the total number of elements (including the elements of nested lists) in \lstinline{lst}. For a nested list, yield the size of the inner list before the outer, and if you have multiple nested lists, yield their sizes from left to right.
+
+\begin{lstlisting}
+def num_elems(lst):
+    """
+    >>> list(num_elems([3, 3, 2, 1]))
+    [4]
+    >>> list(num_elems([1, 3, 5, [1, [3, 5, [5, 7]]]]))
+    [2, 4, 5, 8]
+    """
+
+    count = _______________
+
+    for ___________________________:
+
+        if ________________________:
+
+            for _________________________________:
+
+                yield ___________________________
+
+            _______________________________
+        else:
+
+            _______________________________
+
+    yield ___________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def num_elems(lst):
+    count = 0
+    for elem in lst:
+        if type(elem) is list:
+            for c in num_elems(elem):
+                yield c
+            count += c
+        else:
+            count += 1
+    yield count
+\end{lstlisting}
+
+\lstinline{count} refers to the number of elements in the current list \lstinline{lst} (including the number of elements inside any nested list). Determine the value of \lstinline{count} by looping through each element of the current list \lstinline{lst}. If we have an element \lstinline{elem} which is of type \lstinline{list}, we want to yield the number of elements in each nested list of \lstinline{elem} before finally yielding the total number of elements in \lstinline{elem}. We can do this with a recursive call to \lstinline{num_elems}. Thus, we yield all the values that need to be yielded using the inner for loop. The last number yielded by this inner loop is the total number of elements in \lstinline{elem}, which we want to increase \lstinline{count} by. Otherwise, if \lstinline{elem} is not a list, then we can simply increase \lstinline{count} by 1. Finally, yield the total count of the list.
+\end{solution}
