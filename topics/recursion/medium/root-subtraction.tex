@@ -1,5 +1,5 @@
 \question
-Fill in \lstinline{root_subtraction}, which takes in a tree \lstinline{t} and returns the number resulting from subtracting all node values, except for leaves, in \lstinline{t} from the root's label value. Use the \lstinline{Tree} class definition.
+Fill in \lstinline{root_subtraction}, which takes in a tree \lstinline{t} and returns the number resulting from subtracting all node values, except for leaves, in \lstinline{t} from the root's label value. Use the \lstinline{Tree} class definition. You may not need to use all of the provided lines.
 
 \begin{lstlisting}
 def root_subtraction(t):
@@ -19,6 +19,8 @@ def root_subtraction(t):
 
             ______________________________________
 
+            ______________________________________
+
     return ___________________________
 \end{lstlisting}
 
@@ -28,7 +30,17 @@ def root_subtraction(t):
     total = t.label
     for b in t.branches:
         if not b.is_leaf():
-            total -= root_subtraction(b)
+            total -= b.label
+            total -= (b.label - root_subtraction(b))
+    return total
+\end{lstlisting}
+Alternative solution:
+\begin{lstlisting}
+def root_subtraction(t):
+    total = t.label
+    for b in t.branches:
+        if not b.is_leaf():
+            total += -2 * b.label + root_subtraction(b))
     return total
 \end{lstlisting}
 \end{solution}
