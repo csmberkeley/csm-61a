@@ -1,14 +1,17 @@
 \begin{blocksection}
 \question 
-Instead of actually studing for your finals, you decide it would be the best use of your time to determine what your "lucky shirt" is for each class. Suppose you define your lucky shirt as the shirt you wore to the midterm you did best on.
+Instead of actually studying for your finals, you decide it would be the best use of your time to determine what your "lucky shirt" is. Suppose you're pretty happy with your exam scores this semester, so you define your lucky shirt as the shirt you wore to the most exams.
 
-Write a query that will output each class and the color shirt you wore to the midterm that you scored the most points on for that class. Also output the score you got on that midterm.
+Write a query that will output the color of your lucky shirt and how many times you wore it.
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-select class, color, max(score)
+select color, count(g.day) as cnt
     from outfits as o, grades as g
-    where o.day = g.day group by class;
+    where o.day = g.day 
+    group by color
+    order by cnt desc 
+    limit 1;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
