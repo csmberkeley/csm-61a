@@ -1,0 +1,34 @@
+\question
+The \lstinline{map} function takes in a two-argument function and a list of elements, and applies that function to each element in that list. We want to define our own version of the \lstinline{map} function EXCEPT instead of applying a function to a list of elements, we want to pass in a single element and apply each function in a list of functions to that element.
+
+Define a function \lstinline{reverse-map}, which takes in a list of functions, \lstinline{operators}, and a single argument, \lstinline{arg}, and returns a list that results from applying all of the functions in \lstinline{operators} on \lstinline{arg}. You may assume that all functions in \lstinline{operators} will work properly with the single input \lstinline{arg}.
+
+\begin{lstlisting}
+; doctests
+scm> (define funcs (list (lambda (x) (- x 10)) (lambda (x) (* x 2)) (lambda (x) (integer? x))))
+funcs
+scm> (reverse-map funcs 2)
+(-8 4 #t)
+scm> (reverse-map funcs 16)
+(6 32 #t)
+
+(define (reverse-map operators args)
+
+    (if (______________________________)
+
+        _____________________________________________ \
+
+        ______________________________________________)
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (reverse-map operators args)
+    (if (null? operators)
+        nil
+        (cons ((car operators) arg) 
+            (reverse-map (cdr operators) arg)))
+)
+\end{lstlisting}
+\end{solution}
