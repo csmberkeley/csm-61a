@@ -1,0 +1,40 @@
+\question
+Implement \lstinline{argmax}, a function that takes in a list, \lstinline{lst}, and returns the index of the largest element in \lstinline{lst}. If there are two or more elements which are the largest element, return the index of the one that appears first in \lstinline{lst}.
+
+You can assume all elements of \lstinline{lst} are non-negative integers, and \lstinline{lst} has at least 1 element and no nested lists.
+
+\begin{lstlisting}
+(define (argmax lst)
+    (define (max-helper lst max-so-far max-index curr-index)
+        (cond
+
+            ((__________________) _________________________)
+
+            ((__________________) ________________________ \
+
+                ________________________________)
+
+            (else _________________________________________)
+        )
+    )
+
+    (max-helper _______________________)
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (argmax lst)
+    (define (max-helper lst max-so-far max-index curr-index)
+        (cond
+            ((null? lst) max-index)
+            ((> (car lst) max-so-far) 
+                (max-helper (cdr lst) (car lst) curr-index (+ curr-index 1)))
+            (else
+                (max-helper (cdr lst) max-so-far max-index (+ curr-index 1)))
+        )
+    )
+    (max-helper lst 0 0 0)
+)
+\end{lstlisting}
+\end{solution}

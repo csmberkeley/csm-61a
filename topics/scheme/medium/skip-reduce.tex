@@ -1,0 +1,40 @@
+\question
+In Python, the \lstinline{reduce} function takes in a two-argument function and an iterable, and applies the function to all elements in the iterable, using each result as an argument for the next application. It "reduces" an iterable into a single value.
+
+For example, calling \lstinline{reduce(lambda x, y: x + y, [1, 2, 3, 4])} will first compute \lstinline{1+2=3}, then use \lstinline{3} in the next step, \lstinline{3+3=6}, and then \lstinline{6+4=10}. Thus, the result will be \lstinline{10}.
+
+Write a function \lstinline{skip-reduce} that implements the \lstinline{reduce} function on a Scheme list, but skips every other element.
+
+\begin{lstlisting}
+; doctests
+scm> (skip-reduce (lambda (x y) (+ x y)) '())
+0
+scm> (skip-reduce (lambda (x y) (+ x y)) '(1 2 3))
+4  ; 4 = 1 + 3
+scm> (skip-reduce (lambda (x y) (+ x y)) '(1 2 3 4 5 6))
+9  ; 9 = 1 + 3 + 5
+
+(define (skip-reduce func iter)
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (skip-reduce func iter)
+    (cond
+        ((null? iter) 0)
+        ((null? (cdr iter)) (car iter))
+        (else
+            (func (car iter) 
+                (skip-reduce (cdr (cdr iter)))))
+    )
+)
+\end{lstlisting}
+\end{solution}

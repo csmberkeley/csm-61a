@@ -1,0 +1,47 @@
+\question
+\begin{parts}
+\part
+Write a function \lstinline{add-streams}, which takes in two infinite streams of integers and returns a stream where the \lstinline{i}-th element is the sum of the \lstinline{i}-th elements of the input streams.
+
+\begin{lstlisting}
+(define (add-streams s1 s2)
+
+    ____________________________________________________ \
+
+    ____________________________________________________
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (add-streams s1 s2)
+    (cons-stream (+ (car s1) (car s2))
+        (add-streams (cdr-stream s1) (cdr-stream s2)))
+)
+\end{lstlisting}
+\end{solution}
+
+\part
+Now complete the following \lstinline{define} statement for \lstinline{fib}, which should give us the Fibonacci sequence as a stream. You may use \lstinline{add-streams} from the previous part in your answer.
+
+As a reminder, the Fibonacci sequence is as follows: 0, 1, 1, 2, 3, 5, 8, ...
+
+\begin{lstlisting}
+(define fib 
+
+    _____________________________________________________ \
+
+    _____________________________________________________
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define fib
+    (cons-stream 0
+        (cons-stream 1
+            (add-streams fib (cdr-stream fib))))
+)
+\end{lstlisting}
+\end{solution}
+\end{parts}

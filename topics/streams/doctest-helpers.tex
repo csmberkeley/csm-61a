@@ -1,0 +1,17 @@
+To simplify the doctests for these problems, we will use the following helper functions. \lstinline{make_stream} constructs a finite stream with elements identical to the list we call it on. \lstinline{print_stream} returns a list with elements identical to the finite stream we call it on.
+
+\textbf{Important Note:} You may \underline{not} use these functions in any of your solutions. To reiterate, these are purely to save space in the doctests.
+
+\begin{lstlisting}
+(define (make-stream lst)
+    (if (null? lst)
+        nil
+        (cons-stream (car lst) (make-stream (cdr lst))))
+)
+
+(define (print-stream s)
+    (if (null? s)
+        nil
+        (cons (car s) (print-stream (cdr-stream s))))
+)
+\end{lstlisting}
