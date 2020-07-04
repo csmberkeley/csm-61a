@@ -1,0 +1,92 @@
+\begin{blocksection}
+\question A character tree is a tree where the characters along a path of the tree form a word (as defined in the English dictionary). A path through a tree is a list of adjacent node values that starts from any node and ends with a leaf value. 
+
+Imagine you're playing a version of Scrabble and you really want to win. Implement \texttt{scrabble\char`_tree} which takes in a character tree. The function will then find all words in the character tree and return the word with the highest value. You may use the pre-defined functions \texttt{is\char`_word(word)} and \texttt{score(word)}. You can assume that all characters in the character tree are lower cased.
+
+The function \texttt{is\char`_word(word)} returns True if word is a valid dictionary word and False otherwise. Additionally, you are given a function \texttt{score(word)}, which returns the score of word in a game of Scrabble. You do not need to worry about how these functions are implemented.
+
+\textbf{Note}: If all characters have a weight of 1, then this problem is the same as finding the longest string of the character tree.
+\end{blocksection}
+
+\begin{parts}
+\item First, implement the function \texttt{word\char`_exists}, which takes in a word \texttt{word} and a character tree \texttt{t}. The function will return \texttt{True} if characters along a path from the root of \texttt{t} to a leaf spells \texttt{word}. Otherwise, it returns \texttt{False}.
+
+\begin{lstlisting}
+def word_exists(word, t):
+    if len(word) == 1:
+        return _____________________________________
+    elif ____________________:
+        return False
+    return _____(_____________________________________________)
+
+\end{lstlisting}
+
+\item Now, implement the function \texttt{scrabble\char`_tree}. You may use the function you defined in part a, as well as the provided functions \texttt{is\char`_word(word)} and \texttt{score}. You may also want to use the built-in Python function \texttt{filter}.
+
+The function \texttt{filter} takes in a single argument function as its first parameter and a sequence as its second parameter. The function will then test which elements of the sequence is \texttt{True} using the provided function.
+
+\begin{lstlisting}
+>>> lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> evens = list(filter(lambda x: x % 2 == 0, lst))
+>>> evens
+[2, 4, 6, 8, 10]
+\end{lstlisting}
+
+Note: We have to call list on the output of filter because filter returns an object (which will be covered in a later part of this course).
+
+\newpage
+\begin{lstlisting}
+def scrabble_tree(t):
+    """
+    We assume that all characters have a score of 1.
+
+    >>> t1 = tree('h', [tree('j', [tree('i')])])
+    >>> scrabble_tree(t1)
+    'hi'
+    >>> t2 = tree('i', [tree('l', [tree('l')])])
+    >>> t3 = tree('h', [tree('i'), t2])
+    >>> scrabble_tree(t3)
+    'hill'
+    """
+    def find_all_words(t):
+        if _______________:
+            return _________________
+        all_words = []
+        for b in branches(t):
+            words_in_branch = _____________________
+            words_from_t = [___________________________________]
+            filter_from_t = ___________________________________
+            all_words = _______________________________________
+        return _________________
+    clean_words = [____________________________________________]
+    return max(_______________, key=_________________________)
+
+\end{lstlisting}
+\end{parts}
+
+\begin{solution}
+\begin{lstlisting}
+def word_exists(word, t):
+    if len(word) == 1:
+        return is_leaf(t) and word[0] == label(t)
+    if word[0] != label(t):
+        return False
+    return any([word_exists(word[1:], b) for b in branches(t)])
+
+
+def scrabble_tree(t):
+    def find_all_words(t):
+        if is_leaf(t):
+            return [label(t)]
+        all_words = []
+        for b in branches(t):
+            words_in_branch = find_all_words(b)
+            words_from_t = [label(t) + w for w in words_in_branch]
+            filter_from_t = list(filter(lambda w: word_exists(w, t), words_from_t))
+            all_words = all_words + words_in_branch + filter_from_t
+        return all_words
+    clean_words = [word for word in find_all_words(t)if is_word(word)]
+    return max(clean_words, key=lambda w: score(w))
+
+\end{lstlisting}
+\end{solution}

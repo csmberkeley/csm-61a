@@ -2,9 +2,9 @@
 \usepackage{../../commonheader}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{4}
-\title{\textsc{Data Abstraction and Trees}}
-\date{July 5, 2018}
+\discnumber{2}
+\title{\textsc{Lists and Trees}}
+\date{February 19 to February 21, 2018}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -14,9 +14,18 @@
 
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Data Abstraction}
+\section{Lists}
 \begin{questions}
-\subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+\subimport{../../topics/lists/immutable/easy/wwpd/}{simple.tex}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+\end{blocksection}
+
+\newpage
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\end{blocksection}
 \end{questions}
 
 \newpage
@@ -31,8 +40,8 @@
 \vspace{2\baselineskip}
 \subimport{../../topics/trees/adt/construct-tree/}{get-item.tex}
 \subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\newpage
 \subimport{../../topics/trees/adt/medium/}{replace-x.tex}
-\subimport{../../topics/trees/adt/hard/}{contains-n.tex}
 
 \end{questions}
 

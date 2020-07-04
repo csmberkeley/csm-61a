@@ -31,5 +31,13 @@ def skip(lst):
         return Link(lst.first)
     return Link(lst.first, skip(lst.rest.rest))
 \end{lstlisting}
+\textbf{Base cases:}
+\begin{enumerate}
+\item When the linked list is empty, we want to return a new Link.empty.
+\item If there is only one element in the linked list (aka the next element is empty), we want to return a new linked list with that single element. 
+\end{enumerate}
+\textbf{Recursive case:} \\
+All other longer linked lists can be reduced down to either a single element or empty linked list depending on whether it has odd or even length. Therefore, we want to keep the first element, and recurse on the element after the next (skipping the immediate next element with \lstinline{lst.rest.rest}). To build a new linked list, we can add new links to the end of the linked list by calling skip recursively inside the \lstinline{rest} argument of the \lstinline{Link} constructor. 
+
 \end{solution}
 \end{blocksection}

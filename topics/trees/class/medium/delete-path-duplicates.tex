@@ -12,16 +12,24 @@ def delete_path_duplicates(t):
    >>> delete_path_duplicates(t)
    >>> t
    Tree(1, [Tree(2, [Tree(-1), Tree(-1)])])
-   >>> t2 = Tree(1, [Tree(2), Tree(2, [Tree(2, [Tree(1)])])])
+   >>> t2 = Tree(1, [Tree(2), Tree(2, [Tree(2, [Tree(1, Tree(5))])])])
    >>> delete_path_duplicates(t2)
    >>> t2
-   Tree(1, [Tree(2), Tree(2, [Tree(-1, [Tree(-1)])])])
+   Tree(1, [Tree(2), Tree(2, [Tree(-1, [Tree(-1, Tree(5))])])])
    """
+    def helper(___________, ___________):
+        if ____________________________:
+            ____________________________
+        else:
+            ____________________________
+        for _______ in ________________:
+            ___________________________
+    ___________________________
+
 \end{lstlisting}
 
-\begin{solution}[2in]
+\begin{solution}
 \begin{lstlisting}
-def delete_path_duplicates(t):
     def helper(t, seen_so_far):
         if t.label in seen_so_far:
             t.label = -1

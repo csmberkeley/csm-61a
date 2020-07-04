@@ -1,0 +1,25 @@
+\begin{blocksection}
+\question Make a lambda function, \lstinline$make_interval()$, that takes in the upper and lower bound of an interval, and returns a function that takes in a value \lstinline$x$ and checks whether \lstinline$x$ is in the interval [\lstinline$lower$, \lstinline$upper$], inclusive.
+
+\begin{lstlisting}
+>>> make_interval = _____________________________________
+>>> in_interval = make_interval(-1, 2)
+>>> in_interval(0)
+True
+>>> in_interval(61)
+False
+
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+>>> make_interval = lambda lower, upper: lambda x: x <= upper and x >= lower
+>>> in_interval = make_interval(-1, 2)
+>>> in_interval(0)
+True
+>>> in_interval(61)
+False
+
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

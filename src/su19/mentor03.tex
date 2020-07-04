@@ -1,9 +1,9 @@
 \documentclass{exam}
-\usepackage{../commonheader}
+\usepackage{../../commonheader}
 
 \discnumber{3}
 \title{Recursion and Tree Recursion}
-\date{July 2, 2018}
+\date{July 8, 2019}
 
 \begin{document}
 \maketitle
@@ -11,14 +11,16 @@
 \section{Recursion}
 \subimport{../../topics/recursion/text/}{introduction.tex}
 \begin{questions}
-\subimport{../../topics/recursion/easy/}{wrong-factorial.tex}
-\subimport{../../topics/recursion/easy/}{all-true.tex}
-\clearpage
-\subimport{../../topics/recursion/medium/}{is-sorted.tex}
+\subimport{../../topics/recursion/}{combine.tex}
 \newpage
-\subimport{../../topics/recursion/medium/env-diagram/}{foobar1.tex}
-\clearpage
-\subimport{../../topics/recursion/medium/}{add-up.tex}
+\subimport{../../topics/recursion/medium/}{replace.tex}
+
+% Tree Recursion
+\newpage
+\subimport{../../topics/recursion/medium/}{mario-number.tex}
+\subimport{../../topics/recursion/}{copy-machine1.tex}
+\newpage
+\subimport{../../topics/recursion/}{copy-machine2.tex}
 \end{questions}
 
 \end{document}

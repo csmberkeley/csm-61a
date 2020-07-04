@@ -42,5 +42,17 @@ def fizzbuzz(n):
             print(i)
         i += 1
 \end{lstlisting}
+We must put the condition \lstinline{i % 3 == 0 and i % 5 == 0} in the first \lstinline{if}. For example, if we were to write the body of the while loop with the first two conditions switched.
+   \begin{lstlisting}
+        if i % 3 == 0:
+            print('fizz')
+        elif i % 3 == 0 and i % 5 == 0:
+            print('fizzbuzz')
+        elif i % 5 == 0:
+            print('buzz')
+        else:
+            print(i)
+   \end{lstlisting}
+   then we may print out 'fizz' for a number like 15 which would be incorrect.
 \end{solution}
 \end{blocksection}

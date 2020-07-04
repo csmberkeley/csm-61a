@@ -1,0 +1,40 @@
+Call expressions follow \textit{prefix} notation, i.e.
+\texttt{(<operator> <operand1> <operand2> … <operandN>)}
+
+Evaluating a call expressions closely mirrors Python:
+Evaluate the operator, yielding a procedure p
+Evaluate each operand, each yielding a value argi
+Apply the procedure p with arguments arg1, arg2, …, argN
+
+Special forms \textit{look} like call expressions but aren’t -- they implement Scheme language features and follow special evaluation rules (e.g., short-circuiting). 
+
+(Aside: Note that you’re free to use a special form name as a variable name, but the name will be looked up \textit{only} in a non-operator position; when used as an operator, it will always refer to the original special form.)
+
+\textbf{Notable Special Forms:}
+\begin{center}
+\begin{tabular}{ |c|c| }
+    \hline
+    behavior & syntax \\
+    \hline
+    variable assignment   & \texttt{(define <variable-name> <value>)} \\
+    \hline
+    function defining & \texttt{(define (<function> <op1>...<opN>) <body>)} \\
+    \hline
+    if / else & \texttt{(if <condition> <true-expr> <else-expr>)} \\
+    \hline
+    if / elif / else & \texttt{(cond (<cond1> <expr1>) ... (else <else-expr>))} \\
+    \hline
+    and & \texttt{(and <operand1> … <operandN>)} \\
+    \hline
+    or & \texttt{(or <operand1> … <operandN>)} \\
+    \hline
+    quote & \texttt{(quote <operand1>)} \\
+    \hline
+    begin & \texttt{(begin <expr1> <expr2> … <exprN>)} \\
+    \hline
+    lambdas & \texttt{(lambda (<operand1> … <operandN>) <body>)} \\
+    \hline
+    let / execute many lines & \texttt{(let ((<var1> <val1>) … (<varN> <valN>)) body)} \\
+    \hline
+\end{tabular}
+\end{center}

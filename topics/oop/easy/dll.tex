@@ -1,0 +1,99 @@
+\begin{blocksection}
+\question The \lstinline{DLList} class is a spin off of the normal Linked List which we learned in class. A \lstinline{DLList} also has a \lstinline{prev} instance variable that keeps track of what is before the \lstinline{DLList}, in addition to its \lstinline{next} variable which keeps track of the rest of the DLList. Help fill in the methods \lstinline{add_last} and \lstinline{add_first} in the \lstinline{DLList} class below! (You might not need to use all lines.)
+
+\begin{lstlisting}
+class DLList:
+  """
+  >>> lst = DLList(6, DLList(1))
+  >>> lst.value
+  6
+  >>> lst.next.value
+  1
+  >>> lst.prev.value
+  AttributeError: 'NoneType' object has no attribute 'value'
+  """
+  empty = None
+  def __init__(self, value, next=empty, prev=empty):
+    ____________________________
+    ____________________________
+    ____________________________
+    ____________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def __init__(self, value, next=empty, prev=empty):
+  self.value = value
+  self.next = next
+  self.prev = prev
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+  def add_last(self, value):
+    """
+    >>> lst = DLList(6)
+    >>> lst.add_last(1)
+    >>> lst.value
+    6
+    >>> lst.next.value
+    1
+    >>> lst.next.prev.value
+    6
+    """
+    pointer = self
+    while __________:
+      ________________
+    _______________ = DLList(_______, ________, _________)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def add_last(self, value):
+  pointer = self
+  while pointer.next != DLList.empty:
+    pointer = pointer.next
+  pointer.next = DLList(value, DLList.empty, pointer)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+  def add_first(self, value):
+    """
+    >>> lst = DLList('A')
+    >>> lst.add_first(1)
+    >>> lst.value
+    1
+    >>> lst.next.value
+    'A'
+    >>> lst.next.prev.value
+    1
+    >>> lst.add_first(6)
+    >>> lst.value
+    6
+    >>> lst.next.next.prev.value
+    1
+    """
+    ____________ = DLList(______, ________, _______)
+    ______________ = _____________
+    ______________ = _____________
+    if ______________:
+      ___________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def add_first(self, value):
+  old_first = DLList(self.value, self.next, self)
+  self.value = value
+  self.next = old_first
+  if old_first.next != DLList.empty:
+    old_first.next.prev = old_first
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
