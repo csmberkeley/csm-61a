@@ -1,0 +1,32 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Introduction to Scheme}}
+\date{March 30, 2020 - April 1, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subimport{../../topics/scheme/text/}{scheme-basics-overview.tex}
+\begin{questions}
+\section{What Would Scheme Print?}
+\subimport{../../topics/scheme/easy/wwsd/}{basics.tex}
+
+\section{Code Writing in Scheme}
+\subimport{../../topics/scheme/easy/}{hailstone.tex}
+\section{Scheme Lists}
+\subimport{../../topics/scheme/text/}{scheme-lists-overview.tex}
+\newpage
+\subimport{../../topics/scheme/easy/wwsd/}{lists_nodots.tex}
+
+\section{More Code Writing in Scheme}
+\subimport{../../topics/scheme/medium/}{waldo.tex}
+\end{questions}
+
+\end{document}

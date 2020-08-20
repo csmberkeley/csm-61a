@@ -1,0 +1,65 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{\textsc{Final Review}}
+\date{April 27, 2020 - April 29, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{env-prog.tex}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{spooky-list.tex}
+\end{questions}
+\newpage
+
+\section{Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{positionizer.tex}
+\end{questions}
+\newpage
+
+\section{OOP}
+\begin{questions}
+\subimport{../../topics/oop/easy/}{dll.tex}
+\end{questions}
+\newpage
+
+\section{Trees}
+\begin{questions}
+\subimport{../../topics/trees/class/medium/}{weighted-tree.tex}
+\subimport{../../topics/interview/}{rot.tex}
+\end{questions}
+
+\section{Generators}
+\begin{questions}
+\subimport{../../topics/generators/easy/}{list-gen.tex}
+\subimport{../../topics/generators/easy/}{iter-link.tex}
+\end{questions}
+
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/tail-recursion/medium/}{filter-nested.tex}
+\newpage
+\subimport{../../topics/macros/final-review/}{decorators.tex}
+\subimport{../../topics/streams/scheme/medium/}{puns.tex}
+\end{questions}
+
+\section{SQL}
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+\newpage
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
+
+\begin{questions}
+\subimport{../../topics/sql/fish/medium/}{competitor.tex}
+\subimport{../../topics/sql/fish/medium/}{yearly-pop-mutative.tex}
+\end{questions}
+\end{document}

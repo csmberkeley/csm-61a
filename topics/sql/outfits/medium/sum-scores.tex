@@ -1,0 +1,14 @@
+\begin{blocksection}
+\question 
+You want to find out which classes you need to prepare for the most by determining how many points you have so far. However, you only want to do so for classes where you did relatively poorly
+
+Write a query that will output the sum of your midterm scores for each class along with the corresponding class, but only for classes in which you scored less than 80 points on at least one midterm. List the output from highest to lowest total score.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+select sum(score), class
+    from grades group by class
+    having min(score) < 80 order by -sum(score);
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,173 @@
+\question
+\begin{parts}
+\part
+Write a function \lstinline{contains-stream}, which takes in a finite stream of integers \lstinline{s} and an integer \lstinline{elem}, and returns true if \lstinline{elem} is in \lstinline{s}; otherwise, return false.
+
+\begin{lstlisting}
+(define (contains-stream s elem)
+    (cond
+
+        (_________________________________________________)
+
+        (_________________________________________________)
+
+        (else ____________________________________________)
+    )
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (contains-stream s elem)
+    (cond
+        ((null? s) #f)
+        ((= (car s) elem) #t)
+        (else (contains-stream (cdr-stream s) elem))
+    )
+)
+\end{lstlisting}
+\end{solution}
+\newpage
+
+\part
+Now, let's write a function \lstinline{pairer}, which takes in a finite stream of integers \lstinline{s} and a two-argument boolean function \lstinline{condition}. \lstinline{pairer} should return a new stream, where each element is a length 2 list of elements of \lstinline{s}; call these elements \lstinline{X} and \lstinline{Y}. \lstinline{(X Y)} should appear in the returned stream if \lstinline{(condition X Y)} returns true and \lstinline{Y} is either in the same position or appears later than \lstinline{X} in \lstinline{s}. Finally, \lstinline{X} can be the first element of a list in the returned stream at most once, including duplicates.
+
+You may use \lstinline{contains-stream} from the previous part in your answer.
+
+\begin{lstlisting}
+; doctests
+scm> (define (mult-four x y) (= (remainder (+ x y) 4) 0))
+mult-four
+scm> (define s (make-stream '(1 2 1 3 5)))
+s
+scm> (define final-stream (pairer s mult-four))
+final-stream
+scm> (car final-stream)
+(1 3)
+scm> (car (cdr-stream final-stream))
+(2 2)
+scm> (car (cdr-stream (cdr-stream final-stream)))
+(3 5)
+; note: final-stream omits the 2nd (1 3) because 1 already appears as the 1st element of a list
+\end{lstlisting}
+
+Problem continues on the next page. You may not need to use all of the provided lines.
+\newpage
+
+\begin{lstlisting}
+(define (pairer s condition)
+    (define (pair-helper s copy firsts)
+        (cond
+            ((null? s) nil)
+
+            ((null? copy) ________________________________)
+
+            ((____________________________________________)
+            
+                _________________________________________ \
+
+                _________________________________________ \
+
+                __________________________________________)
+
+            ((____________________________________________)
+
+                _________________________________________ \
+
+                __________________________________________)
+
+            (else ________________________________________)
+        )
+    )
+
+    (pair-helper ___________________________________)
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (pairer s condition)
+    (define (pair-helper s copy firsts)
+        (cond
+            ((null? s) nil)
+            ((null? copy) (pair-helper (cdr-stream s) (cdr-stream s) firsts))
+            ((and (not (contains-stream firsts (car s))) (condition (car s) (car copy))) 
+                (cons-stream (list (car s) (car copy)) 
+                    (pair-helper (cdr-stream s) 
+                        (cdr-stream s) 
+                        (cons-stream (car s) firsts))))
+            ((not (contains-stream firsts (car s))) 
+                (pair-helper s (cdr-stream copy) firsts))
+            (else (pair-helper (cdr-stream s) (cdr-stream s) firsts))
+        )
+    )
+    (pair-helper s s nil)
+)
+\end{lstlisting}
+\end{solution}
+\newpage
+
+\part
+Finally, write a function \lstinline{filter-stream}, which takes in a finite stream of integers \lstinline{s}, a list of integers \lstinline{lst}, and a two-argument boolean function \lstinline{condition}. \lstinline{filter-stream} should return a stream of two-element lists, as in part (b), except that a list \lstinline{(X Y)} should only be included in the returned stream if \lstinline{X} is in \lstinline{lst}. The lists in the returned stream do not need to be in the same order as they appear in the stream returned by a call to \lstinline{pairer}.
+
+You may use \lstinline{pairer} from the previous part in your answer. You may not need to use all of the provided lines.
+
+\begin{lstlisting}
+; doctests
+scm> (define (mult-four x y) (= (remainder (+ x y) 4) 0))
+mult-four
+scm> (define s (make-stream '(1 2 1 3 5)))
+s
+scm> (print-stream (pairer s mult-four))
+((1 3) (2 2) (3 5))
+scm> (print-stream (filter-stream s '(1 2) mult-four))
+((1 3) (2 2))
+
+(define (filter-stream s lst condition)
+    (define (filter-helper s copy lst)
+        (cond
+
+            ((____________________________) ______________)
+
+            ((null? copy) _______________________________ \
+
+                __________________________________________)
+
+            ((____________________________________________)
+
+                _________________________________________ \
+
+                __________________________________________)
+
+            (else _______________________________________ \
+
+                __________________________________________)
+        )
+    )
+    (filter-helper _______________________________________)
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (filter-stream s lst condition)
+    (define (filter-helper s copy lst)
+        (cond
+            ((or (null? s) (null? lst)) nil)
+            ((null? copy) 
+                (filter-helper (cdr-stream s) 
+                    (cdr-stream s) lst))
+            ((= (car (car copy)) (car lst)) 
+                (cons-stream (car copy) 
+                    (filter-helper (cdr-stream s) 
+                        (cdr-stream s) (cdr lst))))
+            (else (filter-helper s (cdr-stream copy) lst))
+        )
+    )
+    (filter-helper (pairer s condition) 
+        (pairer s condition) lst)
+)
+\end{lstlisting}
+\end{solution}
+
+\end{parts}

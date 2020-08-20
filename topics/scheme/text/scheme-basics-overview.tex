@@ -18,7 +18,7 @@ Evaluation of a call expression progresses so:
 \newpage 
 
 \textbf{If Expression: }
-The if keyword is similar to if/else statements in Python. It works as follows:
+The \lstinline{if} keyword is similar to \lstinline{if}/\lstinline{else} statements in Python. It works as follows:
 
 \begin{lstlisting}
 (if <predicate> <do if true> <do if false>)
@@ -33,14 +33,14 @@ else:
     <do if false>
 \end{lstlisting}
 
-Note that in Python, the if is a statement where as in Scheme, the if is an expression and evaluates to a value like any other expression would. This means that in Scheme you could write something like this where the if expression can be placed as an operand in a function call expression:
+Note that in Python, \lstinline{if} is a statement whereas in Scheme, \lstinline{if} is an expression and evaluates to a value like any other expression would. This means that in Scheme you could write something like this where the \lstinline{if} expression can be placed as an operand in a function call expression:
 
 \begin{lstlisting}
 scm> (+ 1 (if #t 9 99))
 10
 \end{lstlisting}
 
-Just like in Python, the \lstinline{<do if false>} (in Python this would be the equivalent to the else clause) is optional. If there is no \lstinline{<do if false>} and the \lstinline{<predicate>} evaluates to false then the if expression evaluates to \lstinline{undefined}.
+Just like in Python, the \lstinline{<do if false>} (in Python this would be the equivalent to the else clause) is optional. If there is no \lstinline{<do if false>} and the \lstinline{<predicate>} evaluates to false then the \lstinline{if} expression evaluates to \lstinline{undefined}.
 
 \vspace{4mm}
 

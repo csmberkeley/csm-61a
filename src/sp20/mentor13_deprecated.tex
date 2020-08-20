@@ -1,0 +1,42 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{11}
+\title{\textsc{Streams and Introduction to SQL}}
+\date{April 20, 2020 - April 22, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Streams}
+\begin{questions}
+\subimport{../../topics/streams/}{basic.tex}
+\newpage
+\subimport{../../topics/streams/scheme/easy/}{wwsd.tex}
+\subimport{../../topics/streams/scheme/easy/}{double-naturals.tex}
+\subimport{../../topics/streams/scheme/easy/}{interleave.tex}
+\end{questions}
+
+\section{More Scheme}
+\begin{questions}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\newpage
+\subimport{../../topics/macros/final-review/}{cond-questions.tex}
+\newpage
+\end{questions}
+
+
+\section{Intro to SQL: Creating Tables, Querying Data}
+\subimport{../../topics/sql/mentors/}{table.tex}
+\begin{questions}
+\subimport{../../topics/sql/mentors/}{create-table.tex}
+\subimport{../../topics/sql/mentors/easy/}{food-if-color-green.tex}
+\subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+\subimport{../../topics/sql/mentors/medium/}{pairs-same-language.tex}
+\end{questions}
+
+\end{document}

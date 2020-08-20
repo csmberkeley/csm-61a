@@ -1,0 +1,41 @@
+\question
+Write a generator function \lstinline{in_order} that takes in a possibly nested list of integers \lstinline{lst} and yields its integer elements in ascending order as a single non-nested list. You may find the built-in \lstinline{sorted} function useful, which takes in a list of \textit{integers} and returns a sorted list.
+
+\begin{lstlisting}
+def in_order(lst):
+    """
+    >>> l1 = [[3, 4, 2], [1, 7, 4]]
+    >>> list(in_order(l1))
+    [1, 2, 3, 4, 4, 7]
+    >>> l2 = [2, [3], [1, [8], 4]]
+    >>> list(in_order(l2))
+    [1, 2, 3, 4, 8]
+    """
+    order = []
+
+    for __________________________:
+
+        if ____________________________:
+
+            ___________________________________
+        else:
+
+            ___________________________________
+
+    ____________________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def in_order(lst):
+    order = []
+    for elem in lst:
+        if isinstance(elem, list):
+            order.extend(list(in_order(elem)))
+        else:
+            order.append(elem)
+    yield from sorted(order)
+\end{lstlisting}
+
+
+\end{solution}

@@ -1,18 +1,15 @@
 \begin{blocksection}
-\question
-\textbf{let} is a special form in Scheme which allows you to create local bindings. Consider the example 
+\textbf{let} is a special form in Scheme which allows you to create local bindings. Consider the following example:
 \newline
-\newline
-\texttt{(let ((x 1)) (+ x 1))}
-\newline
-\newline
+\begin{lstlisting}
+(let ((x 1)) (+ x 1))
+\end{lstlisting}
 Here, we assign \texttt{x} to \texttt{1}, and then evaluate the expression \texttt{(+ x 1)} using that binding, returning \texttt{2}. However, outside of this expression, \texttt{x} would not be bound to anything. \\
-Each \texttt{let} special form has a corresponding lambda equivalent. The equivalent lambda expression for the above example is 
-\newline
-\newline
-\texttt{((lambda (x) (+ x 1)) 1)}
-\newline
-\newline
+Each \texttt{let} special form has a corresponding lambda equivalent. The equivalent lambda expression for the above example is: 
+\begin{lstlisting}
+((lambda (x) (+ x 1)) 1)
+\end{lstlisting}
+\question
 The following line of code does not work. Why? Write the lambda
 equivalent of the \texttt{let} expressions.
 
@@ -21,7 +18,9 @@ equivalent of the \texttt{let} expressions.
       (bar (+ foo 2)))
     (+ foo bar))
 \end{lstlisting}
-\begin{solution}[0.5in]
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}
 The above function will error because it is equivalent to:
 \begin{lstlisting}
 ((lambda (foo bar) (+ foo bar)) 3 (+ foo 2))
@@ -36,6 +35,7 @@ will call a function to start a new frame).
 If we had the line \texttt{(define foo 3)} before the call to let, then it would
 return 8, because within let, foo would be 3 and bar would be \texttt{(+ 3 2)},
 since it would use the foo in the Global frame.
-\end{solution}
 
+Another way to think about why this code errors is to recall that \texttt{let} assigns all local bindings simultaneously. Hence, \texttt{foo} has not yet been defined when \texttt{bar} attempts to reference it.
+\end{solution}
 \end{blocksection}

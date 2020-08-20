@@ -1,10 +1,10 @@
 \begin{blocksection}
-\question Lets use OOP to help us implement our good friend, the ping-pong sequence!
+\question Let's use OOP to help us implement our good friend, the ping-pong sequence!
 
 As a reminder, the ping-pong sequence counts up starting from 1 and is
 always either counting up or counting down.
 
-At element k, the direction switches if k is a multiple of 7 or contains the
+At element \lstinline{k}, the direction switches if \lstinline{k} is a multiple of 7 or contains the
 digit 7.
 
 The first 30 elements of the ping-pong sequence are listed below, with direction
@@ -17,8 +17,7 @@ elements:
 
 Assume you have a function \texttt{has\_seven(k)} that returns True if $k$ contains the digit 7.
 
-\vspace{2\baselineskip}
-\begin{nonsol}
+\vspace{1\baselineskip}
 \begin{lstlisting}
 >>> tracker1 = PingPongTracker()
 >>> tracker2 = PingPongTracker()
@@ -39,8 +38,9 @@ class PingPongTracker:
 
     def next(self):
 \end{lstlisting}
-\end{nonsol}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{solution}[0.3in]
 \begin{lstlisting}
 class PingPongTracker:

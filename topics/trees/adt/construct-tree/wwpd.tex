@@ -1,33 +1,31 @@
 \begin{blocksection}
-\question What do the following expressions evaluate to?
+\question Let \texttt{t} be the tree depicted above. What do the following expressions evaluate to?
 If the expressions evaluates to a tree, format your answer as
 \lstinline{tree(... , ...)}. 
-(Note that the python interpreter wouldn't display trees like this.
-We ask you to do this in order to think about trees as an ADT 
-instead of worrying about their implementation.)
+(Note that the Python interpreter wouldn't display trees like this. This is just so you think about trees as an ADT instead of worrying about their implementation.)
 
 \begin{lstlisting}
 >>> label(t)
 \end{lstlisting}
 \begin{solution}[.25in]
-9
+4
 \end{solution}
 
 \begin{lstlisting}
->>> branches(t)[2]
+>>> branches(t)[1]
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-tree(4, [tree(7), tree(3)])
+tree(2, [tree(2), tree(1)])
 \end{lstlisting}
 \end{solution}
 
 \begin{lstlisting}
->>> branches(branches(t)[2])[0]
+>>> branches(branches(t)[1])[1]
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
-tree(7)
+tree(1)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

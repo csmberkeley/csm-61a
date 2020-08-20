@@ -1,52 +1,54 @@
 \begin{blocksection}
-\question Let \texttt{n} be a sequence of coins, each with a value represented as an integer. That is, each digit of \texttt{n} is a coin. There are two players who alternate turns each picking either the last coin (the rightmost digit) or both the last and the second to last coin in an attempt to get the largest score in the end. 
+\question Suppose a game is defined as follows: let \texttt{lst} be a list of coins, each coin represented as a positive integer (ex: 1, 5, 10, 25). Two players take turns claiming either the last coin in \texttt{lst}, or both the last \textit{and} the second to last coin; after \texttt{lst} is exhausted, whichever player has the higher score wins. Fill in the function such that it returns the highest score that the first player (\texttt{player = True}) can get in this game if the second player (\texttt{player = False}) plays optimally. 
 
-The purpose of this function is to return the highest score the first player (\texttt{player = True}) can get in this game if the other player (\texttt{player = False}) plays optimally. \\
+\textbf{Hint:} a player's choice is considered \textit{optimal} if it maximizes their own score and minimizes the opponent's score.  \\
 
 \begin{lstlisting}
-def coin_game(n, player = True):
-    if _____________________ and _____________________:
+def coin_game(lst, player):
+    """
+    >>> coin_game([1], True) // 1
+    1
+    >>> coin_game([1, 5, 25], True) // 25 + 5
+    30
+    >>> coin_game([1, 5, 10, 1, 5, 25], True) // 25 + 1 + 10
+    36
+    """
+    if _____________________ and player:
 
-        return n			
+        return _____________________________			
+    elif ___________________ and not player:		
 
-    elif ___________________ and _____________________:		
-
-        return 0			
-
+        return _____________________________			
     else:
+	if player:			
+            last = _____________________________________			
+            second_to_last = ___________________________
 
-	if ___________________________________________:			
+            return _______________________________________ \
 
-            last = ___________________________________			
-
-            second_to_last = (n % 100 - last) // 10
-
-
-            return max(_______________________________, \
-
-		       _______________________________)
-
+               _____________________________________________
         else:	
+            return _______________________________________ \
 
-            return min(________________, _________________)
-
+               _____________________________________________
 \end{lstlisting}
-
-\begin{solution}[1in]
-\begin{lstlisting}:
-    if n < 10 and player:
-        return n
-    elif n < 10 and not player:
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}[0in]
+\begin{lstlisting}
+def coin_game(lst, player):
+    if len(lst) <= 2 and player:
+        return sum(lst)
+    elif len(lst) <= 2 and not player:
         return 0
     else:
         if player:
-            last = n % 10
-            second_to_last = (n % 100 - last) // 10
-            return max(coin_game(n // 10, not player) + last, \
-                       coin_game(n // 100, not player) + last + second_to_last_)
+            last = lst[len(lst) - 1]
+            second_to_last = lst[len(lst) - 2]
+            return max(coin_game(lst[:len(lst) - 1], not player) + last, coin_game(lst[:len(lst) - 2], not player) + last + second_to_last)
         else:
-            return min(coin_game(n // 10), coin_game(n // 100))
-
+            return min(coin_game(lst[:len(lst) - 1]), coin_game(lst[:len(lst) - 2]))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+

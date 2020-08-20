@@ -1,0 +1,26 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{\textsc{Final Review: Streams}}
+\date{April 20, 2020 - April 24, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subimport{../../topics/streams/}{doctest-helpers.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/streams/scheme/medium/}{truthful-stream.tex}
+\newpage
+\subimport{../../topics/streams/scheme/medium/}{coalesce.tex}
+\newpage
+\subimport{../../topics/streams/scheme/easy/}{add-streams.tex}
+\newpage
+\subimport{../../topics/streams/scheme/hard/}{pairer.tex}
+\end{questions}
+\end{document}

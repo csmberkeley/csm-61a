@@ -1,0 +1,49 @@
+\begin{blocksection}
+\question What will Scheme output?
+
+\begin{lstlisting}
+scm> (define boom1 (/ 1 0))
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: Zero Division
+
+Unlike Python, when we define in Scheme, we have to evaluate the body expression and bind it to the name boom1. Evaluating the body gives us an error.
+\end{solution}
+
+\begin{lstlisting}
+scm> (define boom2 (lambda () (/ 1 0)))
+\end{lstlisting}
+\begin{solution}[0.25in]
+boom2
+
+We are defining another variable boom2. The value of boom2 is a lambda expression. Note that since boom2 is only being defined, not called, we do not evaluate the body of the lambda expression. So, this line will return the function name, boom2.
+\end{solution}
+
+\begin{lstlisting}
+scm> (boom2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Error: Zero Division
+
+Now we are trying to call the function boom2, and so we are evaluating the body of the lambda expression. This expression is (/ 1 0), so just as we had before, we get an error from attempting to divide by 0.
+\end{solution}
+
+\begin{parts}
+\part
+Why/How are the two \lstinline{boom} definitions above different?
+\begin{solution}[0.5in]
+The first line is setting boom1 to be equal to the value \texttt{(/ 1 0)}, which
+turns out to be an error. On the other hand, boom2 is defined as a lambda that
+takes in no arguments that, when called, will evaluate \texttt{(/ 1 0)}.
+\end{solution}
+
+\part
+How can we rewrite \lstinline{boom2} without using the \lstinline{lambda} operator?
+\begin{solution}[0.5in]
+\begin{lstlisting}
+(define (boom2) (/ 1 0))
+\end{lstlisting}
+boom2’s initial definition defines a variable that evaluates to a function. Instead, let’s define boom2 as a function. When we do this, then the body of the function is not evaluated upon definition, but rather, when we call the function.
+\end{solution}
+\end{parts}
+\end{blocksection}

@@ -1,66 +1,44 @@
 \begin{blocksection}
-\question Implement the function \texttt{make\char`_change}. You may not need to use all the lines.\\
+\question 
+Implement the function \lstinline{make_change}, which takes in a non-negative integer amount \lstinline{n} and returns the minimum number of coins needed to make change for \lstinline{n} using 1-cent, 3-cent, and 4-cent coins.
 
 \begin{lstlisting}
 def make_change(n):
-    """Write a function, make_change that takes in an
-    integer amount, n, and returns the minimum number
-    of coins we can use to make change for that n, 
-    using 1-cent, 3-cent, and 4-cent coins. 
-    >>> make_change(5)
+    """
+    >>> make_change(5) # 5 = 4 + 1 (not 3 + 1 + 1)
     2
-    >>> make_change(6) # tricky! Not 4 + 1 + 1 but 3 + 3
+    >>> make_change(6) # 6 = 3 + 3 (not 4 + 1 + 1)
     2
     """
-    if _____________:
+
+    if _____________________:
         return 0
-    elif ______________:
-        return ____________________________
-    elif ______________:
+
+    elif ___________________:
+
         ___________________________________
+
+    elif ___________________:
+
         ___________________________________
-        return ____________________________
     else:
-        ___________________________________
-        ___________________________________
-        ___________________________________
-        return ____________________________
 
-
+        ___________________________________
 \end{lstlisting}
-
 \end{blocksection}
-% \pagebreak
-% \pagebreak
-\\ \\
-\begin{blocksection}
 
+\begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
 def make_change(n):
-    """Write a function, make_change that takes in an
-    integer amount, n, and returns the minimum number
-    of coins we can use to make change for that n, 
-    using 1-cent, 3-cent, and 4-cent coins. 
-    Look at the doctests for more examples.
-    >>> make_change(5)
-    2
-    >>> make_change(6) # tricky! Not 4 + 1 + 1 but 3 + 3
-    2
-    """
-    if n < 1:
+    if n == 0:
         return 0
     elif n < 3:
-        return 1 + make_change(n - 1) # (return n) is also fine
+        return 1 + make_change(n - 1)
     elif n < 4:
-        use_1 = 1 + make_change(n - 1)
-        use_3 = 1 + make_change(n - 3)
-        return min(use_1, use_3)
+        return 1 + min(make_change(n - 1), make_change(n - 3))
     else:
-        use_1 = 1 + make_change(n - 1)
-        use_3 = 1 + make_change(n - 3)
-        use_4 = 1 + make_change(n - 4)
-        return min(use_1, use_3, use_4)
+        return 1 + min(make_change(n - 1), make_change(n - 3), make_change(n - 4))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

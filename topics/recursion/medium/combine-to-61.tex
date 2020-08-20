@@ -1,0 +1,52 @@
+\begin{blocksection}
+\question
+Fill in \lstinline{combine_to_61}, which takes in a list of positive integers and returns \lstinline{True} if a contiguous sublist (i.e. a sublist of adjacent elements) combine to 61. You can \textbf{combine} two adjacent elements by either summing them or multiplying them together. If there is no combination of summing and multiplying that equals 61, return \lstinline{False}.
+
+\begin{lstlisting}
+def combine_to_61(lst):
+    """
+    >>> combine_to_61([3, 4, 5])
+    False # no combination will produce 61
+    >>> combine_to_61([2, 6, 10, 1, 3])
+    True # 61 = 6 * 10 + 1
+    >>> combine_to_61([2, 6, 3, 10, 1])
+    False # elements must be contiguous
+    """
+
+    def helper(lst, num_so_far):
+
+        if _______________________________:
+            return True
+
+        elif _____________________________:
+            return False
+
+        with_sum = _________________________ and \
+
+            helper(________________, __________________)
+
+        with_mul = _________________________ and \
+
+            helper(________________, __________________)
+        return with_sum or with_mul
+
+    return _____________________________
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def combine_to_61(lst): 
+    def helper(lst, num_so_far): 	
+        if num_so_far == 61: 
+            return True 
+        elif not lst: 
+            return False 
+        with_sum = num_so_far + lst[0] <= 61 and helper(lst[1:], num_so_far + lst[0]) 
+        with_mul =  num_so_far * lst[0] <= 61 and helper(lst[1:], num_so_far * lst[0]) 
+        return with_sum or with_mul 
+    return helper(lst, 0)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

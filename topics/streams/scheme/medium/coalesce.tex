@@ -1,0 +1,111 @@
+\question
+\begin{parts}
+\part
+Define a function \lstinline{sum-partial} which returns the sum of the first \lstinline{n} elements of a stream \lstinline{s}. You may assume the length of \lstinline{s} is at least \lstinline{n}.
+
+\begin{lstlisting}
+; doctests
+scm> (define s (make-stream '(1 2 3 4 5 6 7 8)))
+s
+scm> (sum-partial s 0)
+0
+scm> (sum-partial s 2)
+3  ; 3 = 1 + 2
+scm> (sum-partial s 3)
+6  ; 6 = 1 + 2 + 3
+
+(define (sum-partial s n)
+
+    (if __________________________
+
+        ____________________________________________
+
+        ____________________________________________)
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (sum-partial s n)
+    (if (= n 0)
+        0
+        (+ (car s) (sum-partial (cdr-stream s) (- n 1)))
+    )
+)
+\end{lstlisting}
+\end{solution}
+
+\part
+Now define a function \lstinline{strip} which takes in a stream \lstinline{s} and a non-negative integer \lstinline{n}, and returns the result of removing the first \lstinline{n} elements from the front of \lstinline{s}. You may assume that \lstinline{n} is less than or equal to the length of \lstinline{s} if it is finite.
+
+\begin{lstlisting}
+; doctests
+scm> (define s (make-stream '(1 2 3 4 5 6 7)))
+s
+scm> (print-stream (strip s 0))
+(1 2 3 4 5 6 7)
+scm> (print-stream (strip s 4))
+(5 6 7)
+scm> (print-stream (strip s 7))
+()
+
+(define (strip s n)
+
+    (if __________________________
+
+        ____________________________________________
+
+        ____________________________________________)
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (strip s n)
+    (if (= n 0)
+        s
+        (strip (cdr-stream s) (- n 1)))
+)
+\end{lstlisting}
+\end{solution}
+
+\part
+Finally, define a function \lstinline{coalesce} which takes in a stream \lstinline{s} and a non-negative integer \lstinline{n}, and returns a new stream such that the first element of the resultant stream is the sum of the first \lstinline{n} elements of \lstinline{s}, the second element is the sum of the next \lstinline{n} elements, etc. If \lstinline{s} is finite, you may assume that its length will be a multiple of \lstinline{n}. You may use the functions from the previous parts in your answer.
+
+\begin{lstlisting}
+; doctests
+scm> (define s (make-stream '(1 2 3 4 5 6 7 8)))
+s
+scm> (car (coalesce s 2))
+3
+scm> (define c2 (coalesce s 4))
+c2
+scm> (car c2)
+10  ; 10 = 1 + 2 + 3 + 4
+scm> (car (cdr-stream c2))
+26  ; 26 = 5 + 6 + 7 + 8
+scm> (print-stream (cdr-stream (cdr-stream c2)))
+()
+scm> (define ones (cons-stream 1 ones))  ; infinite stream of 1s
+ones
+scm> (define c3 (coalesce ones 7))
+c3
+scm> (car c3)
+7  ; 7 = 1 + 1 + 1 + 1 + 1 + 1 + 1
+scm> (cdr-stream c3)
+(7 . #[promise (not forced)])
+
+(define (coalesce s n)
+
+    ________________________________________________
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define (coalesce s n)
+    (cons-stream (sum-partial s n) (coalesce (strip s n) n))
+)
+\end{lstlisting}
+\end{solution}
+\end{parts}

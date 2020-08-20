@@ -1,0 +1,61 @@
+\question
+Given 2 finite streams of integers, \lstinline{s1} and \lstinline{s2}, and a finite stream of booleans, \lstinline{allow}, return a new stream that results from interleaving the elements of \lstinline{s1} and \lstinline{s2}. Assume that \lstinline{s1}, \lstinline{s2}, and \lstinline{allow} all have the same length.
+
+The elements of \lstinline{allow} dictate the order in which the elements of \lstinline{s1} and \lstinline{s2} should be interleaved. If the \lstinline{i}-th element of \lstinline{allow} is true, then perform "forward interleaving," i.e. add the \lstinline{i}-th element of \lstinline{s1} to the stream before the \lstinline{i}-th element of \lstinline{s2}. Otherwise if the \lstinline{i}-th element of \lstinline{allow} is false, then add the \lstinline{i}-th element of \lstinline{s2} before that of \lstinline{s1}.
+
+For example, given \lstinline{s1} as \lstinline{(1 2)} and \lstinline{s2} as \lstinline{(3 4)}, forward interleaving would result in \lstinline{(1 3 2 4)}, and backward interleaving would result in \lstinline{(3 1 4 2)}.
+
+\begin{lstlisting}
+; doctests
+scm> (define s1 (make-stream '(1 2 3 4)))
+s1
+scm> (define s2 (make-stream '(5 6 7 8)))
+s2
+scm> (define allow (make-stream '(#t #f #t #f)))
+allow
+scm> (print-stream (truthful-stream s1 s2 allow))
+(1 5 6 2 3 7 8 4)
+
+(define (truthful-stream s1 s2 allow)
+    (cond
+
+        ((________________) ____________________________)
+
+        ((________________) (cons-stream ___________________ \
+
+            ________________________________________________))
+
+        (else (cons-stream _________________________________ \
+
+            ________________________________________________))
+    )
+)
+\end{lstlisting}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+(define (truthful-stream s1 s2 allow)
+    (cond
+        ((null? s1) nil) ; s2 also works
+        ((car allow) (cons-stream 
+            (car s1) 
+            (cons-stream 
+                (car s2) 
+                (truthful-stream 
+                    (cdr-stream s1) 
+                    (cdr-stream s2) 
+                    (cdr-stream allow)))))
+        (else (cons-stream 
+            (car s2) 
+            (cons-stream 
+                (car s1) 
+                (truthful-stream 
+                    (cdr-stream s1) 
+                    (cdr-stream s2) 
+                    (cdr-stream allow)))))
+    )
+)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,41 @@
+\begin{blocksection}
+\question
+Fill in \lstinline{collapse}, which takes in a non-negative integer \lstinline{n} and returns the number resulting from removing all digits that are equal to an adjacent digit, i.e. the number has no adjacent digits that are the same.
+
+\begin{lstlisting}
+def collapse(n):
+    """
+    >>> collapse(12234441)
+    12341
+    >>> collapse(11200000013333)
+    12013
+    """
+    left, last = n // 10, n % 10
+
+    if ___________________________________:
+
+        ____________________________________
+
+    elif _________________________________:
+
+        ____________________________________
+    else:
+    
+        ____________________________________
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def collapse(n):
+    left, last = n // 10, n % 10
+    if left == 0:
+        return last
+    elif last == left % 10:
+        return collapse(left)
+    else:
+        return collapse(left) * 10 + last
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
