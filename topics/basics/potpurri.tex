@@ -23,12 +23,37 @@
 \end{solution}
 
 \begin{lstlisting}
+>>> x = print("csm")
+csm
+>>> x
+\end{lstlisting}
+\begin{solution}[.2in]
+None
+\end{solution}
+
+\begin{lstlisting}
+>>> print(print(print("csm")))
+\end{lstlisting}
+\begin{solution}[.6in]
+csm \\
+None \\
+None
+\end{solution}
+
+\begin{lstlisting}
 >>> def f1(x):
 ...	return x + 1
 >>> f1(3)
 \end{lstlisting}
 \begin{solution}[.2in]
 4
+\end{solution}
+
+\begin{lstlisting}
+>>> f1(2) + f1(2 + 3)
+\end{lstlisting}
+\begin{solution}[.2in]
+9
 \end{solution}
 
 \begin{lstlisting}
@@ -52,13 +77,6 @@ ZeroDivisionError: division by zero
 \end{lstlisting}
 \begin{solution}[.2in]
 2
-\end{solution}
-
-\begin{lstlisting}
->>> f3(4, 3)
-\end{lstlisting}
-\begin{solution}[.2in]
-4
 \end{solution}
 
 \begin{lstlisting}
@@ -90,8 +108,15 @@ ZeroDivisionError: division by zero
 \end{solution}
 
 \begin{lstlisting}
->>> not 1
+>>> 0 or (not 1 and 3)
 \end{lstlisting}
 \begin{solution}[.2in]
 False
+\end{solution}
+
+\begin{lstlisting}
+>>> (2 or 1/0) and (False or (True and (0 or 1)))
+\end{lstlisting}
+\begin{solution}[.2in]
+1
 \end{solution}
