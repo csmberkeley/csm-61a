@@ -1,0 +1,42 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{}
+\title{\textsc{Midterm 1 Review}}
+\date{September 12, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{WWPD}
+\begin{questions}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{argentina.tex}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{maths&quick-maths.tex}
+\end{questions}
+
+\newpage
+\section{Reverse Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/environments/reverse-env-diagrams/}{flip.tex}
+\newpage
+\subimport{../../topics/environments/reverse-env-diagrams/}{whos-who.tex}
+\end{questions}
+
+\newpage
+\section{Higher Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/easy/}{make-interval.tex}
+\subimport{../../topics/hof/medium/}{alternator.tex}
+\subimport{../../topics/hof/hard/}{self-referencing.tex}
+\subimport{../../topics/hof/hard/}{partial_summer.tex}
+\end{questions}
+
+
+\end{document}
