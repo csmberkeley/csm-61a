@@ -115,11 +115,11 @@ Uma Unni}
         {\begin{flushright}
             \huge {\sc{#1}}
             \fontsize{45}{0} \sffamily \color{titlecol} \selectfont
-            \ifdefined\discussionsolutions
-              \marginpar{\Large{\textcolor{red}{Solutions}}}
+            \ifdefined\discussionguides
+              \marginpar{\Large{\textcolor{blue}{Guide}}}
             \else
-              \ifdefined\discussionguides
-                \marginpar{\Large{\textcolor{blue}{Guide}}}
+              \ifdefined\discussionsolutions
+                \marginpar{\Large{\textcolor{red}{Solutions}}}
               \fi
             \fi
         \end{flushright}}
