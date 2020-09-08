@@ -44,7 +44,7 @@ $(DST)/%_sol.pdf: $(SRC)/%.tex commonheader.sty
 
 $(DST)/%_guide.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
-	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_guide" "\def\discussionguides{}\input{$*}"
+	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_guide" "\def\discussionsolutions{}\def\discussionguides{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
 	#open $(DST)/$*_guide.pdf
 
