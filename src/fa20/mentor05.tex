@@ -1,0 +1,37 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{1}
+\title{\textsc{Recursion and Tree Recursion}}
+\date{September 21, 2020 to September 24, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Recursion}
+\subimport{../../topics/recursion/text/}{recursion_overview.tex}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{is-sorted.tex}
+\subimport{../../topics/recursion/easy/}{combine.tex}
+\end{questions}
+
+\pagebreak
+
+\section{Tree Recursion}
+\subimport{../../topics/recursion/text/}{tree_recursion_overview.tex}
+\pagebreak
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{mario-number.tex}
+
+\subimport{../../topics/recursion/medium/}{copy-machine1.tex}
+\subimport{../../topics/recursion/medium/}{copy-machine2.tex}
+\end{questions}
+
+
+\end{document}
