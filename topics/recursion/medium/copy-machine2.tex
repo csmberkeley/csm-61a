@@ -1,6 +1,6 @@
 \begin{blocksection}
-\question The next day, the printers break down even more! Each time they are used, the first printer 
-prints a random \lstinline$x$ copies 50 $\leq$ \lstinline$x$ $\leq$ 60, and the second printer prints a 
+\question The next day, the printers break down even more! Each time they are used, the first printer
+prints a random \lstinline$x$ copies 50 $\leq$ \lstinline$x$ $\leq$ 60, and the second printer prints a
 random \lstinline$y$ copies 130 $\leq$ \lstinline$y$ $\leq$ 140. James also relaxes his expectations: he's
 satisfied as long as there's at least \lstinline$lower$ copies so there are enough for everyone, but no
 more than \lstinline$upper$ copies to prevent waste. \\
@@ -17,17 +17,17 @@ def sum_range(lower, upper):
     """
     def copies(pmin, pmax):
         if ________________________________________________:
-				
+
             return ____________________________________
-						
+
         elif ______________________________________________:
-				
+
             return ____________________________________
-						
+
         return ____________________________________________
-				
+
     return copies(0, 0)
-    
+
 \end{lstlisting}
 
 \begin{solution}[1.5in]
@@ -53,4 +53,36 @@ This question is similar to the last one but now we have to deal with two parame
 
 Our first base case represents successfully printing the number of pages within our range in which case we can stop the recursion because we know it is possible to print that number of pages within the range. Our second base case handles the case where we know for sure that we cannot print the number of pages within our range so we return \lstinline{False} and stop doing the recursion.
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Guide}
+\begin{itemize}
+    \item Only do this problem if you have plenty of time (it takes a long time).
+    \item Go through the doctests thoroughly before attempting the problem.
+    \item Suggested Sequence for teaching:
+    \begin{enumerate}
+        \item Explain the difference between \lstinline{lower} and \lstinline{pmin}, and \lstinline{higher} and \lstinline{pmax}. In the same vein, ask what should \lstinline{copies} return (what is its purpose?).
+        \item Find the base cases (we need a True case and a False case).
+        \item Think about what the helper function call means- what does seeing 0 and 0 as arguments tell us? Should we recurse downward or upward?
+        \item How do we factor in all the different possible combinations of using the two printers?
+        \begin{itemize}
+            \item We use 1 printer.
+            \begin{itemize}
+                \item We use printer 1 once: it prints [40, 50] copies.
+                \item We use printer 2 once: it prints [130, 140] copies.
+            \end{itemize}
+            \item We use 2 printers:
+            \begin{itemize}
+                \item (1, 1): [40+40, 50+50].
+                \item (2, 2): [130+130, 140+140].
+                \item (1, 2) = (2, 1): [40+130, 50+140].
+            \end{itemize}
+            \item And so on. Guide students to find the recursive pattern.
+
+        \end{itemize}
+    \end{enumerate}
+\end{itemize}
+\end{guide}
 \end{blocksection}
