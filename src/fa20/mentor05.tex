@@ -28,7 +28,7 @@
     \item Make sure to factor in time for introductions - it’ll go a long way towards building your section’s tone and making your students feel comfortable. Don’t worry about it eating into your time too much.
     \begin{itemize}
         \item Start with a quick ice-breaker (name, major, year, why did you want to join CSM).
-        \item Have students say a fun fact, respond to a quirky question, or try Woohoos \& Boohoos (one good thing and one bad thing from this week).
+        \item Have students say a fun fact, find something in common between all of you, or try Woohoos \& Boohoos (one good thing and one bad thing from this week).
     \end{itemize}
 \end{itemize}
 \end{guide}
@@ -47,9 +47,45 @@
 
 \section{Recursion}
 \subimport{../../topics/recursion/text/}{recursion_overview.tex}
+\begin{guide}
+	\textbf{Teaching Tips}
+	\begin{itemize}
+	    \item Base Case - What is the simplest case? Or in what case do you want your recursion to stop?
+	    \item Break the problem down into smaller problems
+		\item Solve the smaller problem recursively
+		\begin{itemize}
+			\item “Recursive Leap of Faith” - When writing the recursive statement, assume the function works as intended for the smaller problems.
+		\end{itemize}
+	\end{itemize}
+\end{guide}
 \begin{questions}
 \subimport{../../topics/recursion/medium/}{is-sorted.tex}
+\end{questions}
+\begin{guide}
+	\textbf{Teaching Tips}
+	\begin{itemize}
+	    \item If your students are quiet at the beginning, it might be good to start by going through each of the doctests and asking them why they're true of false.
+	    \item Start with the base case! At what point will you know a number is sorted?
+	    \item Then move to the recursive step. How do we get the last digit (n \% 10) and the rest (n // 10)?
+	    \item \textbf{This is the first problem, so if the students are intimidated by the code, just ask for a general approach/strategy; build intuition}
+	\end{itemize}
+\end{guide}
+\begin{questions}
 \subimport{../../topics/recursion/easy/}{combine.tex}
+\begin{guide}
+	\textbf{Teaching Tips}
+	\begin{itemize}
+	    \item Visually go through an example (like using one from the doc tests) and going over the question visually is especially helpful when showing students how to make the original problem into a smaller subproblem.
+	    \begin{itemize}
+			\item Ex. combine(43, mul, 2)  \# mul(4, mul(3, 2))
+		\end{itemize}
+	    \item Common misconceptions(points to emphasize)
+	    \begin{itemize}
+			\item The order of arguments for f matters (n \% 10, result)
+			\item The third parameter is evaluated before the combine function is applied to the parameters. 
+		\end{itemize}
+	\end{itemize}
+\end{guide}
 \end{questions}
 
 \pagebreak
@@ -59,6 +95,8 @@
 \pagebreak
 \begin{questions}
 \subimport{../../topics/recursion/medium/}{mario-number.tex}
+\end{questions}
+\begin{questions}
 \subimport{../../topics/recursion/medium/}{copy-machine1.tex}
 \subimport{../../topics/recursion/medium/}{copy-machine2.tex}
 \end{questions}
