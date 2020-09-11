@@ -1,3 +1,4 @@
+def is_sorted(n):
     right_digit = n % 10
     rest =  n // 10
     if rest == 0:
@@ -46,5 +47,3 @@ def sum_range(lower, upper):
             return False
         return copies(pmin + 50, pmax + 60) or copies(pmin + 130, pmax + 140)
     return copies(0, 0)
-
-
