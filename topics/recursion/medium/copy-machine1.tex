@@ -63,7 +63,7 @@ Another alternate base case would be: \lstinline{total == 0 or total % n == 0 or
 
 \begin{blocksection}
 \begin{guide}
-\textbf{Guide}
+\textbf{Teaching Tips}
 \begin{itemize}
     \item Some leading questions:
     \begin{itemize}
@@ -75,7 +75,6 @@ Another alternate base case would be: \lstinline{total == 0 or total % n == 0 or
     \item Ask students about the simplest possible cases to identify base cases; make sure they realize \lstinline{(total == n)} or \lstinline{(total == m)}  is incorrect because \lstinline{(total == 0)} is a simpler True case.
     \item Point out the fact that tree recursion problems usually have you consider multiple “options” or “possibilities,” and they should all be explored when you are writing your recursive cases.
     \item Out of all possible combinations of n and m, there only has to exist 1 way for n and m to sum to total for the function to return True, which would imply \lstinline{or} is an appropriate way to aggregate our recursive calls.
-
 \end{itemize}
 \end{guide}
 \end{blocksection}
