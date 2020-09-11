@@ -47,45 +47,9 @@
 
 \section{Recursion}
 \subimport{../../topics/recursion/text/}{recursion_overview.tex}
-\begin{guide}
-	\textbf{Teaching Tips}
-	\begin{itemize}
-	    \item Base Case - What is the simplest case? Or in what case do you want your recursion to stop?
-	    \item Break the problem down into smaller problems
-		\item Solve the smaller problem recursively
-		\begin{itemize}
-			\item “Recursive Leap of Faith” - When writing the recursive statement, assume the function works as intended for the smaller problems.
-		\end{itemize}
-	\end{itemize}
-\end{guide}
 \begin{questions}
 \subimport{../../topics/recursion/medium/}{is-sorted.tex}
-\end{questions}
-\begin{guide}
-	\textbf{Teaching Tips}
-	\begin{itemize}
-	    \item If your students are quiet at the beginning, it might be good to start by going through each of the doctests and asking them why they're true of false.
-	    \item Start with the base case! At what point will you know a number is sorted?
-	    \item Then move to the recursive step. How do we get the last digit (n \% 10) and the rest (n // 10)?
-	    \item \textbf{This is the first problem, so if the students are intimidated by the code, just ask for a general approach/strategy; build intuition}
-	\end{itemize}
-\end{guide}
-\begin{questions}
 \subimport{../../topics/recursion/easy/}{combine.tex}
-\begin{guide}
-	\textbf{Teaching Tips}
-	\begin{itemize}
-	    \item Visually go through an example (like using one from the doc tests) and going over the question visually is especially helpful when showing students how to make the original problem into a smaller subproblem.
-	    \begin{itemize}
-			\item Ex. combine(43, mul, 2)  \# mul(4, mul(3, 2))
-		\end{itemize}
-	    \item Common misconceptions(points to emphasize)
-	    \begin{itemize}
-			\item The order of arguments for f matters (n \% 10, result)
-			\item The third parameter is evaluated before the combine function is applied to the parameters. 
-		\end{itemize}
-	\end{itemize}
-\end{guide}
 \end{questions}
 
 \pagebreak
