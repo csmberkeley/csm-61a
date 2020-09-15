@@ -1,0 +1,62 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{\textsc{Lists, Trees, and Abstraction}}
+\date{September 28, 2020 to October 1, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lists}
+\subimport{../../topics/lists/immutable/text/}{list_overview.tex}
+\begin{questions}
+\subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified.tex}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+\end{blocksection}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\end{blocksection}
+\end{questions}
+
+\newpage
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{questions}
+\subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+
+\end{questions}
+
+\newpage
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\subimport{../../topics/trees/adt/text/}{draw-tree.tex}
+\begin{questions}
+%\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+
+\end{questions}
+
+\newpage
+\section{Challenge Problems}
+\textbf{Note:} These problems are meant to be challenging and may take a long time. Please attempt the previous questions on the worksheet first.
+\begin{questions}
+\subimport{../../topics/lists/immutable/medium/}{gen-list.tex}
+\newpage
+\subimport{../../topics/trees/adt/hard/}{scrabble.tex}
+\end{questions}
+
+
+\end{document}
