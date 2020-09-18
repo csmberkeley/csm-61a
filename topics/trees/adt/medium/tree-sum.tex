@@ -29,3 +29,43 @@ Given that trees are an inherently recursive data type, we can approach this pro
 The alternate solution contains the same logic but makes effective use of list comprehension. `sum` is a useful built-in function in Python to return the sum of a list.
 
 \end{solution}
+
+\begin{blocksection}
+	\begin{guide}
+	\textbf{Teaching Tips}
+	\begin{enumerate}
+			\item It’s helpful to:
+			\begin{itemize}
+				\item draw out a sample tree (you can use the one from the doctest) to show them how you can use the “recursive leap of faith” to solve this question
+                \item draw several trees, starting with a node with no children, one with children to help them think about the base cases and recursive cases
+			\end{itemize}
+			\item Ask them, conceptually, what should the total represent?
+			\begin{itemize}
+				\item Answer: sum of the values in all the nodes
+                \item How do we get all those values?
+                \item We add each value, one by one…
+                \item If you were a computer, how would you add each node one by one?
+                \item You would add the root, and add the value at each of its children, and then the value of each of their children, and the value of each of their children etc etc
+                \item Notice how a lot of work is being repeated right now
+                \item Can we somehow “simplify” all of this repeated work, and simplify our code?
+            \end{itemize}
+            \item Draw a circle around each of the children sub-trees, and ask them what each of those blobs represent
+            \begin{itemize}
+                \item Each of them is a particular branch of our main tree, extending from the root
+                \item Each of these branches is also a tree structure
+                \item With the circle around one of the branches, ask them what the total sum in each branch is
+                \item Now that we know the total sum in each of the branches, how do we use the sum of each branch to compute the total sum for all the nodes in the tree? (add the root to the sum for each branch)
+                \item Conceptually, students now know, it’s: root value + total value from each branch
+                \item How do we get this total value though?
+                \item Do we have something that does that for us? Some function that calculates the sum of all nodes in a particular tree?? We do!! and lead ‘em on from here.
+            \end{itemize}
+            \item If they have more than one subtree, how would they make the recursive call on each of those subtrees? (Answer: a for loop)
+            \begin{itemize}
+                \item Ask them what happens in the for loop if there aren’t any branches?
+                \begin{itemize}
+                    \item This is why we don’t need an explicit base case(ex. if len(branches) == 0)
+                \end{itemize}
+            \end{itemize}
+	\end{enumerate}
+	\end{guide}
+\end{blocksection}
