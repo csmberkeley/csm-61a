@@ -35,7 +35,7 @@ new_list = lst[<starting index>:<ending index>]
 \begin{blocksection}
 	\begin{guide}
 	\textbf{Teaching Tips}
-	\begin{enumerate}
+	\begin{itemize}
 			\item \textbf{Box and Pointer Diagrams}: make sure students know how to draw them. Try explaining lists using box and pointer diagrams from the start so they can visualize how they interact with lists
 			\begin{itemize}
 				\item Be very careful with showing and explaining how pointers work. You can treat pointers as a distinct object in the list (e.g. this element of the list is a pointer), so that they have a solid foundation once we get to mutation (like how a shallow copy copies what’s in the box as is, which would be just the pointer)
@@ -54,10 +54,10 @@ new_list = lst[<starting index>:<ending index>]
 				\begin{itemize}
 					\item Good to make a chart of all the operations that mutate versus make a new list
 					\item make sure to explain that lst + lst creates a new list, and doesn’t change the original one
-					\item for example, lst +\= \[3\] is NOT the same as lst \= lst + \[3\]
-					the first one mutates lst and is equivalent to .extend(\[3\]), while the second one creates a new list
+					\item for example, \texttt{lst += [3]} is NOT the same as \texttt{lst = lst + [3]}
+					the first one mutates lst and is equivalent to \texttt{.extend([3])}, while the second one creates a new list
 				\end{itemize}
 			\end{itemize}
-	\end{enumerate}
+	\end{itemize}
 	\end{guide}
 \end{blocksection}
