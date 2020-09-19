@@ -1,6 +1,6 @@
 \textbf{What are trees?}
 
-A tree has a root label and a sequence of branches. Each branch of a tree is a tree. A tree with no branches is called a leaf. Any tree contained within a tree is called a sub-tree of that tree (such as a branch of a branch). The root of each sub-tree of a tree is called a node in that tree. 
+A tree has a root label and a sequence of branches. Each branch of a tree is a tree. A tree with no branches is called a leaf. Any tree contained within a tree is called a sub-tree of that tree (such as a branch of a branch). The root of each sub-tree of a tree is called a node in that tree.
 Trees are a recursive data abstraction, since trees have branches that are trees themselves
 
 Because of this, it often makes sense to solve tree problems using recursion:
@@ -17,44 +17,30 @@ When trying to understand and solve tree problems, it is helpful to draw out the
 	\begin{itemize}
 			\item Common Misconceptions:
 			\begin{itemize}
-				\item Students often have trouble with the idea that branches is a list of trees
+				\item Students often have trouble with the idea that branches is a list of trees.
 				\begin{itemize}
-					\item Clearly define what is a tree
-					\begin{itemize}
-						\item Try using the tree functions to build up different trees (like build a tree with no branches, build a tree with one branch etc.)
-					\end{itemize}
+					\item Try using the tree functions to build up different trees.
 					\item Write out all the functions on the board and clearly define what type of thing is returned and what types of things are inputted.
 				\end{itemize}
-				\item Data abstraction and Trees
+				\item Data Abstraction and Trees
 				\begin{itemize}
-					\item Because they have not learned objects yet, trees are represented as lists.
 					\item Although t[0] returns the label from the tree, students should be using label(t). This is because t is not a list, it is a tree which is an ADT!
-					\begin{itemize}
-						\item It’s important to explain why branches(t)[0] for example is not violating an abstraction barrier because branches returns a list of trees regardless of how the tree is implemented.
-					\end{itemize}
+					\item It’s important to explain why branches(t)[0] for example is not violating an abstraction barrier (because branches returns a list of trees).
 				\end{itemize}
 			\end{itemize}
-			\item The objectives for students are to: 
+			\item The objectives for students are to:
 			\begin{itemize}
-				\item Draw trees as graphical representations given Python code  
+				\item Draw trees as graphical representations given Python code
 				\begin{itemize}
-					\item Mention to students that empty branches [] is a default argument so it doesn’t have to be written out, i.e. tree(5) is the same as tree(5, [])
-					\item Emphasize variable types
+					\item Mention to students that empty branches [] is a default argument so it doesn’t have to be written out, i.e. tree(5) is the same as tree(5, []).
+					\item Emphasize variable types.
 					\begin{itemize}
-						\item Emphasize that branches is a function that returns a list of trees. Drawing a box and pointer diagram might be a helpful way to explain this
-						\item Label values are numbers
+						\item Branches is a function that returns a list of trees.
+						\item Label values are numbers.
 					\end{itemize}
 				\end{itemize}
-				\item Construct Python code given a graphical representation of a tree 
-				\begin{itemize}
-					\item Make it clear which branches belong to which label
-					\begin{itemize}
-						\item Use indenting to make this clear or use different colored markers
-					\end{itemize}
-				\end{itemize}
+				\item Construct Python code given a graphical representation of a tree
 			\end{itemize}
-			\item Refer to functions (not using a Tree class)
 	\end{itemize}
 	\end{guide}
 \end{blocksection}
-
