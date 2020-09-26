@@ -20,7 +20,7 @@ def collapse(n):
 
         ____________________________________
     else:
-    
+
         ____________________________________
 \end{lstlisting}
 \end{blocksection}
@@ -38,4 +38,32 @@ def collapse(n):
         return collapse(left) * 10 + last
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Demonstrating with the doc tests is very important- the problem description can be confusing.
+  \item How are we going to traverse the string?
+  \begin{itemize}
+    \item As always, we traverse right to left, since traversing left to right will only produce the same results for more work.
+    \item Knowing this, we can figure \lstinline{left} stands for the left remaining number and \lstinline{last} stands for the last digit
+  \end{itemize}
+  \item What are the base cases?
+  \begin{itemize}
+    \item The simplest possible case is if \lstinline{n} is one digit, at which there is nothing to compare it to.
+  \end{itemize}
+  \item What are the recursive cases?
+  \begin{itemize}
+    \item Either we remove a digit or we do not.
+    \item How do we structure the recursive call when we \textbf{don't} want to get rid of \lstinline{last}? We need to add it back on \textbf{after} the recursive call.
+  \end{itemize}
+  \item Why does this work?
+  \begin{itemize}
+    \item Remind students that part of the recursive leap of faith is to trust that calling \lstinline{collapse(left)} will remove identical left adjacent numbers.
+    \item All they need to care about in the moment is whether or not \lstinline{last} should be removed or not.
+  \end{itemize}
+\end{itemize}
+\end{guide}
 \end{blocksection}
