@@ -42,3 +42,24 @@ def make_change(n):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+ \begin{guide}
+   \textbf{Teaching Tips}
+   \begin{itemize}
+       \item Be careful of the wording here - we’re counting the \textbf{minimum number of coins} used to make change, not the number of ways to make change.
+       \item Go over the doctests to show that choosing the largest coin at the beginning isn't always the most efficient; we have to explore all possibilities. 
+       \item Some questions you can ask your students: 
+       \begin{itemize}
+        \item What are the different options available to us for making change at each step? 
+        \item What are some cases where not all coins are available to us? 
+        \item In the case that there are multiple options available, which one do we pick? 
+        \begin{itemize}
+          \item Is there a Python function that we can use to choose the right combination?
+        \end{itemize}
+       \end{itemize}
+       \item Note that this skeleton is directed towards leading students to the answer (by building up from only using one coin, to using two, to using three). It is not the most efficient one (for example, you can just return n if n < 3). 
+       \item If your students come up with a more compact solution, use that as an opportunity to solicit ideas from your entire section about how to reduce the complexity! You don't always have to present the exact solution.
+   \end{itemize}
+ \end{guide}
+ \end{blocksection}
