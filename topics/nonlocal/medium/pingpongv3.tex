@@ -75,3 +75,18 @@ def make_pingpong_tracker():
 \end{lstlisting}
 \end{blocksection}
 \end{solution}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+\item Oh boy, this was a tough question for many when it was part of 61A curriculum. Empathize with your students. \heartsuit
+\item Let's look through the sample doctest together. First, notice that \texttt{x} is a function returned from the function \texttt{make_pingpong_tracker}, which is why we call it nine times in a loop to generate our array.
+\item Notice how we are incrementing our number by one each time until we get to the 7th number. Since k, the index, here is a multiple of 7 (and also contains the number 7), we have to switch directions and start decrementing our numbers.
+\item Think about all the things you have to keep track of: current number, current index, whether to increase or decrease. How does the problem suggest you keep track of them? What line should you include to ensure that these variables get updated correctly each time? (hint: nonlocal)
+\item Again, think back to the inner-function/outer-function structure in HOF problems. What can you confidently put down for that last return statement?
+\item Check out the if/else statements for \texttt{add}. Since this is a boolean value, it's probably the one keeping track of whether to increase or decrease the array elements. So we should use this if block to adjust our current array element accordingly.
+\item The inner return value may be a bit tricky to find, but read the doctests carefully. What should the inner function return and which variable is keeping track of that? The next value, which should be stored in \texttt{current}. The name can be misleading; just think of it as a counter that's keeping track of the number you want to put into the array.
+\end{itemize}
+\end{guide}
+\end{blocksection}
