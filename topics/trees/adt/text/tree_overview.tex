@@ -1,6 +1,6 @@
 \textbf{What are trees?}
 
-A tree has a root label and a sequence of branches. Each branch of a tree is a tree. A tree with no branches is called a leaf. Any tree contained within a tree is called a sub-tree of that tree (such as a branch of a branch). The root of each sub-tree of a tree is called a node in that tree. 
+A tree has a root label and a sequence of branches. Each branch of a tree is a tree. A tree with no branches is called a leaf. Any tree contained within a tree is called a sub-tree of that tree (such as a branch of a branch). The root of each sub-tree of a tree is called a node in that tree.
 Trees are a recursive data abstraction, since trees have branches that are trees themselves
 
 Because of this, it often makes sense to solve tree problems using recursion:
@@ -11,3 +11,36 @@ Because of this, it often makes sense to solve tree problems using recursion:
 
 When trying to understand and solve tree problems, it is helpful to draw out the tree.
 
+\begin{blocksection}
+	\begin{guide}
+	\textbf{Teaching Tips}
+	\begin{itemize}
+			\item Common Misconceptions:
+			\begin{itemize}
+				\item Students often have trouble with the idea that branches is a list of trees.
+				\begin{itemize}
+					\item Try using the tree functions to build up different trees.
+					\item Write out all the functions on the board and clearly define what type of thing is returned and what types of things are inputted.
+				\end{itemize}
+				\item Data Abstraction and Trees
+				\begin{itemize}
+					\item Although t[0] returns the label from the tree, students should be using label(t). This is because t is not a list, it is a tree which is an ADT!
+					\item It’s important to explain why branches(t)[0] for example is not violating an abstraction barrier (because branches returns a list of trees).
+				\end{itemize}
+			\end{itemize}
+			\item The objectives for students are to:
+			\begin{itemize}
+				\item Draw trees as graphical representations given Python code
+				\begin{itemize}
+					\item Mention to students that empty branches [] is a default argument so it doesn’t have to be written out, i.e. tree(5) is the same as tree(5, []).
+					\item Emphasize variable types.
+					\begin{itemize}
+						\item Branches is a function that returns a list of trees.
+						\item Label values are numbers.
+					\end{itemize}
+				\end{itemize}
+				\item Construct Python code given a graphical representation of a tree
+			\end{itemize}
+	\end{itemize}
+	\end{guide}
+\end{blocksection}
