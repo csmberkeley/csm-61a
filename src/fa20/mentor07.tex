@@ -1,0 +1,42 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Binary Numbers, Mutation, and Review}}
+\date{October 5 to October 8, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Binary Tables}
+\begin{questions}
+\subimport{../../topics/binary/easy/}{table.tex}
+\end{questions}
+
+\section{Mutation}
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation-expanded.tex}
+% \subimport{../../topics/lists/mutable/easy/}{dogs.tex}
+\newpage
+% \subimport{../../topics/lists/mutable/easy/env-diagram/}{mystery.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+\end{questions}
+
+\newpage
+\section{Review}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{collapse.tex}
+\newpage
+\subimport{../../topics/recursion/medium/}{make-change.tex}
+\newpage
+\subimport{../../topics/recursion/medium/}{max-subset-sum.tex}
+\end{questions}
+
+\end{document}
