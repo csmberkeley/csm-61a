@@ -58,25 +58,25 @@ def mario_number(level):
     Return the number of ways that Mario can traverse the
     level, where Mario can either hop by one digit or two
     digits each turn. A level is defined as being an integer
-    with digits where a 1 is something Mario can step on and 
-    0 is something Mario cannot step on. 
+    with digits where a 1 is something Mario can step on and
+    0 is something Mario cannot step on.
     >>> mario_number(10101)
     1
     >>> mario_number(11101)
-    2   
+    2
     >>> mario_number(100101)
     0
     """
     if _______________________:
-		
+
         ______________________
-				
+
     elif _____________________:
-		
+
         ______________________
-				
+
     else:
-		
+
         ___________________________________________________
 \end{lstlisting}
 \end{blocksection}
@@ -98,11 +98,28 @@ Here it doesn’t matter whether Mario goes left to right or right to left; eith
 
 At every time step, Mario can either take one or two steps, and these would take form in two corresponding recursive calls. A single floor division (\lstinline{//}) of \lstinline{level} by 10 means taking one step at this point in the \lstinline{level} (if we took a step, then the entire \lstinline{level} would be left except for the last number), while two floor divisions by 10 (or equivalently one floor division by 100) corresponds to a jump at this point in the \lstinline{level} (if we took a jump, then the entire \lstinline{level} would be left except for the last two numbers).
 
-To think of the base cases, you can consider the two ways that Mario ends his journey. The first, corresponding to \lstinline{level == 1}, means that Mario has successfully reached the end of the level. You can \lstinline{return 1} here, because this means you’ve found one additional path to the end. The second, corresponding to \lstinline{level % 10 == 0}, means that Mario has landed on a Piranha plant. This returns 0 because it’s a failed traversal of the \lstinline{level}, so you don’t want to add anything to your result. 
+To think of the base cases, you can consider the two ways that Mario ends his journey. The first, corresponding to \lstinline{level == 1}, means that Mario has successfully reached the end of the level. You can \lstinline{return 1} here, because this means you’ve found one additional path to the end. The second, corresponding to \lstinline{level % 10 == 0}, means that Mario has landed on a Piranha plant. This returns 0 because it’s a failed traversal of the \lstinline{level}, so you don’t want to add anything to your result.
 
 In tree recursion, you need to find a way to combine separate recursive calls. In this case, because \lstinline{mario_number} returns an integer and the base cases are integers and you’re trying to count the total number of ways of traversal, it makes sense to add your recursive calls.
 
 \end{solution}
 \end{blocksection}
 
-
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Some leading questions:
+    \begin{itemize}
+        \item What are our base cases? (When do we know we’ve reached the end of the level?)
+        \item Is there any difference between going left to right or right to left in terms of the number of ways to traverse the level?
+        \item What are our two options at each step?
+        \item What do those look like in a recursive call?
+        \item How should we combine our recursive calls? (and, or, addition, etc.)
+    \end{itemize}
+    \item It can be helpful and fun to lean into the narrative of the question! This especially helps when talking about the recursive calls “in plain english”
+    \item It’s very useful to draw a tree diagram! Each function call has one branch for stepping once and another branch for stepping twice. Each branch then has 2 branches of their own (until a base case is reached).
+    \item Teach students that recursive calls can be treated as numbers using the recursive leap of faith, so combining the two recursive call branches with addition is intuitive.
+\end{itemize}
+\end{guide}
+\end{blocksection}

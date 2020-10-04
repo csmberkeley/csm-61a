@@ -14,3 +14,22 @@ Imagine that you’re in line for boba, but the line is really long, so you want
 
 
 Looking at this example, we see that we have broken down the problem of "how many people are there in front of me?" to 1 + "how many people are there in front of the person in front of me"? This problem will terminate with the person at the front of the line (with 0 people in front of them). Putting this into more formal terms, we are breaking down the problem into a \textbf{recurrence relationship}, and the termination case is called the \textbf{base case}.
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{enumerate}
+	    \item Base Case - What is the simplest case? Or in what case do you want your recursion to stop?
+	    \item Break the problem down into smaller problems
+	    \begin{itemize}
+			\item What do you need to do to reach your base case? 
+			\item For example: in factorial (usually seen in lecture), we have to subtract by one each time we do a recursive call
+		\end{itemize}
+		\item Solve the smaller problem recursively
+		\begin{itemize}
+			\item “Recursive Leap of Faith” - When writing the recursive statement, assume the function works as intended for the smaller problems.
+			\item How would you use the solution to the smaller problem to write a solution to the original problem?
+		\end{itemize}
+\end{enumerate}
+\end{guide}
+\end{blocksection}
