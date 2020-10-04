@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question 
-Implement the function \lstinline{make_change}, which takes in a non-negative integer amount \lstinline{n} and returns the minimum number of coins needed to make change for \lstinline{n} using 1-cent, 3-cent, and 4-cent coins.
+Implement the function \lstinline{make_change}, which takes in a non-negative integer amount in cents \lstinline{n} and returns the minimum number of coins needed to make change for \lstinline{n} using 1-cent, 3-cent, and 4-cent coins.
 
 \begin{lstlisting}
 def make_change(n):
@@ -58,7 +58,7 @@ def make_change(n):
           \item Is there a Python function that we can use to choose the right combination?
         \end{itemize}
        \end{itemize}
-       \item Note that this skeleton is directed towards leading students to the answer (by building up from only using one coin, to using two, to using three). It is not the most efficient one (for example, you can just return n if n < 3). 
+       \item Note that this skeleton is directed towards leading students to the answer (by building up from only using one coin, to using two, to using three). It is not the most efficient one (for example, you can just return n if n $<$ 3). 
        \item If your students come up with a more compact solution, use that as an opportunity to solicit ideas from your entire section about how to reduce the complexity! You don't always have to present the exact solution.
    \end{itemize}
  \end{guide}

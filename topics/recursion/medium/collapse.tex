@@ -10,7 +10,7 @@ def collapse(n):
     >>> collapse(11200000013333)
     12013
     """
-    left, last = n // 10, n % 10
+    rest, last = n // 10, n % 10
 
     if ___________________________________:
 
@@ -29,13 +29,13 @@ def collapse(n):
 \begin{solution}
 \begin{lstlisting}
 def collapse(n):
-    left, last = n // 10, n % 10
-    if left == 0:
+    rest, last = n // 10, n % 10
+    if rest == 0:
         return last
-    elif last == left % 10:
-        return collapse(left)
+    elif last == rest % 10:
+        return collapse(rest)
     else:
-        return collapse(left) * 10 + last
+        return collapse(rest) * 10 + last
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -45,10 +45,10 @@ def collapse(n):
 \textbf{Teaching Tips}
 \begin{itemize}
   \item Demonstrating with the doc tests is very important- the problem description can be confusing.
-  \item How are we going to traverse the string?
+  \item How are we going to traverse the number?
   \begin{itemize}
     \item As always, we traverse right to left, since traversing left to right will only produce the same results for more work.
-    \item Knowing this, we can figure \lstinline{left} stands for the left remaining number and \lstinline{last} stands for the last digit
+    \item Knowing this, we can figure \lstinline{rest} stands for the remaining number and \lstinline{last} stands for the last digit
   \end{itemize}
   \item What are the base cases?
   \begin{itemize}
