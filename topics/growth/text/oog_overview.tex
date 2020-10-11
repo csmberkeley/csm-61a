@@ -1,12 +1,8 @@
-\begin{blocksection}
-\textbf{Important Note:} Orders of growth are not heavily emphasized on exams, historically appearing as a single multiple-choice question worth 1-2 points.
-
-An order of growth (OOG) characterizes the runtime of a program as its input becomes extremely large. Common runtimes, in increasing order of time, are: constant, logarithmic, linear, quadratic, and exponential.
+An order of growth (OOG) characterizes the runtime \textbf{efficiency} of a program as its input becomes extremely large. Common runtimes, in increasing order of time, are: constant, logarithmic, linear, quadratic, and exponential.
 
 \textbf{Examples:}
 
 Constant time means that no matter the size of the input, the runtime of your program is consistent. In the function \lstinline{f} below, no matter what you pass in for \lstinline{n}, the runtime is the same. \\
-\vspace{1.5mm}
 \begin{lstlisting}
 def f(n):
    return 1 + 2
@@ -19,12 +15,9 @@ def f(n):
       n -= 1
 \end{lstlisting}
 An example of a quadratic runtime involves nested for loops. If you increment the value of \lstinline{n} by only 1, an additional \lstinline{n} amount of work is being done, since the inner for loop will run one more time. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
-\vspace{1.5mm}
 \begin{lstlisting}
 def f(n):
    for i in range(n):
       for j in range(n):
          print(i*j)
 \end{lstlisting}
-
-\end{blocksection}
