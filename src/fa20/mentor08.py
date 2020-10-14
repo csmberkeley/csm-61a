@@ -1,14 +1,15 @@
 def among(green):
     def us(yellow):
-        _________________
-        yellow += _______
-        green += ________
-        _________________
-        return __________
+        _______________________
+        yellow += ___________
+        green += ____________
+        _____________________
+        return ______________
     return ______________
 vote = among('Red')('Blue')()
 
 
+1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0
 def has_seven(k): # Use this function for your answer below
     if k % 10 == 7:
         return True
@@ -48,8 +49,7 @@ def foo():
         yield a
         print("World")
 
-a = list(foo)
-print(a)
+>>> foo()
 
 
 def filter_gen(s, f):
@@ -68,3 +68,5 @@ def tree_sequence(t):
     >>> print(list(tree_sequence(t)))
     [1, 2, 5, 3, 4]
     """
+
+
