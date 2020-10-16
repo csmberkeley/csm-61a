@@ -10,8 +10,7 @@ def skip(lst):
     Link(1, Link(3))
     """
 \end{lstlisting}
-\end{blocksection}
-\begin{blocksection}
+
 \begin{solution}[0in]
 \begin{lstlisting}
 def skip(lst): # Recursively
@@ -40,5 +39,21 @@ Once we’ve created the following list:
 we just need to call skip on the rest of the list. If we call skip on the list that starts at 3, we’ll skip over the link with 4 and set the pointer from 3 to point to the link with 5. This is the behavior that we want! Therefore, our recursive call is \lstinline{skip(lst.rest)}, since \lstinline{lst.rest} is now the link that contains 3.
 
 \end{solution}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Make sure they understand when we are mutating and when we are creating a new linked list
+       \item Draw box-and-pointer diagrams!
+       \item Look for “patterns” or repeated work while you work with your box-and-pointer diagram that you can abstract away with your recursive call.
+       \item Sometimes it is easier to write the recursive call before doing the base cases
+       \item I usually write the recursive call and then see what could "break"
+       \begin{itemize}
+           \item If we access lst.first at any point, we have to make sure that lst exists
+           \item If we access lst.rest.rest at any point we have to make sure that lst.rest exists
+           \item What errors would we get if we didn't ensure these conditions?
+       \end{itemize}
+    \end{itemize}
+ \end{guide}
 
 \end{blocksection}

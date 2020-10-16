@@ -21,3 +21,24 @@ def f(n):
       for j in range(n):
          print(i*j)
 \end{lstlisting}
+
+\begin{guide}
+   \textbf{Teaching Tips}
+   \begin{itemize}
+      \item Try visualizing how orders of growth works for each orders of growth.
+      \begin{itemize}
+      \item You can walk through each of the examples above and tally up the amount of times the program runs. 
+      \item For example, in the second f(n), we would jot down thefor f(6):
+      \begin{itemize}
+         \item Before while: n = 6. Runs: 0.
+         \item During first iteration: n = 5. Runs: 1.
+         \item During second iteration: n = 4. Runs: 2.
+         \item During third iteration: n = 3. Runs: 3.
+         \item During fourth iteration: n = 2. Runs: 4.
+         \item During fifth iteration: n = 1. Runs: 5.
+         \item During sixth iteration: n = 0. Runs: 6.
+      \end{itemize}
+      \item So, from that visualization, we can see that this program seems to run in linear time. 
+      \end{itemize}
+   \end{itemize}
+\end{guide}

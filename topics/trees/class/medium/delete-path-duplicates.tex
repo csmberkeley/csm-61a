@@ -39,13 +39,23 @@ def delete_path_duplicates(t):
 \begin{solution}
 \begin{lstlisting}
     def helper(t, seen_so_far):
-        if t.label in seen_so_far:
-            t.label = -1
+        if label(t) in seen_so_far:
+        label(t) = -1
         else:
-            seen_so_far = seen_so_far + [t.label]
-        for b in t.branches:
+            seen_so_far = seen_so_far + [label(t)]
+        for b in branches(t):
             helper(b, seen_so_far)
     helper(t, [])
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Draw out the doctest Tree and walk through how you would delete path duplicates by hand. Then, ask your students, "how would we write this in code?"
+       \item Recap with your students the core functions for trees such as label() and branches().
+       \item We don't need to use the is\_leaf() function because our for loop will not run if there are no branches (which only occurs if the tree is a leaf).
+    \end{itemize}
+ \end{guide}
+

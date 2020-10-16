@@ -43,3 +43,12 @@ def num_elems(lst):
 
 \lstinline{count} refers to the number of elements in the current list \lstinline{lst} (including the number of elements inside any nested list). Determine the value of \lstinline{count} by looping through each element of the current list \lstinline{lst}. If we have an element \lstinline{elem} which is of type \lstinline{list}, we want to yield the number of elements in each nested list of \lstinline{elem} before finally yielding the total number of elements in \lstinline{elem}. We can do this with a recursive call to \lstinline{num_elems}. Thus, we yield all the values that need to be yielded using the inner for loop. The last number yielded by this inner loop is the total number of elements in \lstinline{elem}, which we want to increase \lstinline{count} by. Otherwise, if \lstinline{elem} is not a list, then we can simply increase \lstinline{count} by 1. Finally, yield the total count of the list.
 \end{solution}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Double check with your students to make sure they understand the differences between iterables and iterators.
+       \item When we call next(), we pick up from where the last yield statement ran.
+       \item Try walking through one of the doctests if students are confused by what the problem is asking for.
+    \end{itemize}
+ \end{guide}
