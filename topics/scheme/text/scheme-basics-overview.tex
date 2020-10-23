@@ -67,3 +67,19 @@ x
 \end{lstlisting}
 
 \url{links.cs61a.org/schemespec} will direct you to a page with all of the explanations and syntax descriptions of Scheme. Use it when filling out the WWSD section!
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item There’s no “elif” in the if statement -- we’d have to use a bunch of nested if statements. So instead we use cond where we can list a bunch of conditions and what they return if that condition is true along with an else statement.
+    \item Boolean checks
+        \begin{itemize}
+        \item \lstinline{=} only works for integers/numbers
+        \item \lstinline{eq?} is analogous to \lstinline{is}
+        \item \lstinline{equal?} is analogous to \lstinline{==}
+        \item \lstinline{null?} checks if something is nil
+        \end{itemize}
+\end{itemize}
+\end{guide}
+\end{blocksection}
