@@ -39,11 +39,11 @@ def delete_path_duplicates(t):
 \begin{solution}
 \begin{lstlisting}
     def helper(t, seen_so_far):
-        if label(t) in seen_so_far:
-        label(t) = -1
+        if t.label in seen_so_far:
+          t.label = -1
         else:
-            seen_so_far = seen_so_far + [label(t)]
-        for b in branches(t):
+            seen_so_far = seen_so_far + [t.label]
+        for b in t.branches:
             helper(b, seen_so_far)
     helper(t, [])
 \end{lstlisting}
