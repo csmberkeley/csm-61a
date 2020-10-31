@@ -47,3 +47,15 @@ scm> (eval (list 'if '(even? c) 1 2))
 \end{solution}
 \end{blocksection}
 
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Quotation marks are easily one of the trickiest concepts in Scheme, so spend a lot of time making sure your students understand these problems thoroughly! It would help to do a quick mini lecture or review of quotation marks if your students need.
+	\item In some cases it is easier to think of the single quotation mark as double quotes in Python that encompass a string, such as in "standalone" expressions like the third one. In such cases the exact "string" is returned
+	\item Encourage students to make the connection between Scheme lists and Scheme expressions as often as they can. Being able to read Scheme expressions as lists will be very helpful in the future.
+	\item Whenever there is an eval with a quote, you go down one level of evaluation and essentially pretend the quote is not there.
+	\item Going off of the third point, it could be beneficial to model Scheme expressions on a pyramid of evaluation: exact string, evaluating the string, etc.
+\end{itemize}
+\end{guide}
+\end{blocksection}
