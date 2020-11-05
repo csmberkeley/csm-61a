@@ -2,15 +2,33 @@
 \question What is the order of growth for \lstinline{belgian_waffle}? \\
 \begin{lstlisting}
 def belgian_waffle(n):
-    i = 0
     total = 0
-    while i < n:
+    while n > 0:
         total += 1
-        i = i // 2
+        n = n // 2
     return total
 \end{lstlisting}
 
 \begin{solution}
-Logarithmic. Notice that with each pass through the while loop, the value of \lstinline{i} is halved. So, doubling the value of \lstinline{n} only increments time by a constant; this defines a logarithmic runtime.
+Logarithmic. Notice that with each pass through the while loop, the value of \lstinline{n} is halved. Since we are halving till 0, this would be a logarithmic runtime.
 \end{solution}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Try to draw out a diagram for this problem:
+       \begin{itemize}
+            \item We can tally up how many times the "while" loop runs. 
+            \item For belgian\_waffle(4):
+            \begin{itemize}
+                \item Before running while loop: n = 4, total = 0. Runs = 0.
+                \item During first iteration: n = 3, total = 1. Runs = 1.
+                \item During second iteration: n = 2, total = 2. Runs = 2.
+                \item During third iteration: n = 1, total = 3. Runs = 3.
+                \item During fourth iteration: n = 0, total = 4. Runs = 4.
+            \end{itemize}
+       \end{itemize}
+    \end{itemize}
+ \end{guide}
+
 \end{blocksection}
