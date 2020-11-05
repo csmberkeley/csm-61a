@@ -49,3 +49,15 @@ scm> (max-depth '(0 (1 (2 (3 (4) 5) 6) 7))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Think about how the two functions can be used together. What should you be comparing with max? What can max-depth do to get you those comparable values?
+	\item Remind students of the typical structure of inner function-outer function Scheme HOFs. What should the outer function always do on its last line?
+	\item Again encourage students to think about how they would go about solving this problem without starter code. Consider which base case(s) will be necessary when they are working with lists and keep in mind the possible methods of iteration on a list (cdr, cddr, etc.).
+	\item Think about how the pair? check can be useful in this problem!
+\end{itemize}
+\end{guide}
+\end{blocksection}
