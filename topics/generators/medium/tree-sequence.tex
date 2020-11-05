@@ -34,3 +34,17 @@ In the alternate solution, \lstinline{yield from} allows us to yield a list of v
 
 
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+\item The generators here get spicy! Remind students about \texttt{yield from}; it is a very neat and concise way to yield values one after another from an iterable (say, a list) without having to write a for loop that goes to each element of the list and then yields it.
+\item It's also a clean way to yield elements from a generator object that has multiple elements to yield. In this case, you can think of it like it's first putting the generator object into a for loop, which, as stated earlier, forces out all elements to be yielded into a list. Then it becomes very much like the case above, where we are just yielding every single element from this list.
+\item Since this is a tree problem that involves reaching deep into each leaf and branch of each tree, we know that this will be a recursion problem. Take it step by step and remember your recursion basics.
+\item What's the first thing that we want to yield from any tree? Its root value! This is a good first line to put down.
+\item How can we ensure that we are reaching each branch of the tree? A for loop through the branches! This might be a point of confusion especially with the \texttt{yield from} aspect of generators, but keep in mind that for \textit{each} branch, we need to perform the same yielding actions of \texttt{its} root value and branches, and so that would be where we use \texttt{yield from}, NOT to shortcut the looping through branches.
+\item The code inside that for loop should involve the recursive call to apply the same function to each branch. How can you combine this with your newfound knowledge about \texttt{yield from} in order to successfully complete the doctest requirements?
+\end{itemize}
+\end{guide}
+\end{blocksection}
