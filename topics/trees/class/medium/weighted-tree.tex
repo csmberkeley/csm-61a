@@ -48,6 +48,17 @@ def equally_weighted(t):
   return True
 \end{lstlisting}
 \end{solution}
+\begin{guide}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item Important point: this function is not recursive. A tree t is considered equally weighted if and only if every branch in t.branches has equal weight.
+    \item If your students are stuck, lead them with some guiding questions:
+    \begin{itemize}
+      \item When is the first point at which we know that a tree is/is not equally weighted?
+      \item When determinining whether a tree is equally weighted or not, what values do we need to compare?
+    \end{itemize}
+  \end{itemize}
+\end{guide}
 \newpage
 
 \part
@@ -85,4 +96,10 @@ def num_eq_weight(t):
     return val
 \end{lstlisting}
 \end{solution}
+\begin{guide}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item How can we call our equally\_weighted function on all subtrees?
+  \end{itemize}
+\end{guide}
 \end{parts}
