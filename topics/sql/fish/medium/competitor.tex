@@ -1,7 +1,7 @@
 \begin{blocksection}
 \question Business is good, but a bunch of competition has sprung up! Through some cunning corporate espionage, we have determined one such competitor's selling prices.
 
-Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish. 
+Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish.
 
 This is because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Therefore, the difference is 60.
 
@@ -12,4 +12,22 @@ select fish.species, (fish.price - competitor.price) * pieces
     where fish.species = competitor.species;
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Make sure students know the basics of understanding/looking through a table
+  \begin{itemize}
+    \item It may help to write a basic example using SELECT, FROM, and WHERE
+  \end{itemize}
+  \item Have students clearly define which columns they will need from the table (species, price, pieces) before coding
+  \item Remind students they are able to do arithmetic on cells they select
+  \item While not in the solution, you can use this problem to explain the benefits of aliasing
+  \begin{itemize}
+    \item Show students they can write \lstinline{FROM fish as __, competitor as __}
+  \end{itemize}
+\end{itemize}
+\end{guide}
 \end{blocksection}
