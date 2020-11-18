@@ -48,7 +48,7 @@ Write a generator function \lstinline{subpaths} that takes in a tree \lstinline{
 
 \begin{lstlisting}
 def subpaths(t):
-    
+
     yield from _______________________
 
     for b in t.branches:
@@ -69,3 +69,27 @@ We can split this problem into two steps -- yielding all subpaths for the curren
 To yield all non-decreasing subpaths for our current tree (that is all non-decreasing subpaths that start at our current node and end at the leaf nodes), we can just yield from our previous function, \lstinline{root_to_leaf}, called on that node. For the rest of the subpaths, we want to recursively call \lstinline{subpaths} on all our child nodes. This will give us all paths that end on the leaf nodes (because \lstinline{root_to_leaf} ends on the leaf nodes) that start from any child on this tree. It is important to realize that the base case in this situation is implicit. If a leaf node is passed in and reaches the for loop, the for loop finds no items in \lstinline{t.branches}, and will just terminate without calling the clause inside.
 \end{solution}
 \end{parts}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item For a reminder on Tree paths, it can help to start with the all paths function:
+  \begin{lstlisting}
+  def all_paths(t):
+      if t.is_leaf():
+          return [[t.label]]
+      paths = []
+      for b in t.branches:
+          for path in all_paths(b):
+              paths.append([t.label] + path)
+      return paths
+  \end{lstlisting}
+  \item From there, it becomes a much simpler matter of modifying two things:
+  \begin{itemize}
+    \item Making the function a generator so it yields paths one at a time instead of returning a list of paths
+    \item Only returning non-decreasing paths
+  \end{itemize}
+\end{itemize}
+\end{guide}
+\end{blocksection}
