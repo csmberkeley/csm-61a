@@ -46,3 +46,22 @@ def iter_link(lnk):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+One way to get students to think about this problem is to run through the simpler version of the code without deep linked lists. It could look something like this:
+\begin{lstlisting}
+  def iter_link(lnk):
+    if lnk is not Link.empty:
+      yield lnk.first
+    yield from iter_link(lnk.rest)
+\end{lstlisting}
+
+Then, have them think about how to check for the situation where a \texttt{lnk.first} leads to a deep linked list and how to handle it.
+
+The \texttt{type} built-in method in Python returns the type of an object (e.g. Link is the object type behind a node of a linked list.
+Each time we recursively call \texttt{iter\_link}, we could yield multiple values from the linked list. Therefore, we want to ensure we call \texttt{yield from} in order to properly yield all the  individual items from a nested linked list.
+
+This is not true for \texttt{lnk.first} in the else condition since we already confirmed that it is a single value, and not a linked list.
+\end{guide}
+\end{blocksection}
