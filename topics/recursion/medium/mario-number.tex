@@ -111,15 +111,15 @@ In tree recursion, you need to find a way to combine separate recursive calls. I
 \begin{itemize}
     \item Some leading questions:
     \begin{itemize}
-        \item What are our base cases? (When do we know we’ve reached the end of the level?)
+        \item What are our base cases? (When do we know we’ve reached the end of the level? When do we know that we've failed?)
         \item Is there any difference between going left to right or right to left in terms of the number of ways to traverse the level?
         \item What are our two options at each step?
         \item What do those look like in a recursive call?
         \item How should we combine our recursive calls? (and, or, addition, etc.)
     \end{itemize}
-    \item It can be helpful and fun to lean into the narrative of the question! This especially helps when talking about the recursive calls “in plain english”
+    \item Try leaning into the narrative of the question! It's fun and can help rephrase recursive calls “in plain english”
     \item It’s very useful to draw a tree diagram! Each function call has one branch for stepping once and another branch for stepping twice. Each branch then has 2 branches of their own (until a base case is reached).
-    \item Teach students that recursive calls can be treated as numbers using the recursive leap of faith, so combining the two recursive call branches with addition is intuitive.
+    \item Teach students that recursive calls can be treated as numbers using the recursive leap of faith, so combining the two recursive call branches with addition is really just adding two numbers.
 \end{itemize}
 \end{guide}
 \end{blocksection}
