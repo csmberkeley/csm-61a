@@ -1,0 +1,76 @@
+\question What would Scheme display? If there is an error, write ERROR.
+
+\begin{lstlisting}
+scm> (define-macro (cond-macro cond1 cond2 expr1 expr2)
+	`(cond (,cond1 ,expr1) (,cond2 expr2) (else `berkeley)))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+cond-macro
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (define (cond-func cond1 cond2 expr1 expr2)
+	`(cond (,cond1 ,expr1) (,cond2 expr2) (else `berkeley)))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+cond-func
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cond-func (= 2 2) (= 3 4) (+ 6 7) (- 9 2))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+(cond (#t 13) (#f expr2) (else (quasiquote berkeley)))
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cond-func '(= 2 2) '(= 3 4) '(+ 6 7) '(- 9 2))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+(cond ((= 2 2) (+ 6 7)) ((= 3 4) expr2) (else (quasiquote berkeley)))
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (eval (cond-func (= 2 2) (= 3 4) (+ 6 7) (- 9 2)))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+13
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cond-macro (= 2 2) (= 3 4) (+ 6 7) (- 9 2))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+13
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cond-macro (> 3 6) (= 2 2) (+ 6 7) (- 9 2))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+ERROR
+unknown identifier: expr2
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+scm> (cond-macro (> 3 6) (= 3 4) (+ 6 7) (- 9 2))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+berkeley
+\end{lstlisting}
+\end{solution}

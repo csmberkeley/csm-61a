@@ -1,0 +1,63 @@
+\begin{blocksection}
+\question
+\textbf{Guardians and Asteroids}
+Star-Lord is cruising through space and can’t afford to crash into any asteroids along the way. Let his path be represented as a (possibly nested) list of integers, where an asteroid is denoted with a 0, and stars and planets otherwise. Every time Star-lord sees (visits) an asteroid (0), he merges the next planet/star with the asteroid. In other words, construct a NEW list so that all asteroids (0s) are replaced with a list containing the planet followed by the asteroid (e.g. (planet 0) ). You can assume that the last object in the path is not an asteroid (0).
+\\
+\begin{lstlisting}
+;Doctests
+scm> (collision (list 1 2 3 0 4))
+(1 2 3 (4 0))
+scm> (collision (list 4 3 (list 0 1) 2))
+(4 3 ((1 0)) 2)
+scm> (collision (list 1 -2 0 -3 4 0 -5 6))
+(1 -2 (-3 0) 4 (-5 0) 6)
+scm> (collision (list 1 0 0 2 3))
+(1 (0 0) 2 3) 
+
+# Asteroids can merge with other asteroids too
+
+(define (collision lst)
+  (cond ((_____________________) lst)
+    ((___________________________)
+      __________________________________)
+    ((___________________________)
+      (cons ____________________________
+        __________________________________))
+    (else _________________________________)
+  )
+)
+
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{blocksection}
+\begin{lstlisting}
+(define (collision lst)
+  (cond ((null? lst) nil)
+    ((list? (car lst))
+      (cons (collision (car lst)) (collision (cdr lst))))
+    ((and (equal? (car lst) 0) (not (null? (cdr lst))))
+      (cons (list (car (cdr lst)) (car lst))
+        (collision (cdr (cdr lst)))))
+    (else(cons (car lst) (collision (cdr lst))))
+  )
+)
+
+#Alternate solution (No cond form)
+
+(define (collision lst)
+  (if (null? lst)
+    lst
+    (if (list? (car lst))
+      (cons (collision (car lst)) (collision (cdr lst)))
+      (if (equal? (car lst) 0)
+        (cons (list (cadr list) (car lst)) (collision (cddr lst)))
+        (cons (car lst) (collision (cdr lst)))
+      )
+    )
+  )
+)
+\end{lstlisting}
+\end{blocksection}
+\end{solution}
