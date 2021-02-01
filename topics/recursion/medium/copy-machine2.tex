@@ -29,8 +29,10 @@ def sum_range(lower, upper):
     return copies(0, 0)
 
 \end{lstlisting}
+\end{blocksection}
 
 \begin{solution}[1.5in]
+\begin{blocksection}
 \begin{lstlisting}
 def sum_range(lower, upper):
     def copies(pmin, pmax):
@@ -43,20 +45,20 @@ def sum_range(lower, upper):
 \end{lstlisting}
 
 \textbf{(Solution continues on the next page)}
-\end{solution}
 \end{blocksection}
+\end{solution}
 
-\begin{blocksection}
 \begin{solution}
+\begin{blocksection}
 
 This question is similar to the last one but now we have to deal with two parameters \lstinline{pmin} and \lstinline{pmax}. Let's start with our recursive calls. Each call represents using one printer and returns a boolean value that indicates whether or not we can create the number of copies in our desired range (set by lower and upper) if we decide to use that speicfic printer at this point: if we use the first printer then the minimum pages we can print is whatever our current minimum is + 50 and the maximum pages we can print is whatever our current maximum is + 60. We need to take the two recursive calls, which each represents a choice we have (either use the first printer or use the second printer) and combine them in some way. If one of these choices led to \lstinline{True} then we should return \lstinline{True} so we use an \lstinline{or} to combine the recursive calls.
 
 Our first base case represents successfully printing the number of pages within our range in which case we can stop the recursion because we know it is possible to print that number of pages within the range. Our second base case handles the case where we know for sure that we cannot print the number of pages within our range so we return \lstinline{False} and stop doing the recursion.
-\end{solution}
 \end{blocksection}
+\end{solution}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
     \item Only do this problem if you have plenty of time (it takes a long time).
@@ -84,5 +86,5 @@ Our first base case represents successfully printing the number of pages within 
         \end{itemize}
     \end{enumerate}
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}

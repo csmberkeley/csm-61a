@@ -81,8 +81,8 @@ def mario_number(level):
 \end{lstlisting}
 \end{blocksection}
 
-\begin{blocksection}
 \begin{solution}
+\begin{blocksection}
 \begin{lstlisting}
 def mario_number(level):
     if level == 1:
@@ -102,11 +102,11 @@ To think of the base cases, you can consider the two ways that Mario ends his jo
 
 In tree recursion, you need to find a way to combine separate recursive calls. In this case, because \lstinline{mario_number} returns an integer and the base cases are integers and you’re trying to count the total number of ways of traversal, it makes sense to add your recursive calls.
 
-\end{solution}
 \end{blocksection}
+\end{solution}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
     \item Some leading questions:
@@ -121,5 +121,5 @@ In tree recursion, you need to find a way to combine separate recursive calls. I
     \item It’s very useful to draw a tree diagram! Each function call has one branch for stepping once and another branch for stepping twice. Each branch then has 2 branches of their own (until a base case is reached).
     \item Teach students that recursive calls can be treated as numbers using the recursive leap of faith, so combining the two recursive call branches with addition is really just adding two numbers.
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}
