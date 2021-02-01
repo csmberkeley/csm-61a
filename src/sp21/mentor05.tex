@@ -1,0 +1,85 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{\textsc{Midterm 1 Review}}
+\date{February 15 - February 17, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{WWPD}
+\begin{questions}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{argentina.tex}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{maths&quick-maths.tex}
+\end{questions}
+
+\newpage
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/functions-and-expressions/easy/env-diagram/}{ab.tex}
+\newpage
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{snowflake.tex}
+%\subimport{../../topics/hof/medium/env-diagram/}{zebra.tex}
+%\ TODO: throw in a reverse environment diagram problem here?
+\end{questions}
+
+\newpage
+\section{Higher Order Functions}
+\begin{questions}
+%\subimport{../../topics/hof/medium/wwpd/}{lambda-wwpd.tex}
+\subimport{../../topics/hof/easy/}{make-interval.tex}
+\subimport{../../topics/hof/medium/}{alternator.tex}
+\subimport{../../topics/hof/easy/}{print_n.tex}
+\subimport{../../topics/hof/hard/}{self-referencing.tex}
+\end{questions}
+
+\section{Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{coin-game.tex}
+\end{questions}
+
+\section{Tree Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{make-change.tex}
+\end{questions}
+
+\newpage
+\section{Lists}
+\subimport{../../topics/lists/immutable/text/}{list_overview.tex}
+\begin{questions}
+\subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified.tex}
+
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+\end{blocksection}
+\subimport{../../topics/lists/immutable/medium/wwpd/}{assignment-and-slicing.tex}
+\begin{blocksection}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\end{blocksection}
+\end{questions}
+
+\newpage
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{questions}
+\subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+\end{questions}
+
+\newpage
+\section{Challenge Problems}
+\textbf{Note:} These problems are meant to be challenging and may take a long time. Please attempt the previous questions on the worksheet first.
+\begin{questions}
+\subimport{../../topics/lists/immutable/medium/}{gen-list.tex}
+\newpage
+\subimport{../../topics/trees/adt/hard/}{scrabble.tex}
+\end{questions}
+
+\end{document}
