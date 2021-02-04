@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Implement \lstinline$make_alternator$ which takes in two functions and outputs a function. When the function takes in a number \texttt{x}, it prints out all the numbers between 1 and \texttt{x}, applying \texttt{f} to every odd-indexed number and \texttt{g} to every even-indexed number before printing.
+\question Implement \lstinline$make_alternator$ which takes in two functions and outputs a function. The returned function takes in a number \texttt{x} and prints out all the numbers from 1 to \texttt{x}, applying \texttt{f} to the odd numbers and applying \texttt{g} to the even numbers before printing.
 
 \begin{lstlisting}
 def make_alternator(f, g):
