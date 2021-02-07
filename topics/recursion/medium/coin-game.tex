@@ -34,6 +34,7 @@ def coin_game(lst, player):
 \end{lstlisting}
 \end{blocksection}
 
+\begin{blocksection}
 \begin{solution}[0in]
 \begin{lstlisting}
 def coin_game(lst, player):
@@ -50,5 +51,21 @@ def coin_game(lst, player):
             return min(coin_game(lst[:len(lst) - 1]), coin_game(lst[:len(lst) - 2]))
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+ \begin{guide}
+   \textbf{Teaching Tips}
+   \begin{itemize}
+   	   \item This is a very challenging problem. Ensure you have sufficient time to allow students to try coding themselves as well as enough time to walk through the problem if attempting during section.
+   	   \item It may be helpful to do a \textit{brief} high-level overview of the basic idea of the minimax algorithm before attempting this problem. 
+       \item Make sure to run through the doctests and explain what exactly the "coin game" is, as well as what the problem is asking for.
+       \item It may be easier to start with the base cases. As with all base cases, ask your students: "What game scenarios (possibilities of \verb|lst|) are simple enough such that you immediately know what our optimal score is? 
+       \item Ask your students to always think about meaningful skeleton code variable names. In this case, what do \verb|last| and \verb|second_to_last| represent? 
+       \item Ensure the concept of representing "all possible steps" with the recursion call is explained, as well as why player 1 wants \verb|max| and player 2 wants \verb|min|. 
+   \end{itemize}
+ \end{guide}
+ \end{blocksection}
+
 
 
