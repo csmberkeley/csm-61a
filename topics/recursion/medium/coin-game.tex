@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question A game is defined as follows: let \texttt{lst} be a list of coins, each coin represented as a positive integer (ex: 1, 5, 25, 10). Two players take turns claiming either the last coin in \texttt{lst}, or both the last \textit{and} the second to last coin; after \texttt{lst} is exhausted, whichever player has the higher score wins. Fill in the function such that it returns the highest score that the first player (\texttt{player = True}) can get in this game if the second player (\texttt{player = False}) plays optimally. 
+\question A game is defined as follows: let \texttt{lst} be a list of coins, each coin represented as a positive integer (ex: 1, 5, 25, 10). Two players take turns claiming either the last coin in \texttt{lst}, or both the last \textit{and} the second to last coin; after \texttt{lst} is exhausted, whichever player has the higher score wins. Fill in the function such that it returns the highest score that the first player (\texttt{player = True}) can get in this game if the second player (\texttt{player = False}) plays optimally.
 
 \textbf{Hint:} a player's choice is considered \textit{optimal} if it maximizes their own score and minimizes the opponent's score.  \\
 
@@ -15,19 +15,19 @@ def coin_game(lst, player):
     """
     if _____________________ and player:
 
-        return _____________________________			
-    elif ___________________ and not player:		
+        return _____________________________
+    elif ___________________ and not player:
 
-        return _____________________________			
+        return _____________________________
     else:
-	if player:			
-            last = _____________________________________			
+	if player:
+            last = _____________________________________
             second_to_last = ___________________________
 
             return _______________________________________ \
 
                _____________________________________________
-        else:	
+        else:
             return _______________________________________ \
 
                _____________________________________________
@@ -53,19 +53,16 @@ def coin_game(lst, player):
 \end{solution}
 \end{blocksection}
 
+\begin{guide}
 \begin{blocksection}
- \begin{guide}
    \textbf{Teaching Tips}
    \begin{itemize}
    	   \item This is a very challenging problem. Ensure you have sufficient time to allow students to try coding themselves as well as enough time to walk through the problem if attempting during section.
-   	   \item It may be helpful to do a \textit{brief} high-level overview of the basic idea of the minimax algorithm before attempting this problem. 
+   	   \item It may be helpful to do a \textit{brief} high-level overview of the basic idea of the minimax algorithm before attempting this problem.
        \item Make sure to run through the doctests and explain what exactly the "coin game" is, as well as what the problem is asking for.
-       \item It may be easier to start with the base cases. As with all base cases, ask your students: "What game scenarios (possibilities of \verb|lst|) are simple enough such that you immediately know what our optimal score is? 
-       \item Ask your students to always think about meaningful skeleton code variable names. In this case, what do \verb|last| and \verb|second_to_last| represent? 
-       \item Ensure the concept of representing "all possible steps" with the recursion call is explained, as well as why player 1 wants \verb|max| of 2 possibilities and player 2 wants \verb|min| of 2 possibilities. 
+       \item It may be easier to start with the base cases. As with all base cases, ask your students: "What game scenarios (possibilities of \verb|lst|) are simple enough such that you immediately know what our optimal score is?
+       \item Ask your students to always think about meaningful skeleton code variable names. In this case, what do \verb|last| and \verb|second_to_last| represent?
+       \item Ensure the concept of representing "all possible steps" with the recursion call is explained, as well as why player 1 wants \verb|max| of 2 possibilities and player 2 wants \verb|min| of 2 possibilities.
    \end{itemize}
- \end{guide}
- \end{blocksection}
-
-
-
+\end{blocksection}
+\end{guide}
