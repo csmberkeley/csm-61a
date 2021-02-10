@@ -18,20 +18,20 @@ sum([x * y for x, y in zip(lst1, lst2)])
 \end{lstlisting}
 \end{solution}
 
-\part Return a list of lists such that \lstinline$lol = [[0], [0, 1], [0, 1, 2], [0, 1, 2, 3], [0, 1, 2, 3, 4]]$.
+\part Return a list of lists such that \lstinline$a = [[0], [0, 1], [0, 1, 2], [0, 1, 2, 3], [0, 1, 2, 3, 4]]$.
 
 \begin{solution}[0.25in]
 \begin{lstlisting}
-[[x for x in range(y)] for y in range(1, 6)] 
+a = [[x for x in range(y)] for y in range(1, 6)]
 \end{lstlisting}
 \end{solution}
 
 \part Return the same list as above, except now excluding every instance of the number 2:
-\lstinline$lold = [[0], [0, 1], [0, 1], [0, 1, 3], [0, 1, 3, 4]])$.
+\lstinline$b = [[0], [0, 1], [0, 1], [0, 1, 3], [0, 1, 3, 4]])$.
 
 \begin{solution}[0.25in]
 \begin{lstlisting}
-[[x for x in range(y) if x != 2] for y in range(1, 6)] 
+b = [[x for x in range(y) if x != 2] for y in range(1, 6)]
 \end{lstlisting}
 \end{solution}
 \end{parts}
@@ -41,7 +41,7 @@ sum([x * y for x, y in zip(lst1, lst2)])
     \begin{enumerate}
             \item It may be helpful to start with the basic list comprehension template of \texttt{[<expr> for <item> in <iterable> if <condition>]}
             \item The list of list questions are slightly hardcore, so try nudging your students in the right direction by reminding them that it is completely possible to nest list comprehensions.
-            \item Make sure you also understand what the Python \texttt{zip} function does! 
+            \item Make sure you also understand what the Python \texttt{zip} function does!
     \end{enumerate}
     \end{guide}
 \end{blocksection}

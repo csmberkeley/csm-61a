@@ -16,9 +16,9 @@ def make_alternator(f, g):
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-    def alternator(n):
+    def alternator(x):
         i = 1
-        while i <= n:
+        while i <= x:
             if i % 2 == 1:
                 print(f(i))
             else:
@@ -32,8 +32,8 @@ def make_alternator(f, g):
  \begin{guide}
    \textbf{Teaching Tips}
    \begin{itemize}
-   	   \item Again, walk students through each iteration from 1 to n, and show how each of the two functions \verb|f,g| alternate on incrementing inputs. 
-   	   \item Remember the general structure needed whenever a function must return a function. 
+   	   \item Again, walk students through each iteration from 1 to x, and show how each of the two functions \verb|f,g| alternate on incrementing inputs.
+   	   \item Remember the general structure needed whenever a function must return a function.
    \end{itemize}
  \end{guide}
 \end{blocksection}
