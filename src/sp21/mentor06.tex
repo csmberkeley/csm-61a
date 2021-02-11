@@ -45,7 +45,7 @@
             \item Mutation Mini Lecture - 7 minutes
             \item Mutable List WWPD - 10 minutes
             \item \lstinline{accumulate} - 10 minutes
-            \item \lstinline{contains-n} - 15 minutes
+            \item \lstinline{contains-n} - 20 minutes
             \end{itemize}
     \end{itemize}
 \end{guide}
@@ -79,6 +79,39 @@
 \begin{questions}
 \subimport{../../topics/trees/adt/hard/}{contains-n.tex}
 \end{questions}
+
+
+
+\begin{guide}
+	\begin{blocksection}
+	\textbf{Teaching Tips}
+	\begin{itemize}
+			\item Draw out a tree and ask them to play out the algorithm
+			\begin{itemize}
+	                \item If you were a computer, how would you replace all the \lstinline{x}'s?
+	                \item You would check the value of your current tree, and then move on to each of the branches
+	                \item Can we somehow “simplify” all of this repeated work?
+            \end{itemize}
+		\item Make sure they respect abstraction barriers 
+            \begin{itemize}
+                \item If there isn't a \lstinline{set_value} function, how can we return a tree with an updated value?
+                \item Answer: create a new tree with \lstinline{0} and the new branches
+            \end{itemize}
+		\item Warn them against trying to evaluate branches
+            \begin{itemize}
+                \item What is the simplest replacement we can do?
+                \item How can we delegate branch replacements to recursive calls?
+            \end{itemize}
+            \item If we have multiple branches, how do we make the recursive call on each branch? (Answer: a for loop)
+            \begin{itemize}
+                \item What happens in the for loop if there aren’t any branches? Nothing.
+                \begin{itemize}
+                    \item This is why we don’t need an explicit base case (ex. if len(branches) == 0)
+                \end{itemize}
+            \end{itemize}
+	\end{itemize}
+	\end{blocksection}
+\end{guide}
 
 
 \end{document}
