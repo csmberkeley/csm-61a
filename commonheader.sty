@@ -43,6 +43,7 @@
 \usepackage{import}
 \usepackage{listings}
 \usepackage{multirow}
+\usepackage{multicol}
 \usepackage{palatino}
 \usepackage{paralist}
 \usepackage{parskip}
@@ -56,40 +57,45 @@
 \usepackage{synttree}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Define solution style
+\unframedsolutions
+\renewcommand{\solutiontitle}{}
+\SolutionEmphasis{\color{red}}
+
+
 %%% Information about the class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\semester}[1]{\newcommand{\sem}{#1}}
 \newcommand{\stafflist}[1]{\newcommand{\staff}{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% MODIFY THIS INFORMATION AS NECESSARY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\semester{Fall 2020}
-\stafflist{Jason Chang and Jade Singh, with \\
-Catherine Cang,
-Alina Trinh,
-Ethan Chiu,
+\semester{Spring 2021}
+\stafflist{Ivan Penev and Joshua Baum, with \\
 Jamie Ip,
-Kenneth Chi, and \\
-Aidan Tong,
-Aman Shah,
-Bridget Cheng,
-Cindy Lin,
-Ethan Yeh,
-Ivan Penev,
-Ivy Li,
-James Fletcher,
-Jemmy Zhou,
-Jennifer Huang,
-Jessica Yu,
-Joshua Baum,
+Kenneth Chi,
 Kevin Moy,
+Mathilde McKeever,
+Cyrus Bugwadia, and \\
 Kunal Agarwal,
-Lauren Meier,
-Matthew Guo,
+Luke Liu,
+John So,
+Jemmy Zhou,
+Ruslana Yurtyn,
+Vivian Lu,
+Matt Au,
+Lily Yang,
 Mihira Patel,
+Jessica Yu,
+Aidan Tong,
+Matthew Guo,
 Nikhita Anumukonda,
-Owen Gong,
-Richard Roggenkemper,
+Laryn Qi,
+Grace Yi,
+Jennifer Huang,
+Cindy Lin,
+James Fletcher,
 Sean Sananikone,
+Abinaya Srikant,
 Uma Unni}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -109,6 +115,13 @@ Uma Unni}
         {\begin{flushright}
             \huge {\sc{#1}}
             \fontsize{45}{0} \sffamily \color{titlecol} \selectfont
+            \ifdefined\discussionguides
+              \marginpar{\Large{\textcolor{blue}{Guide}}}
+            \else
+              \ifdefined\discussionsolutions
+                \marginpar{\Large{\textcolor{red}{Solutions}}}
+              \fi
+            \fi
         \end{flushright}}
         \rule{\textwidth}{0.2em}}
     \newcommand{\disctitle}{#1}}
@@ -325,6 +338,12 @@ Uma Unni}
   \printanswers
 \else
   \noprintanswers
+\fi
+
+\ifdefined\discussionguides
+    \newenvironment{guide}{\color{blue}}{}
+\else
+    \newenvironment{guide}{\comment}{\endcomment}
 \fi
 
 % The nonsol environment will show items within it only if answers are not set

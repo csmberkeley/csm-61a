@@ -5,16 +5,16 @@ right to left.
 
 \begin{lstlisting}
 def is_sorted(n):
-   """
-   >>> is_sorted(2)
-   True
-   >>> is_sorted(22222)
-   True
-   >>> is_sorted(9876543210)
-   True
-   >>> is_sorted(9087654321)
-   False
-   """
+    """
+    >>> is_sorted(2)
+    True
+    >>> is_sorted(22222)
+    True
+    >>> is_sorted(9876543210)
+    True
+    >>> is_sorted(9087654321)
+    False
+    """
 \end{lstlisting}
 \end{blocksection}
 
@@ -41,4 +41,16 @@ First, let’s look into the base case. At what point will you know a number is 
 Next, let’s go into the recursive step. We build off of the base cases: if the base cases fail, then we can now work off of the assumption that \lstinline{n} has at least 2 digits and the last 2 digits of n are in sorted order. Next, notice that after chopping off the last digit, to check that the rest of \lstinline{n} is sorted, we can use our function \lstinline{is_sorted} on the number \lstinline{rest}. So finally, we make the recursive call with \lstinline{rest} as the argument.
 
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+      \item If your students are quiet at the beginning, it might be good to start by going through each of the doctests and asking them why they're true of false.
+      \item Start with the base case! At what point will you know a number is sorted?
+      \item Then move to the recursive step. How do we get the last digit (n \% 10) and the rest (n // 10)?
+      \item \textbf{This is the first problem, so if the students are intimidated by the code, just ask for a general approach/strategy; build intuition}
+  \end{itemize}
+\end{guide}
 \end{blocksection}

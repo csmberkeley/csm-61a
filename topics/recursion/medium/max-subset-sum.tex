@@ -21,7 +21,7 @@ def max_subset_sum(lst, n):
     with_elem = _____________________________ + _________
 
     without_elem = ____________________________________
-    
+
     return ____________________________________________
 \end{lstlisting}
 
@@ -37,3 +37,30 @@ def max_subset_sum(lst, n):
     return max(with_elem, without_elem)
 \end{lstlisting}
 \end{solution}
+
+\begin{blocksection}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+    \item The solution to this problem is not the smartest nor the most elegant. It's a brute force approach using tree recursion.
+    \item Tell students not to overthink the problem and approach it with tree recursion in mind.
+    \item Drawing a tree diagram will be very helpful for understanding recursive calls.
+    \item What are the base cases?
+    \begin{itemize}
+      \item The simplest possible case is if \lstinline{n = 0}, and there is nothing to sum.
+      \item Another case (read the spec carefully!) is if \lstinline{n >= len(lst)}, and we return the sum of the whole list.
+    \end{itemize}
+    \item What are the recursive cases?
+    \begin{itemize}
+      \item We either choose to use an element in the subset or do not.
+      \item If we use the element, then add it to the sum and subtract \lstinline{n}.
+      \item Either way, we have to shrink the list by the element we're considering, since elements can only be used at most once.
+    \end{itemize}
+    \item How do we combine the recursive cases?
+    \begin{itemize}
+      \item Make sure students understand that the recursive cases are numbers by the recursive leap of faith- \lstinline{with_elem} is a number, not a function.
+      \item It's in the name- we use \lstinline{max} to find the largest \lstinline{subset_sum}.
+    \end{itemize}
+  \end{itemize}
+\end{guide}
+\end{blocksection}

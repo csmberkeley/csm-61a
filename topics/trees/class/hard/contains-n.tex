@@ -53,4 +53,14 @@ def contains_n(elem, n, t):
 \textbf{Recursive cases}: If the current node isn't a leaf, then there's two different cases we should consider. Either the label of the current node is equal to \lstinline{elem} or the label is not equal to \lstinline{elem}. For the former, we would have to search for \lstinline{n} more \lstinline{elems} in each branch of \lstinline{t} and return \lstinline{True} if any of the branches contain \lstinline{n} elems. For the latter, we would have \lstinline{(n - 1)} elements remaining, so we would search for \lstinline{(n - 1)} more \lstinline{elems} in each branch of \lstinline{t} and return \lstinline{True} if any of the branches contain \lstinline{(n - 1)} \lstinline{elems}. Since there is not room to do a for loop, we can use a list comprehension to recursively call the function on each branch. Thus, our two list comprehension statements would be \lstinline{[contains_n(elem, n, b) for b in t.branches]} and \lstinline{[contains_n(elem, n - 1, b) for b in t.branches]}. To determine if any of the branches contain either \lstinline{n} elems or \lstinline{(n - 1)} elems, we can check if there's a \lstinline{True} element in the respective lists.
 
 \end{solution}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Draw out the doctest Tree and walk through how you would delete path duplicates by hand. Then, ask your students, "how would we write this in code?"
+       \item Recap tree functions "is\_leaf", "branches", and "label" if need be.
+       \item Walk through the three main questions we ask when doing recursion: "what are our base cases?", "how can we reduce to our simplest case?", "how can we solve the smaller problem? (aka recursive leap of faith)"
+    \end{itemize}
+ \end{guide}
+
 \end{blocksection}

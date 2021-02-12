@@ -1,0 +1,54 @@
+\begin{blocksection}
+\question
+Given the function \texttt{run}, write the helper function \texttt{duplicate} that takes in a list of integers, \texttt{lst}, and an integer \texttt{n}. The \texttt{duplicate} function takes each element of the list and duplicates it by its value (i.e. If the first number in the list is 2, add 2 as the next element in the list so we have a total of two 2’s in the list).
+
+\begin{lstlisting}
+
+;Doctests
+scm> (define lst (cons 1 (cons 3 (cons  2  nil))))
+lst
+scm>  (run lst)
+(1 3 3 3 2 2)
+scm> (run (cons 2 (cons 2 (cons 1 nil))))
+(2 2 2 2 1)	
+
+(define run
+	(lambda (lst)
+		(duplicate lst 0)
+	)
+)  
+
+(define duplicate
+
+
+
+
+
+
+
+
+
+
+)
+
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{blocksection}
+\begin{lstlisting}
+(define duplicate
+	(lambda (lst n)
+		(cond ((null? lst) '())
+			((< n (car lst)) 
+				(cons (car lst) (duplicate lst (+ n 1)))
+			)
+          		(else 
+          			(duplicate (cdr lst) 0)
+	   		)
+     		)
+   	)
+)
+\end{lstlisting}
+\end{blocksection}
+\end{solution}

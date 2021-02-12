@@ -1,4 +1,4 @@
-% \begin{blocksection}
+\begin{blocksection}
 \question Given some list \texttt{lst}, possibly a deep list, mutate \texttt{lst} to have the accumulated sum of all elements so far in the list. If there is a nested list, mutate it to similarly reflect the accumulated sum of all elements so far in the nested list. Return the total sum of the original \texttt{lst}.
 
 \emph{Hint:} The \lstinline$isinstance$ function returns True for \lstinline$isinstance(l, list)$ if \texttt{l} is a list and False otherwise.
@@ -28,7 +28,9 @@ def accumulate(lst):
             ____________________________________
     return ___________________________________
 \end{lstlisting}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{solution}[1in]
 \begin{lstlisting}
 def accumulate(lst):
@@ -43,13 +45,29 @@ def accumulate(lst):
             lst[i] = sum_so_far
     return sum_so_far
 \end{lstlisting}
-To keep track of the accumulated sum we need to create a variable in the function that keeps track of the overall sum of the list so we can mutate it. To iterate through all the elements of the list AND have the ability to mutate them later on once we have the cumulative sum. 
-The two possible data types in the list are 
+\end{solution}
+\end{blocksection}
+
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+
+\begin{itemize}
+\item To keep track of the accumulated sum we need to create a variable in the function that keeps track of the overall sum of the list so we can mutate it.
+\item Make sure to emphasize the distinction between \lstinline{for item in lst} and \lstinline{for i in range(len(lst))}. (We need \lstinline{i} in order to mutate the list.)
+\item Why do we need a conditional in the for loop? What do we do when we have a nested list?
 \begin{enumerate}
 \item Integers:  For integers we just add the value to the ongoing sum and then mutate the current index of the list to be the cumulative sum
-\item Lists: We need to break down the list and get the values, both so that we can update them and so that we can add it into our sum.  However, we don’t know how many levels of nesting we have in our list (for example, we could have something like [1, [2, [3]]]), so we need a function that will sum up the values from a potentially nested list.  Do we have a function that does this?  Yes!  We have accumulate.  That is an indicator that we need to recursively call accumulate on this list.  Now we just need to add in the solution of our recursive call to our overall sum.
+\item Lists: We need to break down the list and get the values, both so that we can update them and so that we can add it into our sum.  However, we don’t know how many levels of nesting we have in our list
+\begin{itemize} 
+\item We could have something like \lstinline{[1, [2, [3]]]}, so we need a function that will sum up the 
+values from a potentially nested list.  Do we have a function that does this?
+\item \textbf{Emphasize the recursive leap of faith when calling accumulate on the inner list}
+\end{itemize}
 \end{enumerate}
-Finally, we return the accumulated sum of the list which includes all values, even the nested ones because of the recursive call. 
+\item We return the accumulated sum of the list which includes all values, even the nested ones because of the recursive call. 
+\end{itemize}
+\end{guide}
+\end{blocksection}
 
-\end{solution}
-% \end{blocksection}

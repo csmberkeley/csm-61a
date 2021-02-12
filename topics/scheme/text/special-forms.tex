@@ -2,9 +2,11 @@ Call expressions follow \textit{prefix} notation, i.e.
 \texttt{(<operator> <operand1> <operand2> … <operandN>)}
 
 Evaluating a call expressions closely mirrors Python:
-Evaluate the operator, yielding a procedure p
-Evaluate each operand, each yielding a value argi
-Apply the procedure p with arguments arg1, arg2, …, argN
+\begin{itemize}
+\item Evaluate the operator, yielding a procedure p
+\item Evaluate each operand, each yielding a value argi
+\item Apply the procedure p with arguments arg1, arg2, …, argN
+\end{itemize}
 
 Special forms \textit{look} like call expressions but aren’t -- they implement Scheme language features and follow special evaluation rules (e.g., short-circuiting). 
 

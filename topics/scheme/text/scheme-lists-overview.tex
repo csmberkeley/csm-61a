@@ -18,7 +18,7 @@ Also takes in an arbitrary number of elements and construct a list out of the el
 \item Car \\
 \textbf{Syntax:} \lstinline{(car <pair>)} \\
 Gets you the first item of a pair
-\item Cdr \\ 
+\item Cdr \\
 \textbf{Syntax:} \lstinline{(cdr <pair>)} \\
 Gets you the second item of a pair
 \end{itemize}
@@ -30,5 +30,24 @@ Gets you the \lstinline{car} of the \lstinline{cdr}
 \begin{itemize}
 \item Cddr \\
 \textbf{Syntax:} \lstinline{(cddr <pair>)} \\
-Gets you the \lstinline{cdr} of the \lstinline{cdr} 
+Gets you the \lstinline{cdr} of the \lstinline{cdr}
 \end{itemize}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Emphasize to students that Scheme lists are linked lists and NOT Python lists
+  \begin{itemize}
+    \item Discuss what features this removes from lists (rip indexing) and what benefits it brings (hint: recursion)
+  \end{itemize}
+  \item If you're an old bear\textsuperscript{TM}, keep in mind that dotted lists have been removed from the curriculum, so Scheme lists have the same functionality as linked lists
+  \begin{itemize}
+    \item \lstinline{(cons 1 2)} will now raise a SchemeError instead of creating a Malformed list
+  \end{itemize}
+  \item The \href{https://code.cs61a.org/}{61A Scheme Web interpreter} is \textbf{very useful} for visualizing lists!
+  \item If you choose to give a mini-lecture on Scheme list syntax, try using each keyword in an example instead of just talking about them!
+  \item \lstinline{(cons 1 (cons 2 (cons 3 nil)))} = \lstinline{(list 1 2 3)} = \lstinline{'(1 2 3)}
+\end{itemize}
+\end{guide}
+\end{blocksection}

@@ -64,3 +64,25 @@ is even, divide by two. Else, multiply by 3 and add 1.
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\newline
+Python version:
+\begin{lstlisting}
+def hailstone(seed, n):
+    if n == 0:
+        return seed
+    if seed % 2 == 0:
+        return hailstone(seed//2, n - 1)
+    else:
+        return hailstone(3*seed + 1, n - 1)
+\end{lstlisting}
+\begin{itemize}
+    \item If they’re confused, point them towards the \% in Python and how they can get the same value back in Scheme (answer: remainder function) 
+    \item Remind them to be careful about parentheses
+    \item If you don’t use cond, how might you write an equivalent function? 
+\end{itemize}
+\end{guide}
+\end{blocksection}
