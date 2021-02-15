@@ -55,7 +55,7 @@ def accumulate(lst):
 
 \begin{itemize}
 \item To keep track of the accumulated sum we need to create a variable in the function that keeps track of the overall sum of the list so we can mutate it.
-\item Make sure to emphasize the distinction between \lstinline{for item in lst} and \lstinline{for i in range(len(lst))}. (We need \lstinline{i} in order to mutate the list.)
+\item Make sure to emphasize the distinction between \lstinline{for item in lst} and \lstinline{for i in range(len(lst))}. (We need \lstinline{i} in order to mutate the list.) Perhaps allow your students to first make the mistake of using the former, so that they may realize this difference on their own. Granted, if they aren't able to catch this on their own, do nudge them in the right direction. 
 \item Why do we need a conditional in the for loop? What do we do when we have a nested list?
 \begin{enumerate}
 \item Integers:  For integers we just add the value to the ongoing sum and then mutate the current index of the list to be the cumulative sum
@@ -66,7 +66,7 @@ values from a potentially nested list.  Do we have a function that does this?
 \item \textbf{Emphasize the recursive leap of faith when calling accumulate on the inner list}
 \end{itemize}
 \end{enumerate}
-\item We return the accumulated sum of the list which includes all values, even the nested ones because of the recursive call. 
+\item We return the accumulated sum of the list which includes all values, even the nested ones because of the recursive call.
 \end{itemize}
 \end{blocksection}
 \end{guide}
