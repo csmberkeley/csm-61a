@@ -17,10 +17,6 @@ def midterm(n, t):
 
         return ______________________________	
 
-    elif t - n < 0:	
-
-        return __________________________	
-
     else:
 
         return __________________________
@@ -30,10 +26,8 @@ def midterm(n, t):
 \begin{lstlisting}:
     if n <= 0 or t <= 0:
         return 0
-    elif t - n < 0:
-	return midterm(n - 1, t)
     else:
-	return max(n + 50 + midterm(n - 1, t - n), midterm(n - 1, t))
+        return max(n + 50 + midterm(n - 1, t - n), midterm(n - 1, t))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
