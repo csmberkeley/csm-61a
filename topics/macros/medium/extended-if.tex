@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question
+We think cond is great, however a group of 61A students has revolted claiming they can do better. Help them implement their own version of cond called \lstinline{extended-if}.
+\\
+Like a Scheme cond, \lstinline{extended-if} takes in a sequence of conditions with corresponding suites to execute if the condition is true, and a suite to execute if none of the conditions are true. UNLIKE cond, \lstinline{extended-if} takes in a list of conditions, \lstinline{conditions}, a list of corresponding suites to execute, \lstinline{do-suite}, and finally a suite to execute if none of the conditions are true, \lstinline{else-suite}. In other words, if the i’th condition in \lstinline{conditions} is True, then you should return the i’th item in \lstinline{do-suite}. If no condition in \lstinline{conditions} is True, then return the \lstinline{else-suite}.
+\\
+You may not use cond in your solution. We have left blanks in multiple spaces to allow for quoting/quasiquoting/unquoting. You may not need to use them all.
+\\
+\begin{lstlisting}
+;Doctests
+scm> (define a 4)
+scm> (define b 5)
+scm> (extended-if ((< a b) (= a b)) do ((+ a b) (- a b)) else (* a b))
+9
+scm> (extended-if ((= a b) (< a b)) do ((+ a b) (- a b)) else (* a b))
+-1
+scm> (extended-if ((= 1 2) (= 2 1) (null? 7)) do ((+ 17 18) (print "2=1?") (print "7's not null")) else (print "hello"))
+hello
+scm> (extended-if (( = (+ 3 4) ( + 3 3)) ( = 5 6)) do (1 2) else 1)
+1
+
+(define-macro (extended-if conditions do do-suite else else-suite)
+  __(______  ________________________
+    _________
+    __(if __(_______ _______) __(_______ _______)
+    __(extended-if __(_______ _______) do __(_______ _______) else __________)
+    )
+  )
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{blocksection}
+\begin{lstlisting}
+(define-macro (extended-if conditions do do-suite else else-suite)
+  (if (null? conditions)
+    else-suite
+    `(if ,(car conditions) ,(car do-suite)
+     (extended-if ,(cdr conditions) do ,(cdr do-suite)
+        else ,else-suite)
+     )
+  )
+)
+\end{lstlisting}
+\end{blocksection}
+\end{solution}

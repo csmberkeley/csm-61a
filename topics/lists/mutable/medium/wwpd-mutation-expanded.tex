@@ -70,17 +70,16 @@ TypeError: 'int' object is not iterable
 \begin{lstlisting}
 [6, 4] [1, 2]
 \end{lstlisting}
-\includegraphics[width=.9\textwidth]{list-mutation.png}
-\text{(credits: Mihira Patel)}
 \end{solution}
 \end{blocksection}
 
 \begin{blocksection}
 \begin{guide}
 \begin{itemize}
-	\item Draw a box and pointer diagram or utilize \url {https://bit.ly/30j2RtU}
+	\item Draw a box and pointer diagram or utilize \url {https://tinyurl.com/1at3617r}
 	\item Mention shallow vs. deep copying. In general, most operators involving python lists perform shallow copying: i.e. slicing, list(...), etc.
 	\item If you have enough time, it is helpful for students to make a chart which the different operators and identify when to mutate or create a new list.
+    \item Do remind students of the difference between \lstinline{a += b} and \lstinline{a = a+b}. The former is essentially \lstinline{a.extend(b)}, while the latter creates a new list consisting of all the elements of \lstinline{a} and \lstinline{b} combined and binds it to \lstinline{a}.
 \end{itemize}
 \includegraphics[width=.9\textwidth]{list-mutation.png}
 \text{(credits: Mihira Patel)}

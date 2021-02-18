@@ -1,0 +1,53 @@
+\begin{blocksection}
+\question Write a function \lstinline{partial_summer}, which takes in a list of integers \lstinline{lst} and returns a function. The returned function takes in a non-negative integer \lstinline{n}. It prints a sum derived from the first \lstinline{n} elements of \lstinline{lst}: if element \texttt{X} is even, divide \texttt{X} by \lstinline{2} before adding it to the sum, and if \texttt{X} is odd. add \lstinline{1} to \texttt{X} before adding it to the sum. If \lstinline{n > len(lst)}, then sum as many elements of \lstinline{lst} as you can. After printing the sum, the returned function returns another function, that when called, will perform the same procedure on the remaining \lstinline{len(lst) - n} elements of \lstinline{lst}. \\
+
+\begin{lstlisting}
+def partial_summer(lst):
+    """
+    >>> lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    >>> f = partial_summer(lst)(3)
+    7 # 7 = (1+1) + (2/2) + (3+1)
+    >>> g = f(4)
+    19 # 19 = (4/2) + (5+1) + (6/2) + (7+1)
+    >>> h = g(3)
+    14 # 14 = (8/2) + (9+1)
+    >>> i = h(1)
+    0	
+    """
+    def helper(n):
+
+        total, i = ________, ________
+
+        while ________________ and ___________________:
+
+            if _______________________:
+
+                total += ____________________________
+            else:
+                total += lst[i] + 1
+            
+            _________________________________________
+        print(total)
+
+        return ______________________________________
+    return helper
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def partial_summer(lst):
+    def helper(n):
+        total, i = 0, 0
+        while i < n and i < len(lst):
+            if lst[i] % 2 == 0:
+                total += lst[i] // 2
+            else:
+                total += lst[i] + 1
+            i += 1
+        print(total)
+        return partial_summer(lst[n:])
+    return helper
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
