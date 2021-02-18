@@ -30,3 +30,26 @@ List methods that mutate:
 \item \lstinline{pop(i)}: Removes and returns the element at index i, if you do not include an index it pops the last element of the list
 \end{itemize}
 Ways to copy: list splicing ([start:end:step]), \lstinline{list(...)}
+
+
+\begin{guide}
+	\begin{blocksection}
+	\textbf{Teaching Tips}
+	\begin{itemize}
+			\item Common Misconceptions:
+			\begin{itemize}
+				\item Students may be confused about the return value of mutation functions
+				\begin{itemize}
+					\item Try contrasting \lstinline{pop} with \lstinline{remove}, showing them how only \lstinline{pop} returns the element
+					\item Tell them to reference the list mutability table
+				\end{itemize}
+			\end{itemize}
+			\item The objectives for students are to:
+			\begin{itemize}
+				\item Distinguish between mutable and non-mutable objects
+				\item The effects and return values of mutation functions
+				\item Become comfortable with pointers and how to copy objects
+			\end{itemize}
+	\end{itemize}
+	\end{blocksection}
+\end{guide}

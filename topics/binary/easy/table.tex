@@ -1,0 +1,110 @@
+\question Fill out the following table. Write N/A if the conversion is not possible. Some entries have already been filled out for you.
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Decimal & Binary (unsigned) & Binary (two's complement) \\
+    \hline\hline
+    25 &  &  \\
+    \hline
+    & 0010 1010 & \\
+    \hline
+    &  & 0011 1100 \\
+    \hline
+    -66 &  &  \\
+    \hline
+    &  & 1010 1000 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{itemize}
+  \item To convert from binary to decimal, write out which powers of two correspond to a 1, and sum them together.
+  \item To convert from decimal to binary, it can be useful to create a binary place value table.
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\
+    \hline
+    0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Starting with the closest power of two \textbf{smaller} than our decimal, set it to 1 in the table and subtract this from the decimal. Repeat until the decimal is zero.
+  \end{itemize}
+  \item To convert from a negative decimal to two's complement binary, begin by finding the closest power of two \textbf{larger} than the decimal. For 66, this is 128.
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    -128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\
+    \hline
+    1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Set this value to 1 in the table and \textbf{add} this value to the decimal (since it is really a negative number) which should result in a positive decimal.
+    \item Then, we use normal binary conversion to shrink the decimal to zero.
+  \end{itemize}
+\end{itemize}
+
+\begin{solution}[0.5in]
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Decimal & Binary (unsigned) & Binary (two's complement) \\
+    \hline\hline
+    25 & 0001 1001 & 0001 1001 \\
+    \hline
+    42 & 0010 1010 & 0010 1010 \\
+    \hline
+    60 & 0011 1100 & 0011 1100 \\
+    \hline
+    -66 & N/A & 1011 1110 \\
+    \hline
+    -88 & N/A & 1010 1000 \\
+    \hline
+  \end{tabular}
+\end{center}
+\end{solution}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Students may be confused by the addition of binary numbers and circuits to course material.
+  \item You can reassure them that they will likely not be tested on this material, but they are good subjects to know for computer scientists regardless.
+  \item It may be a good idea to walk students through rows 1 and 2 first, then have them try the rest on their own.
+  \item To convert from binary to decimal, write out which powers of two correspond to a 1, and sum them together.
+  \item To convert from decimal to binary, it can be useful to create a binary place value table.
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\
+    \hline
+    0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Starting with the closest power of two \textbf{smaller} than our decimal, set it to 1 in the table and subtract this value from the decimal. Repeat until the decimal is zero.
+  \end{itemize}
+  \item To convert from a negative decimal to two's complement binary, begin by finding the closest power of two \textbf{larger} than the decimal. For 66, this is 128.
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    -128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\
+    \hline
+    1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Set this value to 1 in the table and \textbf{add} this value to the decimal (since it is really a negative number) which should result in a positive decimal.
+    \item Then, we use normal binary conversion to shrink the decimal to zero.
+  \end{itemize}
+  \item If students are interested, consider explaining why 1000 and 1111 1000 are equal using Two's Complement (why negative numbers have leading ones).
+\end{itemize}
+\end{guide}
+\end{blocksection}

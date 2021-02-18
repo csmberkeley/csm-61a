@@ -31,6 +31,7 @@ def positionizer(n):
    return helper(______________, ______________)
 \end{lstlisting}
 \begin{solution}
+\newpage
 \begin{lstlisting}:
 def positionizer(n):
   def helper(n, pos):
@@ -44,6 +45,15 @@ def positionizer(n):
   return helper(n, 1)
 \end{lstlisting}
 \end{solution}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+  \item Remind students we define the rightmost digit to be at position 1, increasing by 1 as you traverse left.
+  \item An important question to consider is why we need to create a helper function in the first place? What additional information does the helper allow us to store?
+  \item What operators do we use to get the last digit? The rest of the number?
+  \item Emphasize the recursive leap of faith in calling \lstinline{helper(n // 10, pos + 1)} to give us the correct result for the rest of \lstinline{n}.
+  \end{itemize}
+\end{guide}
 \newpage
 
 \part
@@ -80,6 +90,7 @@ def max_positionizer(k, lst):
   return _______(make_nums(____, ____), ____________)
 \end{lstlisting}
 \begin{solution}
+\newpage
 \begin{lstlisting}
 def max_positionizer(k, lst):
   def make_nums(k,lst):
@@ -96,4 +107,12 @@ def max_positionizer(k, lst):
   return max(make_nums(k, lst), key=positionizer)
 \end{lstlisting}
 \end{solution}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+  \item Remind students about the key parameter of the max function and how it works
+  \item How do we create all orderings of numbers of \lstinline{k} digits in \lstinline{a + b}?
+  \item As always, think about all possible base cases first: the base case for “k” is when it is 0, and the base case for “lst” is when it is empty.
+  \end{itemize}
+\end{guide}
 \end{parts}

@@ -17,7 +17,6 @@ You can make the following analogy:
 \question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
 \end{nonsol}
 
-
 \begin{lstlisting}
 scm> (cons 1 (cons 2 nil))
 \end{lstlisting}
@@ -123,6 +122,22 @@ How can we get the 3 out of a?
 \begin{lstlisting}
 (car (cdr (cdr a)))
 \end{lstlisting}
-To get to the pair that contains 3, we need to call \texttt{(cdr (cdr a))}. To get the element 3, we need the \texttt{car} of \texttt{(cdr (cdr a))}. 
+To get to the pair that contains 3, we need to call \texttt{(cdr (cdr a))}. To get the element 3, we need the \texttt{car} of \texttt{(cdr (cdr a))}.
 \end{solution}
 % \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Make sure students know \lstinline{(cadr a)} is short for \lstinline{(car (cdr a))} and \lstinline{(cddr a)} is short for \lstinline{(cdr (cdr a))}
+  \item Draw diagrams or use the \href{https://code.cs61a.org/}{61A Scheme Web interpreter} for visualizing lists
+  \item Encourage students to ask questions and experiment with extra \lstinline{cons}, \lstinline{car}, and \lstinline{cdr} statements to see how they change the outputs of statments!
+  \item While unrelated to the problem, it may be helpful to teach students these keywords:
+  \begin{itemize}
+    \item\lstinline{(pair? arg)}, which checks if arg has a first and rest
+    \item\lstinline{(list? arg)}, which returns true if arg is a well-formed list
+  \end{itemize}
+\end{itemize}
+\end{guide}
+\end{blocksection}

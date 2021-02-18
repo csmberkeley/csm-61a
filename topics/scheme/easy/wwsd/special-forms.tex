@@ -103,3 +103,15 @@ scm> ((lambda (x) (x x)) (lambda (y) 4))
 We make a new lambda that takes in one argument x. The set of parentheses around the lambda evaluates it with an argument of another lambda function, so we run the body (x x) with x as the (lambda (y) 4). Recall that evaluating an operator happens by putting parentheses around the operator and passing in an operand. When we do (x x), we’re evaluating the operator x with the parameter x. Therefore we’re now doing (lambda (y) 4) evaluated with the argument y as (lambda (y) 4). Since we evaluate the lambda, we evaluate the body and return it, which is 4. 
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Parentheses can always be confusing so emphasis the importance of keeping track of them; not only parentheses in Scheme syntax but also parentheses used to wrap lambda functions
+	\item Remember short-circuiting principles! And short circuits on the first false and or short circuits on the first true
+	\item Remind students which values are true and which are truthy, similarly which values are false and which are falsey
+	\item Remembering how to format return values can be tricky so make students get a good grasp of what to write (for example for false)
+\end{itemize}
+\end{guide}
+\end{blocksection}

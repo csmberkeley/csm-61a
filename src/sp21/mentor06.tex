@@ -1,0 +1,85 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Trees and Mutation}}
+\date{February 22 - February 14, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Midterm Debrief - 5 minutes
+        \item Trees Mini Lecture and WWPD - 7 minutes
+        \item \lstinline{sum_of_nodes} - 7 minutes
+        \item Choose one of the following (note \lstinline{all_paths} is harder)
+            \begin{itemize}
+            \item \lstinline{replace_x} - 8 minutes
+            \item \lstinline{all_paths} - 10 minutes
+            \end{itemize}
+        \item Mutation Mini Lecture - 6 minutes
+        \item Mutable List WWPD - 7 minutes
+        \item \lstinline{accumulate} - 8 minutes
+    \end{itemize}
+    \vspace{.5cm}
+    \textbf{Recommended Timeline for NPE Sections}
+    \begin{itemize}
+        \item Section 1:
+            \begin{itemize}
+            \item Midterm Debrief - 5 minutes
+            \item Trees Mini Lecture and WWPD - 10 minutes
+            \item \lstinline{sum_of_nodes} - 10 minutes
+            \item \lstinline{replace_x} - 10 minutes
+            \item \lstinline{all_paths} - 15 minutes
+            \end{itemize} 
+        \item Section 2:
+            \begin{itemize}
+            \item Mutation Mini Lecture - 7 minutes
+            \item Mutable List WWPD - 10 minutes
+            \item \lstinline{accumulate} - 10 minutes
+            \item \lstinline{contains-n} - 20 minutes
+            \end{itemize}
+    \end{itemize}
+\end{guide}
+
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\subimport{../../topics/trees/adt/text/}{draw-tree.tex}
+\vspace{.5cm}
+\begin{questions}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+\newpage
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\newpage
+\subimport{../../topics/trees/adt/medium/}{replace-x.tex}
+\newpage
+\subimport{../../topics/trees/adt/medium/}{all-paths.tex}
+\end{questions}
+
+\newpage
+\section{Mutation}
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation-expanded.tex}
+\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+\end{questions}
+
+
+\newpage
+\section{Challenge Problems}
+\textbf{Note:} These problems are meant to be challenging and may take a long time. Please attempt the previous questions on the worksheet first.
+\begin{questions}
+\subimport{../../topics/trees/adt/hard/}{contains-n.tex}
+\end{questions}
+
+
+\end{document}

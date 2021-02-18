@@ -51,3 +51,25 @@ def contains_n(elem, n, t):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+
+\begin{itemize}
+\item Consider the simplest cases first
+\begin{itemize} 
+\item What would happen if \lstinline{n == 0}?
+\item What if the tree is a leaf? What would we need to know?
+\end{itemize}
+\item Guide them through the recursive call.
+\begin{itemize}
+	\item What's the best way to iterate through all the branches? (Answer: for loop)
+	\item What's difference does it make if the current value is \lstinline{elem}? How should we update \lstinline{n} in our recursive call?
+	\item Make the "leap of faith": we want know if any of the subtrees contain the path we want, how can we return that?
+\end{itemize}
+\end{itemize}
+\end{blocksection}
+\end{guide}

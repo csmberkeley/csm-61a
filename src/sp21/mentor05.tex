@@ -1,0 +1,90 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{\textsc{Lists, Abstraction, and Midterm 1 Review}}
+\date{February 15 - February 17, 2020}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Lists Mini Lecture - 5 minutes
+        \item Lists WWPD - 7 minutes
+        \item Abstraction Mini Lecture - 5 minutes
+        \item Elephants - 5 minutes
+        \item Midterm Review (gauge what topics students want to brush up on and do those problems) - 28 min
+    \end{itemize}
+\end{guide}
+
+\section{Lists}
+\subimport{../../topics/lists/immutable/text/}{list_overview.tex}
+\begin{questions}
+\subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified.tex}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+% \subimport{../../topics/lists/immutable/medium/wwpd/}{assignment-and-slicing.tex}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\end{questions}
+
+\newpage
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{questions}
+\subimport{../../topics/data-abstraction/easy/}{elephants-short.tex}
+\end{questions}
+
+\section{Midterm Review - WWPD}
+\begin{questions}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{argentina.tex}
+\subimport{../../topics/functions-and-expressions/medium/wwpd/}{maths&quick-maths.tex}
+\end{questions}
+
+\newpage
+\section{Midterm Review - Environment Diagrams}
+\begin{questions}
+% \subimport{../../topics/functions-and-expressions/easy/env-diagram/}{ab.tex}
+% \newpage
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{snowflake.tex}
+%\subimport{../../topics/hof/medium/env-diagram/}{zebra.tex}
+%\ TODO: throw in a reverse environment diagram problem here?
+\end{questions}
+
+\newpage
+\section{Midterm Review - Higher Order Functions}
+\begin{questions}
+%\subimport{../../topics/hof/medium/wwpd/}{lambda-wwpd.tex}
+\subimport{../../topics/hof/easy/}{make-interval.tex}
+\subimport{../../topics/hof/medium/}{alternator.tex}
+\subimport{../../topics/hof/easy/}{print_n.tex}
+\subimport{../../topics/hof/hard/}{self-referencing.tex}
+\end{questions}
+
+\section{Midterm Review -Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{coin-game.tex}
+\end{questions}
+
+\section{Midterm Review -Tree Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{make-change.tex}
+\end{questions}
+
+\newpage
+\section{Midterm Review -Challenge Problems}
+\textbf{Note:} These problems are meant to be challenging and may take a long time. Please attempt the previous questions on the worksheet first.
+\begin{questions}
+\subimport{../../topics/lists/immutable/medium/}{gen-list.tex}
+\newpage
+\subimport{../../topics/trees/adt/hard/}{scrabble.tex}
+\end{questions}
+
+\end{document}

@@ -2,8 +2,8 @@
 \question Write a query that lists all the pairs of mentors who like the same language. (How can we make sure to remove duplicates?)
 
 \begin{lstlisting}
-Jemmy|Matthew
-Ivan|Owen
+Catherine|Jamie
+Ethan|Kenny
 \end{lstlisting}
 
 \begin{solution}
@@ -14,3 +14,14 @@ select m1.name, m2.name
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+Some key points to explain:
+\begin{itemize}
+	\item Why do we need to select from the same table twice? (To get pairs of mentors)
+	\item Why do we need to alias here? Can we do it without aliasing? (No, we need aliasing because it is the same table)
+	\item Why do we need m1.name < m2.name ? Can we use != instead or leave that out completely?
+\end{itemize}
+\end{blocksection}
+\end{guide}

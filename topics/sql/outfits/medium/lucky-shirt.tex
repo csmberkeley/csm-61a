@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question 
+\question
 Instead of actually studying for your finals, you decide it would be the best use of your time to determine what your "lucky shirt" is. Suppose you're pretty happy with your exam scores this semester, so you define your lucky shirt as the shirt you wore to the most exams.
 
 Write a query that will output the color of your lucky shirt and how many times you wore it.
@@ -8,10 +8,26 @@ Write a query that will output the color of your lucky shirt and how many times 
 \begin{lstlisting}
 select color, count(g.day) as cnt
     from outfits as o, grades as g
-    where o.day = g.day 
+    where o.day = g.day
     group by color
-    order by cnt desc 
+    order by cnt desc
     limit 1;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Ensure students know all potential parts of a SQL query and how they work:
+  \\\lstinline{SELECT [ ] FROM [ ] WHERE [ ] GROUP BY [ ] HAVING [ ] ORDER BY [ ] LIMIT [ ];}
+  \item Remind students about the \lstinline{SUM}, \lstinline{MIN}, and \lstinline{COUNT} functions
+  \item Students may struggle with the variable to use in \lstinline{ORDER BY}
+  \begin{itemize}
+    \item Teach students they can alias created columns in \lstinline{SELECT}
+    \item In SQL \lstinline{SELECT} occurs before \lstinline{ORDER BY}, so \lstinline{cnt} can be used
+  \end{itemize}
+\end{itemize}
+\end{blocksection}
+\end{guide}

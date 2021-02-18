@@ -26,6 +26,10 @@ def n_apply(f, n, x):
 \end{lstlisting}
 \end{solution}
 
+\begin{guide}
+Run through a quick example problem ( the doc test is a good one), and ask the students how they get call a function on a value n number of times, and slowly lead them towards iteration
+\end{guide}
+
 \part
 Now implement \texttt{list\_gen}, which takes in some list of integers \texttt{lst} and a \texttt{function f}. For the element at index \texttt{i} of \texttt{lst}, \texttt{list\_gen} should apply \texttt{f} to the element \texttt{i} times and yield this value \texttt{lst[i]} times. You may use \texttt{n\_apply} from the previous part.
 
@@ -49,4 +53,15 @@ def list_gen(lst, f):
     yield from [n_apply(f, i, lst[i]) for j in range(lst[i])]
 \end{lstlisting}
 \end{solution}
+\begin{guide}
+Go over what \texttt{yield from} does (and give a very simple example of how yield from can be implemented with just yield)
+
+Use one example and then go over what each value should be used for.
+For example, for the doctest, we have the number 2, we want to call \texttt{f} on 2 exactly 1 time (because it’s the ith index) and we want to yield it 2 times (because lst[i] is 2)
+
+This helps identify what value should go where (eg i should go in the \texttt{n\_apply} call, and lst[i] is used inside the yield from to yield the return from \texttt{n\_apply} that many times)
+If students are still struggling, fill in the parts like range and \texttt{n\_apply}, but without the arguments and have students fill in the values
+Do have them understand the logic of why we use a for loop inside the yield from (and what happens when we do this)
+
+\end{guide}
 \end{parts}
