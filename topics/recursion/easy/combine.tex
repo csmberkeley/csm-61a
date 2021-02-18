@@ -26,8 +26,10 @@ def combine(n, f, result):
 
                        __________________________)
 \end{lstlisting}
+\end{blocksection}
 
 \begin{solution}[1.5in]
+\begin{blocksection}
 \begin{lstlisting}
 def combine(n, f, result):
     if n == 0:
@@ -35,22 +37,21 @@ def combine(n, f, result):
     else:
         return combine(n // 10, f, f(n % 10, result))
 \end{lstlisting}
-\end{solution}
 \end{blocksection}
+\end{solution}
 
+\begin{guide}
 \begin{blocksection}
-    \begin{guide}
-        \textbf{Teaching Tips}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item Visually go through an example (like using one from the doc tests) and going over the question visually is especially helpful when showing students how to make the original problem into a smaller subproblem.
         \begin{itemize}
-            \item Visually go through an example (like using one from the doc tests) and going over the question visually is especially helpful when showing students how to make the original problem into a smaller subproblem.
-            \begin{itemize}
-                \item Ex. combine(43, mul, 2)  \# mul(4, mul(3, 2))
-            \end{itemize}
-            \item Common misconceptions(points to emphasize)
-            \begin{itemize}
-                \item The order of arguments for f matters (n \% 10, result)
-                \item The third parameter is evaluated before the combine function is applied to the parameters. 
-            \end{itemize}
+            \item Ex. combine(43, mul, 2)  \# mul(4, mul(3, 2))
+        \end{itemize}
+        \item Common misconceptions(points to emphasize)
+        \begin{itemize}
+            \item The order of arguments for f matters (n \% 10, result)
+            \item The third parameter is evaluated before the combine function is applied to the parameters.
         \end{itemize}
     \end{guide}
     \end{blocksection}
