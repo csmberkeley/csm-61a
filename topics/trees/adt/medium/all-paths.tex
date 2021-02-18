@@ -53,8 +53,8 @@ Append every path like this to \lstinline$paths$, and we have created a list of 
 \end{solution}
 \end{blocksection}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
   \textbf{Teaching Tips}
   \begin{itemize}
       \item Variants of path problems commonly appear on exams! This problem covers the basic structure for all path problems, so make sure students understand and remember its format.
@@ -62,8 +62,8 @@ Append every path like this to \lstinline$paths$, and we have created a list of 
       \item A common mistake is for students to \lstinline$return [label(t)]$ instead of \lstinline$return [[label(t)]]$ for the base case. You can try writing the first option on "accident" to see if students will notice the error!
       \item The recursive leap of faith will help a lot for understanding path problems, particularly in the nested for loop.
       \begin{itemize}
-        \item If students struggle to understand the solution, try writing out what \lstinline$all_paths(b)$ looks like by the leap of faith and show how why we append \lstinline$[label(t)]$ to each path in it before appending the path to paths.
+        \item If students struggle to understand the solution, write out an example of what \lstinline$all_paths(b)$ looks like by the leap of faith, showing them why we append \lstinline$[label(t)]$ to each path.
       \end{itemize}
   \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}
