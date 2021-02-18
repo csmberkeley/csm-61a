@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question You are taking your 61A midterm. There happens to be $n$ questions on the exam and $t$ time in the exam. Completing question $i$ gives you $i + 50$ score on the exam and takes up $i$ time to do. Write a program that will output the highest possible score on the exam given $n$ and $t$ (note: you can't take more than $t$ time). \\
+\question Imagine you are taking the 61A midterm. There are $n$ questions left on the exam and $t$ time remaining. Completing question $i$ takes $i$ time but gives you $i + 50$ points on the exam. Write a program that will output the highest possible score on the exam given $n$ and $t$ (note: you can't take more than $t$ time). \\
 
 \begin{lstlisting}
 def midterm(n, t):
@@ -11,7 +11,7 @@ def midterm(n, t):
     >>> midterm(3, 5) # 52 + 53, questions 2 & 3
     105 
     >>> midterm(4, 9) # 52 + 53 + 54, questions 2 & 3 & 4
-    105
+    159
     """		
     if ______________________________________:		
 
@@ -19,13 +19,7 @@ def midterm(n, t):
 
     else:
 
-        if t - n < 0:	
-
-            return __________________________	
-
-        else:
-
-            return __________________________
+        return __________________________
 \end{lstlisting}
 
 \begin{solution}[1in]
@@ -33,10 +27,7 @@ def midterm(n, t):
     if n <= 0 or t <= 0:
         return 0
     else:
-        if t - n < 0:
-	    return midterm(n - 1, t)
-        else:
-	    return max(n + 50 + midterm(n - 1, t - n), midterm(n - 1, t))
+        return max(n + 50 + midterm(n - 1, t - n), midterm(n - 1, t))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
