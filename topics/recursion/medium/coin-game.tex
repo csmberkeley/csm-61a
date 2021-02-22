@@ -19,12 +19,12 @@ def coin_game(coins):
     45
     """
     if len(coins) <= 1:
-        return _______________________________________________
+        return ______________________________________________
     else:
         top = coins[0]
         top_next = min(______________________________________)
-        bottom = _____________________________________________
-        bottom_next = min(___________________________________)
+        bottom = ____________________________________________
+        bottom_next = _______________________________________
         return max(__________________________________________)
 \end{lstlisting}
 \end{blocksection}
@@ -48,10 +48,10 @@ def coin_game(coins):
 \begin{blocksection}
    \textbf{Teaching Tips}
    \begin{itemize}
-   	   \item This is a very challenging problem. Ensure you have sufficient time to allow students to try coding themselves as well as enough time to walk through the problem if attempting during section.
-   	   \item It may be helpful to do a \textit{brief} high-level overview of the basic idea of the minimax algorithm before attempting this problem.
-       \item Make sure to run through the doctests with diagrams and explain what exactly the "coin game" is, as well as what the problem is asking for.
-       \item It may be easier to start with the base case. Ask students: "What game scenarios are simple enough such that you immediately know what our optimal score is?
+   	   \item This is a very challenging problem. Be patient with students and try to explain the solution using diagrams and abstraction.
+   	   \item It may be helpful to do a \textit{brief} high-level overview of the minimax algorithm before attempting this problem.
+       \item Make sure to run through the doctests and explain what exactly the "coin game" is and why a greedy algorithm does not work.
+       \item For the base case, what game scenarios are simple enough such that you immediately know what our optimal score is? How can we reduce the problem to this base case?
        \item Ensure the concept of representing "all possible steps" with the recursion call is explained, as well as why player 1 wants \verb|max| of 2 possibilities and player 2 wants \verb|min| of 2 possibilities.
    \end{itemize}
 \end{blocksection}
