@@ -1,53 +1,45 @@
 \begin{blocksection}
-\question A game is defined as follows: let \texttt{lst} be a list of coins, each coin represented as a positive integer (ex: 1, 5, 25, 10). Two players take turns claiming either the last coin in \texttt{lst}, or both the last \textit{and} the second to last coin; after \texttt{lst} is exhausted, whichever player has the higher score wins. Fill in the function such that it returns the highest score that the first player (\texttt{player = True}) can get in this game if the second player (\texttt{player = False}) plays optimally.
+\question A game is defined as follows: let \lstinline{coins} be a list of coins, where each number is the value of a coin.
+The top coin is at index 0 and the bottom coin is at the end of the list.
+\\
+Two players take turns taking either the top or the bottom coin from the list.
+After all the coins in the list are gone, the player with the higher valued collection of coins wins.
+\\
+Fill in the function below so that it returns the optimal score for the first player if both players make optimal plays every turn.
 
 \textbf{Hint:} a player's choice is considered \textit{optimal} if it maximizes their own score and minimizes the opponent's score.  \\
 
 \begin{lstlisting}
-def coin_game(lst, player):
+def coin_game(coins):
     """
-    >>> coin_game([1], True) // 1
-    1
-    >>> coin_game([1, 5, 25], True) // 25 + 5
-    30
-    >>> coin_game([1, 5, 10, 1, 5, 25], True) // 25 + 1 + 10
-    36
+    [12, 42, 2, 3]
+    Turn 1: Player 1 takes 3, Player 2 takes 12
+    Turn 2: Player 1 takes 42, Player 2 takes 2
+    >>> coin_game([12, 42, 2, 3])
+    45
     """
-    if _____________________ and player:
-
-        return _____________________________
-    elif ___________________ and not player:
-
-        return _____________________________
+    if len(coins) <= 1:
+        return _______________________________________________
     else:
-	if player:
-            last = _____________________________________
-            second_to_last = ___________________________
-
-            return _______________________________________ \
-
-               _____________________________________________
-        else:
-            return _______________________________________ \
-
-               _____________________________________________
+        top = coins[0]
+        top_next = min(______________________________________)
+        bottom = _____________________________________________
+        bottom_next = min(___________________________________)
+        return max(__________________________________________)
 \end{lstlisting}
 \end{blocksection}
 
 \begin{solution}[0in]
 \begin{lstlisting}
-def coin_game(lst, player):
-    if len(lst) <= 2 and player:
-        return sum(lst)
-    elif len(lst) <= 2 and not player:
-        return 0
+def coin_game(coins):
+    if len(coins) <= 1:
+        return sum(coins)
     else:
-        if player:
-            last = lst[len(lst) - 1]
-            second_to_last = lst[len(lst) - 2]
-            return max(coin_game(lst[:len(lst) - 1], not player) + last, coin_game(lst[:len(lst) - 2], not player) + last + second_to_last)
-        else:
-            return min(coin_game(lst[:len(lst) - 1]), coin_game(lst[:len(lst) - 2]))
+        top = coins[0]
+        top_next = min(coin_game(coins[:2]), coin_game(coins[1:-1]))
+        bottom = coins[-1]
+        bottom_next = min(coin_game(coins[1:-1]), coin_game(coins[:-2]))
+        return max(top + top_next, bottom + bottom_next)
 \end{lstlisting}
 \end{solution}
 
@@ -58,9 +50,8 @@ def coin_game(lst, player):
    \begin{itemize}
    	   \item This is a very challenging problem. Ensure you have sufficient time to allow students to try coding themselves as well as enough time to walk through the problem if attempting during section.
    	   \item It may be helpful to do a \textit{brief} high-level overview of the basic idea of the minimax algorithm before attempting this problem.
-       \item Make sure to run through the doctests and explain what exactly the "coin game" is, as well as what the problem is asking for.
-       \item It may be easier to start with the base cases. As with all base cases, ask your students: "What game scenarios (possibilities of \verb|lst|) are simple enough such that you immediately know what our optimal score is?
-       \item Ask your students to always think about meaningful skeleton code variable names. In this case, what do \verb|last| and \verb|second_to_last| represent?
+       \item Make sure to run through the doctests with diagrams and explain what exactly the "coin game" is, as well as what the problem is asking for.
+       \item It may be easier to start with the base case. Ask students: "What game scenarios are simple enough such that you immediately know what our optimal score is?
        \item Ensure the concept of representing "all possible steps" with the recursion call is explained, as well as why player 1 wants \verb|max| of 2 possibilities and player 2 wants \verb|min| of 2 possibilities.
    \end{itemize}
 \end{blocksection}
