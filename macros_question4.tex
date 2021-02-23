@@ -1,0 +1,74 @@
+\begin{blocksection}
+\question Write down after each Scheme block what you think Scheme will print out.
+\begin{lstlisting}
+scm> (eval (+ (eval (* 4 5)) 8))
+
+
+scm> (cons 1 (cons (+ 2 3) nil))
+
+
+scm> (cons 1 `(cons ,(+ 2 3) nil))
+
+
+scm> (cons 1 `(cons (+ 2 3) nil))
+
+
+scm> (define lst1 (cons 1 (cons 2 (cons 3 nil))))
+
+
+scm> (cons lst1 (cons 4 nil))
+
+
+scm> (cons 1 lst1)
+
+
+scm> (add-to-proc lst1 (= 1 1) 2)
+...>    (if #t (cons (+ ,elem 1) lst) (cons (- ,elem 1) lst))
+scm> (add-to-proc lst1 (= 1 1) 2)
+
+
+scm> (define-macro (add-to-macro lst expr elem)
+...>    `(if ,expr (cons (+ ,elem 1) lst) (cons (- ,elem 1) lst)))
+
+
+scm> (add-to-macro lst1 (= 1 1) 2)
+
+
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+scm> (eval (+ (eval (* 4 5)) 8))
+28
+
+scm> (cons 1 (cons (+ 2 3) nil))
+(1 5)
+
+scm> (cons 1 `(cons ,(+ 2 3) nil))
+(1 cons 5 ())
+
+scm> (cons 1 `(cons (+ 2 3) nil))
+(1 cons (+ 2 3) ())
+
+scm> (define lst1 (cons 1 (cons 2 (cons 3 nil))))
+lst1
+
+scm> (cons lst1 (cons 4 nil))
+((1 2 3) 4)
+
+scm> (cons 1 lst1)
+(1 1 2 3)
+
+scm> (add-to-proc lst1 (= 1 1) 2)
+...>    (if #t (cons (+ ,elem 1) lst) (cons (- ,elem 1) lst))
+scm> (add-to-proc lst1 (= 1 1) 2)
+(3 1 2 3)
+
+scm> (define-macro (add-to-macro lst expr elem)
+...>    `(if ,expr (cons (+ ,elem 1) ,lst) (cons (- ,elem 1) ,lst)))
+add-to-macro
+
+scm> (add-to-macro lst1 (= 1 1) 2)
+(3 1 2 3)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

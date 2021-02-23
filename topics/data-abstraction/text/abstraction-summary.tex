@@ -2,8 +2,8 @@
 
 Abstraction allows us to create and access different types of data through a controlled, restricted programming interface, hiding implementation details and encouraging programmers to focus on how data is used, rather than how data is organized. The two fundamental components of a programming interface are a constructor and selectors.
 \begin{enumerate}
-	\item Constructor: The interface that creates a piece of data; e.g. calling \texttt{t = tree(3)} creates a new tree object and assigns it to \texttt{t}. \texttt{tree()} is a constructor.
-	\item Selectors: The interface by which we access attributes of a piece of data; e.g. calling \texttt{branches(t)} and \texttt{is\_leaf(t)} return different attributes of a tree (a list of branches and whether the tree is a leaf, respectively). \texttt{branches()} and \texttt{is\_leaf()} are both selectors.
+	\item Constructor: The interface that creates a piece of data; e.g. calling \texttt{c = car("Tesla")} creates a new car object and assigns it to the variable \texttt{c}.
+	\item Selectors: The interface by which we access attributes of a piece of data; e.g. calling \lstinline{get_brand(c)} should return \lstinline{"Tesla"}.
 \end{enumerate}
 
 Through constructors and selectors, a data type can hide its implementation, and a programmer doesn’t need to {\it know} its implementation to {\it use} it.

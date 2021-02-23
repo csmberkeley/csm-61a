@@ -1,6 +1,5 @@
 \begin{blocksection}
 \question \textbf{Pingpong again...}\\
-\begin{nonsol}
 Time for some more ping-pong!
 Remember, the ping-pong sequence counts up starting from 1 and is
 always either counting up or counting down. At element k, the direction switches if k is a multiple of 7 or contains the
@@ -11,7 +10,6 @@ swaps marked using brackets at the 7th, 14th, and 17th elements
 \begin{lstlisting}
 1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0
 \end{lstlisting}
-\end{nonsol}
 
 Implement a function \texttt{make\char`_pingpong\char`_tracker} that returns the
 next value in the pingpong sequence each time it is called. You may use assignment statements.
@@ -27,7 +25,6 @@ def has_seven(k): # Use this function for your answer below
         return has_seven(k // 10)
 \end{lstlisting}
 
-\begin{nonsol}
 \begin{lstlisting}
 
 def make_pingpong_tracker():
@@ -51,12 +48,12 @@ def make_pingpong_tracker():
             add = not add
         __________________________
         __________________________
-
     return _______________________
 \end{lstlisting}
-\end{nonsol}
+\end{blocksection}
 
 \begin{solution}
+\begin{blocksection}
 \begin{lstlisting}
 def make_pingpong_tracker():
     index, current, add = 1, 0, True
@@ -72,6 +69,20 @@ def make_pingpong_tracker():
         return current
     return pingpong_tracker
 \end{lstlisting}
+\end{blocksection}
 \end{solution}
 
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+\item This was a tough question for many when it was part of 61A curriculum! Empathize with your students. 
+\item Let's look through the sample doctest together. First, notice that \texttt{x} is a function returned from the function \texttt{make\_pingpong\_tracker}, which is why we call it nine times in a loop to generate our array.
+\item Notice how we are incrementing our number by one each time until we get to the 7th number. Since k, the index, here is a multiple of 7 (and also contains the number 7), we have to switch directions and start decrementing our numbers.
+\item Think about all the things you have to keep track of: current number, current index, whether to increase or decrease. How does the problem suggest you keep track of them? What line should you include to ensure that these variables get updated correctly each time?
+\item Again, think back to the inner-function/outer-function structure in HOF problems. What can you confidently put down for that last return statement?
+\item Check out the if/else statements for \texttt{add}. Since this is a boolean value, it's probably the one keeping track of whether to increase or decrease the array elements. So we should use this if block to adjust our current array element accordingly.
+\item The inner return value may be a bit tricky to find, but read the doctests carefully. What should the inner function return and which variable is keeping track of that? The next value, which should be stored in \texttt{current}. The name can be misleading; just think of it as a counter that's keeping track of the number you want to put into the array.
+\end{itemize}
+\end{guide}
 \end{blocksection}

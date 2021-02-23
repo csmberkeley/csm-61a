@@ -45,3 +45,15 @@ scm> (decay a 9)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item We have a few conditions that we need to look at when dealing with this problem. First we need to check for a null list which is typical for a Scheme list problem. If the boxes variable is null, then we don’t want to do anything else! 
+  \item Second, we need to deal with the case where the number of turnips that rot is less than the number in the first box since the boxes rot sequentially. If the number is less, we just need to subtract that from the number of turnips in the box. That’s the only box we need to change so we can cons it with the rest of the boxes 
+  \item Finally, we need to deal with the case where the number of turnips is greater than the number of turnips in the current box. This requires a few steps. First, we need to set the first box number to 0. Then we need to recursively figure out how to deal with the rest of the boxes. We can use a recursive call on the rest of the boxes and subtract the number of turnips that rotted in the first box. 
+  \item Since we have these 3 conditions, we want to use cond, not if. 
+\end{itemize}
+\end{guide}
+\end{blocksection}

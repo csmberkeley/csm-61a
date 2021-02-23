@@ -14,30 +14,44 @@ def skip(lst):
     Link(1, Link(2, Link(3, Link(4)))) # Original is unchanged
     """
     if ___________________________________________:
-		
+
         __________________________________________
-				
+
     elif _________________________________________:
-		
+
         __________________________________________
-				
+
     ______________________________________________
 \end{lstlisting}
 \begin{solution}[0.6in]
 \begin{lstlisting}
-    if lst is Link.empty 
+    if lst is Link.empty
     	return Link.empty
      elif lst.rest is Link.empty:
         return Link(lst.first)
     return Link(lst.first, skip(lst.rest.rest))
 \end{lstlisting}
 \textbf{Base cases:}
-\begin{enumerate}
+\begin{itemize}
 \item When the linked list is empty, we want to return a new Link.empty.
-\item If there is only one element in the linked list (aka the next element is empty), we want to return a new linked list with that single element. 
-\end{enumerate}
+\item If there is only one element in the linked list (aka the next element is empty), we want to return a new linked list with that single element.
+\end{itemize}
 \textbf{Recursive case:} \\
-All other longer linked lists can be reduced down to either a single element or empty linked list depending on whether it has odd or even length. Therefore, we want to keep the first element, and recurse on the element after the next (skipping the immediate next element with \lstinline{lst.rest.rest}). To build a new linked list, we can add new links to the end of the linked list by calling skip recursively inside the \lstinline{rest} argument of the \lstinline{Link} constructor. 
-
+All other longer linked lists can be reduced down to either a single element or empty linked list depending on whether it has odd or even length. Therefore, we want to keep the first element, and recurse on the element after the next (skipping the immediate next element with \lstinline{lst.rest.rest}). To build a new linked list, we can add new links to the end of the linked list by calling skip recursively inside the \lstinline{rest} argument of the \lstinline{Link} constructor.
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Walk through what we want to do by looking at an example box-and-pointer diagram first.
+       \item Make sure they understand, in English, what we are trying to do.
+       \item If students are struggling, have them think about what we can change (pointers), since we can't make new Link objects
+       \begin{itemize}
+           \item Specifically, compare the pointers in the original list to the ones in the output list.
+           \item Think about how you could modify the original pointers.
+       \end{itemize}
+    \end{itemize}
+ \end{guide}
 \end{blocksection}

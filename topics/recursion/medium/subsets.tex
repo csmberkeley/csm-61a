@@ -48,3 +48,19 @@ def subsets(lst, n):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item Keep in mind the return type is a list of lists - students might mistakenly think it’s just one list given the doctest.
+       \item The base case might not be intuitive to all students 
+       \begin{itemize}
+           \item If you start with the base case, keep in mind the return type is a list of lists, and use that to motivate the base case being [[]] instead of []
+       \end{itemize}
+       \item Recursive call: 
+       \begin{itemize}
+           \item Ask the students the possibilities of the different subsets pivoting on the first element in the list (either you use it or you don’t)
+           \item In the recursive calls, ask how n changes and how lst changes. You can draw similarities to count partitions
+       \end{itemize}
+    \end{itemize}
+ \end{guide}

@@ -24,12 +24,23 @@ scm> (define pi 3.14)
 \texttt{pi}
 \end{solution}
 
+\begin{guide}
+\begin{itemize}
+\item Terminal will give you back the name of whatever you just defined
+\end{itemize}
+\end{guide}
+
 \begin{lstlisting}
 scm> pi
 \end{lstlisting}
 \begin{solution}[.25in]
 \texttt{3.14}
 \end{solution}
+\begin{guide}
+\begin{itemize}
+\item In this case, you will get the value that pi is assigned to
+\end{itemize}
+\end{guide}
 
 \begin{lstlisting}
 scm> 'pi
@@ -37,6 +48,11 @@ scm> 'pi
 \begin{solution}[.25in]
 \texttt{pi}
 \end{solution}
+\begin{guide}
+\begin{itemize}
+\item Scheme doesn't evaluate the next expression after the quote.
+\end{itemize}
+\end{guide}
 
 \begin{lstlisting}
 scm> (+ 1 2)
@@ -51,6 +67,11 @@ scm> (+ 1 (* 3 4))
 \begin{solution}[.25in]
 \texttt{13}
 \end{solution}
+\begin{guide}
+\begin{itemize}
+\item This tests the order of operations in Scheme.
+\end{itemize}
+\end{guide}
 
 \end{blocksection}
 \begin{blocksection}
@@ -76,6 +97,7 @@ scm> (- 5 (if #f 3 4))
 \texttt{1}
 \end{solution}
 
+
 \begin{comment}
 \begin{lstlisting}
 scm> (if nil 3 4)
@@ -92,6 +114,13 @@ scm> (if (= 1 1) 'hello 'goodbye)
 \texttt{hello}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{itemize}
+\item In this case, there's a similar behavior to Python
+\item Emphasize the importance of short circuiting -- it will be very important for the Scheme project
+\end{itemize}
+\end{guide}
 
 
 \begin{blocksection}
@@ -162,4 +191,14 @@ scm> (list? (cons 1 2))
 \texttt{\#f}
 \end{solution}
 \end{comment}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item We can compare this factorial implementation in Scheme to the Python interpretation so that the students can see how the \lstinline{define} keyword works
+  \item If your students are not caught up with lecture/have had no practice with Scheme, in some cases it can be helpful to draw parallels between control statements in Scheme and Python.
+\end{itemize}
+\end{guide}
 \end{blocksection}

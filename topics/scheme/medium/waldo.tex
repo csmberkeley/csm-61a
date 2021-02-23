@@ -59,6 +59,22 @@ Many problems that involve traversing through a Scheme list will have a similar 
 \end{blocksection}
 
 \begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Waldo is good for a warm-up question, but try to do the challenge problem afterwards!
+  \item Emphasize the recursive nature of Linked Lists and Scheme functions
+  \item Make sure students are comfortable with accessing the "first" and "rest" of lists in Scheme
+  \item Teach the difference between \lstinline{=} (only works for numbers) and \lstinline{eq?}
+  \item Note we need to use the quote syntax \lstinline{'waldo} to compare the string to the values in our list
+  \begin{itemize}
+    \item Without the quote, we get an error because the symbol \lstinline{waldo} is undefined
+  \end{itemize}
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+\begin{blocksection}
 
 \question \textbf{Extra challenge:} Define \texttt{waldo} so that it returns the index of
 the list where the symbol waldo was found (if waldo is not in the list, return
@@ -109,9 +125,22 @@ scm> (waldo '(1 4 9))
 \begin{solution}
 Recall HW3, \href{https://cs61a.org/hw/hw03/#q2}{problem 2}, "pingpong" without assignment. To get around the assignment restriction, we introduced a new variable to keep track of state. We passed some state into a helper function to keep track of our iteration. In this problem, we will use the same idea for our implementation.
 
-Inside our recursive helper function, we use the same logic as the original waldo question. Specifically, if the list is empty, we return false. If the first element we see is equal to waldo, we now return the index we have been tracking instead of true. Finally, to recursively search, we call the helper function on the rest of the list and increment the index by 1, returning the result of that call. We call this helper function initially with arguments 'lst' and index 0 to start from the beginning of the list. 
+Inside our recursive helper function, we use the same logic as the original waldo question. Specifically, if the list is empty, we return false. If the first element we see is equal to waldo, we now return the index we have been tracking instead of true. Finally, to recursively search, we call the helper function on the rest of the list and increment the index by 1, returning the result of that call. We call this helper function initially with arguments 'lst' and index 0 to start from the beginning of the list.
 
 A logical alternate solution would be to increment 1 after the recursive call to helper (without incrementing index), instead of adding one to the index, and then recursing. This solution would actually be incorrect. When we increment by one, if the element is not found, \texttt{\#f} would not be properly returned. At the end of recursion, we would try to add 1 to \texttt{\#f}, which results in an error.
 \end{solution}
 
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Discuss with students the different ways to keep track of an extra variable index with a recursive function
+  \begin{itemize}
+    \item Explain how the standard approach of keeping track of an index and using iteration is impossible with Scheme
+    \item Lead students to the conclusion that since more information is needed, and since recursive functions can pass information through arguments, we should create a helper function
+  \end{itemize}
+\end{itemize}
+\end{guide}
 \end{blocksection}

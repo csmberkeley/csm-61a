@@ -114,3 +114,39 @@ Link(1, Link(2, Link(3)))
 \end{solution}
 
 \end{blocksection}
+
+\begin{guide}
+   \textbf{Teaching Tips}
+   \begin{itemize}
+      \item For assignment statements, Python will not print anything but still have them draw out what the linked list will look like
+      \item Note that we are doing mutation here, so we are actually altering the object that was created in the first assignment. 
+      \begin{itemize}
+          \item Some students may have minimal exposure to mutating objects so try to emphasize this and make it obvious through diagrams.
+      \end{itemize}
+      \item For the error, walk-through how to keep track of which rest corresponds to which object in the box and pointer diagram. **Make sure they understand why calling rest a fourth time will give us an error (look back at the class definition)**
+      \begin{itemize}
+          \item Abstraction:
+          \begin{itemize}
+               \item our last .rest is set to Link.empty
+               \item Link.empty is not a Link objects — they do not have a .rest attribute
+           \end{itemize}
+           \item Actual implementation:
+           \begin{itemize}
+               \item our last .rest is set to Link.empty
+               \item Link.empty is not a Link objects — they do not have a .rest attribute
+           \end{itemize}
+      \end{itemize}
+      \item Reassigning the last .rest to point back at the front always trips students up. 
+      \begin{itemize}
+       \item Make it clear that a is a pointer that points to the linked list. So we are trying to assign the last rest of a to point at what a points to, which is the beginning of the list. **To test their understanding ask what would be different if we instead had**:
+       \begin{itemize}
+            \item a.rest.rest.rest = a.rest
+       \end{itemize}
+       \item a way to explain the assignment for this problem is to emphasize the “evaluation” of the RHS and the LHS
+       \item what is the value of a (a pointer). Really emphasize the implications of pointers here.        
+       \item where are we putting a into? (the box that represents a.rest.rest.rest)
+       \item same for a.rest.rest.rest = a.rest. what is the value of a.rest? (still a pointer!)
+       \item Mention that this creates a cycle in the list
+   \end{itemize}
+   \end{itemize}
+\end{guide}

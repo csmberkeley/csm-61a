@@ -1,18 +1,18 @@
 \textbf{Lists Introduction:}
 
-Lists are type of sequence, which means they are an ordered collection of values that has both length and the ability to select elements. 
+Lists are a type of sequence, an ordered collection of values that has both length and the ability to select elements.
 
-\begin{lstlisting} 
+\begin{lstlisting}
 >>> lst = [1, False, [2, 3], 4] # a list can contain anything
->>> len(lst) 	
+>>> len(lst)
 4
->>> lst[0] 	
+>>> lst[0] # Indexing starts at 0
 1
->>> lst[4] 	# Indices of a list only go up to the len(lst)
+>>> lst[4] # Indexing ends at len(lst) - 1
 Error: list index out of range
 \end{lstlisting}
 
-We can iterate over lists using their index, or iterate of elements directly
+We can iterate over lists using their index, or iterate over elements directly
 
 \begin{lstlisting}
 for index in range(len(lst)):
@@ -26,10 +26,11 @@ for item in lst:
 new_list2 = [<expression> for <element> in <sequence> if <condition>]
 \end{lstlisting}
 
-We can use \textbf{list splicing} to create a copy of a certain portion or all of a list 
+We can use \textbf{list splicing} to create a copy of a certain portion or all of a list.
 
 \begin{lstlisting}
 new_list = lst[<starting index>:<ending index>]
+copy = lst[:]
 \end{lstlisting}
 
 \begin{blocksection}
@@ -41,22 +42,15 @@ new_list = lst[<starting index>:<ending index>]
 				\item Be very careful with showing and explaining how pointers work. You can treat pointers as a distinct object in the list (e.g. this element of the list is a pointer), so that they have a solid foundation once we get to mutation (like how a shallow copy copies what’s in the box as is, which would be just the pointer)
 				\item Pay attention to where students draw their pointers (e.g. if a pointer points to another list, make sure it points to the beginning of the list)
 			\end{itemize}
-			\item For students that have not had experience with lists + arrays, might help to write up some common operations and keep it on one part of the board. Here are some tricky points:
+			\item For students that have not had experience with lists or arrays, it might help to write up some common operations and keep it on one part of the board. Here are some tricky points:
 			\begin{itemize}
-				\item Zero indexing. Might help to draw the indices in with the first couple of box and pointer diagrams
-				\item List slicing: what elements are included or not included?
+				\item Zero indexing - might help to label indices with the first couple of box and pointer diagrams
+				\item List slicing - what elements are included or not included?
 				\begin{itemize}
 					\item Inclusive start, exclusive end
-					\item Probably don’t need to get into every little thing (like negative indices, skipping elements, etc.) 
+					\item Probably don’t need to get into every little thing (like negative indices, skipping elements, etc.)
 				\end{itemize}
-				\item Deep copy vs Shallow copy: When you copy a nested list, copy pointers to the nested list (a shallow copy)  rather than make a new copy of the nested list (a deep copy).
-				\item Creation vs. mutation
-				\begin{itemize}
-					\item Good to make a chart of all the operations that mutate versus make a new list
-					\item make sure to explain that lst + lst creates a new list, and doesn’t change the original one
-					\item for example, \texttt{lst += [3]} is NOT the same as \texttt{lst = lst + [3]}
-					the first one mutates lst and is equivalent to \texttt{.extend([3])}, while the second one creates a new list
-				\end{itemize}
+				\item Deep copy vs shallow copy: when you copy a nested list, copy pointers to the nested list (a shallow copy) rather than make a new copy of the nested list (a deep copy).
 			\end{itemize}
 	\end{itemize}
 	\end{guide}

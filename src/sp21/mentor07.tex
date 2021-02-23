@@ -1,0 +1,62 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Nonlocal and Iterators}}
+\date{March 1, 2021 to March 3, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\maketitle
+	\rule{\textwidth}{0.15em}
+	\fontsize{12}{15}\selectfont
+
+	%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+    \textbf{PSA: }Your students will have just taken their first midterm! Be positive and use these tips for teaching a \href{https://docs.google.com/document/d/1Oj0Cmm_HKPOU3YsdBWu1VDF2O1nLYBO_VWaczuGMc8g/edit}{post-midterm section}.
+
+	\textbf{Recommended Timeline For Non-NPE Sections}
+	\begin{itemize}
+		\item Nonlocal Mini Lecture or Sanity Check - 5 minutes
+		\item among-us - 5 minutes
+		\item pingpong - 10 minutes
+		\item Iterators and Generators Mini Lecture or Sanity Check - 5 minutes
+		\item foo - 5 minutes
+		\item filter-gen - 5 minutes
+		\item tree-sequence - 15 minutes
+	\end{itemize}
+	\textbf{Recommended Timeline For NPE Sections}
+	\textbf{First Section}
+	\begin{itemize}
+		\item Nonlocal Mini Lecture with Examples - 8 minutes
+		\item among-us - 7 minutes
+		\item Iterators and Generators Mini Lecture - 7 minutes
+		\item foo - 8 minutes
+		\item filter-gen - 8 minutes
+	\end{itemize}
+	\textbf{Second Section}
+	\begin{itemize}
+		\item Nonlocal Review - 2 minutes
+		\item pingpong - 15 minutes
+		\item Iterators and Generators Review - 2 minutes
+		\item tree-sequence - 16 minutes
+	\end{itemize}
+\end{guide}
+
+\section{Nonlocal}
+\subimport{../../topics/nonlocal/text/}{nonlocal_overview.tex}
+\begin{questions}
+	\subimport{../../topics/environments/medium/}{amongus.tex}
+	\subimport{../../topics/nonlocal/medium/}{pingpongv3.tex}
+\end{questions}
+\vspace{-4em}
+\section{Iterators and Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+	\subimport{../../topics/generators/easy/}{foo.tex}
+	\subimport{../../topics/generators/medium/}{filter-gen.tex}
+	\subimport{../../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+
+\end{document}

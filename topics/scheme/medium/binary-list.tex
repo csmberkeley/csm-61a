@@ -1,0 +1,112 @@
+\begin{blocksection}
+\question
+You are creating a computer from scratch. In their rawest form, computers use 0s and 1s to compose commands and data. Fill in a function that takes a list of boolean values representing an \textbf{unsigned binary number} and returns its \textbf{decimal representation}. Each \lstinline{#t} in the list represents a 1 and each \lstinline{#f} represents a 0, with the \textbf{first} element in the list being the \textbf{rightmost} (smallest) binary digit and the \textbf{last} element being the \textbf{leftmost} (largest) binary digit.
+\\
+\begin{lstlisting}
+;Doctests
+scm> (binary (list #f #t)) ; 10
+2
+scm> (binary (list #t #f #t #t)) ; 1101
+13
+scm> (binary (list #t #t #f #f #t)) ; 10011
+19
+scm> (binary (list #f)) ; 0
+0
+
+(define (binary bin-list)
+  (cond
+    ((null? ____________)
+      __________________
+    )
+    ((__________________)
+      __________________________________
+    )
+    (else
+      __________________________________
+    )
+  )
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{blocksection}
+\begin{lstlisting}
+(define (binary bin-list)
+  (cond
+    ((null? bin-list)
+      0
+    )
+    ((car bin-list)
+      (+ 1 (* 2 (binary (cdr bin-list))))
+    )
+    (else
+      (* 2 (binary (cdr bin-list)))
+    )
+  )
+)
+\end{lstlisting}
+\end{blocksection}
+\end{solution}
+
+
+\begin{blocksection}
+\question
+Now, write the binary to decimal function, but in tail recursive form. Note that the \lstinline{expt} function takes in a base and an exponent. For example, \lstinline{(expt 2 3)} raises 2 to the third power, returning 8.
+\\
+\begin{lstlisting}
+;Doctests
+scm> (binary-tail (list #f #t)) ; 10
+2
+scm> (binary-tail (list #t #f #t #t)) ; 1101
+13
+scm> (binary-tail (list #t #t #f #f #t)) ; 10011
+19
+scm> (binary-tail (list #f)) ; 0
+0
+
+(define (binary-tail bin-list)
+  (define (helper bin-list i sum)
+    (cond
+      ((null? ____________)
+        __________________
+      )
+      ((__________________)
+        ______________________________________________
+      )
+      (else
+        ______________________________________________
+      )
+    )
+  )
+  (helper ________________)
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{blocksection}
+\begin{lstlisting}
+(define (binary-tail bin-list)
+  (define (helper bin-list i sum)
+    (cond
+      ((null? bin-list)
+        sum
+      )
+      ((car bin-list)
+        (helper
+          (cdr bin-list) (+ 1 i) (+ sum (expt 2 i))
+        )
+      )
+      (else
+        (helper
+          (cdr bin-list) (+ 1 i) sum
+        )
+      )
+    )
+  )
+  (helper bin-list 0 0)
+)
+\end{lstlisting}
+\end{blocksection}
+\end{solution}

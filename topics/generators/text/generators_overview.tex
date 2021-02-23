@@ -1,8 +1,8 @@
 An \textbf{iterable} is any container that can be processed sequentially. Think of an iterable as anything you can loop over, such as lists or strings.  You can see this in \lstinline{for} loops, which sequentially loop through each element of a sequence. The anatomy of the for loop can be described as:
 \begin{lstlisting}
 for some_var in iterable:
-    <do something in with some_var>
+    <do something with some_var>
 \end{lstlisting}
 An \textbf{iterator} remembers where it is during its iteration. Though an iterator is an iterable, the reverse is not necessarily true. Think of an iterable as a book whereas an iterator is a bookmark.
 
-\textbf{Generators} are created using the traditional function definition syntax in Python (\lstinline{def}) with the suite of the function containing one or more \lstinline{yield} statements. When a generator (a function that has \lstinline{yield} in the body) is called, it returns a generator object. The \lstinline{yield} statement pauses the function, yields the value, saves the local state so that evaluation can be resumed right where it left off.  \lstinline{yield} operates similarly to a return statement.
+\textbf{Generators}, which are a specific type of \textbf{iterators}, are created using the traditional function definition syntax in Python (\lstinline{def}) with the body of the function containing one or more \lstinline{yield} statements. When a generator (a function that has \lstinline{yield} in the body) is called, it returns a generator object. When we call the generator object, we evaluate the body of the function until we have yielded a value. The \lstinline{yield} statement pauses the function, yields the value, saves the local state so that evaluation can be resumed right where it left off.  \lstinline{yield} operates similarly to a return statement.
