@@ -1,27 +1,25 @@
-To evaluate a variable name, we find its value from the first frame (current frame, parent, parent’s parent, …) the variable is defined. The first time we assign (bind) a value to a variable, we declare a new variable in the current frame and bind to the respective value.
-
-The \lstinline{nonlocal} keyword introduces more control over this process. The first time we assign a value to a \lstinline{nonlocal} variable, rather than declare a new variable in the current frame, we bind the value to the variable of the same name found in the first parent frame that contains such a variable. This means that this variable does not exist in the current frame. Note: you cannot declare variables in the global frame as \lstinline{nonlocal}.
+% To evaluate a variable name, we find its value from the first frame the variable is defined in. The first time we assign a value to a variable, we declare this new variable in the current frame and bind its value there.
+%
+% The \lstinline{nonlocal} keyword introduces more control over this process.
+\\The first time we assign a value to a \lstinline{nonlocal} variable, rather than declare a new variable in the current frame, we bind the value to the variable in the first parent frame that contains such a variable. The variable does not exist in the current frame!
+\\Note: you cannot declare variables in the global frame as \lstinline{nonlocal}.
 \newline
 \begin{lstlisting}
 def example_without_nonlocal():
     grade = 1.0
     def gpa_boost():
-        grade = 4.0 # creates a variable named grade in the 
-                    # gpa_boost frame
+        grade = 4.0 # creates a variable named grade
     gpa_boost()
     print(grade)
 >>> example_without_nonlocal()
 1.0
-\end{lstlisting}
-\pagebreak
-\begin{lstlisting}
+
 def example_with_nonlocal():
     grade = 1.0
     def gpa_boost():
         nonlocal grade
         grade = 4.0 # modifies the variable in the
-                    # example_with_nonlocal frame instead
-                    # of creating a new variable
+                    # example_with_nonlocal frame
     gpa_boost()
     print(grade)
 >>> example_with_nonlocal()
