@@ -63,3 +63,16 @@ class PingPongTracker:
 \end{solution}
 
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item Emphasize the fact that the important part of such sequence problems are \textit{keeping track of state at a given time step}. With OOP, this state is inherently saved as object attributes. 
+    \item Make sure the difference between \verb|self.current| and \verb|self.index| is clear: index always increases by 1 each step, while current is the actual pingpong sequence number we want. 
+    \item Remember that the \textbf{index} denotes the direction of the pingpong sequence- current is just the current number of our sequence we happen to be on. 
+  \end{itemize}
+\end{guide}
+\end{blocksection}
+
+
