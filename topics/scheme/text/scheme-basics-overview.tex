@@ -1,4 +1,4 @@
-Scheme is a \textit{functional} language, as opposed to Python, which is an \textit{imperative} language; whereas a Python program is comprised of \textit{statements} or "instructions" which do not evaluate to a value (an example of a statement would be something like \lstinline{x = 3} in Python. This does not evaluate to any value but just instructs Python to create a variable \lstinline{x} with the value 3), a Scheme program is comprised solely of \textit{expressions}, each of which simply evaluates to a value. Remember that the term evaluate means to find the value of something. A variable is evaluated by looking up the name in the current frame, and a function call expression is evaluated using the three steps listed below. The thing to notice is that different types of expressions have different rules for how to evaluate those expressions, and this goes for both Python and Scheme. 
+Scheme is a \textit{functional} language, as opposed to Python, which is an \textit{imperative} language; whereas a Python program is comprised of \textit{statements} or "instructions" which do not evaluate to a value (an example of a statement would be something like \lstinline{x = 3} in Python. This does not evaluate to any value but just instructs Python to create a variable \lstinline{x} with the value 3), a Scheme program is comprised solely of \textit{expressions}, each of which simply evaluates to a value. Remember that the term evaluate means to find the value of something. A variable is evaluated by looking up the name in the current frame, and a function call expression is evaluated using the three steps listed below. The thing to notice is that different types of expressions have different rules for how to evaluate those expressions, and this goes for both Python and Scheme.
 
 The four basic types of expressions in Scheme are literals (i.e., a value itself), call expressions (procedure calls), special forms (language features), and variables.  A call expression or special form is denoted by a pair of parentheses and takes prefix notation, i.e., it is formed as so:
 \vspace{0.5mm}
@@ -15,7 +15,7 @@ Evaluation of a call expression progresses so:
 \item Apply operator on operands
 \end{enumerate}
 
-\newpage 
+\newpage
 
 \textbf{If Expression: }
 The \lstinline{if} keyword is similar to \lstinline{if}/\lstinline{else} statements in Python. It works as follows:
@@ -65,8 +65,6 @@ Either way, after the \lstinline{<name>} is bound to either a function or value,
 scm> (define x 3)
 x
 \end{lstlisting}
-
-\url{links.cs61a.org/schemespec} will direct you to a page with all of the explanations and syntax descriptions of Scheme. Use it when filling out the WWSD section!
 
 \begin{guide}
 \begin{blocksection}
