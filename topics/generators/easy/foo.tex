@@ -54,23 +54,30 @@ World
 \end{lstlisting}
 \end{solution}
 \begin{blocksection}
-\question How can we modify \lstinline$foo$ so that it satisfies the following doctests?
+\question Write a new function \lstinline$goo$ that satisfies the following doctests:
+\\Optional: then write the body in one line using \lstinline{range(1, 11)}.
 \begin{lstlisting}
->>> a = list(foo())
+>>> a = list(goo())
 >>> a
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 \end{lstlisting}
 
 \begin{solution}[0.50in]
-Change the \lstinline$if$ to a \lstinline$while$ statement, and make sure to increment
-\lstinline$a$. This looks like:
+We can yield multiple times with a \lstinline$while$ statement and incrementing
+\lstinline$a$:
 
 \begin{lstlisting}
-def foo():
+def goo():
     a = 0
     while a < 10:
         a += 1
         yield a
+\end{lstlisting}
+
+Alternatively, we can write it in one line using yield from:
+\begin{lstlisting}
+def goo():
+    yield from range(1, 11)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -82,8 +89,11 @@ def foo():
 \item Emphasize heavily the fact that when generators are called, they return a generator object. They do NOT start executing their function body until after \texttt{next} is called! (So what does that first line return? A generator object!)
 \item Remind students that generator objects are independent from one another; if you create a new one from calling the same function again, it starts from the beginning again. Each generator on its own, however, remembers where it stopped after the previous \texttt{next} call, so that it can resume the next time you call \texttt{next}.
 \item What happens when there are no more \texttt{yield} statements, like in the second \texttt{call} on \texttt{foo\_gen}? The generator has reached the end of all possible values to iterate over, and so it returns a StopIteration error.
-\item If you stick a generator object inside a for loop (or a list, for that matter), it will go all the way through from start to finish, outputting each yield value after another. Careful, however: `start' doesn't necessarily mean the very first lines of the function or the first yield call; if you feed in a generator on which you've already called \texttt{next}, its "start" will be where it last left off. (This caution doesn't apply to the last WWPD of this section, but still important to emphasize.)
-\item For question 2, keep in mind that "modify" here actually refers to some pretty big changes you'll have to make to \texttt{foo}. Hint: you don't need to output "Hello" or "World" anywhere.
+\item If you stick a generator object inside a for loop (or a list, for that matter), it will go all the way through from start to finish, outputting each yield value after another.
+\begin{itemize}
+\item Careful, however: `start' doesn't necessarily mean the very first lines of the function or the first yield call; if you feed in a generator on which you've already called \texttt{next}, its "start" will be where it last left off.
+\end{itemize}
+\item goo() can serve as a good introduction to the difference between yield and yield from! Go over both solutions and compare them.
 \end{itemize}
 \end{guide}
 \end{blocksection}
