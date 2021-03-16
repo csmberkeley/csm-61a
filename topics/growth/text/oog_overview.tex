@@ -1,4 +1,4 @@
-An order of growth (OOG) characterizes the runtime \textbf{efficiency} of a program as its input becomes extremely large. Common runtimes, in increasing order of time, are: constant, logarithmic, linear, quadratic, and exponential.
+An order of growth (OOG) characterizes the runtime \textbf{efficiency} of a program as its input becomes extremely large. Since we care about rate of growth, we ignore constant coefficients and exclusively consider the fastest growing term. For example, on very large inputs, $2n^2 + 3n - 20$ behaves the same as $n^2$. Common runtimes, in increasing order of time, are: constant, logarithmic, linear, quadratic, and exponential.
 
 \textbf{Examples:}
 
@@ -13,6 +13,13 @@ def f(n):
    while n > 0:
       print(n)
       n -= 1
+\end{lstlisting}
+We can modify this while loop to get an example of logarithmic OOG. Suppose that, instead of subtracting 1 each time, we halve the size of \lstinline{n}. For \lstinline{n = 1000}, the program would take 10 iterations to terminate (since $2^10 = 1024$). The runtime is propotional to $\log($\lstinline{n}$)$.
+\begin{lstlisting}
+def f(n):
+   while n > 0:
+      print(n)
+      n /= 2
 \end{lstlisting}
 An example of a quadratic runtime involves nested for loops. If you increment the value of \lstinline{n} by only 1, an additional \lstinline{n} amount of work is being done, since the inner for loop will run one more time. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
 \begin{lstlisting}
