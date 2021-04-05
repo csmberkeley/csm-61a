@@ -4,7 +4,7 @@
 \begin{lstlisting}
 (define (count-instance lst x)
   (cond ((null? lst) 0)
-        ((equal? (car lst) x) (+ 1 (count-instance 
+        ((equal? (car lst) x) (+ 1 (count-instance
                                           (cdr lst) x)))
         (else (count-instance (cdr lst) x))))
 \end{lstlisting}
@@ -16,7 +16,8 @@ What is the purpose of \texttt{count-instance}? Is it tail recursive? Why or why
 Optional: draw out the environment diagram of this sum-list with \texttt{lst = (1 2 1)} and \texttt{x = 1}.
 
 \begin{solution}[0.5in]
-\texttt{count-instance} returns the number of time \texttt{x} appears in \texttt{lst}. It is not tail recursive. The call to \texttt{count-instance} appears as one of the arguments to a function call, so it will not be the final thing we do in every frame (we will have to apply \texttt{+} after evaluating it.)
+\texttt{count-instance} returns the number of times \texttt{x} appears in \texttt{lst}.
+\\It is not tail recursive. The call to \texttt{count-instance} is an arguments to a function call, so it will not be the final thing we do in every frame (we will have to apply \texttt{+} after evaluating it.)
 \end{solution}
 
 
@@ -49,32 +50,18 @@ Optional: draw out the environment diagram of this sum-list with \texttt{lst = (
 \end{solution}
 \end{blocksection}
 
+\begin{guide}
 \begin{blocksection}
-\begin{solution}
-A common approach to converting non tail-recursive functions into 
-tail-recursive functions is to keep track of the return value as a 
-parameter.
-To keep track of an extra parameter in recursion, we learned earlier 
-in the class to use helper functions. In this case, we're trying to 
-keep track of the count of \lstinline{x} we see inside \lstinline{lst}. Rather than adding 1 
-to the recursive call of \lstinline{(cdr lst)}, we can keep track of this return 
-value as a parameter--in this case \lstinline{instances}. We let \lstinline{instances} 
-represent the count of \lstinline{x}. In each recursive call, we increment 
-\lstinline{instances} if \lstinline{(car lst)} is equal to \lstinline{x}, otherwise we keep it the same. 
-Thus, at each step of the recursion, \lstinline{instances} should represent the 
-count of \lstinline{x} that we have seen up to that point. In our initial call 
-to helper, we default \lstinline{instances} to 0 because we haven't seen any \lstinline{x}'s 
-yet.
-
-The logic between the tail-recursive version and the original 
-function is mostly the same; we just need to change the return 
-values to account for the parameter \lstinline{instances}. For the base case, 
-rather than returning 0, we should instead return \lstinline{instances}, which 
-represents the count of \lstinline{x} in \lstinline{lst} (that we've seen up to that point). 
-This makes sense because if \lstinline{lst} is empty, then the default value of 
-\lstinline{instances} is just 0. Otherwise, we make recursive calls and change 
-\lstinline{instances} accordingly.
-
-\end{solution}
-
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item A common approach to converting non tail-recursive functions into tail-recursive functions is to keep track of the return value as a parameter
+    \item To keep track of an extra parameter in recursion, we learned earlier in the class to use helper functions, so helper functions are commonly used for tail recursion
+    \item In this case, we're trying to keep track of the count of \lstinline{x} we see inside \lstinline{lst}
+    \item Rather than adding 1 to the recursive call of \lstinline{(cdr lst)}, we can keep track of this return value as a parameter--in this case \lstinline{instances}
+    \item We let \lstinline{instances} represent the count of \lstinline{x}. In each recursive call, we increment \lstinline{instances} if \lstinline{(car lst)} is equal to \lstinline{x}, otherwise we keep it the same
+    \item Thus, at each step of the recursion, the parameter \lstinline{instances} should represent the
+    count of \lstinline{x} that we have seen up to that point
+    \item The logic between the tail-recursive version and the original function is mostly the same; we just need to change the return values to account for the parameter \lstinline{instances}
+  \end{itemize}
 \end{blocksection}
+\end{guide}
