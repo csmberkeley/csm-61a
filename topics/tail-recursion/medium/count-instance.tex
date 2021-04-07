@@ -13,7 +13,7 @@
 
 What is the purpose of \texttt{count-instance}? Is it tail recursive? Why or why not?
 \newline
-Optional: draw out the environment diagram of this sum-list with \texttt{lst = (1 2 1)} and \texttt{x = 1}.
+Optional: draw out the environment diagram of this \texttt{count-instance} with \texttt{lst = (1 2 1)} and \texttt{x = 1}.
 
 \begin{solution}[0.5in]
 \texttt{count-instance} returns the number of times \texttt{x} appears in \texttt{lst}.
@@ -21,7 +21,7 @@ Optional: draw out the environment diagram of this sum-list with \texttt{lst = (
 \end{solution}
 
 
-\question Rewrite count-instance to be tail recursive.
+\question Rewrite count-instance to be tail recursive. (Hint: helper functions are often useful in implementing Tail Recursion.)
 
 \begin{lstlisting}
 (define (count-tail lst x)
