@@ -1,0 +1,74 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{13}
+\title{\textsc{Tail Calls, Macros, Scheme Challenge}}
+\date{April 12 - April 15, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Tail Recursion Intro - 10 minutes
+        \item \lstinline{count-instance} - 15 minutes
+        \item \lstinline{filter} - 10 minutes
+        \item Macros Intro - 5 minutes
+        \item \lstinline{macros-quasi} - 5 minutes
+        \item \lstinline{if-macro} or \lstinline{apply-twice} - 10 minutes
+    \end{itemize}
+    \vspace{.5cm}
+    \textbf{Recommended Timeline for NPE Sections}
+    \begin{itemize}
+        \item Section 1:
+            \begin{itemize}
+                \item Tail Recursion Intro - 25 minutes
+                \item \lstinline{count-instance} - 25 minutes
+                \item \lstinline{filter} - 10 minutes
+            \end{itemize}
+        \item Section 2:
+            \begin{itemize}
+                \item Macros Intro - 10 minutes
+                \item \lstinline{macros-quasi} - 10 minutes
+                \item \lstinline{if-macro} - 15 minutes
+                \item \lstinline{apply-twice} - 15 minutes
+            \end{itemize}
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+\section{Tail Recursion}
+\subimport{../../topics/tail-recursion/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/tail-recursion/easy/}{intro.tex}
+\subimport{../../topics/tail-recursion/medium/}{count-instance.tex}
+\subimport{../../topics/tail-recursion/medium/}{filter.tex}
+\end{questions}
+
+\newpage
+\section{Macros}
+\subimport {../../topics/macros/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/medium/}{if-macro.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
+\end{questions}
+
+\newpage
+\section{Scheme Challenge}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{decay.tex}
+\subimport{../../topics/scheme/challenge/}{max-depth.tex}
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
