@@ -1,3 +1,4 @@
+\begin{blocksection}
 \question
 The \lstinline{map} function takes in a two-argument function and a list of elements, and applies that function to each element in that list. We want to define our own version of the \lstinline{map} function EXCEPT instead of applying a function to a list of elements, we want to pass in a single element and apply each function in a list of functions to that element.
 
@@ -24,7 +25,7 @@ scm> (reverse-map funcs 16)
 
 \begin{solution}
 \begin{lstlisting}
-(define (reverse-map operators args)
+(define (reverse-map operators arg)
     (if (null? operators)
         nil
         (cons ((car operators) arg) 
@@ -32,3 +33,14 @@ scm> (reverse-map funcs 16)
 )
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+      \item Begin by suggesting recursion and guiding them to a base case.
+	\item Consider reviewing the syntax for a single-argument function call. Contrast the implementation of map with the implementation of reverse-map.
+  \end{itemize}
+\end{guide}
+\end{blocksection}
