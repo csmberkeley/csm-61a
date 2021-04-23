@@ -39,3 +39,14 @@ scm> (and-odds a)
 )
 \end{lstlisting}
 \end{solution}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Quickly review boolean evaluation and boolean operations \lstinline{and} and \lstinline{on}.
+	\item Begin with the intuition behind the recursive call. Have them consider an arbitrarily long list and guide them to the intuition behind the call on \lstinline{(cdr (cdr exprs))}.
+	\item If they add a base case for nil, have them consider an odd-length list.
+\end{itemize}
+\end{guide}
+\end{blocksection}
