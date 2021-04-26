@@ -1,5 +1,5 @@
 \question
-Write a macro, \lstinline{and-odds}, which takes in a list of expressions, \lstinline{exprs}, and evaluates to a true value if all of the \underline{even-indexed} elements of \lstinline{exprs} evaluate to true values.
+Write a macro, \lstinline{and-odds}, which takes in a list of expressions, \lstinline{exprs}, and evaluates to a true value if all of the \underline{even-indexed} elements of \lstinline{exprs} evaluate to true values. If any of the even-indexed elements evaluate to false, \lstinline{and-odds} should return false.
 
 \begin{lstlisting}
 ; doctests
@@ -22,20 +22,22 @@ scm> (and-odds a)
 
 (define-macro (and-odds exprs)
 
-    (if (______________________________)
+    `(if _________________________________________________
 
-        ______________________________________________
+         _________________________________________________
 
-        ______________________________________________)
+         _________________________________________________
+    )
 )
 \end{lstlisting}
 
 \begin{solution}
 \begin{lstlisting}
 (define-macro (and-odds exprs)
-    (if (> (length exprs) 2)
-        `(and ,(car exprs) (and-odds ,(cdr (cdr exprs))))
-        `(or ,(car exprs)))
+    `(if (> (length ,exprs) 2)
+          (and (car ,exprs) (and-odds (cdr (cdr ,exprs))))
+          (eval (car ,exprs))
+    )
 )
 \end{lstlisting}
 \end{solution}
