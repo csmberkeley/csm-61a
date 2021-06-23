@@ -1,4 +1,4 @@
-"""" CSM 61A Week 2 Fall 2020 """
+"""" CS 61A Tutorial 0 Summer 2021 """
 
 ###########
 # Control #
