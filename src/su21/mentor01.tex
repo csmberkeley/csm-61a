@@ -33,15 +33,23 @@ Again, you probably won't be able to do all of them- but you can choose a few ba
 \end{blocksection}
 
 \section{Control}
+\begin{blocksection}
+\define{Control} is the use of boolean expressions to prevent or allow a block of code to run based on a condition.
+We use \texttt{if} statements and \texttt{while} loops in conjunction with these boolean expressions depending on how we want the code to behave.
+\texttt{if/elif/else} blocks will execute the first block of code for which the condition is \texttt{True}, whereas \texttt{while} loops will repeatedly
+execute a block of code while the condition is \texttt{True}.
+\end{blocksection}
 \begin{questions}
 \subimport{../../topics/control/easy/}{handle-overflow.tex}
 \subimport{../../topics/control/medium/}{pow-of-2.tex}
+\newpage
 \subimport{../../topics/control/challenge/}{min_fact.tex}
 \end{questions}
 
 \newpage
 
 \section{Environment Diagrams}
+\subimport{../../src/su21/}{env-diagram-paragraph.tex}
 \begin{questions}
 \subimport{../../topics/environments/easy/}{new-frame.tex}
 \subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}

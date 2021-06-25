@@ -1,0 +1,20 @@
+\begin{guide}
+  We give students a list of rules for drawing environment diagrams, but this is a skill that they should foster through a lot of practice. It might help to explain to students the motivation for doing these diagrams -- namely:
+
+\begin{enumerate}
+  \item They are a great way to visualize the execution of various Python statements.
+  \item They can be very helpful for understanding the evaluation of complex programs. Moreover, \href{tutor.cs61a.org}{Python Tutor} and \texttt{python ok --trace} will help draw environment diagrams for you, but that's useless unless you understand how to read and draw them.
+  \item You can use environment diagrams for, say, determining what the values of variables are in a while loop. If you’re terminating too early or late, or having an infinite loop, environment diagrams can help!
+  \item They're worth a fair amount of points on exams.
+\end{enumerate}
+
+Students will learn more effectively by trying out the simple examples by themselves while following the written rules rather than just watching you. As they are working on these problems, try to gauge common misconceptions.
+
+\textbf{Takeaway:} environment diagrams are straightforward as long as you take each piece of the program apart and follow the rules exactly!
+
+\end{guide}
+
+An \define{environment diagram} is a model we use to keep track of all the variables that have been
+defined and the values they are bound to. We will be using this tool throughout
+the course to understand complex programs involving several different assignments
+and function calls.
