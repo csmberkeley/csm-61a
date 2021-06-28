@@ -1,0 +1,62 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{3}
+\title{\textsc{Recursion and Tree Recursion}}
+\date{July 2, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+\textbf{Diagnostic Quiz Notice}
+    \newline
+    The Diagnostic Quiz will be taking place today (Friday July 2nd), 5-6pm. As such, tutorial will be optional.
+    Feel free to run your section in whatever way will help students feel most prepared for the quiz.
+\end{guide}
+
+\begin{guide}
+\textbf{Recommended Timeline}
+\newline
+For the normal recursion section, there are two options for a problem to cover. is\_sorted and collapse; the latter is more difficult.
+If your students are still struggling with normal recursion, you can come back to discuss the second one at the end rather than moving
+to copy-machine.
+\begin{itemize}
+    \item Recursion Mini Lecture or Sanity Check - 7 minutes
+    \item wrong-factorial - 3 minutes
+    \item is\_sorted or collapse - 10 minutes
+    \item Tree Recursion Mini Lecture or Sanity Check - 5 minutes
+    \item mario-number - 15 minutes
+    \item copy-machine - If time permits
+\end{itemize}
+\end{guide}
+
+\section{Recursion}
+\subimport{../../topics/recursion/text/}{recursion_overview.tex}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{wrong-factorial.tex}
+    \pagebreak
+    \subimport{../../topics/recursion/medium/}{is-sorted-su21.tex}
+    \pagebreak
+    \subimport{../../topics/recursion/medium/}{collapse.tex}
+\end{questions}
+
+\pagebreak
+
+\section{Tree Recursion}
+\subimport{../../topics/recursion/text/}{tree_recursion_overview_sp21.tex}
+\pagebreak
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{mario-number.tex}
+\pagebreak
+\subimport{../../topics/recursion/medium/}{copy-machine1.tex}
+\pagebreak
+\subimport{../../topics/recursion/medium/}{copy-machine2.tex}
+\end{questions}
+
+\end{document}
