@@ -1,9 +1,9 @@
 \documentclass{exam}
 \usepackage{../commonheader}
 
-\discnumber{1}
-\title{Python and Control}
-\date{June 25, 2021}
+\discnumber{2}
+\title{Higher-Order Functions, Self Reference, and Lambdas}
+\date{June 29, 2021}
 
 \begin{document}
 \maketitle
@@ -12,42 +12,60 @@
 \begin{blocksection}
 \begin{guide}
 
-  This worksheet primarily covers environment diagrams and HOF's, both of which should have been covered in Wednesday/Thursday lectures.
-There is also a challenge problem (i.e. exam prep) at the bottom for if you finish early or your students are looking for something more difficult to try.
-This is a fairly long worksheet so don't feel pressured to do all of the problems! Make sure to poll your students to see which problems they are more interested in covering.
+This worksheet covers HOF's, self reference, and lambdas, which were covered in Discussion 2 on Tuesday. 
+All problems are HOF problems, but they are broken down into the topics they emphasize.
 
 \textbf{Estimated Problem Times}
 \newline
-Again, you probably won't be able to do all of them- but you can choose a few based on how long they are.
+You might not finish the worksheet, so prioritize problems that cover topics your students could use more practice with.
 \begin{itemize}
-    \item Higher Order Functions Mini-Lec + Written Question - 2 mins
+    \item Higher Order Functions Mini-Lec - 5 mins
     \item Foobar - 6 mins
     \item Apple - 4 mins
+    \item Mystery - 5 mins
+    \item Mystery WWPD - 5 mins
     \item xyz - 8 mins
-    \item self-referencing - 10 mins
+    \item self-reference - 10 mins
 \end{itemize}
 \end{guide}
 \end{blocksection}
 
 
-
-
-\section{Higher-Order Functions}
+\section{Higher-Order Functions: Environment Diagrams}
+Higher-order functions are functions that take in one or more functions as arguments, return a function, or do both. 
+Since environment diagrams are a good tool to keep track of variables, values, and frames, we can use them to illustrate and 
+understand the behavior of HOF's.
 \begin{questions}
-\subimport{../../topics/hof/easy/}{why.tex}
 \subimport{../../topics/hof/easy/env-diagram/}{foobar.tex}
 \subimport{../../topics/hof/medium/env-diagram/}{apple.tex}
+\end{questions}
 
 \newpage
-\subimport{../../topics/hof/medium/}{xyz.tex}
-\subimport{../../topics/hof/hard/}{self-referencing.tex}
+\section{Higher-Order Functions: Lambda Expressions}
+A lambda expression evaluates to a function without binding it to a name. Just like with a def statement, the body 
+of a lambda expression is not evaluated until the function is called. Note that some of the lambda expressions in these problems 
+are also higher-order functions.
 
-\newpage
+\begin{questions}
 \subimport{../../topics/hof/medium/}{mystery.tex}
 \subimport{../../topics/hof/medium/wwpd/}{mystery.tex}
 
-\clearpage
-
+\begin{guide}
+Note that the mystery function referred to in this problem is the same function we just wrote in the previous problem.
+\end{guide}
+\newpage
+\subimport{../../topics/hof/medium/}{xyz.tex}
 \end{questions}
 
+
+\newpage
+\section{Higher-Order Functions: Self Reference}
+We use the term "self reference" to categorize a particular type of HOF in which the function returns itself, 
+either directly or with the help of another function.
+
+\begin{questions}
+\subimport{../../topics/hof/hard/}{self-referencing.tex}
+\end{questions}
+
+\clearpage
 \end{document}
