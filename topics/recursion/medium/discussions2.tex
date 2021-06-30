@@ -1,0 +1,99 @@
+\begin{blocksection}
+    \question Realizing the need for improvement, Laryn has recruited you to help them make 61A sections more flexible! 
+    Laryn would like discussion sections to have 20 $\leq$ \lstinline$x$ $\leq$ 30 students each, 
+    and tutoring sections to have 6 $\leq$ \lstinline$y$ $\leq$ 8 students. 
+    Additionally, it's okay to have up to \lstinline$upper$ total slots, as long as we have at least \lstinline$lower$ amount to accomodate all students.
+    Is it possible to assign each student a section? (Note: In this alternate universe, students can choose either
+    a tutoring section or a discussion section, but not both.)
+    
+    \begin{lstlisting}
+    def sum_range(lower, upper):
+        """
+        >>> sum_range(25, 30) # Everyone can go into one discussion section
+        True
+        >>> sum_range(9, 10) # If we make a tutoring section, there will be 1-4 extra students
+        False
+        >>> sum_range(56, 64) # 2 discussion sections, 2 discussions 1 tutoring section, etc. all work
+        True
+        """
+        def discussions(pmin, pmax):
+            if ________________________________________________:
+    
+                return ____________________________________
+    
+            elif ______________________________________________:
+    
+                return ____________________________________
+    
+            return ____________________________________________
+    
+        return discussions(0, 0)
+    
+    \end{lstlisting}
+    \end{blocksection}
+    
+    \begin{solution}[1.5in]
+    \begin{blocksection}
+    \begin{lstlisting}
+    def sum_range(lower, upper):
+        def discussions(pmin, pmax):
+            if lower <= pmin and pmax <= upper:
+                return True
+            elif upper < pmin:
+                return False
+            return discussions(pmin + 6, pmax + 8) or discussions(pmin + 20, pmax + 30)
+        return discussions(0, 0)
+    \end{lstlisting}
+    
+    \textbf{(Solution continues on the next page)}
+    \end{blocksection}
+    \end{solution}
+    
+    \begin{solution}
+    \begin{blocksection}
+    
+    This question is similar to the last one but now we have to deal with two parameters \lstinline{pmin} and \lstinline{pmax}. 
+    Let's start with our recursive calls. Each call represents using either a discussion or tutoring section and 
+    returns a boolean value that indicates whether or not we can include the number of students in our desired range (set by lower and upper).
+    If we use a discussion section, then our current minimum is + 20 and the maximum is whatever our current maximum is + 30. We need to take the two recursive calls, 
+    which each represents a choice we have (either add a tutoring or discussion section) and combine them in some way. 
+    If one of these choices led to \lstinline{True} then we should return \lstinline{True} so we use an \lstinline{or} to combine the recursive calls.
+    
+    Our first base case represents successfully accomodating the number of students within our range in which case we can stop the recursion because we 
+    know it is possible to print that number of pages within the range. Our second base case handles the case where we know for sure that we cannot 
+    fit the amount of students within our range so we return \lstinline{False} and stop doing the recursion.
+    \end{blocksection}
+    \end{solution}
+    
+    \begin{guide}
+    \begin{blocksection}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item Only do this problem if you have plenty of time (it takes a long time).
+        \item Go through the doctests thoroughly before attempting the problem.
+        \item Suggested sequence for teaching:
+        \begin{enumerate}
+            \item Explain the difference between \lstinline{lower} and \lstinline{pmin}, and \lstinline{higher} and \lstinline{pmax}. In the same vein, consider what \lstinline{discussions} should return (what is its purpose?).
+            \item Find the base cases (we need a True case and a False case).
+            \item Think about what the helper function call means- what does seeing 0 and 0 as arguments tell us? Should we recurse downward or upward?
+            \item How do we factor in all the different possible combinations of the two discussion types?
+            \begin{itemize}
+                \item Try to put students into 1 section.
+                \begin{itemize}
+                    \item If it is a discussion section, we can accomodate [20, 30] copies.
+                    \item If it is a tutoring section, we can accomodate [6, 8] copies.
+                \end{itemize}
+                \item Try to put students into 2 section.
+                \begin{itemize}
+                    \item (1, 1): [20+20, 30+30].
+                    \item (2, 2): [6+6, 8+8].
+                    \item (1, 2) = (2, 1): [20+6, 30+8].
+                \end{itemize}
+                \item And so on. Guide students to find the recursive pattern.
+    
+            \end{itemize}
+        \end{enumerate}
+    \end{itemize}
+    \end{blocksection}
+    \end{guide}
+    
