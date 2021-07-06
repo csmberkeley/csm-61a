@@ -1,0 +1,195 @@
+\begin{blocksection}
+\question The following is an \textbf{Abstract Data Type (ADT)} for elephants.
+Each elephant keeps track of its name, age, and whether or not it can fly. Given
+our provided constructor, fill out the selectors:
+
+\begin{lstlisting}
+def elephant(name, age, can_fly):
+    """
+    Takes in a string name, an int age, and a boolean can_fly.
+    Constructs an elephant with these attributes.
+    >>> dumbo = elephant("Dumbo", 10, True)
+    >>> elephant_name(dumbo)
+    "Dumbo"
+    >>> elephant_age(dumbo)
+    10
+    >>> elephant_can_fly(dumbo)
+    True
+    """
+    return [name, age, can_fly]
+
+\end{lstlisting}
+
+\end{blocksection}
+\begin{blocksection}
+
+\begin{lstlisting}
+def elephant_name(e):
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+    return e[0]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+\begin{blocksection}
+
+\begin{lstlisting}
+def elephant_age(e):
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+    return e[1]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+\begin{blocksection}
+
+\begin{lstlisting}
+def elephant_can_fly(e):
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+    return e[2]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+%%% Question %%%
+
+\begin{blocksection}
+\question This function returns the correct result, but there's something wrong
+about its implementation. How do we fix it?
+
+\begin{lstlisting}
+def elephant_roster(elephants):
+    """
+    Takes in a list of elephants and returns a list of their names.
+    """
+    return [elephant[0] for elephant in elephants]
+\end{lstlisting}
+\begin{solution}[1in]
+\lstinline{elephant[0]} is a Data Abstraction Violation (DAV).
+We should use a selector instead.
+The corrected function looks like:
+\begin{lstlisting}
+def elephant_roster(elephants):
+    return [elephant_name(elephant) for elephant in elephants]
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+%%% Question %%%
+
+\begin{blocksection}
+\question Fill out the following constructor for the given selectors.
+
+\begin{lstlisting}
+def elephant(name, age, can_fly):
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+    return [[name, age], can_fly]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+def elephant_name(e):
+    return e[0][0]
+\end{lstlisting}
+
+\begin{lstlisting}
+def elephant_age(e):
+    return e[0][1]
+\end{lstlisting}
+
+\begin{lstlisting}
+def elephant_can_fly(e):
+    return e[1]
+\end{lstlisting}
+
+\end{blocksection}
+
+%%% Question %%%
+
+\begin{blocksection}
+\question How can we write the fixed \texttt{elephant\char`_roster} function for
+the constructors and selectors in the previous question?
+
+\begin{solution}[1.5in]
+No change is necessary to fix \texttt{elephant\char`_roster} since using the
+\texttt{elephant} selectors ``protects'' the roster from constructor definition
+changes.
+\end{solution}
+
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item \texttt{elephant\_roster}
+    \begin{itemize}
+        \item If data abstraction is new to your students or they don’t feel very confident in the topic, \textbf{consider walking them through this problem}.
+        \item The information from 1) is very important for these questions. Make sure your \textbf{students understand the main ideas of 1)!}
+        \item 2) may seem easy/trivial, but emphasize how the selector interface allows you to easily use the ADT.
+    \end{itemize}
+    \item select \textbf{(Optional)}
+    \begin{itemize}
+        \item If your students want a challenge problem, they can do this.
+        \item Expect most students to struggle with this question. It combines \textbf{HOFs with principles of data abstraction}. Make sure students know how to compare strings.
+    \end{itemize}
+\end{itemize}
+\end{guide}
+
+\end{blocksection}
+
+\begin{blocksection}
+\question \textbf{(Optional)} Fill out the following constructor for the given
+selectors.
+
+\begin{lstlisting}
+def elephant(name, age, can_fly):
+    """
+    >>> alex = elephant("Alex Kassil", 22, False)
+    >>> elephant_name(alex)
+    "Alex Kassil"
+    >>> elephant_age(alex)
+    22
+    >>> elephant_can_fly(alex)
+    False
+    >> alex("size")
+    "Breaking abstraction barrier!"
+    """
+    def select(command):
+\end{lstlisting}
+\begin{solution}[1.8in]
+\begin{lstlisting}
+        if command == "name":
+            return name
+        elif command == "age":
+            return age
+        elif command == "can_fly":
+            return can_fly
+        return "Breaking abstraction barrier!"
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+    return select
+\end{lstlisting}
+
+\begin{lstlisting}
+def elephant_name(e):
+    return e("name")
+\end{lstlisting}
+
+\begin{lstlisting}
+def elephant_age(e):
+    return e("age")
+\end{lstlisting}
+
+\begin{lstlisting}
+def elephant_can_fly(e):
+    return e("can_fly")
+\end{lstlisting}
+
+\end{blocksection}
