@@ -1,0 +1,68 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{\textsc{Python Lists, Dictionaries, and Data Abstraction}}
+\date{July 7, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+You may not get to all the problems on the worksheet, so make sure you know which topics your students would like to prioritize.
+\newline
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Lists Mini Lecture - 5 minutes
+        \item Lists WWPD - 8 minutes
+        \item Lists ED - 7 minutes
+        \item is\_prime - 5 minutes
+        \item List Comprehension - 10 minutes
+        \item Abstraction Mini Lecture - 5 minutes
+        \item Elephants - 10 minutes
+        \item Dictionaries Mini Lecture - 2 minutes
+        \item replace\_all - 5 minutes
+        \item counter - 6 minutes
+    \end{itemize}
+\end{guide}
+
+\section{Lists}
+\subimport{../../topics/lists/immutable/text/}{list_overview.tex}
+\begin{questions}
+\subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified.tex}
+\subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+% \subimport{../../topics/lists/immutable/medium/wwpd/}{assignment-and-slicing.tex}
+\subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+\subimport{../../topics/lists/immutable/medium/}{comprehensions.tex}
+\end{questions}
+
+\newpage
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{questions}
+\subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+\end{questions}
+
+\newpage
+\section{Dictionaries}
+Dictionaries are data structures that map keys to values. In Python, the key-value pairs in a dictionary are unordered.
+\begin{guide}
+\newline
+Make sure to emphasize the similarities and differences between dictionaries and lists. For example, like lists, you can 
+add and retrieve items in dictionaries using indexing syntax. However, unlike lists, dictionaries do not have 
+indices, so you must add and retrieve things using keys, like this: \texttt{dict[key] = value}.
+\end{guide}
+\begin{questions}
+\subimport{../../src/su21/}{replace_all.tex}
+\newpage
+\subimport{../../src/su21/}{counter.tex}
+\end{questions}
+
+\end{document}
