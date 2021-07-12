@@ -1,0 +1,80 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Orders of Growth and Midterm Review}}
+\date{July 14, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Orders of Growth Mini Lecture - 6 minutes
+        \item Jumpstart - 5 minutes
+        \item Belgian Waffle - 5 minutes
+        \item Fast Exponentiation - 8 minutes
+        \item Midterm Review (gauge what topics students want to brush up on and do those problems) - 36 min
+    \end{itemize}
+\end{guide}
+
+\section{Orders of Growth}
+\subimport{../../topics/growth/text/}{oog_overview.tex}
+\begin{questions}
+\subimport{../../topics/growth/easy/}{jumpstart.tex}
+\subimport{../../topics/growth/easy/}{belgian-waffle.tex}
+\subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+\end{questions}
+
+
+\newpage
+\section{Midterm Review - Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/hof/medium/env-diagram/}{zebra.tex}
+\subimport{../../topics/recursion/medium/env-diagram/}{foobar1.tex}
+\subimport{../../topics/recursion/medium/env-diagram/}{recurses.tex}
+\end{questions}
+
+\newpage
+\section{Midterm Review - Higher Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/easy/}{make-interval.tex}
+\subimport{../../topics/hof/medium/}{alternator.tex}
+\subimport{../../topics/hof/hard/}{partial_summer.tex}
+\end{questions}
+
+\section{Midterm Review - Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{sum-prime-digits.tex}
+\end{questions}
+
+\section{Midterm Review - Tree Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{midterm.tex}
+\subimport{../../topics/recursion/medium/}{add-up.tex}
+\end{questions}
+
+\newpage
+\section{Midterm Review - Lists}
+\begin{questions}
+\subimport{../../topics/lists/immutable/medium/wwpd/}{assignment-and-slicing.tex}
+\subimport{../../topics/lists/immutable/medium/}{duplicate-list.tex}
+\end{questions}
+
+\newpage
+\section{Midterm Review - Trees}
+\begin{questions}
+\subimport{../../topics/trees/adt/medium/}{count.tex}
+\subimport{../../topics/trees/adt/medium/}{even-square-tree.tex}
+\subimport{../../topics/trees/adt/hard/}{scrabble.tex}
+\end{questions}
+
+\end{document}
