@@ -14,6 +14,7 @@ def f(n):
       print(n)
       n -= 1
 \end{lstlisting}
+\newpage
 We can modify this while loop to get an example of logarithmic OOG. Suppose that, instead of subtracting 1 each time, we halve the size of \lstinline{n}. For \lstinline{n = 1000}, the program would take 10 iterations to terminate (since $2^10 = 1024$). The runtime is propotional to $\log($\lstinline{n}$)$.
 \begin{lstlisting}
 def f(n):
