@@ -30,7 +30,7 @@ class Bear:
         Bear.bears.append(self.name)
 \end{lstlisting}
 
-Note that just doing \lstinline{bears.append(self.name)} will result in an error!
+Note that \lstinline{self.bears.append(self.name)} also works, but just doing \lstinline{bears.append(self.name)} will result in an error!
 \\There is no \lstinline{bears} variable in the \lstinline{__init__} function frame.
 \end{solution}
 \end{blocksection}
