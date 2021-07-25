@@ -1,0 +1,74 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{9}
+\title{\textsc{Introduction to Scheme and Scheme Lists}}
+\date{July 28, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item Scheme Mini-Lecture - 8 min
+  \item WWSD - 4 min
+  \item Hailstone - 6 min
+  \item Scheme Lists Mini-Lecture - 6 min
+  \item WWSD - 5 min
+  \item Reverse Map - 6 min
+  \item Is Prefix - 8 min
+  \begin{itemize}
+    \item Skip this problem if you are running short on time, or if your students would benefit more from the Waldo Challenge problem.
+  \end{itemize}
+  \item Waldo - 6 min
+  \item Waldo Challenge Problem (Optional) - 10 min
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item To ease into Scheme, it can help to start by comparing and contrasting with Python
+  \begin{itemize}
+    \item Have students write a basic function in Python (like an iterative countdown), then replicate it in Scheme
+    \item Have students list language features of Python (variable assignments, conditional statements, logic operators, etc.), and explain how Scheme implements those features
+    \item Make sure to give a disclaimer that while high level features may be analogous, the internals are different!
+  \end{itemize}
+  \item Scheme features break into three broad categories: Primitives, Call Expressions, and Special Forms (the latter two are called Compound Expressions)
+  \begin{itemize}
+    \item Primitives evaluate to themselves (4 evaluates to 4, \#t to \#t, etc.)
+    \item Call Expressions begin with a function name and are followed by arguments- evaluate function name, evaluate arguments, and apply function to arguments
+    \item Special Forms begin with a keyword and are followed by subexpressions, which are evaluated in a way based on the specific keyword
+  \end{itemize}
+  \item Very useful: \href{https://cs61a.org/articles/scheme-builtins.html}{Scheme Built-In Procedure Reference}
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subimport{../../topics/scheme/text/}{scheme-basics-overview.tex}
+\newpage
+\section{Intro to Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/easy/wwsd/}{basics.tex}
+\subimport{../../topics/scheme/easy/}{hailstone.tex}
+
+\section{Scheme Lists}
+\subimport{../../topics/scheme/text/}{scheme-lists-overview.tex}
+\newpage
+\subimport{../../topics/scheme/easy/wwsd/}{lists_nodots.tex}
+\newpage
+\subimport{../../topics/scheme/medium/}{reverse-map.tex}
+\subimport{../../topics/scheme/medium/}{is-prefix.tex}
+\subimport{../../topics/scheme/medium/}{waldo.tex}
+\end{questions}
+
+\end{document}
