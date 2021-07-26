@@ -19,13 +19,11 @@ Evaluation of a call expression progresses so:
 
 \textbf{If Expression: }
 The \lstinline{if} keyword is similar to \lstinline{if}/\lstinline{else} statements in Python. It works as follows:
-
 \begin{lstlisting}
 (if <predicate> <do if true> <do if false>)
 \end{lstlisting}
 
 This is similar to the following code in Python:
-
 \begin{lstlisting}
 if <predicate>:
     <do if true>
@@ -34,7 +32,6 @@ else:
 \end{lstlisting}
 
 Note that in Python, \lstinline{if} is a statement whereas in Scheme, \lstinline{if} is an expression and evaluates to a value like any other expression would. This means that in Scheme you could write something like this where the \lstinline{if} expression can be placed as an operand in a function call expression:
-
 \begin{lstlisting}
 scm> (+ 1 (if #t 9 99))
 10
@@ -46,7 +43,6 @@ Just like in Python, the \lstinline{<do if false>} (in Python this would be the 
 
 \textbf{Define Expression: }
 \lstinline{define} does two things in Scheme. The first is that it defines variables using the following syntax:
-
 \begin{lstlisting}
 (define <name> <expression>)
 \end{lstlisting}
@@ -54,13 +50,11 @@ Just like in Python, the \lstinline{<do if false>} (in Python this would be the 
 The way this works is Schme will evaluates \lstinline{<expression>} and binds the value to \lstinline{<name>} in the current environment. \lstinline{<name>} must be a valid Scheme symbol (you can think of a symbol as an identifier or variable name).
 
 \lstinline{define} is also used to define functions using the following syntax (note that this is different from using \lstinline{define} to create variables as there is an extra pair of parentheses around \lstinline{<name> [param] ...}):
-
 \begin{lstlisting}
 (define (<name> [param] ...) <body> ...)
 \end{lstlisting}
 
 Either way, after the \lstinline{<name>} is bound to either a function or value, the define expression evaluates to the symbol \lstinline{<name>}.
-
 \begin{lstlisting}
 scm> (define x 3)
 x
