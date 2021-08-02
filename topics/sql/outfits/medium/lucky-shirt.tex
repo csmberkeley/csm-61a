@@ -6,12 +6,12 @@ Write a query that will output the color of your lucky shirt and how many times 
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-select color, count(g.day) as cnt
-    from outfits as o, grades as g
-    where o.day = g.day
-    group by color
-    order by cnt desc
-    limit 1;
+SELECT color, count(g.day) AS cnt
+    FROM outfits AS o, grades AS g
+    WHERE o.day = g.day
+    GROUP BY color
+    ORDER BY cnt desc
+    LIMIT 1;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

@@ -1,0 +1,23 @@
+\textbf{SQL Overview} 
+SQL (Standardized Query Language) is a declarative programming language that allows us to store, access, and manipulate data stored in databases.
+Each database contains tables, which can store many rows of data that all share the same properties (columns). 
+
+To create a table, we can use the \texttt{CREATE TABLE} operation. For example, if we want to make a table with 2 columns 'name' and 'number' and fill it with 3 rows of data, we could do the following:
+\begin{lstlisting}
+CREATE TABLE numbers AS
+    SELECT "Papa John's Pizza" AS name, 5108457272 AS number UNION
+    SELECT "UCPD", 5106426760 UNION
+    SELECT "Foothill Mailroom" AS 5106429703;
+\end{lstlisting}
+
+We can then filter and aggregate data using queries which have the following general structure:
+\begin{lstlisting}
+    SELECT col1, col2, ... FROM table WHERE conditions GROUP BY column HAVING conditions ORDER BY column [DESC];
+\end{lstlisting}
+\begin{enumerate}
+    \item SELECT chooses specific columns to include in the output. Column names can be changed using the AS operation (for example, \texttt{SELECT number as phone} would rename the number column to 'phone'.)
+    \item FROM chooses which table(s) to select data from. If multiple tables are included, then they are joined together such that every possible combination of rows are outputted. The same table can also be joined to itself if aliasing is used (e.g. \texttt{SELECT * FROM numbers as a, numbers as b}).
+    \item WHERE restricts which rows appear in the output. Valid conditions include less than/greater than/equal to (<, >, =), AND/OR, and not equal (<>). All comparisons involving aggregations (for example, \texttt{COUNT(*) > 1}) must go in the HAVING clause instead of WHERE.
+    \item GROUP BY aggregates the table by combining all rows with the same value into one group. Properties of this group can then be accessed using COUNT, MIN, MAX, etc.
+    \item ORDER BY sorts rows using the values of the specified column. If the DESC keyword is included, then rows will be sorted from largest to smallest.
+\end{enumerate}

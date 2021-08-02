@@ -11,8 +11,8 @@ Your query should yield the following result.
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-select sum(weight), species from animals
-    group by species having count(*) > 1 and sum(weight) < 2000;
+SELECT SUM(weight), species FROM animals
+    GROUP BY species HAVING COUNT(*) > 1 and SUM(weight) < 2000;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
