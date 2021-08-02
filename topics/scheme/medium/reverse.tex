@@ -1,14 +1,29 @@
-\begin{blocksection}
 \question \begin{parts}
-\part Define \lstinline$append$. In Scheme, \lstinline$append$ takes in two lists and
-returns a larger list.
-
+\part Define \lstinline$append$, which takes in two lists and
+returns a new list with all the elements of the first list followed by all the elements of the second. Do not use the built-in \lstinline$append$ function.
+%%%%%%% This guide section is specific to su21%%%%%%%%
+\newline
+\begin{guide}
+Students have most likely implemented the append function in discussion last week, so don't spend too much time on this part.
+If you are running behind schedule, consider just reminding them of the implementation and skipping to the next part.
+\newline
+\end{guide}
+\begin{blocksection}
 \begin{lstlisting}
 > (append '(1 2 3) '(4 5 6))
 (1 2 3 4 5 6)
+
+(define (append lst1 lst2)
+
+
+
+
+
+
+)
 \end{lstlisting}
 
-\begin{solution}[0.5in]
+\begin{solution}%[0.5in]
 \begin{lstlisting}
 (define (append lst1 lst2)
     (if (null? lst1) lst2        
@@ -21,20 +36,39 @@ returns a larger list.
 \begin{lstlisting}
 > (reverse '(1 2 3))
 (3 2 1)
-\end{lstlisting}
 
-\begin{solution}[1in]
+(define (reverse lst)
+
+
+
+
+
+
+)
+\end{lstlisting}
+\begin{solution}%[1in]
 \begin{lstlisting}
 (define (reverse lst)
     (if (null? lst) lst
         (append (reverse (cdr lst)) (list (car lst)))))
 \end{lstlisting}
 \end{solution}
-
 \part Define \lstinline$reverse$ tail-recursively. Hint: use a helper function and
 \lstinline$cons$.
 
-\begin{solution}[1in]
+\begin{lstlisting}
+(define (reverse lst)
+
+
+
+
+
+
+)
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}%[1in]
 \begin{lstlisting}
 (define (reverse lst)
     (define (helper lst reversed)
@@ -43,9 +77,8 @@ returns a larger list.
     (helper lst '()))
 \end{lstlisting}
 \end{solution}
-\end{parts}
 \end{blocksection}
-
+\end{parts}
 \begin{blocksection}
 	\begin{guide}
 	\textbf{Teaching Tips}
