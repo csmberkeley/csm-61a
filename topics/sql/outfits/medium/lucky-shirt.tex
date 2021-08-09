@@ -10,7 +10,7 @@ SELECT color, count(g.day) AS cnt
     FROM outfits AS o, grades AS g
     WHERE o.day = g.day
     GROUP BY color
-    ORDER BY cnt desc
+    ORDER BY cnt DESC
     LIMIT 1;
 \end{lstlisting}
 \end{solution}
