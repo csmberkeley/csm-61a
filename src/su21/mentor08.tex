@@ -1,0 +1,55 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Linked Lists and Mutable Trees}}
+\date{July 23, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item Linked Lists Review/Mini-Lecture - 4 min
+    \item WWPD - 5 min
+    \item Skip - 6 min
+    \item Skip (no mutate) - 4 min: You may choose to >skip< this problem to spend more time on mutable trees (or, quickly walk through the solution so students are aware it exists).
+    \item Has Cycle - 10 min
+    \item Mutable Trees Review/Mini-Lecture - 5 min
+    \item Tree Sum - 5 min
+    \item Delete Path Duplicates - 7 min
+    \item Replace Leaves Sum - 8 min
+    \item (If extra time and/or challenge needed): contains\_n - 10 min
+\end{itemize}
+\end{guide}
+
+\section{Linked Lists}
+\subimport{../../topics/linked-lists/class/text/}{linked_list_overview.tex}
+\subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+\newpage
+\subimport{../../topics/linked-lists/class/easy/}{skip.tex}
+\subimport{../../topics/linked-lists/class/easy/}{skip-no-mutate.tex}
+\subimport{../../topics/linked-lists/class/medium/}{has-cycle.tex}
+\end{questions}
+
+\newpage
+\section{Mutable Trees}
+\subimport{../../topics/trees/class/text/}{adt_vs_class_overview.tex}
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\begin{questions}
+    \subimport{../../topics/trees/class/easy/}{tree-sum.tex}
+    \newpage
+    \subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
+    \subimport{../../topics/trees/class/medium/}{replace-leaves-sum.tex}
+    \subimport{../../topics/trees/class/hard/}{contains-n.tex}
+\end{questions}
+\end{document}

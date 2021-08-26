@@ -1,0 +1,44 @@
+SQL (Standardized Query Language) is a declarative programming language that allows us to store, access, and manipulate data stored in databases.
+Each database contains tables, which can store many rows of data that all share the same properties (columns). 
+
+
+\textbf{Creating Tables}
+
+To create a table, we can use the \texttt{CREATE TABLE} operation. For example, if we want to make a table with 2 columns 'name' and 'number' and fill it with 3 rows of data, we could do the following:
+\newline
+
+\begin{lstlisting}
+CREATE TABLE numbers AS
+    SELECT "Papa John's Pizza" AS name, 5108457272 AS number UNION
+    SELECT "UCPD", 5106426760 UNION
+    SELECT "Foothill Mailroom", 5106429703;
+\end{lstlisting}
+\newpage
+
+\textbf{Filtering}
+
+We can then filter data using queries which have the following general structure:
+\begin{lstlisting}
+    SELECT col1, col2, ... FROM table WHERE conditions ORDER BY column [DESC] LIMIT num;
+\end{lstlisting}
+\begin{enumerate}
+    \item \texttt{SELECT} chooses specific columns to include in the output. Column names can be changed using the AS operation (for example, \texttt{SELECT number AS phone} would rename the number column to 'phone'.)
+    \item \texttt{FROM} chooses which table(s) to select data from. If multiple tables are included, then they are joined together such that every possible combination of rows are outputted. The number of rows in the resulting table will be the multiple of all rows in the original tables (table\_a\_rows \* table\_b\_rows \* table\_c\_rows \* ...). The same table can also be joined to itself if aliasing is used (e.g. \texttt{SELECT * FROM numbers AS a, numbers AS b}).
+    \item \texttt{WHERE} restricts which rows appear in the output. Valid conditions include less than/greater than/equal to (\textless, \textgreater, =), AND/OR, and not equal (!=, \textless\textgreater). All comparisons involving aggregations must go in the HAVING clause instead of WHERE.
+    \item \texttt{ORDER BY} sorts rows using the values of the specified column (smallest to largest if numbers, alphabetical order if strings). If the DESC keyword is included, then rows will be sorted from largest to smallest.
+    \item \texttt{LIMIT} restricts the maxiumum number of rows in the output table. For example, \texttt{ORDER BY name LIMIT 10} would only get the first 10 names in alphabetical order.
+\end{enumerate}
+
+\textbf{Aggregation}
+
+In addition to filtering results, we can also use SQL to perform aggregation. Doing so combines data in a specified manner to get information such as the sum of all numbers in the group.
+
+We can perform aggregation and filtering at the same time using a query with the following structure:
+\begin{lstlisting}
+    SELECT col1, col2, ... FROM table WHERE conditions GROUP BY column HAVING conditions ORDER BY column [DESC] LIMIT num;
+\end{lstlisting}
+
+\begin{enumerate}
+    \item \texttt{GROUP BY} aggregates the table by combining all rows with the same value into one group. Properties of this group can then be accessed using COUNT, MIN, MAX, SUM, etc.
+    \item \texttt{HAVING} is similar to WHERE, except it performs filtering on aggregate functions rather than the columns themselves. For example, if we want all groups that have less than 5 entries in them, we could filter using \texttt{HAVING COUNT(*) < 5}.
+\end{enumerate}

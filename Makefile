@@ -2,11 +2,11 @@
 # Also change SRC once per semester.
 
 
-RELEASED = mentor02 mt1
-SOLUTIONS = mentor02 mt1
+RELEASED = mentor13
+SOLUTIONS = mentor13
 
 DST = published
-SRC = src/sp21
+SRC = src/su21
 
 DEPEND = python make_dependency.py
 TEX = pdflatex

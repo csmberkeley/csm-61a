@@ -8,6 +8,23 @@
 
 Because the body is evaluated without evaluating the operands at first, macros are powerful and allow us to do more than scheme procedures, like implementing new special forms, control the order of evaluation, and more. 
 
+Below is a simple example of a macro. Note that even though we pass in \texttt{(print 'hello)} as an operands, we don't evaluate the expression and print right away. Instead we first evaluate the body of the macro procedure, and afterwards we evaluate the expression produced by the macro. 
+\vspace{1cm}
+\begin{lstlisting}
+(define-macro (twice expr)
+    (list 'begin expr expr)
+)
+
+scm> (twice (print 'hello))
+hello
+hello
+\end{lstlisting}
+
+When \texttt{twice} is called, it will first generate a Scheme list that looks like \texttt{(list 'begin '(print 'hello) '(print 'hello))} (the input is automatically quoted rather than evaluated).
+
+The interpreter will then automaticaly call \texttt{eval} on this list of literals to treat it as if you had just typed it into the interpreter directly. 
+
+\newpage
 \textbf{Quoting, Quasiquoting, Unquoting} All Scheme expressions are lists except for atomic expressions like numbers and symbols; so call expressions and special forms are lists too; Example: (+ 1 2)
 
 The \texttt{(quote expression)} special form, also denoted by a \textbf{\'}, simply returns \texttt{expression} - it does not evaluate it. This means we can write a Scheme expression and have the expression remain as an expression; if an expression is a call expression or special form, this means the expression will remain a list. 
@@ -16,13 +33,16 @@ The \texttt{(quasiquote expression)} special form, \textbf{\`}, has the same eff
 
 \texttt{(eval expression)} is a procedure that simply evaluates its argument. Note that since \texttt{eval} is a procedure, \texttt{expression} is evaluated first before applying \texttt{eval}.
 
-Below is a simple example of a macro. Note that even though we pass in \texttt{(print 'hello)} as an operands, we don't evaluate the expression and print right away. Instead we first evaluate the body of the macro procedure, and afterwards we evaluate the expression produced by the macro. 
-\vspace{1cm}
+To build off of the \texttt{twice} example introduced earlier, it is possible to replace all \texttt{list} or \texttt{cons} operations with an expression involving quotes, quasiquotes, and unquotes to produce an identical result:
+
 \begin{lstlisting}
 (define-macro (twice expr)
-(list 'begin expr expr))
-
+    `(begin ,expr ,expr)
+)
+    
 scm> (twice (print 'hello))
 hello
 hello
 \end{lstlisting}
+
+

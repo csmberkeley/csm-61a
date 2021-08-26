@@ -1,0 +1,32 @@
+\question To handle discussion section overflow, TAs may direct students
+to a more empty section that is happening at the same time.
+
+Write a function that takes in the number of students in two sections and
+prints out what to do if either section exceeds 30 students.
+
+\begin{lstlisting}
+def handle_overflow(s1, s2):
+    """
+    >>> handle_overflow(27, 15)
+    No overflow
+    >>> handle_overflow(35, 29)
+    Move to Section 2: 1
+    >>> handle_overflow(20, 32)
+    Move to Section 1: 10
+    >>> handle_overflow(35, 30)
+    No space left in either section
+    """
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+    if s1 <= 30 and s2 <= 30:
+        print("No overflow")
+    elif s2 > 30 and s1 < 30:
+        print("Move to Section 1:" + str(30 - s1))
+    elif s1 > 30 and s2 < 30:
+        print("Move to Section 2:" + str(30 - s2))
+    else:
+        print("No space left in either section")
+\end{lstlisting}
+\href{https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=29m19s}{Video walkthrough}
+\end{solution}

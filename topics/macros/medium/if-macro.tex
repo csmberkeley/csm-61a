@@ -84,7 +84,17 @@ First, we only want to evaluate the expressions under certain conditions. If con
 Secondly, some of the inputs to the call would be names which have no binding in the global frame. Elif, for example, is not supposed to be interpreted as a name
 but rather as a symbol. This would cause our code to error if we ran it as is!
 \newline
-Of course, we could have written out a \texttt{cond} or nested \texttt{if} expression instead of defining an \texttt{if-macro}. But the syntax for \texttt{if-macro}
-is more familiar, which is why we might want to do something like this!
+However, it is also possible to recreate a similar behavior to macros with a function by delaying the final evaluation. This makes it considerably more complicated to produce
+the desired behavior, since all inputs would have to be quoted and \texttt{eval} would have to be manually called on the result:
+\begin{lstlisting}
+(define (if-macro-without-macro cond1 expr1 elif cond2 expr2 else expr3)
+  (list 'cond (list cond1 expr1)
+           (list cond2 expr2)
+           (list 'else expr3))
+)
+
+(eval (if-macro-without-macro '(= 1 0) '(/ 1 0) 'elif '(= 2 0) '(/ 1 0) 'else '3))
+\end{lstlisting}
+
 \end{solution}
 \end{blocksection}

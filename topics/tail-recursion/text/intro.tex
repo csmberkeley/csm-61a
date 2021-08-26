@@ -1,6 +1,6 @@
 \textbf{Tail Recursion Overview }
 
-Often, when we write recursive functions, they can take up a lot of space by opening a bunch of frames. Think about \texttt{factorial(6)}. In order to solve it, we will have to open 6 frames. Now what if we tried \texttt{factorial(1000000)}? In Scheme, unlike in Python, we can use a method called \textbf{tail recursion}, which solves this problem by only using a \textbf{constant} amount of space. The key to defining a tail recursive function is to make sure no further calculations are done after the recursive call, so that none of the values in the current frame have to be saved. If we don’t have to save any values in the current frame, we can close it as we make the next recursive call, ensuring that we only have one frame open. 
+Often, when we write recursive functions, they can take up a lot of space by opening a bunch of frames. Think about \texttt{factorial(6)}. In order to solve it, we will have to open 6 frames. Now what if we tried \texttt{factorial(1000000)}? To avoid opening 1,000,000 frames, we can use a method called \textbf{tail recursion}. In tail call optimized languages, like Scheme (but not Python), tail recursive functions only use a \textbf{constant} amount of space. The key to defining a tail recursive function is to make sure no further calculations are done after the recursive call, so that none of the values in the current frame have to be saved. If we don’t have to save any values in the current frame, we can close it as we make the next recursive call, ensuring that we only have one frame open. 
 
 In order to identify whether a function is tail recursive, first find the recursive call in your function. Then, check whether you return the exact result of your recursive call, or if you do work on the result. If you simply return the result of your recursive call, then your function is tail recursive! However, if you do additional work to the result of your recursive call, then it is not tail recursive. Additional work could be adding one to the result of your recursive call and returning the new value, or appending it to a list and returning the resulting list.
 
@@ -10,7 +10,7 @@ The general way we convert a recursive function to a tail recursive one is to mo
 \begin{blocksection}
 \textbf{Teaching Tips}
   \begin{itemize}
-    \item Note that Python is not tail-recursive, but Scheme is!
+    \item Note that Python is not tail call optimized, but Scheme is!
     \item Super useful resource on tail recursion: albertwu.org/cs61a/review/tail/basic.html
     \item I highly recommend covering Questions 2 and 3 on this link in your introduction.
     \item Question 2 is especially good if students want a list of tail contexts.
