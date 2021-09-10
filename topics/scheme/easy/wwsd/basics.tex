@@ -1,4 +1,4 @@
-\begin{blocksection}
+%\begin{blocksection}
 \question What will Scheme output?
 
 \begin{comment}
@@ -72,9 +72,8 @@ scm> (+ 1 (* 3 4))
 \item This tests the order of operations in Scheme.
 \end{itemize}
 \end{guide}
-
-\end{blocksection}
-\begin{blocksection}
+%\end{blocksection}
+%\begin{blocksection}
 
 \begin{lstlisting}
 scm> (if 2 3 4)
@@ -89,6 +88,11 @@ scm> (if 0 3 4)
 \begin{solution}[.25in]
 \texttt{3}
 \end{solution}
+\begin{guide}
+\begin{itemize}
+\item Unlike Python, all Scheme values other than \#f are true. Therefore, 0 is a true value, and this expression evaluates to 3.
+\end{itemize}
+\end{guide}
 
 \begin{lstlisting}
 scm> (- 5 (if #f 3 4))
@@ -113,7 +117,7 @@ scm> (if (= 1 1) 'hello 'goodbye)
 \begin{solution}[.25in]
 \texttt{hello}
 \end{solution}
-\end{blocksection}
+%\end{blocksection}
 
 \begin{guide}
 \begin{itemize}
@@ -121,8 +125,6 @@ scm> (if (= 1 1) 'hello 'goodbye)
 \item Emphasize the importance of short circuiting -- it will be very important for the Scheme project
 \end{itemize}
 \end{guide}
-
-
 \begin{blocksection}
 \begin{lstlisting}
 scm> (define (factorial n)

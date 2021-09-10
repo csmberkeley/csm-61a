@@ -13,9 +13,9 @@ Your query should yield the following result.
 
 \begin{solution}[1in]
 \begin{lstlisting}
-select max(height), species from animals as a, height as b
-    where a.name = b.name
-    group by species having max(height) < 5.0;
+SELECT MAX(height), species FROM animals AS a, height AS b
+    WHERE a.name = b.name
+    GROUP BY species HAVING MAX(height) < 5.0;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

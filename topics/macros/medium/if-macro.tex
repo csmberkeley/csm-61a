@@ -54,30 +54,25 @@ Alternate solution with quasiquoting:
              (,cond2 ,expr2)
              (else ,expr3)))
 \end{lstlisting}
-
-As with other macro problems, we need to return a list that, 
-when evaluated, behaves as desired. For the \lstinline{if-macro}, this
-means we need to transform the inputs into expressions that 
-evaluates according to the \lstinline{if} / \lstinline{elif} / \lstinline{else} structure. 
-We have two methods doing this in scheme. 
-\begin{enumerate}
-    \item Nested if statements
-    \item Cond statements
-\end{enumerate}
-Because cond statements tend to be easier to read, we will take this 
-approach. Since we need to return a list to be evaluated, this means 
-we should return a list that matches a cond expression: the first 
-element will be \lstinline{'cond}, the second the first condition, case pair, 
-the third element the next, and so on. Because we do not want cond 
-or else to be evaluated, we quote these two expressions. 
-
-Another alternate solution is to use quasiquoting. 
-Instead of quoting \lstinline{else} and \lstinline{cond}, we can instead quasiquote the 
-value we create and unquote all but those two values. 
-
 \end{solution}
-
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item As with other macro problems, we need to return a list that, when evaluated, behaves as desired
+    \item For the \lstinline{if-macro}, this means we need to transform the inputs into expressions that evaluate according to the \lstinline{if} / \lstinline{elif} / \lstinline{else} structure
+    \item We have two methods of doing this in scheme: nested \lstinline{if} statements or a \lstinline{cond} statement
+    \item Because \lstinline{cond} statements tend to be easier to read, we will take this
+    approach
+    \item Since we need to return a list to be evaluated, this means we should return a list that matches a \lstinline{cond} expression: the first element will be \lstinline{'cond}, the second the first condition-case pair, the third element the next pair, and so on
+   \item Because we do not want \lstinline{cond} or \lstinline{else} to be evaluated, we quote these two expressions
+   \item An alternate solution is to use quasiquoting
+   Instead of quoting \lstinline{else} and \lstinline{cond}, we can instead quasiquote the value we create and unquote all but those two expressions
+  \end{itemize}
+\end{blocksection}
+\end{guide}
 
 \begin{blocksection}
 \question Could we have implemented \texttt{if-macro} using a function instead of a macro? Why or why not?
@@ -89,7 +84,17 @@ First, we only want to evaluate the expressions under certain conditions. If con
 Secondly, some of the inputs to the call would be names which have no binding in the global frame. Elif, for example, is not supposed to be interpreted as a name
 but rather as a symbol. This would cause our code to error if we ran it as is!
 \newline
-Of course, we could have written out a \texttt{cond} or nested \texttt{if} expression instead of defining an \texttt{if-macro}. But the syntax for \texttt{if-macro} 
-is more familiar, which is why we might want to do something like this!
+However, it is also possible to recreate a similar behavior to macros with a function by delaying the final evaluation. This makes it considerably more complicated to produce
+the desired behavior, since all inputs would have to be quoted and \texttt{eval} would have to be manually called on the result:
+\begin{lstlisting}
+(define (if-macro-without-macro cond1 expr1 elif cond2 expr2 else expr3)
+  (list 'cond (list cond1 expr1)
+           (list cond2 expr2)
+           (list 'else expr3))
+)
+
+(eval (if-macro-without-macro '(= 1 0) '(/ 1 0) 'elif '(= 2 0) '(/ 1 0) 'else '3))
+\end{lstlisting}
+
 \end{solution}
 \end{blocksection}

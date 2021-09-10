@@ -1,10 +1,10 @@
 \begin{blocksection}
 
-\question Implement \texttt{filter}, which takes in a one-argument function \texttt{f} and 
-a list \texttt{lst}, and returns a new list containing only the elements in \texttt{lst} 
+\question Implement \texttt{filter}, which takes in a one-argument function \texttt{f} and
+a list \texttt{lst}, and returns a new list containing only the elements in \texttt{lst}
 for which \texttt{f} returns true. Your function must be tail recursive.
 \newline
-You may wish to use the built-in append function, which takes in two lists and returns a 
+You may wish to use the built-in append function, which takes in two lists and returns a
 new list containing the elements of the first list followed by the elements of the second.
 
 \begin{lstlisting}
@@ -31,7 +31,7 @@ scm> (filter (lambda (x) (> x 2)) '(1 2 3 4 5))
 (define (filter f lst)
   (define (filter-tail lst so-far)
      (cond ((null? lst) so-far)
-           ((f (car lst)) (filter-tail (cdr lst) 
+           ((f (car lst)) (filter-tail (cdr lst)
                           (append so-far (list (car lst)))))
            (else (filter-tail (cdr lst) so-far))))
   (filter-tail lst nil))
@@ -39,3 +39,16 @@ scm> (filter (lambda (x) (> x 2)) '(1 2 3 4 5))
 \end{solution}
 
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item Again, we use a helper function to store the variable that we want to return
+    \item Note that f is not a necessary argument for the helper function because it does not change between calls
+    \item In this case, we use \lstinline{so-far} to keep track of which elements pass our filter
+    \item In each recursive call, we add the first element of \lstinline{lst} to \lstinline{so-far} if it passes the filter, otherwise we keep it the same, and in both cases we advance \lstinline{lst}
+    \item Thus, at each step of the recursion, \lstinline{so-far} contains a list of the elements that have passed \lstinline{f} that we have seen so far
+  \end{itemize}
+\end{blocksection}
+\end{guide}

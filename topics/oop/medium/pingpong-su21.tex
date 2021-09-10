@@ -1,0 +1,78 @@
+\begin{blocksection}
+\question Let's use OOP to help us implement our good friend, the ping-pong sequence!
+
+As a reminder, the ping-pong sequence counts up starting from 1 and is
+always either counting up or counting down.
+
+At element \lstinline{k}, the direction switches if \lstinline{k} is a multiple of 8 or contains the
+digit 8.
+
+The first 30 elements of the ping-pong sequence are listed below, with direction
+swaps marked using brackets at the 8th, 16th, 18th, 24th, and 28th
+elements:
+\begin{lstlisting}
+1 2 3 4 5 6 7 [8] 7 6 5 4 3 2 1 [0] 1 [2] 1 0 -1 -2 -3 [-4] -3 -2 -1 [0] -1 -2
+\end{lstlisting}
+
+Assume you have a function \texttt{has\_eight(k)} that returns True if $k$ contains the digit 8.
+
+\vspace{1\baselineskip}
+\begin{lstlisting}
+>>> tracker1 = PingPongTracker()
+>>> tracker2 = PingPongTracker()
+>>> tracker1.next()
+1
+>>> tracker1.next()
+2
+>>> tracker2.next()
+1
+
+class PingPongTracker:
+    def __init__(self):
+
+
+
+
+
+
+    def next(self):
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}[0.3in]
+\begin{lstlisting}
+class PingPongTracker:
+    def __init__(self):
+        self.current = 0
+        self.index = 1
+        self.add = True
+
+    def next(self):
+        if self.add:
+            self.current += 1
+        else:
+            self.current -= 1
+        if has_eight(self.index) or self.index % 8 == 0:
+            self.add = not self.add
+        self.index += 1
+        return self.current
+
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item Emphasize the fact that the important part of such sequence problems are \textit{keeping track of state at a given time step}. With OOP, this state is inherently saved as object attributes. 
+    \item Make sure the difference between \verb|self.current| and \verb|self.index| is clear: index always increases by 1 each step, while current is the actual pingpong sequence number we want. 
+    \item Remember that the \textbf{index} denotes the the progress we've made along the pingpong sequence- current is just the current number of our sequence we happen to be on. 
+    \item Students may have seen a version of pingpong that uses -1 and 1 as a direction variable instead of a boolean "add" variable. Make sure to clarify how the add variable operates here, and how it differs from the -1/1 version.
+  \end{itemize}
+\end{guide}
+\end{blocksection}
+
+
