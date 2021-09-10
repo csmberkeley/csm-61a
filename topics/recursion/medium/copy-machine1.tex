@@ -25,8 +25,10 @@ def has_sum(total, n, m):
     return ________________________________________________
 
 \end{lstlisting}
+\end{blocksection}
 
 \begin{solution}[1.5in]
+\begin{blocksection}
 \begin{lstlisting}
 def has_sum(total, n, m):
     if total == 0:
@@ -46,11 +48,11 @@ def has_sum(total, n, m):
 \end{lstlisting}
 
 \textbf{(Solution continues on the next page)}
-\end{solution}
 \end{blocksection}
+\end{solution}
 
-\begin{blocksection}
 \begin{solution}
+\begin{blocksection}
 When thinking about the recursive calls, we need to think about how each step of the problem works. Tree recursion allows us to explore the two options we have while printing: either print \lstinline{m} papers at this step or print \lstinline{n} papers at this step and can combine the results after exploring both options. Inside the recursive call for \lstinline{has_sum(total - n, n, m)}, which represents printing \lstinline{n} papers, we again consider printing either \lstinline{n} or \lstinline{m} papers.
 
 Once we have these recursive calls we need to think about how to put them together. We know the return should be a boolean so we want to use either \lstinline{and} or \lstinline{or} to combine the values for a final result. Given that we only need one of the calls to work, we can use \lstinline{or} to reach our final answer.
@@ -58,23 +60,23 @@ Once we have these recursive calls we need to think about how to put them togeth
 In the base cases we also need to make sure we return the correct data type. Given that the final return should be a boolean we want to return booleans in the base cases.
 
 Another alternate base case would be: \lstinline{total == 0 or total % n == 0 or total % m == 0}. This solution would also work! You would just be stopping the recursion early, since the total can be a multiple of \lstinline{n} or \lstinline{m} in order to trigger the base case - it doesn’t have to be 0 anymore. Just be sure to still include the \lstinline{total == 0} check, just in case someone inputs 0 as the total into the function.
-\end{solution}
 \end{blocksection}
+\end{solution}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
     \item Some leading questions:
     \begin{itemize}
         \item What are the base cases (when to return True/False)?
         \item How can we reduce this problem into smaller subproblems (recursive step)?
-        \item What is the value of a recursive call?
+        \item What does the value of a recrusive call tell us?
         \item How can we put recursive calls together to get a final answer?
     \end{itemize}
     \item Ask students about the simplest possible cases to identify base cases; make sure they realize \lstinline{(total == n)} or \lstinline{(total == m)}  is incorrect because \lstinline{(total == 0)} is a simpler True case.
     \item Point out the fact that tree recursion problems usually have you consider multiple “options” or “possibilities,” and they should all be explored when you are writing your recursive cases.
-    \item Out of all possible combinations of \lstinline{n} and \lstinline{m}, there only has to exist 1 way for \lstinline{n} and \lstinline{m} to sum to total for the function to return True, which would imply \lstinline{or} is an appropriate way to aggregate our recursive calls.
+    \item Out of all possible combinations of \lstinline{n} and \lstinline{m}, we only need 1 way for \lstinline{n} and \lstinline{m} to sum to the total for the function to return True, which implies \lstinline{or} is an appropriate way to aggregate our recursive calls.
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}

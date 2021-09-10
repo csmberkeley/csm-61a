@@ -45,3 +45,16 @@ scm> (backwards-sum '(2 -1 3 7))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+
+
+\begin{blocksection}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+      \item Walk through the base cases. Is it enough to only consider the case with one element left? What if we pass in an empty list?
+	\item Point out the information we recieve from the recursive call (partial backwards sum) and have them consider how we can use that information (get the car).
+	\item When constructing the recursive call, suggest to them that we can repeat the same recursive call twice.
+  \end{itemize}
+\end{guide}
+\end{blocksection}

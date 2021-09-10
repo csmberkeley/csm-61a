@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question Define \lstinline$filter_gen$, a generator that takes in iterable \lstinline$s$ and one-argument function  \lstinline$f$ and yields every value
-from  \lstinline$s$ for which \lstinline$f$ returns  \lstinline$True$
+from \lstinline$s$ for which \lstinline$f$ returns a truthy value.
 
 \begin{lstlisting}
 def filter_gen(s, f):
@@ -27,8 +27,8 @@ for x in s:
 \textbf{Teaching Tips}
 \begin{itemize}
 \item It may look complicated, but the structure of the function is actually very similar to other functions that have for loops and if statements! Think about how you can iterate through each element in \texttt{s}, and then think about how you can apply the filter to the elements.
-\item Notice that \texttt{f} returns \texttt{True}, so it's a safe assumption to make that \texttt{f} will return one of the two boolean values. Since if conditionals rely on boolean values, what can you put in your if statement to filter out the list elements?
-\item Now the only thing left to do, after you've ensured that you've designed a way to get only the elements you want, is to yield them as part of a generator function.
+\item Since if conditionals rely on boolean values, what can you put in your if statement to filter out the list elements?
+\item Now the only thing left to do, after you've ensured that you've designed a way to get only the elements you want, is to yield them! Yielding automatically turns your function into a generator (make sure students know this!).
 \end{itemize}
 \end{guide}
 \end{blocksection}
