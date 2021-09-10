@@ -39,10 +39,8 @@ To build off of the \texttt{twice} example introduced earlier, it is possible to
 (define-macro (twice expr)
     `(begin ,expr ,expr)
 )
-    
+
 scm> (twice (print 'hello))
 hello
 hello
 \end{lstlisting}
-
-
