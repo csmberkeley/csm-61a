@@ -1,0 +1,38 @@
+%%%%% question taken from berkeley-cs61a/src/topics/dictionaries/easy/counter.py %%%%%
+\begin{blocksection}
+    \question Write a function \texttt{counter} that takes in an input string, \texttt{message}, and 
+    returns a dictionary that maps each unique word in \texttt{message} to the number of times it appears.
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+def counter(message):
+    """ Returns a dictionary of each word in message mapped
+    to the number of times it appears in the input string.
+    >>> x = counter('to be or not to be')
+    >>> x['to']
+    2
+    >>> x['be']
+    2
+    >>> x['not']
+    1
+    >>> y = counter('run forrest run')
+    >>> y['run']
+    2
+    >>> y['forrest']
+    1
+    """
+    word_list = message.split() # .split() returns a list of the words in the string. Try printing it!
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+    result_dict = {}
+    for word in word_list:
+        if word in result_dict:
+            result_dict[word] += 1
+        else:
+            result_dict[word] = 1
+    return result_dict
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}

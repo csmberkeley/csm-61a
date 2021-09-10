@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question To take the animals to their new habitats, the zoologists load the animals into trucks. The zoologists would like to reduce the number of trips taken by pairing up the animals for the trip (species does not matter). However, the trucks have two restrictions:
+\begin{enumerate}
+    \item The maximum height of any animal is 5.0.
+    \item The total weight of both animals cannot exceed 300.
+\end{enumerate}
+
+Your query should yield the following result. To match the table below, make sure that the left column animals' names come earlier in the alphabet than their partners.
+
+\begin{lstlisting}
+Buddy 	 Dug 
+Buddy 	 Phil 
+Buddy 	 Wilbur 
+Dug 	 Phil 
+Dug 	 Wilbur 
+Phil 	 Wilbur
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+SELECT a.name, b.name 
+    FROM animals AS a, animals AS b 
+    WHERE a.name < b.name AND a.weight + b.weight <= 300 AND a.height <= 5 AND b.height <= 5;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+    

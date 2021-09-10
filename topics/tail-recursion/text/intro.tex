@@ -1,8 +1,20 @@
 \textbf{Tail Recursion Overview }
 
+Often, when we write recursive functions, they can take up a lot of space by opening a bunch of frames. Think about \texttt{factorial(6)}. In order to solve it, we will have to open 6 frames. Now what if we tried \texttt{factorial(1000000)}? To avoid opening 1,000,000 frames, we can use a method called \textbf{tail recursion}. In tail call optimized languages, like Scheme (but not Python), tail recursive functions only use a \textbf{constant} amount of space. The key to defining a tail recursive function is to make sure no further calculations are done after the recursive call, so that none of the values in the current frame have to be saved. If we don’t have to save any values in the current frame, we can close it as we make the next recursive call, ensuring that we only have one frame open. 
 
-Often times, when we write recursive functions, they can take up a lot of space by opening a bunch of frames.  Think about \texttt{factorial(6)}.  In order to solve it, we will have to open 6 frames.  Now what if we tried \texttt{factorial(1000000)}?  That would open tons of frames.  Tail recursion solves this problem by only using a constant amount of space.  The key to defining a tail recursive function is that you have to make sure that no further calculations are done after the recursive call, so that none of the values in the current frame have to be saved.  If we don’t have to save any values in the current frame, we can close it as we make the next recursive call, ensuring that we only have one frame open.
+In order to identify whether a function is tail recursive, first find the recursive call in your function. Then, check whether you return the exact result of your recursive call, or if you do work on the result. If you simply return the result of your recursive call, then your function is tail recursive! However, if you do additional work to the result of your recursive call, then it is not tail recursive. Additional work could be adding one to the result of your recursive call and returning the new value, or appending it to a list and returning the resulting list.
 
-In order to identify whether a function is tail recursive, first find the recursive call in your function. Then, check whether you return the exact result of your recursive call, or if you do work on the result. If you simply return the result of your recursive call, then your function is tail recursive! However, if you do additional work to the result of your recursive call, then it is not tail recursive. Additional work could be adding one to the result of your recursive call and returning the new value, or appending it to a list and returning the resulting list. 
+The general way we convert a recursive function to a tail recursive one is to move the calculation outside the recursive call into one of the recursive call arguments to accumulate the results. However, this is not always possible if our function doesn’t have an argument that accumulates the results, so we may have to create a helper function with an accumulating argument and have the helper be a tail recursive function.
 
-The general way we convert a recursive function to a tail recursive one is to move the calculation outside the recursive call into one of the recursive call arguments to accumulate the results. However, this is not always possible if our function doesn’t have an argument that accumulates the results, so we may have to create a helper function with an accumulating argument and have the helper be a tail recursive function. 
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item Note that Python is not tail-call-optimized, but Scheme is!
+    \item Super useful resource on tail recursion: albertwu.org/cs61a/review/tail/basic.html
+    \item I highly recommend covering Questions 2 and 3 on this link in your introduction.
+    \item Question 2 is especially good if students want a list of tail contexts.
+    \item If students want more practice on tail recursion problems, feel free to try some more with them: albertwu.org/cs61a/review/tail/exam.html
+  \end{itemize}
+\end{blocksection}
+\end{guide}

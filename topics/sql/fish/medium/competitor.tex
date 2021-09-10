@@ -1,15 +1,13 @@
 \begin{blocksection}
-\question Business is good, but a bunch of competition has sprung up! Through some cunning corporate espionage, we have determined one such competitor's selling prices.
-
-Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish.
+\question Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish.
 
 % This is because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Therefore, the difference is 60.
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-select fish.species, (fish.price - competitor.price) * pieces
-    from fish, competitor
-    where fish.species = competitor.species;
+SELECT fish.species, (fish.price - competitor.price) * pieces
+    FROM fish, competitor
+    WHERE fish.species = competitor.species;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

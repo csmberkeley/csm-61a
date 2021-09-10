@@ -1,0 +1,69 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{1}
+\title{Control, Environment Diagrams}
+\date{June 25, 2021}
+
+\begin{document}
+\maketitle
+
+
+\begin{blocksection}
+\begin{guide}
+  This worksheet primarily covers functions, control, and environment diagrams, which have been covered and introduced in Tuesday and Wednesday's lecture, as well as Disc01 and Lab01.
+  
+  There is also a challenge problem (i.e. exam prep) at the bottom for if you finish early or your students are looking for something more difficult to try.
+  
+This is a fairly long worksheet so don't feel pressured to do all of the problems! Make sure to poll your students to see which problems they are more interested in covering.
+
+\textbf{Estimated Problem Times}
+\newline
+Again, you probably won't be able to do all of them- but you can choose a few based on how long they are.
+\begin{itemize}
+    \item Handle Overflow - 5 min
+    \item Power of Two - 8 min
+    \item Min Factorial - 5 min
+    \item New Frame Written Question - 2 mins
+    \item Swap - 8 mins
+    \item Joke - 7 mins
+    \item digit\_div (challenge problem) - 15 mins
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+\section{Control}
+\begin{blocksection}
+\define{Control} is the use of boolean expressions to prevent or allow a block of code to run based on a condition.
+We use \texttt{if} statements and \texttt{while} loops in conjunction with these boolean expressions depending on how we want the code to behave.
+\texttt{if/elif/else} blocks will execute the first block of code for which the condition is \texttt{True}, whereas \texttt{while} loops will repeatedly
+execute a block of code while the condition is \texttt{True}.
+\end{blocksection}
+\begin{questions}
+\subimport{../../topics/control/easy/}{handle-overflow.tex}
+\subimport{../../topics/control/medium/}{pow-of-2.tex}
+\newpage
+\subimport{../../topics/control/challenge/}{min_fact.tex}
+\end{questions}
+
+\newpage
+
+\section{Environment Diagrams}
+\subimport{../../src/su21/}{env-diagram-paragraph.tex}
+\begin{questions}
+\subimport{../../topics/environments/easy/}{new-frame.tex}
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+\newpage
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{joke.tex}
+\end{questions}
+
+\newpage
+\section{Challenge Control Problem}
+\begin{questions}
+\subimport{../../topics/control/challenge/}{digit_div.tex}
+
+\clearpage
+
+\end{questions}
+
+\end{document}

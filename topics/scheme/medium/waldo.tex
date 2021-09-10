@@ -20,7 +20,7 @@ scm> (waldo '(1 4 9))
 
 
 
-
+)
 \end{lstlisting}
 \end{blocksection}
 \begin{blocksection}
@@ -123,7 +123,7 @@ scm> (waldo '(1 4 9))
 
 \begin{blocksection}
 \begin{solution}
-Recall HW3, \href{https://cs61a.org/hw/hw03/#q2}{problem 2}, "pingpong" without assignment. To get around the assignment restriction, we introduced a new variable to keep track of state. We passed some state into a helper function to keep track of our iteration. In this problem, we will use the same idea for our implementation.
+Recall HW2, \href{https://cs61a.org/hw/sol-hw02/#q3}{problem 3}, "pingpong" without assignment. To get around the assignment restriction, we introduced a new variable to keep track of state. We passed some state into a helper function to keep track of our iteration. In this problem, we will use the same idea for our implementation.
 
 Inside our recursive helper function, we use the same logic as the original waldo question. Specifically, if the list is empty, we return false. If the first element we see is equal to waldo, we now return the index we have been tracking instead of true. Finally, to recursively search, we call the helper function on the rest of the list and increment the index by 1, returning the result of that call. We call this helper function initially with arguments 'lst' and index 0 to start from the beginning of the list.
 
@@ -132,15 +132,15 @@ A logical alternate solution would be to increment 1 after the recursive call to
 
 \end{blocksection}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
   \item Discuss with students the different ways to keep track of an extra variable index with a recursive function
   \begin{itemize}
     \item Explain how the standard approach of keeping track of an index and using iteration is impossible with Scheme
-    \item Lead students to the conclusion that since more information is needed, and since recursive functions can pass information through arguments, we should create a helper function
+    \item Guide students to the conclusion that we can keep track of the extra information during recursion by creating a helper function
   \end{itemize}
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}

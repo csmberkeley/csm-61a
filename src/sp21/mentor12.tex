@@ -1,0 +1,70 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{\textsc{More Scheme and Interpreters}}
+\date{April 5, 2021 - April 8, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item Special Forms Mini-Lecture - 5 min
+  \item WWSD - 20 min
+  \item Interpreters Intro - 5 min
+  \item Eval Apply - 10 min
+  \item Is Prefix - 8 min
+  \item Apply N - 8 min
+\end{itemize}
+
+\textbf{Recommended NPE Timeline}
+  \begin{itemize}
+  \item Section 1
+  \begin{itemize}
+    \item Scheme Mini-Lecture - 10 min
+    \item WWSD - 30 min
+    \item Is Prefix - 15 min
+  \end{itemize}
+  \item Section 2
+  \begin{itemize}
+    \item Interpreters Intro - 10 min
+    \item Eval Apply - 20 min
+    \item Apply N - 15 min
+  \end{itemize}
+\end{itemize}
+\newpage
+\end{guide}
+
+
+
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subimport{../../topics/scheme/text/}{special-forms.tex}
+\section{What Would Scheme Print?}
+\begin{questions}
+\subimport{../../topics/scheme/easy/wwsd/}{special-forms.tex}
+\subimport{../../topics/scheme/easy/wwsd/}{boom.tex}
+\subimport{../../topics/scheme/easy/wwsd/}{define-eval.tex}
+\end{questions}
+
+\section{Interpreters}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+\subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\section{Code Writing}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{is-prefix.tex}
+%\newpage
+\subimport{../../topics/scheme/medium/}{apply-n.tex}
+\end{questions}
+
+\end{document}
