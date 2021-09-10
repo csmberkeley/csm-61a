@@ -13,10 +13,10 @@ You can make the following analogy:
 \end{tabular}
 
 \end{center}
-%Draw box and pointers when appropriate. Ask your mentor if you're unsure what's going on. You aren't expected to understand this completely on your own.
-%\question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
+Draw box and pointers when appropriate. Ask your mentor if you're unsure what's going on. You aren't expected to understand this completely on your own.
+\question What will Scheme output? Draw box-and-pointer diagrams to help determine this.
 \end{nonsol}
-\question What will Scheme output? Draw box and pointer diagrams where applicable.
+
 \begin{lstlisting}
 scm> (cons 1 (cons 2 nil))
 \end{lstlisting}
@@ -62,10 +62,12 @@ While evaluating the operands, Scheme will try to evaluate the expression \textt
 \begin{lstlisting}
 scm> (cons 3 (cons (cons 4 nil) nil))
 \end{lstlisting}
+
 \begin{solution}[.5in]
 \lstinline$(3 (4))$
 \end{solution}
 % \end{blocksection}
+
 % \begin{blocksection}
 \begin{lstlisting}
 scm> (define a '(1 2 3))
@@ -124,8 +126,8 @@ To get to the pair that contains 3, we need to call \texttt{(cdr (cdr a))}. To g
 \end{solution}
 % \end{blocksection}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
   \item Make sure students know \lstinline{(cadr a)} is short for \lstinline{(car (cdr a))} and \lstinline{(cddr a)} is short for \lstinline{(cdr (cdr a))}
@@ -137,5 +139,5 @@ To get to the pair that contains 3, we need to call \texttt{(cdr (cdr a))}. To g
     \item\lstinline{(list? arg)}, which returns true if arg is a well-formed list
   \end{itemize}
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}

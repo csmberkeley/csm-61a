@@ -33,13 +33,13 @@ Gets you the \lstinline{car} of the \lstinline{cdr}
 Gets you the \lstinline{cdr} of the \lstinline{cdr}
 \end{itemize}
 
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
   \item Emphasize to students that Scheme lists are linked lists and NOT Python lists
   \begin{itemize}
-    \item Discuss what features this removes from lists (rip indexing) and what benefits it brings (hint: recursion)
+    \item Discuss the limitations (e.g. no indexing) and capabilities (e.g. recursion)
   \end{itemize}
   \item If you're an old bear\textsuperscript{TM}, keep in mind that dotted lists have been removed from the curriculum, so Scheme lists have the same functionality as linked lists
   \begin{itemize}
@@ -49,5 +49,5 @@ Gets you the \lstinline{cdr} of the \lstinline{cdr}
   \item If you choose to give a mini-lecture on Scheme list syntax, try using each keyword in an example instead of just talking about them!
   \item \lstinline{(cons 1 (cons 2 (cons 3 nil)))} = \lstinline{(list 1 2 3)} = \lstinline{'(1 2 3)}
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}
