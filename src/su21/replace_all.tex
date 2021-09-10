@@ -1,0 +1,23 @@
+%%%%% question taken from berkeley-cs61a/src/topics/dictionaries/easy/replace_all.py %%%%%
+\begin{blocksection}
+    \question Write a function \texttt{replace\_all} that replaces all occurences of x as a value (not a key) in d with y.
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+def replace_all(d, x, y):
+    """Replace all occurrences of x as a value (not a key) in d with y.
+    >>> d = {3: '3', 'foo': 2, 'bar': 3, 'garply': 3, 'xyzzy': 99}
+    >>> replace_all(d, 3, 'poof')
+    >>> d == {3: '3', 'foo': 2, 'bar': 'poof', 'garply': 'poof', 'xyzzy': 99}
+    True
+    """
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+    for key in d:
+        if d[key] == x:
+            d[key] = y
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}

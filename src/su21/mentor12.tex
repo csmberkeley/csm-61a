@@ -1,0 +1,74 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{}
+\title{\textsc{SQL}}
+\date{August 6, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item SQL Introduction and mini-lecture (5-10 min.): For best results, copy the corresponding 
+  \texttt{mentor12.sql} database into code.cs61a.org so you can demonstrate queries using 
+  the tables from this worksheet. You can also use the step-by-step feature to walk through queries.
+  \item Fish Q1-3 (5-10 min.): You may want to walk through some or all of 
+  these problems yourself, as they are more straightforward than the rest of
+  the worksheet. If you decide to let your students work on it themselves, there will
+  probably not be enough time to finish some problems (which is ok).
+  \item Fish Competitors (5 min.): Make sure to discuss joins and possibly give an example
+  before letting students tackle this problem.
+  \item Outfits (10-15 min.): Contains some more difficult aggregation problems.
+  \item Circus (15 min.): More aggregation, and joining a table with itself.
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{SQL Overview}
+\subimport{../../topics/sql/text/}{intro.tex}
+\newpage
+
+\section{SQL Practice}
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+
+\begin{questions}
+  \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+  \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+  \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+\end{questions}
+\newpage
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
+
+\begin{questions}
+\subimport{../../topics/sql/fish/medium/}{competitor.tex}
+\end{questions}
+\newpage
+
+\subimport{../../topics/sql/outfits/}{text.tex}
+\subimport{../../topics/sql/outfits/tables/}{grades.tex}
+\subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+
+\begin{questions}
+\subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+\subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/sql/circus/}{text.tex}
+\subimport{../../topics/sql/circus/}{table.tex}
+\begin{questions}
+\subimport{../../topics/sql/circus/}{elevator.tex}
+\subimport{../../topics/sql/circus/}{trucks-revised.tex}
+\end{questions}
+
+\end{document}
