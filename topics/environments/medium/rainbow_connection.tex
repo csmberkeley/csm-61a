@@ -18,7 +18,7 @@
     \includegraphics[width=.45\textwidth]{rainbow_connection.png}
     \end{multicols}
     
-\begin{solution}[2in]
+    \begin{solution}[2in]
     \begin{lstlisting}
     a = ["red", "red"]
     b = ["orange", "green", "indigo"]
@@ -30,16 +30,18 @@
     b.pop(0)
     b[1] = [c[0]]  + [b[1]] + [c[1]]
     \end{lstlisting}
-\end{solution}
-
-\begin{blocksection}
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{blocksection}
     \begin{guide}
     \textbf{Teaching Tips}
     \begin{itemize}
         \item Make sure to emphasize that students cannot write new colors, i.e. they can't just say \lstinline{a[1] = "orange"}.
         \item Review with students how to use arrows in list diagrams, such as shallow and deep copies, values vs. references.
-        \item Emphasize that if students are stuck, it's possible to take this problem line by line.
-        \item Remind your students of the order of evaluation. We can reference the old \lstinline{b[1]} to create the new \lstinline{b[1]}.
+        \item The best way to approach this problem is to just go line by line.
+        \item Remind your students of the order of evaluation. We can reference the old \lstinline{b[1]} to create the new \lstinline{b[1]}
     \end{itemize}
-\end{guide}
-\end{blocksection}
+    \end{guide}
+    \end{blocksection}
+    
