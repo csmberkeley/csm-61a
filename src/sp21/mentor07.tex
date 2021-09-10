@@ -1,0 +1,83 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Nonlocal, Iterators and Trees}}
+\date{March 1, 2021 to March 3, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\maketitle
+	\rule{\textwidth}{0.15em}
+	\fontsize{12}{15}\selectfont
+
+	%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+	\textbf{Recommended Timeline For Non-NPE Sections}
+	\begin{itemize}
+		\item Nonlocal Mini Lecture - 5 minutes
+		\item among-us - 5 minutes
+		\item Iterators and Generators Mini Lecture or Sanity Check - 5 minutes
+		\item foo - 5 minutes
+		\item filter-gen - 5 minutes
+		\item Trees Mini Lecture or Sanity Check - 5 minutes
+		\item sum-of-nodes - 5 minutes
+		\item all-paths - 5 minutes
+		\item tree-sequence - 10 minutes
+	\end{itemize}
+	\textbf{Recommended Timeline For NPE Sections}
+	\textbf{First Section}
+	\begin{itemize}
+		\item Nonlocal Mini Lecture - 5 minutes
+		\item among-us - 10 minutes
+		\item Iterators and Generators Mini Lecture - 5 minutes
+		\item foo - 5 minutes
+		\item filter-gen - 10 minutes
+		\item all-sums - 15 minutes
+	\end{itemize}
+	\textbf{Second Section}
+	\begin{itemize}
+		\item Tree Mini Lecture - 10 minutes
+		\item Tree Review - 5 minutes
+		\item sum-of-nodes - 10 minutes
+		\item all-paths - 10 minutes (important!)
+		\item tree-sequence - 15 minutes
+	\end{itemize}
+\end{guide}
+
+\vspace{-1em}
+\section{Nonlocal}
+\textbf{For this semester, there won't be extensive nonlocal coding questions, but still go over this short blurb and try to understand our reverse-environment diagram question.}
+\newline
+\subimport{../../topics/nonlocal/text/}{nonlocal_overview.tex}
+\begin{questions}
+	\subimport{../../topics/environments/medium/}{amongus.tex}
+\end{questions}
+\vspace{-2em}
+\newpage
+\section{Iterators and Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+	\subimport{../../topics/generators/easy/}{foo.tex}
+	\subimport{../../topics/generators/medium/}{filter-gen.tex}
+	\subimport{../../topics/generators/medium/}{all-sums.tex}
+\end{questions}
+\newpage
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\subimport{../../topics/trees/adt/text/}{draw-tree.tex}
+\begin{questions}
+%\subimport{../../topics/trees/adt/construct-tree/}{diagram.tex}
+\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+\subimport{../../topics/trees/adt/medium/}{all-paths.tex}
+\end{questions}
+
+\newpage
+\section{Extra Practice: Trees + Generators}
+\begin{questions}
+	\subimport{../../topics/generators/medium/}{tree-sequence.tex}
+\end{questions}
+\end{document}

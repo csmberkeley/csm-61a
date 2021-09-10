@@ -1,0 +1,18 @@
+\textbf{Interpreters Overview} 
+
+An \textbf{interpreter} is essentially a program that understands and processes other programs. 
+
+The interpreter design we will be covering in 61A is the \textbf{Read-Eval-Print Loop}, which consists of the following steps:
+\begin{enumerate}
+    \item Read the text input and load it into Python as a \texttt{Pair}
+    \item In each Scheme list, evaluate the operator (figure out if it's a +, car, etc.)
+    \item Recursively evaluate the operands (i.e. parameters) of the operation
+    \item Apply the operator to the operands and return the result
+\end{enumerate}
+
+One of the challenges of designing interpreters is to represent the input in a way that the interpreter's language can understand.
+For example, since our Scheme interpreter is written in Python, we need to convert Scheme tokens to a Python representation.
+To achieve this, we will use the \texttt{Pair} object, which is essentially a Linked List that takes in \texttt{nil} instead of \texttt{Link.empty}.
+
+As an example, \texttt{(list 1 2 3)} in Scheme can be converted to \texttt{Pair('list', Pair(1, Pair(2, Pair(3, nil))))}.
+This conversion is done in the Read step of the Read-Eval-Print loop. Note that nothing is evaluated in the Read step yet- everything is treated as just another token.

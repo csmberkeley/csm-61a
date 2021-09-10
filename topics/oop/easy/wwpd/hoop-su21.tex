@@ -1,0 +1,95 @@
+\begin{blocksection}
+\question \textbf{(H)OOP} \newline
+Given the following code, what will Python output for the following prompts?
+
+\begin{lstlisting}
+class Baller:
+    all_players = []
+    def __init__(self, name, has_ball = False):
+       self.name = name
+       self.has_ball = has_ball
+       Baller.all_players.append(self)
+
+    def pass_ball(self, other_player):
+       if self.has_ball:
+          self.has_ball = False
+          other_player.has_ball = True
+          return True
+       else:
+          return False
+
+class BallHog(Baller):
+    def pass_ball(self, other_player):
+       return False
+
+\end{lstlisting}
+\end{blocksection}
+\begin{blocksection}
+
+\begin{lstlisting}
+>>> catherine = Baller('Catherine', True)
+>>> albert = BallHog('Albert')
+>>> len(Baller.all_players)
+\end{lstlisting}
+\begin{solution}[.2in]
+2
+\end{solution}
+
+\begin{lstlisting}
+>>> Baller.name
+\end{lstlisting}
+\begin{solution}[.2in]
+Error
+\end{solution}
+
+\begin{lstlisting}
+>>> len(albert.all_players)
+\end{lstlisting}
+\begin{solution}[.2in]
+2
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> catherine.pass_ball()
+\end{lstlisting}
+\begin{solution}[.2in]
+Error
+\end{solution}
+
+\begin{lstlisting}
+>>> catherine.pass_ball(albert)
+\end{lstlisting}
+\begin{solution}[.2in]
+True
+\end{solution}
+
+\begin{lstlisting}
+>>> catherine.pass_ball(albert)
+\end{lstlisting}
+\begin{solution}[.2in]
+False
+\end{solution}
+
+\begin{lstlisting}
+>>> BallHog.pass_ball(albert, catherine)
+\end{lstlisting}
+\begin{solution}[.2in]
+False
+\end{solution}
+
+\begin{lstlisting}
+>>> albert.pass_ball(catherine)
+\end{lstlisting}
+\begin{solution}[.2in]
+False
+\end{solution}
+
+\begin{lstlisting}
+>>> albert.pass_ball(albert, catherine)
+\end{lstlisting}
+\begin{solution}[.2in]
+Error
+\end{solution}
+\end{blocksection}

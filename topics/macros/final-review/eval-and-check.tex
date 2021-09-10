@@ -37,6 +37,16 @@ ok
 \end{blocksection}
 
 \begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item If they offer a solution using \lstinline{cdr}, remind them of the \lstinline{begin} function, which returns the last expression.
+	\item Remind them of the need to quote \lstinline{ok} and \lstinline{fail}.
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+\begin{blocksection}
 \question Now expand \texttt{eval-and-check} to take in any number of expressions (as long as there is at least one).
 
 \begin{lstlisting}
@@ -64,4 +74,14 @@ fail
                 'fail))
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Remind them of the usage of \lstinline{. args} and have them consider how we can require at least one expression.
+	\item Ask them to try to make as few edits as possible to the previous solution.
+\end{itemize}
+\end{guide}
 \end{blocksection}
