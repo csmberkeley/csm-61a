@@ -1,0 +1,32 @@
+\begin{blocksection}
+\question We are given a linear equation of the form $mx+b$, and we want to extract the $m$ and $b$ values. Remember that '.' and '+' are special meta-characters in Regex.
+
+This problem is written by Kunal Agarwal
+
+\begin{lstlisting}
+import re
+def linear_functions(eq_str):
+    """
+    Given the equation in the form of 'mx + b', returns a tuple of m and b values.
+    >>> linear_functions("1x+0")
+    [('1', '0')]
+    >>> linear_functions("100y+44")
+    [('100', '44')]
+    >>> linear_functions("99.9z+23")
+    [('99.9', '23')]
+    >>> linear_functions("55t+0.4")
+    [('55', '0.4')]
+    """
+    return re.findall(r"__________", eq_str)
+\end{lstlisting}
+
+\begin{solution}[2in]
+    \begin{lstlisting}
+        r'(\d*\.?\d+)\w\+?(\d*\.?\d+)'
+    \end{lstlisting}
+\end{solution}
+\end{blocksection}
+    
+% \begin{solution}[1in]
+
+% \end{solution}

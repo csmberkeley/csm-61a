@@ -3,20 +3,36 @@
 \begin{lstlisting}
 def all_sums(lst):
     """
-    >>> gen = all_sums([1, 2, 3])
-    >>> sorted(gen)
-    [0, 1, 2, 3, 3, 4, 5, 6]
+    >>> list(all_sums([]))
+    [0]                      #sum nothing
+    >>> list(all_sums([1, 2]))
+    [3, 2, 1, 0]             #1 + 2, 2, 1, 0
+    >>> list(all_sums([1, 2, 3]))
+    [6, 5, 4, 3, 3, 2, 1, 0] #repeat sums are ok! (3 and 2+1)
     """
 \end{lstlisting}
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-    if not lst:
+    if len(lst) == 0:
         yield 0
     else:
-        for sum_of_rest in all_sums(lst[1:]):
-            yield sum_of_rest + lst[0]
-            yield sum_of_rest
+        for sum_rest in all_sums(lst[1:]):
+            yield sum_rest + lst[0]
+            yield sum_rest
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+    \begin{guide}
+        \textbf{Teaching Tips}
+        \begin{itemize}
+            \item This is a classic tree recursion problem but now in generator form!
+            \item A tree diagram of how the list splits is a good visualization to draw
+            \item If students are struggling to understand the problem, start from the base case of an empty list and work your way up with the sums of a length-1 list, length-2, etc.
+            \item As always, the recursive leap of faith is helpful in understanding what \lstinline{all_sums(lst[1:])} returns.
+            \item Even though this is a generator problem, we iterate over the call in a for loop so we can treat the function like it returns a list!
+        \end{itemize}
+    \end{guide}
 \end{blocksection}
