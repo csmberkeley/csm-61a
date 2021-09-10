@@ -1,0 +1,89 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Introduction to Scheme}}
+\date{March 29, 2021 to March 31, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item Scheme Mini-Lecture - 8 min
+  \item WWSD - 8 min
+  \item Hailstone - 8 min
+  \item Scheme Lists Mini-Lecture - 6 min
+  \item Scheme List WWSD - 8 min
+  \item Waldo + Challenge problem (if time) - 12 min
+\end{itemize}
+\end{blocksection}
+\end{guide}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Recommended NPE Timeline}
+  \begin{itemize}
+  \item Section 1
+  \begin{itemize}
+    \item Scheme Mini-Lecture - 10 min
+    \item WWSD - 10 min
+    \item Hailstone - 10 min
+    \item Scheme Lists Mini-Lecture - 10 min
+  \end{itemize}
+  \item Section 2
+  \begin{itemize}
+    \item Scheme Lists Review - 3 min
+    \item Scheme List WWSD - 10 min
+    \item Waldo + Challenge problem - 8 min + 10 min
+  \end{itemize}
+\end{itemize}
+\end{blocksection}
+\end{guide}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item To ease in Scheme, it can help to start by comparing and contrasting with Python
+  \begin{itemize}
+    \item Have students write a basic function in Python (like an iterative countdown), then replicate it in Scheme
+    \item Have students list language features of Python (variable assignments, conditional statements, logic operators, etc.), and explain how Scheme implements those features
+    \item Make sure to give a disclaimer that while high level features may be analogous, the internals are different!
+  \end{itemize}
+  \item Scheme features break into three broad categories: Primitives, Call Expressions, and Special Forms (the latter two are called Compound Expressions)
+  \begin{itemize}
+    \item Primitives evaluate to themselves (4 evaluates to 4, \#t to \#t, etc.)
+    \item Call Expressions begin with a function name and are followed by arguments- evaluate function name, evaluate arguments, and apply function to arguments
+    \item Special Forms begin with a keyword and are followed by subexpressions, which are evaluated in a way based on the specific keyword
+  \end{itemize}
+  \item Very useful: \href{https://cs61a.org/articles/scheme-builtins/}{Scheme Built-In Procedure Reference}
+\end{itemize}
+\end{blocksection}
+\end{guide}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subimport{../../topics/scheme/text/}{scheme-basics-overview.tex}
+\begin{questions}
+\newpage
+\section{What Would Scheme Print?}
+\subimport{../../topics/scheme/easy/wwsd/}{basics.tex}
+
+\section{Code Writing in Scheme}
+\subimport{../../topics/scheme/easy/}{hailstone.tex}
+\section{Scheme Lists}
+\subimport{../../topics/scheme/text/}{scheme-lists-overview.tex}
+\newpage
+\subimport{../../topics/scheme/easy/wwsd/}{lists_nodots.tex}
+
+\section{More Code Writing in Scheme}
+\subimport{../../topics/scheme/medium/}{waldo.tex}
+\end{questions}
+
+\end{document}

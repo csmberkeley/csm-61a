@@ -1,0 +1,90 @@
+% This problem is the same as copy-machine1, but adapted for online teaching (where copy machines are a figment of the past)...
+\begin{blocksection}
+    \question In an alternate universe, 61A software is not that good (inconceivable!). 
+    Laryn is in charge of assigning students to discussion sections, but sections.cs61a.org 
+    only knows how to list sections with either \lstinline$m$ or \lstinline$n$ number of students (the two most popular sizes). 
+    Given a \lstinline$total$ number of students, can Laryn create sections and not have any leftover students? 
+    Return \lstinline$true$ if they can, \lstinline$false$ otherwise.
+    
+    \begin{lstlisting}
+    def has_sum(total, n, m):
+        """
+        >>> has_sum(1, 3, 5)
+        False
+        >>> has_sum(5, 3, 5) # 0 * 3 + 1 * 5 = 5
+        True
+        >>> has_sum(11, 3, 5) # 2 * 3 + 1 * 5 = 11
+        True
+        >>> has_sum(61, 11, 15) # 61 is a prime number and can't be divided!
+        False
+        """
+        if ____________________________________________________:
+    
+            return ____________________________________
+    
+        elif __________________________________________________:
+    
+            return ____________________________________
+    
+        return ________________________________________________
+    
+    \end{lstlisting}
+    \end{blocksection}
+    
+    \begin{solution}[1.5in]
+    \begin{blocksection}
+    \begin{lstlisting}
+    def has_sum(total, n, m):
+        if total == 0:
+            return True
+        elif total < 0: # you could also put total < min(m, n)
+            return False
+        return has_sum(total - n, n, m) or has_sum(total - m, n, m)
+    \end{lstlisting}
+    An alternate solution you could write that may be slightly faster in certain cases:
+    \begin{lstlisting}
+    def has_sum(total, n, m):
+        if total == 0 or total % n == 0 or total % m == 0:
+            return True
+        elif total < 0: # you could also put total < min(m, n)
+            return False
+        return has_sum(total - n, n, m) or has_sum(total - m, n, m)
+    \end{lstlisting}
+    
+    \textbf{(Solution continues on the next page)}
+    \end{blocksection}
+    \end{solution}
+    
+    \begin{solution}
+    \begin{blocksection}
+    When thinking about the recursive calls, we need to think about how each step of the problem works. Tree recursion allows us to explore the two options we have: 
+    either create a new \lstinline{m}-person discussion at this step or create a new \lstinline{n}-person discussion at this step and can combine the results after exploring both options. 
+    Inside the recursive call for \lstinline{has_sum(total - n, n, m)}, which represents accommodating \lstinline{n} students, we again consider adding either
+    \lstinline{n} or \lstinline{m} students to the next section.
+    
+    Once we have these recursive calls we need to think about how to put them together. We know the return should be a boolean so we want to use either \lstinline{and} or \lstinline{or} to combine the values for a final result. Given that we only need one of the calls to work, we can use \lstinline{or} to reach our final answer.
+    
+    In the base cases we also need to make sure we return the correct data type. Given that the final return should be a boolean we want to return booleans in the base cases.
+    
+    Another alternate base case would be: \lstinline{total == 0 or total % n == 0 or total % m == 0}. This solution would also work! You would just be stopping the recursion early, since the total can be a multiple of \lstinline{n} or \lstinline{m} in order to trigger the base case - it doesn’t have to be 0 anymore. Just be sure to still include the \lstinline{total == 0} check, just in case someone inputs 0 as the total into the function.
+    \end{blocksection}
+    \end{solution}
+    
+    \begin{guide}
+    \begin{blocksection}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item Some leading questions:
+        \begin{itemize}
+            \item What are the base cases (when to return True/False)?
+            \item How can we reduce this problem into smaller subproblems (recursive step)?
+            \item What does the value of a recrusive call tell us?
+            \item How can we put recursive calls together to get a final answer?
+        \end{itemize}
+        \item Ask students about the simplest possible cases to identify base cases; make sure they realize \lstinline{(total == n)} or \lstinline{(total == m)}  is incorrect because \lstinline{(total == 0)} is a simpler True case.
+        \item Point out the fact that tree recursion problems usually have you consider multiple “options” or “possibilities,” and they should all be explored when you are writing your recursive cases.
+        \item Out of all possible combinations of \lstinline{n} and \lstinline{m}, we only need 1 way for \lstinline{n} and \lstinline{m} to sum to the total for the function to return True, which implies \lstinline{or} is an appropriate way to aggregate our recursive calls.
+    \end{itemize}
+    \end{blocksection}
+    \end{guide}
+    

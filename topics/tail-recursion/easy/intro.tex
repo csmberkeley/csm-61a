@@ -1,23 +1,34 @@
 \begin{blocksection}
-\question What is a tail context? What is a tail call? What is a tail recursive function?
+\question What is a tail call? What is a tail context? What is a tail recursive function?
 
-\begin{solution}[0.5in]
-A tail call is a call expression in a tail context. A tail context is usually the final action of a procedure/function.
+\begin{solution}
+A tail call is a call expression in a tail context.
 \newline
-A tail recursive function is where all the recursive calls of the function are in tail contexts. \newline
+A tail context is usually the final action of a procedure/function.
 \newline
-An ordinary recursive function is like building up a long chain of domino pieces, then knocking down the last one. A tai
-l recursive function is like putting a domino piece up, knocking it down, putting a domino piece up again, knocking it d
-own again, and so on. This metaphor helps explain why tail calls can be done in constant space, whereas ordinary recursi
-ve calls need space linear to the number of frames (in the metaphor, domino pieces are equivalent to frames).
+A tail recursive function is a function where all its recursive calls are in tail contexts. \newline
+\newline
 \end{solution}
+
+\vspace{3cm}
 
 \question Why are tail calls useful for recursive functions?
 
-\begin{solution}[0.5in]
-When a function is tail recursive, it can effectively discard all the past recursive frames and only keep the current fr
-ame in memory. This means we can use a constant amount of memory with recursion, and that we can deal with an unbounded
+\begin{solution}
+When a function is tail recursive, it can effectively discard all the past recursive frames and only keep the current frame in memory. This means we can use a constant amount of memory with recursion, and that we can deal with an unbounded
 number of tail calls with our Scheme interpreter.
 \end{solution}
+
+\begin{guide}
+    \vspace{.5cm}
+\textbf{Teaching Tips}
+  \begin{itemize}
+    \item Let 1 domino represent the memory taken up by one function call
+    \item When a domino falls, you can erase this memory
+    \item An ordinary recursive function is like building up a long chain of domino pieces, then knocking down the last one
+    \item A tail recursive function is like putting a domino piece up, knocking it down, putting a domino piece up again, knocking it down again, and so on
+    \item This metaphor helps explain why tail calls can be done in constant space, whereas ordinary recursive calls need space linear to the number of frames
+  \end{itemize}
+\end{guide}
 
 \end{blocksection}

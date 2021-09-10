@@ -1,0 +1,94 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{13}
+\title{\textsc{Final Review}}
+\date{August 11, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+    This worksheet covers:
+    \begin{itemize}
+        \item Environment Diagrams
+        \item OOP
+        \item Complexity
+        \item Trees
+        \item Tree Recursion
+        \item Linked Lists
+        \item HOF
+        \item Scheme
+        \item Tail Recursion
+        \item Generators
+    \end{itemize}
+    While there is no Generators section, \lstinline{all\_paths} in the Trees section, \lstinline{all\_sums} in the Tree Recursion section, and \lstinline{iter\_link} in the Linked Lists section are all generator problems.
+    \newline
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Environment Diagrams - 10 minutes
+        \item DLL - 15 mins
+        \item Complexity - 7 minutes
+        \item Trees - 10 minutes
+        \item Generator (pick one question) - 8 minutes 
+        \item Answer any questions about the final - 5 minutes
+    \end{itemize}
+\end{guide}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/environments/medium/}{2chainz.tex}
+\end{questions}
+\newpage
+
+\section{OOP}
+\begin{questions}
+\subimport{../../topics/oop/easy/}{dll.tex}
+\end{questions}
+\newpage
+
+\section{Complexity}
+\begin{questions}
+\subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+\end{questions}
+
+\section{Trees}
+\begin{questions}
+\subimport{../../topics/interview/}{rot.tex}
+\subimport{../../topics/generators/medium/}{all-paths.tex}
+\end{questions}
+
+\section{Tree Recursion}
+\begin{questions}
+\subimport{../../topics/generators/medium/}{all-sums.tex}
+\subimport{../../topics/recursion/medium/}{combine-to-61.tex}
+\end{questions}
+
+\section{Linked Lists}
+\begin{questions}
+\subimport{../../topics/generators/easy/}{iter-link.tex}
+\subimport{../../topics/linked-lists/class/medium/}{combine-two.tex}
+\end{questions}
+
+\section{Higher-Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/medium/}{make-digit-remover.tex}
+\subimport{../../topics/hof/medium/}{curry_forever.tex}
+\end{questions}
+
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{binary-list.tex}
+\subimport{../../topics/scheme/medium/}{run.tex}
+\end{questions}
+
+\section{Tail Recursion}
+\begin{questions}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\end{questions}
+
+\end{document}

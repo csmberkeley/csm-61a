@@ -1,5 +1,5 @@
 \question
-Write a macro, \lstinline{and-odds}, which takes in a list of expressions, \lstinline{exprs}, and evaluates to a true value if all of the \underline{even-indexed} elements of \lstinline{exprs} evaluate to true values.
+Write a macro, \lstinline{and-odds}, which takes in a list of expressions, \lstinline{exprs}, and evaluates to a true value if all of the \underline{even-indexed} elements of \lstinline{exprs} evaluate to true values. If any of the even-indexed elements evaluate to false, \lstinline{and-odds} should return false.
 
 \begin{lstlisting}
 ; doctests
@@ -22,20 +22,33 @@ scm> (and-odds a)
 
 (define-macro (and-odds exprs)
 
-    (if (______________________________)
+    `(if _________________________________________________
 
-        ______________________________________________
+         _________________________________________________
 
-        ______________________________________________)
+         _________________________________________________
+    )
 )
 \end{lstlisting}
 
 \begin{solution}
 \begin{lstlisting}
 (define-macro (and-odds exprs)
-    (if (> (length exprs) 2)
-        `(and ,(car exprs) (and-odds ,(cdr (cdr exprs))))
-        `(or ,(car exprs)))
+    `(if (> (length ,exprs) 2)
+          (and (car ,exprs) (and-odds (cdr (cdr ,exprs))))
+          (eval (car ,exprs))
+    )
 )
 \end{lstlisting}
 \end{solution}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Quickly review boolean evaluation and boolean operations \lstinline{and} and \lstinline{on}.
+	\item Begin with the intuition behind the recursive call. Have them consider an arbitrarily long list and guide them to the intuition behind the call on \lstinline{(cdr (cdr exprs))}.
+	\item If they add a base case for nil, have them consider an odd-length list.
+\end{itemize}
+\end{guide}
+\end{blocksection}

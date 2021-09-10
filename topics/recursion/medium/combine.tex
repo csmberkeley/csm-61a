@@ -31,3 +31,21 @@ def combine(n, f, result):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+  \textbf{Teaching Tips}
+  \begin{itemize}
+      \item Visually go through an example (like using one from the doc tests) and going over the question visually is especially helpful when showing students how to make the original problem into a smaller subproblem.
+      \begin{itemize}
+            \item Ex. \lstinline{combine(650, add, 3) # add(6, add(5, add(0, 3)))}
+            \item Show how we can recursively call combine on the "rest" of the number 
+      \item If students are confused about recursive cases -- show how the base case is 0 and mention that we want our value for n to eventually be 0.
+      \item Common misconceptions (points to emphasize):
+      \begin{itemize}
+            \item The order of arguments for f matters (n % 10, result)
+            \item Review order of evaluation: the third parameter, \lstinline{f(n % 10, result)}, is evaluated before the combine function is applied to the parameters.
+      \end{itemize}
+  \end{itemize}
+\end{guide}
+\end{blocksection}

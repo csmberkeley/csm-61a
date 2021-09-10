@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question Let's build a Bear using OOP!
+
+Bear instances should have an attribute \lstinline{name} that holds the name of the bear.
+The Bear class should have an attribute \lstinline{bears}, a list that stores the name of each bear.
+\vspace{1\baselineskip}
+\begin{lstlisting}
+>>> oski = Bear('Oski')
+>>> oski.name
+'Oski'
+>>> Bear.bears
+['Oski']
+>>> winnie = Bear('Winnie')
+>>> Bear.bears
+['Oski', 'Winnie']
+
+class Bear:
+\end{lstlisting}
+
+\begin{nonsol}
+\vspace{4\baselineskip}
+\end{nonsol}
+
+\begin{solution}
+  \vspace{-0.5\baselineskip}
+\begin{lstlisting}
+    bears = []
+    def __init__(self, name):
+        self.name = name
+        Bear.bears.append(self.name)
+\end{lstlisting}
+
+Note that \lstinline{self.bears.append(self.name)} also works, but just doing \lstinline{bears.append(self.name)} will result in an error!
+\\There is no \lstinline{bears} variable in the \lstinline{__init__} function frame.
+\end{solution}
+\end{blocksection}
