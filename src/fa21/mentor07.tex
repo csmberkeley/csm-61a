@@ -1,0 +1,59 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Trees, Recursive Data, Mutability}}
+\date{October 4, 2021 to October 8, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\maketitle
+	\rule{\textwidth}{0.15em}
+	\fontsize{12}{15}\selectfont
+
+	%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+	\textbf{Recommended Timeline}
+	\begin{itemize}
+		\item Trees Mini Lecture - 5 minutes
+		\item WWPD trees - 5 minutes
+		\item tree-sum - 5 minutes
+		\item replace-x - 5 minutes
+		\item all-paths - 10 minutes
+		\item Mutability Mini Lecture - 5 minutes
+		\item wwpd-mutation - 5 minutes
+		\item spooky-list - 10 minutes
+		\item accumulate - 10 minutes
+	\end{itemize}
+\end{guide}
+
+\section{Trees}
+	\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+	\subimport{../../topics/trees/adt/text/}{implementation.tex}
+	\subimport{../../topics/trees/adt/text/}{draw-tree.tex}
+	\begin{questions}
+		\subimport{../../topics/trees/adt/construct-tree/}{wwpd.tex}
+		\newpage
+		\subimport{../../topics/trees/adt/medium/}{tree-sum.tex}
+		\newpage
+		\subimport{../../topics/trees/adt/medium/}{replace-x.tex}
+		\newpage
+		\subimport{../../topics/trees/adt/medium/}{all-paths.tex}
+	\end{questions}	
+\newpage
+\section{Mutability}
+	\textbf{Mutation}
+
+	\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+	\textbf{Mutable vs immutable}
+
+	\subimport{../../topics/lists/mutable/text/}{mutable-vs-immutable.tex}
+	\begin{questions}
+		\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
+		\newpage
+		\subimport{../../topics/lists/mutable/medium/env-diagram/}{spooky-list.tex}
+		\newpage
+		\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+	\end{questions}
+\end{document}
