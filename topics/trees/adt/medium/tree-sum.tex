@@ -43,13 +43,9 @@ The alternate solution contains the same logic but makes effective use of list c
 	\begin{blocksection}
 	\textbf{Teaching Tips}
 	\begin{itemize}
-			\item It’s helpful to:
+			\item It’s helpful to draw out a sample tree (use doctests!) to show them how you can use the “recursive leap of faith” to solve this question.
+			\item What should the total represent? (Answer: sum of the values in all the nodes)
 			\begin{itemize}
-				\item draw out a sample tree (use doctests!) to show them how you can use the “recursive leap of faith” to solve this question.
-			\end{itemize}
-			\item Ask them, conceptually, what should the total represent?
-			\begin{itemize}
-				\item Answer: sum of the values in all the nodes
                 \item If you were a computer, how would you add each node one by one?
                 \item You would add the root, and add the value at each of its children, and then the value of each of their children, and the value of each of their children, etc.
                 \item Can we somehow “simplify” all of this repeated work?
@@ -62,9 +58,7 @@ The alternate solution contains the same logic but makes effective use of list c
             \item If we have more than one branch, how do we make the recursive call on each branch? (Answer: a for loop)
             \begin{itemize}
                 \item What happens in the for loop if there aren’t any branches? Nothing.
-                \begin{itemize}
-                    \item This is why we don’t need an explicit base case (ex. if len(branches) == 0)
-                \end{itemize}
+                \item This is why we don’t need an explicit base case (ex. if len(branches) == 0)
             \end{itemize}
 	\end{itemize}
 	\end{blocksection}

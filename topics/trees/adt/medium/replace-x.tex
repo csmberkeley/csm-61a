@@ -79,14 +79,12 @@ empty list. Then we will either return \lstinline$tree(0, [])$ or
 	\begin{itemize}
 			\item Draw out a tree and ask them to play out the algorithm
 			\begin{itemize}
-	                \item If you were a computer, how would you replace all the \lstinline{x}'s?
-	                \item You would check the value of your current tree, and then move on to each of the branches
+	                \item If you were a computer, how would you replace all the \lstinline{x}'s? (Answer: check the value of the current tree, then each of the branches)
 	                \item Can we somehow “simplify” all of this repeated work?
             \end{itemize}
 		\item Make sure they respect abstraction barriers 
             \begin{itemize}
-                \item If there isn't a \lstinline{set_value} function, how can we return a tree with an updated value?
-                \item Answer: create a new tree with \lstinline{0} and the new branches
+                \item If there isn't a \lstinline{set_value} function, how can we return a tree with an updated value? (Answer: create a new tree with \lstinline{0} and the new branches)
             \end{itemize}
 		\item Warn them against trying to evaluate branches
             \begin{itemize}
@@ -95,10 +93,8 @@ empty list. Then we will either return \lstinline$tree(0, [])$ or
             \end{itemize}
             \item If we have multiple branches, how do we make the recursive call on each branch? (Answer: a for loop)
             \begin{itemize}
-                \item What happens in the for loop if there aren’t any branches? Nothing.
-                \begin{itemize}
-                    \item This is why we don’t need an explicit base case (ex. if len(branches) == 0)
-                \end{itemize}
+                \item What happens in the for loop if there aren’t any branches? (Answer: nothing)
+                \item This is why we don’t need an explicit base case (ex. if len(branches) == 0)
             \end{itemize}
 	\end{itemize}
 	\end{blocksection}
