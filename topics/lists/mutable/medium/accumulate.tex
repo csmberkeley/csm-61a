@@ -54,7 +54,7 @@ def accumulate(lst):
 \textbf{Teaching Tips}
 
 \begin{itemize}
-\item To keep track of the accumulated sum we need to create a variable in the function that keeps track of the overall sum of the list so we can mutate it.
+\item To keep track of the accumulated sum we need to create a variable that we update every time we see a new element. 
 \item Make sure to emphasize the distinction between \lstinline{for item in lst} and \lstinline{for i in range(len(lst))}.
   \begin{itemize}
     \item We need \lstinline{i} in order to mutate the list. Why does using \lstinline{for item in lst} not work when mutating? (Answer: because we're using a copy of the element, not modifying the original list).
@@ -68,6 +68,7 @@ def accumulate(lst):
 \item We could have something like \lstinline{[1, [2, [3]]]}, so we need a function that will sum up the 
 values from a potentially nested list.  Do we have a function that does this?
 \item \textbf{Emphasize the recursive leap of faith when calling accumulate on the inner list}
+\item Remind students that they can use \lstinline{isinstance} to check if an element is a list.
 \end{itemize}
 \end{enumerate}
 \item We return the accumulated sum of the list which includes all values, even the nested ones because of the recursive call.

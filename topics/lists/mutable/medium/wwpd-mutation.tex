@@ -62,6 +62,8 @@ Challenge:
 		\item Draw a box and pointer diagram
 		\item Discuss shallow vs. deep copying. 
 		\begin{itemize}
+			\item Shallow copying is when you copy each element as is; i.e. elements which were pointers to a list still point to the same list in the copy.
+			\item Deep copying is when you copy each element within each sublist; i.e. the new elements which are pointers point to brand-new created lists.
 			\item In general, most operators involving Python lists perform shallow copying: i.e. slicing, list(...), etc.
 		\end{itemize}
 		\item If you have enough time, it is helpful for students to make a chart which the different operators and identify when to mutate or create a new list.
