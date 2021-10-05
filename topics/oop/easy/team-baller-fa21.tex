@@ -5,12 +5,12 @@
 \begin{lstlisting}
 class TeamBaller(_______________):
     """
-    >>> caitlin = BallHog('Caitlin')
-    >>> cheerballer = TeamBaller('Peter', has_ball=True)
-    >>> cheerballer.pass_ball(caitlin)
+    >>> pamela = BallHog('Pamela')
+    >>> cheerballer = TeamBaller('Vanshaj', has_ball=True)
+    >>> cheerballer.pass_ball(pamela)
     Yay!
     True
-    >>> cheerballer.pass_ball(caitlin)
+    >>> cheerballer.pass_ball(pamela)
     I don't have the ball
     False
     """
@@ -22,12 +22,12 @@ class TeamBaller(_______________):
 \begin{lstlisting}
 class TeamBaller(Baller):
     """
-    >>> caitlin = BallHog('Caitlin')
-    >>> cheerballer = TeamBaller('Peter', has_ball=True)
-    >>> cheerballer.pass_ball(caitlin)
+    >>> pamela = BallHog('Pamela')
+    >>> cheerballer = TeamBaller('Vanshaj', has_ball=True)
+    >>> cheerballer.pass_ball(pamela)
     Yay!
     True
-    >>> cheerballer.pass_ball(caitlin)
+    >>> cheerballer.pass_ball(pamela)
     I don't have the ball
     False
     """
@@ -40,4 +40,16 @@ class TeamBaller(Baller):
         return did_pass
 \end{lstlisting}
 \end{solution}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+    \begin{itemize}
+    \item Let students think about what methods are being inherited, along with the attributes that are inherited in the init method.
+    \item Remember that although the pass\_ball method will be overridden in the TeamBaller method, it can call the inherited class's method.
+    \item Remember that the pass\_ball method of the Baller class will return whether the ball was passed or not, which decides whether the TeamBaller instance should cheer or not.
+    \end{itemize}
+\end{blocksection}
+\end{guide}
+
 \end{blocksection}

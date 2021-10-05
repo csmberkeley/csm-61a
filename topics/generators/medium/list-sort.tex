@@ -36,6 +36,16 @@ def in_order(lst):
             order.append(elem)
     yield from sorted(order)
 \end{lstlisting}
-
-
 \end{solution}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+    \begin{itemize}
+    \item Since we have nested lists, which can go on to be nested many times, it can be pretty difficult to manually go through each list and sort it. This gives the idea of using recursion.
+    \item How can we make it so that we get a list of all of the elements (un-nested from their lists), and then call sorted to yield from a sorted list?
+    \item Go over the isinstance method with a few examples, and see how it can be used to unflatten the given list (students went over a similar problem in lab)
+    \item If the element we're checking is a list, then what do we do? If it's not then what do we do?
+    \end{itemize}
+\end{blocksection}
+\end{guide}
