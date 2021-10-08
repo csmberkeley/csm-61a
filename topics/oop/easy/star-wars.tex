@@ -1,6 +1,8 @@
 \begin{blocksection}
 \question What would Python display? Write the result of executing the following code and prompts. If nothing would happen, write "Nothing". If an error occurs, write "Error".
 
+\textbf{Brief introduction to \lstinline{__repr__}} \\ The \lstinline{__repr__} magic method of objects returns the "official" string representation of an object. You can invoke it directly by calling \lstinline{repr(<some object>)}. However, \lstinline{__repr__} doesn't always return something that is easily readable, that is what \lstinline{__str__} is for. Rather, \lstinline{__repr__} ensures that all information about the object is present in the representation. When you ask Python to represent an object in the Python interpreter, it will automatically call \lstinline{repr} on that object and then print out the string that \lstinline{repr} returns.
+
 \vspace{1.5\baselineskip}
 
 \begin{lstlisting}
@@ -12,6 +14,8 @@ class Jedi:
     def train(self, other):
         other.force += self.force / 5
     def __repr__(self):
+        # __repr__ will be covered more next week
+        # 
         return "Jedi " + self.name
 \end{lstlisting}
 \end{blocksection}
