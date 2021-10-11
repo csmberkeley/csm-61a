@@ -24,7 +24,7 @@ rev = reverse(lst)
     \item We then return the list \lstinline{[4]} after hitting the base case of a length 1 list.
     \item At each level, we take the list returned from the smaller recursive call and append \lstinline{lst[0]} to the end of returned list.
     \item When you pass in a list as an argument to a function, the new frame’s argument points to the same list passed in (it does not create a new list!)
-    \item List slices create shallow copies (a new list is created but any pointers in the new list still point to the same thing that the original list that was sliced is pointing to)
+    \item List slices create shallow copies (a new list is created but any pointers in the new list still point to the same thing)
     \item Keep in mind that the return value of the reverse function is a new list because of the \lstinline{+ [lst[0]]}
 \end{itemize}
 \end{blocksection}
