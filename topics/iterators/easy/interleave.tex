@@ -1,6 +1,8 @@
 \begin{blocksection}
 \question Write a generator that will take in two iterators and compares the
 first element of each iterator and yields the smaller of the two values.
+For simplicity, ignore any StopIteration that might result when we run out of
+values to yield.
 
 \begin{lstlisting}
 def interleave(iter1, iter2):
