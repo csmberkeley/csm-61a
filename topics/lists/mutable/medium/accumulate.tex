@@ -54,16 +54,21 @@ def accumulate(lst):
 \textbf{Teaching Tips}
 
 \begin{itemize}
-\item To keep track of the accumulated sum we need to create a variable in the function that keeps track of the overall sum of the list so we can mutate it.
-\item Make sure to emphasize the distinction between \lstinline{for item in lst} and \lstinline{for i in range(len(lst))}. (We need \lstinline{i} in order to mutate the list.) Perhaps allow your students to first make the mistake of using the former, so that they may realize this difference on their own. Granted, if they aren't able to catch this on their own, do nudge them in the right direction. 
+\item To keep track of the accumulated sum we need to create a variable that we update every time we see a new element. 
+\item Make sure to emphasize the distinction between \lstinline{for item in lst} and \lstinline{for i in range(len(lst))}.
+  \begin{itemize}
+    \item We need \lstinline{i} in order to mutate the list. Why does using \lstinline{for item in lst} not work when mutating? (Answer: because we're using a copy of the element, not modifying the original list).
+    \item Perhaps allow your students to first make the mistake of using the former, so that they may realize this difference on their own. Granted, if they aren't able to catch this on their own, do nudge them in the right direction. 
+  \end{itemize} 
 \item Why do we need a conditional in the for loop? What do we do when we have a nested list?
 \begin{enumerate}
-\item Integers:  For integers we just add the value to the ongoing sum and then mutate the current index of the list to be the cumulative sum
+\item Integers: For integers we just add the value to the ongoing sum and then mutate the current index of the list to be the cumulative sum
 \item Lists: We need to break down the list and get the values, both so that we can update them and so that we can add it into our sum.  However, we don’t know how many levels of nesting we have in our list
 \begin{itemize} 
 \item We could have something like \lstinline{[1, [2, [3]]]}, so we need a function that will sum up the 
 values from a potentially nested list.  Do we have a function that does this?
 \item \textbf{Emphasize the recursive leap of faith when calling accumulate on the inner list}
+\item Remind students that they can use \lstinline{isinstance} to check if an element is a list.
 \end{itemize}
 \end{enumerate}
 \item We return the accumulated sum of the list which includes all values, even the nested ones because of the recursive call.
