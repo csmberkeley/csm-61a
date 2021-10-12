@@ -1,0 +1,45 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{10}
+\title{\textsc{Efficiency, and Midterm Review}}
+\date{October 25, 2021 - October 29, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+    \textbf{Recommended Timeline for Non-NPE Sections}
+    \begin{itemize}
+        \item Efficiency Lecture - 5 min
+        \item Efficiency Problems - 5 min
+        \item Midterm Review (gauge what topics students want to brush up on and do those problems) - 40 min
+        \item Also can use this time to finish problems from past worksheets!
+    \end{itemize}
+\end{guide}
+
+\section{Efficiency}
+\subimport{../../topics/growth/text/}{oog_overview.tex}
+\begin{questions}
+    \subimport{../../topics/growth/easy/}{jumpstart.tex}
+    \subimport{../../topics/growth/easy/}{belgian-waffle.tex}
+\end{questions}
+
+\newpage
+\section{Midterm Review}
+\begin{questions}
+    \subimport{../../topics/lists/mutable/medium/}{incredibles.tex}
+    \subimport{../../topics/recursion/medium/}{subsets.tex}
+    \newpage
+    \subimport{../../topics/generators/medium/}{num-elems.tex}
+    \newpage
+    \subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
+    \subimport{../../topics/trees/class/hard/}{contains-n.tex}
+\end{questions}
+
+\end{document}
