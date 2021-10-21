@@ -1,0 +1,27 @@
+\begin{blocksection}
+    \question We are given a sentence, and we want to find all the words that end with ing! Given a string sentence, we want to extract all words that end with ing.
+    
+    \begin{lstlisting}
+    import re
+    def extract_ing(sentence):
+        """
+        Given a string sentence, finds all words that end with "ing". For the purpose of this function, words can only have word characters.
+        >>> extract_ing("Extracting single word") # single does not end with "ing"
+        ['Extracting']
+        >>> extract_ing("cool wording!")
+        ['wording']
+        >>> extract_ing("thising, ising,exciting...")
+        ['thising', 'ising', 'exciting']
+        >>> extract_ing("sad-dening")
+        ['dening']
+        """
+        return re.findall(r"________", sentence)
+    \end{lstlisting}
+    
+    \begin{solution}[2in]
+        \begin{lstlisting}
+            r'\b(\w+ing)\b'
+        \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
