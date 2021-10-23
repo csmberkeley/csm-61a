@@ -32,7 +32,7 @@ def num_elems(lst):
 def num_elems(lst):
     count = 0
     for elem in lst:
-        if type(elem) is list:
+        if isinstance(elem, list):
             for c in num_elems(elem):
                 yield c
             count += c

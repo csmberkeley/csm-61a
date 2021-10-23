@@ -21,7 +21,7 @@ def f(n):
       print(n)
       n /= 2
 \end{lstlisting}
-An example of a quadratic runtime involves nested for loops. If you increment the value of \lstinline{n} by only 1, an additional \lstinline{n} amount of work is being done, since the inner for loop will run one more time. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
+An example of a quadratic runtime involves nested for loops. For every one of the \lstinline{n} iterations of the outer loop, there is \lstinline{n} work done in the inner loop. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
 \begin{lstlisting}
 def f(n):
    for i in range(n):
