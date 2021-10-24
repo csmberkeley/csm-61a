@@ -70,9 +70,17 @@ x
     \item Boolean checks
         \begin{itemize}
         \item \lstinline{=} only works for integers/numbers
-        \item \lstinline{eq?} is analogous to \lstinline{is}
-        \item \lstinline{equal?} is analogous to \lstinline{==}
-        \item \lstinline{null?} checks if something is nil
+        \item \lstinline{eq?} is analogous to Python's \lstinline{is} (\textit{may} not work for numbers)
+        \item \lstinline{eqv?} is a combination of Python's \lstinline{==} and \lstinline{is}
+        \begin{itemize}
+            \item For numbers, empty lists, booleans and symbols, it functions as \lstinline{==}
+            \item For everything else (like pairs/lists), it functions as \lstinline{is}
+        \end{itemize}
+        \item \lstinline{equal?} is analogous to Python's \lstinline{==}
+        \begin{itemize}
+            \item It is also \lstinline{eqv?} with deep equality for lists
+        \end{itemize}
+        \item \lstinline{null?} checks if something is \lstinline{}
         \end{itemize}
 \end{itemize}
 \end{guide}
