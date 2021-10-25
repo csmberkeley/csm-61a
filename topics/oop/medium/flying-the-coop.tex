@@ -89,26 +89,47 @@ noot
     \item \lstinline{andre.speak(Bird("coo"))}
 \end{itemize}
 The \lstinline{Bird} object is created and immediately passed in as the parameter for \lstinline{Bird}. Even though we don't assign it to a variable, the object still exists and has all the features of a \lstinline{Bird} object.
+\end{blocksection}
+\end{solution}
+
 \begin{guide}
+\begin{blocksection}
 This might be difficult to conceptualize to students, so stop to make sure students understand how this works, since this same create-and-use method will be used often in midterm / exam level environment diagram questions.
+\end{blocksection}
 \end{guide}
 
+\begin{solution}
+\begin{blocksection}
 \begin{itemize}
     \item \lstinline{andre.speak()}
 \end{itemize}
 Python expects two parameters but in this case we are only assigning \lstinline{self}.
+\end{blocksection}
+\end{solution}
+
 \begin{guide}
+\begin{blocksection}
 It might be good to emphasize to students that this is how regular functions work as well. We have to pass in the correct amount of values.
+\end{blocksection}
 \end{guide}
 
+\begin{solution}
+\begin{blocksection}
 \begin{itemize}
     \item \lstinline{gunter.fly()}
 \end{itemize}
 Note that the \lstinline{Penguin} class will use the constructor for the \lstinline{Bird} class, which sets \lstinline{gunter.can_fly} for the particular instance.
+\end{blocksection}
+\end{solution}
+
 \begin{guide}
+\begin{blocksection}
 Step slowly through this part to emphasize how the \lstinline{Penguin} class variable differs from the \lstinline{gunter} instance variable for \lstinline{can_fly}.
+\end{blocksection}
 \end{guide}
 
+\begin{solution}
+\begin{blocksection}
 \begin{itemize}
     \item \lstinline{andre.speak(gunter)}
 \end{itemize}
@@ -118,9 +139,12 @@ This question is really similar to the first one, but instead of \lstinline{Bird
     \item \lstinline{Bird.speak(gunter)}
 \end{itemize}
 \lstinline{Bird.speak} looks within the \lstinline{Bird} class to find the speak method. 
-\begin{guide}
-    Some students may think that \lstinline{Bird} is passed in for \lstinline{self}. This is not the case because \lstinline{Bird} is not an instance; it’s a class.
-\end{guide}
-
 \end{blocksection}
 \end{solution}
+
+\begin{guide}
+\begin{blocksection}
+    Some students may think that \lstinline{Bird} is passed in for \lstinline{self}. This is not the case because \lstinline{Bird} is not an instance; it’s a class.
+    \end{blocksection}
+\end{guide}
+
