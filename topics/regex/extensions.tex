@@ -9,11 +9,11 @@ def extensions(s):
     """
     Given a space-separated string of filenames with their extensions, finds all extensions.
     Assume that filenames can only have word characters and no spaces in them.
-    >>> endings("vol1.txt vol2.txt vol3.jpg") # Last . not kept in output
+    >>> extensions("vol1.txt vol2.txt vol3.jpg") # Last . not kept in output
     [('vol1', 'txt'), ('vol2', 'txt'), ('vol3', 'jpg')]
-    >>> endings("my_diary.abc.txt")
+    >>> extensions("my_diary.abc.txt")
     [('my_diary.abc', 'txt')]
-    >>> endings("my_diary my_diary2.def .file") # If a filename has no extension or vice-versa, ignore it.
+    >>> extensions("my_diary my_diary2.def .file") # If a filename has no extension or vice-versa, ignore it.
     [('my_diary2', 'def')]
     """
     return re.findall(r"____", s)
@@ -25,3 +25,14 @@ def extensions(s):
     \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+    \begin{itemize}
+        \item Clarify the use of \lstinline$'+'$ over \lstinline$'*'$ to match at least one word character - in particular, \lstinline$'*'$ can also match the absence of the preceding character / group.
+        \item The second example is a good demonstration of the greedy nature of regex. Explain how the regex disregards ".abc" as a file extension and matches all the way to ".txt".
+        \item As with other regex problems, it is helfpul to visually match the components of the regex to the parts of an example string that they match. With the last doctest, highlight what portions are missing that prevent ".file" and "my\_diary" from being matched.
+    \end{itemize}
+\end{blocksection}
+\end{guide}
