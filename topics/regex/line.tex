@@ -5,13 +5,13 @@
 import re
 def linear_functions(eq_str):
     """
-    Given the equation in the form of 'mx + b', returns a tuple of m and b values.
+    Given the equation in the form of 'mx+b', returns a list containing a tuple of m and b values.
     >>> linear_functions("1x+0")
     [('1', '0')]
     >>> linear_functions("100y+44")
     [('100', '44')]
-    >>> linear_functions("99.9z+23")
-    [('99.9', '23')]
+    >>> linear_functions("99.9z+.23")
+    [('99.9', '.23')]
     >>> linear_functions("55t+0.4")
     [('55', '0.4')]
     """
@@ -20,7 +20,7 @@ def linear_functions(eq_str):
 
 \begin{solution}[2in]
     \begin{lstlisting}
-        r'(\d*\.?\d+)\w\+?(\d*\.?\d+)'
+        r"(\d*\.?\d+)[a-zA-Z]\+(\d*\.?\d+)"
     \end{lstlisting}
 \end{solution}
 \end{blocksection}

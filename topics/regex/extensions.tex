@@ -1,13 +1,14 @@
 \begin{blocksection}
 \question We are given a space-separated string of filenames with their extensions. Return all the file extensions.
-Assume that filenames and extensions can only have word characters and no spaces in them; if a filename has no extension or an extension no filename,
-ignore it.
+Assume that filenames and extensions can only have word characters, including the . character, and no spaces in them; if a filename has no extension or an extension no filename,
+ignore it. In addition, filenames are required to start with a word character, not a period.
 
 \begin{lstlisting}
 import re
 def extensions(s):
     """
     Given a space-separated string of filenames with their extensions, finds all extensions.
+    Returns a list of the filenames as tuples of the name and file extension type.
     Assume that filenames can only have word characters and no spaces in them.
     >>> extensions("vol1.txt vol2.txt vol3.jpg") # Last . not kept in output
     [('vol1', 'txt'), ('vol2', 'txt'), ('vol3', 'jpg')]
@@ -21,7 +22,7 @@ def extensions(s):
 
 \begin{solution}[2in]
     \begin{lstlisting}
-        r'\b([\w\.]+)\.(\w+)\b'
+        r"\b(\w[\w\.]+)\.(\w+)\b"
     \end{lstlisting}
 \end{solution}
 \end{blocksection}

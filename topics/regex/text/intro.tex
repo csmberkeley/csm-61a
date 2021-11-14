@@ -1,15 +1,15 @@
 Regular expressions help you match "patterns" to strings. We use the \lstinline{re} module.
-For example, the \lstinline{re.find()} function tells you if a certain "pattern" matches a certain string.
+For example, the \lstinline{re.match()} function returns a Match object, which can tell you if a certain "pattern" matches a certain string.
 
 \begin{lstlisting}
 >>> import re
->>> re.find(r"Hello", "Hello World")
+>>> bool(re.match(r"Hello", "Hello World"))
 True
->>> re.find(r"Bye", "Hello World")
+>>> bool(re.match(r"Bye", "Hello World"))
 False
 \end{lstlisting}
 
-We use the raw string syntax to specify a pattern because
+We use the raw string syntax, r"regex",to specify a pattern because
 it stops any backslash characters from being interpreted as special characters such as newlines.
 
 \begin{lstlisting}
@@ -23,7 +23,7 @@ my\nstring
 There are many components to a pattern.
 
 \textbf{Character Classes:}
-Character classes allow you to specify what characters your pattern matches.
+Character classes are one of the ways we can specify what characters your pattern matches.
 For each example, we match characters from the string, "Hello World! Today is 10/15/2021".
 Boxed characters are matched.
 
@@ -33,11 +33,11 @@ Boxed characters are matched.
     Character class & Description & Example \\ \hline
     \lstinline$[oa]$ & A singular o or singular a & "Hell\tboxed{o} W\tboxed{o}rld! T\tboxed{o}d\tboxed{a}y is 10/15/2021" \\ \hline
     \lstinline$[0-9]$, \lstinline$\d$ & Any digit & "Hello World! Today is \tboxed{1}\tboxed{0}/\tboxed{1}\tboxed{5}/\tboxed{2}\tboxed{0}\tboxed{2}\tboxed{1}" \\ \hline
-    \lstinline$[^a-z]$ & Anything except a lowercase letter & "\tboxed{H}ello\tphan{I}\tboxed{W}orld!\tphan{I}\tboxed{T}oday\tphan{I}is\tphan{I}\tboxed{1}\tboxed{0}\tboxed{/}\tboxed{1}\tboxed{5}\tboxed{/}\tboxed{2}\tboxed{0}\tboxed{2}\tboxed{1}" \\ \hline
-    \lstinline$\s$ & Any whitespace & "Hello World!\tphan{I}Today\tphan{I}is\tphan{I}10/15/2021" \\ \hline
-    \lstinline$[a-zA-z0-9_]$, \lstinline$\w$ & Any letter, digit, or underscore & \tboxed{Hello} \tboxed{World}! \tboxed{Today} \tboxed{is} \tboxed{10}\tboxed{/}\tboxed{15}\tboxed{/}\tboxed{2021} \\ \hline
-    \lstinline$\b$ & Word boundary & \tphan{]}Hello\tphan{]} \tphan{]}World!\tphan{]} \tphan{]}Today\tphan{]} \tphan{]}is\tphan{]} \tphan{]}10\tphan{]}/\tphan{]}15\tphan{]}/\tphan{]}2021\tphan{]}\\ \hline
+    \lstinline$[^a-z]$ & Anything except a lowercase letter & "\tboxed{H}ello\tphan{I}\tboxed{W}orld\tboxed{!}\tphan{I}\tboxed{T}oday\tphan{I}is\tphan{I}\tboxed{1}\tboxed{0}\tboxed{/}\tboxed{1}\tboxed{5}\tboxed{/}\tboxed{2}\tboxed{0}\tboxed{2}\tboxed{1}" \\ \hline
+    \lstinline$\s$ & Any whitespace & "Hello\tphan{I}World!\tphan{I}Today\tphan{I}is\tphan{I}10/15/2021" \\ \hline
+    \lstinline$[a-zA-z0-9_]$, \lstinline$\w$ & Any letter, digit, or underscore & \tboxed{Hello} \tboxed{World}! \tboxed{Today} \tboxed{is} \tboxed{10}/\tboxed{15}/\tboxed{2021} \\ \hline
     \lstinline$.$ & Anything except newline & \tboxed{Hello World! Today is 10/15/2021} \\ \hline
+    \lstinline$\b$ & Word boundary (this is an anchor class!) & \tphan{]}Hello\tphan{]} \tphan{]}World!\tphan{]} \tphan{]}Today\tphan{]} \tphan{]}is\tphan{]} \tphan{]}10\tphan{]}/\tphan{]}15\tphan{]}/\tphan{]}2021\tphan{]}\\ \hline
 \end{tabular}
 \end{figure}
 We can combine character classes in the following two ways.

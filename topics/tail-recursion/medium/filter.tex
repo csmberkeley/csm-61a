@@ -1,6 +1,6 @@
 \begin{blocksection}
 
-\question Implement \texttt{filter}, which takes in a one-argument function \texttt{f} and
+\question Implement \texttt{filter-lst}, which takes in a one-argument function \texttt{f} and
 a list \texttt{lst}, and returns a new list containing only the elements in \texttt{lst}
 for which \texttt{f} returns true. Your function must be tail recursive.
 \newline
@@ -9,10 +9,10 @@ new list containing the elements of the first list followed by the elements of t
 
 \begin{lstlisting}
 ;Doctests
-scm> (filter (lambda (x) (> x 2)) '(1 2 3 4 5))
+scm> (filter-lst (lambda (x) (> x 2)) '(1 2 3 4 5))
 (3 4 5)
 
-(define (filter f lst)
+(define (filter-lst f lst)
 
 
 
@@ -28,7 +28,7 @@ scm> (filter (lambda (x) (> x 2)) '(1 2 3 4 5))
 
 \begin{solution}[0.5in]
 \begin{lstlisting}
-(define (filter f lst)
+(define (filter-lst f lst)
   (define (filter-tail lst so-far)
      (cond ((null? lst) so-far)
            ((f (car lst)) (filter-tail (cdr lst)
