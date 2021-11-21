@@ -1,0 +1,75 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{}
+\title{\textsc{BNF, SQL Intro and Aggregation}}
+\date{November 29, 2021 - December 3, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{blocksection}
+  \begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+      \item BNF - 20 mins
+      \item SQL Intro - 10 mins
+      \item SQL Questions - 20 mins
+    \end{itemize}
+  \end{guide}
+\end{blocksection}
+
+\begin{blocksection}
+  \begin{guide}
+    \textbf{Recommended NPE Timeline}
+    \begin{itemize}
+      \item Section 1
+            \begin{itemize}
+              \item BNF
+              \item SQL Intro
+            \end{itemize}
+      \item Section 2
+            \begin{itemize}
+              \item SQL Intro (continued)
+              \item SQL Questions
+            \end{itemize}
+    \end{itemize}
+  \end{guide}
+\end{blocksection}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{BNF}
+\subimport{../../topics/bnf/text/}{intro.tex}
+
+\begin{questions}
+  \subimport{../../topics/bnf/easy/}{grades.tex}
+\end{questions}
+
+\newpage
+\section{SQL}
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
+
+\begin{questions}
+  \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+  \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+  \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+  \subimport{../../topics/sql/fish/medium/}{competitor.tex}
+\end{questions}
+\newpage
+
+\subimport{../../topics/sql/outfits/}{text.tex}
+\subimport{../../topics/sql/outfits/tables/}{grades.tex}
+\subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+
+\begin{questions}
+  \subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
+  \subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+\end{questions}
+
+\end{document}

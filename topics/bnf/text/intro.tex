@@ -1,0 +1,63 @@
+BNF (Backus-Naur Form) is a way to describe context-free grammar, and often used for describing syntax of programming languages. While it is similar to regular expressions, it is more powerful.
+
+\textbf{Symbols}
+
+There are two types of symbols:
+\begin{enumerate}
+  \item Terminal symbols are strings (inside double quotes) or regular expressions (inside forward slashes). In Lark (the Python library used in 61A), these are always uppercase
+  \item Non-terminal symbols expand into other non-terminal or terminal symbols
+\end{enumerate}
+
+\textbf{Rules}
+
+The following the example will match strings that describe a room on campus. It consists of two terminal symbols (\lstinline{DIGIT} and \lstinline{LETTER}) and three non-terminal symbols (\lstinline{room}, \lstinline{number} and \lstinline{string}).
+\begin{lstlisting}
+  ?start: room
+  room: string " " number
+  number: DIGIT | DIGIT number
+  string: LETTER | LETTER string
+  DIGIT: /\d/
+  LETTER: /[A-Za-z]/
+\end{lstlisting}
+The \lstinline{?start} symbol describes the whole expression that is being parsed. In this case, we're parsing a room. The previous set of rules will match the following strings:
+\begin{lstlisting}
+  Wheeler 150
+  WHEELER 150
+  Soda 277
+  soda 277
+\end{lstlisting}
+However, it will not match the following strings:
+\begin{lstlisting}
+  Wheeler
+  Wheeler Auditorium
+  150 Wheeler
+\end{lstlisting}
+
+\textbf{EBNF Shorthand Notation}
+
+EBNF provides us with some shorthand notations to specify how many symbols to match, similar to regular expressions
+\begin{enumerate}
+  \item \lstinline{item*}: zero or more items (BNF equivalent: \lstinline{items: | items item})
+  \item \lstinline{item+}: one or more items (BNF equivalent: \lstinline{items: item | items item})
+  \item \lstinline{item?} or \lstinline{[item]}: zero or one items (BNF equivalent: \lstinline{items: | item})
+\end{enumerate}
+
+With these shorthand notations, we can rewrite the rules above as follows
+\begin{lstlisting}
+  ?start: room
+  room: LETTER+ " " DIGIT+
+  DIGIT: /\d/
+  LETTER: /[A-Za-z]/
+\end{lstlisting}
+
+
+\begin{guide}
+  \begin{blocksection}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+      \item BNF is supported in \lstinline{code.cs61a.org}, it can be used to do a live demonstration! It also prints out a nice diagram whenever it attempts to match a string. 
+      \item CSM 61A \href{https://docs.google.com/presentation/d/1keFq3PT0mqvt-rbvGVhBMlwlNf6khhgUELL4wZCHRyA/edit?usp=sharing}{BNF Slides}
+      \item CSM 61A \href{https://berkeley.zoom.us/rec/share/f3mT6LPTH-_aL1EUg782aL-ekcf7VP4bkWR3OjtGlwEH75WAPpzyraYdgb2t5eDa.fitGMZt2--fKl86v?startTime=1636413684000}{BNF Lecture}
+    \end{itemize}
+  \end{blocksection}
+\end{guide}
