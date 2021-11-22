@@ -12,3 +12,13 @@ SELECT SUM(score), class
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Remind students that the '\lstinline{HAVING}' clause is used to filter out groups (you cannot use \lstinline{WHERE} on the groups).
+    \item Remind students that aggregation works on each group individually; this means we want to \lstinline{GROUP BY} the things we want to \lstinline{SUM} over.
+\end{itemize}
+\end{blocksection}
+\end{guide}
