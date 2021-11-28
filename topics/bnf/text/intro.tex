@@ -4,13 +4,13 @@ BNF (Backus-Naur Form) is a way to describe context-free grammar, and often used
 
 There are two types of symbols:
 \begin{enumerate}
-  \item Terminal symbols are strings (inside double quotes) or regular expressions (inside forward slashes). In Lark (the Python library used in 61A), these are always uppercase
-  \item Non-terminal symbols expand into other non-terminal or terminal symbols
+  \item Terminal symbols are strings (inside double quotes) or regular expressions (inside forward slashes). In Lark (the Python library used in 61A), these are always uppercase.
+  \item Non-terminal symbols expand into other non-terminal or terminal symbols.
 \end{enumerate}
 
 \textbf{Rules}
 
-The following the example will match strings that describe a room on campus. It consists of two terminal symbols (\lstinline{DIGIT} and \lstinline{LETTER}) and three non-terminal symbols (\lstinline{room}, \lstinline{number} and \lstinline{string}).
+The following example will match strings that describe a room on campus. It consists of two terminal symbols (\lstinline{DIGIT} and \lstinline{LETTER}) and three non-terminal symbols (\lstinline{room}, \lstinline{number}, and \lstinline{string}).
 \begin{lstlisting}
   ?start: room
   room: string " " number
