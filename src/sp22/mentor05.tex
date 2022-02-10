@@ -1,0 +1,52 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{\textsc{Exceptions, Tree Recursion}}
+\date{February 14, 2022 to February 18, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+  	\item Exceptions Intro - 5 min
+        \item \lstinline{list-sum} - 8 min
+  	\item Finish problems from last week - 15 mins
+  	\item \lstinline{positionizer} - 12 min
+  	\item \lstinline{subsets} - 10 min
+  	\item \lstinline{num-nums} - 8 min
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Exceptions}
+\subimport{../../topics/exceptions/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/exceptions/easy/}{list-sum.tex}
+\end{questions}
+
+\pagebreak
+
+\section{Tree Recursion}
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{positionizer.tex}
+\subimport{../../topics/recursion/medium/}{subsets.tex}
+\subimport{../../topics/recursion/medium/}{num-nums.tex}
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
