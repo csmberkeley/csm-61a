@@ -1,0 +1,82 @@
+\begin{blocksection}
+  \question
+  The following is a \lstinline{grades} table, containing four columns:
+
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      \textbf{Semester} & \textbf{Year} & \textbf{Class} & \textbf{Score} \\
+      \hline
+      Fall & 2021 & Music 70 & 88 \\
+      \hline
+      Spring & 2021 & Math 1A & 72 \\
+      \hline
+      Spring & 2021 & Compsci 188 & 81 \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  We want a BNF grammar that can handle basic SQL queries on our \lstinline{grades} table. It only has to support \lstinline{SELECT} statements as well as \lstinline{FROM} and \lstinline{ORDER BY} clauses. 
+  
+  Here are some example queries it should handle:
+  \begin{lstlisting}
+    SELECT Semester FROM grades
+    SELECT Semester, Year FROM grades ORDER BY Semester ASC
+    SELECT * FROM grades ORDER BY Semester ASC, Year DESC
+  \end{lstlisting}
+
+  Write a BNF grammar that can handle SQL queries on this table.
+
+  \ifprintanswers\else
+  \begin{lstlisting}
+    ?start: query
+    query: ________ ________ ________?
+    select: "SELECT " (________ | ________)
+    from: " FROM grades"
+    orderby: " ORDER BY " __________
+
+    orderby_columns: ______________ | ______________ ", " ______________
+    orderby_column: ________ " " (________ | ________)
+
+    columns: ________ | ________ ", " ________
+    COLUMN: "Semester" | "Year" | "Class" | "Score"
+  \end{lstlisting}
+  \fi
+  
+  \begin{solution}[1.5in]
+  \begin{lstlisting}
+    ?start: query
+    query: select from orderby?
+    
+    select: "SELECT " (columns | "*")
+    from: " FROM grades"
+    orderby: " ORDER BY " orderby_columns
+
+    orderby_columns: orderby_column | orderby_columns ", " orderby_column
+    orderby_column: COLUMN " " ("ASC" | "DESC")
+
+    columns: COLUMN | columns ", " COLUMN
+    COLUMN: "Semester" | "Year" | "Class" | "Score"
+  \end{lstlisting}
+  \end{solution}
+\end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+  \item Start off with the helper symbols
+  \begin{itemize}
+    \item \lstinline{orderby_columns}: One or more \lstinline{orderby_column}, with a \lstinline{,} in between
+    \item \lstinline{columns}: One or more \lstinline{COLUMN}, with a \lstinline{,} in between
+    \item If students are confused regarding how to implement the idea of "one or more columns", refer them to the introduction on the previous page!
+    \item Remind students that ? can be used for things that are optional (zero or one of them).
+  \end{itemize}
+  \item Asks students to consider each part of the SQL clause one at a time
+  \begin{itemize}
+    \item \lstinline{SELECT}: must handle both column names, multiple columns, and \lstinline{*}
+    \item \lstinline{ORDER BY}: must be able to handle multiple column names, and what symbol can help us with that? How can we handle the fact that it's optional?
+  \end{itemize}
+\end{itemize}
+\end{blocksection}
+\end{guide}

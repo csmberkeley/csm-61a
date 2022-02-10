@@ -13,7 +13,6 @@ CREATE TABLE numbers AS
     SELECT "UCPD", 5106426760 UNION
     SELECT "Foothill Mailroom", 5106429703;
 \end{lstlisting}
-\newpage
 
 \textbf{Filtering}
 
@@ -42,3 +41,15 @@ We can perform aggregation and filtering at the same time using a query with the
     \item \texttt{GROUP BY} aggregates the table by combining all rows with the same value into one group. Properties of this group can then be accessed using COUNT, MIN, MAX, SUM, etc.
     \item \texttt{HAVING} is similar to WHERE, except it performs filtering on aggregate functions rather than the columns themselves. For example, if we want all groups that have less than 5 entries in them, we could filter using \texttt{HAVING COUNT(*) < 5}.
 \end{enumerate}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item \lstinline{code.cs61a.org} has an interactive SQL terminal that lets you see visually the rows you extract from a given query.
+    \item To help understand aggregation, presenting a simple example of why this may be useful can help. For example, take a table where each row is the result of a game,
+    where it's a 1 if team A won and a 0 if team B won. Then, aggregation can be used to pick, for example,
+    all teams with at least 7 wins.
+\end{itemize}
+\end{blocksection}
+\end{guide}

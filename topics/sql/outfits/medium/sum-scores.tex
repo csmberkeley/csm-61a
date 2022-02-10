@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question 
-You want to find out which classes you need to prepare for the most by determining how many points you have so far. However, you only want to do so for classes where you did relatively poorly
+You want to find out which classes you need to prepare for the most by determining how many points you have so far. However, you only want to do so for classes where you did relatively poorly.
 
 Write a query that will output the sum of your midterm scores for each class along with the corresponding class, but only for classes in which you scored less than 80 points on at least one midterm. List the output from highest to lowest total score.
 
@@ -12,3 +12,13 @@ SELECT SUM(score), class
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Remind students that the '\lstinline{HAVING}' clause is used to filter out groups (you cannot use \lstinline{WHERE} on the groups).
+    \item Remind students that aggregation works on each group individually; this means we want to \lstinline{GROUP BY} the things we want to \lstinline{SUM} over.
+\end{itemize}
+\end{blocksection}
+\end{guide}
