@@ -47,9 +47,10 @@ is even, divide by two. Else, multiply by 3 and add 1.
 )
 \end{lstlisting}
 \end{blocksection}
-\begin{blocksection}
 
-\begin{solution}[.1in]
+% Fix spacing for new page
+\begin{solution}[-32pt]
+\begin{blocksection}
 \begin{lstlisting}
 (define (hailstone seed n)
     (if (= n 0)
@@ -62,14 +63,14 @@ is even, divide by two. Else, multiply by 3 and add 1.
           (+ 1 (* seed 3))
           (- n 1)))))
 \end{lstlisting}
-\end{solution}
 \end{blocksection}
+\end{solution}
 
 
 \begin{guide}
 \begin{blocksection}
 \textbf{Teaching Tips}
-\newline
+
 Python version:
 \begin{lstlisting}
 def hailstone(seed, n):

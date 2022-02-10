@@ -12,6 +12,9 @@ Takes in an arbitrary number of elements/arguments, and constructs a list where 
 \textbf{Syntax:} \lstinline{'(<elem1> <elem2> ...)} \\
 Also takes in an arbitrary number of elements and construct a list out of the elements, but the arguments are not evaluated.
 \end{itemize}
+Example:
+\lstinline{(cons 1 (cons 2 (cons 3 nil)))} = \lstinline{(list 1 2 3)} = \lstinline{'(1 2 3)}
+\includegraphics[scale=0.6]{scheme_list}
 
 \textbf{Ways to access list items:}
 \begin{itemize}
@@ -47,7 +50,6 @@ Gets you the \lstinline{cdr} of the \lstinline{cdr}
   \end{itemize}
   \item The \href{https://code.cs61a.org/}{61A Scheme Web interpreter} is \textbf{very useful} for visualizing lists!
   \item If you choose to give a mini-lecture on Scheme list syntax, try using each keyword in an example instead of just talking about them!
-  \item \lstinline{(cons 1 (cons 2 (cons 3 nil)))} = \lstinline{(list 1 2 3)} = \lstinline{'(1 2 3)}
 \end{itemize}
 \end{blocksection}
 \end{guide}

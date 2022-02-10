@@ -1,0 +1,67 @@
+\begin{blocksection}
+Let's use OOP design to help us create a supermarket chain (think Costco)! There are many different ways to implement such a system, so there is no concrete answer.
+\question What classes should we consider having? How should each of these classes interact with each other?
+\begin{solution}[1.5in] 
+There are many ways of approaching this, but one way is to have a Supermarket class to represent the entire store, an Item class to represent a certain item, a Food class to represent an item that is a food (inherits from Item), and maybe a Customer class to represent someone buying items from that store.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question For each class, what instance and class variables would it have?
+\begin{solution}[1.5in]
+\begin{enumerate}[1.]
+\item Supermarket -- we might have instance variables such as profit, store name, location, and a list of the items in that store along with their quantity. Note that we prefer to store the quantity inside the Supermarket, since an Item might belong to multiple Supermarkets, and each Supermarket will have a separate quantity. We might even have a price associated with each item, since 
+specific supermarkets may mark up prices in different areas.
+\item Item -- we might have instance variables such as the name and the base price.
+\item Food -- we will have it inherit of all the instance variables of the Item, and also whether it is yummy, maybe the food group it is in or the expiration date.
+\item Customer -- we might have some personal information, the supermarket that they're buying from, and the history of their
+\item There are some details that have been missed as well! For example, not just food items expire. Feel free to just discuss this.
+\end{enumerate}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question For each class, what class methods would they have? How would they interact with each other?
+\begin{solution}[1.5in]
+\begin{enumerate}[1.]
+\item Once again, these are just suggestions:
+\item Supermarket
+\begin{itemize}
+    \setlength\itemsep{-0.25em}
+    \item \lstinline{check_quantity(Item)}: looks up the available quantity of that item
+    \item \lstinline{checkout_items(Customer)}: returns the total sum of items in a customer's shopping cart, and clears their shopping cart
+\end{itemize}
+\item Item
+\begin{itemize}
+    \item \lstinline{check_quantity(Supermarket)}: calls \lstinline{supermarket.check_quantity(self)}
+\end{itemize}
+\item Food
+\begin{itemize}
+    \setlength\itemsep{-0.5em}
+    \item \lstinline{time_to_expire()}: returns an integer representing how many days before this item expires
+    \item \lstinline{is_yummy()}: returns a boolean value of whether this item is yummy or not!
+\end{itemize}
+\item Customer
+\begin{itemize}
+    \item \lstinline{enter(Supermarket)}: create a shopping cart for customer in this supermarket, if it doesn't already exist
+    \item \lstinline{leave(Supermarket)}: clear customer's shopping cart
+    \item \lstinline{buy_item(Item)}: add item to customer's shopping cart
+    \item \lstinline{checkout_items()}: calls \lstinline{supermarket.checkout_items(Customer)}
+\end{itemize}
+\end{enumerate}
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item There are many ways of designing these classes, so as long as the design is well thought out, that's all that matters. Because of this, this should be more of a discussion rather than a concrete answer.
+    \item To guide the discussion, perhaps start with function/class headers of what functions/classes we would like to implement.
+    \item The purpose of this question is to get students to consider what components (classes) there are in this situation, along with the interactions between various interactions and relations between each class. For example, Items are pretty general, and so maybe there is a Food class that inherits from an Item.
+    \item Remind students to think about the assumptions that they are making when designing their classes, and whether those assumptions are valid. If they aren't, how should the class be changed?
+    \item When thinking about the class methods, think about what each method should be able to handle. For example, \lstinline{buy_item} of a Customer should be able to handle buying both Items and Food. Since Food inherits from Item, \lstinline{buy_item} should generally only use methods from the Item class (since using a Food-exclusive method might cause an error if an Item is bought)
+\end{itemize}
+\end{guide}
+\end{blocksection}
