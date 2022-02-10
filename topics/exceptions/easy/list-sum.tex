@@ -1,0 +1,71 @@
+\begin{blocksection}
+\question \lstinline{list_sum} is a function that adds up the elements of a list and returns the sum. However, we have mixed types in our list! Write \lstinline{list_sum} such that rather than using any \lstinline{if} or \lstinline{for} statements, it uses exceptions to catch these errors.
+
+\end{blocksection}
+
+\ifprintanswers\else
+\begin{lstlisting}
+def list_sum(lst):
+    """
+    >>> list_sum([1, 2, 3, 4, 5])
+    15
+    >>> list_sum([1, "2", 3, "4", 5])
+    9
+    >>> list_sum(["1", "2", 3, 4, 5])
+    12
+    """
+    i = 0
+    total = 0
+    while True:
+        try:
+            ____________
+        except ____________:
+            return ____________
+        except ____________:
+            ____________
+            continue
+        i += 1
+\end{lstlisting}
+\fi
+
+\begin{solution}
+\begin{blocksection}
+\begin{lstlisting}
+def list_sum(lst):
+    """
+    >>> list_sum([1, 2, 3, 4, 5])
+    15
+    >>> list_sum([1, "2", 3, "4", 5])
+    9
+    >>> list_sum(["1", "2", 3, 4, 5])
+    12
+    """
+    i = 0
+    total = 0
+    while True:
+        try:
+            total = total + lst[i]
+        except IndexError:
+            return total
+        except TypeError:
+            i += 1
+            continue
+        i += 1
+\end{lstlisting}
+\end{blocksection}
+\end{solution}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Write out a version with exception handling and ask students what type of errors will be raised:
+    \begin{itemize}
+        \item Not allowing \lstinline{if} statements: checking for \lstinline{TypeError} allows us to determine when we have a non-integer value.
+        \item Not allowing \lstinline{for} statements: checking for \lstinline{IndexError} allow us to determine when we've reached the end of a list (and are going out of bounds). 
+    \end{itemize}
+    \item Remind students on how to use \lstinline{try} and \lstinline{except} statements, as well as how to catch only a specific type of error. 
+    
+\end{itemize}
+\end{blocksection}
+\end{guide}

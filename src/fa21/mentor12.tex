@@ -1,0 +1,68 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{\textsc{Tail Recursion, Scheme, Regular Expressions}}
+\date{November 8, 2021 to November 12, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+  	\item Exceptions Intro - 5 min
+        \item \lstinline{list-sum} - 8 min
+  	\item Interpreters Intro (10-15 min): Consider walking through these problems
+        \item \lstinline{decay} - 10 minutes
+        \begin{itemize}
+            \item Skip this in favor of the challenge problem if your students are comfortable with Scheme
+        \end{itemize}
+        \item \lstinline{reverse} - 12 minutes
+        \item \lstinline{max-depth} (Challenge) - 15 minutes
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Exceptions}
+\subimport{../../topics/exceptions/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/exceptions/easy/}{list-sum.tex}
+\end{questions}
+
+\newpage
+\section{Interpreters}
+\subimport{../../topics/interpreters/text/}{intro-text.tex}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+\subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\newpage
+\section{Scheme}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{decay.tex}
+\newpage
+\subimport{../../topics/scheme/medium/}{reverse.tex}
+\end{questions}
+
+\section{Scheme Challenge}
+\begin{questions}
+\subimport{../../topics/scheme/challenge/}{max-depth.tex}
+\end{questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
