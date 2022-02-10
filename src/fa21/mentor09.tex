@@ -1,0 +1,67 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{9}
+\title{\textsc{Representation, Linked Lists, Mutable Trees}}
+\date{October 18 - October 22, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+\textbf{Recommended Timeline}
+\newline
+There are three big topics on this worksheet: representation, linked lists and mutable trees. There are plenty of problems,
+so poll your students about which topic to dive into; if no consensus, maybe present a little bit from each topic as time permits.
+    \begin{itemize}
+        \item Representation
+            \item Representation Mini Lecture - 8 min
+            \item Representation WWPD - 10 min (No need to cover all of it)
+        \item Linked Lists
+            \item Linked Lists Lecture - 10 min
+            \item WWPD - 10 min
+            \item Skip - 5 min
+            \item Skip (no mutate) - 10 min
+            \item Has Cycle - 10 min
+        \item Mutable Tree
+            \item Mutable Trees Mini Lecture - 5 min
+            \item Tree Sum - 5 min
+            \item Delete Path Duplicates - 10 min
+    \end{itemize}
+\vspace{.5cm}
+\end{guide}
+
+\section{Representation}
+\begin{questions}
+\subimport{../../topics/oop/text/}{representation_overview.tex}
+\subimport{../../topics/oop/medium/}{musician.tex}
+\end{questions}
+
+\newpage
+\section{Linked Lists}
+\subimport{../../topics/linked-lists/class/text/}{linked_list_overview.tex}
+\subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+\begin{questions}
+\subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+\subimport{../../topics/linked-lists/class/easy/}{skip.tex}
+\subimport{../../topics/linked-lists/class/easy/}{skip-no-mutate.tex}
+\subimport{../../topics/linked-lists/class/medium/}{has-cycle.tex}
+\end{questions}
+
+\newpage
+\section{Mutable Trees}
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\subimport{../../topics/trees/class/text/}{adt_vs_class_overview.tex}
+\vspace{\baselineskip}
+\begin{questions}
+\subimport{../../topics/trees/class/easy/}{tree-sum.tex}
+\newpage
+\subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
+\end{questions}
+
+\end{document}

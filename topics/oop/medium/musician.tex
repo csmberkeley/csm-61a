@@ -132,3 +132,21 @@ When prompting for \lstinline{ellington}’s value, we return the representation
 \end{solution}
 
 \end{blocksection}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+       \item For the error, it's important to make sure your students realize that BandLeader overrides Musician's \lstinline{perform} function, and therefore a function call without the correct number of parameters in the new function will not work.
+       \item Clarify to students the difference between \lstinline{__str__} and \lstinline{__repr__}, especially that \lstinline{print} implicitly calls \lstinline{__str__} and \lstinline{__repr__}.
+       \begin{itemize}
+            \item Another nuance to this which may confuse students is the \lstinline{__repr__} method in BandLeader, which calls \lstinline{str} on all Musicians in the band. Since the Musician class does not have a defined \lstinline{__str__} method, it defaults to the defined \lstinline{__repr__} method.
+       \end{itemize}
+       \item The main challenge with this problem is distinctly identifying the class and instance variables and modifying both separately.
+       \begin{itemize}
+            \item In particular, every Musician begins with a class variable \lstinline{popularity}. However, after the first call to \lstinline{perform}, a new instance variable \lstinline{self.popularity} is created, which begins with the value \lstinline{Musician.popularity} + 2.
+            \item After this first call to a Musician's \lstinline{perform}, successive calls will increment the respective instance variable by 2.
+            \item Calling a BandLeader's \lstinline{perform} function will increment the class variable \lstinline{Musician.popularity}, which will raise the starting popularities of any new Musicians after their initial performances.
+            \item Ensure that students understand the interplay between the \lstinline{popularity} class and instance variable.
+       \end{itemize}
+     \end{itemize}
+ \end{guide}
