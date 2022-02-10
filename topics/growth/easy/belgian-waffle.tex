@@ -19,14 +19,16 @@ Logarithmic. Notice that with each pass through the while loop, the value of \ls
        \item Try to draw out a diagram for this problem:
        \begin{itemize}
             \item We can tally up how many times the "while" loop runs. 
-            \item For belgian\_waffle(4):
+            \item For belgian\_waffle(16):
             \begin{itemize}
-                \item Before running while loop: n = 4, total = 0. Runs = 0.
-                \item During first iteration: n = 3, total = 1. Runs = 1.
-                \item During second iteration: n = 2, total = 2. Runs = 2.
-                \item During third iteration: n = 1, total = 3. Runs = 3.
-                \item During fourth iteration: n = 0, total = 4. Runs = 4.
+                \item Before running while loop: \lstinline{n} = 16, total = 0. Runs = 0.
+                \item During first iteration: \lstinline{n} = 8, total = 1. Runs = 1.
+                \item During second iteration: \lstinline{n} = 4, total = 2. Runs = 2.
+                \item During third iteration: \lstinline{n} = 2, total = 3. Runs = 3.
+                \item During fourth iteration: \lstinline{n} = 1, total = 4. Runs = 4.
+                \item During fifth iteration: \lstinline{n} = 0, total = 5. Runs = 5.
             \end{itemize}
+            \item Note that $16 = 2^4 = 2^{5 - 1}$ and we are halving \lstinline{n} every time. How many times can you halve \lstinline{n}? \lstinline{log(n)} times.
        \end{itemize}
     \end{itemize}
  \end{guide}

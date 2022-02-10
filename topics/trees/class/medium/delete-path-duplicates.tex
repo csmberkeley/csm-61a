@@ -54,10 +54,10 @@ def delete_path_duplicates(t):
     \textbf{Teaching Tips}
     \begin{itemize}
        \item To clarify, the problem is asking to delete \textit{path} duplicates, and not \textit{tree} duplicates.
-       As illustrated in the last doctest, it is acceptible to keep two identical labels if they appear on different branches. 
+       As illustrated in the last doctest, it is acceptable to keep two identical labels if they appear on different branches. 
        \item Draw out the doctest Tree and walk through how you would delete path duplicates by hand. Then, ask your students, "how would we write this in code?"
        \item Recap with your students the core properties for trees such as label and branches.
-       \item We don't need to use the is\_leaf() function because our for loop will not run if there are no branches (which only occurs if the tree is a leaf).
+       \item We don't need to use the is\_leaf() function because our for loop will not run if there are no branches (which only occurs if the tree is a leaf). But, you can write in this base case to start with.
        \item Make sure to point out the reason why we can't use \texttt{seen\_so\_far.append(t.label)} in the else case. 
        (The reason is that we need to create a new list in each frame, rather than mutating the same one. If append is used,
        \texttt{seen\_so\_far} would contain everything seen in the tree so far, not just the current branch.)

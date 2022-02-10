@@ -42,11 +42,11 @@ def contains_n(elem, n, t):
     elif t.is_leaf():
         return n == 1 and t.label == elem
     elif t.label == elem:
-        return True in [contains_n(elem, n - 1, b) for b in     
-          t.branches]
+        return any([contains_n(elem, n - 1, b) for b in     
+          t.branches])
     else:
-        return True in [contains_n(elem, n, b) for b in 
-          t.branches]
+        return any([contains_n(elem, n, b) for b in 
+          t.branches])
 \end{lstlisting}
 \textbf{Base cases}: The simplest case we have is when \lstinline{n == 0}, or when we want at least 0 instances of \lstinline{elem} in \lstinline{t}. In this case, we always return \lstinline{True}. The other simple case we consider is when the tree is only a leaf — there is nothing left to recurse on. In that case, we simply check to see that both \lstinline{n == 1} and that \lstinline{t.label == elem}, meaning that we have one element left to satisfy, and the leaf label satisfies the final element we are looking for. If we have more elements to search for (ie. n > 1), then we will not satisfy that many elements at the leaf node; conversely, if we have fewer (ie. \lstinline{n == 0}), then the case would already be covered by the first base case.
 
@@ -57,9 +57,11 @@ def contains_n(elem, n, t):
 \begin{guide}
     \textbf{Teaching Tips}
     \begin{itemize}
-       \item Draw out the doctest Tree and walk through how you would delete path duplicates by hand. Then, ask your students, "how would we write this in code?"
-       \item Recap tree functions "is\_leaf", "branches", and "label" if need be.
-       \item Walk through the three main questions we ask when doing recursion: "what are our base cases?", "how can we reduce to our simplest case?", "how can we solve the smaller problem? (aka recursive leap of faith)"
+        \item To understand what the function is doing, try walking through a test case on \lstinline{t2}.
+        \item Ask students if there are any more base cases (lot of \lstinline{elif} statements).
+        \item If we are at some node with label \lstinline{elem}, what does this mean about the amount of instances of \lstinline{elem} we have yet to search for?
+        \item Where could we find more instances of \lstinline{elem}? The branches; so we should recurse on them.
+        \item Remind students about the \lstinline{any} and \lstinline{all} functions for dealing with lists of booleans.
     \end{itemize}
  \end{guide}
 

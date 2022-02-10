@@ -14,14 +14,14 @@ def f(n):
       print(n)
       n -= 1
 \end{lstlisting}
-We can modify this while loop to get an example of logarithmic OOG. Suppose that, instead of subtracting 1 each time, we halve the size of \lstinline{n}. For \lstinline{n = 1000}, the program would take 10 iterations to terminate (since $2^10 = 1024$). The runtime is propotional to $\log($\lstinline{n}$)$.
+We can modify this while loop to get an example of logarithmic OOG. Suppose that, instead of subtracting 1 each time, we halve the size of \lstinline{n}. For \lstinline{n = 1000}, the program would take 10 iterations to terminate (since $2^{10} = 1024$). The runtime is propotional to $\log($\lstinline{n}$)$.
 \begin{lstlisting}
 def f(n):
    while n > 0:
       print(n)
-      n /= 2
+      n //= 2
 \end{lstlisting}
-An example of a quadratic runtime involves nested for loops. If you increment the value of \lstinline{n} by only 1, an additional \lstinline{n} amount of work is being done, since the inner for loop will run one more time. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
+An example of a quadratic runtime involves nested for loops. For every one of the \lstinline{n} iterations of the outer loop, there is \lstinline{n} work done in the inner loop. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
 \begin{lstlisting}
 def f(n):
    for i in range(n):
@@ -32,10 +32,10 @@ def f(n):
 \begin{guide}
    \textbf{Teaching Tips}
    \begin{itemize}
-      \item Try visualizing how orders of growth works for each orders of growth.
+      \item Try visualizing how orders of growth works for each orders of growth (Tables work especially well for quadratic).
       \begin{itemize}
       \item You can walk through each of the examples above and tally up the amount of times the program runs. 
-      \item For example, in the second f(n), we would jot down thefor f(6):
+      \item For example, in the second f(n), we would jot down that for f(6):
       \begin{itemize}
          \item Before while: n = 6. Runs: 0.
          \item During first iteration: n = 5. Runs: 1.
