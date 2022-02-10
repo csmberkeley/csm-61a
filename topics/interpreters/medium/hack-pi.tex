@@ -16,6 +16,8 @@ hack
 
 \begin{solution}
 3 \lstinline$scheme_eval$, 0 \lstinline$scheme_apply$
+\newline
+Evals: (1) on the first line, (2) on 3.14, and (3) on the second line.
 \end{solution}
 
 \part \begin{lstlisting}
@@ -25,6 +27,10 @@ pwned
 
 \begin{solution}
 9 \lstinline$scheme_eval$, 2 \lstinline$scheme_apply$
+\newline
+Evals: (1) The entire expression, (2) hack, (3) 3.14, (4) hack's entire cond expression, (5) (= x pi), (6-8) =/x/pi, (9) 'pwned
+\newline
+Apply: (1) hack in (hack 3.14), (2) = in (= x pi)
 \end{solution}
 
 \part \begin{lstlisting}
@@ -37,3 +43,15 @@ pwned
 \end{solution}
 \end{parts}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+	\begin{itemize}
+		\item For part (a), it is important that students realize the two forms of the \lstinline{define} special form have different evaluation forms. Defining a variable involves two calls to \lstinline$scheme_eval$ since it evaluates the last argument, whereas defining a function involves only one call to \lstinline$scheme_eval$, since none of the arguments are evaluated.
+		\item Give students the opportunity to work on part (b) on their own first. Counting the calls to \lstinline$scheme_eval$ and \lstinline$scheme_apply$ is a fairly mechanical process that students will best develop by attempting on their own, and this example is small enough that it is manageable for students to attempt it.
+		\item Ideally, you should give students time to work through part (c) on their own first. However, if there isn't much time left, it is fine to walk through this problem. The main unique aspect of this problem to emphasize is the evaluation of the operator, as this is an instance of evaluating an operator that isn't just a symbol or a built-in, but a lambda function.
+	\end{itemize}
+\end{blocksection}
+\end{guide}
+		

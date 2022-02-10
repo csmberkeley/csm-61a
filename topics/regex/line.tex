@@ -5,13 +5,13 @@
 import re
 def linear_functions(eq_str):
     """
-    Given the equation in the form of 'mx + b', returns a tuple of m and b values.
+    Given the equation in the form of 'mx+b', returns a list containing a tuple of m and b values.
     >>> linear_functions("1x+0")
     [('1', '0')]
     >>> linear_functions("100y+44")
     [('100', '44')]
-    >>> linear_functions("99.9z+23")
-    [('99.9', '23')]
+    >>> linear_functions("99.9z+.23")
+    [('99.9', '.23')]
     >>> linear_functions("55t+0.4")
     [('55', '0.4')]
     """
@@ -20,7 +20,23 @@ def linear_functions(eq_str):
 
 \begin{solution}[2in]
     \begin{lstlisting}
-        r'(\d*\.?\d+)\w\+?(\d*\.?\d+)'
+        r"(\d*\.?\d+)[a-zA-Z]\+(\d*\.?\d+)"
     \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+    \begin{itemize}
+        \item Students will probably not be entirely familiar with how \lstinline{re.findall} works, especially how it returns tuples with with multiple capture groups. It would be good to go over this behavior first before giving students time to work on the problem.
+        \item The solution utilizes both special characters \lstinline$'.'$ and \lstinline$'+'$ as ordinary text characters. This may be initally confusing - emphasize how the backslash escapes these special characters.
+        \begin{itemize}
+            \item \lstinline$'+'$ is used both as an ordinary character and as a special Regex character. Clarify how the two are distinct to students.
+        \end{itemize}
+        \item With any regex problem, it helps to map what parts of the regex correspond to components in an example string. Make sure to walk through one of the examples with decimal values, and draw out what components of the regex match corresponding parts of the string.
+        \item Emphasize the reasoning behind the choice of each quantifier, and why specifically that quantifier is required in that situation. This is particularly important to develop a grasp on when to use \lstinline$'*'$ versus \lstinline$'+'$.
+    \end{itemize}
+\end{blocksection}
+\end{guide}
+    
