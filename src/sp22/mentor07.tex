@@ -1,0 +1,48 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Object Oriented Programming}}
+\date{February 28 - March 4, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+        \begin{itemize}
+            \item OOP Mini Lecture - 7 minutes
+            \item Star Wars - 5 minutes
+            \item Build a Bear - 5 minutes
+            \item Ping-Pong - 12 minutes
+            \item Inheritance Mini Lecture - 5 minutes
+            \item Hoop - 8 minutes
+            \item Team Baller - 5 minutes
+        \end{itemize}
+\end{guide}
+
+\section{OOP}
+\subimport{../../topics/oop/text/}{oop_overview.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/oop/easy/}{star-wars.tex}
+\newpage
+\subimport{../../topics/oop/medium/}{build-a-bear-su21.tex}
+\subimport{../../topics/oop/medium/}{pingpong-su21.tex}
+\end{questions}
+
+\newpage
+\section{Inheritance}
+\subimport{../../topics/oop/text/}{inheritance_overview.tex}
+\begin{questions}
+\subimport{../../topics/oop/easy/wwpd/}{hoop-su21.tex}
+\subimport{../../topics/oop/easy/}{team-baller-fa21.tex}
+\end{questions}
+
+\end{document}
