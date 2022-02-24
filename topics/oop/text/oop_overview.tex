@@ -1,3 +1,10 @@
+\textbf{Class and Objects} \\
+Classes in Python are the blueprint to build objects, which are instances of a class. We can generalize classes and objects to things we see everyday. For example, a car model can be a class, and a specific car can be an object of the \lstinline{Car} class. This follows our description above, as the model of the car provides descriptions for all cars of that model, while a specific car is an instance of it. There can be multiple instances of the same class (just like how there can be multiple cars of the same model). Each instance is called an object.
+
+\textbf{Attributes and Methods} \\
+Objects and classes can have attributes, which are descriptors of the object or the class. For example, a \lstinline{Car} class might have a class attribute named \lstinline{wheels}, describing how many wheels the car has. Similarly, a \lstinline{Car} object might have an instance attribute named \lstinline{gas}, describing how much gas this specific car has. Class attributes are the same for all instances of the class, while instance attributes are unique to each instance. Objects and classes can also have methods, which can be thought of as "actions". For example, a \lstinline{Car} object can have a \lstinline{drive} method, which decreases the \lstinline{gas} stored in the car.
+
+The following is an example of a \lstinline{Car} class:
 \begin{lstlisting}
 class Car:
     wheels = 4
@@ -7,7 +14,10 @@ class Car:
     def drive(self):
         self.gas -= 10
         print("Current gas level:", self.gas)
+\end{lstlisting}
 
+We can create an instance of \lstinline{Car} as follows:
+\begin{lstlisting}
 my_car = Car()
 \end{lstlisting}
 
@@ -18,18 +28,18 @@ Dot notation with an instance before the dot automatically supplies the first ar
 Current gas level: 90
 \end{lstlisting}
 \hfill \break
-We don’t have to explicitly pass in a parameter for the \lstinline{self} argument of the \lstinline{drive} method as the instance to the left of the dot (the \lstinline{my_car} object of the \lstinline{Car} class) is automatically passed into the first parameter of the method by Python. So, what is \lstinline{self}? By convention, we name the first argument of any method in any class "self" so the \lstinline{self} you see as the arguments in all the methods will refer to the object that called this method. Note that Python does not enforce this, so you could name the first parameter anything you wanted; but it is best practice to name it \lstinline{self}. \\\\
+We don’t have to explicitly pass in a parameter for the \lstinline{self} argument of the \lstinline{drive} method as the instance to the left of the dot (the \lstinline{my_car} object of the \lstinline{Car} class) is automatically passed into the first parameter of the method by Python. So, what is \lstinline{self}? By convention, we name the first argument of any method in any class "self" so the \lstinline{self} you see as the arguments in all the methods will refer to the object that called this method. Note that Python does not enforce this, so you could name the first parameter anything you wanted; but it is best practice to name it \lstinline{self}.
 
 There is another way of calling a method:
 \begin{lstlisting}
 >>> Car.drive(my_car)
 Current gas level: 80
 \end{lstlisting}
-In this case, the thing to the left of the dot is a class itself and not an instance of a class so Python will not automatically use the item on the left as the first argument of the method. Therefore, we have to explicitly pass in an object for \lstinline{self} which is why we wrote \lstinline{my_car} in the parentheses as the argument to \lstinline{self}. \\
-\\
+In this case, the thing to the left of the dot is a class itself and not an instance of a class so Python will not automatically use the item on the left as the first argument of the method. Therefore, we have to explicitly pass in an object for \lstinline{self} which is why we wrote \lstinline{my_car} in the parentheses as the argument to \lstinline{self}.
+
 \textbf{The \lstinline{__init__} Method} \\
-The \lstinline{__init__} method of a class, which we call the constructor, is a special method that creates a new instance of that class. In our code above, \lstinline{Car()} makes a new instance of the Car class because Python automatically calls the \lstinline{__init__} method when it sees a "call" to that class (the class name followed by parentheses that can contain arguments if the \lstinline{__init__} method takes in arguments). If the \lstinline{__init__} method takes in only the \lstinline{self} argument, nothing needs to be passed in to the constructor. \\
-\\
-\textbf{Instance Attributes and Class Attributes} \\
+The \lstinline{__init__} method of a class, which we call the constructor, is a special method that creates a new instance of that class. In our code above, \lstinline{Car()} makes a new instance of the Car class because Python automatically calls the \lstinline{__init__} method when it sees a "call" to that class (the class name followed by parentheses that can contain arguments if the \lstinline{__init__} method takes in arguments). If the \lstinline{__init__} method takes in only the \lstinline{self} argument, nothing needs to be passed in to the constructor.
+
+\textbf{Instance Attributes vs. Class Attributes} \\
 In the example above, the \textbf{class attribute} \lstinline{wheels} is shared by all instances of the Car class; while \lstinline{gas} is an \textbf{instance attribute} that’s specific to the instance \lstinline{my_car}.
-In this case, \lstinline{my_car.wheels} and \lstinline{Car.wheels} both return the value 4. The reason is that the order for looking up an attribute is: instance attributes \lstinline{->} class attributes/methods \lstinline{->} parent class attributes/methods. \\
+In this case, \lstinline{my_car.wheels} and \lstinline{Car.wheels} both return the value 4. The reason is that the order for looking up an attribute is: instance attributes \lstinline{->} class attributes/methods \lstinline{->} parent class attributes/methods.
