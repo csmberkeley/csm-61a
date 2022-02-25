@@ -1,0 +1,3 @@
+../published/disc/mentor00.pdf: src/sp22/../../topics/control/easy/divisible-by-4.tex src/sp22/../../topics/basics/funky-funcs.tex src/sp22/../../topics/basics/potpurri.tex src/sp22/../../topics/control/medium/find-max.tex src/sp22/../../topics/control/medium/leap-year.tex
+
+../published/disc/mentor00_sol.pdf: src/sp22/../../topics/control/easy/divisible-by-4.tex src/sp22/../../topics/basics/funky-funcs.tex src/sp22/../../topics/basics/potpurri.tex src/sp22/../../topics/control/medium/find-max.tex src/sp22/../../topics/control/medium/leap-year.tex
