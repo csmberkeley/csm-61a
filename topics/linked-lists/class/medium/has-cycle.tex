@@ -22,6 +22,14 @@ def has_cycle(s):
 
 \begin{solution}
 \begin{lstlisting}
+    seen_before = []
+    while s is not Link.empty:
+        if s in seen_before:
+            return True 
+        seen_before.append(s)
+    return False
+
+    # Alternative solution - less intuitive but more efficient
     if s is Link.empty:
         return False
     slow, fast = s, s.rest
@@ -34,7 +42,9 @@ def has_cycle(s):
     return False
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{guide}
     \textbf{Teaching Tips}
     \begin{itemize}
@@ -44,5 +54,4 @@ def has_cycle(s):
        \item If the slow pointer catches up to the fast pointer, we know a cycle must have occured because the slow pointer should never pass the fast pointer in a non-cycle list.
     \end{itemize}
  \end{guide}
-
 \end{blocksection}
