@@ -1,0 +1,98 @@
+\textbf{Magic Methods}
+
+There's so much more to magic methods than meets the eye. These functions constantly work behind scenes to make object oriented programming easier. Unfortunately, the official Python documentation is sparse and confusing, so much of this is borrowed from \href{https://rszalski.github.io/magicmethods/}{this blog post}.
+
+Let's start with one you're already familiar with, \lstinline{__init__}. Consider the \lstinline{Book} class below.
+
+\begin{lstlisting}
+class Book:
+	def __init__(self, title):
+		self.title = title
+\end{lstlisting}
+
+We know that \lstinline{Book("Dr. Suess")} somehow calls \lstinline{__init__} with the supplied \lstinline{title} argument, but where does \lstinline{self} come from? In fact, when instantiating a new object, the \textit{first} method that gets called is \lstinline{__new__} which returns an instance of the object (the \lstinline{self}) and \textit{then} calls \lstinline{__init__}. This makes it useful for \href{https://www.python.org/download/releases/2.2/descrintro/#__new__}{subclassing immutable types} like strings and numbers. 
+
+If \lstinline{__new__} is the constructor, \lstinline{__del__} is the destructor. It handles the process for "cleaning up" and object. Suppose we want to remove a \lstinline{Book} from our database. We might need to delete some files as well, in which case we may need to override \lstinline{__del__} and implement a custom delete procedure. The process is called \textbf{garbage collection}, which is an \href{https://devguide.python.org/garbage_collector/}{interesting topic} in its own right.
+
+Next, let's consider comparisons. We're familiar with numeric comparisons like \lstinline{6 > 4}, and maybe some other ones too, like \lstinline{"cat" \leq "dog"} (alphabetical ordering). But suppose we wanted to compare two \lstinline{Book}s to see which one was longer. Here, we can use magic to methods to specify behavior for comparisons, each of which compares the \lstinline{self} to some \lstinline{other} object:
+
+\begin{lstlisting}
+class Book:
+	def __init__(self, title, pages=0):
+		self.title = title
+		self.pages = pages
+	def __eq__(self, other):
+		return self.pages == other.pages
+	def __ne__(self, other):
+		return self.pages != other.pages
+	def __lt__(self, other):
+		return self.pages < other.pages
+	def __gt__(self, other):
+		return self.pages > other.pages
+	def __le__(self, other):
+		return self.pages <= other.pages
+	def __ge__(self, other):
+		return self.pages >= other.pages
+\end{lstlisting}
+
+Other numeric operations are also implement this way. For example, we've seen before how to use \lstinline{+} for numbers, strings, and lists. But we're only able to specify behaviors for \lstinline{+}, \lstinline{-}, \lstinline{*}, and so on through their corresponding magic methods: \lstinline{__add__}, \lstinline{__sub__}, \lstinline{__mul__}, and so on. And so we could support "adding" two books together by combining titles and pages:
+
+\begin{lstlisting}
+class Book:
+	def __init__(self, title, pages=0):
+		self.title = title
+		self.pages = pages
+	def __add__(self, other):
+		return Book(self.title += " and " + other.title, self.pages + other.pages)
+\end{lstlisting}
+
+Other binary operators include \lstinline{__floordiv__} ( \lstinline{//}),  \lstinline{__div__} ( \lstinline{/}),  \lstinline{__mod__} ( \lstinline{%}),  \lstinline{__pow__} ( \lstinline{**}), and more. Likewise, magic methods also implement the logic for unary operators like \lstinline{__abs__} (\lstinline{abs}), conversions like \lstinline{__int__} (\lstinline{int}), and representations like \lstinline{__str__} (\lstinline{str}).
+
+At this point, you might be wondering about the \lstinline{+=} we used earlier. Does it also use \lstinline{__add__}? No, as it turns out. These methods are called \textbf{augmented assignments}, and they use a similar set of magic methods, except they are prepended with an "i" (so \lstinline{__iadd__} instead of \lstinline{__add__}). They also don't have a \lstinline{return} statement, instead mutating the object itself.
+
+\begin{lstlisting}
+class Book:
+	def __init__(self, title, pages=0):
+		self.title = title
+		self.pages = pages
+	def __iadd__(self, other):
+		self.title += " " + other.title
+		self.pages += other.pages
+\end{lstlisting}
+
+Let's use this knowledge to revisit an old puzzle. Recall that when concatenating two lists \lstinline{l1 = [1, 2, 3]} and \lstinline{l2 = [4, 5, 6]}, using \lstinline{l1 += l2} is mutative/destructive while using \lstinline{l1 = l1 + l2} creates a new list. The reason is that the \lstinline{list} class' \lstinline{__add__} and \lstinline{__addi__} functions are implemented differently, so that the former is non-mutative and the latter is mutative. Now it makes sense! — \lstinline{+} and \lstinline{+=} are not the same.
+
+A final word on magic methods and containers. Have you ever stopped to think how \lstinline{l1[1]} "gets" the second element of \lstinline{l1}? Or how Python knows that \lstinline{1 in l1}? Here's how magic methods implement each of these operations:
+
+\begin{itemize}
+	\item \lstinline{__getitem__} and \lstinline{__setitem__} control what happens when an item is accessed or assigned, e.g. in \lstinline{l1[1] = 2}.
+	\item \lstinline{__len__} returns the count of items.
+	\item \lstinline{__contains__} defines behavior for membership testing.
+	\item \lstinline{__iter__} returns an iterator, which is used in \lstinline{for} loops.
+\end{itemize}
+
+So if we wanted our \lstinline{Book} to be a container of "pages" of text, we could have:
+
+\begin{lstlisting}
+class Book:
+	def __init__(self, title, pages={}):
+		self.title = title
+		self.pages = pages
+	def __getitem__(self, key):
+		return self.pages[key]
+	def __setitem__(key, value):
+		self.pages[key] = value
+	def __contains__(self, item):
+		return item in self.pages
+	def __len__(self):
+		return len(pages)
+	def __iter__(self):
+		return iter(pages)
+\end{lstlisting}
+
+Other cool magic method topics you should check out include:
+\begin{itemize}
+	\item The \lstinline{with} keyword, and the associated \lstinline{__enter__} and 	\lstinline{__exit__} methods, for \href{https://alysivji.github.io/managing-resources-with-context-managers-pythonic.html}{context management}.
+	\item The \lstinline{__copy__} and \lstinline{__deepcopy__} methods, the latter of which also copies the data of the object.
+	\item The \lstinline{__call__} method, which makes an object \href{https://medium.com/swlh/callables-in-python-how-to-make-custom-instance-objects-callable-too-516d6eaf0c8d}{callable}, behaving a function.
+\end{itemize}
