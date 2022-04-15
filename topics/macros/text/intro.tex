@@ -1,4 +1,4 @@
-\textbf{Macros Overview} Whereas normal Scheme evaluation entails evaluating the operator, then evaluating the operands, before finally applying the operator on operands, macros evaluation involves three steps:
+Whereas normal Scheme evaluation entails evaluating the operator, then evaluating the operands, before finally applying the operator on operands, macros evaluation involves three steps:
 
 \begin{enumerate}[1.]
 \item Evaluate the operator
@@ -9,12 +9,10 @@
 Because the body is evaluated without evaluating the operands at first, macros are powerful and allow us to do more than scheme procedures, like implementing new special forms, control the order of evaluation, and more. 
 
 Below is a simple example of a macro. Note that even though we pass in \texttt{(print 'hello)} as an operands, we don't evaluate the expression and print right away. Instead we first evaluate the body of the macro procedure, and afterwards we evaluate the expression produced by the macro. 
-\vspace{1cm}
 \begin{lstlisting}
 (define-macro (twice expr)
     (list 'begin expr expr)
 )
-
 scm> (twice (print 'hello))
 hello
 hello

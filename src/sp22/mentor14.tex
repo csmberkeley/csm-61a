@@ -1,0 +1,52 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{14}
+\title{\textsc{Regex and Extra Scheme Practice}}
+\date{April 18 - April 22, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    We have included some Scheme practice questions at the end, since the worksheet
+    is shorter than usual because macros is an optional topic this semester.
+
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Regex Intro - 10 minutes
+        \item Line - 8 minutes
+        \item Ending - 8 minutes
+        \item Extensions - 10 minutes
+        \item Skip list (Scheme lists) - 15 minutes
+        \item Slice (tail recursion) - 10 minutes
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+\section{Regular Expressions}
+\subimport{../../topics/regex/text/}{intro.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/regex/}{line.tex}
+\subimport{../../topics/regex/}{ending.tex}
+\subimport{../../topics/regex/}{extensions.tex}
+\end{questions}
+
+\newpage
+\section{Extra Scheme Practice}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{skip-list.tex}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\end{questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

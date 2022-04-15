@@ -73,8 +73,8 @@ new list containing the elements of the two lists concatenated together.
 \end{lstlisting}
 \end{blocksection}
 
-\begin{blocksection}
 \begin{solution}
+\begin{blocksection}
 \begin{lstlisting}
 (define (slice lst i j)
   (define (slice-tail lst i j lst-so-far)
@@ -92,18 +92,17 @@ Alternate Solution:
                (else (slice-tail (cdr lst) (+ index 1) lst-so-far))))
   (if (< i j) (slice-tail lst 0 nil) nil))
 \end{lstlisting}
+\end{blocksection}
 \end{solution}
 
-\end{blocksection}
 
-
-\begin{blocksection}
 \begin{guide}
+\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
 	\item Walk through why the previous solution was not tail recursive.
 	\item Ask the students to consider how they can store and build the entire solution using the append function.
 	\item If time allows, show them the alternate solution.
 \end{itemize}
-\end{guide}
 \end{blocksection}
+\end{guide}

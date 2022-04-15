@@ -22,6 +22,7 @@ my\nstring
 
 There are many components to a pattern.
 
+\newpage
 \textbf{Character Classes:}
 Character classes are one of the ways we can specify what characters your pattern matches.
 For each example, we match characters from the string, "Hello World! Today is 10/15/2021".
@@ -45,33 +46,46 @@ We can combine character classes in the following two ways.
     \item \lstinline$[a-z]|[A-Z]$ matches a lowercase letter OR an uppercase letter
     \item \lstinline$[a-z][A-Z]$ mathces a lowercase letter AND then an uppercase letter
 \end{itemize}
-There are also two special characters: \textasciicircum (used outside of a character class) and \textdollar. These are called anchors and
-match the beginning and ends of strings respectively.
+There are also two special characters used outside of a character class: \textasciicircum and \textdollar. These are called anchors.
+\begin{figure}[h]
+\begin{tabular}{ | c | l | c |} \hline
+    Character & Description & Example \\ \hline
+    \textasciicircum & Matches the beginning of a string & \lstinline$^abc$ matches \tboxed{abc}defabcdef \\ \hline
+\textdollar & Matches the end of a string & \lstinline!abc$! matches abcdef\tboxed{abc} \\ \hline
+\end{tabular}
+\end{figure}
 
 \textbf{Quantifiers:}
 Quantifiers tell you how many of something you will match.
-\begin{itemize}
-    \item \lstinline$[a-z]+$ matches one or more lowercase letters
-    \item \lstinline$[0-9]*$ matches zero or more digits
-    \item \lstinline$[A-Z]?$ matches zero or one uppercase letters
-    \item \lstinline$a{1,3}$ matches 1, 2, or 3 a's
-    \item \lstinline$a{2,}$ matches 2 or more a's
-    \item \lstinline$a{,2}$ matches 0, 1, or 2 a's
-    \item \lstinline$a{2}$ matches exactly 2 a's
-\end{itemize}
+\begin{figure}[h]
+\begin{tabular}{| c | l | } \hline
+    Quantifier & Description \\ \hline
+    \lstinline$[a-z]+$ & Matches one or more lowercase letters \\ \hline
+    \lstinline$[0-9]*$ & Matches zero or more digits \\ \hline
+    \lstinline$[A-Z]?$ & Matches zero or one uppercase letters \\ \hline
+    \lstinline$a{1,3}$ & Matches 1, 2, or 3 a's \\ \hline
+    \lstinline$a{2,}$ & Matches 2 or more a's \\ \hline
+    \lstinline$a{,2}$ & Matches 0, 1, or 2 a's \\ \hline
+    \lstinline$a{2}$ & Matches exactly 2 a's \\ \hline
+\end{tabular}
+\end{figure}
 
+\newpage
 \textbf{Python Functions:}
 The Python \lstinline$re$ module has a lot of functions for matching patterns.
 
 \begin{lstlisting}
 import re
-ptn, stn = r"...", "..."     # ptn = pattern, stn = string
+ptn, stn = r"...", "..."    # ptn = pattern, stn = string
 # note: regex patterns use raw strings!
 re.search(ptn, stn)         # does `string` contain `pattern`?
-.group(idx)                 # `idx`th match of `pattern` in `string`
-re.fullmatch(ptn, stn)      # does all of `string` follow `pattern`?
+  .group(idx)               # `idx`th match of `pattern` in
+                            # `string`
+re.fullmatch(ptn, stn)      # does all of `string` follow
+                            # `pattern`?
 re.match(ptn, stn)          # does `string` start with `pattern`?
-re.finditer(ptn, stn)       # iter over `pattern` matches in `string`
+re.finditer(ptn, stn)       # iter over `pattern` matches in
+                            # `string`
 re.sub(ptn, "<nope>", stn)  # replace `pattern` with `"<nope>"`
 re.findall(ptn, stn)        # list of all matches of `pattern
 \end{lstlisting}

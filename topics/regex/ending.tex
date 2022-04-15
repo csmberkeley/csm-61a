@@ -1,5 +1,5 @@
 \begin{blocksection}
-    \question We are given a sentence, and we want to find all the words that end with ing! Given a string sentence, we want to extract all words that end with ing.
+    \question We are given a sentence, and we want to find all the words that end with ing! The word "ing" does not count a word ending with "ing". 
     
     \begin{lstlisting}
     import re
@@ -24,4 +24,14 @@
         \end{lstlisting}
     \end{solution}
     \end{blocksection}
+
+    \begin{guide}
+        \begin{blocksection}
+            \begin{itemize}
+                \item How can we find the edge of a word? (\lstinline{\b} matches a word boundary)
+                \item How can we make sure that the word \textit{ends} with "ing"? (put \lstinline{ing} right before \lstinline{\b})
+                \item How can we avoid matching "ing"? (use the \lstinline{+} quantifier to ensure that there is at least one character before "ing")
+            \end{itemize}
+        \end{blocksection}
+    \end{guide}
     

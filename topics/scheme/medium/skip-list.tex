@@ -20,7 +20,7 @@ scm> (skip-list '(1 (2 (3 4) 5) 6 (7) 8 9) odd?)
                     _______________________________________)
             )
 
-            ((pair? ________________________)
+            ((list? ________________________)
 
                 (__________________________________________))
             ((filter-fn (car lst))
@@ -45,7 +45,7 @@ scm> (skip-list '(1 (2 (3 4) 5) 6 (7) 8 9) odd?)
                 lst-so-far
                 (helper (car next) lst-so-far (cdr next)))
             )
-            ((pair? (car lst))
+            ((list? (car lst))
                 (helper (car lst)
                     lst-so-far
                     (cons (cdr lst) next)))
