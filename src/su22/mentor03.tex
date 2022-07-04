@@ -1,0 +1,52 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{3}
+\title{\textsc{Recursion and Tree Recursion}}
+\date{July 4 - July 6, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item Recursion Mini Lecture + Sanity Check - 5 minutes
+    \item wrong-factorial - 3 minutes
+    \item is\_sorted or collapse - collapse is the more difficult of the two. If students are still
+    struggling with recursion, come back to collapse at the end - 10-15 minutes
+    \item Tree Recursion Mini Lecture + Sanity Check - 5 minutes
+    \item mario-number - this is a really good problem for tree recursion - 15 minutes
+    \item discussions - the second part is very difficult [exam-level q] -  if time permits / feel free to skip
+\end{itemize}
+\end{guide}
+
+\section{Recursion}
+\subimport{../../topics/recursion/text/}{recursion_overview.tex}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{wrong-factorial.tex}
+    \pagebreak
+    \subimport{../../topics/recursion/medium/}{is-sorted-su21.tex}
+    % \pagebreak
+    \subimport{../../topics/recursion/medium/}{collapse.tex}
+\end{questions}
+
+\pagebreak
+
+\section{Tree Recursion}
+\subimport{../../topics/recursion/text/}{tree_recursion_overview_sp21.tex}
+\pagebreak
+\begin{questions}
+\subimport{../../topics/recursion/medium/}{mario-number.tex}
+\pagebreak
+\subimport{../../topics/recursion/medium/}{discussions1.tex}
+\pagebreak
+\subimport{../../topics/recursion/medium/}{discussions2.tex}
+\end{questions}
+
+\end{document}
