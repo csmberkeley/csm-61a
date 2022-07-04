@@ -1,0 +1,58 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{\textsc{Sequences}}
+\date{July 6 - July 8, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Lists Mini Lecture - 5 minutes
+        \item Lists WWPD - 7 minutes
+        \item Lists Environment Diagram - 8 minutes
+        \item All Primes or Duplicate List - 10 minutes
+        \item Comprehensions - 5 minutes, no need to do all subparts unless students want the practice
+        \item Dictionaries Mini Lecture + Count T - 10 minutes, there isn't a dictionaries intro but 
+        remind students of dictionary basics before introducing the problem
+        \item The Tree Recursion problem is there as extra practice outside of section. Feel free to go through it in section if your students feel more comfortable with lists
+        and would prefer some more tree recursion practice. - 10-15 minutes.
+    \end{itemize}
+\end{guide}
+
+\section{Lists}
+\subimport{../../topics/lists/immutable/text/}{list_overview.tex}
+\begin{questions}
+    \subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified.tex}
+    \subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+    \newpage % To give space for students to draw out the ED
+    \subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+    \subimport{../../topics/lists/immutable/medium/}{duplicate-list.tex}
+    \subimport{../../topics/lists/immutable/medium/}{comprehensions.tex}
+\end{questions}
+
+\newpage
+
+\section{Dictionaries}
+\begin{questions}
+    \subimport{../../topics/misc/dictionaries/}{count-t.tex}
+\end{questions}
+
+\newpage
+
+\section{Extra Practice: Tree Recursion}
+\begin{questions}
+    \subimport{../../topics/recursion/medium/}{max-subset-sum.tex}
+\end{questions}
+
+\end{document}
