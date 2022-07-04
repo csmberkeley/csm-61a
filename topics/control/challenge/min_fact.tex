@@ -28,7 +28,7 @@ def min_fact(n, margin):
     total, n = n, n - 1
     while total <= margin and n > 0:
         total, n = total * n, n - 1
-    if total < margin:
+    if total <= margin:
         return -1
     return total
 \end{lstlisting}
