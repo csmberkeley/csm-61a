@@ -33,7 +33,7 @@ def whole_sum(n):
     def check(x):
         total = 0
         while x > 0:
-            last = removed % 10
+            last = x % 10
             x = x // 10
             total += last
         return total == n

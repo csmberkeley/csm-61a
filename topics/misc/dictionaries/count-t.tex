@@ -1,0 +1,51 @@
+\begin{blocksection}
+\question Write a function \lstinline$count_t$, which takes in a dictionary \lstinline$dict$ and a string \lstinline$word$.
+The function should count the instances of the letter "t" in \lstinline$word$ and add a key-value pair to the dictionary.
+The key will be \lstinline$word$ and the value will be the number of "t"s in \lstinline$word$
+
+\begin{lstlisting}
+def count_t(d, word):
+    """
+    >>> words = {}
+    >>> count_t(words, "tatter")
+    >>> words["tatter"]
+    3
+    >>> count_t(words, "tree")
+    >>> words
+    {'tatter': 3, 'tree': 1}
+    """
+    _______________________________
+    
+    for ____________________________:
+
+        if ____________________________:
+
+            __________________________________
+
+    _______________________________
+
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+count = 0
+for c in word:
+    if c == 't':
+        count += 1
+d[word] = count
+\end{lstlisting}
+\end{solution}
+
+\begin{blocksection}
+    \begin{guide}
+    \textbf{Teaching Tips}
+    \begin{enumerate}
+            \item Remind students of the general structure of dictionaries (map keys to values)
+            \item to access the value of dictionary using key, the syntax is \lstinline$dictionary[key]$, which is also used for assignment
+    \end{enumerate}
+    \end{guide}
+\end{blocksection}
+
+\end{blocksection}
+    
+    
