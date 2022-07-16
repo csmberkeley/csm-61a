@@ -37,7 +37,7 @@
     \begin{lstlisting}
     def sum_range(lower, upper):
         def discussions(pmin, pmax):
-            if (pmin >= lower and pmin <= upper) or (pmax >= lower and pmax <= upper):
+            if (lower <= pmax and lower >= pmin) or (upper <= pmax and upper >= pmin):
                 return True
             elif pmin > upper:
                 return False
