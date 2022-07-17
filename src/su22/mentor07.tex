@@ -1,0 +1,71 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Trees and Linked Lists}}
+\date{July 23, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item Notes
+    \begin{itemize}
+        \item In past semesters, 61a introduced the tree data abstraction and then mutable trees 
+        (the Tree class) afterwards. Now, we're starting straight away with mutable trees so keep that in mind!
+        \item Even for students who have prior coding experience, trees and linked lists can be difficult concepts
+        to grasp. If your students were comfortable moving more quickly before, just be aware of how comfortable they are 
+        with these two topics.
+        \item This worksheet covers a lot of material but cover what you can!
+    \end{itemize}
+    \item Trees Review/Mini-Lecture - 5 min
+    \item Q1 Tree Sum: the remaining questions are a bit more difficult than this one so make sure students have
+    a solid understanding of trees (and this question) before moving on - 7 min
+    \item The next three tree questions are in increasing order of difficulty.
+    Q2 and Q3 both use helper functions to keep track of some additional information so I'd suggest choosing one of the two.
+    Q4 is a bit more challenging so feel free to skip it
+    \begin{itemize}
+        \item Q2 Delete Path Duplicates - 7 min
+        \item Q3 Replace Leaves Sum - 8 min
+        \item (If extra time and/or challenge needed): Q4 contains\_n - 10 min
+    \end{itemize}
+    \item Linked Lists Review/Mini-Lecture - 5 min
+    \item Q1 WWPD: drawing box and pointers here is really helpful for students to visualize linked lists! - 7 min
+    \item Q2 Skip - 6 min
+    \item Q3 Skip (no mutate) - 4 min: You may choose to >skip< this problem to spend more time on mutable trees (or, quickly walk through the solution so students are aware it exists).
+    \item Q4 Reverse - 10 min
+\end{itemize}
+\end{guide}
+
+\newpage
+\section{Trees}
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\subimport{../../topics/trees/class/text/}{class_overview.tex}
+\begin{questions}
+    \subimport{../../topics/trees/class/easy/}{tree-sum.tex}
+    \newpage
+    \subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
+    \subimport{../../topics/trees/class/medium/}{replace-leaves-sum.tex}
+    \subimport{../../topics/trees/class/hard/}{contains-n.tex}
+\end{questions}
+
+\section{Linked Lists}
+\subimport{../../topics/linked-lists/class/text/}{linked_list_overview.tex}
+\subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+\newpage
+\subimport{../../topics/linked-lists/class/easy/}{skip.tex}
+\subimport{../../topics/linked-lists/class/easy/}{skip-no-mutate.tex}
+\subimport{../../topics/linked-lists/class/medium/}{reverse.tex}
+\end{questions}
+
+\end{document}
