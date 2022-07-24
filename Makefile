@@ -1,8 +1,8 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
 
-RELEASED = mentor06
-SOLUTIONS = mentor06
+RELEASED = mentor07
+SOLUTIONS = mentor07
 
 DST = published
 SRC = src/su22
