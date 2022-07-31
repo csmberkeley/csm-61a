@@ -71,13 +71,13 @@ re.search(ptn, stn)         # does `string` contain `pattern`?
 .group(idx)                 # `idx`th match of `pattern` in `string`
 re.fullmatch(ptn, stn)      # does all of `string` follow `pattern`?
 re.match(ptn, stn)          # does `string` start with `pattern`?
-re.finditer(ptn, stn)       # iter over `pattern` matches in `string`
-re.sub(ptn, "<nope>", stn)  # replace `pattern` with `"<nope>"`
+% re.finditer(ptn, stn)       # iter over `pattern` matches in `string`
+% re.sub(ptn, "<nope>", stn)  # replace `pattern` with `"<nope>"`
 re.findall(ptn, stn)        # list of all matches of `pattern
 \end{lstlisting}
 
 \textbf{Groups:}
-Groups allow you to group quantifiers.
+Groups allow you to group character classes.
 \begin{lstlisting}
 >>> re.findall(r"ab{1,3}", "abab abb abbb aaab aabb")
 ['ab', 'ab', 'abb', 'abbb', 'ab', 'abb']

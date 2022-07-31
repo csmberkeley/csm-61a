@@ -43,6 +43,7 @@ def linear_functions(eq_str):
         \end{itemize}
         \item With any regex problem, it helps to map what parts of the regex correspond to components in an example string. Make sure to walk through one of the examples with decimal values, and draw out what components of the regex match corresponding parts of the string.
         \item Emphasize the reasoning behind the choice of each quantifier, and why specifically that quantifier is required in that situation. This is particularly important to develop a grasp on when to use \lstinline$'*'$ versus \lstinline$'+'$.
+        \item Without the anchors, the input \lstinline{"10b+"} is matched because it just matches the \lstinline{"10b"} but we want the entire string to match. If there is a plus sign it must be followed by some number.
     \end{itemize}
 \end{blocksection}
 \end{guide}
