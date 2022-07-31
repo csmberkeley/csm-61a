@@ -1,0 +1,82 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{11}
+\title{\textsc{Regular Expressions, SQL}}
+\date{August 4, 2021}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Regex Intro and mini-lecture (7 minutes): reminder that students won't have to pick between re methods
+        \item Q1 extracting (6 minutes): nice intro question but does use grouping and word boundaries
+        \item Q2 linear functions (7 minutes): This one uses re.match with the anchors \lstinline{^} and \lstinline{$} to match the beginning and end of the input string.
+        It would probably make more sense to use re.fullmatch without the anchors but I couldn't figure that one out.
+        \item Q3 validate passwords (8 minutes): optional/if time allows. The solution looks long but a lot of it is repetitive
+        \item SQL Introduction and mini-lecture (5-10 min.): For best results, copy the corresponding 
+        \texttt{mentor12.sql} database into code.cs61a.org so you can demonstrate queries using 
+        the tables from this worksheet. You can also use the step-by-step feature to walk through queries.
+        \item Fish Q1-3 (5-10 min.): These are more straightforward than the rest of
+        the worksheet.
+        \item Fish Competitors (5 min.): Make sure to discuss joins and possibly give an example
+        before letting students tackle this problem.
+        \item Outfits (10-15 min.): Contains some more difficult aggregation problems.
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+\section{Regular Expressions}
+\begin{questions}
+\subimport{../../topics/regex/}{ending.tex}
+\subimport{../../topics/regex/}{line-match.tex}
+\subimport{../../topics/regex/}{password.tex}
+\end{questions}
+
+\section{SQL Practice}
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+\begin{questions}
+  \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+  \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+  \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
+\begin{questions}
+\subimport{../../topics/sql/fish/medium/}{competitor.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/sql/outfits/}{text.tex}
+\subimport{../../topics/sql/outfits/tables/}{grades.tex}
+\subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+
+\begin{questions}
+\subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+\subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/sql/circus/}{text.tex}
+\subimport{../../topics/sql/circus/}{table.tex}
+\begin{questions}
+\subimport{../../topics/sql/circus/}{elevator.tex}
+\subimport{../../topics/sql/circus/}{trucks-revised.tex}
+\end{questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

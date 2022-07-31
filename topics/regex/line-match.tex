@@ -1,0 +1,49 @@
+\begin{blocksection}
+\question We are given an input string \lstinline{eq_str} and we want to determine whether it is of the form 
+$mx+b$ where $x$ can be any alphabetic character and $m$ and $b$ are integers or decimals. \lstinline{linear_functions} returns True if \lstinline{eq_str} 
+has the correct form for a linear function and False otherwise.
+
+\begin{lstlisting}
+import re
+def linear_functions(eq_str):
+    """
+    Given a string, returns whether or not it has the form 'mx+b'.
+    >>> linear_functions("1x+0")
+    True
+    >>> linear_functions("100y+44")
+    True
+    >>> linear_functions("99.9z+.23")
+    True
+    >>> linear_functions("55t")
+    True
+    >>> linear_functions("x+3")
+    True
+    >>> linear_functions("10b+")
+    False
+    >>> linear_functions("+43")
+    False
+    """
+    return bool(re.match(r"__________", eq_str))
+\end{lstlisting}
+
+\begin{solution}[2in]
+    \begin{lstlisting}
+        ^(\d*\.?\d+)?[a-zA-Z](\+\d*\.?\d+)?
+    \end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+    \begin{itemize}
+        \item The solution utilizes both special characters \lstinline$'.'$ and \lstinline$'+'$ as ordinary text characters. This may be initally confusing - emphasize how the backslash escapes these special characters.
+        \begin{itemize}
+            \item \lstinline$'+'$ is used both as an ordinary character and as a special Regex character. Clarify how the two are distinct to students.
+        \end{itemize}
+        \item With any regex problem, it helps to map what parts of the regex correspond to components in an example string. Make sure to walk through one of the examples with decimal values, and draw out what components of the regex match corresponding parts of the string.
+        \item Emphasize the reasoning behind the choice of each quantifier, and why specifically that quantifier is required in that situation. This is particularly important to develop a grasp on when to use \lstinline$'*'$ versus \lstinline$'+'$.
+    \end{itemize}
+\end{blocksection}
+\end{guide}
+    
