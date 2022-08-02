@@ -1,0 +1,164 @@
+\begin{blocksection}
+    \question In mathematics, summation notation is used to describe the sum of an expression over a range of integer values.
+    For example, $$ \sum_{n=1}^{n=3}2n - 1 = (2(1) - 1) + (2(2) - 1) + (2(3) - 1) = 9$$ 
+    Let's write a data abstraction in Scheme to represent summations!
+
+    Note that the expression component of a summation can be modeled as a single-argument procedure. 
+    i.e. $$ \sum_{n=1}^{n=3}2n - 1 = \sum_{n=1}^{n=3}f(n) $$ where $$ f(n) = 2n - 1 $$
+
+    Given the provided constructor, which takes in the start of the range, 
+    the end of the range, and a single-argument procedure, implement the selectors.
+
+\end{blocksection}
+
+\begin{blocksection}
+  \begin{lstlisting}
+    ; Doctests
+    scm> (define s0 (make-summation 1 3 (lambda (n) (- (* 2 n) 1))))
+    s0
+    scm> (get-start s0)
+    1
+    scm> (get-stop s0)
+    3
+    scm> (get-proc s0)
+    (lambda (n) (- (* 2 n) 1))
+
+
+
+    (define (make-summation start stop proc)
+      (list start stop proc)
+    )
+
+    (define (get-start s)
+    
+    )
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+        (define (get-start s)
+          (car s)
+        )
+        \end{lstlisting}
+    \end{solution}
+
+    \begin{lstlisting}
+    (define (get-stop s)
+
+    )
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+        (define (get-stop s)
+          (car (cdr s))
+        )
+        \end{lstlisting}
+    \end{solution}
+
+    \begin{lstlisting}
+    (define (get-proc s)
+
+    )
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+        (define (get-proc s)
+          (car (cdr (cdr s)))
+        )
+        \end{lstlisting}
+    \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+    \question Now, let's implement a procedure that allows us to evaluate a summation abstraction. 
+    It will take in a summation abstraction and return a number. 
+    To help with our implementation, suppose we have a make-lst procedure that takes in start and end 
+    integers and returns a list of all the integers in ascending order between start and end inclusive. 
+    You may assume make-lst is implemented correctly for you already. \textit{hint: use reduce}
+
+    \begin{lstlisting}
+    ; Doctests
+    scm> (make-lst 1 3)
+    (1 2 3)
+    scm> (length (make-lst 1 100))
+    100
+    scm> (define s0 (make-summation 1 3 (lambda (n) (- (* 2 n) 1))))
+    s0
+    scm> (evaluate s0)
+    9
+    scm> (define s1 (make-summation 1 100 (lambda (n) n)))
+    s1
+    scm> (evaluate s1) ; the sum of the first 100 positive integers is 5050
+    5050
+
+    (define (evaluate s)
+    
+
+
+
+
+    )
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+        (define (evaluate s)
+          (reduce + (map (get-proc s) (make-lst (get-start s) (get-stop s))))
+        )
+        
+        ; here is a sample implementation of make-lst (try writing it tail recursively!)
+        (define (make-lst start end)
+          (if (> start end)
+            nil
+            (cons start (make-lst (+ start 1) end))
+          )
+        )
+        \end{lstlisting}
+    \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+    \question Our final task is to support multiplying a summation by an integer. 
+    Because multiplication is distributive, we can rewrite the product between an integer, y, and a summation as follows:
+     $$ y * \sum_{n=a}^{n=b}f(n) = \sum_{n=a}^{n=b}y * f(n) = \sum_{n=a}^{n=b}g(n)$$ where $$ g(n) = y * f(n) $$ 
+     
+     Implement mul which takes in an integer and a summation abstraction, and returns another summation abstraction 
+     that represents the product of the inputs.
+
+    \begin{lstlisting}
+    ; Doctests
+    scm> (define s0 (make-summation 1 3 (lambda (n) (- (* 2 n) 1))))
+    s0
+    scm> (define new-s0 (mul 2 s0))
+    new-s0
+    scm> (evaluate new-s0)
+    18
+    scm> (get-start new-s0)
+    1
+    scm> (get-stop new-s0)
+    3
+    scm> (define s1 (make-summation 1 100 (lambda (n) n)))
+    s1
+    scm> (evaluate (mul 3 s1))
+    15150
+    scm> (evaluate (mul 2 (mul 2 s1)))
+    20200
+
+    (define (mul y s)
+    
+    
+    
+    
+
+    )
+    \end{lstlisting}
+    \begin{solution}[1in]
+        \begin{lstlisting}
+        (define (mul y s)
+          (make-summation (get-start s) (get-stop s) (lambda (n) (* y ((get-proc summation) n))))
+        )
+        \end{lstlisting}
+    \end{solution}
+\end{blocksection}

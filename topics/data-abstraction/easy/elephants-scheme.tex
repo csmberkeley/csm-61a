@@ -1,0 +1,165 @@
+\begin{blocksection}
+    \question The following is Scheme data abstraction for representing elephants.
+    Each elephant keeps track of its name, age, and whether or not it can fly. Given
+    our provided constructor, fill out the selectors:
+    (Note: As a good practice, avoid breaking the abstraction barrier!)
+    \begin{lstlisting}
+    ; Doctests:
+    scm> (define dumbo (elephant 'Dumbo 10 #t))
+    dumbo
+    scm> (elephant-name dumbo)
+    Dumbo
+    scm> (elephant-age dumbo)
+    10
+    scm> (elephant-can-fly dumbo)
+    #t
+    
+    (define (elephant name age can-fly) (list name age can-fly))
+    
+    
+    \end{lstlisting}
+    \begin{lstlisting}
+    (define (elephant-name e)
+        
+    
+    )
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+    (define (elephant-name e)
+        (car e)
+    )
+    \end{lstlisting}
+    \end{solution}
+    \begin{lstlisting}
+    (define (elephant-age e)
+    
+    
+    )
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+    (define (elephant-age e)
+        (car (cdr e))
+    )
+    \end{lstlisting}
+    \end{solution}
+    \begin{lstlisting}
+    (define (elephant-can-fly e)
+    
+    
+    )
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+    (define (elephant-can-fly e)
+        (car (cdr (cdr e))) 
+        ; alternatively, (car (cddr e)) also works
+    )
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    %%% Question %%%
+    
+    \begin{blocksection}
+    \question One elephant is lonely! Now implement \lstinline{elephant-roster}, which takes in a list of elephants and returns a list of their names, in the corresponding order. 
+    
+    \begin{lstlisting}
+    ; Doctests: 
+    scm> (define dumbo (elephant 'Dumbo 10 #t))
+    dumbo
+    scm> (define babar (elephant 'Babar 12 #f))
+    babar
+    scm> (define elephant-list (list babar dumbo))
+    elephant-lst
+    scm> (elephant-roster elephant-list)
+    (Dumbo Babar)
+    
+    (define (elephant-roster lst) 
+    
+    
+    
+    
+    
+    )
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+    (define (elephant-roster lst) 
+        (if (null? lst) nil 
+            (cons 
+                (elephant-name (car lst)) 
+                (elephant-roster (cdr lst)))))
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    %%% Question %%%
+    
+    \begin{blocksection}
+    \question This function returns the correct result, but there's something wrong
+    about its implementation. How do we fix it?
+        
+    \begin{lstlisting}
+    ; Given 2 elephants, returns the name of the older one
+    (define (older-elephant e1 e2) 
+        (if (> (elephant-age e1) (elephant-age e2))
+            (car e1)
+            (car e2))) 
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \lstinline{(car e1)} and \lstinline{(car e2)} are data abstraction violations. 
+    We should use a selector instead.
+    The corrected function looks like:
+    \begin{lstlisting}
+    (define (older-elephant e1 e2) 
+        (if (> (elephant-age e1) (elephant-age e2))
+            (elephant-name e1)
+            (elephant-name e2))) 
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    %%% Question %%%
+    
+    \begin{blocksection}
+    \question If we change the implementation of the elephant data abstraction as follow, how can we write the fixed \texttt{elephant-roster} function for the constructors and selectors in the previous question?
+    
+    \begin{lstlisting}
+    (define (elephant name age can-fly) 
+        (list (list name age) can-fly))
+    
+    (define (select elephant attr) 
+        (cond 
+            ((eq? attr 'name) (car (car elephant)))
+            ((eq? attr 'age) (car (cdr (car elephant))))
+            ((eq? attr 'can-fly) (car (cdr elephant)))))
+    
+    (define (elephant-name e) (select e 'name))
+    
+    (define (elephant-age e) (select e 'age))
+    
+    (define (elephant-can-fly e) (select e 'can-fly))
+    \end{lstlisting}
+    
+    \begin{solution}[1.5in]
+    No change is necessary to fix \texttt{elephant-roster} since using the
+    \texttt{elephant} selectors ``protects'' the roster from constructor definition
+    changes.
+    \end{solution}
+    
+    \begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item \texttt{elephant-roster}
+        \begin{itemize}
+            \item If data abstraction is new to your students or they don’t feel very confident in the topic, \textbf{consider walking them through this problem}.
+            \item The information from 1) is very important for these questions. Make sure your \textbf{students understand the main ideas of 1)!}
+            \item 2) may seem easy/trivial, but emphasize how the selector interface allows you to easily use the data abstraction without violating abstraction barriers.
+        \end{itemize}
+        \item The last two questions serve as practical examples of how data abstraction works and why it's useful. It could be beneficial to ask students why the procedure in 3) won't work if the implementation of elephants data abstraction has been changed to that in 4). 
+    \end{itemize}
+    \end{guide}
+    
+    \end{blocksection}
