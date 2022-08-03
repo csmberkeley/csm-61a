@@ -1,0 +1,64 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\usepackage{outlines}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{10}
+\title{\textsc{Scheme Data Abstraction}}
+\date{Aug 1 - 3, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Recommended Timeline}
+\begin{outline}[enumerate]
+    \1 Note: this worksheet might be on the shorter end, if you have extra time - feel free to review interpreters or go over the exam level question
+    \1 Scheme Data Abstraction Intro - 5 minutes
+    \1 Elephants - 10 minutes
+    \2 introduction to creator and selector methods
+    \2 building scheme lists + selector methods
+    \2 finding data abstraction violations
+    \2 emphasize the point of data abstraction
+    \1 Summation - 20 minutes
+    \2 fill in the selector methods
+    \2 students might not have seen reduce, feel free to introduce/reference it in the built-in procedures
+    \2 for the final task, ask students how they can utilize the summation constructor
+    \1 Past Exam Question: Sp22 Final Q12 - optional
+    \2 scheme data abstraction question! combines knowledge of constructors, selectors, and not violating the abstraction barrier
+\end{outline} 
+\end{blocksection}
+\end{guide}
+
+\section{Scheme Data Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary-scheme.tex}
+
+\section{Elephants}
+\begin{questions}
+\subimport{../../topics/data-abstraction/easy/}{elephants-scheme.tex}
+\end{questions}
+\newpage
+
+\section{Summation}
+\begin{questions}
+\subimport{../../topics/data-abstraction/medium/}{summation.tex}
+\end{questions}
+
+% \newpage
+% \begin{questions}
+% \subimport{../../topics/data-abstraction/medium/}{bookshelf.tex}
+% \end{questions}
+
+% \newpage
+\section{Past Exam Questions}
+\begin{outline}[enumerate]
+    \1 \href{https://cs61a.org/exam/sp22/final/61a-sp22-final.pdf#page=25}{Sp22 Final Q12}
+\end{outline}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
