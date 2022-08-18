@@ -23,12 +23,12 @@ def linear_functions(eq_str):
     >>> linear_functions("+43")
     False
     """
-    return bool(re.match(r"__________", eq_str))
+    return bool(re.search(r"__________", eq_str))
 \end{lstlisting}
 
 \begin{solution}[2in]
     \begin{lstlisting}
-        ^(\d*\.?\d+)?[a-zA-Z](\+\d*\.?\d+)?
+        ^(\d*\.?\d+)?[a-zA-Z](\+\d*\.?\d+)?$
     \end{lstlisting}
 \end{solution}
 \end{blocksection}
