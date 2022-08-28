@@ -1,11 +1,30 @@
 \begin{blocksection}
 \question Write a function, \lstinline$is_leap_year$, that returns true if a number is a leap year and false otherwise.
-A \emph{leap year} is a year that is divisible by 4 but not divisible by 400.
+A \emph{leap year} is a year that is divisible by 4 but not by 100, except that years divisible by 400 are leap years. 
+
+\begin{lstlisting}
+def is_leap_year(year):
+    """
+    Returns whether YEAR is a leap year. 
+    >>> is_leap_year(2002)
+    False
+    >>> is_leap_year(2004)
+    True
+    >>> is_leap_year(2000)
+    True
+    >>> is_leap_year(1900)
+    False
+    >>> is_leap_year(2100)
+    False
+    """
+    return _____________
+\end{lstlisting}
+
 
 \begin{solution}[2in]
 \begin{lstlisting}
 def is_leap_year(year):
-    return year % 4 == 0 and year % 400 != 0
+    return (year % 4 == 0 and year % 100 != 0) or year % 400 == 0
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
