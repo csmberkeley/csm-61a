@@ -11,7 +11,7 @@ from make_dependency import get_dependencies
 
 #path_to_files = ['control/code/wears_jacket.py', 'control/code/wears_jacket_with_if.py', 'control/code/is_prime.py', ]
 prefix = '../../topics'
-worksheet_source = 'src/su22'
+worksheet_source = 'src/fa22'
 
 def generate_file(file_name, file_paths, solution=False):
 	file = []
