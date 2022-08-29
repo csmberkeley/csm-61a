@@ -40,7 +40,19 @@ There are two relevant sectioning commands used within CSM 61A problems:
 - `blocksection`: creates a spaced section that cannot be split over multiple pages
 - `breakablesection`: creates a spaced section that cannot be split over multiple pages
 
-## Miscellaneous style
+## Miscellaneous input style
+### Formatting code
+To format blocks of code, use `\lstlistings`:
+
+```
+\begin{lstlisting}
+    ...
+\end{lstlisting}
+```
+
+To format code in line, use `\listinline`. Do not use `\texttt` for format code.
+
+## Miscellaneous output style
 ### Capitalization
 - All titles, subtitles, headings, and subheadings should be in title case: *What Would Python Do?*
 
