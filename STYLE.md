@@ -74,3 +74,15 @@ There are two relevant sectioning commands used within CSM 61A problems:
 ### Dates
 - Use full month names and cardinal numbers for dates. *November 24, 2022* is correct; *Nov. 24th, 2022* is not.
 - En dashes (–) should be used for date ranges: *June 19–July 4*.
+
+### Grammar
+- *That* and *which* are different words. Use *that* for restrictive (defining) clauses: 
+    > `fact` is a function that calculates the factorial of its input.
+
+    Do not write this:
+
+    > `fact` is a function which calculates the factorial of its input. 
+
+    Use *which* for non-restrictive clauses that add additional information. Typically, a comma precedes *which*.
+
+    >`fact`, which takes a single argument `n`, is defined below.
