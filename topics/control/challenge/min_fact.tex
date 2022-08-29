@@ -16,7 +16,8 @@ def fact_limit(n, limit):
     product = ________________
     ________________ = n - 1
     while ________________:
-        ____________, ____________ = ____________, ____________
+        ____________ = ____________  
+        ____________ = ____________
     return ________________
 
 \end{lstlisting}
@@ -31,7 +32,8 @@ def fact_limit(n, limit):
     product = n
     n = n - 1
     while product * n <= limit and n > 0:
-        product, n = product * n, n - 1
+        product = product * n  
+        n = n - 1
     return product
 \end{lstlisting}
 \end{solution}
