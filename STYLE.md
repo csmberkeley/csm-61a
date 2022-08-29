@@ -30,7 +30,6 @@ A worksheet adheres to the following format:
 ...
 
 \end{document}
-
 ```
 Each of a worksheet's topics gets its own `section`. Each `section` has its own set of numbered `questions`. The individual questions are imported from the question bank using `subimport` statements. 
 
@@ -59,20 +58,20 @@ The answer to the problem is displayed in a `solution` environment. This informa
 
 ### Subparts
 Questions with subparts are created using the `subparts` environment:
+
 ```
 \begin{blocksection}
 \question %QUESTION STATEMENT%
 
 \begin{parts}
-    \part $PART STATEMENT%
+    \part %PART STATEMENT%
     \begin{solution}
-        $PART SOLUTION$
+        %PART SOLUTION%
     \end{solution}
     ...
 \end{parts}
 \end{blocksection}
 ```
-
 
 ## Style for source input
 ### Names
