@@ -11,11 +11,11 @@ def min_fact(n, margin):
     >>> min_fact(5, 0)
     5
     """
-    total, ________________ = n, ________________
+    product, ________________ = n, ________________
     while ________________:
         ____________, ____________ = ____________, ____________
     if ________________:
-       ________________
+        ________________
     return ________________
 
 \end{lstlisting}
@@ -25,12 +25,12 @@ def min_fact(n, margin):
 \begin{solution}
 \begin{lstlisting}
 def min_fact(n, margin):
-    total, n = n, n - 1
-    while total <= margin and n > 0:
-        total, n = total * n, n - 1
-    if total <= margin:
+    product, n = n, n - 1
+    while product <= margin and n > 0:
+        product, n = product * n, n - 1
+    if product <= margin:
         return -1
-    return total
+    return product
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
