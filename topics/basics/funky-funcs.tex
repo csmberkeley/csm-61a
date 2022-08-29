@@ -16,14 +16,18 @@ add(1, mul(2, 3))
 add(mul(2, 3), add(1, 4))
 \end{lstlisting}
 \begin{solution}[.2in]
-    \lstinline{add(mul(2, 3), add(1, 4))} $\rightarrow$ \lstinline{add(6, 5)} $\rightarrow$ \lstinline{11}
+    \lstinline{add(mul(2, 3), add(1, 4))} $\rightarrow$ \lstinline{add(6, add(1, 4))} $\rightarrow$ \lstinline{add(6, 5)} $\rightarrow$ \lstinline{11}
 \end{solution}
 
 \part \begin{lstlisting}
 max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)
 \end{lstlisting}
 \begin{solution}[.2in]
-    \lstinline{max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)} $\rightarrow$ \lstinline{max(2, 11, 3, mul(12, 1), 7)} $\rightarrow$ 
+    \lstinline{max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)} $\rightarrow$ 
+    \lstinline{max(2, add(5, 6), 3, mul(mul(3, 4), 1), 7)} $\rightarrow$
+    \lstinline{max(2, 11, 3, mul(mul(3, 4), 1), 7)} $\rightarrow$
+    \lstinline{max(2, 11, 3, mul(12, 1), 7)} $\rightarrow$
+    \lstinline{max(2, 11, 3, 12, 7)} $\rightarrow$
     \lstinline{max(2, 11, 3, 12, 7)} $\rightarrow$ \lstinline{12}
 \end{solution}
 \end{parts}
