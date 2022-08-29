@@ -72,7 +72,7 @@
 \semester{Spring 2022}
 \stafflist{Vibha Tantry and Jordan Schwartz, with \\
 Gabe Classon,
-Aditya Balasubramanian, and //
+Aditya Balasubramanian,
 Oliver Yu,
 Hanze Tan,
 Gene Pan,
@@ -95,7 +95,8 @@ Preshtha Garg,
 Laksith Venkatesh Prabu,
 Aditya Murali,
 Irene Yang,
-Andy Chen,
+Andy Chen, and
+Hailey Park
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -131,10 +132,14 @@ Andy Chen,
 \newcommand{\discnumber}[1]{\newcommand{\discnum}{#1}}
 
 \pagestyle{headandfoot}
-\runningheadrule
-\runningheader{\sc Computer Science Mentors \discnum: \disctitle}{}{Page \thepage}
+\firstpagefootrule
+\firstpagefooter{\small \staff}{}{}
 \runningfootrule
-% \runningfooter{\small CSM 61A \sem: \staff}{}{}
+\runningfooter{\sc \oddeven{Week \discnum: \disctitle}{\thepage}}{}{\sc \oddeven{\thepage}{CSM 61A \sem}}
+
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}[0]{\oldmaketitle \thispagestyle{headandfoot}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Configuring the section and subsection titles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,6 +290,7 @@ Andy Chen,
         commentstyle=\ttfamily,
         showstringspaces=false,
         breaklines=true,
+        breakatwhitespace=true,
 }
 
 % For Scheme code
@@ -311,10 +317,6 @@ Andy Chen,
   literate=*{`}{{`}}{1}
 }
 
-% Remove spacing before and after `lstlisting` block, so there's no extra space
-% between two blocks.
-\lstset{aboveskip=0pt,belowskip=0pt}
-
 % Creates a minipage environment, which can be used to section off text so that
 % it won't be split between two pages. Minipage sets the parskip variable to 0,
 % so this preserves the value in the minipage environment.
@@ -332,7 +334,6 @@ Andy Chen,
     \end{minipage}
 }
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Use \printanswers to print with answers and \noprintanswers to print without.
@@ -345,8 +346,15 @@ Andy Chen,
 
 \ifdefined\discussionguides
     \newenvironment{guide}{\color{blue}}{}
+    \newenvironment{questionguide}{
+      \begin{solution}
+      \color{blue}
+    }{
+      \end{solution}
+    }
 \else
     \newenvironment{guide}{\comment}{\endcomment}
+    \newenvironment{questionguide}{\comment}{\endcomment}
 \fi
 
 % The nonsol environment will show items within it only if answers are not set
@@ -358,4 +366,4 @@ Andy Chen,
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{\Large \sc CSM 61A}
+\author{ \Large \sc Computer Science Mentors 61A}
