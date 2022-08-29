@@ -1,15 +1,17 @@
-\question Complete the function \lstinline{fact_limit}, which calculates the product of consecutive positive numbers starting from \lstinline{n}, working downward until we reach \lstinline{limit}, \textit{inclusive}. If there is no product less than or equal to \lstinline{limit}, \lstinline{fact_limit} should return -1.
-
 \begin{blocksection}
+\question Complete the function \lstinline{fact_limit}, which calculates factorials up to a specified limit. Specifically, \lstinline{fact_limit} takes in two positive integers, \lstinline{n} and \lstinline{limit}, and calculates the product of \lstinline{n}, \lstinline{n-1}, \lstinline{n-2}, etc., working downward until it attains the greatest product that doesn't exceed \lstinline{limit}. If there is no product less than or equal to \lstinline{limit}, \lstinline{fact_limit} should return 1. 
+
+\emph{Hint: The output of \lstinline{fact_limit} is always less than or equal to \lstinline{limit}.}
+
 \begin{lstlisting}
 def fact_limit(n, limit):
     """
-    >>> fact_limit(5, 20) # 5 * 4 = 20, but 5 * 4 * 3 = 60
-    20
-    >>> fact_limit(5, 200)
-    120
-    >>> fact_limit(5, 0)
-    -1
+    >>> fact_limit(5, 20) 
+    20 # 5 * 4 = 20, but 5 * 4 * 3 = 60
+    >>> fact_limit(5, 200) 
+    120 # 5 * 4 * 3 * 2 * 1 = 120 < 200
+    >>> fact_limit(5, 3) 
+    1 # 5 * 4 * 3 * 2 * 1 = 120 < 200
     """
     if ________________:
         ________________
@@ -28,7 +30,7 @@ def fact_limit(n, limit):
 \begin{lstlisting}
 def fact_limit(n, limit):
     if n > limit:
-        return -1
+        return 1
     product = n
     n = n - 1
     while product * n <= limit and n > 0:
