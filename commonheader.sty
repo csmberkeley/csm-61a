@@ -346,8 +346,15 @@ Hailey Park
 
 \ifdefined\discussionguides
     \newenvironment{guide}{\color{blue}}{}
+    \newenvironment{questionguide}{
+      \begin{solution}
+      \color{blue}
+    }{
+      \end{solution}
+    }
 \else
     \newenvironment{guide}{\comment}{\endcomment}
+    \newenvironment{questionguide}{\comment}{\endcomment}
 \fi
 
 % The nonsol environment will show items within it only if answers are not set
