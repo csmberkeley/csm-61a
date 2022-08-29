@@ -1,7 +1,38 @@
 # CSM 61A style guide
-This document details preferred style for the creation of worksheets and worksheet problems.
+This document details style for the creation of worksheets and worksheet problems. 
 
 ## Worksheet document layout
+A worksheet follows the following layout: 
+
+```
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{%WEEK NUMBER%}
+\title{%TITLE%}
+\date{%DATE RANGE%}
+
+\begin{document}
+\maketitle
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item %TIMELINE 1%
+  ...
+\end{itemize}
+\end{guide}
+
+
+\section{%SECTION TITLE%}
+\begin{questions}
+\subimport{../../topics/%TOPIC%/%DIFFICULTY%/}{%PROBLEM NAME%.tex}
+...
+\end{questions}
+...
+
+\end{document}
+
+```
 
 ## Problem layout
 ### Sectioning
@@ -10,8 +41,12 @@ There are two relevant sectioning commands used within CSM 61A problems:
 - `breakablesection`: creates a spaced section that cannot be split over multiple pages
 
 ## Miscellaneous style
+### Capitalization
+- All titles, subtitles, headings, and subheadings should be in title case: *What Would Python Do?*
+
 ### Spelling
 - Use American spelling conventions in all cases. 
+- Use *traveled* instead of *travelled*, etc.
 
 ### Punctuation
 - Oxford comma: use it in all cases.
@@ -19,6 +54,7 @@ There are two relevant sectioning commands used within CSM 61A problems:
     - hyphens are typeset with one dash: `-`
     - en dashes are typeset with two dashes: `--`
     - em dashes are typeset with three dashes: `---`
+- Punctuation that is not part of a quotation should not appear inside the quotation marks. Do not follow the American rule that terminal commas and periods should always appear inside quotes. 
 
 ### Dates
 - Use full month names and cardinal numbers for dates. *November 24, 2022* is correct; *Nov. 24th, 2022* is not.
