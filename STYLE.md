@@ -65,7 +65,7 @@ There are two relevant sectioning commands used within CSM 61A problems:
 
 ### Punctuation
 - Oxford comma: use it in all cases.
-- Use hyphens (-), en (–) dashes, and em dashes (—) as appropriate. Do not insert spaces around dashes. Do not use spaced hyphens such as in *I like Python - just not as a product language.* In LaTeX:
+- Use hyphens (-), en (–) dashes, and em dashes (—) as appropriate. Do not insert spaces around dashes. Do not use spaced hyphens such as in *I like Python - just not as a language.* In LaTeX:
     - hyphens are typeset with one dash: `-`
     - en dashes are typeset with two dashes: `--`
     - em dashes are typeset with three dashes: `---`
