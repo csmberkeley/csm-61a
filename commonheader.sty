@@ -111,12 +111,13 @@ Laksith Venkatesh Prabu, Aditya Murali, Irene Yang, and Andy Chen
 \newcommand{\discnumber}[1]{\newcommand{\discnum}{#1}}
 
 \pagestyle{headandfoot}
-\runningheadrule
-\runningheader{\sc Computer Science Mentors 61A Week \discnum: \disctitle}{}{Page \thepage}
-\runningfootrule
-\runningfooter{\small \sem}{}{\small Berkeley, California}
 \firstpagefootrule
-\firstpagefooter{left}{}{}
+\firstpagefooter{\small \staff}{}{}
+\runningfootrule
+\runningfooter{\sc CSM 61A \sem \\ Week \discnum: \disctitle}{}{Page \thepage}
+
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}[0]{\oldmaketitle \thispagestyle{headandfoot}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -352,7 +353,4 @@ Laksith Venkatesh Prabu, Aditya Murali, Irene Yang, and Andy Chen
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{
-  \Large \sc CSM 61A \\\\
-  \parbox{\linewidth}{\centering \small{\staff}}
-}
+\author{ \Large \sc Computer Science Mentors 61A}
