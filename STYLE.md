@@ -61,7 +61,7 @@ A worksheet follows the following layout:
     Do not use `\\` and `\\\\` for paragraph spacing. `\\` produces a paragraph break that is too small, and `\\\\` produces one that is too big. 
 - To insert a line break without the additional space of a paragraph break, use `\\`.
 - `solution`, `lstlistings`, and `blocksection` all have automatic vertical spacing; it should not be necessary to add additional spacing. 
-- Use `blocksection` when you want to make a section that will never be split across multiple pages. 
+- Use `blocksection` when you want to make a section that will never be split across multiple pages. Typically, each problem should be in its own block section. However, long problems may need to be broken up into multiple block sections. 
 
 ## Miscellaneous output style
 ### Capitalization
