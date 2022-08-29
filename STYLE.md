@@ -35,10 +35,6 @@ A worksheet follows the following layout:
 ```
 
 ## Problem layout
-### Sectioning
-There are two relevant sectioning commands used within CSM 61A problems: 
-- `blocksection`: creates a spaced section that cannot be split over multiple pages
-- `breakablesection`: creates a spaced section that cannot be split over multiple pages
 
 ## Miscellaneous input style
 ### Names
@@ -53,7 +49,8 @@ There are two relevant sectioning commands used within CSM 61A problems:
     \end{lstlisting}
     ```
 
-- To format code in line, use `\lstinline`. Do not use `\texttt` for format code.
+- To format code in line, use `\lstinline`. Do not use `\texttt` to format code.
+- Do not use `$` in conjunction with `\lstinline` unless it is absolutely necessary: `\lstinline{total < limit}` is preferable to `\lstinline$total < limit$`.
 
 ## Miscellaneous output style
 ### Capitalization
@@ -70,6 +67,17 @@ There are two relevant sectioning commands used within CSM 61A problems:
     - en dashes are typeset with two dashes: `--`
     - em dashes are typeset with three dashes: `---`
 - Punctuation that is not part of a quotation should not appear inside the quotation marks. Do not follow the American rule that terminal commas and periods should always appear inside quotes. 
+
+### Spacing and sectioning
+- Use an empty line between paragraphs of body text:
+    > Paragraph 1.
+    > 
+    > Paragraph 2.
+    
+    Do not use `\\` and `\\\\` for paragraph spacing. `\\` produces a paragraph break that is too small, and `\\\\` produces one that is too big. 
+- To insert a line break without the additional space of a paragraph break, use `\\`.
+- `solution`, `lstlistings`, and `blocksection` all have automatic vertical spacing; it should not be necessary to add additional spacing. 
+- Use `blocksection` when you want to make a section that will never be split across multiple pages. 
 
 ### Dates
 - Use full month names and cardinal numbers for dates. *November 24, 2022* is correct; *Nov. 24th, 2022* is not.
