@@ -1,11 +1,17 @@
 # csm-61a
 
-The central repository for CSM 61A worksheets.
+The central repository for CSM 61A worksheets. 
 
-The repository is split up into two subsections. `src` contains the current set
-of worksheet templates, which draw their questions from the pool of `topics`.
+There are three kinds of documents produced by this repository
+- Worksheets, which contain questions.
+- Solutions, which contain questions and answers.
+- Metas, which contains questions, answers, and information to help mentors teach the worksheet. 
 
-The style is provided by `commonheader.sty`. 
+## Repository organization 
+The repository is split up into two sections. `src` contains each semester's set
+of worksheet templates, which draw their questions from the pool of `topics`. `topics` is divided into topical subdirectories, each of which is further divided into subfolders based on difficulty. 
+
+Worksheet styling is provided by `commonheader.sty`. 
 
 ## Getting Started
 Clone this repository to your local machine. You will need to have LaTeX installed; some popular distributions include [TeXworks](https://tug.org/texworks/#Getting_TeXworks) and [MiKTeX](https://miktex.org/). For our workflow to function properly, `latex2pdf.exe` must be in your machine's `PATH` variable, which should hopefully be handled automatically on installation.
