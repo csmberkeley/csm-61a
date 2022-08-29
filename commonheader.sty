@@ -70,31 +70,33 @@
 
 %%% MODIFY THIS INFORMATION AS NECESSARY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \semester{Spring 2022}
-\stafflist{Ruslana Yurtyn and Jennifer Huang, with \\
-Peter Zhang, and //
-Sydney Hemenway,
-Rohan Tibrewal,
-Matthew Guo,
-Irene Yang,
-Chase Clements,
-Sean Sananikone,
+\stafflist{Vibha Tantry and Jordan Schwartz, with \\
+Gabe Classon,
+Aditya Balasubramanian,
 Oliver Yu,
-Mathilde McKeever,
-Grace Yi,
-Marie Chorpita,
+Hanze Tan,
 Gene Pan,
-Seung-Hyun Kwon,
-Zachary Adler,
-Jillian Goldberg,
-Kendrick Sharpe,
-Andrew Park,
-Jordan Schwartz,
-Hailey Park,
-Laksith Venkatesh Prabu,
+Carolyn Wang,
+Raman Varma,
 Noor Haq,
+Angela Zhang,
+Abigail Brooks,
+Ted Kim,
+Aiden Joshua Vehemente,
+Marie Chorpita,
+Ashley Chiu,
+Bill Hu,
 Omar Yu,
-Aiden Vehemente,
-Vibha Tantry
+Angel Alberto Aldaco,
+Andrew Park,
+Chase Clements,
+Grace Yi,
+Preshtha Garg,
+Laksith Venkatesh Prabu,
+Aditya Murali,
+Irene Yang,
+Andy Chen, and
+Hailey Park
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -130,10 +132,14 @@ Vibha Tantry
 \newcommand{\discnumber}[1]{\newcommand{\discnum}{#1}}
 
 \pagestyle{headandfoot}
-\runningheadrule
-\runningheader{\sc CS61A Small Group Tutoring Sections \discnum: \disctitle}{}{Page \thepage}
+\firstpagefootrule
+\firstpagefooter{\small \staff}{}{}
 \runningfootrule
-% \runningfooter{\small CSM 61A \sem: \staff}{}{}
+\runningfooter{\sc \oddeven{Week \discnum: \disctitle}{\thepage}}{}{\sc \oddeven{\thepage}{CSM 61A \sem}}
+
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}[0]{\oldmaketitle \thispagestyle{headandfoot}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Configuring the section and subsection titles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -284,6 +290,7 @@ Vibha Tantry
         commentstyle=\ttfamily,
         showstringspaces=false,
         breaklines=true,
+        breakatwhitespace=true,
 }
 
 % For Scheme code
@@ -310,10 +317,6 @@ Vibha Tantry
   literate=*{`}{{`}}{1}
 }
 
-% Remove spacing before and after `lstlisting` block, so there's no extra space
-% between two blocks.
-\lstset{aboveskip=0pt,belowskip=0pt}
-
 % Creates a minipage environment, which can be used to section off text so that
 % it won't be split between two pages. Minipage sets the parskip variable to 0,
 % so this preserves the value in the minipage environment.
@@ -331,7 +334,6 @@ Vibha Tantry
     \end{minipage}
 }
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Use \printanswers to print with answers and \noprintanswers to print without.
@@ -344,8 +346,15 @@ Vibha Tantry
 
 \ifdefined\discussionguides
     \newenvironment{guide}{\color{blue}}{}
+    \newenvironment{questionguide}{
+      \begin{solution}
+      \color{blue}
+    }{
+      \end{solution}
+    }
 \else
     \newenvironment{guide}{\comment}{\endcomment}
+    \newenvironment{questionguide}{\comment}{\endcomment}
 \fi
 
 % The nonsol environment will show items within it only if answers are not set
@@ -357,4 +366,4 @@ Vibha Tantry
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{\Large \sc CS61A Small Group Tutoring}
+\author{ \Large \sc Computer Science Mentors 61A}
