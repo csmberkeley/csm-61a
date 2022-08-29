@@ -41,16 +41,19 @@ There are two relevant sectioning commands used within CSM 61A problems:
 - `breakablesection`: creates a spaced section that cannot be split over multiple pages
 
 ## Miscellaneous input style
+### Names
+- The names of problem files in the problem bank should be lowercase and hyphen-separated: *all-ways-skeleton.tex*, not *ALL_WAYS_SKELETON.TEX*.
+
 ### Formatting code
-To format blocks of code, use `\lstlistings`:
+- To format blocks of code, use `\lstlistings`:
 
-```
-\begin{lstlisting}
-    ...
-\end{lstlisting}
-```
+    ```
+    \begin{lstlisting}
+        ...
+    \end{lstlisting}
+    ```
 
-To format code in line, use `\listinline`. Do not use `\texttt` for format code.
+- To format code in line, use `\lstinline`. Do not use `\texttt` for format code.
 
 ## Miscellaneous output style
 ### Capitalization
