@@ -7,7 +7,7 @@ of worksheet templates, which draws their questions from the pool of `topics`.
 
 The style is provided by `commonheader.sty`. 
 
-## Getting started
+## Getting Started
 Clone this repository to your local machine. You will need to have LaTeX installed; some popular distributions include [TeXworks](https://tug.org/texworks/#Getting_TeXworks) and [MiKTeX](https://miktex.org/). For our workflow to function properly, `latex2pdf.exe` must be in your machine's `PATH` variable, which should hopefully be handled automatically on installation.
 
 You can verify that you have correctly set up the repository by attempting to make a worksheet, as described in the next section.
