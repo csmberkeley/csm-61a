@@ -1,11 +1,11 @@
 Regular expressions help you match "patterns" to strings. We use the \lstinline{re} module.
-For example, the \lstinline{re.match()} function returns a Match object, which can tell you if a certain "pattern" matches a certain string.
+For example, the \lstinline{re.search()} function returns a Match object, which tells you if a certain "pattern" can be found within a given string.
 
 \begin{lstlisting}
 >>> import re
->>> bool(re.match(r"Hello", "Hello World"))
+>>> bool(re.search(r"hello", "Why hello!"))
 True
->>> bool(re.match(r"Bye", "Hello World"))
+>>> bool(re.search(r"bye", "Why hello!"))
 False
 \end{lstlisting}
 
@@ -43,8 +43,9 @@ Boxed characters are matched.
 \end{figure}
 We can combine character classes in the following two ways.
 \begin{itemize}
-    \item \lstinline$[a-z]|[A-Z]$ matches a lowercase letter OR an uppercase letter
-    \item \lstinline$[a-z][A-Z]$ mathces a lowercase letter AND then an uppercase letter
+    \item \lstinline$[a-z][A-Z]$ matches a lowercase letter AND then an uppercase letter
+    \item \lstinline$([a-z]|[A-Z])$ matches a lowercase letter OR an uppercase letter like \lstinline{[a-zA-Z]} does. 
+    \lstinline{|} splits the entire pattern to match either the left-hand side or the right-hand side.
 \end{itemize}
 There are also two special characters used outside of a character class: \textasciicircum and \textdollar. These are called anchors.
 \begin{figure}[h]
@@ -79,30 +80,25 @@ import re
 ptn, stn = r"...", "..."    # ptn = pattern, stn = string
 # note: regex patterns use raw strings!
 re.search(ptn, stn)         # does `string` contain `pattern`?
-  .group(idx)               # `idx`th match of `pattern` in
-                            # `string`
-re.fullmatch(ptn, stn)      # does all of `string` follow
-                            # `pattern`?
+re.fullmatch(ptn, stn)      # does all of `string` follow `pattern`?
 re.match(ptn, stn)          # does `string` start with `pattern`?
-re.finditer(ptn, stn)       # iter over `pattern` matches in
-                            # `string`
-re.sub(ptn, "<nope>", stn)  # replace `pattern` with `"<nope>"`
 re.findall(ptn, stn)        # list of all matches of `pattern
+re.sub(ptn, "<nope>", stn)  # replace `pattern` with `"<nope>"`
 \end{lstlisting}
 
 \textbf{Groups:}
-Groups allow you to group quantifiers.
+Groups allow you to group character classes.
 \begin{lstlisting}
 >>> re.findall(r"ab{1,3}", "abab abb abbb aaab aabb")
 ['ab', 'ab', 'abb', 'abbb', 'ab', 'abb']
 >>> re.findall(r"(ab){1,3}", "abab abb abbb aaab aabb")
 ['ab', 'ab', 'ab', 'ab', 'ab']
 \end{lstlisting}
-They also allow you to "capture" part of a string and return it instead of the entire match.
-\begin{lstlisting}
->>> re.findall(r"CSM(\w*)", "CSM61A, CSM61B, CSM70")
-['61A', '61B', '70']
-\end{lstlisting}
+% They also allow you to "capture" part of a string and return it instead of the entire match.
+% \begin{lstlisting}
+% >>> re.findall(r"CSM(\w*)", "CSM61A, CSM61B, CSM70")
+% ['61A', '61B', '70']
+% \end{lstlisting}
 
 \begin{guide}
 \begin{blocksection}
@@ -116,7 +112,7 @@ They also allow you to "capture" part of a string and return it instead of the e
         \item The second example of \lstinline{re.findall} with \lstinline$r"(ab){1,3}"$ is a bit challenging, and highlights many important nuances of regex and \lstinline{re.findall}. Take some time to explain this example in particular.
         \begin{itemize}
             \item Since regex is greedy, this expression matches the entire 'abab' at the start of the string, which is why there are only 5 elements in the output and not 6.
-            \item It returns "ab" rather than "abab" for that match since the capture group is "ab", not "abab". 
+            \item It returns "ab" rather than "abab" for that match since the group is "ab", not "abab". 
         \end{itemize}
         \item regex101.com is a great resource to get a better understanding of regex! Recommend students to try out different examples on the site, and consider using it in section to visualize some of the problems and how the matches work.
     \end{itemize}

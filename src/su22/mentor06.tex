@@ -1,0 +1,58 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{outlines}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Iterators \& Generators, Efficiency}}
+\date{July 18 - 20, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{outline}[enumerate]
+        \1 Iterators \& Generators Mini Lecture - 6 minutes
+        \1 Interleave - question to ease into interators, introduces 'yield' and 'next(iter)' - 10 minutes
+        \1 List Gen - question to ease into generators, introduces 'yield from' - 8 minutes
+        \2 the concept of 'yield from' can be difficult. if students are confused, give them a little refresher (or simple example of its usage)
+        \1 In Order - more difficult generator question, involves recursion - 8 minutes
+        \2 if students are stuck, provide hints and leading questions to get them to the solution
+        \2 ex. what do we do in ...this case? how do we ...do something?  
+        \1 Efficiency Lecture - 5 min
+        \1 Efficiency Problems - a few questions to introduce efficiency - 5 min
+        \2 may be helpful to draw out diagrams, if students are stuck!
+        \1 Post Midterm Thoughts
+        \2 If students don't feel happy with their score, remind them that there's still time to improve
+        \2 Full clobber policy this semester -- but students should understand the final will be difficult
+        \2 Potentially talk about adjusting learning/studying styles -- setting realistic, tangible goals: i.e. review material for 30min every day
+        \2 Building the intuition and gain familiarity with concepts takes time and lots of practice! It's totally normal to struggle. Still a few weeks left to learn and grow!!!
+    \end{outline}
+\end{guide}
+
+\section{Iterators \& Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+\subimport{../../topics/iterators/easy/}{interleave.tex}
+\newpage
+\subimport{../../topics/generators/easy/}{list-gen.tex}
+\newpage
+\subimport{../../topics/generators/medium/}{list-sort.tex}
+\end{questions}
+
+\newpage
+\section{Efficiency}
+\subimport{../../topics/growth/text/}{oog_overview.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/growth/easy/}{jumpstart.tex}
+\subimport{../../topics/growth/easy/}{belgian-waffle.tex}
+\end{questions}
+
+\end{document}

@@ -4,14 +4,14 @@
 >>> 3
 \end{lstlisting}
 \begin{solution}[.2in]
-3
+\lstinline{3}
 \end{solution}
 
 \begin{lstlisting}
 >>> "cs61a"
 \end{lstlisting}
 \begin{solution}[.2in]
-'cs61a'
+    \lstinline{'cs61a'}
 \end{solution}
 
 \begin{lstlisting}
@@ -19,7 +19,7 @@
 >>> x
 \end{lstlisting}
 \begin{solution}[.2in]
-3
+    \lstinline{3}
 \end{solution}
 
 \begin{lstlisting}
@@ -28,16 +28,18 @@ cs61a
 >>> x
 \end{lstlisting}
 \begin{solution}[.2in]
-None
+    \lstinline{None}
 \end{solution}
 
 \begin{lstlisting}
 >>> print(print(print("cs61a")))
 \end{lstlisting}
 \begin{solution}[.6in]
-cs61a \\
-None \\
+\begin{lstlisting}
+cs61a 
+None 
 None
+\end{lstlisting}
 \end{solution}
 
 \begin{lstlisting}
@@ -46,14 +48,14 @@ None
 >>> f1(3)
 \end{lstlisting}
 \begin{solution}[.2in]
-4
+    \lstinline{4}
 \end{solution}
 
 \begin{lstlisting}
 >>> f1(2) + f1(2 + 3)
 \end{lstlisting}
 \begin{solution}[.2in]
-9
+    \lstinline{9}
 \end{solution}
 
 \begin{lstlisting}
@@ -62,7 +64,7 @@ None
 >>> f2(4)
 \end{lstlisting}
 \begin{solution}[.2in]
-ZeroDivisionError: division by zero
+    \lstinline{ZeroDivisionError: division by zero}
 \end{solution}
 
 \begin{lstlisting}
@@ -76,47 +78,47 @@ ZeroDivisionError: division by zero
 >>> f3(1, 2)
 \end{lstlisting}
 \begin{solution}[.2in]
-2
+    \lstinline{2}
 \end{solution}
 
 \begin{lstlisting}
 >>> f3(5, 5)
 \end{lstlisting}
 \begin{solution}[.2in]
-10
+    \lstinline{10}
 \end{solution}
 
 \begin{lstlisting}
 >>> 1 or 2 or 3
 \end{lstlisting}
 \begin{solution}[.2in]
-1
+    \lstinline{1}
 \end{solution}
 
 \begin{lstlisting}
 >>> 1 or 0 or 3
 \end{lstlisting}
 \begin{solution}[.2in]
-1
+    \lstinline{1}
 \end{solution}
 
 \begin{lstlisting}
 >>> 4 and (2 or 1/0)
 \end{lstlisting}
 \begin{solution}[.2in]
-2
+    \lstinline{2}
 \end{solution}
 
 \begin{lstlisting}
 >>> 0 or (not 1 and 3)
 \end{lstlisting}
 \begin{solution}[.2in]
-False
+    \lstinline{False}
 \end{solution}
 
 \begin{lstlisting}
 >>> (2 or 1/0) and (False or (True and (0 or 1)))
 \end{lstlisting}
 \begin{solution}[.2in]
-1
+    \lstinline{1}
 \end{solution}

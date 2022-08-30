@@ -1,0 +1,107 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{11}
+\title{\textsc{Regular Expressions, SQL}}
+\date{August 3-5, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Reminders
+        \begin{itemize}
+            \item reminder that students don't need to know capturing groups
+            \item students may not have seen aggregation in discussion yet
+            Q2 and Q3 of the fish problem, and all of the outfits problem use aggregation
+            feel free to skip those
+        \end{itemize}
+        \item Regex Intro and mini-lecture (7 minutes): reminder that students won't have to pick between re methods
+        \item Q1 extracting (6 minutes): nice intro question but does use grouping and word boundaries
+        \item Q2 linear functions (7 minutes): This one uses re.match with the anchors \lstinline{^} and \lstinline{$} to match the beginning and end of the input string.
+        It would probably make more sense to use re.fullmatch without the anchors but I couldn't figure that one out.
+        \item Q3 validate passwords (8 minutes): optional/if time allows (maybe cover SQL section of worksheet and come back to this if there's extra time leftover). The solution looks long but a lot of it is repetitive
+        \item SQL Introduction and mini-lecture (5-10 min.): For best results, copy the corresponding 
+        \texttt{mentor12.sql} database into code.cs61a.org so you can demonstrate queries using 
+        the tables from this worksheet. You can also use the step-by-step feature to walk through queries.
+        \item Fish Q1-3 (5-10 min.): These are good intro questions for students to be more comfortable writing queries. Again, Q2 and 3 here use aggregation but the aggregation here is simpler than for the outfits questions
+        \item Fish Competitors (7 min.): Make sure to discuss joins and possibly give an example
+        before letting students tackle this problem.
+        \item Outfits: the queries aren't super meaningful since the tables are so small so you can tell students that their could be more rows than what's shown on the worksheet.
+        Feel free to skip altogether if low on time.
+        \item 
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+\newpage
+\section{Regular Expressions}
+\subimport{../../topics/regex/text/}{intro.tex}
+
+\newpage
+\begin{questions}
+\subimport{../../topics/regex/}{ending.tex}
+\subimport{../../topics/regex/}{line-match.tex}
+\subimport{../../topics/regex/}{password.tex}
+\end{questions}
+
+\newpage
+\section{SQL}
+\subimport{../../topics/sql/text/}{intro.tex}
+
+\newpage
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+\begin{questions}
+  \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+  \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+  \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/sql/fish/text/}{competitor.tex}
+\subimport{../../topics/sql/fish/tables/}{competitor.tex}
+\begin{questions}
+\subimport{../../topics/sql/fish/medium/}{competitor.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/sql/outfits/}{text.tex}
+\subimport{../../topics/sql/outfits/tables/}{grades.tex}
+\subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+\begin{questions}
+\subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+\subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
+\end{questions}
+
+\newpage
+\section*{Past Exam Questions}
+\begin{itemize}
+    \item Regular Expressions
+    \begin{itemize}
+        \item \href{https://cs61a.org/exam/sp22/final/61a-sp22-final.pdf#page=31}{Sp22 Final Q14, Q15}
+        \item \href{https://cs61a.org/exam/sp21/practice-final/61a-sp21-practice-final.pdf#page=24}{Sp21 Practice Final Q7}
+    \end{itemize}
+    \item SQL (without aggregation)
+    \begin{itemize}
+        \item without aggregation
+        \begin{itemize}
+            \item \href{https://cs61a.org/exam/su21/final/61a-su21-final.pdf#page=16}{Su21 Final Q4a}
+            \item \href{https://inst.eecs.berkeley.edu/~cs61a/fa18/assets/pdfs/61a-fa18-final.pdf#page=9}{Fa18 Final Q7a, Q7c}
+        \end{itemize}
+        \item \href{https://cs61a.org/exam/fa19/final/61a-fa19-final.pdf#page=11}{Fa19 Final Q10}
+        \item \href{https://cs61a.org/exam/sp19/final/61a-sp19-final.pdf#page=9}{Sp19 Final Q9}
+    \end{itemize}
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,21 +1,25 @@
-\question Fill out the function \lstinline{min_fact} which calculates the product of consecutive positive numbers starting from \lstinline{n} and working downwards until the first point at which the product becomes greater than \lstinline{margin}. It should return -1 if there is no product that is greater than margin.
-
 \begin{blocksection}
+\question Complete the function \lstinline{fact_limit}, which calculates factorials up to a specified limit. Specifically, \lstinline{fact_limit} takes in two positive integers, \lstinline{n} and \lstinline{limit}, and calculates the product of \lstinline{n}, \lstinline{n-1}, \lstinline{n-2}, etc., working downward until it attains the greatest product that doesn't exceed \lstinline{limit}. If there is no product less than or equal to \lstinline{limit}, \lstinline{fact_limit} should return 1. 
+
+\emph{Hint: The output of \lstinline{fact_limit} is always less than or equal to \lstinline{limit}.}
+
 \begin{lstlisting}
-def min_fact(n, margin):
+def fact_limit(n, limit):
     """
-    >>> min_fact(5, 20) # 5 * 4 * 3
-    60
-    >>> min_fact(5, 200)
-    -1
-    >>> min_fact(5, 0)
-    5
+    >>> fact_limit(5, 20) 
+    20 # 5 * 4 = 20, but 5 * 4 * 3 = 60 > 20
+    >>> fact_limit(5, 200) 
+    120 # 5 * 4 * 3 * 2 * 1 = 120 < 200
+    >>> fact_limit(5, 3) 
+    1 # no partial product is less than 3
     """
-    total, ________________ = n, ________________
-    while ________________:
-        ____________, ____________ = ____________, ____________
     if ________________:
-       ________________
+        ________________
+    product = ________________
+    ________________ = n - 1
+    while ________________:
+        ____________ = ____________  
+        ____________ = ____________
     return ________________
 
 \end{lstlisting}
@@ -24,13 +28,15 @@ def min_fact(n, margin):
 \begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
-def min_fact(n, margin):
-    total, n = n, n - 1
-    while total <= margin and n > 0:
-        total, n = total * n, n - 1
-    if total < margin:
-        return -1
-    return total
+def fact_limit(n, limit):
+    if n > limit:
+        return 1
+    product = n
+    n = n - 1
+    while product * n <= limit and n > 0:
+        product = product * n  
+        n = n - 1
+    return product
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

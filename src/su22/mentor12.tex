@@ -1,0 +1,72 @@
+
+
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{\textsc{Final Review}}
+\date{August 8 - 10, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+    There is little time to cover every topic, so spend time based on what students want to review.
+\end{guide}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
+\subimport{../../topics/environments/medium/}{fruit_loops.tex}
+\end{questions}
+\newpage
+
+\section{OOP}
+\begin{questions}
+\subimport{../../topics/oop/easy/}{dll.tex}
+\end{questions}
+\newpage
+
+\section{Complexity}
+\begin{questions}
+\subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+\end{questions}
+
+\section{Trees}
+\begin{questions}
+\subimport{../../topics/interview/}{rot.tex}
+\end{questions}
+
+\section{Scheme Lists}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{reverse-map.tex}
+\subimport{../../topics/scheme/medium/}{backwards-sum.tex}
+\end{questions}
+
+\section{Tail Recursion}
+\begin{questions}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\end{questions}
+
+\section{Regex}
+Here's a Regex reference sheet courtesy of Data100 Course Staff. \href{https://drive.google.com/file/d/1lhIy1fIJZKXeIZYGv4ltkFMwq0OxdKNn/view?usp=sharing}{Check it out here!}
+
+\section{SQL - Mentors}
+\subimport{../../topics/sql/mentors/}{table.tex}
+\begin{questions}
+\subimport{../../topics/sql/mentors/easy/}{alphabetical.tex}
+\subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+\end{questions}
+
+\section{Past Exams}
+The best way to prepare for exams is with exam-level questions (past exams).
+\begin{itemize}
+    \item \href{https://cs61a.org/exam/sp22/final/61a-sp22-final.pdf}{Sp22 Final}
+    \item \href{https://cs61a.org/exam/fa21/final/61a-fa21-final.pdf}{Fa21 Final}
+\end{itemize}
+
+\end{document}

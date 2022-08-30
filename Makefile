@@ -1,27 +1,26 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
 
-
-RELEASED = mentor00
-SOLUTIONS = mentor00
+RELEASED = mentor12
+SOLUTIONS = mentor12
 
 DST = published
-SRC = src/sp22
+SRC = src/fa22
 
-DEPEND = python make_dependency.py
+DEPEND = python3 make_dependency.py
 TEX = pdflatex
 TEX_FLAGS = -halt-on-error -output-directory ../../$(DST)
 
 SOURCES = $(wildcard $(SRC)/*.tex)
 HANDOUT = $(SOURCES:$(SRC)/%.tex=%)
 HANDOUT_SOL = $(addsuffix _sol, $(HANDOUT))
-HANDOUT_GUIDE = $(addsuffix _guide, $(HANDOUT))
+HANDOUT_META = $(addsuffix _meta, $(HANDOUT))
 
 #################################################################
 # User-friendly targets: use the following to publish material. #
 #################################################################
 
-all: $(RELEASED) $(addsuffix _sol, $(SOLUTIONS)) $(addsuffix _guide, $(SOLUTIONS))
+all: $(RELEASED) $(addsuffix _sol, $(SOLUTIONS)) $(addsuffix _meta, $(SOLUTIONS))
 
 clean:
 	find . -name "deps" -type d -prune -exec rm -rf {} \;
@@ -29,7 +28,7 @@ clean:
 	rm -rf $(DST)/*
 
 .SECONDEXPANSION:
-$(HANDOUT) $(HANDOUT_SOL) $(HANDOUT_GUIDE): $(DST) $(DST)/$$@.pdf
+$(HANDOUT) $(HANDOUT_SOL) $(HANDOUT_META): $(DST) $(DST)/$$@.pdf
 
 $(DST)/%.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
@@ -43,11 +42,11 @@ $(DST)/%_sol.pdf: $(SRC)/%.tex commonheader.sty
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
 	#open $(DST)/$*_sol.pdf
 
-$(DST)/%_guide.pdf: $(SRC)/%.tex commonheader.sty
+$(DST)/%_meta.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
-	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_guide" "\def\discussionsolutions{}\def\discussionguides{}\input{$*}"
+	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_meta" "\def\discussionsolutions{}\def\discussionmetas{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
-	#open $(DST)/$*_guide.pdf
+	#open $(DST)/$*_meta.pdf
 
 $(DST):
 	mkdir -p $@

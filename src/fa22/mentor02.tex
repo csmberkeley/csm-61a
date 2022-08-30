@@ -1,0 +1,54 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Python and Control}
+\date{August 31--September 2, 2022}
+
+\begin{document}
+\maketitle
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item Introductions/Expectations/Icebreaker [10 minutes]
+  \item Q1: What Would Python Display + Minilecture/explanations [15 minutes]
+  \item Q2: Order of evaluation [5 min]
+    \subitem{Note: don't need to do all parts if students get the idea}
+  \item Code Writing [20 minutes]
+    \subitem{- Again, no need to do all questions}
+    \subitem{- 2 and 3 are medium difficulty \& the last one is a bit more challenging, pick based on how your students are feeling}
+  \item Tips and Tricks for succeeding in CS61A [leftover time]
+\end{itemize}
+\end{meta}
+
+
+\section{Intro to Python}
+\begin{questions}
+\subimport{../../topics/basics/}{potpurri.tex}
+\subimport{../../topics/basics/}{funky-funcs.tex}
+\begin{questionmeta}
+  It's probably not necessary to get through all the parts of this problem if your students get the idea. The last subpart is probably the most instructive. 
+\end{questionmeta}
+\end{questions}
+
+\section{Control}
+\begin{questions}
+\subimport{../../topics/control/easy/}{divisible-by-4.tex}
+\begin{questionmeta}
+  The purpose of this problem is essentially to ensure that students are familiar with Python syntax. Its solution involves little complex thought. 
+\end{questionmeta}
+\subimport{../../topics/control/medium/}{find-max.tex}
+\begin{questionmeta}
+  The hardest part of this problem might be that students will overthink it, trying to find a ``clever'' way to do it with a smaller number of comparisons. 
+\end{questionmeta}
+\subimport{../../topics/control/medium/}{pow-of-2.tex}
+\begin{questionmeta}
+  If your students are not familiar with factorials, you may want to give them a brief overview before going over this problem. 
+\end{questionmeta}
+\subimport{../../topics/control/challenge/}{min_fact.tex}
+\begin{questionmeta}
+  This question differs significantly from a similar question that was used in past years. Please review it carefully before teaching it. 
+\end{questionmeta}
+\end{questions}
+
+\end{document}
