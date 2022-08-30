@@ -116,8 +116,8 @@ Hailey Park
         {\begin{flushright}
             \huge {\sc{#1}}
             \fontsize{45}{0} \sffamily \color{titlecol} \selectfont
-            \ifdefined\discussionguides
-              \marginpar{\Large{\textcolor{blue}{Guide}}}
+            \ifdefined\discussionmetas
+              \marginpar{\Large{\textcolor{blue}{Meta}}}
             \else
               \ifdefined\discussionsolutions
                 \marginpar{\Large{\textcolor{red}{Solutions}}}
@@ -344,18 +344,24 @@ Hailey Park
   \noprintanswers
 \fi
 
-\ifdefined\discussionguides
-    \newenvironment{guide}{\color{blue}}{}
-    \newenvironment{questionguide}{
+% Meta information is mentor-facing information to assist with teaching the 
+% worksheet. Information is presented in blue. 
+
+\ifdefined\discussionmetas
+    \newenvironment{meta}{\color{blue}}{}
+    \newenvironment{questionmeta}{
       \begin{solution}
       \color{blue}
     }{
       \end{solution}
     }
 \else
-    \newenvironment{guide}{\comment}{\endcomment}
-    \newenvironment{questionguide}{\comment}{\endcomment}
+    \newenvironment{meta}{\comment}{\endcomment}
+    \newenvironment{questionmeta}{\comment}{\endcomment}
 \fi
+
+% Backward compatibility with old templates that use "guide"
+\let\guide\meta
 
 % The nonsol environment will show items within it only if answers are not set
 % to be printed. Useful for hiding docstring in worksheet solutions.
