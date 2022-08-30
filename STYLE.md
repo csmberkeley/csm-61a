@@ -15,16 +15,16 @@ A worksheet adheres to the following format:
 \begin{document}
 \maketitle
 
-\begin{guide}
+\begin{meta}
     ...
-\end{guide}
+\end{meta}
 
 \section{%SECTION TITLE%}
 \begin{questions}
     \subimport{../../topics/%TOPIC%/%DIFFICULTY%/}{%PROBLEM NAME%.tex}
-    \begin{questionguide}
+    \begin{questionmeta}
         ...
-    \end{questionguide}
+    \end{questionmeta}
     ...
 \end{questions}
 ...
@@ -33,7 +33,7 @@ A worksheet adheres to the following format:
 ```
 Each of a worksheet's topics gets its own `section`. Each `section` has its own set of numbered `questions`. The individual questions are imported from the question bank using `subimport` statements. 
 
-Meta information about the worksheet is included with the `guide` and `questionguide` environments. This information only appears within metas, not solutions or worksheets. 
+Meta information about the worksheet is included with the `meta` and `questionmeta` environments. This information only appears within metas, not solutions or worksheets. 
 
 ## Question layout
 A basic question adheres to the following format: 
@@ -77,9 +77,10 @@ Questions with subparts are created using the `subparts` environment:
 ### Names
 - The names of problem files in the problem bank should be lowercase and hyphen-separated: *all-ways-skeleton.tex*, not *ALL_WAYS_SKELETON.TEX*.
 
-### `guide` and `questionguide`
-- Use the `questionguide` environment for meta information about individual questions. It should always be placed within a `questions` environment.
-- Use the `guide` environment for meta information about the entire worksheet or individual sections. Do not place it within a `questions` environment.
+### `meta` and `questionmeta`
+- Use the `questionmeta` environment for meta information about individual questions. It should always be placed within a `questions` environment.
+- Use the `meta` environment for meta information about the entire worksheet or individual sections. Do not place it within a `questions` environment.
+- In the past, `guide` was used instead of `meta`. `meta` is now preferred to `guide`, but they are fully equivalent and backward compatible. You may change `guide` to `meta` manually as you come across it in the problem bank. 
 
 ### `lstlisting` and `\lstinline`
 - To format blocks of code, use `lstlisting`:

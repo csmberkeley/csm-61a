@@ -5,7 +5,7 @@ The central repository for CSM 61A worksheets.
 There are three kinds of documents produced by this repository
 - Worksheets, which contain questions.
 - Solutions, which contain questions and answers.
-- Metas, which contains questions, answers, and information to help mentors teach the worksheet. 
+- Metas (formerly known as guides), which contains questions, answers, and information to help mentors teach the worksheet. 
 
 ## Repository organization 
 The repository is split up into two sections. `src` contains each semester's set
