@@ -7,6 +7,8 @@ There are three kinds of documents produced by this repository
 - Solutions, which contain questions and answers.
 - Metas (formerly known as guides), which contains questions, answers, and information to help mentors teach the worksheet. 
 
+Documentation for this repository is provided in the [Wiki](https://github.com/csmberkeley/csm-61a/wiki).
+
 ## Repository organization 
 The repository is split up into two sections. `src` contains each semester's set
 of worksheet templates, which draw their questions from the pool of `topics`. `topics` is divided into topical subdirectories, each of which is further divided into subfolders based on difficulty. 
