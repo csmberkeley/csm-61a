@@ -20,7 +20,7 @@ of the worksheets you'd like to make, and the solutions as necessary.
     RELEASED = mentor00 mentor01 mentor02
     SOLUTIONS = mentor00 mentor01
 
-Then, run `make all` to build all the worksheets in the `published` directory.
+Then, run `make all` to build all the worksheets in the `made` directory.
 
 If necessary, clean the local files with `make clean`.
 

@@ -4,7 +4,7 @@
 RELEASED = mentor12
 SOLUTIONS = mentor12
 
-DST = published
+DST = made
 SRC = src/fa22
 
 DEPEND = python3 make_dependency.py

@@ -110,6 +110,10 @@ Hailey Park
 %%% Configuring the document title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{titlecol}{gray}{0.6}
 
+% \titlebreak is used to insert a break in the title of the page without 
+% causing a break in the running footer. 
+\newcommand{\titlebreak}{\par}
+
 \let\oldtitle\title
 \renewcommand{\title}[1]
     {\oldtitle{
@@ -135,7 +139,10 @@ Hailey Park
 \firstpagefootrule
 \firstpagefooter{\small \staff}{}{}
 \runningfootrule
-\runningfooter{\sc \oddeven{Week \discnum: \disctitle}{\thepage}}{}{\sc \oddeven{\thepage}{CSM 61A \sem}}
+\runningfooter{
+  \let\titlebreak\relax
+  \sc \oddeven{Week \discnum: \disctitle}{\thepage}}{}{\sc \oddeven{\thepage}{CSM 61A \sem}
+  }
 
 \let\oldmaketitle\maketitle
 \renewcommand{\maketitle}[0]{\oldmaketitle \thispagestyle{headandfoot}}
