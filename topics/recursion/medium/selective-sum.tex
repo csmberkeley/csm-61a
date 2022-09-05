@@ -1,0 +1,38 @@
+\begin{blocksection}
+    \question Write a function \lstinline{selective_sum}, which takes in an integer \lstinline{n} and a predicate function \lstinline{cond}. \lstinline{selective_sum} returns the sum of all positive integers up to \lstinline{n} for which \lstinline{cond(n)} is true. 
+    
+    \begin{lstlisting}
+def selective_sum(n, cond):
+    """
+    >>> is_odd = lambda x: x % 2 == 1
+    >>> selective_sum(5, is_odd) # 5 + 3 + 1 = 9
+    9
+    >>> bigger_than_10 = lambda x: x > 10
+    >>> selective_sum(13, bigger_than_10) # 13 + 12 + 11 = 36
+    36
+    >>> selective_sum(-1, is_odd) # no positive integers <= 1
+    0
+    """
+    if _______________________________________________:
+
+        return _______________________________________________
+
+    if _______________________________________________:
+
+        return _______________________________________________
+
+    return _______________________________________________
+    \end{lstlisting}
+
+    \begin{solution}[0.5in]
+    \begin{lstlisting}
+def selective_sum(n, cond):
+    if n == 0:
+        return 0
+    if cond(n):
+        return n + selective_sum(n - 1, cond)
+    return selective_sum(n - 1, cond)
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
