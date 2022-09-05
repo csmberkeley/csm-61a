@@ -1,0 +1,94 @@
+\begin{blocksection}
+\question The \textit{Mandelbrot sequence} starting at the point $(a, b)$ is a sequence of points in the plane recursively defined by the following: 
+\begin{itemize}
+    \item The first term of the sequence is $(a, b)$.
+    \item If a term in the sequence is $(x, y)$, then the following term is $(x^2 - y^2 + a, 2xy + b)$.
+\end{itemize}
+For example, the first three terms of the Mandelbrot sequence starting at $(1, -1)$ are as follows: 
+$$(1, -1)$$ 
+$$(1^2 - (-1)^2 + 1, 2(1)(-1) + -1) = (1, -3)$$ 
+$$(1^2 - (-3)^2 + 1, 2(1)(-3) - 1) = (-7, -7)$$
+Write a higher order function \lstinline{mandelbrot_seq} that accepts two numbers, \lstinline{start_x} and \lstinline{start_y}. \lstinline{mandelbrot_seq} returns a function that takes two numbers \lstinline{x} and \lstinline{y} and returns the next term after \lstinline{(x, y)} in the Mandelbrot sequence starting at \lstinline{(start_x, start_y)}.
+
+\begin{lstlisting}
+def mandelbrot_seq(start_x, start_y):
+    """ 
+    >>> seq = mandelbrot_seq(1, -1)
+    >>> seq(1, -1)
+    (1, -3)
+    >>> seq(1, -3)
+    (-7, -7)
+    """
+    def mandelbrot_next(x, y):
+
+        return ____________________, _______________________
+
+return _____________________________
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def mandelbrot_seq(start_x, start_y):
+    def mandelbrot_next(x, y):
+        return x ** 2 - y ** 2 + start_x, 2 * x * y + start_y
+    return mandelbrot_next
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question Write a function \lstinline{in_or_out}, which returns \lstinline{False} if any of the first \lstinline{limit} terms of the Mandelbrot sequence is more than $2$ units away from the point $(0, 0)$, and \lstinline{True} otherwise. 
+\begin{lstlisting}
+def in_or_out(start_x, start_y, limit):
+    """
+    >>> in_or_out(1, -1, 1)
+    True
+    >>> in_or_out(1, -3, 3)
+    False
+    >>> in_or_out(100, 100, 0)
+    True
+    """
+    next_term = ______________________________________________
+    def helper(x, y, limit):
+
+        if ______________________________________________:
+            return True
+
+        elif ______________________________________________: 
+            return False
+        else: 
+            next_x, next_y = next_term(x, y)
+
+            return ___________________________________________
+            
+    return ______________________________________________
+\end{lstlisting}
+\end{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def in_or_out(start_x, start_y, limit):
+    next_term = mandelbrot_seq(start_x, start_y)
+
+    def helper(x, y, limit):
+        if limit <= 0:
+            return True
+        elif x ** 2 + y ** 2 > 4: 
+            return False
+        else: 
+            next_x, next_y = next_term(x, y)
+            return helper(next_x, next_y, limit - 1)
+            
+    return helper(start_x, start_y, limit)
+\end{lstlisting}
+The \textit{Mandelbrot set} is the set of all points $(x, y)$ in the plane for which the Mandelbrot sequence starting at $(x, y)$ does not eventually escape to infinity. An approximate picture of this set can be seen by plotting all the points \lstinline{(x,y)} where \lstinline{(x, y, limit)} returns \lstinline{True}: 
+\begin{lstlisting}
+for y in range(50, -50, -1):      
+    for x in range(-100, 25):
+        if in_or_out(x/50, y/50, 20):
+            print('#', end='')
+        else: 
+            print(' ', end='')
+    print()
+\end{lstlisting}
+\includegraphics[width=.75\textwidth]{mandelbrot.png}
+\end{solution}
