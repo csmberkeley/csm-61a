@@ -2,8 +2,8 @@
 \textbf{There are three steps to writing a recursive function:}
 \begin{enumerate}
     \item Create base case(s)
-    \item Reduce your problem to a smaller subproblem and call your function recursively on the smaller subproblem
-    \item Figure out how to get from the smaller subproblem back to the larger problem
+    \item Reduce your problem to a smaller subproblem and call your function recursively to solve the smaller subproblem
+    \item Figure out how to use the smaller subproblem's solution in the larger problem's solution
 \end{enumerate}
 
 \vspace{3mm}
@@ -11,14 +11,13 @@
 \textbf{Real World Analogy for Recursion}
 
 
-Imagine that you’re in line for boba, but the line is really long, so you want to know what position you’re in. You decide to ask the person in front of you how many people are in front of them. That way, you can take their response and add 1 to it. Now, the person in front of you is faced with the same problem that you were trying to solve, with one less person in front of them than you.  They decide to take the same approach that you did, by asking the person in front of them. This continues until the very first person in line is asked. At this point, the person at the front knows that there are 0 people in front of them, so they can tell the person behind them that there are 0 people in front.  Now, the second person can figure out that there is 1 person in front of them, and can relay that back to the person behind them, and so on, until the answer reaches you.
+Imagine that you're in line for boba, but the line is really long, so you want to know what position you're in. You decide to ask the person in front of you how many people are in front of them. That way, you can take their response and add 1 to it. Now, the person in front of you is faced with the same problem that you were trying to solve, with one less person in front of them than you. They decide to take the same approach that you did by asking the person in front of them. This continues until the very first person in line is asked. At this point, the person at the front knows that there are 0 people in front of them, so they can tell the person behind them that there are 0 people in front. Now, the second person can figure out that there is 1 person in front of them, and can relay that back to the person behind them, and so on, until the answer reaches you.
 
 
 Looking at this example, we see that we have broken down the problem of "how many people are there in front of me?" to 1 + "how many people are there in front of the person in front of me"? This problem will terminate with the person at the front of the line (with 0 people in front of them). Putting this into more formal terms, we are breaking down the problem into a \textbf{recurrence relationship}, and the termination case is called the \textbf{base case}.
 \end{blocksection}
 
 \begin{guide}
-\begin{blocksection}
 \textbf{Teaching Tips}
 \begin{enumerate}
 	    \item Base Case - What is the simplest case? Or in what case do you want your recursion to stop?
@@ -30,8 +29,8 @@ Looking at this example, we see that we have broken down the problem of "how man
 		\item Solve the smaller problem recursively
 		\begin{itemize}
 			\item How would you use the solution to the smaller problem to write a solution to the original problem?
-			\item “Recursive Leap of Faith” - When writing the recursive statement, assume the function works as intended for the smaller problems.
+			\item "Recursive Leap of Faith"---When writing the recursive statement, assume the function works as intended for the smaller problems.
+			\item If you don't know what the recursive call needs to be, you can take an educated guess and see what happens. 
 		\end{itemize}
 \end{enumerate}
-\end{blocksection}
 \end{guide}
