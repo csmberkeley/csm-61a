@@ -80,7 +80,7 @@ def in_or_out(start_x, start_y, limit):
             
     return helper(start_x, start_y, limit)
 \end{lstlisting}
-The \textit{Mandelbrot set} is the set of all points $(x, y)$ in the plane for which the Mandelbrot sequence starting at $(x, y)$ does not escape to infinity. An approximate picture of this set can be seen by plotting all the points \lstinline{(x,y)} where \lstinline{in_or_out(x, y, limit)} returns \lstinline{True}: 
+The \textit{Mandelbrot set} is the set of all points $(x, y)$ in the plane for which the Mandelbrot sequence starting at $(x, y)$ does not escape to infinity. An approximate picture of this set can be seen by plotting all the points \lstinline{(x,y)} where \lstinline{in_or_out(x, y, limit)} returns \lstinline{True} (don't worry if you don't understand this code): 
 \begin{lstlisting}
 for y in range(50, -50, -1):      
     for x in range(-100, 25):
