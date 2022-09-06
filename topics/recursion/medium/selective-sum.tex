@@ -34,5 +34,14 @@ def selective_sum(n, cond):
     return selective_sum(n - 1, cond)
     \end{lstlisting}
     \end{solution}
+    \begin{questionmeta}
+        \textbf{Teaching Tips}
+        \begin{itemize}
+            \item Make sure to explain what predicate functions are (functions that return either True or False).
+            \item Start with the base case! If there are no numbers that satisfy \lstinline{cond} what do we return?
+            \item Then move to the recursive step. How do we keep only the numbers that satisfy \lstinline{cond}?
+        \end{itemize}
+      \end{questionmeta}
+
     \end{blocksection}
     
