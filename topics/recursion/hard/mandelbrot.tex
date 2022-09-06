@@ -37,7 +37,7 @@ def mandelbrot_seq(start_x, start_y):
 
 \begin{questionmeta}
     The main concept in this problem that will throw students off is that we return a tuple,
-    so ensure to go over tuples if they aren't familiar with them when you walk through the doctests
+    so ensure to go over tuples if they aren't familiar with them when you walk through the doctests.
 \end{questionmeta}
 \end{blocksection}
 
@@ -97,3 +97,11 @@ for y in range(50, -50, -1):
 \end{lstlisting}
 \includegraphics[width=.75\textwidth]{mandelbrot.png}
 \end{solution}
+
+\begin{questionmeta}
+A major feature of this problem is that it exercises both higher order functions and recursive problem solving skills. 
+
+Students might find the use of \lstinline{next_term} to be a little bit tricky. If this is giving your students trouble, ask them what sort of information the line \lstinline{next_x, next_y = next_term(x, y)} gives them. Hopefully, this will help them deduce that \lstinline{next_term} has to be a function that takes in two numbers and returns two numbers, and they'll make the connection with the previous part. 
+
+The use of \lstinline{limit} as a recursive argument might be novel to some students, but it's a pretty common idea that crops up across all types of problems. I'd try to emphasize this to your students. 
+\end{questionmeta}
