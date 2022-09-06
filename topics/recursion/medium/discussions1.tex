@@ -66,7 +66,7 @@
     
     In the base cases we also need to make sure we return the correct data type. Given that the final return should be a boolean we want to return booleans in the base cases.
     
-    Another alternate base case would be: \lstinline{total == 0 or total % n == 0 or total % m == 0}. This solution would also work! You would just be stopping the recursion early, since the total can be a multiple of \lstinline{n} or \lstinline{m} in order to trigger the base case - it doesn’t have to be 0 anymore. Just be sure to still include the \lstinline{total == 0} check, just in case someone inputs 0 as the total into the function.
+    Another alternate base case would be: \lstinline{total == 0 or total % n == 0 or total % m == 0}. This solution would also work! You would just be stopping the recursion early, since the total can be a multiple of \lstinline{n} or \lstinline{m} in order to trigger the base case - it doesn't have to be 0 anymore. Just be sure to still include the \lstinline{total == 0} check, just in case someone inputs 0 as the total into the function.
     \end{blocksection}
     \end{solution}
     
@@ -78,11 +78,11 @@
         \begin{itemize}
             \item What are the base cases (when to return True/False)?
             \item How can we reduce this problem into smaller subproblems (recursive step)?
-            \item What does the value of a recrusive call tell us?
+            \item What does the value of a recursive call tell us?
             \item How can we put recursive calls together to get a final answer?
         \end{itemize}
         \item Ask students about the simplest possible cases to identify base cases; make sure they realize \lstinline{(total == n)} or \lstinline{(total == m)}  is incorrect because \lstinline{(total == 0)} is a simpler True case.
-        \item Point out the fact that tree recursion problems usually have you consider multiple “options” or “possibilities,” and they should all be explored when you are writing your recursive cases.
+        \item Point out the fact that tree recursion problems usually have you consider multiple ``options'' or ``possibilities'', and they should all be explored when you are writing your recursive cases.
         \item Out of all possible combinations of \lstinline{n} and \lstinline{m}, we only need 1 way for \lstinline{n} and \lstinline{m} to sum to the total for the function to return True, which implies \lstinline{or} is an appropriate way to aggregate our recursive calls.
     \end{itemize}
     \end{blocksection}
