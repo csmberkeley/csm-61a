@@ -41,11 +41,11 @@ def mandelbrot_seq(start_x, start_y):
 \begin{lstlisting}
 def in_or_out(start_x, start_y, limit):
     """
-    >>> in_or_out(1, -1, 1) # (1, -1) is sqrt(2) < 2 away from (0, 0)
+    >>> in_or_out(1, -1, 1) # (1, -1) dist is sqrt(2) < 2
     True
-    >>> in_or_out(1, -1, 3) # (1, -3) is sqrt(10) > 2 away from (0, 0)
+    >>> in_or_out(1, -1, 3) # (1, -3) dist is sqrt(10) > 2
     False
-    >>> in_or_out(100, 100, 0) # LIMIT is 0, no terms to consider
+    >>> in_or_out(100, 100, 0) # no terms to consider
     True
     """
     next_term = ______________________________________________
