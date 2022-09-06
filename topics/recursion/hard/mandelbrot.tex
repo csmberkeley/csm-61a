@@ -37,15 +37,15 @@ def mandelbrot_seq(start_x, start_y):
 \end{blocksection}
 
 \begin{blocksection}
-\question Write a function \lstinline{in_or_out}, which returns \lstinline{False} if any of the first \lstinline{limit} terms of the Mandelbrot sequence is more than $2$ units away from the point $(0, 0)$, and \lstinline{True} otherwise. 
+\question Write a function \lstinline{in_or_out}, which returns \lstinline{False} if any of the first \lstinline{limit} terms of the Mandelbrot sequence starting at \lstinline{(start_x, start_y)} is a distance of more than $2$ away from the point $(0, 0)$, and \lstinline{True} otherwise. 
 \begin{lstlisting}
 def in_or_out(start_x, start_y, limit):
     """
-    >>> in_or_out(1, -1, 1)
+    >>> in_or_out(1, -1, 1) # (1, -1) is sqrt(2) < 2 away from (0, 0)
     True
-    >>> in_or_out(1, -3, 3)
+    >>> in_or_out(1, -1, 3) # (1, -3) is sqrt(10) > 2 away from (0, 0)
     False
-    >>> in_or_out(100, 100, 0)
+    >>> in_or_out(100, 100, 0) # LIMIT is 0, no terms to consider
     True
     """
     next_term = ______________________________________________
