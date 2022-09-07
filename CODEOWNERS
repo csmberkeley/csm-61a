@@ -1,0 +1,4 @@
+# auto-requests PR reviews from...
+
+# @SCMs for any PRs modifying files in src
+/src/ @csmberkeley/cs61a-admins
