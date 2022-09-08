@@ -1,0 +1,48 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Containers, Data Abstraction and Sequences}}
+\date{October 3--October 007, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Lists Mini Lecture - 5 minutes
+        \item Lists WWPD - 7 minutes
+        \item Lists Environment Diagram - 8 minutes
+        \item All Primes - 8 minutes
+        \item Comprehensions - 7 minutes
+        \item Abstraction Mini Lecture - 5 minutes
+        \item Elephants - 10 minutes
+    \end{itemize}
+\end{guide}
+
+\section{Lists}
+\subimport{../../topics/lists/immutable/text/}{list_overview.tex}
+\begin{questions}
+    \subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified.tex}
+    \subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+    \newpage % To give space for students to draw out the ED
+    \subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+    \subimport{../../topics/lists/immutable/medium/}{comprehensions.tex}
+\end{questions}
+
+\newpage
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{questions}
+    \subimport{../../topics/data-abstraction/easy/}{elephants.tex}
+\end{questions}
+
+\end{document}
