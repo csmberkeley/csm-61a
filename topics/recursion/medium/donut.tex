@@ -1,0 +1,48 @@
+\begin{blocksection}
+\question Gabe's Donut shop has an unlimited supply of $f$ different flavors of donuts. Adit wants to buy a box containing $d$ donuts. Complete the skeleton for the function \lstinline{donut}, which determines the number of possible ways there are for Adit to select his $d$ donuts from the $f$ flavors. You may assume that \lstinline{d} and \lstinline{f} are non-negative integers. 
+
+\textit{Hint: Does order matter?}
+
+\begin{lstlisting}
+def donut(d, f):
+    """
+    >>> donut(12, 1)
+    1
+    >>> donut(12, 2)
+    13
+    >>> donut(12, 12)
+    1352078
+    >>> donut(0, 0)
+    1
+    """
+    if __________________:
+
+        return __________________
+
+    if __________________:
+
+        return __________________
+
+    return ______________________________________
+\end{lstlisting}
+
+\begin{solution}[0in]
+\begin{lstlisting}
+def donut(d, f):
+    if d == 0:
+        return 1
+    if f == 0:
+        return 0
+    return donut(d - 1, f) + donut(d, f - 1)
+\end{lstlisting}
+
+Suppose the flavors are numbered $1$ through $f$. Because order does not matter, we're going to say that Adit fills up his donut box starting with flavor number $f$ and working down to flavor number $1$. Under this scheme, Adit has a choice to make: does he want a donut of flavor number $f$, or does he not want one? If he does initially take a donut of flavor number $f$, then the number of ways to select the remaining $d - 1$ slots of the box is \lstinline{donut(d - 1, f)}. If he does not want a donut of flavor number $f$, then he has $d$ slots left in the box and $f - 1$ flavors to fill them with, making the number of ways to make the selection \lstinline{donut(d, f - 1)}. Since he must make the choice one way or the other, the total number of ways to fill up the box is \lstinline{donut(d - 1, f) + donut(d, f - 1)}. 
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+A big concept within tree recursion counting problems is this idea that we can use some sort of ``choice'' to break our problem down into smaller subproblems. I would emphasize this heavily to my students. Here, the choice is whether or not Adit takes a certain flavor. 
+
+In this case, we have deliberately neglected to provide several base cases in the doc tests. While a good exam problem would include these doctests, they are often not provided, and students should be able to deduce the bases cases by either 1) mathematical maturity or 2) deduction from test inputs. In the latter case, they could for example note that \lstinline{donut(1,1) == donut(0, 1) + donut(1, 0)} and use this to help figure out what \lstinline{donut} should return at these base cases. 
+
+\end{questionmeta}
