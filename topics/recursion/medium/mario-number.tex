@@ -40,10 +40,9 @@
 % \end{lstlisting}
 % \end{solution}
 
-\question Mario needs to jump over a series of Piranha plants, represented as a
-string of 0's and 1's. Mario only moves forward and can
+\question Mario needs to get from one end of a level to the other, but there are deadly Piranha plants in his way! Mario only moves forward and can
 either \emph{step} (move forward one space) or \emph{jump} (move forward two
-spaces) from each position. How many different ways can Mario traverse a level
+spaces) from each position. A level is represented as a series of ones and zeros, with zeros denoting the location of Piranha plants. Mario can step on ones but not on zeros.  How many different ways can Mario traverse a level
 without stepping or jumping into a Piranha plant? Assume that every level begins
 with a 1 (where Mario starts) and ends with a 1 (where
 Mario must end up).
@@ -55,11 +54,6 @@ one is easier to check?}
 \begin{lstlisting}
 def mario_number(level):
     """
-    Return the number of ways that Mario can traverse the
-    level, where Mario can either hop by one digit or two
-    digits each turn. A level is defined as being an integer
-    with digits where a 1 is something Mario can step on and
-    0 is something Mario cannot step on.
     >>> mario_number(10101)
     1
     >>> mario_number(11101)
@@ -94,9 +88,9 @@ def mario_number(level):
 \end{lstlisting}
 You can think about this tree recursion problem as testing out all of the possible ways Mario can traverse the level, and adding 1 every time you find a possible traversal.
 
-Here it doesn't matter whether Mario goes left to right or right to left; either way we'll end up with the same number of ways to traverse the \lstinline{level}. In that case, we can simply choose for Mario to start from the right, then we can process the level like we process other numbers in digit-parsing related questions by using floor div (\lstinline{//}) and modulo (\lstinline{%})
+Here it doesn't matter whether Mario goes left to right or right to left; either way we'll end up with the same number of ways to traverse the \lstinline{level}. In that case, we can simply choose for Mario to start from the right, and then we can process the level like we process other numbers in digit-parsing related questions by using floor division (\lstinline{//}) and modulo (\lstinline{%})
 
-At every time step, Mario can either take one or two steps, and these would take form in two corresponding recursive calls. A single floor division (\lstinline{//}) of \lstinline{level} by 10 means taking one step at this point in the \lstinline{level} (if we took a step, then the entire \lstinline{level} would be left except for the last number), while two floor divisions by 10 (or equivalently one floor division by 100) corresponds to a jump at this point in the \lstinline{level} (if we took a jump, then the entire \lstinline{level} would be left except for the last two numbers).
+At each point in time, Mario can either step or jump. We use a single floor division (\lstinline{//}) of \lstinline{level} by 10 to represent taking one step (if we took a step, then the entire \lstinline{level} would be left except for the last number), while two floor divisions by 10 (or equivalently one floor division by 100) corresponds to a jump at this point in the \lstinline{level} (if we took a jump, then the entire \lstinline{level} would be left except for the last two numbers).
 
 To think of the base cases, you can consider the two ways that Mario ends his journey. The first, corresponding to \lstinline{level == 1}, means that Mario has successfully reached the end of the level. You can \lstinline{return 1} here, because this means you've found one additional path to the end. The second, corresponding to \lstinline{level % 10 == 0}, means that Mario has landed on a Piranha plant. This returns 0 because it's a failed traversal of the \lstinline{level}, so you don't want to add anything to your result.
 
@@ -105,8 +99,7 @@ In tree recursion, you need to find a way to combine separate recursive calls. I
 \end{blocksection}
 \end{solution}
 
-\begin{guide}
-\begin{blocksection}
+\begin{questionmeta}
 \textbf{Teaching Tips}
 \begin{itemize}
     \item Some leading questions:
@@ -121,5 +114,4 @@ In tree recursion, you need to find a way to combine separate recursive calls. I
     \item It's very useful to draw a tree diagram! Each function call has one branch for stepping once and another branch for stepping twice. Each branch then has 2 branches of their own (until a base case is reached).
     \item Teach students that recursive calls can be treated as numbers using the recursive leap of faith, so combining the two recursive call branches with addition is really just adding two numbers.
 \end{itemize}
-\end{blocksection}
-\end{guide}
+\end{questionmeta}
