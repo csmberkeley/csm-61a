@@ -23,7 +23,7 @@ def subset_sum(seq, k):
 
 \begin{solution}[1.5in]
 \begin{lstlisting}
-    if len(seq) == 0:
+    if not seq:
         return False
     elif k in seq:
         return True

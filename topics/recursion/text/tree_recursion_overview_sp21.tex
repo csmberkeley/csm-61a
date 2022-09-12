@@ -1,18 +1,14 @@
 \begin{blocksection}
-\textbf{Tree Recursion vs Recursion}
+In most recursive problems we've seen so far, the solution function contains only one call to itself. However, some problems will require multiple recursive calls---we call this type of recursion "tree recursion" because the propagation of function frames reminds us of the branches of a tree. Despite the fancy name, these problems are still solved the same way as those requiring a single function call: we define a base case, use a recursive call to solve a smaller subproblem, and then solve the original, larger problem with the solution to our subproblem. The difference? Instead of just using the solution to one subproblem, we may need to use multiple subproblems' solutions to solve our original problem. 
 
-
-In most recursive problems we've seen so far, the solution function contains only one call to itself. However, some problems will require multiple recursive calls -- we colloquially call this type of recursion "tree recursion," since the propagation of function frames reminds us of the branches of a tree. "Tree recursive" or not, these problems are still solved the same way as those requiring a single function call: a base case, the recursive leap of faith on a subproblem, and solving the original problem with the solution to our subproblems. The difference? We simply may need to use multiple subproblems to solve our original problem.
-
-Tree recursion will often be needed when solving counting problems (how many ways are there of doing something?) and optimization problems (what is the maximum or minimum number of ways of doing something?), but remember there are all sorts of problems that may need multiple recursive calls! Always come back to the recursive leap of faith.
+Tree recursion will often be needed when solving counting problems (how many ways are there of doing something?) and optimization problems (what is the maximum or minimum number of ways of doing something?), but remember that there are all sorts of problems that may need multiple recursive calls! 
 
 \end{blocksection}
 
-\begin{guide}
-\begin{blocksection}
+\begin{meta}
 \textbf{Teaching Tips}
 \begin{itemize}
-    \item Stress the power of tree recursion: it lets us find a single solution among 14,000,605 futures.
+    \item Stress the power of tree recursion: it lets us find a single solution among many futures.
     \item Try dividing tree recursion questions into three parts: base cases, recursive calls, and combining recursive calls.
     \begin{enumerate}
         \item What are the simplest possible arguments for the function?
@@ -28,6 +24,14 @@ Tree recursion will often be needed when solving counting problems (how many way
             \item Trust recursive calls to return the correct values (recursive leap of faith!) and combine them with mathematical or logical operators.
         \end{itemize}
     \end{enumerate}
+    \item It is worth mentioning that perhaps one of the strongest skills one can develop in 61a is the ability to simplify doctests.
+          Oftentimes running through a tree recursive problem's doctests that have larger inputs involves drawing a very complicated and lengthy call tree diagram,
+          which is simply not feasible at times. Breaking down the problem in the aforementioned steps will yield the base case, but creating additional simpler doctests 
+          to understand how the function works at a smaller level will be optimal to finding the solution. I would like to note that in developing this skill, if a students
+          creates a doctest that is wrong, it would be detrimental to their understanding of the problem, but if they understand how the function works, creating simpler doctests
+          can show them how the function behaves with edge cases and different sized inputs.
 \end{itemize}
-\end{blocksection}
-\end{guide}
+We tend to throw around the term ``recursive leap of faith'' a lot, and I think that it confuses students. The ``recursive leap of faith'' is not synonymous with ``the recursive call is correct''. Rather it's a specific assumption we make \textit{while writing} a recursive function that the recursive calls we make produce the correct output, even though the function in its current state would not. That is, the function we're writing works even though we're not done writing it. The fact that recursive calls return the correct value in the \textit{completed} function is a mathematical fact that does not require any faith, so you should not conflate the two. Recursion is not magic; it is math.
+
+Here's the way I think about it: the recursive leap of faith is essentially the scaffolding we need to help us build the recursive function. We pour the concrete for the base case and then layer our recursive logic on top of that until we have a sturdy structure, using the leap of faith's scaffolding to help us, as fallible human builders, to figure out the right way for the pieces to fit together. Once we're done, we can remove the scaffolding, but our tower still stands strong and sturdy. 
+\end{meta}
