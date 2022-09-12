@@ -27,7 +27,7 @@ def selective_sum(n, cond):
     \begin{solution}[0.5in]
     \begin{lstlisting}
 def selective_sum(n, cond):
-    if n == 0:
+    if n <= 0:
         return 0
     if cond(n):
         return n + selective_sum(n - 1, cond)
