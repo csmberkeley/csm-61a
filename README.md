@@ -26,6 +26,14 @@ To make an individual worksheet, run the following command in the repository's
 root directory.
 
     make mentor00
+    
+
+To create all content for one week, you can pass multiple
+parameters into the `make` command in the repository's
+root directory.
+
+    make mentor00 mentor00_meta mentor00_sol
+
 
 To make multiple worksheets at once, modify the `Makefile` by adding the names
 of the worksheets you'd like to make, and the solutions as necessary.
@@ -34,6 +42,7 @@ of the worksheets you'd like to make, and the solutions as necessary.
     SOLUTIONS = mentor00 mentor01
 
 Then, run `make all` to build all the worksheets in the `made` directory.
+
 
 If necessary, clean the local files with `make clean`.
 
