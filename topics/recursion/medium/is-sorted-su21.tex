@@ -1,6 +1,7 @@
 \begin{blocksection}
-\question Write a function \lstinline$is_sorted$ that takes in an integer
-\lstinline$n$ and returns true if the digits of that number are nondecreasing from
+
+\question Write a function \lstinline{is_sorted} that takes in an integer
+\lstinline{n} and returns true if the digits of that number are nondecreasing from
 right to left.
 
 \begin{lstlisting}
@@ -16,10 +17,8 @@ def is_sorted(n):
     False
     """
 \end{lstlisting}
-\end{blocksection}
 
 \begin{solution}[1in]
-\begin{blocksection}
 \begin{lstlisting}
     right_digit = n % 10
     rest =  n // 10
@@ -31,23 +30,22 @@ def is_sorted(n):
         return is_sorted(rest)
 \end{lstlisting}
 
-First, let’s look into the base case. At what point will you know a number is sorted/not sorted immediately?
+First, let's look into the base case. At what point will you know a number is sorted/not sorted immediately?
 \begin{enumerate}
 \item If \lstinline{n} only has 1 digit or is 0, we know it is definitely sorted with itself. This corresponds to the first if condition, \lstinline{rest == 0}.
 \item If the 2nd-to-last and last digits are not in sorted order, we know the number is not sorted. To do this, we need at least 2 digits in \lstinline{n} to compare, which is why we check this in \lstinline{elif} after ensuring \lstinline{n} is not 0.
 \end{enumerate}
 
-Next, let’s go into the recursive step. We build off of the base cases: if the base cases fail, then we can now work off of the assumption that \lstinline{n} has at least 2 digits and the last 2 digits of n are in sorted order. Next, notice that after chopping off the last digit, to check that the rest of \lstinline{n} is sorted, we can use our function \lstinline{is_sorted} on the number \lstinline{rest}. So finally, we make the recursive call with \lstinline{rest} as the argument.
-\end{blocksection}
+Next, let's go into the recursive step. We build off of the base cases: if the base cases fail, then we can now work off of the assumption that \lstinline{n} has at least 2 digits and the last 2 digits of n are in sorted order. Next, notice that after chopping off the last digit, to check that the rest of \lstinline{n} is sorted, we can use our function \lstinline{is_sorted} on the number \lstinline{rest}. So finally, we make the recursive call with \lstinline{rest} as the argument.
 \end{solution}
+\end{blocksection}
 
-\begin{guide}
-\begin{blocksection}
+
+\begin{questionmeta}
   \textbf{Teaching Tips}
   \begin{itemize}
       \item If your students are quiet at the beginning, it might be good to start by going through each of the doctests and asking them why they're true of false.
       \item Start with the base case! At what point will you know a number is sorted?
-      \item Then move to the recursive step. How do we get the last digit (n \% 10) and the rest (n // 10)?
+      \item Then move to the recursive step. How do we get the last digit (\lstinline{n % 10}) and the rest (\lstinline{n // 10})?
   \end{itemize}
-\end{blocksection}
-\end{guide}
+\end{questionmeta}
