@@ -28,33 +28,33 @@
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_name(e):
+    def pokemon_name(p):
     \end{lstlisting}
     \begin{solution}[1in]
     \begin{lstlisting}
-        return e[0]
+        return p[0]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_age(e):
+    def pokemon_age(p):
     \end{lstlisting}
     \begin{solution}[1in]
     \begin{lstlisting}
-        return e[1]
+        return p[1]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_friends(e):
+    def pokemon_friends(p):
     \end{lstlisting}
     \begin{solution}[1in]
     \begin{lstlisting}
-        return e[4]
+        return p[4]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
@@ -83,10 +83,6 @@
     \end{solution}
     
     \end{blocksection}
-
-    \begin{blocksection}
-        \question What is a data abstraction violation?
-    \end{blocksection}
     
     %%% Question %%%
     
@@ -98,23 +94,23 @@
     \end{lstlisting}
     \begin{solution}[1in]
     \begin{lstlisting}
-        return [[name, age], can_fly]
+        return [[name, generation, type], [can_attack], friends]
     \end{lstlisting}
     \end{solution}
     
     \begin{lstlisting}
-    def elephant_name(e):
-        return e[0][0]
-    \end{lstlisting}
-    
-    \begin{lstlisting}
-    def elephant_age(e):
+    def pokemon_generation(p):
         return e[0][1]
     \end{lstlisting}
     
     \begin{lstlisting}
-    def elephant_can_fly(e):
-        return e[1]
+    def pokemon_can_attack(p):
+        return e[1][0]
+    \end{lstlisting}
+    
+    \begin{lstlisting}
+    def pokemon_friends(p):
+        return e[2]
     \end{lstlisting}
     
     \end{blocksection}
