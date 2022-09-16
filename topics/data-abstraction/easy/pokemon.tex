@@ -7,7 +7,7 @@
     def pokemon(name, generation, type, can_attack, friends):
         """
         Takes in a string name, an int generation, a string type, a boolean can_attack, and a list friends.
-        Constructs an elephant with these attributes.
+        Constructs an Pokemon with these attributes.
         >>> cyndaquil = pokemon("Cyndaquil", 2, "Fire", True, ["Chikorita", "Totodile"])
         >>> pokemon_name(cyndaquil)
         "Cyndaquil"
@@ -68,7 +68,7 @@
     \begin{lstlisting}
     def pokemon_team(pokemen):
         """
-        Takes in a list of elephants and returns a list of their names.
+        Takes in a list of Pokemon (aptly named Pokemen due to the plural of Pokemon being Pokemon) and returns a list of their names.
         """
         return [pokemon[0] for pokemon in pokemen]
     \end{lstlisting}
@@ -118,19 +118,19 @@
     %%% Question %%%
     
     \begin{blocksection}
-    \question How can we write the fixed \texttt{elephant\char`_roster} function for
+    \question How can we write the fixed \textinline{pokemon\char`_roster} function for
     the constructors and selectors in the previous question?
     
     \begin{solution}[1.5in]
-    No change is necessary to fix \texttt{elephant\char`_roster} since using the
-    \texttt{elephant} selectors ``protects'' the roster from constructor definition
+    No change is necessary to fix \textinline{pokemon\char`_roster} since using the
+    \texttt{pokemon} selectors ``protects'' the roster from constructor definition
     changes.
     \end{solution}
     
     \begin{guide}
     \textbf{Teaching Tips}
     \begin{itemize}
-        \item \texttt{elephant\_roster}
+        \item \texttt{pokemon\_roster}
         \begin{itemize}
             \item If data abstraction is new to your students or they don’t feel very confident in the topic, \textbf{consider walking them through this problem}.
             \item The information from 1) is very important for these questions. Make sure your \textbf{students understand the main ideas of 1)!}
@@ -151,16 +151,20 @@
     selectors.
     
     \begin{lstlisting}
-    def elephant(name, age, can_fly):
+    def pokemon(name, generation, type, can_attack, friends):
         """
-        >>> chris = elephant("Chris Martin", 38, False)
-        >>> elephant_name(chris)
-        "Chris Martin"
-        >>> elephant_age(chris)
-        38
-        >>> elephant_can_fly(chris)
+        >>> lil_guy = pokemon("Pikachu", 1, "Electric", False, ["Mewtwo", "Lucario"])
+        >>> pokemon_name(lil_guy)
+        "Pikachu"
+        >>> pokemon_generation(lil_guy)
+        1
+        >>> pokemon_type(lil_guy)
+        "Electric"
+        >>> pokemon_can_attack(lil_guy)
         False
-        >> chris("size")
+        >>> pokemon_friends(lil_guy)
+        ["Mewtwo", "Lucario"]
+        >> lil_guy("type")
         "Breaking abstraction barrier!"
         """
         def select(command):
@@ -169,10 +173,14 @@
     \begin{lstlisting}
             if command == "name":
                 return name
-            elif command == "age":
-                return age
-            elif command == "can_fly":
-                return can_fly
+            elif command == "generation":
+                return generation
+            elif command == "type":
+                return type
+            elif command == "can_attack":
+                return can_attack
+            elif command == "friends":
+                return friends
             return "Breaking abstraction barrier!"
     \end{lstlisting}
     \end{solution}
@@ -182,18 +190,28 @@
     \end{lstlisting}
     
     \begin{lstlisting}
-    def elephant_name(e):
-        return e("name")
+    def pokemon_name(p):
+        return p("name")
     \end{lstlisting}
     
     \begin{lstlisting}
-    def elephant_age(e):
-        return e("age")
+    def pokemon_generation(p):
+        return p("generation")
     \end{lstlisting}
     
     \begin{lstlisting}
-    def elephant_can_fly(e):
-        return e("can_fly")
+    def pokemon_type(p):
+        return p("type")
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    def pokemon_can_attack(p):
+        return p("can_attack")
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    def pokemon_friends(p):
+        return p("friends")
     \end{lstlisting}
     
     \end{blocksection}
