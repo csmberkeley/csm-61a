@@ -1,0 +1,200 @@
+\begin{blocksection}
+    \question The following is abstract data for representing Pokemon.
+    Each Pokemon keeps track of its name, age, zoomability, and friends. Given
+    our provided constructor, fill out the selectors:
+    
+    \begin{lstlisting}
+    def pokemon(name, generation, type, can_attack, friends):
+        """
+        Takes in a string name, an int generation, a string type, a boolean can_attack, and a list friends.
+        Constructs an elephant with these attributes.
+        >>> cyndaquil = pokemon("Cyndaquil", 2, "Fire", True, ["Chikorita", "Totodile"])
+        >>> pokemon_name(cyndaquil)
+        "Cyndaquil"
+        >>> pokemon_age(cyndaquil)
+        10
+        >>> pokemon_type(cyndaquil)
+        "Fire"
+        >>> pokemon_can_attack(cyndaquil)
+        True
+        >>> pokemon_friends(cyndaquil)
+        ["Chikorita", "Totodile"]
+        """
+        return [name, age, type, can_attack, friends]
+    
+    \end{lstlisting}
+    
+    \end{blocksection}
+    \begin{blocksection}
+    
+    \begin{lstlisting}
+    def dog_name(e):
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+        return e[0]
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    \begin{blocksection}
+    
+    \begin{lstlisting}
+    def elephant_age(e):
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+        return e[1]
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    \begin{blocksection}
+    
+    \begin{lstlisting}
+    def elephant_can_fly(e):
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+        return e[2]
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    %%% Question %%%
+    
+    \begin{blocksection}
+    \question This function returns the correct result, but there's something wrong
+    about its implementation. How do we fix it?
+    
+    \begin{lstlisting}
+    def elephant_roster(elephants):
+        """
+        Takes in a list of elephants and returns a list of their names.
+        """
+        return [elephant[0] for elephant in elephants]
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \lstinline{elephant[0]} is a Data Abstraction Violation (DAV).
+    We should use a selector instead.
+    The corrected function looks like:
+    \begin{lstlisting}
+    def elephant_roster(elephants):
+        return [elephant_name(elephant) for elephant in elephants]
+    \end{lstlisting}
+    \end{solution}
+    
+    \end{blocksection}
+    
+    %%% Question %%%
+    
+    \begin{blocksection}
+    \question Fill out the following constructor for the given selectors.
+    
+    \begin{lstlisting}
+    def elephant(name, age, can_fly):
+    \end{lstlisting}
+    \begin{solution}[1in]
+    \begin{lstlisting}
+        return [[name, age], can_fly]
+    \end{lstlisting}
+    \end{solution}
+    
+    \begin{lstlisting}
+    def elephant_name(e):
+        return e[0][0]
+    \end{lstlisting}
+    
+    \begin{lstlisting}
+    def elephant_age(e):
+        return e[0][1]
+    \end{lstlisting}
+    
+    \begin{lstlisting}
+    def elephant_can_fly(e):
+        return e[1]
+    \end{lstlisting}
+    
+    \end{blocksection}
+    
+    %%% Question %%%
+    
+    \begin{blocksection}
+    \question How can we write the fixed \texttt{elephant\char`_roster} function for
+    the constructors and selectors in the previous question?
+    
+    \begin{solution}[1.5in]
+    No change is necessary to fix \texttt{elephant\char`_roster} since using the
+    \texttt{elephant} selectors ``protects'' the roster from constructor definition
+    changes.
+    \end{solution}
+    
+    \begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item \texttt{elephant\_roster}
+        \begin{itemize}
+            \item If data abstraction is new to your students or they don’t feel very confident in the topic, \textbf{consider walking them through this problem}.
+            \item The information from 1) is very important for these questions. Make sure your \textbf{students understand the main ideas of 1)!}
+            \item 2) may seem easy/trivial, but emphasize how the selector interface allows you to easily use the ADT without violating abstraction barriers.
+        \end{itemize}
+        \item select \textbf{(Optional)}
+        \begin{itemize}
+            \item If your students want a challenge problem, they can do this.
+            \item Expect most students to struggle with this question. It combines \textbf{HOFs with principles of data abstraction}. Make sure students know how to compare strings.
+        \end{itemize}
+    \end{itemize}
+    \end{guide}
+    
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \question \textbf{(Optional)} Fill out the following constructor for the given
+    selectors.
+    
+    \begin{lstlisting}
+    def elephant(name, age, can_fly):
+        """
+        >>> chris = elephant("Chris Martin", 38, False)
+        >>> elephant_name(chris)
+        "Chris Martin"
+        >>> elephant_age(chris)
+        38
+        >>> elephant_can_fly(chris)
+        False
+        >> chris("size")
+        "Breaking abstraction barrier!"
+        """
+        def select(command):
+    \end{lstlisting}
+    \begin{solution}[1.8in]
+    \begin{lstlisting}
+            if command == "name":
+                return name
+            elif command == "age":
+                return age
+            elif command == "can_fly":
+                return can_fly
+            return "Breaking abstraction barrier!"
+    \end{lstlisting}
+    \end{solution}
+    
+    \begin{lstlisting}
+        return select
+    \end{lstlisting}
+    
+    \begin{lstlisting}
+    def elephant_name(e):
+        return e("name")
+    \end{lstlisting}
+    
+    \begin{lstlisting}
+    def elephant_age(e):
+        return e("age")
+    \end{lstlisting}
+    
+    \begin{lstlisting}
+    def elephant_can_fly(e):
+        return e("can_fly")
+    \end{lstlisting}
+    
+    \end{blocksection}
+    
