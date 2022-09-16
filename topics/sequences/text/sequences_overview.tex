@@ -1,0 +1,26 @@
+\textbf{Sequences Overview:}
+
+Sequences are a fundamental type of abstraction in computer science.
+At the most basic understanding, sequences are a collection of values, put together so that there's a uniform way to access and manipulate those values.
+Sequences aren't specific instances of a built-in type or abstract data type, but common behaviors shared between many different types of data.
+In Python, a common native data type that is a sequence is the \lstinline{list}.
+\begin{enumerate}
+	\item \textbf{Length: } Sequences always have finite length.
+	\item \textbf{Element Selection: } All non-negative integer indices less than a sequence's length has an element corresponding to it. Zero-indexing applies.
+\end{enumerate}
+
+Because of these shared traits, many modular components with sequences as both input and output exist that can be mixed and matched to perform data processing.
+\begin{enumerate}
+    \item \textbf{List Comprehensions: } Mentioned in more detail in the lists portion, but essentially evaulates each value in a sequence a returns the resulting sequence.
+    \item \textbf{Aggregation: } The process of aggregating all values in a sequence into a single value. Common built-in functions include \lstinline{sum, min,} and \lstinline{max}
+
+\begin{blocksection}
+	\begin{guide}
+	\textbf{Teaching Tips}
+	\begin{enumerate}
+		\item Be sure to mention the nature of sequences: a loose umbrella that encompasses many different data types.
+		\item If students are confused consider bringing up examples of sequences, like \textbf{lists, ranges, strings, trees, linked lists}.
+		\item Consider relating sequences to the \lstinline{for} keyword. Mention control.
+	\end{enumerate}
+	\end{guide}
+\end{blocksection}
