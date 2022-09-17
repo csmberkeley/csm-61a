@@ -1,12 +1,8 @@
 \textbf{Lists Introduction:}
 
-Lists are an ordered collection of values that contain any type of data, including lists!
+Lists are an ordered collection of values that contain any type of data.
 
-In order to define a list, we wrap our elements with square brackets, and separate elements with commas.
-
-We can access specific properties of a list, such as the length, 
-and the specific index of an item in the list, although it is important to note that
-when we index into lists, we start at 0, and not 1.
+Here are some examples of creating lists and how we access their properties.
 
 \begin{lstlisting}
 >>> lst = [1, False, [2, 3], 4] # a list can contain any data type
@@ -14,10 +10,10 @@ when we index into lists, we start at 0, and not 1.
 4
 >>> lst[0] # Indexing starts at 0
 1
->>> type(lst[2]) # Can have lists within lists!
-<class 'list'>
 >>> lst[4] # Indexing ends at len(lst) - 1
 Error: list index out of range
+>>> type(lst[2]) # Can have lists within lists!
+<class 'list'>
 \end{lstlisting}
 
 We can iterate over lists using their index, or iterate over elements directly
@@ -41,7 +37,8 @@ Both for loops will output:
 \newline
 4
 
-\textbf{List comprehensions} are a concise and powerful method to create a new list out of sequences. The general syntax of list comprehensions follows:
+\textbf{List comprehensions} are a concise and powerful method to create a new list out of sequences.
+ The general syntax of list comprehension is
 \begin{lstlisting}
 [<expression> for <element> in <sequence> if <condition>]
 \end{lstlisting}
@@ -83,13 +80,13 @@ The portion of the list we want to keep starts at \lstinline{<start index>} and 
 add the optional parameter \lstinline{<step size>}, which will allow us skip or reverse those elements.
 
 If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, the default range, will be the
-beginning to the end of the list, respectively. 
+beginning to the end of the list. 
 
 \begin{lstlisting}
 >>> lst = [1, 2, 3, 4, 5]
 >>> lst[2:] # Create a new list with only the elements starting from the 2nd index
 [3, 4, 5]
->>> lst[:3] # Create a new list with only the elements up until the 4th index
+>>> lst[:3] # Create a new list with only the elements up until the 3rd index
 [1, 2, 3]
 >>> lst[::-1] # Reverse the entire list
 [5, 4, 3, 2, 1]
