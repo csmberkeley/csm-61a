@@ -32,6 +32,10 @@ While each type of sequence is different, they all share a common interface for 
 3
 \end{lstlisting}
 
+
+\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value.
+\lstinline{max((3, 4, 5))} $\rightarrow$ \lstinline{5}
+
 \item \textbf{Slicing}: Slicing is a way to create a copy of all or part of a sequence. The general syntax for slicing a sequence \lstinline{seq} is as follows:
 	\begin{lstlisting}
 seq[<start index>:<end index>:<step size>]
@@ -52,9 +56,6 @@ If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, it wil
 >>> lst[1::2] 
 [2, 4]
 \end{lstlisting}
-
-\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value.
-\lstinline{max((3, 4, 5))} $\rightarrow$ \lstinline{5}
 
 \end{itemize}
 \vspace{0.5 in}
