@@ -1,9 +1,8 @@
 \textbf{Lists Introduction:}
 
-Lists are a data structure, an ordered collection of values that contain any type of data, even more lists itself!
-This may be a new concept for you if you have background in other languages, like Java, where lists can only be made of the same type elements.
+Lists are an ordered collection of values that contain any type of data, including lists!
 
-In order to write a list, we wrap our elements with square brackets, and separate elements with commas.
+In order to define a list, we wrap our elements with square brackets, and separate elements with commas.
 
 We can access specific properties of a list, such as the length, 
 and the specific index of an item in the list, although it is important to note that
@@ -34,9 +33,12 @@ for item in lst:
 
 Both for loops will output:
 
-1
+1 
+\newline
 2
+\newline
 3
+\newline
 4
 
 \textbf{List comprehensions} are a concise and powerful method to create a new list out of sequences. The general syntax of list comprehensions follows:
@@ -76,12 +78,12 @@ The general syntax for slicing a list \lstinline{lst} is as follows:
 	lst[<start index>:<end index>:<step size>]
 \end{lstlisting}
 
-Where the portion of the list we want to keep starts at \lstinline{<start index>} and ends one before
+The portion of the list we want to keep starts at \lstinline{<start index>} and ends one before
 \lstinline{<end index>}. Once we have that portion of the list, if we want to only keep some elements, we can
 add the optional parameter \lstinline{<step size>}, which will allow us skip or reverse those elements.
 
-If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, the default parameter, will be the
-beginning, and the end of the list, respectively. 
+If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, the default range, will be the
+beginning to the end of the list, respectively. 
 
 \begin{lstlisting}
 >>> lst = [1, 2, 3, 4, 5]
@@ -113,6 +115,7 @@ beginning, and the end of the list, respectively.
 					\item Probably don’t need to get into every little thing (like negative indices, skipping elements, etc.)
 				\end{itemize}
 				\item Deep copy vs shallow copy: when you copy a nested list, copy pointers to the nested list (a shallow copy) rather than make a new copy of the nested list (a deep copy).
+					
 			\end{itemize}
 	\end{itemize}
 	\end{guide}
