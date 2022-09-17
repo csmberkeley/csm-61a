@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Draw the environment diagram that results from running the code.
+\question Draw the environment diagram that results from running the code below.
 
 \begin{lstlisting}
 def reverse(lst):
@@ -12,12 +12,13 @@ rev = reverse(lst)
 \end{lstlisting}
 
 \begin{solution}[2in]
+\includegraphics[width=0.7\textwidth]{reverse.png}
+
 \url{https://goo.gl/6vPeX9}
 \end{solution}
 \end{blocksection}
 
-\begin{guide}
-\begin{blocksection}
+\begin{questionmeta}
 \textbf{Teaching Tips}
 \begin{itemize}
     \item We call \lstinline{reverse} recursively 3 times and open 3 new frames, each time passing through a shallow copy of the list without the first element
@@ -27,5 +28,4 @@ rev = reverse(lst)
     \item List slices create shallow copies (a new list is created but any pointers in the new list still point to the same thing)
     \item Keep in mind that the return value of the reverse function is a new list because of the \lstinline{+ [lst[0]]}
 \end{itemize}
-\end{blocksection}
-\end{guide}
+\end{questionmeta}

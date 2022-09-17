@@ -1,49 +1,13 @@
 \textbf{Lists Introduction:}
 
-Lists are an ordered collection of values that contain any type of data.
+Lists are an ordered collection of values that can contain any type of data.
 
-Here are some examples of creating lists and how we access their properties.
+\textbf{List comprehensions}, which only work on lists, are a concise and powerful method to create a new list from another sequence. The syntax for a list comprehension is
+   \begin{lstlisting}
+   [<expression> for <element> in <sequence> if <condition>]
+   \end{lstlisting}
 
-\begin{lstlisting}
->>> lst = [1, False, [2, 3], 4] # a list can contain any data type
->>> len(lst)
-4
->>> lst[0] # Indexing starts at 0
-1
->>> lst[4] # Indexing ends at len(lst) - 1
-Error: list index out of range
->>> type(lst[2]) # Can have lists within lists!
-<class 'list'>
-\end{lstlisting}
-
-We can iterate over lists using their index, or iterate over elements directly
-
-\begin{lstlisting}
-a = [1, 2, 3 ,4]
-
-for index in range(len(lst)):
-	print(a[index])
-for item in lst:
-	print(item)
-\end{lstlisting}
-
-Both for loops will output:
-
-1 
-\newline
-2
-\newline
-3
-\newline
-4
-
-\textbf{List comprehensions} are a concise and powerful method to create a new list out of sequences.
- The general syntax of list comprehension is
-\begin{lstlisting}
-[<expression> for <element> in <sequence> if <condition>]
-\end{lstlisting}
-
-The \lstinline{if <condition>} is optional, and an equivalent for loop for a list comprehension is as follows:
+   We could equivalently write the following: 
 \begin{lstlisting}
 	lst = []
 	for <element> in <sequence>:
@@ -51,47 +15,21 @@ The \lstinline{if <condition>} is optional, and an equivalent for loop for a lis
 			lst = lst + [<expression>] # add current element to the list
 \end{lstlisting}
 
-An example of list comprehensions in use:
+The \lstinline{if <condition>} filter statement is optional. The following list comprehension doubles each odd element of [1, 2, 3, 4]:
+
 
 \begin{lstlisting}
->>> [i * 2 for i in [1, 2, 3, 4] if i % 2 != 0] # iterate over numbers from [1, 2, 3, 4] and if they are odd, multiply them by 2
+>>> [i * 2 for i in [1, 2, 3, 4] if i % 2 != 0] 
 [2, 6]
 \end{lstlisting}
 
-Equivalence in for loop syntax:
+Equivalent in \lstinline{for} loop syntax:
 
 \begin{lstlisting}
 	lst = []
 	for i in [1, 2, 3, 4]:
 		if i % 2 != 0:
 			lst = lst + [i * 2] # add current element to the list
-\end{lstlisting}
-
-We can use \textbf{list slicing} to create a copy of a certain portion or all of a list.
-
-The general syntax for slicing a list \lstinline{lst} is as follows:
-
-\begin{lstlisting}
-	lst[<start index>:<end index>:<step size>]
-\end{lstlisting}
-
-The portion of the list we want to keep starts at \lstinline{<start index>} and ends one before
-\lstinline{<end index>}. Once we have that portion of the list, if we want to only keep some elements, we can
-add the optional parameter \lstinline{<step size>}, which will allow us skip or reverse those elements.
-
-If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, the default range, will be the
-beginning to the end of the list. 
-
-\begin{lstlisting}
->>> lst = [1, 2, 3, 4, 5]
->>> lst[2:] # Create a new list with only the elements starting from the 2nd index
-[3, 4, 5]
->>> lst[:3] # Create a new list with only the elements up until the 3rd index
-[1, 2, 3]
->>> lst[::-1] # Reverse the entire list
-[5, 4, 3, 2, 1]
->>> lst[::2] # Create a new list while skipping every other element
-[1, 3, 5]
 \end{lstlisting}
 
 \begin{blocksection}

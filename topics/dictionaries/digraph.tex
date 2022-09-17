@@ -1,0 +1,62 @@
+\begin{blocksection}
+\question A \textit{digraph} is any pair of immediately adjacent letters; for example, ``otto'' contains three digraphs: ``ot'', ``tt'', and ``to''. Write a function \lstinline{count_digraphs}, which takes a piece of \lstinline{text} and a list of letters \lstinline{alphabet} and analyzes the frequency of diagraphs in \lstinline{text}. Specifically, \lstinline{count_digraphs} returns a dictionary whose keys are the valid digraphs of \lstinline{text} and whose values are the number of times each digraph occurred. (A digraph is valid if it is formed out of letters from the specified \lstinline{alphabet}.)
+
+\begin{lstlisting}
+def count_digraphs(text, alphabet):
+    """
+    >>> count_digraphs("otto", ['o', 't'])
+    {'ot': 1, 'tt': 1, 'to': 1}
+    >>> count_digraphs("otto", ['t'])
+    {'tt': 1}
+    >>> count_digraphs("6161 6", ['6', '1'])
+    {'61': 2, '16': 1}
+    """
+
+    dict = {}
+
+    _____________________________________________________:
+
+        if _____________________________________________________:
+
+            digraph = __________________________________
+
+            __________________________________________
+
+                __________________________________________
+
+            __________________________________________
+
+                __________________________________________
+
+    return dict
+\end{lstlisting}
+\end{blocksection}
+\newpage
+\begin{solution}
+\begin{lstlisting}
+def count_digraphs(text, alphabet):
+    dict = {}
+    for i in range(len(text) - 1):
+        if text[i] in alphabet and text[i + 1] in alphabet:
+            digraph = text[i] + text[i + 1]
+            if digraph in dict:
+                dict[digraph] += 1
+            else: 
+                dict[digraph] = 1
+    return dict
+\end{lstlisting}
+\end{solution}
+
+
+\begin{questionmeta}
+What's the point of this question? Well, analyzing the frequency of digraphs can be valuable in all sorts of situations, including cryptanalysis. But in a more general sense, using dictionaries to count things is very common. So hopefully this problem will give students some guidance on that front.
+
+Students will probably need to look at the doc tests to fully understand the problem, including what we mean by `valid' and whether spaces should count or not. 
+
+Students will likely find a significant amount of trouble in differentiating what to do when the digraph is present in the dictionary and when it is not. If they are stuck on this,, here are some leading questions you could ask: 
+\begin{itemize}
+    \item What happens when we encounter a digraph we haven't seen before?
+    \item What happens when we try to add a digraph to the dictionary that's not already in there? 
+    \item What do we need to know is true before we can add onto the digraph that's already in the dictionary? How can we do that? 
+\end{itemize}
+\end{questionmeta}

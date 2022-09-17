@@ -1,0 +1,49 @@
+\begin{blocksection}
+Dictionaries are another useful Python data structure that store a collection of items. However, instead of assigning each item a numerical index, each \textbf{value} in a dictionary is mapped to by some \textbf{key}. 
+
+Dictionaries are denoted with curly braces and use much of the syntax---including item selection with square brackets, membership testing with \lstinline{in}, and length checking with \lstinline{len}---is the same as that of sequences. Consider the following ``Big'' example:
+\begin{lstlisting}
+>>> big_game_wins = {"Cal": 48, "Stanford": 65}
+>>> big_game_wins 
+{"Cal": 48, "Stanford": 65}
+>>> big_game_wins["Stanford"]
+65
+>>> big_game_wins["Cal"]
+48
+>>> big_game_wins["Cal"] += 1
+>>> big_game_wins["Cal"]
+49
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> list(big_game_wins.keys())
+["Cal", "Stanford"]
+>>> list(big_game_wins.values())
+[49, 65]
+
+>>> "Cal" in big_game_wins
+True
+>>> "Tie" in big_game_wins
+False
+>>> 65 in big_game_wins
+False
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> big_game_wins["Tie"]
+KeyError: Tie
+>>> big_game_wins["Tie"] = 11
+>>> big_game_wins["Tie"]
+11
+\end{lstlisting}
+\end{blocksection}
+
+\begin{meta}
+Here, I decided to not list out everything a dictionary can do but rather teach by giving a long example. I find that students tend to glaze over when they're asked to look at something that long, so I really recommend walking through the whole process. 
+
+From a technical standpoint, dictionaries are ordered in Python. But your students don't need to know that.
+\end{meta}
