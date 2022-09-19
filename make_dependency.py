@@ -23,6 +23,10 @@ Generates Makefile dependency files for source files by searching for
 LaTeX include directives.
 """
 
+EXPORT_DIR = "made"
+SOLUTIONS_SUFFIX = "_sol"
+META_SUFFIX = "_meta"
+
 def make_dep_file(target, dependencies):
     """Returns the contents of a dependency file.
 
@@ -44,8 +48,9 @@ def make_dep_file(target, dependencies):
     dependencies = set(dependencies)
 
     targets = [
-        os.path.join('..', 'published', 'disc', target + '.pdf'),
-        os.path.join('..', 'published', 'disc', target + '_sol.pdf'),
+        os.path.join(EXPORT_DIR, target + ".pdf").replace("\\","/"),
+        os.path.join(EXPORT_DIR, target + SOLUTIONS_SUFFIX + ".pdf").replace("\\","/"),
+        os.path.join(EXPORT_DIR, target + META_SUFFIX + ".pdf").replace("\\","/")
     ]
 
     # Add source file dependencies.
@@ -60,7 +65,7 @@ re_includegraphics = re.compile(r"""
     \\includegraphics |
     \\lstinputlisting
 )
-\{(.+?)\}
+(?:\[.*\])?\{(.*)\}
 """, re.X)
 
 def get_dependencies(filepath):
@@ -82,11 +87,8 @@ def get_dependencies(filepath):
     # Convert paths to be relative to this script.
     dependencies = re_subimport.findall(file_contents)
     for i in range(len(dependencies)):
-        dep = os.path.normpath(os.path.join(*dependencies[i]))
-        if os.path.exists(os.path.join(dirname, dep)):
-            dependencies[i] = os.path.join(dirname, dep)
-        else:
-            dependencies[i] = dep
+        dep = os.path.normpath(os.path.join(dirname, os.path.join(*dependencies[i])))
+        dependencies[i] = dep.replace("\\","/")
 
     # Recursively fetch more dependencies.
     for dependency in dependencies[:]:
@@ -94,7 +96,8 @@ def get_dependencies(filepath):
         dependencies.extend(recursive_deps)
 
     for graphic in re_includegraphics.findall(file_contents):
-        dependencies.append(os.path.join(dirname, graphic))
+        dep = os.path.normpath(os.path.join(dirname, graphic))
+        dependencies.append(dep.replace("\\","/")) 
 
     return dependencies
 

@@ -9,9 +9,9 @@ except ValueError:
 
 from make_dependency import get_dependencies
 
-#path_to_files = ['control/code/wears_jacket.py', 'control/code/wears_jacket_with_if.py', 'control/code/is_prime.py', ]
-prefix = '../../topics'
-worksheet_source = 'src/fa22'
+sem = 'fa22'
+worksheet_source = os.path.join('src', sem)
+worksheet_dest = 'made'
 
 def generate_file(file_name, file_paths, solution=False):
 	file = []
@@ -40,10 +40,10 @@ if __name__ == '__main__':
 	parser.add_argument('-f','--input_file', type=str, help='input file e.g. mentor05.tex')
 	parser.add_argument('-s', "--solution", action="store_true", help="Create Solution files too")
 	args = parser.parse_args()
-	file_paths = get_dependencies(os.path.join(worksheet_source, args.input_file))
-	file_paths = [p for p in file_paths if '/text/' not in p]
-	out_file = args.input_file.replace('.tex', '.py')
-	generate_file(os.path.join(worksheet_source, out_file), file_paths)
+	file_paths = get_dependencies(args.input_file)
+	file_paths = [p for p in file_paths if '/text/' not in p and p[-4:] == '.tex']
+	out_file = os.path.basename(args.input_file).replace('.tex', '.py')
+	generate_file(os.path.join(worksheet_dest, out_file), file_paths)
 	if args.solution:
 		sol_name = out_file.replace('.py', '_sol.py')
-		generate_file(os.path.join(worksheet_source, sol_name), file_paths, solution=True)
+		generate_file(os.path.join(worksheet_dest, sol_name), file_paths, solution=True)
