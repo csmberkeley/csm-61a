@@ -9,8 +9,6 @@ except ValueError:
 
 from make_dependency import get_dependencies
 
-sem = 'fa22'
-worksheet_source = os.path.join('src', sem)
 worksheet_dest = 'made'
 
 def generate_file(file_name, file_paths, solution=False):
