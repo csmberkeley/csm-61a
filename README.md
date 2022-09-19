@@ -27,28 +27,21 @@ root directory.
 
     make mentor00
     
+You will find the made file in the `made` directory. 
 
-To create all content for one week, you can pass multiple
-parameters into the `make` command in the repository's
-root directory.
+Suffixes allow you to make different types of content: 
 
-    make mentor00 mentor00_meta mentor00_sol
+    make mentor00-meta # Makes the meta
+    make mentor00-sol # Makes the solutions
+    make mentor00-py # Makes both the Python file and the Python solutions file
+    make mentor00-py-sol # Makes the Python solutions file
+    make mentor00-py-no-sol # Makes the Python file (without solutions) only
+    
+    make mentor00-pdfs # Makes all PDFs
+    make mentor00-all # Makes all content for the week
 
+Multiple `make` targets can also be combined into a single command: 
 
-To make multiple worksheets at once, modify the `Makefile` by adding the names
-of the worksheets you'd like to make, and the solutions as necessary.
+    make mentor00-all mentor01-all mentor02-py
 
-    RELEASED = mentor00 mentor01 mentor02
-    SOLUTIONS = mentor00 mentor01
-
-Then, run `make all` to build all the worksheets in the `made` directory.
-
-
-If necessary, clean the local files with `make clean`.
-
-## Generating Python Skeletons
-
-To convert a worksheet into a `.py` file containing skeleton code for students to fill out:
-1. In `scripts/latex_to_py.py`, ensure that `worksheet_source` is set to the folder containing the current semester's source files (for example, `src/su21`).
-2. In the base repo directory, run `python3 scripts/latex_to_py.py -f <filename>`, where `<filename>` looks something like `mentor01.tex`. To generate a solutions file as well, pass in the `-s` flag.
-3. The output file can be found in `src/<current-semester>/mentor<##>.py`. There may be some small formatting issues or missing docstrings, so make sure to review the file before release.
+If necessary, clean (delete) the local files with `make clean`.
