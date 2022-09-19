@@ -12,11 +12,11 @@ def count_digraphs(text, alphabet):
     {'61': 2, '16': 1}
     """
 
-    dict = {}
+    freq = {}
 
     _____________________________________________________:
 
-        if _____________________________________________________:
+        if ________________________________________________:
 
             digraph = __________________________________
 
@@ -28,22 +28,22 @@ def count_digraphs(text, alphabet):
 
                 __________________________________________
 
-    return dict
+    return freq
 \end{lstlisting}
 \end{blocksection}
 \newpage
 \begin{solution}
 \begin{lstlisting}
 def count_digraphs(text, alphabet):
-    dict = {}
+    freq = {}
     for i in range(len(text) - 1):
         if text[i] in alphabet and text[i + 1] in alphabet:
             digraph = text[i] + text[i + 1]
-            if digraph in dict:
-                dict[digraph] += 1
+            if digraph in freq:
+                freq[digraph] += 1
             else: 
-                dict[digraph] = 1
-    return dict
+                freq[digraph] = 1
+    return freq
 \end{lstlisting}
 \end{solution}
 
