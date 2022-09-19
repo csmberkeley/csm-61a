@@ -21,9 +21,11 @@ While each type of sequence is different, they all share a common interface for 
 
 \item \textbf{Membership}: The \lstinline{in} operator tests for sequence membership: 
 
-\lstinline{1 in (1, 2, 3)]} $\rightarrow$ \lstinline{True}, \quad \lstinline{5 not in (1, 2, 3)]} $\rightarrow$ \lstinline{True}, \quad \lstinline{"apple" in "snapple"} $\rightarrow$ \lstinline{True}
+\lstinline{1 in (1, 2, 3)} $\rightarrow$ \lstinline{True}, \quad \lstinline{5 not in (1, 2, 3)} $\rightarrow$ \lstinline{True}, \quad \lstinline{"apple" in "snapple"} $\rightarrow$ \lstinline{True}
 
-\item \textbf{Looping}: Sequences can be looped through with \lstinline{for} loops: 
+\item \textbf{Looping}: Sequences can be looped through with \lstinline{for} loops:
+
+\begin{blocksection} 
 \begin{lstlisting}
 >>> for x in [1, 2, 3]:
 ...     print(x)
@@ -31,9 +33,10 @@ While each type of sequence is different, they all share a common interface for 
 2
 3
 \end{lstlisting}
+\end{blocksection}
 
+\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value:
 
-\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value.
 \lstinline{max((3, 4, 5))} $\rightarrow$ \lstinline{5}
 
 \item \textbf{Slicing}: Slicing is a way to create a copy of all or part of a sequence. The general syntax for slicing a sequence \lstinline{seq} is as follows:
@@ -58,8 +61,8 @@ If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, it wil
 \end{lstlisting}
 
 \end{itemize}
-\vspace{0.5 in}
-\textbf{List comprehensions}, which only work on lists, are a concise and powerful method to create a new list from another sequence. The syntax for a list comprehension is
+\vspace{0.3 in}
+\textbf{List comprehensions}, which only apply to lists, are a concise and powerful method to create a new list from another sequence. The syntax for a list comprehension is
    \begin{lstlisting}
 [<expression> for <element> in <sequence> if <condition>]
    \end{lstlisting}
@@ -69,13 +72,14 @@ We could equivalently write the following:
 \begin{lstlisting}
 lst = []
 for <element> in <sequence>:
-	if <condition>:
-		lst = lst + [<expression>] # add current element to the list
+    if <condition>:
+        lst = lst + [<expression>] 
 \end{lstlisting}
 \end{blocksection}
 
 \begin{blocksection}
 The \lstinline{if <condition>} filter statement is optional. The following list comprehension doubles each odd element of [1, 2, 3, 4]:
+
 \begin{lstlisting}
 >>> [i * 2 for i in [1, 2, 3, 4] if i % 2 != 0] 
 [2, 6]
@@ -84,11 +88,12 @@ The \lstinline{if <condition>} filter statement is optional. The following list 
 
 \begin{blocksection}
 Equivalent in \lstinline{for} loop syntax:
+
 \begin{lstlisting}
 lst = []
 for i in [1, 2, 3, 4]:
-	if i % 2 != 0:
-		lst = lst + [i * 2]
+    if i % 2 != 0:
+        lst = lst + [i * 2]
 \end{lstlisting}
 \end{blocksection}
 
