@@ -1,0 +1,104 @@
+Sequences are ordered data structures that have length and support element selection. Here are some common types of sequences you'll be dealing with in this class: 
+\begin{itemize}
+	\item Lists: \lstinline{[1, [2], 'a', lambda x: 5]}
+	\item Tuples: \lstinline{(1, (2,), 'a', lambda x: 5)}
+	\item Strings: \lstinline{'Hello World!'}
+\end{itemize}
+
+While each type of sequence is different, they all share a common interface for manipulating and accessing their data: 
+\begin{itemize}
+\item \textbf{Item selection}: Use square brackets to select an element at an index: 
+	
+\lstinline{(3, 1, 2)[0]} $\rightarrow$ \lstinline{"3"}, \quad \lstinline{"Hello"[-1]} $\rightarrow$ \lstinline{"o"}
+
+\item\textbf{Length}: The built-in \lstinline{len} function returns the length of a sequence: 
+	
+\lstinline{len((1,2))} $\rightarrow$ \lstinline{2}
+
+\item \textbf{Concatenation}: Sequences can be concatenated with the \lstinline{+} operator, which returns a \textit{new} sequence:
+
+\lstinline{[1, 2] + [3,4]} $\rightarrow$ \lstinline{[1,2,3,4]}
+
+\item \textbf{Membership}: The \lstinline{in} operator tests for sequence membership: 
+
+\lstinline{1 in (1, 2, 3)} $\rightarrow$ \lstinline{True}, \quad \lstinline{5 not in (1, 2, 3)} $\rightarrow$ \lstinline{True}, \quad \lstinline{"apple" in "snapple"} $\rightarrow$ \lstinline{True}
+
+\item \textbf{Looping}: Sequences can be looped through with \lstinline{for} loops:
+
+\begin{blocksection} 
+\begin{lstlisting}
+>>> for x in [1, 2, 3]:
+...     print(x)
+1
+2
+3
+\end{lstlisting}
+\end{blocksection}
+
+\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value:
+
+\lstinline{max((3, 4, 5))} $\rightarrow$ \lstinline{5}
+
+\item \textbf{Slicing}: Slicing is a way to create a copy of all or part of a sequence. The general syntax for slicing a sequence \lstinline{seq} is as follows:
+	\begin{lstlisting}
+seq[<start index>:<end index>:<step size>]
+	\end{lstlisting}
+
+This evaluates to a new sequence that includes every element starting at \lstinline{<start index>} and up to and \textit{excluding} \lstinline{<end index>} in \lstinline{seq}, taking steps of size \lstinline{<step size>}. 
+
+If we do not supply \lstinline{<start index>} or \lstinline{<end index>}, it will start at the beginning of the sequence and include every element up to and including the end of the sequence. 
+
+\begin{lstlisting}
+>>> lst = [1, 2, 3, 4, 5]
+>>> lst[2:] 
+[3, 4, 5]
+>>> lst[:3] 
+[1, 2, 3]
+>>> lst[::-1] 
+[5, 4, 3, 2, 1]
+>>> lst[1::2] 
+[2, 4]
+\end{lstlisting}
+
+\end{itemize}
+\vspace{0.3 in}
+\textbf{List comprehensions}, which only apply to lists, are a concise and powerful method to create a new list from another sequence. The syntax for a list comprehension is
+   \begin{lstlisting}
+[<expression> for <element> in <sequence> if <condition>]
+   \end{lstlisting}
+
+\begin{blocksection}
+We could equivalently write the following: 
+\begin{lstlisting}
+lst = []
+for <element> in <sequence>:
+    if <condition>:
+        lst = lst + [<expression>] 
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+The \lstinline{if <condition>} filter statement is optional. The following list comprehension doubles each odd element of [1, 2, 3, 4]:
+
+\begin{lstlisting}
+>>> [i * 2 for i in [1, 2, 3, 4] if i % 2 != 0] 
+[2, 6]
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+Equivalent in \lstinline{for} loop syntax:
+
+\begin{lstlisting}
+lst = []
+for i in [1, 2, 3, 4]:
+    if i % 2 != 0:
+        lst = lst + [i * 2]
+\end{lstlisting}
+\end{blocksection}
+
+\begin{guide}
+A lot of information in this guide is not the full and complete picture of how Python works, but students don't need to know that. Often a little misdirection is necessary to improve initial knowledge acquisition before a more complete picture is painted later on. I would just be sure to mention the nature of sequences: a loose umbrella (not a strict definition like a class) that encompasses many different data types. 
+
+If students are confused consider bringing up specific examples of sequences. Reading rules on a page is often not actually that instructive. 
+\end{guide}

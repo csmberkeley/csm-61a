@@ -1,36 +1,35 @@
 \textbf{Lists Introduction:}
 
-Lists are a type of sequence, an ordered collection of values that has both length and the ability to select elements.
+Lists are an ordered collection of values that can contain any type of data.
 
+\textbf{List comprehensions}, which only work on lists, are a concise and powerful method to create a new list from another sequence. The syntax for a list comprehension is
+   \begin{lstlisting}
+   [<expression> for <element> in <sequence> if <condition>]
+   \end{lstlisting}
+
+   We could equivalently write the following: 
 \begin{lstlisting}
->>> lst = [1, False, [2, 3], 4] # a list can contain anything
->>> len(lst)
-4
->>> lst[0] # Indexing starts at 0
-1
->>> lst[4] # Indexing ends at len(lst) - 1
-Error: list index out of range
+	lst = []
+	for <element> in <sequence>:
+		if <condition>:
+			lst = lst + [<expression>] # add current element to the list
 \end{lstlisting}
 
-We can iterate over lists using their index, or iterate over elements directly
+The \lstinline{if <condition>} filter statement is optional. The following list comprehension doubles each odd element of [1, 2, 3, 4]:
+
 
 \begin{lstlisting}
-for index in range(len(lst)):
-	# do things
-for item in lst:
-	# do things
+>>> [i * 2 for i in [1, 2, 3, 4] if i % 2 != 0] 
+[2, 6]
 \end{lstlisting}
 
-\textbf{List comprehensions} are a useful way to iterate over lists when your desired result is a list.
-\begin{lstlisting}
-new_list2 = [<expression> for <element> in <sequence> if <condition>]
-\end{lstlisting}
-
-We can use \textbf{list slicing} to create a copy of a certain portion or all of a list.
+Equivalent in \lstinline{for} loop syntax:
 
 \begin{lstlisting}
-new_list = lst[<starting index>:<ending index>]
-copy = lst[:]
+	lst = []
+	for i in [1, 2, 3, 4]:
+		if i % 2 != 0:
+			lst = lst + [i * 2] # add current element to the list
 \end{lstlisting}
 
 \begin{blocksection}
@@ -51,6 +50,7 @@ copy = lst[:]
 					\item Probably don’t need to get into every little thing (like negative indices, skipping elements, etc.)
 				\end{itemize}
 				\item Deep copy vs shallow copy: when you copy a nested list, copy pointers to the nested list (a shallow copy) rather than make a new copy of the nested list (a deep copy).
+					
 			\end{itemize}
 	\end{itemize}
 	\end{guide}

@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question Complete the function \lstinline{snapshot}, which takes a single-argument function \lstinline{f} and a list \lstinline{inputs} and returns a ``snapshot'' of \lstinline{f} on \lstinline{inputs}. A ``snapshot'' is a dictionary where the keys are the provided \lstinline{inputs} and the values are the corresponding outputs of \lstinline{f} on each input.
+
+\begin{lstlisting}
+def snapshot(f, inputs):
+    """
+    >>> snapshot(lambda x: x**2, [1, 2, 3])
+    {1: 1, 2: 4, 3: 9}
+    """
+
+    snap = __________________________________________
+
+    __________________________________________:
+
+        __________________________________________
+        
+    return snap
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def snapshot(f, inputs):
+    snap = {}
+    for input in inputs:
+        snap[input] = f(input)
+    return snap
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+One way to think of a dictionary is as a function (in the mathematical sense) with a finite domain: you provide it an input and it gives your some output. The idea behind this problem is to exercise that connection by having students convert between functions defined by rules that often have unlimited domains (e.g. $f(x) = x^2$) and finite functions that are defined by directly spelling out the outputs of a function. That's why this problem is called ``snapshot''---it's a small snapshot of a function's behavior over a limited domain. 
+\end{questionmeta}
