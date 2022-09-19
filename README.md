@@ -18,6 +18,8 @@ Worksheet styling is provided by `commonheader.sty`.
 ## Getting Started
 Clone this repository to your local machine. You will need to have LaTeX installed; some popular distributions include [TeXworks](https://tug.org/texworks/#Getting_TeXworks) and [MiKTeX](https://miktex.org/). For our workflow to function properly, `latex2pdf.exe` must be in your machine's `PATH` variable, which should hopefully be handled automatically on installation.
 
+Windows users will need to be able to use `make`. We recommend [installing Git Bash](https://inst.eecs.berkeley.edu/~cs61b/fa16/docs/setting-up-git.html) and then [installing `make`](https://inst.eecs.berkeley.edu/~cs61b/sp20/docs/make-install.html).
+
 You can verify that you have correctly set up the repository by attempting to make a worksheet, as described in the next section.
 
 ## Making Handouts
