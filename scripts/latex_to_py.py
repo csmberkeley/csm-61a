@@ -40,8 +40,11 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 	file_paths = get_dependencies(args.input_file)
 	file_paths = [p for p in file_paths if '/text/' not in p and p[-4:] == '.tex']
-	out_file = os.path.basename(args.input_file).replace('.tex', '.py')
-	generate_file(os.path.join(worksheet_dest, out_file), file_paths)
+	base_name = os.path.basename(args.input_file)
 	if args.solution:
-		sol_name = out_file.replace('.py', '_sol.py')
+		sol_name = base_name.replace('.tex', '_sol.py')
 		generate_file(os.path.join(worksheet_dest, sol_name), file_paths, solution=True)
+	else: 
+		out_file = base_name.replace('.tex', '.py')
+		generate_file(os.path.join(worksheet_dest, out_file), file_paths)
+	

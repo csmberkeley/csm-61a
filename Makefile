@@ -14,15 +14,21 @@ TEX_FLAGS = -halt-on-error -output-directory ../../$(DST)
 SOLUTIONS_SUFFIX = -sol
 META_SUFFIX = -meta
 PYTHON_SUFFIX = -py
+PYTHON_SOL_SUFFIX = -py-sol
+PYTHON_NO_SOL_SUFFIX = -py-no-sol
+ALL_PDFS_SUFFIX = -pdfs
 ALL_SUFFIX = -all
 
 SOURCES = $(wildcard $(SRC)/*.tex)
 HANDOUT = $(SOURCES:$(SRC)/%.tex=%)
 HANDOUT_SOL = $(addsuffix $(SOLUTIONS_SUFFIX), $(HANDOUT))
 HANDOUT_META = $(addsuffix $(META_SUFFIX), $(HANDOUT))
+HANDOUT_ALL_PDFS = $(addsuffix $(ALL_PDFS_SUFFIX), $(HANDOUT))
 HANDOUT_PY = $(addsuffix $(PYTHON_SUFFIX), $(HANDOUT))
+HANDOUT_PY_SOL_ONLY = $(addsuffix $(PYTHON_SOL_SUFFIX), $(HANDOUT))
+HANDOUT_PY_NO_SOL = $(addsuffix $(PYTHON_NO_SOL_SUFFIX), $(HANDOUT))
 HANDOUT_ALL = $(addsuffix $(ALL_SUFFIX), $(HANDOUT))
-HANDOUT_ALL_TARGETS = $(HANDOUT) $(HANDOUT_SOL) $(HANDOUT_META) $(HANDOUT_PY) $(HANDOUT_ALL)
+HANDOUT_ALL_TARGETS = $(HANDOUT) $(HANDOUT_SOL) $(HANDOUT_META) $(HANDOUT_ALL_PDFS) $(HANDOUT_PY) $(HANDOUT_PY_SOL_ONLY) $(HANDOUT_PY_NO_SOL) $(HANDOUT_ALL)
 
 #################################################################
 # User-friendly targets: use the following to publish material. #
@@ -37,9 +43,12 @@ clean:
 	find . -name "*.pyc" -exec rm -rf {} \;
 	rm -rf $(DST)/*
 
-$(HANDOUT_ALL): %$(ALL_SUFFIX): $(DST) % %$(SOLUTIONS_SUFFIX) %$(META_SUFFIX) %$(PYTHON_SUFFIX);
-$(HANDOUT_PY): %$(PYTHON_SUFFIX): $(DST) $(DST)/%.py
-$(HANDOUT) $(HANDOUT_SOL) $(HANDOUT_META): %: $(DST) $(DST)/%.pdf
+$(HANDOUT_ALL): %$(ALL_SUFFIX): %$(ALL_PDFS_SUFFIX) %$(PYTHON_SUFFIX);
+$(HANDOUT_PY): %$(PYTHON_SUFFIX): %$(PYTHON_SOL_SUFFIX) %$(PYTHON_NO_SOL_SUFFIX);
+$(HANDOUT_PY_SOL_ONLY): %$(PYTHON_SOL_SUFFIX): $(DST) $(DST)/%_sol.py;
+$(HANDOUT_PY_NO_SOL): %$(PYTHON_NO_SOL_SUFFIX): $(DST) $(DST)/%.py;
+$(HANDOUT_ALL_PDFS): %$(ALL_PDFS_SUFFIX): % %$(SOLUTIONS_SUFFIX) %$(META_SUFFIX);
+$(HANDOUT) $(HANDOUT_SOL) $(HANDOUT_META): %: $(DST) $(DST)/%.pdf;
 
 $(DST)/%.pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
@@ -51,15 +60,18 @@ $(DST)/%$(SOLUTIONS_SUFFIX).pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
 	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*$(SOLUTIONS_SUFFIX)" "\def\discussionsolutions{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
-	#open $(DST)/$*$(SOLUTIONS_SUFFIX).pdf
+	#open $(DST)/$*_sol.pdf
 
 $(DST)/%$(META_SUFFIX).pdf: $(SRC)/%.tex commonheader.sty
 	$(DEPEND) $* $< deps
 	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*$(META_SUFFIX)" "\def\discussionsolutions{}\def\discussionmetas{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
-	#open $(DST)/$*$(META_SUFFIX).pdf
+	#open $(DST)/$*_meta.pdf
 
 $(DST)/%.py: $(SRC)/%.tex scripts/latex_to_py.py
+	python3 scripts/latex_to_py.py -f $<
+
+$(DST)/%_sol.py: $(SRC)/%.tex scripts/latex_to_py.py
 	python3 scripts/latex_to_py.py -f $< -s
 
 $(DST):
