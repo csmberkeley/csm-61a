@@ -4,9 +4,9 @@
     our provided constructor, fill out the selectors:
     
     \begin{lstlisting}
-    def pokemon(name, generation, type, can_attack, friends):
+    def pokemon(name, type, friends):
         """
-        Takes in a string name, an int generation, a string type, a boolean can_attack, and a list friends.
+        Takes in a string name, an int generation, a string type, a boolean can_attack, and a list friends that contains other Pokemon data abstractions.
         Constructs an Pokemon with these attributes.
         >>> cyndaquil = pokemon("Cyndaquil", 2, "Fire", True, ["Chikorita", "Totodile"])
         >>> pokemon_name(cyndaquil)
@@ -18,9 +18,9 @@
         >>> pokemon_can_attack(cyndaquil)
         True
         >>> pokemon_friends(cyndaquil)
-        ["Chikorita", "Totodile"]
+        [Chikorita, Totodile]
         """
-        return [name, age, type, can_attack, friends]
+        return [name, type, friends]
     
     \end{lstlisting}
     
@@ -39,7 +39,7 @@
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_age(p):
+    def pokemon_type(p):
     \end{lstlisting}
     \begin{solution}[1in]
     \begin{lstlisting}
@@ -54,7 +54,7 @@
     \end{lstlisting}
     \begin{solution}[1in]
     \begin{lstlisting}
-        return p[4]
+        return p[2]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
@@ -68,7 +68,7 @@
     \begin{lstlisting}
     def pokemon_team(pokemen):
         """
-        Takes in a list of Pokemon (aptly named Pokemen due to the plural of Pokemon being Pokemon) and returns a list of their names.
+        Takes in a list of Pokemon (named Pokemen due to the plural of Pokemon being Pokemon) and returns a list of their names.
         """
         return [pokemon[0] for pokemon in pokemen]
     \end{lstlisting}
@@ -84,49 +84,7 @@
     
     \end{blocksection}
     
-    %%% Question %%%
-    
-    \begin{blocksection}
-    \question Fill out the following constructor for the given selectors.
-    
-    \begin{lstlisting}
-    def pokemon(name, generation, type, can_attack, friends):
-    \end{lstlisting}
-    \begin{solution}[1in]
-    \begin{lstlisting}
-        return [[name, generation, type], [can_attack], friends]
-    \end{lstlisting}
-    \end{solution}
-    
-    \begin{lstlisting}
-    def pokemon_generation(p):
-        return e[0][1]
-    \end{lstlisting}
-    
-    \begin{lstlisting}
-    def pokemon_can_attack(p):
-        return e[1][0]
-    \end{lstlisting}
-    
-    \begin{lstlisting}
-    def pokemon_friends(p):
-        return e[2]
-    \end{lstlisting}
-    
-    \end{blocksection}
-    
-    %%% Question %%%
-    
-    \begin{blocksection}
-    \question How can we write the fixed \lstinline{pokemon_roster} function for
-    the constructors and selectors in the previous question?
-    
-    \begin{solution}[1.5in]
-    No change is necessary to fix \lstinline{pokemon\char`_roster} since using the
-    \texttt{pokemon} selectors ``protects'' the roster from constructor definition
-    changes.
-    \end{solution}
-    
+
     \begin{guide}
     \textbf{Teaching Tips}
     \begin{itemize}
