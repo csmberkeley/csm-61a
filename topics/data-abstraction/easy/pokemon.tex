@@ -101,9 +101,7 @@
         \end{itemize}
     \end{itemize}
     \end{guide}
-    
-    \end{blocksection}
-    
+        
     \begin{blocksection}
     \question \textbf{(Optional)} Fill out the following constructor for the given
     selectors.
@@ -127,6 +125,7 @@
         """
         def select(command):
     \end{lstlisting}
+    
     \begin{solution}[1.8in]
     \begin{lstlisting}
             if command == "name":
@@ -142,30 +141,43 @@
             return "Breaking abstraction barrier!"
     \end{lstlisting}
     \end{solution}
-    
     \begin{lstlisting}
         return select
     \end{lstlisting}
-    
+    \end{blocksection}
+
+    \begin{blocksection}
     \begin{lstlisting}
     def pokemon_name(p):
         return p("name")
     \end{lstlisting}
+
+    \end{blocksection}
+    \begin{blocksection}
     
     \begin{lstlisting}
     def pokemon_generation(p):
         return p("generation")
     \end{lstlisting}
+
+    \end{blocksection}
+    \begin{blocksection}
     
     \begin{lstlisting}
     def pokemon_type(p):
         return p("type")
     \end{lstlisting}
 
+    \end{blocksection}
+    \begin{blocksection}
+
     \begin{lstlisting}
     def pokemon_can_attack(p):
         return p("can_attack")
     \end{lstlisting}
+
+    \end{blocksection}
+    \begin{blocksection}
 
     \begin{lstlisting}
     def pokemon_friends(p):
