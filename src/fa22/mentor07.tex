@@ -4,7 +4,7 @@
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{7}
-\title{\textsc{Abstract Data Types}}
+\title{\textsc{Abstract Data Types and Immutable Trees}}
 \date{October 3--October 7, 2022}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -15,33 +15,48 @@
 
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item ADT mini-lecture (5 min)
+    \item Q1: Pokemon selectors (5 min)
+    \item Q2: Are friends (3 min)
+    \item Q3: Cross type friends (7 min)
+    \item Q4: Pokemon constructor (8 min)
+\end{itemize}
+The times in the recommended timeline do not add up to 50 minutes because no mentor
+is expected to get through all the problems during section. The worksheet is a skeleton
+around which you should structure your section to best meet the needs of your students.
+If you get stressed out about covering a lot of content, I encourage you to be open with
+your students about the way these sessions are structured.  
+
+You should probably ask your students at the beginning of section what they would rather go
+over---ADTs or trees---and then allocate time appropriately. 
+\end{meta}
+
 
 \section{Abstraction}
 \subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{meta}
+    If data abstraction is new to your students or they don't feel very confident in the topic, \textbf{consider walking them through the following problems}.
+    
+    Emphasize the \textbf{importance of selectors} -- useful for 2).
+    
+    A good visualization is to draw the data abstraction out using box and pointer diagrams. \textbf{Make sure not to get caught up on any specific representation of the data abstraction}, as they should be easy to change 3) is an alternate representation].
+    
+    Talk about what it means to \textbf{break the abstraction barrier. How do you make sure that you are not breaking the abstraction barrier?}
+    \end{meta}
 \begin{questions}
     \subimport{../../topics/data-abstraction/easy/}{pokemon.tex}
-    \begin{questionmeta}
-        Students should only do the Pokemon problem if they are uncomfortable with understanding the structure of data abstraction.
-    \end{questionmeta}
-    \begin{questionmeta}
-        When introducing the Pokemon problem, feel free to create your own analogy in addition to the one given in the summary.
-    \end{questionmeta}
-    \begin{questionmeta}
-        A common analogy for data abstraction are: cars (the inside variables are engine, inner workings, outside are steering wheel and gas pedal).
-    \end{questionmeta}
-    \subimport{../../topics/data-abstraction/medium/}{bookshelf.tex}
-    \begin{questionmeta}
-        This is a hard question! Only do it if your students are absolutely assured in their definition of data abstraction and the abstraction barrier.
-    \end{questionmeta}
-    \begin{questionmeta}
-        Feel free to spend even more time on this. Lists are more important for students generally, but understanding data abstraction deeply is a great setup for OOP!
-    \end{questionmeta}
 \end{questions}
 
 \newpage
-\section{ADT Trees}
+\section{Tree ADT}
 \subimport{../../topics/trees/adt/text/}{tree_overview.tex}
-\subimport{../../topics/trees/adt/text}{draw-tree-modified.tex}
-\subimport{../../topics/trees/adt/text/}{implementation.tex}
+\begin{questions}
+    \subimport{../../topics/trees/adt/medium}{even-square-tree.tex}
+    \subimport{../../topics/trees/adt/medium}{all-paths.tex}
+    \subimport{../../topics/trees/adt/hard}{contains-n.tex}
+\end{questions}
 
 \end{document}

@@ -1,195 +1,268 @@
 \begin{blocksection}
-    \question The following is abstract data for representing Pokemon.
-    Each Pokemon keeps track of its name, age, type, ability to attack, and friends. Given
+    \question The following is an abstract data type that represents Pokemon.
+    Each Pokemon keeps track of its name, type, and friends. Given
     our provided constructor, fill out the selectors:
     
     \begin{lstlisting}
-    def pokemon(name, type, friends):
-        """
-        Takes in a string name, an int generation, a string type, a boolean can_attack, and a list friends that contains other Pokemon data abstractions.
-        Constructs an Pokemon with these attributes.
-        >>> cyndaquil = pokemon("Cyndaquil", 2, "Fire", True, ["Chikorita", "Totodile"])
-        >>> pokemon_name(cyndaquil)
-        "Cyndaquil"
-        >>> pokemon_age(cyndaquil)
-        10
-        >>> pokemon_type(cyndaquil)
-        "Fire"
-        >>> pokemon_can_attack(cyndaquil)
-        True
-        >>> pokemon_friends(cyndaquil)
-        [Chikorita, Totodile]
-        """
-        return [name, type, friends]
-    
+def pokemon(name, p_type, friends):
+    """
+    Constructs a Pokemon with the given attributes. 
+    >>> cyndaquil = pokemon('Cyndaquil', 'Fire', ['Chikorita', 'Totodile'])
+    >>> p_name(cyndaquil)
+    'Cyndaquil'
+    >>> p_type(cyndaquil)
+    'Fire'
+    >>> p_friends(cyndaquil)
+    ['Chikorita', 'Totodile']
+    """
+    return [name, p_type, friends]
+
     \end{lstlisting}
     
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_name(p):
+def p_name(p):
     \end{lstlisting}
-    \begin{solution}[1in]
+    \begin{solution}[0.25in]
     \begin{lstlisting}
-        return p[0]
+    return p[0]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_type(p):
+def p_type(p):
     \end{lstlisting}
-    \begin{solution}[1in]
+    \begin{solution}[0.25in]
     \begin{lstlisting}
-        return p[1]
+    return p[1]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_friends(p):
+def p_friends(p):
     \end{lstlisting}
-    \begin{solution}[1in]
+    \begin{solution}[0.25in]
     \begin{lstlisting}
-        return p[2]
+    return p[2]
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
     
+\begin{questionmeta}
+This problem is a gentle introduction to ADTs. We tried to keep it as simple as possible while giving those majority of students who
+have experience with Pokemon something interesting to play around with. 
+
+Students may be confused on how exactly to figure out what the selectors do. Here the doctests are really useful for helping them 
+figure out what they should do. If they're stuck, you can try nudging them in the right direction by asking them to consider what
+the relevant functions take as input and give as output. For example, \lstinline{pokemon} takes in a Pokemon's attributes and 
+returns a Pokemon ADT instance, represented as a list. \lstinline{p_friends} takes a Pokemon ADT instance (internally represented
+as a list) and returns its friends. By recognizing that the argument to \lstinline{p_friends} must be a list of a specified form,
+they should be able to come to the correct answer relatively easily. 
+
+It's really important that students understand this part before moving on to the rest of the problems in this section, since they
+all build on the Pokemon ADT. 
+
+A cheeky thing about this problem is that the amount of space we give them to complete the selectors could be a clue for the problem.
+Oh well. 
+\end{questionmeta}
     %%% Question %%%
     
     \begin{blocksection}
     \question This function returns the correct result, but there's something wrong
-    about its implementation. Why is the error an error in the first place, and how can we fix it?
+    with its implementation. What's the issue, and how can we fix it?
     
     \begin{lstlisting}
-    def pokemon_team(pokemen):
-        """
-        Takes in a list of Pokemon (named Pokemen due to the plural of Pokemon being Pokemon) and returns a list of their names.
-        """
-        return [pokemon[0] for pokemon in pokemen]
+def are_friends(p1, p2):
+    """
+    Returns True iff the Pokemon p1 and p2 are each other's friends.
+    """
+    return p1[0] in p2[2] and p2[0] in p1[2]
     \end{lstlisting}
-    \begin{solution}[1in]
-    \lstinline{pokemon[0]} is a Data Abstraction Violation (DAV).
+    \begin{solution}[0.5in]
+    Treating the \lstinline{p1} and \lstinline{p2} are lists is a Data Abstraction Violation (DAV).
     We should use a selector instead.
     The corrected function looks like:
     \begin{lstlisting}
-    def pokemon_roster(pokemen):
-        return [pokemon_name(pokemon) for pokemon in pokemen]
+def are_friends(p1, p2):
+    return p_name(p1) in p_friends(p2) and p_name(p2) in p_friends(p1)
     \end{lstlisting}
     \end{solution}
-    
     \end{blocksection}
-    
 
-    \begin{guide}
-    \textbf{Teaching Tips}
-    \begin{itemize}
-        \item \texttt{pokemon\_roster}
-        \begin{itemize}
-            \item If data abstraction is new to your students or they don’t feel very confident in the topic, \textbf{consider walking them through this problem}.
-            \item The information from 1) is very important for these questions. Make sure your \textbf{students understand the main ideas of 1)!}
-            \item 2) may seem easy/trivial, but emphasize how the selector interface allows you to easily use the ADT without violating abstraction barriers.
-        \end{itemize}
-        \item select \textbf{(Optional)}
-        \begin{itemize}
-            \item If your students want a challenge problem, they can do this.
-            \item Expect most students to struggle with this question. It combines \textbf{HOFs with principles of data abstraction}. Make sure students know how to compare strings.
-        \end{itemize}
-    \end{itemize}
-    \end{guide}
-        
+    \begin{questionmeta}
+    The purpose of this problem is to introduce the idea of the abstraction barrier. Instead of teaching the abstraction barrier
+    to your students as an unbreakable rule that is to be obeyed without question, I encourage you to discuss \textit{why} abstraction
+    barriers exist. For example, which version of \lstinline{are_friends} is more readable? (The revised version, because it uses the interface,
+    which has named selectors.) If we decided to change the underlying implementation of the ADT, how would we have to change the different
+    versions of \lstinline{are_friends}? (We'd have to update the old version but not the revised version.) It's much more valuable if 
+    students understand this reasoning than if they just understand that abstraction barriers shouldn't be broken. 
+    
+    After going over this problem, some students might be confused about why the previous problem is not a violation of the abstraction 
+    barrier. After all, in that problem, we were also dealing with the internal representation of the ADT. The difference is, of course,
+    that we need to deal with the internal representation of the ADT in order to make the interface. An analogy I might use is that the
+    car factory needs to tinker with the internal functioning of the engine because while constructing the car you do need to deal with 
+    those details; however, once the car is on the road, you don't need to mess with the engine anymore. In the same sense, after we make
+    the interface for an ADT, it is no longer necessary for us to deal with the internal representation and the abstraction barriers can
+    ``go into effect''. 
+
+    If data abstraction is new to your students or they don't feel very confident in the topic, \textbf{consider walking them through this problem}.
+
+    This part may seem easy/trivial, but emphasize how the selector interface allows you to easily use the ADT without violating abstraction barriers.
+    \end{questionmeta}
+
     \begin{blocksection}
-    \question \textbf{(Optional)} Fill out the following constructor for the given
-    selectors.
+    \question Write the function \lstinline{cross_type_friends}, which takes in a Pokemon \lstinline{p} and
+    a list of Pokemon \lstinline{pokemon_list} and returns a list of the names of \lstinline{p}'s cross-type
+    friends in \lstinline{pokemon_list}. (A cross-type friend is a friend of a different type.)
+    You may assume that the \lstinline{are_friends} function has been correctly implemented. 
+    \begin{lstlisting}
+def cross_type_friends(p, pokemon_list): 
+    """
+    >>> c = pokemon('Charmander', 'Fire', ['Torchic', 'Squirtle', 'Bulbasaur'])
+    >>> t = pokemon('Torchic', 'Fire', ['Charmander', 'Squirtle'])
+    >>> s = pokemon('Squirtle', 'Water', ['Torchic', 'Bulbasaur'])
+    >>> b = pokemon('Bulbasaur', 'Grass', ['Charmander', 'Squirtle'])
+    >>> cross_type_friends(c, [t, s, b])
+    ['Bulbasaur']
+    >>> cross_type_friends(b, [c, s, b])
+    ['Charmander', 'Squirtle']
+    """
+    \end{lstlisting}
+
+    \begin{solution}[2in]
+    \begin{lstlisting}
+    friend_list = []
+    for other in pokemon_list:
+        if are_friends(p, other) and p_type(p) != p_type(other):
+            friend_list += [p_name(other)]
+    return friend_list
+
+    # Alternative solution
+
+    return [p_name(o) for o in pokemon_list if are_friends(p, o) and p_type(p) != p_type(o)]
+    \end{lstlisting}
+    \end{solution}
+
+    \end{blocksection}
+    \begin{questionmeta}
+    This is the only code-writing question in this section where we ask students to utilize an ADT with the full abstraction barrier intact. 
+    I believe that this is a relatively important skill for students to have, so I think this problem is not one to skip. 
+
+    There are a large number of alternate solutions to this problem. To give students more of a challenge, I elected to not give them a 
+    skeleton for this problem. 
+
+    Some potential leading questions: 
+    \begin{itemize}
+        \item If I have two Pokemon instances, how can I determine whether they are cross-type friends or not? 
+        \item What's a typical way we can count up something over a list? 
+        \item Did we define any functions that can help us here? 
+    \end{itemize}
+
+    \end{questionmeta}
+    \newpage
+    \question In this problem, you'll change the implementation of the Pokemon ADT while keeping the interface the same.
+    \begin{parts}
+    \begin{blocksection}
+    \part
+    
+    Complete the constructor for the given selectors. 
     
     \begin{lstlisting}
-    def pokemon(name, generation, type, can_attack, friends):
-        """
-        >>> lil_guy = pokemon("Pikachu", 1, "Electric", False, ["Mewtwo", "Lucario"])
-        >>> pokemon_name(lil_guy)
-        "Pikachu"
-        >>> pokemon_generation(lil_guy)
-        1
-        >>> pokemon_type(lil_guy)
-        "Electric"
-        >>> pokemon_can_attack(lil_guy)
-        False
-        >>> pokemon_friends(lil_guy)
-        ["Mewtwo", "Lucario"]
-        >> lil_guy("type")
-        "Breaking abstraction barrier!"
-        """
-        def select(command):
+def pokemon(name, p_type, friends):
+    """
+    >>> lil_guy = pokemon('Pikachu', 'Electric', ['Mewtwo', 'Lucario'])
+    >>> p_name(lil_guy)
+    'Pikachu'
+    >>> p_type(lil_guy)
+    'Electric'
+    >>> p_friends(lil_guy)
+    ['Mewtwo', 'Lucario']
+    """
     \end{lstlisting}
     
     \begin{solution}[1.8in]
     \begin{lstlisting}
-            if command == "name":
-                return name
-            elif command == "generation":
-                return generation
-            elif command == "type":
-                return type
-            elif command == "can_attack":
-                return can_attack
-            elif command == "friends":
-                return friends
-            return "Breaking abstraction barrier!"
+    def select(command):
+        if command == 'name':
+            return name
+        elif command == 'type':
+            return p_type
+        elif command == 'friends':
+            return friends
+    return select
+    \end{lstlisting}
+
+    Alternate solution: 
+    \begin{lstlisting}
+    return lambda sel: {'name': name, 'type': p_type, 'friends': friends}[sel]
     \end{lstlisting}
     \end{solution}
-    \begin{lstlisting}
-        return select
-    \end{lstlisting}
     \end{blocksection}
 
     \begin{blocksection}
     \begin{lstlisting}
-    def pokemon_name(p):
-        return p("name")
+def p_name(p):
+    return p('name')
     \end{lstlisting}
 
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    def pokemon_generation(p):
-        return p("generation")
-    \end{lstlisting}
-
-    \end{blocksection}
-    \begin{blocksection}
-    
-    \begin{lstlisting}
-    def pokemon_type(p):
-        return p("type")
+def p_type(p):
+    return p('type')
     \end{lstlisting}
 
     \end{blocksection}
     \begin{blocksection}
 
     \begin{lstlisting}
-    def pokemon_can_attack(p):
-        return p("can_attack")
-    \end{lstlisting}
-
-    \end{blocksection}
-    \begin{blocksection}
-
-    \begin{lstlisting}
-    def pokemon_friends(p):
-        return p("friends")
+def p_friends(p):
+    return p('friends')
     \end{lstlisting}
     
     \end{blocksection}
     
     \begin{questionmeta}
-        Students should only do the Pokemon problem if they are uncomfortable with understanding the structure of data abstraction.
+        The purpose of this problem is to hammer home the bedrock principles of implementation independence. I like 
+        how it kind of ties everything together. You can probably skip it if you don't have enough time, but there's a 
+        certain closure to this part that I feel would be missing if it were skipped. 
 
-        When introducing the Pokemon problem, feel free to create your own analogy in addition to the one given in the summary.
+        This problem is similar to the first Pokemon problem, where students were given a constructor and were
+        asked to write selectors. However, it is significantly more challenging because here they are given
+        selectors and have to reverse-engineer a constructor. Students will need to be detectives and use
+        the clues given to them in the selectors to figure this out. If they're stuck, I'd recommend looking 
+        at specific problems and helping them deduce the answer. For example, if we see the line \lstinline{p('friends')},
+        what does \lstinline{p} have to be? How can we ensure that \lstinline{p} returns the correct value when
+        \lstinline{'friends'} is provided? If we need to store data, does it need to be in a sequence or container,
+        or perhaps is there another (sneaky) place it can be stored? 
 
-        A common analogy for data abstraction are: cars (the inside variables are engine, inner workings, outside are steering wheel and gas pedal).
+        If students are confused by the different terminology---``interface'' vs. ``implementation''---make sure to
+        clarify this for them. Implementation refers to the ``behind the scenes'' work that makes an ADT work. an
+        interface, on the other hand, is a set of potential interactions with a datatype, each defined by
+        what inputs we provide and what outputs the interface produces given those inputs. 
     \end{questionmeta}
+
+    \begin{blocksection}
+    \part What do we need to change about the implementations of \lstinline{are_friends} (as revised) and 
+    \lstinline{cross_type_friends} now that we've changed the implementation of the Pokemon ADT? Why?
+    \begin{solution}
+    Nothing. Because we relied on the implementation-independent interface of the Pokemon ADT, changing
+    the underlying implementation does not affect the correctness of these functions.
+    \end{solution}
+    \end{blocksection}
+
+    \begin{questionmeta}
+        The purpose of this (trick) question is to underscore the incredible value of implementation independence. That we do not
+        have to change any of our existing code even though we fundamentally change the underlying implementation of the ADT
+        is very useful. Tell your students about how cool this is. You can also note that the value of implementation
+        independence scales with complexity; if we wrote thousands of lines of code that all depended on this ADT, not having 
+        to change them would be even more valuable then the small savings we're seeing in this problem. 
+    \end{questionmeta}
+\end{parts}
