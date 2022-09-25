@@ -32,3 +32,10 @@ def even_square_tree(t):
         return tree(label(t), branches_s)
 \end{lstlisting}
 \end{solution}
+
+\begin{meta}
+    Students may get confused on this problem since there is no explicit base case defined,
+    so please sure to emphasize that the \lstinline{branches_s} operates as an implicit base case
+    since if \lstinline{t} is a leaf, there are no branches to iterate over and therefore \lstinline{branches_s}
+    is assigned to an empty list
+\end{meta}
