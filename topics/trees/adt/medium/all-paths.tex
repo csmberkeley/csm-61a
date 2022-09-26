@@ -36,30 +36,30 @@ def all_paths(t):
 def all_paths(t):
     paths = []
     if is_leaf(t):
-        paths.append([label(t)])
+        paths += [[label(t)]]
     else:
         for b in branches(t):
             for path in all_paths(b):
-                paths.append([label(t)] + path)
+                paths += [[label(t)] + path]
     return paths
 \end{lstlisting}
-
-\textbf{Explanation:}
-\newline
-We begin by making a list to contain all the paths.
-\newline
-If the tree is a leaf, the root is a leaf, so the only path is \lstinline$[label(t)]$.
-\newline
-Otherwise, for each branch in the tree, we can use recursion to generate all the paths that extend from that branch to a leaf.
-\newline
-Finally, we combine the root label with each branch-starting path to make it a path from the root to a leaf.
-\newline
-Append every path like this to \lstinline$paths$, and we have created a list of all paths!
 \end{solution}
 \end{blocksection}
 
-\begin{blocksection}
-\begin{guide}
+\begin{solution}
+    \textbf{Explanation:}
+    We begin by making a list to contain all the paths.
+    
+    If the tree is a leaf, the root is a leaf, so the only path is \lstinline{[label(t)]}.
+    
+    Otherwise, for each branch in the tree, we can use recursion to generate all the paths that extend from that branch to a leaf.
+    
+    Finally, we combine the root label with each branch-starting path to make it a path from the root to a leaf.
+    
+    Append every path like this to \lstinline{paths}, and we have created a list of all paths!
+\end{solution}
+
+\begin{questionmeta}
   \textbf{Teaching Tips}
   \begin{itemize}
       \item Variants of path problems commonly appear on exams! This problem covers the basic structure for all path problems, so make sure students understand and remember its format.
@@ -73,5 +73,4 @@ Append every path like this to \lstinline$paths$, and we have created a list of 
         \item If students struggle to understand the solution, write out an example of what \lstinline$all_paths(b)$ looks like by the leap of faith, showing them why we append \lstinline$[label(t)]$ to each path.
       \end{itemize}
   \end{itemize}
-\end{guide}
-\end{blocksection}
+\end{questionmeta}

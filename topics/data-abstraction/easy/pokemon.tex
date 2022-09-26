@@ -3,7 +3,7 @@
     Each Pokemon keeps track of its name, type, and friends. Given
     our provided constructor, fill out the selectors:
     
-    \begin{lstlisting}
+\begin{lstlisting}
 def pokemon(name, p_type, friends):
     """
     Constructs a Pokemon with the given attributes. 
@@ -17,7 +17,7 @@ def pokemon(name, p_type, friends):
     """
     return [name, p_type, friends]
 
-    \end{lstlisting}
+\end{lstlisting}
     
     \end{blocksection}
     \begin{blocksection}
@@ -240,9 +240,9 @@ def p_friends(p):
         This problem is similar to the first Pokemon problem, where students were given a constructor and were
         asked to write selectors. However, it is significantly more challenging because here they are given
         selectors and have to reverse-engineer a constructor. Students will need to be detectives and use
-        the clues given to them in the selectors to figure this out. If they're stuck, I'd recommend looking 
-        at specific problems and helping them deduce the answer. For example, if we see the line \lstinline{p('friends')},
-        what does \lstinline{p} have to be? How can we ensure that \lstinline{p} returns the correct value when
+        the clues given to them in the selectors to figure this out. Thinking through doctests is particularly useful here.
+        If they're stuck, I'd recommend looking at specific problems and helping them deduce the answer. For example, 
+        if we see the line \lstinline{p('friends')}, what (type) does \lstinline{p} have to be? How can we ensure that \lstinline{p} returns the correct value when
         \lstinline{'friends'} is provided? If we need to store data, does it need to be in a sequence or container,
         or perhaps is there another (sneaky) place it can be stored? 
 
