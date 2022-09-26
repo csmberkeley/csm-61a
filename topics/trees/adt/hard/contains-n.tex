@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Challenge: Write a function that returns true only if there exists a path from root to leaf that contains at least \lstinline$n$ instances of \lstinline$elem$ in a tree \lstinline$t$.
+\question Write a function that returns \lstinline{True} if and only if there exists a path from root to leaf that contains at least \lstinline{n} instances of \lstinline{elem} in a tree \lstinline{t}.
 
 \begin{lstlisting}
 def contains_n(elem, n, t):
@@ -38,6 +38,7 @@ def contains_n(elem, n, t):
 \begin{blocksection}
 \begin{solution}
 \begin{lstlisting}
+def contains_n(elem, n, t):
     if n == 0:
         return True
     elif is_leaf(t):
@@ -50,14 +51,14 @@ def contains_n(elem, n, t):
           branches(t)]
 \end{lstlisting}
 \end{solution}
-\begin{blocksection}
-    \begin{guide}
+\end{blocksection}
+
+\begin{questionmeta}
     \textbf{Teaching Tips}
     \begin{enumerate}
+            \item We have purposely left one line return statements to imply that we are using list comprehension for our solution, so please emphasize to your students that hint when walking through the problem.
             \item Feel free to use the \texttt{any} Python built-in instead, which takes in a list of values and returns \texttt{True} if any of the values are truthy and \texttt{False} otherwise.
             \item Illustrate how \texttt{n} can be updated in our recursive calls in order to keep track of how many instances we've seen so far.
             \item The second base case is slightly tricky, so you're advised to start with the recursive calls first, which will make that base case make more sense.
     \end{enumerate}
-    \end{guide}
-\end{blocksection}
-\end{blocksection}
+\end{questionmeta}

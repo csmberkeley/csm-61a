@@ -1,4 +1,4 @@
-
+\question
     In the following problem, we will represent 
     a bookshelf object using dictionaries.
     \newline
@@ -62,27 +62,6 @@
     \begin{solution}[1in]
         \begin{lstlisting}
             return list(bookshelf['books'].keys())
-        \end{lstlisting}
-    \end{solution}
-
-    \begin{lstlisting}
-    def get_author_books(bookshelf, author):
-        """
-        Given an author name, returns a list with
-        all books on the bookshelf written by that author.
-        >>> books = Bookshelf(100)
-        >>> add_book(books, 'Orson Scott Card', "Ender's Game")
-        >>> add_book(books, 'Orson Scott Card', 'Speaker for the Dead')
-        >>> add_book(books, 'J.R.R. Tolkien', 'The Hobbit')
-        >>> get_author_books(books, 'Orson Scott Card')
-        ['Ender's Game', 'Speaker for the Dead']
-        """
-        return _________________________________________________
-    \end{lstlisting}
-
-    \begin{solution}[1in]
-        \begin{lstlisting}
-            return bookshelf['books'][author] 
         \end{lstlisting}
     \end{solution}
 
