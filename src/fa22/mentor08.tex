@@ -1,0 +1,65 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Mutability, and Iterators \& Generators}}
+\date{October 10 - October 14, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \newline
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Mutability
+        \begin{itemize}
+            \item Mutability Mini Lecture - 5 minutes
+            \item wwpd-mutation - 5 minutes
+            \item spooky-list - 10 minutes
+            \item accumulate - 10 minutes*
+        \end{itemize}
+        \item Iterator \& Generator Focus:
+        \begin{itemize}
+            \item Iterators \& Generators Mini Lecture - 6 minutes
+            \item Interleave - 10 minutes
+            \item List Gen - 8 minutes
+            \item In Order - 8 minutes
+        \end{itemize}
+    \end{itemize}
+\end{guide}
+
+\section{Mutability}
+	\textbf{Mutation}
+
+	\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+	\textbf{Mutable vs immutable}
+
+	\subimport{../../topics/lists/mutable/text/}{mutable-vs-immutable.tex}
+	\begin{questions}
+		\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
+		\newpage
+		\subimport{../../topics/lists/mutable/medium/env-diagram/}{spooky-list.tex}
+		\newpage
+		\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+	\end{questions}
+\end{document}
+
+\newpage
+\section{Iterators \& Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+\subimport{../../topics/iterators/easy/}{interleave.tex}
+\newpage
+\subimport{../../topics/generators/easy/}{list-gen.tex}
+\newpage
+\subimport{../../topics/generators/medium/}{list-sort.tex}
+\end{questions}
+
+\end{document}
