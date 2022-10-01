@@ -1,8 +1,73 @@
-An \textbf{iterable} is any container that can be processed sequentially. Think of an iterable as anything you can loop over, such as lists or strings.  You can see this in \lstinline{for} loops, which sequentially loop through each element of a sequence. The anatomy of the for loop can be described as:
-\begin{lstlisting}
-for some_var in iterable:
-    <do something with some_var>
-\end{lstlisting}
-An \textbf{iterator} remembers where it is during its iteration. Though an iterator is an iterable, the reverse is not necessarily true. Think of an iterable as a book whereas an iterator is a bookmark. We can use the \lstinline{iter} function to create an iterator from an object that is iterable (such as a list). 
+On a conceptual level, \textbf{iterables} are simply objects whose elements can be iterated over. Think of an iterable as anything you can use in a \lstinline{for} loop, such as ranges, lists, strings, or dictionaries.
 
-\textbf{Generators}, which are a specific type of \textbf{iterators}, are created using the traditional function definition syntax in Python (\lstinline{def}) with the body of the function containing one or more \lstinline{yield} statements. When a generator (a function that has \lstinline{yield} in the body) is called, it returns a generator object. When we call the generator object, we evaluate the body of the function until we have yielded a value. The \lstinline{yield} statement pauses the function, yields the value, saves the local state so that evaluation can be resumed right where it left off.  \lstinline{yield} operates similarly to a return statement. \lstinline{yield from} is another way to yield values. When we \lstinline{yield from} a list, it yields each element in our list one at a time. 
+On a technical level, iterables are a bit more complicated. An \textbf{iterator} is an object on which you can (repeatedly) call \lstinline{next}, which will return the next element of a sequence. For example, if \lstinline{it} is an iterator representing the sequence $1, 2, 3$, then we could do the following: 
+\begin{lstlisting}
+>>> next(it)
+1
+>>> next(it)
+2
+>>> next(it)
+3
+>>> next(it)
+StopIteration
+\end{lstlisting}
+
+\lstinline{StopIteration} is an exception that is raised when an iterator has no more elements to produce. 
+
+Under this regime, an iterable is an object that can be passed into the \lstinline{iter} function, which returns an iterator based on the iterable's contents. When you iterate over an iterable, you are ultimately iterating over an iterator; the simple \lstinline{for} loop syntax abstracts away this fact. Something like this goes on behind the scenes whenever you use a \lstinline{for} loop:
+
+\begin{center}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{lstlisting}
+for x in "Hello":
+    print(x)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{lstlisting}
+it = iter("Hello")
+while True:
+    try: 
+        x = next(it)
+        print(x)
+    except StopIteration:
+        pass
+\end{lstlisting}
+\end{minipage}
+\end{center}
+
+\textbf{Generators}, which are a specific type of iterator, are created using the traditional function definition syntax in Python (\lstinline{def}) with the body of the function containing one or more \lstinline{yield} statements. When a generator function (a function that has \lstinline{yield} in the body) is called, it returns a generator object. When we call \lstinline{next} on the generator object, we evaluate the body of the function until we hit a \lstinline{yield} statement. The \lstinline{yield} statement yields the value, and pauses the function. \lstinline{yield from} is another way to yield values. When we \lstinline{yield from} another iterable, it yields each element from that other iterable one at a time. 
+
+The following generators all represent the sequence $1,2,3$: 
+
+\begin{minipage}[t]{0.2\textwidth}
+\begin{lstlisting}
+def a():
+    yield 1
+    yield 2
+    yield 3
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{lstlisting}
+def b():
+    for x in range(1, 4):
+        yield x
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{lstlisting}
+def c():
+    yield from b()
+\end{lstlisting}
+\end{minipage}
+
+\begin{meta}
+Something to really emphasize here is the difference between regular function execution and generator function execution. When you call a generator function, you do not begin executing the function body! You only begin executing the function body when \lstinline{next} is called on the generator object. You then pause when you hit a \lstinline{yield} statement. I like to tell my students that this is an ``abuse of notation'': they're coopting function syntax to do something completely different from what a function normally does. 
+
+Another thing I like to emphasize is that it is impossible to go ``backward'' with iterators and generators. After all, we only have a \lstinline{next}, not a \lstinline{prev}!
+
+You might find it advantageous to go over some of the examples more in depth. 
+
+Some students may be confused by the \lstinline{try} and \lstinline{except} blocks. While error handling isn't something super important in CS 61A, they should be able to use it specifically for dealing with iterators, so it might be a good idea to go over this a bit with your students. 
+\end{meta}

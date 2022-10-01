@@ -10,7 +10,7 @@ Let’s imagine it’s your first year at Cal, and you have signed up for your f
 \end{center}
 After a few weeks, you realize that you cannot keep up with the workload and you need to drop a class. You’ve chosen to drop Chem 1A. Based on what we know so far, to change our classes list, we would have to create a new list with all the same elements as the original list except for Chem 1A. But that is silly, since all we really need to do is remove the Chem 1A element from our list.
 
-We can fix this issue with list mutation. In Python, some objects, such as lists and dictionaries, are mutable, meaning that their contents or state can be changed over the course of program execution. Other objects, such as numeric types, tuples, and strings are immutable, meaning they cannot be changed once they are created. Therefore, instead of creating a new list, we can just call classes.pop(), which removes the last element from the list.
+We can fix this issue with list mutation. In Python, some objects, such as lists and dictionaries, are mutable, meaning that their contents or state can be changed over the course of program execution. Other objects, such as numeric types, tuples, and strings are immutable, meaning they cannot be changed once they are created. Therefore, instead of creating a new list, we can just call \lstinline{classes.pop()}, which removes the last element from the list.
 \newpage
 \begin{lstlisting}
 >>> classes.pop() # pop returns whatever item it removed
@@ -21,19 +21,35 @@ We can fix this issue with list mutation. In Python, some objects, such as lists
 \includegraphics[scale=0.75]{pointers_mutate.PNG}
 \end{center}
 
-List methods that mutate:
+Here are a few other list methods that mutate:
 \begin{itemize}
-\item \lstinline{append(el)}: Adds el to the end of the list
-\item \lstinline{extend(lst)}: Extends the list by concatenating it with lst
-\item \lstinline{insert(i, el)}: Insert el at index i (does not replace element but adds a new one)
-\item \lstinline{remove(el)}: Removes the first occurrence of el in list, otherwise errors
-\item \lstinline{pop(i)}: Removes and returns the element at index i, if you do not include an index it pops the last element of the list
+\item \lstinline{append(el)}: Adds \lstinline{el} to the end of the list
+\item \lstinline{extend(lst)}: Extends the list by concatenating \lstinline{lst} onto the end
+\item \lstinline{insert(i, el)}: Inserts \lstinline{el} at index \lstinline{i} (does not replace element but adds a new one)
+\item \lstinline{remove(el)}: Removes the first occurrence of \lstinline{el} in the list; errors if \lstinline{el} is not in the list 
+\item \lstinline{pop(i)}: Removes and returns the element at index \lstinline{i}; if no index is provided, it removes and returns the last element of the list
 \end{itemize}
-Ways to copy: list splicing ([start:end:step]), \lstinline{list(...)}
 
+In addition to these methods, there are a few other built-in ways to mutate lists: 
+
+\begin{itemize}
+\item \lstinline$lst += lst$ (\textbf{This is distinct from} \lstinline$lst = lst + lst$)
+\item \lstinline$lst[i] = x$
+\item \lstinline$lst[i:j] = lst$
+\end{itemize}
+
+\vspace{\parskip}
+
+On the other hand, the following non-mutative (\emph{non-destructive}) operations do not change the original list but create a new list instead:
+
+\begin{itemize}
+\item \lstinline$lst + lst$
+\item \lstinline$lst * n$
+\item \lstinline$lst[i:j]$
+\item \lstinline$list(lst)$
+\end{itemize}
 
 \begin{guide}
-	\begin{blocksection}
 	\textbf{Teaching Tips}
 	\begin{itemize}
 			\item Common Misconceptions:
@@ -51,5 +67,4 @@ Ways to copy: list splicing ([start:end:step]), \lstinline{list(...)}
 				\item Become comfortable with pointers and how to copy objects
 			\end{itemize}
 	\end{itemize}
-	\end{blocksection}
 \end{guide}

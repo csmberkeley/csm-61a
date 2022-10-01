@@ -11,7 +11,6 @@ def interleave(iter1, iter2):
                          iter([2, 4, 6, 8, 10]))
     >>> for elem in gen:
     ...     print(elem)
-    ...
     1
     2
     3
@@ -43,7 +42,7 @@ def interleave(iter1, iter2):
     \textbf{Teaching Tips}
     \begin{itemize}
     \item We can get the values of an iterator by calling next(iter) repeatedly. The first time it'll yield the first one, second the second, etc.
-    \item We should store these values yielded by the iterator in variables to compare them in the future.
+    \item We should store these values yielded by the iterator in variables to compare them in the future. After all, we can't go backward!
     \item Once a value is yielded (depending on the comparison), the next value of the respective iterator should be loaded into the variable.
     \end{itemize}
 \end{blocksection}

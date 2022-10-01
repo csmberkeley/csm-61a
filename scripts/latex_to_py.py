@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import re
 
 try:
     sys.path.index(os.getcwd()) 
@@ -17,15 +18,24 @@ def generate_file(file_name, file_paths, solution=False):
 		with open(file_path, 'r') as f:
 			start = False
 			start_sol = False
+			num_lines_since_start = 0
 			for line in f.read().split('\n'):
-				if line.startswith(r'\begin{solution}'):
+				if re.search(r'\\begin\{\s*solution\s*\}', line):
 					start_sol = True
-				if line == r'\begin{lstlisting}':
+				if re.search(r'\\end\{\s*solution\s*\}', line):
+					start_sol = False
+				if re.search(r'\\begin\{\s*lstlisting\s*\}', line):
 					start = True
-				elif line == r'\end{lstlisting}':
+					num_lines_since_start = 0
+				elif re.search(r'\\end\{\s*lstlisting\s*\}', line):
 					start = False
-				elif start and (start_sol == solution):
+				elif solution and start and "_____" in line:
+					start = False
+					for _ in range(num_lines_since_start):
+						file.pop()
+				elif start and (not start_sol or solution) and not re.match(r'\s*%', line):
 					file.append(line)
+					num_lines_since_start += 1
 		file.append("\n")
 	with open(file_name, 'w') as f:
 		f.write('\n'.join(file) + '\n')

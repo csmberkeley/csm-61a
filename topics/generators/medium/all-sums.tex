@@ -1,14 +1,16 @@
 \begin{blocksection}
-\question Define \lstinline$all_sums$, a generator that iterates through all the sums that can be formed by adding the elements in \lstinline$lst$.
+\question Define \lstinline$all_sums$, a generator that iterates through all the possible sums of elements from \lstinline$lst$. (Repeat sums are permitted.)
 \begin{lstlisting}
 def all_sums(lst):
     """
     >>> list(all_sums([]))
-    [0]                      #sum nothing
+    [0] 
     >>> list(all_sums([1, 2]))
-    [3, 2, 1, 0]             #1 + 2, 2, 1, 0
+    [3, 2, 1, 0]
     >>> list(all_sums([1, 2, 3]))
-    [6, 5, 4, 3, 3, 2, 1, 0] #repeat sums are ok! (3 and 2+1)
+    [6, 5, 4, 3, 3, 2, 1, 0]
+    >>> list(all_sums([1, 2, 7]))
+    [10, 9, 8, 7, 3, 2, 1, 0]
     """
 \end{lstlisting}
 
@@ -30,6 +32,7 @@ def all_sums(lst):
         \begin{itemize}
             \item This is a classic tree recursion problem but now in generator form!
             \item A tree diagram of how the list splits is a good visualization to draw
+            \item Students may have trouble with this because the order in which they're dealing with the recursive case is a bit different than usual.
             \item If students are struggling to understand the problem, start from the base case of an empty list and work your way up with the sums of a length-1 list, length-2, etc.
             \item As always, the recursive leap of faith is helpful in understanding what \lstinline{all_sums(lst[1:])} returns.
             \item Even though this is a generator problem, we iterate over the call in a for loop so we can treat the function like it returns a list!

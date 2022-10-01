@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Given some list \texttt{lst}, possibly a deep list, mutate \texttt{lst} to have the accumulated sum of all elements so far in the list. If there is a nested list, mutate it to similarly reflect the accumulated sum of all elements so far in the nested list. Return the total sum of the original \texttt{lst}.
+\question Given some list \lstinline{lst} of numbers, mutate \lstinline{lst} to have the accumulated sum of all elements so far in the list. If \lstinline{lst} is a deep list, mutate it to similarly reflect the accumulated sum of all elements so far in the nested list. 
 
 \emph{Hint:} The \lstinline$isinstance$ function returns True for \lstinline$isinstance(l, list)$ if \texttt{l} is a list and False otherwise.
 
@@ -19,14 +19,19 @@ def accumulate(lst):
     """
     sum_so_far = 0
     for ________________________________________:
-	________________________________________
+
+	    ________________________________________
+
         if isinstance(___________________, list):
+
 	    inside = ___________________________
+
             ____________________________________
+
         else:
             ____________________________________
+
             ____________________________________
-    return ___________________________________
 \end{lstlisting}
 \end{blocksection}
 

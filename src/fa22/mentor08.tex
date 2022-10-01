@@ -15,60 +15,50 @@
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{guide}
-    \newline
     \textbf{Recommended Timeline}
     \begin{itemize}
         \item Mutability
         \begin{itemize}
-            \item Mutability Mini Lecture - 5 minutes
-            \item wwpd-mutation - 5 minutes
-            \item mystery - 5 minutes
-            \item nice-ice-cream - 7 minutes
-            \item append-to-all - 5 minutes
-            \item accumulate - 10 minutes*
+            \item Mutability Mini Lecture: 6 minutes
+            \item What Would Python Do: 5 minutes
+            \item Nice Ice Cream: 7 minutes
+            \item Insert N: 10 minutes
             \item There are a lot of questions and topics, so pick and choose between these problems based on your students comfortability.
-            \item Choose at least one of the environment diagram problems. Mystery is an easier choice, nice-ice-cream is more complex.
-            \item wwpd-mutation and append-to-all are easier problems if your students are struggling with these concepts.
-            \item Accumulate is tougher so only do this one if your students are understanding the concepts.
         \end{itemize}
         \item Iterator \& Generator Focus:
         \begin{itemize}
-            \item Iterators \& Generators Mini Lecture - 6 minutes
-            \item Interleave - 10 minutes
-            \item List Gen - 8 minutes
-            \item In Order - 8 minutes
+            \item Iterators \& Generators Mini Lecture: 7 minutes
+            \item Interleave: 10 minutes
+            \item In Order: 10 minutes
+            \item All Sums: 15 minutes
         \end{itemize}
     \end{itemize}
+
+    As a reminder, these times do not add up to 50 minutes because no one is expected 
+    to get through all questions in a section. This is especially true this week, 
+    because this worksheet is rather long. You should use the worksheet as a problem bank
+     around which you can structure your section to best accommodate the needs of your 
+     students. Both before and during section, consider which questions would be most 
+     instructive and how you should budget your time. I also highly recommend directly asking your students what they would like to focus on. 
 \end{guide}
 
 \section{Mutability}
-	\textbf{Mutation}
-
 	\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
-	\textbf{Mutable vs immutable}
-
-	\subimport{../../topics/lists/mutable/text/}{mutable-vs-immutable.tex}
 	\begin{questions}
 		\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
-		\newpage
-		\subimport{../../topics/lists/mutable/easy/env-diagram/}{mystery.tex}
-		\newpage
     \subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
-    \newpage
-    \subimport{../../topics/lists/mutable/easy/}{append-to-all.tex}
-    \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+    \subimport{../../topics/lists/mutable/medium/}{insert-n.tex}
 	\end{questions}
 
 \section{Iterators \& Generators}
 \subimport{../../topics/generators/text/}{generators_overview.tex}
 \begin{questions}
+    \subimport{../../topics/generators/easy/}{foo.tex}
 \subimport{../../topics/iterators/easy/}{interleave.tex}
-\subimport{../../topics/generators/easy/}{foo.tex}
-\begin{questionmeta}
-    Between foo and list-gen, pick one that would best fit your students' needs. They both do a pretty good job of introducing general generator concepts.
-\end{questionmeta}
-\subimport{../../topics/generators/easy/}{list-gen.tex}
-\subimport{../../topics/generators/medium/}{hailstone.tex}
+\subimport{../../topics/generators/medium/}{in-order-adt.tex}
+
+\subimport{../../topics/generators/medium/}{all-sums.tex}
+
 
 \end{questions}
 
