@@ -12,31 +12,22 @@ On a technical level, iterables are a bit more complicated. An \textbf{iterator}
 StopIteration
 \end{lstlisting}
 
-\lstinline{StopIteration} is an exception that is raised when an iterator has no more elements to produce. 
+\lstinline{StopIteration} is an exception that is raised when an iterator has no more elements to produce; it's how we know we've reached the end of an iterator. Iterators that will never produce a \lstinline{StopIteration} exception are called \textit{infinite}. 
 
-Under this regime, an iterable is an object that can be passed into the \lstinline{iter} function, which returns an iterator based on the iterable's contents. When you iterate over an iterable, you are ultimately iterating over an iterator; the simple \lstinline{for} loop syntax abstracts away this fact. Something like this goes on behind the scenes whenever you use a \lstinline{for} loop:
+Under this regime, an iterable is formally defined as an object that can be turned into an iterator by passing it into the \lstinline{iter} function. When you iterate over an iterable, Python first uses \lstinline{iter} to create an iterator from the iterable and then iterates over the iterator. The simple \lstinline{for} loop syntax abstracts away this fact. 
 
-\begin{center}
-\begin{minipage}[t]{0.4\textwidth}
-\begin{lstlisting}
-for x in "Hello":
-    print(x)
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[t]{0.4\textwidth}
-\begin{lstlisting}
-it = iter("Hello")
-while True:
-    try: 
-        x = next(it)
-        print(x)
-    except StopIteration:
-        pass
-\end{lstlisting}
-\end{minipage}
-\end{center}
+There are a few useful functions that act on iterables that are particularly useful: 
+\begin{itemize}
+    \item \lstinline{map(f, it)}: Returns an iterable that produces each element of \lstinline{it} with the function \lstinline{f} applied to it.
+    \item \lstinline{filter(pred, it)}: Returns an iterable that includes only the elements of \lstinline{it} where the predicate function \lstinline{pred} returns true. 
+    \item \lstinline{reduce(f, it, init)}: Reduces \lstinline{it} to a single value by repeatedly calling the two-argument function \lstinline{f} on the elements of \lstinline{it}: \lstinline{reduce(add, [1, 2, 3])} $\rightarrow$ \lstinline{6}. Optionally, an initializer may be provided: \lstinline{reduce(add, [1], 0)} $\rightarrow$ \lstinline{1}. 
+\end{itemize}
 
-\textbf{Generators}, which are a specific type of iterator, are created using the traditional function definition syntax in Python (\lstinline{def}) with the body of the function containing one or more \lstinline{yield} statements. When a generator function (a function that has \lstinline{yield} in the body) is called, it returns a generator object. When we call \lstinline{next} on the generator object, we evaluate the body of the function until we hit a \lstinline{yield} statement. The \lstinline{yield} statement yields the value, and pauses the function. \lstinline{yield from} is another way to yield values. When we \lstinline{yield from} another iterable, it yields each element from that other iterable one at a time. 
+\begin{meta}
+Technically, \lstinline{map} and \lstinline{filter} are not functions but classes, but that is not a distinction we need to make. 
+\end{meta}
+
+\textbf{Generators}, which are a specific type of iterator, are created using the traditional function definition syntax in Python (\lstinline{def}) with the body of the function containing one or more \lstinline{yield} statements. When a generator function (a function that has \lstinline{yield} in the body) is called, it returns a generator object; the body of the function is not executed. Only when we call \lstinline{next} on the generator object is the body executed until we hit a \lstinline{yield} statement. The \lstinline{yield} statement yields the value and pauses the function. \lstinline{yield from} is another way to yield values. When we \lstinline{yield from} another iterable, it yields each element from that other iterable one at a time. 
 
 The following generators all represent the sequence $1,2,3$: 
 
@@ -69,5 +60,27 @@ Another thing I like to emphasize is that it is impossible to go ``backward'' wi
 
 You might find it advantageous to go over some of the examples more in depth. 
 
-Some students may be confused by the \lstinline{try} and \lstinline{except} blocks. While error handling isn't something super important in CS 61A, they should be able to use it specifically for dealing with iterators, so it might be a good idea to go over this a bit with your students. 
+You may or may not find it useful to present students with an example of how iteration works behind the scene: 
+
+\begin{center}
+    \begin{minipage}[t]{0.4\textwidth}
+    \begin{lstlisting}
+    for x in "Hello":
+        print(x)
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[t]{0.4\textwidth}
+    \begin{lstlisting}
+    it = iter("Hello")
+    while True:
+        try: 
+            x = next(it)
+            print(x)
+        except StopIteration:
+            pass
+    \end{lstlisting}
+    \end{minipage}
+    \end{center}
+
+It's possible this may confuse some students, so be cautious if you attempt to use this or a similar example. In particular, students may be confused by the infinite looping and the \lstinline{try} and \lstinline{except} blocks. While error handling isn't something super important in CS 61A, they should be able to use it specifically for dealing with iterators, so it might be a good idea to go over this a bit with your students. 
 \end{meta}

@@ -18,7 +18,7 @@ def in_order(t):
         yield label(t)
     else:
         yield from in_order(branches(t)[0])
-        yield from [label(t)]
+        yield label(t)
         yield from in_order(branches(t)[1])
 \end{lstlisting}
 \end{solution}
