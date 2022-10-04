@@ -1,18 +1,9 @@
-\textbf{Data Abstraction Overview:}
-Data abstraction allows us to create and access data through a controlled, restricted programming interface, hiding implementation details and encouraging programmers to focus on how data is used, rather than how data is internally organized. The two fundamental components of an \textbf{abstract data type} are a constructor and selectors:
+Data abstraction allows us to create and access data through a controlled, restricted programming interface---hiding implementation details for sake of brevity and reusability of code and encouraging programmers to focus on how data is used rather than worrying about how data is internally organized. The two fundamental components of an \textbf{abstract data type} are a constructor and selectors:
 \begin{enumerate}
-	\item A \textbf{constructor} creates a piece of data; e.g. executing \texttt{c = car("Nissan", "Leaf")} creates a new instance of a car abstraction and assigns it to the variable \lstinline{c}.
-	\item \textbf{Selectors} access attributes of a piece of data; e.g. calling \lstinline{get_make(c)} returns \lstinline{"Tesla"}.
+	\item A \textbf{constructor} creates a piece of data, and includes all the attributes that make the data unique; e.g. executing \texttt{c = car("Nissan", "Leaf")} creates a new instance of a car abstraction and assigns it to the variable \lstinline{c}.
+	\item \textbf{Selectors} access attributes of a piece of data; e.g. calling \lstinline{get_make(c)} returns \lstinline{"Nissan"}.
 \end{enumerate}
 
-In the example above, you don't know specifically how the model name ``Tesla'' and the make name ``Leaf'' are internally bundled into a car, and you don't care, either. The creator of the abstract data type dealt with those details, so that you, the user of the ADT, would only have to know how to store and retrieve the data you need. Much like how you don't need to be a mechanic to drive a car separation of concerns---between what you need to know to design an ADT versus what you need to know to use it---is called the \textbf{abstraction barrier}, similar to how you don't need to be a mechanic drive a car. While your program won't necessarily break if you break the abstraction barrier, we recommend against it for the same reason that you shouldn't tinker with your engine when you're driving. Abstraction goes far beyond data, too: the use of interfaces to hide unnecessary details can be seen everywhere---in keyboards, printers, cars, stovetops, and even typewriters. What are examples of abstraction in your everyday life? 
+In the example above, you don't know specifically how the model name ``Nissan'' and the make name ``Leaf'' are internally bundled into a car, and you don't care, either. The creator of the abstract data type dealt with those details, so that you, the user of the ADT, would only have to know how to store and retrieve the data you need. This separation of concerns between designing and using an interface is called the \textbf{abstraction barrier}. While your program won't necessarily break if you break the abstraction barrier, heeding the barrier is best practice and can prevent errors down the road. 
 
-\begin{meta}
-If data abstraction is new to your students or they don't feel very confident in the topic, \textbf{consider walking them through the next problem}.
-
-Emphasize the \textbf{importance of selectors} -- useful for 2).
-
-A good visualization is to draw the ADT out using box and pointer diagrams. \textbf{Make sure not to get caught up on any specific representation of the ADT}, as they should be able to .
-
-Talk about what it means to \textbf{break the abstraction barrier. How do you make sure that you are not breaking the abstraction barrier?}
-\end{meta}
+Using abstraction to hide unnecessary details can be seen everywhere, not just in code---keyboards, printers, cars, stovetops, and typewriters all employ abstractive interfaces. What are some examples of abstraction in your everyday life? 
