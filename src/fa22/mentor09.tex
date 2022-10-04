@@ -1,0 +1,62 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{outlines}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{9}
+\title{\textsc{OOP}}
+\date{October 17--21, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\maketitle
+	\rule{\textwidth}{0.15em}
+	\fontsize{12}{15}\selectfont
+
+	%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{guide}
+	\textbf{Recommended Timeline}
+	\begin{outline}[enumerate]
+		\1 Mutability Mini Lecture - there are many list mutation methods. feel free to adjust time spent minilecturing on students' level of understanding - 5 minutes
+		\1 \lstinline{wwpd-mutation} - check your understanding - 2-3 minutes
+		\1 \lstinline{spooky-list} - really good, but difficult environment diagram to test students understanding - 10 minutes
+		\1 \lstinline{accumulate} - coding question - 10 minutes
+		\1 OOP Mini Lecture - classes, calling methods, class vs instance variables - 5 minutes
+		\1 \lstinline{wwpd-starwars} - check your undersanding - 2-3 minutes
+		\1 \lstinline{build-a-bear} - nice introduction it implementing a class - 5 minutes 
+		\1 \lstinline{pingpong-tracker} - students will see ping pong on hw3, this question is the OOP version - 12 minutes
+		\1 Optional Past Exam Questions
+		\2 Mutability: Su19 MT Q3 and Sp19 Final Q2 - getting comfortable with environment diagrams, drawing box and pointers, visualizing list mutation operations
+		\2 OOP: Fa19 Final Q5 - implementing classes, Su15 MT2 Q3 - implementing the init method, question works in dictionaries
+		\1 Notes
+		\2 this worksheet might be a little longer, so don't worry if you don't get to all the problems. The worksheets are a question bank!
+		\2 students are most likely feeling very stressed about the midterm, give them some study and last min prep tips + comfort them
+	\end{outline}
+\end{guide}
+
+\section{Mutability}
+\textbf{Mutation}
+
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+\textbf{Mutable vs immutable}
+\subimport{../../topics/lists/mutable/text/}{mutable-vs-immutable.tex}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{spooky-list.tex}
+\newpage
+\subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+\end{questions}
+
+\newpage
+\section{OOP}
+\subimport{../../topics/oop/text/}{oop_overview.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/oop/easy/}{star-wars.tex}
+\newpage
+\subimport{../../topics/oop/medium/}{build-a-bear-su21.tex}
+\subimport{../../topics/oop/medium/}{pingpong-su21.tex}
+\end{questions}
+
+\end{document}
