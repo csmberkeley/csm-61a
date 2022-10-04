@@ -1,0 +1,37 @@
+\begin{blocksection}
+\question
+Define a generator function \lstinline{in_order}, which takes in a tree \lstinline{t}; assume that \lstinline{t} and each of its subtrees have either 0 or 2 branches only. Fill in \lstinline{in_order} to yield the labels of \lstinline{t} ``in order''; that is, for each node, the labels of the left branch should precede the parent label, which should precede the labels of the right branch. 
+
+\begin{lstlisting}
+def in_order(t):
+    """
+    >>> t = tree(0, [tree(1), tree(2, [tree(3), tree(4)])])
+    >>> list(in_order(t))
+    [1, 0, 3, 2, 4]
+    """
+\end{lstlisting}
+
+\begin{solution}[3 in.]
+\begin{lstlisting}
+def in_order(t):
+    if is_leaf(t):
+        yield label(t)
+    else:
+        yield from in_order(branches(t)[0])
+        yield label(t)
+        yield from in_order(branches(t)[1])
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+\textbf{Teaching Tips}
+    \begin{itemize}
+    \item Trees are meant to be implemented recursively, and this should be emphasized to students.
+    \item What is the base case of the problem? With trees it is typically the leaf, and it works out in this case, where there is only one item to yield.
+    \item Draw out an example of a tree (maybe the doctest). What do we expect the recursive call on each of the branches to return (note that trees either have 0 or 2 branches)?
+    \item After seeing what the recursive calls do, figure out how you combine the label, the left tree recursive call, and the right tree recursive call to get the desired result. Yielding the left recursive call's values, then the label, and then the right recursive call will give the in-order traversal.
+    \end{itemize}
+\end{blocksection}
+\end{guide}

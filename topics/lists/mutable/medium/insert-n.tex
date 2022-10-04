@@ -1,0 +1,66 @@
+\begin{blocksection}
+\question Write a function \lstinline{insert_n}, which takes in an ascending list of numbers \lstinline{lst}, a number \lstinline{x}, and an integer \lstinline{n}. If \lstinline{n} is positive, \lstinline{insert_n} mutatively inserts \lstinline{n} copies of \lstinline{x} into \lstinline{lst} at the correct position so that \lstinline{lst} is still in ascending order. If \lstinline{n} is negative, \lstinline{insert_n} mutatively removes |\lstinline{n}| copies of \lstinline{x} from \lstinline{lst}. (Assume that there are always enough copies to \lstinline{x} to be removed.) 
+
+\begin{lstlisting}
+def insert_n(lst, x, n):
+    """
+    >>> lst = []
+    >>> insert_n(lst, 4, 1)
+    >>> insert_n(lst, 1, 3)
+    >>> insert_n(lst, 2, 2)
+    >>> lst
+    [1, 1, 1, 2, 2, 4]
+    >>> insert_n(lst, 1, -2)
+    >>> lst
+    [1, 2, 2, 4]
+    """
+    if n > 0:
+        i = 0
+        while ______________________________________:
+
+            ______________________________________
+
+        ______________________________________:
+
+            ______________________________________
+    elif n < 0:
+
+        ______________________________________
+
+            ______________________________________
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def insert_n(lst, x, n):
+    """
+    >>> lst = []
+    >>> insert_n(lst, 4, 1)
+    >>> insert_n(lst, 1, 3)
+    >>> insert_n(lst, 2, 2)
+    >>> lst
+    [1, 1, 1, 2, 2, 4]
+    >>> insert_n(lst, 1, -2)
+    >>> lst
+    [1, 2, 2, 4]
+    """
+    if n > 0:
+        i = 0
+        while i < len(lst) and lst[i] < x:
+            i += 1
+        for _ in range(n):
+            lst.insert(i, x)
+    elif n < 0:
+        for _ in range(-n):
+            lst.remove(x)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+    The purpose of this problem is to give students some hands on experience with list mutation methods, and also to give them a refresher on how to handle lists.
+
+    The trickiest part of this problem is figuring out where the elements need to be added. It is not sufficient to simply look for the earliest instance of \lstinline{x} in \lstinline{lst}, for example, because \lstinline{lst} may not have any instances of \lstinline{x} to start with. If students are stuck on this, you can try asking a series of leading questions to help them get there. For example: where do we want to insert our new elements? How can we insert our new elements into the correct place in the list? How can we figure out the correct index to insert our new elements? Why did they tell you that the list is in ascending order? 
+\end{questionmeta}
