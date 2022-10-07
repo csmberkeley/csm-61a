@@ -1,0 +1,92 @@
+\begin{blocksection}
+    \question The Reprtilia class stores the common and scientific names of various reptiles.
+    
+    \textbf{Brief introduction to \lstinline{__repr__}} \\ The \lstinline{__repr__} magic method of objects returns the "official" string representation of an object. You can invoke it directly by calling \lstinline{repr(<some object>)}. However, \lstinline{__repr__} doesn't always return something that is easily readable, that is what \lstinline{__str__} is for. Rather, \lstinline{__repr__} ensures that all information about the object is present in the representation. When you ask Python to represent an object in the Python interpreter, it will automatically call \lstinline{repr} on that object and then print out the string that \lstinline{repr} returns.
+    
+    \vspace{1.5\baselineskip}
+    
+    \begin{lstlisting}
+        """
+        >>> python = Reprtilia("python", "pythonidae")
+        >>> iguana = Reprtilia("iguana", "iguana")
+        >>> python
+        Reptilia('python', 'pythonidae')
+        >>> f'Did you know that a {python}?"
+        'Did you know that a python is a pythonidae?'
+    
+        class Reprtilia:
+            def __init__(self, name, scientific):
+                self.name = name
+                self.scientific = scientific
+            def __repr__(self, other):
+                __________________________________
+            def __str__(self):
+                _____________________________________
+    \end{lstlisting}
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \begin{lstlisting}
+    >>> anakin = Jedi("Anakin")
+    >>> anakin.lightsaber, anakin.force
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    ("blue", 25)
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> anakin.lightsaber = "red"
+    >>> anakin.lightsaber 
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    "red"
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> Jedi.lightsaber 
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    "blue"
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> obiwan = Jedi("Obi-wan")
+    >>> anakin.master = obiwan
+    >>> anakin.master
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    Jedi Obi-wan
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> Jedi.master
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    Error
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> obiwan.force += anakin.force
+    >>> obiwan.force, anakin.force
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    (50, 25)
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> obiwan.train(anakin)
+    >>> obiwan.force, anakin.force
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    (50, 35)
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> Jedi.train(obiwan, anakin)
+    >>> obiwan.force, anakin.force
+    \end{lstlisting}
+    \begin{solution}[.2in]
+    (50, 45)
+    \end{solution}
+    \end{blocksection}
+    
