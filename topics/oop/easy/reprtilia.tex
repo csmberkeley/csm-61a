@@ -11,82 +11,40 @@
         >>> iguana = Reprtilia("iguana", "iguana")
         >>> python
         Reptilia('python', 'pythonidae')
-        >>> f'Did you know that a {python}?"
+        >>> f'Did you know that {python}?"
         'Did you know that a python is a pythonidae?'
+        """
     
         class Reprtilia:
             def __init__(self, name, scientific):
                 self.name = name
                 self.scientific = scientific
+    \end{lstlisting}
             def __repr__(self, other):
-                __________________________________
+                _______________________________________________
             def __str__(self):
-                _____________________________________
-    \end{lstlisting}
-    \end{blocksection}
+                _______________________________________________
+\end{blocksection}
     
-    \begin{blocksection}
+\begin{blocksection}
     \begin{lstlisting}
-    >>> anakin = Jedi("Anakin")
-    >>> anakin.lightsaber, anakin.force
+            def __repr__(self):
+
     \end{lstlisting}
-    \begin{solution}[.2in]
-    ("blue", 25)
-    \end{solution}
-    
+\end{blocksection}
+
+\begin{blocksection}
     \begin{lstlisting}
-    >>> anakin.lightsaber = "red"
-    >>> anakin.lightsaber 
+            def __str__(self):
+                
     \end{lstlisting}
-    \begin{solution}[.2in]
-    "red"
-    \end{solution}
-    
+\end{blocksection}
+
+\begin{blocksection}
+    \question Your friend, Julian, decides to overhaul 
     \begin{lstlisting}
-    >>> Jedi.lightsaber 
+            def __repr__(self):
+                
     \end{lstlisting}
-    \begin{solution}[.2in]
-    "blue"
-    \end{solution}
-    
-    \begin{lstlisting}
-    >>> obiwan = Jedi("Obi-wan")
-    >>> anakin.master = obiwan
-    >>> anakin.master
-    \end{lstlisting}
-    \begin{solution}[.2in]
-    Jedi Obi-wan
-    \end{solution}
-    
-    \begin{lstlisting}
-    >>> Jedi.master
-    \end{lstlisting}
-    \begin{solution}[.2in]
-    Error
-    \end{solution}
-    
-    \begin{lstlisting}
-    >>> obiwan.force += anakin.force
-    >>> obiwan.force, anakin.force
-    \end{lstlisting}
-    \begin{solution}[.2in]
-    (50, 25)
-    \end{solution}
-    
-    \begin{lstlisting}
-    >>> obiwan.train(anakin)
-    >>> obiwan.force, anakin.force
-    \end{lstlisting}
-    \begin{solution}[.2in]
-    (50, 35)
-    \end{solution}
-    
-    \begin{lstlisting}
-    >>> Jedi.train(obiwan, anakin)
-    >>> obiwan.force, anakin.force
-    \end{lstlisting}
-    \begin{solution}[.2in]
-    (50, 45)
-    \end{solution}
-    \end{blocksection}
+\end{blocksection}    
     
