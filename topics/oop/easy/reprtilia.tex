@@ -12,7 +12,7 @@
         >>> python
         Reptilia('python', 'pythonidae')
         >>> f'Did you know that {python}?"
-        'Did you know that a python is a pythonidae?'
+        'Did you know that a python is a "pythonidae"?'
         """
     
         class Reprtilia:
@@ -20,31 +20,98 @@
                 self.name = name
                 self.scientific = scientific
     \end{lstlisting}
-            def __repr__(self, other):
-                _______________________________________________
-            def __str__(self):
-                _______________________________________________
 \end{blocksection}
     
 \begin{blocksection}
+    \question How do we define the __repr__ method?
+
+    \vspace{1.5\baselineskip}
+    
     \begin{lstlisting}
             def __repr__(self):
-
     \end{lstlisting}
+    \begin{solution}[0.25in]
+    \begin{lstlisting}
+            return f"Reprtilia({repr(self.name)}, {repr(self.scientific)})"
+    \end{lstlisting}
+    \end{solution}
 \end{blocksection}
 
 \begin{blocksection}
+    \question How do we define the __str__ method?
+
+    \vspace{1.5\baselineskip}
+
     \begin{lstlisting}
             def __str__(self):
-                
     \end{lstlisting}
+    \begin{solution}[0.25in]
+    \begin{lstlisting}
+            return f"a {self.name} is a \"{self.scientific}\""
+    \end{lstlisting}
+    \end{solution}
 \end{blocksection}
 
 \begin{blocksection}
-    \question Your friend, Julian, decides to overhaul 
+    \question Your friend, Julian, decides to create a new object class based off of Reprtilia called ReprtiliaNoises, and as such, decides to overhaul your __repr__ and __str__! How would the following be implemented following the doctests?
+    
+    \vspace{1.5\baselineskip}
+
     \begin{lstlisting}
-            def __repr__(self):
-                
+        """
+        >>> python = ReprtiliaNoises("python", "pythonidae", "hiss")
+        >>> python
+        ReprtiliaNoises('python', 'pythonidae', 'hiss')
+        >>> f"Today's reptile of the day is a {python}!"
+        "Today's reptile of the day is a python (species: 'pythonidae', noise: 'hiss')!"
+        """
     \end{lstlisting}
+
+    \begin{blocksection}
+        \question How does Julian redefine the __init__ method?
+    
+        \vspace{1.5\baselineskip}
+        
+        \begin{lstlisting}
+            class ReprtiliaNoises(Reprtilia):
+                def __init__(self, name, scientific, noise):
+        \end{lstlisting}
+        \begin{solution}[0.25in]
+        \begin{lstlisting}
+                    super().__init__(name, scientific)
+                    self.noise = noise
+        \end{lstlisting}
+        \end{solution}
+    \end{blocksection}    
+    
+    \begin{blocksection}
+        \question How does Julian redefine the __repr__ method?
+    
+        \vspace{1.5\baselineskip}
+        
+        \begin{lstlisting}
+                def __repr__(self):
+        \end{lstlisting}
+        \begin{solution}[0.25in]
+        \begin{lstlisting}
+                return f"ReprtiliaNoises({repr(self.name)}, {repr(self.scientific)}, {repr(self.noise)})"
+        \end{lstlisting}
+        \end{solution}
+    \end{blocksection}
+
+    \begin{blocksection}
+        \question How does Julian redefine the __str__ method?
+    
+        \vspace{1.5\baselineskip}
+        
+        \begin{lstlisting}
+                def __str__(self):
+        \end{lstlisting}
+        \begin{solution}[0.25in]
+        \begin{lstlisting}
+                return f"{self.name} (species: \'{self.scientific}\', noise: \'{self.noise}\')"
+        \end{lstlisting}
+        \end{solution}
+    \end{blocksection}
 \end{blocksection}    
     
