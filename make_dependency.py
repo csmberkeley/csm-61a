@@ -106,14 +106,14 @@ def get_dependencies(filepath):
 #############
 
 def read_file(filepath):
-    with open(filepath, 'r') as f:
+    with open(filepath, 'r', encoding="utf-8") as f:
         return f.read()
 
 def write_file(filepath, text):
     dirname = os.path.dirname(filepath)
     if not os.path.exists(dirname):
         os.makedirs(dirname)
-    with open(filepath, 'w') as f:
+    with open(filepath, 'w', encoding="utf-8") as f:
         f.write(text)
 
 def main(args):

@@ -1,33 +1,34 @@
-\begin{blocksection}
 \question Let's slowly build a Bear from start to finish using OOP!
 
-First, let's build a Bear class for our basic bear.
-Bear instances should have an attribute \lstinline{name} that holds the name of the bear.
+\begin{parts}
+\begin{blocksection}
+\part
+First, let's build a \lstinline{Bear} class for our basic bear.
+Bear instances should have an attribute \lstinline{name} that holds the name of the bear and an attribute \lstinline{organs}, an initially empty list of the bear's organs.
 The Bear class should have an attribute \lstinline{bears}, a list that stores the name of each bear.
-\vspace{1\baselineskip}
 \begin{lstlisting}
->>> oski = Bear('Oski')
->>> oski.name
-'Oski'
->>> Bear.bears
-['Oski']
->>> winnie = Bear('Winnie')
->>> Bear.bears
-['Oski', 'Winnie']
-
 class Bear:
+    """
+    >>> oski = Bear('Oski')
+    >>> oski.name
+    'Oski'
+    >>> oski.organs
+    []
+    >>> Bear.bears
+    ['Oski']
+    >>> winnie = Bear('Winnie')
+    >>> Bear.bears
+    ['Oski', 'Winnie']
+    """
 \end{lstlisting}
 
-\begin{nonsol}
-\vspace{4\baselineskip}
-\end{nonsol}
-
-\begin{solution}
+\begin{solution}[3in]
   \vspace{-0.5\baselineskip}
 \begin{lstlisting}
     bears = []
     def __init__(self, name):
         self.name = name
+        self.organs = []
         Bear.bears.append(self.name)
 \end{lstlisting}
 
@@ -36,82 +37,90 @@ Note that just doing \lstinline{bears.append(self.name)} will result in an error
 \end{solution}
 \end{blocksection}
 
-\vspace{1\baselineskip}
-
 \begin{blocksection}
-\question Next, let's build an Organ class to put in our bear.
-Organ instances should have an attribute \lstinline{name} that holds the name of the organ.
-The Organ class should contain a dictionary \lstinline{organs} that holds (organ, bear name) key-value pairs, mapping each organ object to the name of its bear.
-\\Note that this maps \textbf{objects} to strings! We may need to change the representation of this object for our doc tests to be correct.
-\\The Organ class should also have a method \lstinline{discard(self)} that removes the organ from Organ.organs.
+\part Next, let's build an \lstinline{Organ} class to put in our bear.
+\lstinline{Organ} instances should have an attribute \lstinline{name} that holds the name of the organ and an attribute \lstinline{bear} that holds the bear it belongs to. The \lstinline{Organ} class should also have an instance method \lstinline{discard(self)} that removes the organ from \lstinline{Organ.organ_count} and the bear's organs list.
 
-\vspace{1\baselineskip}
+The \lstinline{Organ} class should contain a dictionary \lstinline{organ_count} that maps the name of each bear to the number of organs it has. 
+
+Hint: We may need to change the representation of this object for our doc tests to be correct.
+
+
 \begin{lstlisting}
->>> oski_liver = Organ('liver', oski)
->>> winnie_stomach = Organ('stomach', winnie)
->>> winnie_liver = Organ('liver', winnie)
->>> Organ.organs
-{liver: 'Oski', stomach: 'Winnie', liver: 'Winnie'}
->>> winnie_liver.discard()
->>> Organ.organs
-{liver: 'Oski', stomach: 'Winnie'}
-
 class Organ:
+    """
+    >>> oski, winnie = Bear('Oski'), Bear('Winnie')
+    >>> oski_liver = Organ('liver', oski)
+    >>> Organ.organ_counts
+    {'Oski': 1}
+    >>> winnie_stomach = Organ('stomach', winnie)
+    >>> winnie_liver = Organ('liver', winnie)
+    >>> winnie.organs
+    [stomach, liver]
+    >>> winnie_liver.discard()
+    >>> Organ.organ_counts
+    {'Oski': 1, 'Winnie': 1}
+    >>> winnie.organs
+    [stomach]
+    """
 \end{lstlisting}
 
-\begin{nonsol}
-\vspace{8\baselineskip}
-\end{nonsol}
-
-\begin{solution}
-  \vspace{-0.5\baselineskip}
+\begin{solution}[4 in]
 \begin{lstlisting}
-    organs = {}
+    organ_counts = {}
+
     def __init__(self, name, bear):
         self.name = name
-        Organ.organs[self] = bear.name
+        self.bear = bear
+        if bear.name in Organ.organ_counts:
+            Organ.organ_counts[bear.name] += 1
+        else:
+            Organ.organ_counts[bear.name] = 1
+        bear.organs.append(self)
+
     def discard(self):
-        Organ.organs.pop(self)
+        Organ.organ_counts[self.bear.name] -= 1
+        self.bear.organs.remove(self)
+
     def __repr__(self):
         return self.name
 \end{lstlisting}
-Note if we used \lstinline{Organ.organs[self.name]} instead of \lstinline{Organ.organs[self]}, it would be impossible to store 2 Organs with the same name.
-\\Without the \lstinline{__repr__}, an Organ returns \lstinline{<__main__.Organ object>} instead of its name in \lstinline{Organ.organs}.
-\\Organs do not inherit from Bear, nor should they. Inheritance is used in \textbf{is a} relationships, not \textbf{has a}.
+
+Without the \lstinline{__repr__}, an Organ returns \lstinline{<__main__.Organ object>} instead of its name in \lstinline{Organ.organs}.
+
+Organs do not inherit from Bear, nor should they. Inheritance is used in \textbf{is a} relationships, not \textbf{has a}.
 \end{solution}
 \end{blocksection}
 
 
 \begin{blocksection}
-\question Now, let's design a Heart class that inherits from the Organ class.
-When a heart is created, if its bear does not have a heart, it creates a \lstinline{heart} attribute for that bear.
-If a bear already has a heart, the old \lstinline{heart} is discarded and replaced with the new one.
-\\Hint: you can use \lstinline{hasattr} to check if a bear has a heart attribute.
+\part Now, let's design a \lstinline{Heart} class that inherits from the \lstinline{Organ} class.
+When a heart is created, if its bear does not already have a heart, it creates a \lstinline{heart} attribute for that bear. If a bear already has a heart, the old \lstinline{heart} is discarded and replaced with the new one. The bear's organs list and \lstinline{Organ.organ_count} should be updated appropriately. 
 
-\vspace{1\baselineskip}
+Hint: you can use \lstinline{hasattr} to check if a bear has a heart attribute.
+
 \begin{lstlisting}
->>> hasattr(oski, 'heart')
-False
->>> oski_heart = Heart('small heart', oski)
->>> oski.heart
-small heart
->>> Organ.organs
-{liver: 'Oski', stomach: 'Winnie', small heart: 'Oski'}
->>> new_heart = Heart('big heart', oski)
->>> oski.heart
-big heart
->>> Organ.organs
-{liver: 'Oski', stomach: 'Winnie', big heart: 'Oski'}
-
 class Heart(Organ):
+    """
+    >>> oski, winnie = Bear('Oski'), Bear('Winnie')
+    >>> hasattr(oski, 'heart')
+    False
+    >>> oski_heart = Heart('small heart', oski)
+    >>> oski.heart
+    small heart
+    >>> oski.organs
+    [small heart]
+    >>> new_heart = Heart('big heart', oski)
+    >>> oski.heart
+    big heart
+    >>> oski.organs
+    [big heart]
+    >>> Organ.organ_counts["Oski"]
+    1
+    """
 \end{lstlisting}
 
-\begin{nonsol}
-\vspace{5\baselineskip}
-\end{nonsol}
-
-\begin{solution}
-  \vspace{-0.5\baselineskip}
+\begin{solution}[2in]
 \begin{lstlisting}
     def __init__(self, name, bear):
         if hasattr(bear, 'heart'):
@@ -119,53 +128,53 @@ class Heart(Organ):
         bear.heart = self
         Organ.__init__(self, name, bear)
 \end{lstlisting}
-Since Hearts are Organs, we can use Organ's \lstinline{discard} method to remove an old heart easily, without breaking any abstraction barriers.
-\\We also can use \lstinline{Organ.__init__} instead of repeating code.
+Since Hearts are Organs, we can use Organ's \lstinline{discard} method to remove an old heart easily, without breaking any abstraction barriers. We also can use \lstinline{Organ.__init__} instead of repeating code.
 \end{solution}
 \end{blocksection}
 
 
-\begin{blocksection}
-\question Finally, let's design a Brain class that inherits from the Organ class.
-Bears want to rise up against the Bourgeoise, and a Brain gives them the power to do so.
-\\The appearance of a brain gives the Bear class an attribute \lstinline{rebels}, a \textbf{set} containing the names of all rebelling bears.
-\\A bear with a brain is added to \lstinline{rebels} by default.
-\\It also gives \textbf{all} bears, even ones without brains, a \lstinline{rebel} method that, when called, adds the caller to \lstinline{rebels}.
+% \begin{blocksection}
+% \part Finally, let's design a Brain class that inherits from the Organ class.
+% Bears want to rise up against the Bourgeoise, and a Brain gives them the power to do so.
+% \\The appearance of a brain gives the Bear class an attribute \lstinline{rebels}, a \textbf{set} containing the names of all rebelling bears.
+% \\A bear with a brain is added to \lstinline{rebels} by default.
+% \\It also gives \textbf{all} bears, even ones without brains, a \lstinline{rebel} method that, when called, adds the caller to \lstinline{rebels}.
 
-\vspace{1\baselineskip}
-\begin{lstlisting}
->>> big_brain = Brain('big brain', oski)
->>> Bear.rebels
-{'Oski'}
->>> smokey = Bear('Smokey')
->>> smokey.rebel()
->>> Bear.rebels
-{'Smokey', 'Oski'}
->>> small_brain = Brain('brain', winnie)
->>> Bear.rebels
-{'Smokey', 'Oski', 'Winnie'}
->>> Organ.organs
-{liver: 'Oski', stomach: 'Winnie', big heart: 'Oski', big brain: 'Oski', brain: 'Winnie'}
+% \vspace{1\baselineskip}
+% \begin{lstlisting}
+% >>> big_brain = Brain('big brain', oski)
+% >>> Bear.rebels
+% {'Oski'}
+% >>> smokey = Bear('Smokey')
+% >>> smokey.rebel()
+% >>> Bear.rebels
+% {'Smokey', 'Oski'}
+% >>> small_brain = Brain('brain', winnie)
+% >>> Bear.rebels
+% {'Smokey', 'Oski', 'Winnie'}
+% >>> Organ.organs
+% {liver: 'Oski', stomach: 'Winnie', big heart: 'Oski', big brain: 'Oski', brain: 'Winnie'}
 
-class Brain(Organ):
-\end{lstlisting}
+% class Brain(Organ):
+% \end{lstlisting}
 
-\begin{nonsol}
-\vspace{7\baselineskip}
-\end{nonsol}
+% \begin{nonsol}
+% \vspace{7\baselineskip}
+% \end{nonsol}
 
-\begin{solution}
-  \vspace{-0.5\baselineskip}
-\begin{lstlisting}
-    def __init__(self, name, bear):
-        if hasattr(Bear, 'rebels'):
-            Bear.rebels.add(bear.name)
-        else:
-            Bear.rebels = set([bear.name])
-        Bear.rebel = lambda self: Bear.rebels.add(self.name)
-        Organ.__init__(self, name, bear)
-\end{lstlisting}
+% \begin{solution}
+%   \vspace{-0.5\baselineskip}
+% \begin{lstlisting}
+%     def __init__(self, name, bear):
+%         if hasattr(Bear, 'rebels'):
+%             Bear.rebels.add(bear.name)
+%         else:
+%             Bear.rebels = set([bear.name])
+%         Bear.rebel = lambda self: Bear.rebels.add(self.name)
+%         Organ.__init__(self, name, bear)
+% \end{lstlisting}
 
-Be careful not to reset \lstinline{Bear.rebels} upon the creation of a second brain.
-\end{solution}
-\end{blocksection}
+% Be careful not to reset \lstinline{Bear.rebels} upon the creation of a second brain.
+% \end{solution}
+% \end{blocksection}
+\end{parts}

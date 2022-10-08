@@ -1,3 +1,5 @@
+\textbf{Object oriented programming} is a paradigm that organizes relationships among data into \textbf{objects} and \textbf{classes}. For example, we can write a \lstinline{Car} class to represent the concept of cars in general: 
+
 \begin{lstlisting}
 class Car:
     wheels = 4
@@ -11,25 +13,21 @@ class Car:
 my_car = Car()
 \end{lstlisting}
 
-\textbf{Dot Notation} \\
-Dot notation with an instance before the dot automatically supplies the first argument to a method.
+To represent an individual car, we can then create a new instance of \lstinline{Car} by ``calling'' the class. Doing so will automatically construct a new object of type \lstinline{Car}, pass it into the \lstinline{__init__} method (also called the \textbf{constructor}), and then return it. Often, the \lstinline{__init__} method will initialize the \textbf{instance attributes} of an object, which represent the state of an individual object. In this case, \lstinline{__init__} method initially sets the \lstinline{gas} instance attribute of each car to $100$. 
+
+Classes can also have \textbf{class attributes}, which are variables shared by all instances of a class. In the above example, \lstinline{wheels} is shared by all instances of the \lstinline{Car} class. 
+
+\textbf{Instance methods} are special functions that act on the instances of a class. We've already seen the \lstinline{__init__} method. We can call instance methods by using the dot notation we use for instance attributes: 
 \begin{lstlisting}
 >>> my_car.drive()
 Current gas level: 90
 \end{lstlisting}
-\hfill \break
-We don’t have to explicitly pass in a parameter for the \lstinline{self} argument of the \lstinline{drive} method as the instance to the left of the dot (the \lstinline{my_car} object of the \lstinline{Car} class) is automatically passed into the first parameter of the method by Python. So, what is \lstinline{self}? By convention, we name the first argument of any method in any class "self" so the \lstinline{self} you see as the arguments in all the methods will refer to the object that called this method. Note that Python does not enforce this, so you could name the first parameter anything you wanted; but it is best practice to name it \lstinline{self}. \\\\
-
-There is another way of calling a method:
+In instance methods, \lstinline{self} is the instance from which the method was called.  We don’t have to explicitly pass in \lstinline{self} because, when we call an instance method from an instance, the instance is automatically passed into the first parameter of the method by Python. That is, \lstinline{my_car.drive()} is exactly equivalent to the following: 
 \begin{lstlisting}
 >>> Car.drive(my_car)
 Current gas level: 80
 \end{lstlisting}
-In this case, the thing to the left of the dot is a class itself and not an instance of a class so Python will not automatically use the item on the left as the first argument of the method. Therefore, we have to explicitly pass in an object for \lstinline{self} which is why we wrote \lstinline{my_car} in the parentheses as the argument to \lstinline{self}. \\
-\\
-\textbf{The \lstinline{__init__} Method} \\
-The \lstinline{__init__} method of a class, which we call the constructor, is a special method that creates a new instance of that class. In our code above, \lstinline{Car()} makes a new instance of the Car class because Python automatically calls the \lstinline{__init__} method when it sees a "call" to that class (the class name followed by parentheses that can contain arguments if the \lstinline{__init__} method takes in arguments). If the \lstinline{__init__} method takes in only the \lstinline{self} argument, nothing needs to be passed in to the constructor. \\
-\\
-\textbf{Instance Attributes and Class Attributes} \\
-In the example above, the \textbf{class attribute} \lstinline{wheels} is shared by all instances of the Car class; while \lstinline{gas} is an \textbf{instance attribute} that’s specific to the instance \lstinline{my_car}.
-In this case, \lstinline{my_car.wheels} and \lstinline{Car.wheels} both return the value 4. The reason is that the order for looking up an attribute is: instance attributes \lstinline{->} class attributes/methods \lstinline{->} parent class attributes/methods. \\
+
+\begin{meta}
+Something I like to emphasize with my students is that you can \textit{only} access class and instance attributes using dot notation from an instance. 
+\end{meta}
