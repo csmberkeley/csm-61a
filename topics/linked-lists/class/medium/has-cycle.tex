@@ -22,6 +22,16 @@ def has_cycle(s):
 
 \begin{solution}
 \begin{lstlisting}
+    seen = []
+    while s:
+        if s in seen:
+            return True
+        seen.append(s)
+        s = s.rest
+    return False
+
+    # Challenge solution
+
     if s is Link.empty:
         return False
     slow, fast = s, s.rest
