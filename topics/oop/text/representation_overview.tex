@@ -8,7 +8,7 @@ def __str__(self):
     return "Hello, my name is " + self.name
 
 def __repr__(self):
-    return "Person(" + repr(self.name) + ")"
+    return f"Person({repr(self.name)})"
 
 >>> nobel_laureate = Person("Carolyn Bertozzi")
 >>> str(nobel_laureate)
@@ -26,5 +26,7 @@ Person("Carolyn Bertozzi")
 >>> [nobel_laureate]
 [Person("Carolyn Bertozzi")]
 \end{lstlisting}
+
+(In an \textbf{f-string}, which is a string with an \lstinline{f} in front of it, the expressions in curly braces are evaluated and their values [converted into strings] are inserted into the f-string, allowing us to customize the f-string based on what the expressions evaluate to.)
 
 \lstinline{__str__}, \lstinline{__repr__}, and \lstinline{__init__} are a just a few examples of double-underscored ``magic'' methods that implement all sorts of special built-in and syntactical features of Python. 
