@@ -64,7 +64,6 @@ class Organ:
     [stomach]
     """
 \end{lstlisting}
-
 \begin{solution}[4 in]
 \begin{lstlisting}
     organ_counts = {}
@@ -77,7 +76,12 @@ class Organ:
         else:
             Organ.organ_counts[bear.name] = 1
         bear.organs.append(self)
+    \end{lstlisting}
+\end{solution}
+\end{blocksection}
 
+\begin{solution}
+\begin{lstlisting}
     def discard(self):
         Organ.organ_counts[self.bear.name] -= 1
         self.bear.organs.remove(self)
@@ -90,7 +94,6 @@ Without the \lstinline{__repr__}, an Organ returns \lstinline{<__main__.Organ ob
 
 Organs do not inherit from Bear, nor should they. Inheritance is used in \textbf{is a} relationships, not \textbf{has a}.
 \end{solution}
-\end{blocksection}
 
 
 \begin{blocksection}

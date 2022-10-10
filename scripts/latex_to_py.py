@@ -33,7 +33,7 @@ def generate_file(file_name, file_paths, solution=False):
 					start = False
 					for _ in range(num_lines_since_start):
 						file.pop()
-				elif start and (not start_sol or solution):
+				elif start and (not start_sol or solution) and not re.match(r'\s*%', line):
 					file.append(line)
 					num_lines_since_start += 1
 		file.append("\n")

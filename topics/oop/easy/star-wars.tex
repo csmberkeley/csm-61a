@@ -118,7 +118,7 @@ Two there should be. No more, no less.
 \end{lstlisting}
 \begin{solution}[.2in]
 \begin{lstlisting}
-"red", 
+("red", 50.0)
 \end{lstlisting}
 \end{solution}
 
@@ -159,3 +159,14 @@ Darth Vader 3
 AttributeError
 \end{lstlisting}
 \end{solution}
+
+\begin{questionmeta}
+In my opinion, going through an example like this is far more helpful for students than a mini-lecture. Try to foresee some questions and confusions might have and how you might address them, for example:
+\begin{itemize}
+    \item Why, in the \lstinline{__init__} method of \lstinline{Sith} can we use \lstinline{self.num_sith} instead of \lstinline{Sith.num_sith}? And why can't we write \lstinline{self.num_sith += 1}?
+    \item Why does evaluating \lstinline{rey} give us \lstinline{<__main__.ForceWielder object>}, but this is not the case when we evaluated \lstinline{anakin.master}? 
+    \item What's going on with \lstinline{ForceWielder.train(sidious, anakin)}? 
+    \item Can we write \lstinline{Jedi.train(sidious, rey)}, even though neither \lstinline{rey} nor \lstinline{sidious} are Jedi? 
+\end{itemize}
+These are also questions you could bring up if students don't ask them. 
+\end{questionmeta}

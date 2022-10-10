@@ -13,7 +13,7 @@ class Car:
 my_car = Car()
 \end{lstlisting}
 
-To represent an individual car, we can then create a new instance of \lstinline{Car} by ``calling'' the class. Doing so will automatically construct a new object of type \lstinline{Car}, pass it into the \lstinline{__init__} method (also called the \textbf{constructor}), and then return it. Often, the \lstinline{__init__} method will initialize the \textbf{instance attributes} of an object, which represent the state of an individual object. In this case, \lstinline{__init__} method initially sets the \lstinline{gas} instance attribute of each car to $100$. 
+To represent an individual car, we can then create a new instance of \lstinline{Car} by ``calling'' the class. Doing so will automatically construct a new object of type \lstinline{Car}, pass it into the \lstinline{__init__} method (also called the \textbf{constructor}), and then return it. Often, the \lstinline{__init__} method will initialize the \textbf{instance attributes} of an object, which represent the state of an individual object. In this case, the \lstinline{__init__} method initially sets the \lstinline{gas} instance attribute of each car to $100$. 
 
 Classes can also have \textbf{class attributes}, which are variables shared by all instances of a class. In the above example, \lstinline{wheels} is shared by all instances of the \lstinline{Car} class. 
 
@@ -29,5 +29,7 @@ Current gas level: 80
 \end{lstlisting}
 
 \begin{meta}
-Something I like to emphasize with my students is that you can \textit{only} access class and instance attributes using dot notation from an instance. 
+Something I like to emphasize with my students is that you can \textit{only} access class and instance attributes using dot notation from an instance. That is, you can never just write \lstinline{__init__} or \lstinline{wheels}; you \textit{must} use dot notation to access these attributes. The reason that students are confused by this is that the rules of variable scope in classes are different from those in functions. They often feel like because they are ``inside'' the class they should be able to access all of these variables without dot notation. I think it's often useful to dispel this notion by emphasizing that the rules are different and that it's essentially the objects and classes that ``hold on'' to their instance variables. But you should be careful when giving an explanation like this to not confuse your students more. 
+
+This overview is not meant to be a first exposure resource for your students, since there are so many ins and outs of OOP. It is likely that you will need to walk through some of the concepts in a more intuitive way than they are presented here. 
 \end{meta}

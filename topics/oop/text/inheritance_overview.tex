@@ -22,3 +22,9 @@ my_hybrid = HybridCar()
 By default, the child class inherits all of the attributes and methods of its parent class. So from the \lstinline{HybridCar} instance \lstinline{my_hybrid}, we can call \lstinline{my_hybrid.drive()} and access \lstinline{my_hybrid.wheels}, for example. When dot notation is used on an instance, Python will first check the instance to see if the attribute exists, then the instance's class, and then its parent class, etc. If Python goes all the way up the class tree without finding the attribute, an \lstinline{AttributeError} is thrown. 
 
 Additional or redefined instance and class attributes can be added in a child class. We can also \textbf{override} inherited instance methods by redefining them in the child class. If we would like to call the parent class's version of a method, we can use \lstinline{super()} to access it. 
+
+\begin{meta}
+Again, you probably want to go over this differently than the reference material presented here. I like to draw out a class tree on the board and emphasize that there should be an ``is-a'' relationship between child class and parent class. For example, a hybrid car ``is a'' car. The reasoning behind this ``is-a'' rule of thumb is that objects of the child class should generally have all the same properties as objects of the parent class. It's also often instructive to give some examples that do not work in a class hierarchy. A wagon is not a car. A vehicle is not a car (but a car is a vehicle). A car is not a garage (although a car is contained in a garage). 
+
+Variable look-up can be rather confusing for students. If you draw the class hierarchy as a tree on the board, you can demonstrate the process of successively looking up from instance to class and then from child class to parent class until you find the attribute or error out. I tell my students that you can only look up the class hierarchy, not down it. 
+\end{meta}

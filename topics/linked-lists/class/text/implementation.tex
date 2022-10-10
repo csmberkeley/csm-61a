@@ -1,6 +1,4 @@
-\vspace{1mm}
 For each of the following problems, assume linked lists are defined as follows:
-\newline
 \begin{lstlisting}
 class Link:
     empty = ()
@@ -21,6 +19,5 @@ class Link:
         while self.rest is not Link.empty:
             string += str(self.first) + ' '
             self = self.rest
-        return string + str(self.first) + '>'
-        
+        return string + str(self.first) + '>'   
 \end{lstlisting}

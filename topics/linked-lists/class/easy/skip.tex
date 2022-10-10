@@ -1,5 +1,8 @@
+\question Write a function \lstinline{skip}, which takes in a \lstinline{Link} and skips every other element in the linked list. 
+
+\begin{parts}
 \begin{blocksection}
-\question Write a function \texttt{skip}, which takes in a \texttt{Link} and returns a new \texttt{Link} with every other element skipped.
+\part First, implement \lstinline{skip} non-mutatively. That is, return a new linked list with every other element skipped, and do not modify the original linked list. 
 
 \begin{lstlisting}
 def skip(lst):
@@ -11,7 +14,7 @@ def skip(lst):
     >>> b
     Link(1, Link(3))
     >>> a
-    Link(1, Link(2, Link(3, Link(4)))) # Original is unchanged
+    Link(1, Link(2, Link(3, Link(4)))) # Unchanged
     """
     if ___________________________________________:
 
@@ -23,7 +26,7 @@ def skip(lst):
 
     ______________________________________________
 \end{lstlisting}
-\begin{solution}[0.6in]
+\begin{solution}[0in]
 \begin{lstlisting}
     if lst is Link.empty
     	return Link.empty
@@ -40,18 +43,76 @@ def skip(lst):
 All other longer linked lists can be reduced down to either a single element or empty linked list depending on whether it has odd or even length. Therefore, we want to keep the first element, and recurse on the element after the next (skipping the immediate next element with \lstinline{lst.rest.rest}). To build a new linked list, we can add new links to the end of the linked list by calling skip recursively inside the \lstinline{rest} argument of the \lstinline{Link} constructor.
 \end{solution}
 \end{blocksection}
+\begin{questionmeta}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Walk through what we want to do by looking at an example box-and-pointer diagram first.
+    \item Make sure they understand, in English, what we are trying to do.
+    \item If students are struggling, have them think about what we can change (pointers), since we can't make new Link objects
+    \begin{itemize}
+        \item Specifically, compare the pointers in the original list to the ones in the output list.
+        \item Think about how you could modify the original pointers.
+    \end{itemize}
+\end{itemize}
+\end{questionmeta}
 
 \begin{blocksection}
-\begin{guide}
-    \textbf{Teaching Tips}
-    \begin{itemize}
-       \item Walk through what we want to do by looking at an example box-and-pointer diagram first.
-       \item Make sure they understand, in English, what we are trying to do.
-       \item If students are struggling, have them think about what we can change (pointers), since we can't make new Link objects
-       \begin{itemize}
-           \item Specifically, compare the pointers in the original list to the ones in the output list.
-           \item Think about how you could modify the original pointers.
-       \end{itemize}
-    \end{itemize}
- \end{guide}
+\part Now, implement \lstinline{skip} mutatively. That is, mutate the original list so that every other element is skipped. Do not call the \texttt{Link} constructor, and do not return anything. 
+
+\begin{lstlisting}
+def skip(lst):
+    """
+    >>> a = Link(1, Link(2, Link(3, Link(4))))
+    >>> skip(a)
+    >>> a
+    Link(1, Link(3))
+    """
+\end{lstlisting}
+
+\begin{solution}[0in]
+\begin{lstlisting}
+def skip(lst): # Recursively
+    if lst is Link.empty or lst.rest is Link.empty:
+        return
+    lst.rest = lst.rest.rest
+    skip(lst.rest)
+
+def skip(lst): # Iteratively
+    while lst is not Link.empty and lst.rest is not Link.empty:
+        lst.rest = lst.rest.rest
+        lst = lst.rest
+\end{lstlisting}
+Because this problem is mutative, we should never be creating a new list - we should never have \lstinline{Link(x)}, or the creation of a new Link instance, anywhere in our code! Instead, we’ll be reassigning \lstinline{lst.rest}.
+
+In order to skip a node, we can assign \lstinline{lst.rest = lst.rest.rest}. If we have lst assigned to a link list that looks like the following:
+\begin{lstlisting}
+1 -> 2 -> 3 -> 4 -> 5
+\end{lstlisting}
+Setting \lstinline{lst.rest = lst.rest.rest} will take the arrow that points form 1 to 2 and change it to point from 1 to 3. We can see this by evaluating \lstinline{lst.rest.rest}. \lstinline{lst.rest} is the arrow that comes from 1, and \lstinline{lst.rest.rest} is the link with 3.
+
+Once we’ve created the following list:
+\begin{lstlisting}
+1 -> 3 -> 4 -> 5
+\end{lstlisting}
+we just need to call skip on the rest of the list. If we call skip on the list that starts at 3, we’ll skip over the link with 4 and set the pointer from 3 to point to the link with 5. This is the behavior that we want! Therefore, our recursive call is \lstinline{skip(lst.rest)}, since \lstinline{lst.rest} is now the link that contains 3.
+
+\end{solution}
 \end{blocksection}
+
+\begin{questionmeta}
+The purpose of having two parts of this problem is to illustrate the difference between mutative and non-mutative solutions for problems. You should make this clear in your presentation of this. 
+\textbf{Teaching Tips}
+    \begin{itemize}
+        \item Make sure they understand when we are mutating and when we are creating a new linked list
+        \item Draw box-and-pointer diagrams!
+        \item Look for “patterns” or repeated work while you work with your box-and-pointer diagram that you can abstract away with your recursive call.
+        \item Sometimes it is easier to write the recursive call before doing the base cases
+        \item I usually write the recursive call and then see what could "break"
+        \begin{itemize}
+            \item If we access lst.first at any point, we have to make sure that lst exists
+            \item If we access lst.rest.rest at any point we have to make sure that lst.rest exists
+            \item What errors would we get if we didn't ensure these conditions?
+        \end{itemize}
+    \end{itemize}
+\end{questionmeta}
+\end{parts}
