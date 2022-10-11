@@ -1,7 +1,7 @@
 \begin{blocksection}
-\question \textbf{(Optional)} Write \texttt{has\char`_cycle} which takes in a
-\texttt{Link} and returns \texttt{True} if and only if there is a cycle in the
-\texttt{Link}. Note that the cycle may start at any node and be of any length.
+\question \textbf{(Optional)} Write \lstinline{has_cycle} which takes in a
+\lstinline{Link} and returns \lstinline{True} if and only if there is a cycle in the
+\lstinline{Link}. Note that the cycle may start at any node and be of any length.
 Try writing a solution that keeps track of all the links we've seen. Then try to
 write a solution that doesn't store those witnessed links (consider using
 two pointers!).
@@ -20,8 +20,18 @@ def has_cycle(s):
     """
 \end{lstlisting}
 
-\begin{solution}
+\begin{solution}[3in]
 \begin{lstlisting}
+    seen = []
+    while s:
+        if s in seen:
+            return True
+        seen.append(s)
+        s = s.rest
+    return False
+
+    # Challenge solution
+
     if s is Link.empty:
         return False
     slow, fast = s, s.rest
@@ -34,15 +44,14 @@ def has_cycle(s):
     return False
 \end{lstlisting}
 \end{solution}
-
-\begin{guide}
-    \textbf{Teaching Tips}
-    \begin{itemize}
-       \item Go through multiple examples of Linked List with cycles alongside examples of Linked Lists without cycles.
-       \item Ask your students what patterns they see for lists that have cycles
-       \item It might take some time for students to come up with the fast and slow pointers solution. A common analogy used is the hare and tortoise analogy for this problem.
-       \item If the slow pointer catches up to the fast pointer, we know a cycle must have occured because the slow pointer should never pass the fast pointer in a non-cycle list.
-    \end{itemize}
- \end{guide}
-
 \end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Go through multiple examples of Linked List with cycles alongside examples of Linked Lists without cycles.
+    \item Ask your students what patterns they see for lists that have cycles
+    \item It might take some time for students to come up with the fast and slow pointers solution. A common analogy used is the hare and tortoise analogy for this problem.
+    \item If the slow pointer catches up to the fast pointer, we know a cycle must have occured because the slow pointer should never pass the fast pointer in a non-cycle list.
+\end{itemize}
+ \end{questionmeta}

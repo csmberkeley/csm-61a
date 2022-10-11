@@ -1,0 +1,117 @@
+\begin{blocksection}
+    \question The Reprtilia class stores the common and scientific names of various reptiles.
+    
+    \textbf{Brief introduction to \lstinline{__repr__}} \\ The \lstinline{__repr__} magic method of objects returns the "official" string representation of an object. You can invoke it directly by calling \lstinline{repr(<some object>)}. However, \lstinline{__repr__} doesn't always return something that is easily readable, that is what \lstinline{__str__} is for. Rather, \lstinline{__repr__} ensures that all information about the object is present in the representation. When you ask Python to represent an object in the Python interpreter, it will automatically call \lstinline{repr} on that object and then print out the string that \lstinline{repr} returns.
+    
+    \vspace{1.5\baselineskip}
+    
+    \begin{lstlisting}
+        """
+        >>> python = Reprtilia("python", "pythonidae")
+        >>> iguana = Reprtilia("iguana", "iguana")
+        >>> python
+        Reptilia('python', 'pythonidae')
+        >>> f'Did you know that {python}?"
+        'Did you know that a python is a "pythonidae"?'
+        """
+    
+        class Reprtilia:
+            def __init__(self, name, scientific):
+                self.name = name
+                self.scientific = scientific
+    \end{lstlisting}
+\end{blocksection}
+    
+\begin{blocksection}
+    \question How do we define the \lstinline{__repr__} method?
+
+    \vspace{1.5\baselineskip}
+    
+    \begin{lstlisting}
+            def __repr__(self):
+    \end{lstlisting}
+    \begin{solution}[0.25in]
+    \begin{lstlisting}
+            return f"Reprtilia({repr(self.name)}, {repr(self.scientific)})"
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+    \question How do we define the \lstinline{__str__} method?
+
+    \vspace{1.5\baselineskip}
+
+    \begin{lstlisting}
+            def __str__(self):
+    \end{lstlisting}
+    \begin{solution}[0.25in]
+    \begin{lstlisting}
+            return f"a {self.name} is a \"{self.scientific}\""
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+    \question Your friend, Julian, decides to create a new object class based off of Reprtilia called ReprtiliaNoises, and as such, decides to overhaul your __repr__ and __str__! How would the following be implemented following the doctests?
+    
+    \vspace{1.5\baselineskip}
+
+    \begin{lstlisting}
+        """
+        >>> python = ReprtiliaNoises("python", "pythonidae", "hiss")
+        >>> python
+        ReprtiliaNoises('python', 'pythonidae', 'hiss')
+        >>> f"Today's reptile of the day is a {python}!"
+        "Today's reptile of the day is a python (species: 'pythonidae', noise: 'hiss')!"
+        """
+    \end{lstlisting}
+
+    \begin{blocksection}
+        \question How does Julian redefine the __init__ method?
+    
+        \vspace{1.5\baselineskip}
+        
+        \begin{lstlisting}
+            class ReprtiliaNoises(Reprtilia):
+                def __init__(self, name, scientific, noise):
+        \end{lstlisting}
+        \begin{solution}[0.25in]
+        \begin{lstlisting}
+                    super().__init__(name, scientific)
+                    self.noise = noise
+        \end{lstlisting}
+        \end{solution}
+    \end{blocksection}    
+    
+    \begin{blocksection}
+        \question How does Julian redefine the __repr__ method?
+    
+        \vspace{1.5\baselineskip}
+        
+        \begin{lstlisting}
+                def __repr__(self):
+        \end{lstlisting}
+        \begin{solution}[0.25in]
+        \begin{lstlisting}
+                return f"ReprtiliaNoises({repr(self.name)}, {repr(self.scientific)}, {repr(self.noise)})"
+        \end{lstlisting}
+        \end{solution}
+    \end{blocksection}
+
+    \begin{blocksection}
+        \question How does Julian redefine the __str__ method?
+    
+        \vspace{1.5\baselineskip}
+        
+        \begin{lstlisting}
+                def __str__(self):
+        \end{lstlisting}
+        \begin{solution}[0.25in]
+        \begin{lstlisting}
+                return f"{self.name} (species: \'{self.scientific}\', noise: \'{self.noise}\')"
+        \end{lstlisting}
+        \end{solution}
+    \end{blocksection}
+\end{blocksection}    
+    

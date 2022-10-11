@@ -15,7 +15,7 @@ worksheet_dest = 'made'
 def generate_file(file_name, file_paths, solution=False):
 	file = []
 	for file_path in file_paths:
-		with open(file_path, 'r') as f:
+		with open(file_path, 'r', encoding="UTF-8") as f:
 			start = False
 			start_sol = False
 			num_lines_since_start = 0
