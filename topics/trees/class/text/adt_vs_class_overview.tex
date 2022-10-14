@@ -3,11 +3,11 @@
 \begin{itemize}
 \item Using the constructor: Capital T for tree class and lower-case t for tree ADT
     \subitem \lstinline{t = Tree(1) # class} vs. \lstinline{t = tree(1) # adt functions}
-\item The \lstinline{label} and \lstinline{branches} are now attributes and, \lstinline{is_leaf()} is a method of the class instead of them all being functions.
+\item The \lstinline{label} and \lstinline{branches} are now instance variables of the class, and now, \lstinline{is_leaf()} is a method of the class instead of them all being functions as practiced before.
     \subitem \lstinline{t.label vs. label(t)}
     \subitem \lstinline{t.branches vs. branches(t)}
     \subitem \lstinline{t.is_leaf() vs. is_leaf(t)}
-\item A tree object is mutable while tree ADT is not mutable
+\item A tree object is mutable while tree ADT is not mutable. If you need help remembering, think that anything we access using dot notation to access the tree itself, rather than using the abstraction barrier.
     \subitem \lstinline{t.label = 2} vs. \lstinline{label(t) = 2 # this would error}
     \subitem This means we can mutate values in the tree object instead of making a new tree that we return. In other words, we can solve tree class problems non-destructively and destructively, but can only solve tree ADT problems non-destructively
 \end{itemize}
