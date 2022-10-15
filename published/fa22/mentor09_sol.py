@@ -177,7 +177,7 @@ Link(1, Link(2, Link(3)))
 <<1> 2 3>
 
 
-    if lst is Link.empty
+    if lst is Link.empty:
     	return Link.empty
      elif lst.rest is Link.empty:
         return Link(lst.first)
