@@ -3,8 +3,8 @@
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{10}
-\title{\textsc{Mutable Trees and Midterm Review}}
-\date{October 24, 2022 - October 28, 2022}
+\title{Mutable Trees and Midterm Review}
+\date{October 24, 2022--October 28, 2022}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -13,20 +13,25 @@
 \fontsize{12}{15}\selectfont
 
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{guide}
-    \textbf{Recommended Timeline for Non-NPE Sections}
+\begin{meta}
+    \textbf{Recommended Timeline}
     \begin{itemize}
         \item Efficiency Lecture - 5 min
         \item Efficiency Problems - 5 min
         \item Midterm Review (gauge what topics students want to brush up on and do those problems) - 40 min
         \item Also can use this time to finish problems from past worksheets!
     \end{itemize}
-\end{guide}
+
+    The second midterm is on Thursday, October 27, 2022. Therefore, sections are optional this week. Mentors are strongly encouraged to hold section, and students are encouraged to come, but it's flexible. All students get marked present regardless. 
+    
+    This worksheet includes a very large number of problems because we essentially intend it to be a problem bank for any review activities you decide to do in section. You, of course, are free to ignore any and all of the problems we provide you and simply do exam problems, which is honestly what I would probably do if I were teaching a section this week. 
+
+    Note that students have not yet been exposed to mutable trees in CSM (though they have, of course, been exposed to this content in lecture). We have elected to include content on mutable trees in this week's worksheet. (Sorry.) While the timing on this is not ideal, students have already been exposed to immutable trees, so it shouldn't be the end of the world if they don't get to do it on this worksheet. 
+\end{meta}
 
 \section{Trees}
 \subimport{../../topics/trees/class/text/}{implementation.tex}
 \subimport{../../topics/trees/class/text/}{adt_vs_class_overview.tex}
-\subimport{../../topics/trees/class/text/}{class_overview.tex}
 \begin{questions}
     \subimport{../../topics/trees/class/easy/}{tree-sum.tex}
     \newpage
@@ -36,30 +41,41 @@
     \subimport{../../topics/trees/class/hard/}{contains-n.tex}
 \end{questions}
 
-% We should NOT have an efficiency section on this worksheet; however, you should include at least one efficiency question for students. 
 \section{Efficiency}
-\subimport{../../topics/growth/text/}{oog_overview.tex}
 \begin{questions}
     \subimport{../../topics/growth/easy/}{jumpstart.tex}
     \subimport{../../topics/growth/easy/}{belgian-waffle.tex}
 \end{questions}
 
-\newpage
-% Please see the calendar on cs61a.org to verify that we are covering all and only topics in scope for the midterm. 
-\section{Midterm Review}
+\section{Higher Order Functions}
+\begin{questions}
+    \subimport{../../topics/hof/hard/}{self-referencing.tex}
+\end{questions}
+
+\section{Recursion}
+\begin{questions}
+    \subimport{../../topics/recursion/medium/}{add-up.tex}
+\end{questions}
+
+\section{Lists}
 \begin{questions}
     \subimport{../../topics/lists/mutable/medium/}{incredibles.tex}
     \subimport{../../topics/recursion/medium/}{subsets.tex}
-    \newpage
-    \subimport{../../topics/generators/medium/}{num-elems.tex}
-    \newpage
-    \subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
-    \subimport{../../topics/trees/class/medium/}{weighted-tree.tex}
-    \subimport{../../topics/trees/class/hard/}{contains-n.tex}
-    \subimport{../../topics/linked-lists//class/medium/}{shuffle.tex}
-    \subimport{../../topics/linked-lists//class/medium/}{double-link.tex}
-    \subimport{../../topics/linked-lists//class/medium/}{combine-two.tex}
-    \subimport{../../topics/linked-lists/class/hard/}{insert-at.tex}
 \end{questions}
 
+\section{Iterators and Generators}
+\begin{questions}
+    \subimport{../../topics/generators/medium/}{num-elems.tex}
+\end{questions}
+
+\section{Object Oriented Programming}
+\begin{questions}
+    \subimport{../../topics/oop/medium/}{pingpong.tex}
+\end{questions}
+
+\section{Linked Lists}
+\begin{questions}
+    \subimport{../../topics/linked-lists/class/medium/}{combine-two.tex}
+    \subimport{../../topics/linked-lists/class/hard/}{insert-at.tex}
+\end{questions}
 \end{document}
