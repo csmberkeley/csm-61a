@@ -1,16 +1,15 @@
 \begin{blocksection}
-    \question Write a recursive function \lstinline{insert_at} that takes as input three parameters, two linked lists, \lstinline{s}  and \lstinline{x}, and an index \lstinline{index}.  \lstinline{insert_at} should return a new Linked list with \lstinline{x} inserted at \lstinline{x} of \lstinline{s}. Assume that \lstinline{index} will be a non-negative integer.
+    \question Write a recursive function \lstinline{insert_all} that takes as input two linked lists, \lstinline{s} and \lstinline{x}, and an index \lstinline{index}. \lstinline{insert_all} should return a new linked list with the contents of \lstinline{x} inserted at index \lstinline{index} of \lstinline{s}. 
 
-    
     \begin{lstlisting}
-    def insert_at(s, x, index):
+    def insert_all(s, x, index):
         """
         >>> insert = Link(3, Link(4))
         >>> original = Link(1, Link(2, Link(5)))
-        >>> insert_at(original, insert, 2)
+        >>> insert_all(original, insert, 2)
         Link(1, Link(2, Link(3, Link(4, Link(5)))))
         >>> start = Link(1)
-        >>> insert_at(original, start, 0)
+        >>> insert_all(original, start, 0)
         Link(1, Link(1, Link(2, Link(5))))
         """
         if ___________________ and ___________________:
@@ -27,36 +26,39 @@
 \end{blocksection}
 \begin{solution}[0.6in]
 \begin{lstlisting}
-    def insert_at(s, x, index):
+    def insert_all(s, x, index):
         """
         >>> insert = Link(3, Link(4))
         >>> original = Link(1, Link(2, Link(5)))
-        >>> insert_at(original, insert, 2)
+        >>> insert_all(original, insert, 2)
         Link(1, Link(2, Link(3, Link(4, Link(5)))))
         >>> start = Link(1)
-        >>> insert_at(original, start, 0)
+        >>> insert_all(original, start, 0)
         Link(1, Link(1, Link(2, Link(5))))
-        >>> insert_at(original, insert, 3)
+        >>> insert_all(original, insert, 3)
         Link(1, Link(2, Link(5, Link(3, Link(4)))))
         """
         if s is Link.empty and x is Link.empty:
             return Link.empty
         if x is not Link.empty and index == 0:
-            return Link(x.first, insert_at(s, x.rest, 0))
-        return Link(s.first, insert_at(s.rest, x, index - 1))
+            return Link(x.first, insert_all(s, x.rest, 0))
+        return Link(s.first, insert_all(s.rest, x, index - 1))
 \end{lstlisting}
-    Because this problem is returning a new Linked List, all of our recursive calls should be a new Linked List. 
+    All of our return statements should return a new linked list. 
 
-    We know that we are done inserting our Linked List \lstinline{x} into \lstinline{s} when both of the Linked Lists are empty. The reason why we have to check both of them is because we could potentially insert \lstinline{x} at the end of our original Linked List, \lstinline{s}, so \lstinline{s} would \lstinline{s} be \lstinline{Link.empty}, but we would still have the procedure of inserting \lstinline{x}. There may also be a time where we insert \lstinline{x} into the middle of \lstinline{s}, and although \lstinline{x} may be empty, we still want to keep the remaining elements of \lstinline{s}
+    Our base case should be the simplest possible version of the problem: when both \lstinline{x} and \lstinline{s} are empty, clearly the result is just the empty list. 
 
-    If we are inserting \lstinline{x} at an \lstinline{index} that is not 0, then we know we have to get to the \lstinline{index} before we start inserting \lstinline{x}. In order to do that, we can maintain the current \lstinline{Link.first} element of \lstinline{s}, and decrement \lstinline{index}, which explains the default recursive call.
+    We can now think of ways to break down this problem even further. Note that when the index to be inserted at is \lstinline{0}, the problem is relatively easy: we just have to put all of the elements of \lstinline{x} followed by all the elements of \lstinline{s}. So the first element of the new list should \lstinline{x.first}, and the rest of the new list should be \lstinline{x.rest} concatenated with \lstinline{s}, or \lstinline{insert_all(s, x.rest, 0)}. Since we are using \lstinline{x.first} and \lstinline{x.rest}, we must check that \lstinline{x} is nonempty to ensure that we do not error.  
 
-    Once we have reached our desired \lstinline{index}, then we know we can start to insert \lstinline{x}. At this point our Linked List should start including elements of \lstinline{x}, and we can ensure that we hit this case, by keeping \lstinline{index} as 0 in the next recursive call. However, once \lstinline{x} is empty, we want to default back to our last recursive call.
+    Finally, when the index to be inserted at is nonzero, we know that we're going to have some elements of \lstinline{s}, then the elements of \lstinline{x}, and then the rest of the elements from \lstinline{s}. So the first element of the new list should be \lstinline{s.first}. Then we can get the rest of the new list by inserting the contents of \lstinline{x} at index \lstinline{index - 1} of \lstinline{s.rest}, reducing the index by 1 to account for the fact that we have removed the first element of \lstinline{s}.
     
+    There's one issue we glossed over here: what if \lstinline{x} is empty but \lstinline{s} is not? Then we want to return the contents of \lstinline{s}. But because the problem requires that we return a new linked list, we must recursively reconstruct \lstinline{s} instead of simply returning it. You could add another base case to handle this, but as it turns out the second recursive case will handle this just fine since \lstinline{Link(s.first, insert_all(s.rest, x, index - 1))} is just equivalent to \lstinline{Link(s.first, s.rest)} when \lstinline{x} is empty. Since the \lstinline{x is not Link.empty} condition for the first recursive case will direct all situations where \lstinline{x} is empty but \lstinline{s} is not to the second recursive case, it turns out that we do not need to add anything else to this solution.
+    
+    Convincing yourself that this problem works requires that you eventually reach a base case. Note that in either recursive call, we either reduce \lstinline{s} or \lstinline{x} by one element. So the base case will always eventually be reached, and the solution is valid. 
 \end{solution}
 
 \begin{questionmeta}
-    Despite being a few lines and being a familiar concept with lists, I've found that this problem is quite difficult, so one thing I would emphasize is to draw out this problem with a box-and-pointer diagram and illustrate the different steps of our function. Illustrate how the function works for the doctests, which should cover all possible cases of inserting a new Linked List into the beginning, middle, and end of the original Linked List
+    Despite being just a few lines and exercising a familiar concepts with lists, I've found that this problem is quite difficult, so one thing I would emphasize is to draw out this problem with a box-and-pointer diagram and illustrate the different steps of our function. Illustrate how the function works for the doctests, which should cover all possible cases of inserting a new linked list into the beginning, middle, and end of the original linked list
     
     If students are lost, which they most likely will be, here are some leading questions you could ask: 
     \begin{itemize}
@@ -65,6 +67,7 @@
         \item How do ensure to add all elements of \lstinline{x} into \lstinline{x}?
     \end{itemize}
     
+    You should tell your students that they should feel free to disregard the provided skeleton, because it is quite difficult to think of the solution to this problem when you are trying to fit everything into the skeleton. 
     \end{questionmeta}
     
     
