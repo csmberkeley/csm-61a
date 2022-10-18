@@ -12,20 +12,20 @@ def foo(n):
 Linear. This is a for loop that will run \texttt{n} times.
 \end{solution}
 
-\part What's the order of growth of \texttt{foo} if we change \texttt{range(n)}:
+\part What's the order of growth of \texttt{foo} if we change \texttt{range(n)} to
 \begin{subparts}
 
-\subpart To \texttt{range(n/2)}?
+\subpart \texttt{range(n/2)}?
 \begin{solution}[0in]
 Linear. The loop runs \texttt{n/2} times, but the runtime still scales linearly proportionally to \lstinline{n}.
 \end{solution}
 
-\subpart To \texttt{range(n**2 + 5)}?
+\subpart \texttt{range(n**2 + 5)}?
 \begin{solution}[0in]
 Quadratic. The number of times the loop runs is proportional to \lstinline{n}$^{2}$.
 \end{solution}
 
-\subpart To \texttt{range(10000000)}?
+\subpart \texttt{range(10000000)}?
 \begin{solution}[0.25in]
 Constant. No matter the size of \texttt{n}, we will run the loop the same number of times.
 \end{solution}

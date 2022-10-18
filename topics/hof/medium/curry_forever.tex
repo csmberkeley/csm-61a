@@ -2,7 +2,7 @@
 \question Write a function, \texttt{curry\_forever}, which takes in a two-argument function, \texttt{f}, and an integer, \texttt{arg\_num}. It returns another function that allows us to enter arg\_num amount of numbers into f one by one.
 
 \begin{lstlisting}
-def curry_forever (f, arg_num, base=0):
+def curry_forever(f, arg_num, base=0):
     """
     >>> g = curry_forever(add, 4)
     >>> g(1)(2)(3)(4) # 1 + 2 + 3 + 4
@@ -32,5 +32,9 @@ def curry_forever (f, arg_num, base=0):
 
 \end{lstlisting}
 \end{solution}
+
+\begin{questionmeta}
+This problem is a little tricky. In particular, students may be confused at how they are supposed to use 
+\end{questionmeta}
 \end{blocksection}
 

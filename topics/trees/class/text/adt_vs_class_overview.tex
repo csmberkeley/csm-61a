@@ -1,14 +1,17 @@
 \vspace{2mm}
-\textbf{The difference between the Tree class and the Tree abstract data type (using functions)}
+Here are a few key differences between the \lstinline{Tree} class and the Tree abstract data type, which we have previously encountered: 
 \begin{itemize}
-\item Using the constructor: Capital T for tree class and lower-case t for tree ADT
-    \subitem \lstinline{t = Tree(1) # class} vs. \lstinline{t = tree(1) # adt functions}
-\item The \lstinline{label} and \lstinline{branches} are now attributes and, \lstinline{is_leaf()} is a method of the class instead of them all being functions.
-    \subitem \lstinline{t.label vs. label(t)}
-    \subitem \lstinline{t.branches vs. branches(t)}
-    \subitem \lstinline{t.is_leaf() vs. is_leaf(t)}
-\item A tree object is mutable while tree ADT is not mutable
-    \subitem \lstinline{t.label = 2} vs. \lstinline{label(t) = 2 # this would error}
-    \subitem This means we can mutate values in the tree object instead of making a new tree that we return. In other words, we can solve tree class problems non-destructively and destructively, but can only solve tree ADT problems non-destructively
+\item Using the constructor: Capital T for the \lstinline{Tree} class and lowercase t for tree ADT
+    \lstinline{t = Tree(1)} vs. \lstinline{t = tree(1)}
+\item In the class, \lstinline{label} and \lstinline{branches} are instance variables and \lstinline{is_leaf()} is an instance method. In the ADT, all of these were globally defined functions.
+    \subitem \lstinline{t.label} vs. \lstinline{label(t)}
+    \subitem \lstinline{t.branches} vs. \lstinline{branches(t)}
+    \subitem \lstinline{t.is_leaf()} vs. \lstinline{is_leaf(t)}
+\item A \lstinline{Tree} object is mutable while the tree ADT is not mutable. This means we can change attributes of a \lstinline{Tree} instance without making a new tree. In other words, we can solve tree class problems non-destructively and destructively, but can only solve tree ADT problems non-destructively.
+    \subitem \lstinline{t.label = 2} is allowed but \lstinline{label(t) = 2} would error.
 \end{itemize}
-Besides these differences, we use the same approach and ideas from ADT trees and apply them to Tree class including problem solving (base case, recursive calls, how to solve)  and respecting abstraction barrier. 
+Apart from these differences, we can largely take the approaches we used for the tree ADT and apply them to the \lstinline{Tree} class!
+
+\begin{meta}
+Feel free to not spend too much time on this section! Your students already covered immutable trees when practicing ADTs.  
+\end{meta}
