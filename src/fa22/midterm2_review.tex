@@ -16,13 +16,176 @@
 \begin{questions}
 
 \begin{blocksection}
-\question Skipping Around
-\begin{parts}
-	\part asdf
-	\part adgfadfdasf
-\end{parts}
+\section{Recursion}
+	\question Skipping Around
+    \begin{blocksection}
+        A skip list is defined as a sublist of a list such that each element in the sublist is non adjacent in the
+        original list. For original list \lstinline{[5, 6, 8, 2]}, the lists \lstinline{[5, 8]}, \lstinline{[5, 2]}, \lstinline{[6, 2]}, \lstinline{[5]}, \lstinline{[6]}, \lstinline{[8]}, \lstinline{[2]}, \lstinline{[]} are
+        all skip lists of the original list. The empty list is always a skip list of any list.
 
-You can write a question without importing it.
+        Given a list \lstinline{int_lst} of unique integers, return a list of all unique skip lists of \lstinline{int_lst} where each skip
+        list contains integers in strictly increasing order. The order in which the skip lists are returned does not matter.
+        
+        \begin{lstlisting}
+        def list_skipper(int_list):
+            """
+            >>> list_skipper([5,6,8,2])
+            [[5, 8], [5], [6], [8], [2], []]
+            >>> list_skipper([1,2,3,4,5])
+            [[1, 3, 5], [1, 3], [1, 4], [1, 5], [1], [2, 4], [2, 5], [2], [3, 5], [3], [4], [5], []]
+            >>> list_skipper([])
+            [[]]
+
+            """
+            if len(int_lst) == 0:
+                return ________________
+            with_first = ___________________
+            without_first = ____________________
+            with_first = [ _________ for x in with_first if x == [] or ____________]
+            return with_first + without_first
+        \end{lstlisting}
+    \end{blocksection}
+    \begin{solution}
+        \begin{lstlisting}
+        def list_skipper(int_list):
+            if len(int_lst) == 0:
+                return [[]]
+            with_first = list_skipper(int_lst[2:])
+            without_first = list_skipper(int_lst[1:])
+            with_first = [ [int_lst[0]] + x for x in with_first if x == [] or x[0] > int_lst[0]]
+            return with_first + without_first
+        \end{lstlisting}
+    \end{solution}
+	\question maxkd
+    \begin{blocksection}
+        \begin{lstlisting}
+        def maxkd(meteor, k):
+            """
+            Given a number `meteor`, finds the largest number of length `k` or fewer,
+            composed of digits from `meteor`, in order.
+        
+            >>> maxkd(1234, 1)
+            4
+            >>> maxkd(32749, 2)
+            79
+            >>> maxkd(1917, 2)
+            97
+            >>> maxkd(32749, 18)
+            32749
+            """
+            if ______:
+                return ______
+            a = ______
+            b = ______
+            return ______
+        \end{lstlisting}
+    \end{blocksection}
+    \begin{solution}
+        \begin{lstlisting}
+        def maxkd(meteor, k):
+            """
+            Given a number `meteor`, finds the largest number of length `k` or fewer,
+            composed of digits from `meteor`, in order.
+
+            >>> maxkd(1234, 1)
+            4
+            >>> maxkd(32749, 2)
+            79
+            >>> maxkd(1917, 2)
+            97
+            >>> maxkd(32749, 18)
+            32749
+            """
+            if meteor == 0 or k == 0:
+                return 0
+            a = maxkd(meteor // 10, k - 1) * 10 + meteor % 10
+            b = maxkd(meteor // 10, k)
+            return max(a, b)
+        \end{lstlisting}
+    \end{solution}
+\section{Lists, Mutability and Dictionaries}
+	\question Fall 2019 Final, Q2
+    \begin{blocksection}
+        Draw the environment diagram that results from running the following code.
+        \begin{lstlisting}
+        def cold(d):
+            day = rain[:1]
+            night = lambda: len(day)
+            cold = rain.pop()
+            day = d
+            return night
+        rain = [3, 4]
+        d, day = [5], [lambda: d]
+        cold(rain + [day[0](), rain])()
+        \end{lstlisting}
+    \end{blocksection}
+    \begin{solution}
+        \begin{lstlisting}
+            https://pythontutor.com/cp/composingprograms.html#code=def%20cold%28d%29%3A%0A%20%20%20%20day%20%3D%20rain%5B%3A1%5D%0A%20%20%20%20night%20%3D%20lambda%3A%20len%28day%29%0A%20%20%20%20cold%20%3D%20rain.pop%28%29%0A%20%20%20%20day%20%3D%20d%0A%20%20%20%20return%20night%0Arain%20%3D%20%5B3,%204%5D%0Ad,%20day%20%3D%20%5B5%5D,%20%5Blambda%3A%20d%5D%0Acold%28rain%20%2B%20%5Bday%5B0%5D%28%29,%20rain%5D%29%28%29&cumulative=true&curInstr=17&mode=display&origin=composingprograms.js&py=3&rawInputLstJSON=%5B%5D
+        \end{lstlisting}
+    \end{solution}
+	\question memory_store
+
+    \begin{blocksection}
+        Implement \lstinline{memory_store}, a function that will return two functions: \lstinline{add_val} and \lstinline{times_seen}. When called on a number \lstinline{var1}, \lstinline{times_seen} will return the number of times \lstinline{add_val} has been called on that particular value \lstinline{var1}.
+        
+        \begin{lstlisting}
+        def memory_store():
+            """
+            >>> add_val, times_seen = memory_store()
+            >>> add_val(4)
+            >>> for _ in range(3):
+            ... add_val(3)
+            >>> times_seen(3)
+            3
+            >>> times_seen(4)
+            1
+            >>> times_seen(2)
+            0
+            >>> add_val(3)
+            >>> times_seen(3)
+            4
+            """
+            memory = {}
+            def add_val(var1):
+                if var1 in memory:
+                    ________________
+                else:
+                    __________________
+            def times_seen(var1):
+                return _________________
+            return add_val, times_seen
+        \end{lstlisting}
+    \end{blocksection}
+    \begin{solution}
+        \begin{lstlisting}
+            def memory_store():
+            """
+            >>> add_val, times_seen = memory_store()
+            >>> add_val(4)
+            >>> for _ in range(3):
+            ... add_val(3)
+            >>> times_seen(3)
+            3
+            >>> times_seen(4)
+            1
+            >>> times_seen(2)
+            0
+            >>> add_val(3)
+            >>> times_seen(3)
+            4
+            """
+            memory = {}
+            def add_val(var1):
+                if var1 in memory:
+                    memory[var1] = memory[var1] + 1
+                else:
+                    memory[var1] = 1
+            def times_seen(var1):
+                return memory.get(var1, 0)
+            return add_val, times_seen
+        \end{lstlisting}
+    \end{solution}
 
 \question You can do it like this. 
 
