@@ -628,7 +628,7 @@ Logarithmic because $n$ must triple to increase the number of operations by 1.
 \begin{blocksection}
 \question \textbf{Yield Fibonacci!} (Fa20 MT2 Q2a)
 
-    Implement fibs, a generator function that takes a one-argument pure function f and yields all Fibonacci numbers x for which f(x) returns a true value.
+    Implement fibs, a generator function that takes a one-argument pure function \lstinline{f} and yields all Fibonacci numbers \lstinline{x} for which \lstinline{f(x)} returns a true value.
     
     The Fibonacci numbers begin with 0 and then 1. Each subsequent Fibonacci number is the sum of the previous two. Yield the Fibonacci numbers in order.
 \begin{lstlisting}
@@ -842,7 +842,7 @@ class Todo:
     Implement the Poll class and the tally function, which takes a choice c and returns a list
     describing the number of votes for c. This list contains pairs, each with a name and the number of times
     vote was called on that choice at the Poll with that name. Pairs can be in any order. Assume all Poll
-    instances have distinct names. Hint: the dictionary get(key, default) method (MT 2 guide, page 1
+    instances have distinct names. Hint: the dictionary \lstinline{get(key, default)} method (MT 2 guide, page 1
     top-right) returns the value for a key if it appears in the dictionary and default otherwise.
 \begin{lstlisting}
 class Poll:
@@ -909,16 +909,16 @@ class Poll:
 
     Definition. For a linked list s, the index of an element is the number of times rest appears in the smallest
     dot expression containing only s, rest, and first that evaluates to that element. For example, in the
-    linked list s = Link(5, Link(7, Link(9, Link(11)))),
+    linked list \lstinline{s = Link(5, Link(7, Link(9, Link(11))))},
     
     \begin{itemize}
-        \item The index of 5 (s.first) is 0.
-        \item The index of 7 (s.rest.first) is 1.
-        \item The index of 11 (s.rest.rest.rest.first) is 3.
+        \item The index of 5 \lstinline{(s.first)} is 0.
+        \item The index of 7 \lstinline{(s.rest.first)} is 1.
+        \item The index of 11 \lstinline{(s.rest.rest.rest.first)} is 3.
     \end{itemize}
     
     Implement \lstinline{filter_index}, a function that takes a one-argument pure function f and a Link instance s. It
-    returns a Link containing all elements of s that have an index i for which f(i) returns a true value.
+    returns a Link containing all elements of s that have an index i for which \lstinline{f(i)} returns a true value.
     
     Assume that s is a finite linked list of numbers that contains no repeated elements. The Link class appears
     on Page 2 (left column) of the Midterm 2 Study Guide.
@@ -1025,7 +1025,7 @@ def combine_two(lnk, fn):
 \begin{blocksection}
 \question \textbf{Level-Headed Trees} (Fa17 Final Q5a)
 
-Level-Headed Trees (All are in Scope: Mutable Trees, Tree Recursion, Generators) A levelorder traversal of a tree, T, traverses the root of T (level 0), then the roots of all the branches of T (level 1)
+A levelorder traversal of a tree, T, traverses the root of \lstinline{T (level 0)}, then the roots of all the branches of \lstinline{T (level 1)}
 left to right, then all the roots of the branches of the nodes traversed in level 1, (level 2) and so forth. Thus, a
 level-order traversal of the tree
                         1
