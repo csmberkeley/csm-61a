@@ -499,7 +499,7 @@ cold(rain + [day[0](), rain])()
 \end{lstlisting}
 \begin{solution}[5in]
     \url{https://tinyurl.com/ms67cb5c}
-    
+
     \includegraphics[width=0.8\textwidth]{protecttheenvironment.png}
 \end{solution}
 \end{blocksection}
@@ -628,9 +628,9 @@ Logarithmic because $n$ must triple to increase the number of operations by 1.
 \begin{blocksection}
 \question \textbf{Yield Fibonacci!} (Fa20 MT2 Q2a)
 
-    Implement fibs, a generator function that takes a one-argument pure function \lstinline{f} and yields all Fibonacci numbers \lstinline{x} for which \lstinline{f(x)} returns a true value.
+    Implement \lstinline{fibs}, a generator function that takes a one-argument pure function \lstinline{f} and yields all Fibonacci numbers \lstinline{x} for which \lstinline{f(x)} returns a true value.
     
-    The Fibonacci numbers begin with 0 and then 1. Each subsequent Fibonacci number is the sum of the previous two. Yield the Fibonacci numbers in order.
+    The Fibonacci numbers begin with \lstinline{0} and then \lstinline{1}. Each subsequent Fibonacci number is the sum of the previous two. Yield the Fibonacci numbers in order.
 \begin{lstlisting}
 def fibs(f):
     """Yield all Fibonacci numbers x for which f(x) is a true value.
@@ -683,9 +683,9 @@ def fibs(f):
 \begin{blocksection}
 \question \textbf{All Links} (Su21 Final Q6a)
 
-    Implement a generator function \lstinline{all_links}, which takes in nums, a list of equal-length lists. \lstinline{all_links} should yield all linked lists s that can be constructed such that the first element of s is the first element of one of the lists in nums, the second element of s is the second element of one of the lists in nums, and so on. Lists can be yielded in any order. You can assume that nums is a non-empty list.
+    Implement a generator function \lstinline{all_links}, which takes in nums, a list of equal-length lists. \lstinline{all_links} should yield all linked lists \lstinline{s} that can be constructed such that the first element of \lstinline{s} is the first element of one of the lists in \lstinline{nums}, the second element of \lstinline{s} is the second element of one of the lists in \lstinline{nums}, and so on. Lists can be yielded in any order. You can assume that \lstinline{nums} is a non-empty list.
     
-    For example, for the second doctest \lstinline{all_links([[0, 2], [1, 3]])}, there are four total linked lists we should yield. \lstinline{Link(0, Link(2))} is generated from using the first element from the first list and the second element from the first list. Link(0, Link(3)) is generated with the first element from the first list and the second element from the second list. Link(1, Link(2)) and Link(1, Link(3)) get the first element from the second list and the second element from the first and second lists respectively.
+    For example, for the second doctest \lstinline{all_links([[0, 2], [1, 3]])}, there are four total linked lists we should yield. \lstinline{Link(0, Link(2))} is generated from using the first element from the first list and the second element from the first list. \lstinline{Link(0, Link(3))} is generated with the first element from the first list and the second element from the second list. \lstinline{Link(1, Link(2))} and \lstinline{Link(1, Link(3))} get the first element from the second list and the second element from the first and second lists respectively.
 \begin{lstlisting}
 def all_links(nums):
     """
@@ -735,7 +735,7 @@ def all_links(nums):
 \begin{blocksection}
 \question \textbf{To-Do Lists} (Fa19 Final Q5)
 
-    Implement the TodoList and Todo classes. When a Todo is complete, it is removed from all the TodoList instances to which it was ever added. Track both the number of completed Todo instances in each list and overall so that printing a TodoList instance matches the behavior of the doctests below. Assume the complete method of a Todo instance is never invoked more than once.
+    Implement the \lstinline{TodoList} and \lstinline{Todo} classes. When a \lstinline{Todo} is complete, it is removed from all the \lstinline{TodoList} instances to which it was ever added. Track both the number of completed \lstinline{Todo} instances in each list and overall so that printing a \lstinline{TodoList} instance matches the behavior of the doctests below. Assume the complete method of a \lstinline{Todo} instance is never invoked more than once.
 \end{blocksection}
 \begin{blocksection}
 \begin{lstlisting}
@@ -839,9 +839,9 @@ class Todo:
 \begin{blocksection}
 \question \textbf{Midterm Elections} (Fa18 MT2 Q5a)
 
-    Implement the Poll class and the tally function, which takes a choice c and returns a list
-    describing the number of votes for c. This list contains pairs, each with a name and the number of times
-    vote was called on that choice at the Poll with that name. Pairs can be in any order. Assume all Poll
+    Implement the \lstinline{Poll} class and the \lstinline{tally} function, which takes a choice \lstinline{c} and returns a list
+    describing the number of votes for \lstinline{c}. This list contains pairs, each with a name and the number of times
+    \lstinline{vote} was called on that choice at the \lstinline{Poll} with that name. Pairs can be in any order. Assume all \lstinline{Poll}
     instances have distinct names. Hint: the dictionary \lstinline{get(key, default)} method (MT 2 guide, page 1
     top-right) returns the value for a key if it appears in the dictionary and default otherwise.
 \begin{lstlisting}
@@ -907,20 +907,20 @@ class Poll:
 \begin{blocksection}
 \question \textbf{Filter Index} (Fa20 MT2 Q1)
 
-    Definition. For a linked list s, the index of an element is the number of times rest appears in the smallest
-    dot expression containing only s, rest, and first that evaluates to that element. For example, in the
+    Definition. For a linked list \lstinline{s}, the index of an element is the number of times \lstinline{rest} appears in the smallest
+    dot expression containing only \lstinline{s}, \lstinline{rest}, and \lstinline{first} that evaluates to that element. For example, in the
     linked list \lstinline{s = Link(5, Link(7, Link(9, Link(11))))},
     
     \begin{itemize}
-        \item The index of 5 \lstinline{(s.first)} is 0.
-        \item The index of 7 \lstinline{(s.rest.first)} is 1.
-        \item The index of 11 \lstinline{(s.rest.rest.rest.first)} is 3.
+        \item The index of 5 \lstinline{(s.first)} is \lstinline{0}.
+        \item The index of 7 \lstinline{(s.rest.first)} is \lstinline{1}.
+        \item The index of 11 \lstinline{(s.rest.rest.rest.first)} is \lstinline{3}.
     \end{itemize}
     
-    Implement \lstinline{filter_index}, a function that takes a one-argument pure function f and a Link instance s. It
-    returns a Link containing all elements of s that have an index i for which \lstinline{f(i)} returns a true value.
+    Implement \lstinline{filter_index}, a function that takes a one-argument pure function \lstinline{f} and a \lstinline{Link} instance \lstinline{s}. It
+    returns a \lstinline{Link} containing all elements of \lstinline{s} that have an index \lstinline{i} for which \lstinline{f(i)} returns a true value.
     
-    Assume that s is a finite linked list of numbers that contains no repeated elements. The Link class appears
+    Assume that \lstinline{s} is a finite linked list of numbers that contains no repeated elements. The \lstinline{Link} class appears
     on Page 2 (left column) of the Midterm 2 Study Guide.
 \begin{lstlisting}
 def filter_index(f, s):
@@ -977,7 +977,7 @@ def filter_index(f, s):
 \begin{blocksection}
 \question \textbf{Combine Two} (Unknown source)
 
-    Implement \lstinline{combine_two}, which takes in lnk, a linked list of integers, and a two-argument function fn. Return a new linked list with every two elements from lnk combined with fn.
+    Implement \lstinline{combine_two}, which takes in \lstinline{lnk}, a linked list of integers, and a two-argument function \lstinline{fn}. Return a new linked list with every two elements from \lstinline{lnk} combined with \lstinline{fn}.
 \begin{lstlisting}
 def combine_two(lnk, fn):
     >>> lnk1 = Link(1, Link(2, Link(3)))
@@ -1025,16 +1025,19 @@ def combine_two(lnk, fn):
 \begin{blocksection}
 \question \textbf{Level-Headed Trees} (Fa17 Final Q5a)
 
-A levelorder traversal of a tree, T, traverses the root of \lstinline{T (level 0)}, then the roots of all the branches of \lstinline{T (level 1)}
+A \textit{level-order traversal} of a tree, \lstinline{T}, traverses the root of \lstinline{T} (level 0), then the roots of all the branches of \lstinline{T} (level 1)
 left to right, then all the roots of the branches of the nodes traversed in level 1, (level 2) and so forth. Thus, a
 level-order traversal of the tree
-                        1
-                    2   3   4
-                5     6    7    8    9
+$$ \begin{matrix}
+&&&&1&&&&\\ \\
+&2&&&3&&&4&\\ \\
+5&&6&&7&&8&&9
+\end{matrix}
+$$
 visits nodes with labels 1, 2, 3, 4, 5, 6, 7, 8, 9 in that order.
 
 Fill in the following generator function to yield the labels of a given tree in level order. All trees are
-of the class Tree, defined on page 2 of the Midterm 2 Study Guide. The strategy is to use a helper function
+of the class \lstinline{Tree},1 defined on page 2 of the Midterm 2 Study Guide. The strategy is to use a helper function
 that yields nodes at one level, and then to call this function with increasing levels until a level does not yield
 any labels. You may not need all the lines.
 \begin{lstlisting}
@@ -1087,8 +1090,8 @@ def level_order(tree):
 \begin{blocksection}
 \question \textbf{Prune Tree} (Su17 Final Q5)
 
-    Implement \lstinline{prune_tree} which takes in a Tree t and an integer total and mutates t so that the sum of each
-    root-to-leaf path is at most total. Assume values are positive numbers and t.root $\leq$ total.
+    Implement \lstinline{prune_tree} which takes in a \lstinline{Tree} \lstinline{t} and an integer \lstinline{total} and mutates \lstinline{t} so that the sum of each
+    root-to-leaf path is at most \lstinline{total}. Assume values are positive numbers and \lstinline{t.root} $\leq$ \lstinline{total}.
 \begin{lstlisting}
 class Tree:
     """A mutable tree data type containing a root value and a list of branches."""
