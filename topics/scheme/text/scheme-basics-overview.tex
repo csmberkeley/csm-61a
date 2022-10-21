@@ -1,6 +1,6 @@
 Scheme is a \textit{functional} language, as opposed to Python, which is an \textit{imperative} language. A Python program is comprised of \textit{statements} or "instructions" which do not evaluate to a value (an example of a statement would be something like \lstinline{x = 3} in Python. This does not evaluate to any value but just instructs Python to create a variable \lstinline{x} with the value 3), whereas a Scheme program is comprised solely of \textit{expressions}, each of which simply evaluates to a value. Remember that the term evaluate means to find the value of something. A variable is evaluated by looking up the name in the current frame, and a function call expression is evaluated using the three steps listed below. The thing to notice is that different types of expressions have different rules for how to evaluate those expressions, and this goes for both Python and Scheme. 
 
-The four basic types of expressions in Scheme are literals (i.e., a value itself), call expressions (procedure calls), special forms (language features), and variables.  A call expression or special form is denoted by a pair of parentheses and takes prefix notation, i.e., it is formed as so:
+The three basic types of expressions in Scheme are atomics/primitive expressions (i.e., a value itself, or, any self-evaluating expression), call expressions (procedure calls), and special forms (language features).  A call expression or special form is denoted by a pair of parentheses and takes prefix notation, i.e., it is formed as so:
 \vspace{0.5mm}
 \begin{lstlisting}
 (operator operand_0, operand_1, ... , operand_n)
@@ -38,6 +38,31 @@ scm> (+ 1 (if #t 9 99))
 \end{lstlisting}
 
 Just like in Python, the \lstinline{<do if false>} (in Python this would be the equivalent to the else clause) is optional. If there is no \lstinline{<do if false>} and the \lstinline{<predicate>} evaluates to false then the \lstinline{if} expression evaluates to \lstinline{undefined}.
+To create multi-conditional statements, you can nest if calls. For example, here is an example of a nested if-statement in Scheme:
+\begin{lstlisting}
+(if <predicate> <do if true> (if <predicate2> <do if true2> <do if both false>))
+\end{lstlisting}
+
+The Python equivalent would be:
+\begin{lstlisting}
+if <predicate>:
+    <do if true>
+elif <predicate2>:
+    <do if true2>
+else:
+    <do if both false>
+\end{lstlisting}
+
+While this works, your code can become incredibly messy and hard to keep track of. A more efficient way of creating multi-conditional statements is through use of the \textit{cond} special form.
+The preceding code can become more effectively accomplished through:
+\begin{lstlisting}
+(cond
+    ((predicate) (do if predicate is true))
+    ((predicate2) (do if predicate2 is true))
+    (else (do if both predicates are false)))
+\end{lstlisting}
+
+Ultimately, it's your choice which special form to use in such cases: the nested if special forms may be more intuitive, while the cond special form may be more organized. Both accomplish the same general purpose.
 
 \vspace{4mm}
 
@@ -66,7 +91,6 @@ x
 \begin{guide}
 \textbf{Teaching Tips}
 \begin{itemize}
-    \item There’s no “elif” in the if statement -- we’d have to use a bunch of nested if statements. So instead we use cond where we can list a bunch of conditions and what they return if that condition is true along with an else statement.
     \item Boolean checks
         \begin{itemize}
         \item \lstinline{=} only works for integers/numbers
