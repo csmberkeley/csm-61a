@@ -1,91 +1,213 @@
-Scheme is a \textit{functional} language, as opposed to Python, which is an \textit{imperative} language. A Python program is comprised of \textit{statements} or "instructions" which do not evaluate to a value (an example of a statement would be something like \lstinline{x = 3} in Python. This does not evaluate to any value but just instructs Python to create a variable \lstinline{x} with the value 3), whereas a Scheme program is comprised solely of \textit{expressions}, each of which simply evaluates to a value. Remember that the term evaluate means to find the value of something. A variable is evaluated by looking up the name in the current frame, and a function call expression is evaluated using the three steps listed below. The thing to notice is that different types of expressions have different rules for how to evaluate those expressions, and this goes for both Python and Scheme. 
+Scheme is a \textit{functional} language, as opposed to Python, which is an \textit{imperative} language. A Python program is comprised of \textit{statements} or ``instructions,'' each of which directs the computer to take some action. (An example of a statement would be something like \lstinline{x = 3} in Python. This does not evaluate to any value but just instructs Python to create a variable \lstinline{x} with the value 3.) In contrast, a Scheme program is composed solely of (often heavily nested) \textit{expressions}, each of which simply evaluates to a value. 
 
-The three basic types of expressions in Scheme are atomics/primitive expressions (i.e., a value itself, or, any self-evaluating expression), call expressions (procedure calls), and special forms (language features).  A call expression or special form is denoted by a pair of parentheses and takes prefix notation, i.e., it is formed as so:
+The three basic types of expressions in Scheme are atomics/primitive expressions, call expressions, and special forms.  
+
+\subsection{Atomics}
+
+Atomics are the simplest expressions. Some atomics, such as numbers and booleans, are called ``self-evaluating'' because they evaluate to themselves: 
+\begin{itemize}
+    \item \lstinline{123} $\rightarrow$ \lstinline{123}
+    \item \lstinline{-3.14} $\rightarrow$ \lstinline{-3.14}
+    \item \lstinline{#t} $\rightarrow$ \lstinline{#t ; booleans in scheme are #t and #f}
+\end{itemize}
+
+\textbf{Symbols} (variables) are also atomic expressions; they evaluate to the values to which they are bound. For example, the symbol \lstinline{+} evaluates to the addition \textbf{procedure} (function) \lstinline{#[+]}. 
+
+\subsection{Call Expressions}
+
+A call expression is denoted with parentheses and is formed like so:
 \vspace{0.5mm}
 \begin{lstlisting}
-(operator operand_0, operand_1, ... , operand_n)
+(<operator> <operand0> <operand1> ... <operand>)
 \end{lstlisting}
-
-(Keep in mind each item in a call expression is also an expression)
-
-Evaluation of a call expression progresses so:
+Each ``element'' of a call expression is an expression itself and is separated from its
+neighbors by whitespace. All call expressions are evaluated in the same way:
 \begin{enumerate}
-\item Evaluate operator (returning a procedure)
-\item Evaluate operands
-\item Apply operator on operands
+\item Evaluate the operator, which will return a procedure.
+\item Evaluate the operands.
+\item Apply operator on operands.
+\end{enumerate}
+For example, to evaluate the call expression \lstinline{(+ (+ 1 2) 2)}, we first evaluate the operator \lstinline{+}, which returns the procedure \lstinline{#[+]}. Then we evaluate the first operand \lstinline{(+ 1 2)}, which returns \lstinline{3}. Then, we evaluate the last operand \lstinline{2}, receiving \lstinline{2}. Finally, we apply the \lstinline{#[+]} procedure to \lstinline{3} and \lstinline{2}, which returns \lstinline{5}. So this call expression evaluates to \lstinline{5}. 
+
+Note that in order to add two numbers, we had to call a function. In Python, \lstinline{+} is a binary operator that can add two numbers without calling a function. Scheme has no such constructs, so even the most basic arithmetic requires you to call a function. 
+
+\subsection{Special Forms}
+
+Special forms \textit{look} just like call expressions but are distinct in two ways: 
+\begin{enumerate}
+    \item One of the following keywords appears in the operator slot: \lstinline{define}, \lstinline{if}, \lstinline{cond}, \lstinline{and}, \lstinline{or}, \lstinline{let}, \lstinline{begin}, \lstinline{lambda}, \lstinline{quote}, \lstinline{quasiquote}, \lstinline{unquote}, \lstinline{mu}, \lstinline{define-macro}, \lstinline{expect}, \lstinline{unquote-splicing}, \lstinline{delay}, \lstinline{cons-stream}, \lstinline{set!}
+    \item They do not follow the evaluation rules for call expressions.
 \end{enumerate}
 
-\newpage 
+Below, we will go through a few . Recall that these are all expressions, so they evaluate
+to some value. For clarity, when we say ``returns'', we mean that 
 
-\textbf{If Expression: }
-The \lstinline{if} keyword is similar to \lstinline{if}/\lstinline{else} statements in Python. It works as follows:
+\subsubsection{\lstinline{if} expression}
 \begin{lstlisting}
-(if <predicate> <do if true> <do if false>)
+(if <predicate> <true-expr> <false-expr>)
 \end{lstlisting}
 
-This is similar to the following code in Python:
-\begin{lstlisting}
-if <predicate>:
-    <do if true>
-else:
-    <do if false>
-\end{lstlisting}
+An \lstinline{if} expression is similar to a Python \lstinline{if} statement. First, evaluate \lstinline{<predicate>}. 
+\begin{itemize}
+    \item If \lstinline{<predicate>} is true, evaluate and return \lstinline{<true-expr>}.
+    \item If \lstinline{<predicate>} is false, evaluate and return \lstinline{<false-expr>}.
+\end{itemize}
+Note that everything in Scheme is truthy (including \lstinline{0}) except for \lstinline{#f}. 
 
-Note that in Python, \lstinline{if} is a statement whereas in Scheme, \lstinline{if} is an expression and evaluates to a value like any other expression would. This means that in Scheme you could write something like this where the \lstinline{if} expression can be placed as an operand in a function call expression:
+Also note that in Python, \lstinline{if} is a statement, whereas in Scheme, \lstinline{if} is an expression that evaluates to a value like any other expression would. In Scheme, you can then write something like this:
 \begin{lstlisting}
 scm> (+ 1 (if #t 9 99))
 10
 \end{lstlisting}
 
-Just like in Python, the \lstinline{<do if false>} (in Python this would be the equivalent to the else clause) is optional. If there is no \lstinline{<do if false>} and the \lstinline{<predicate>} evaluates to false then the \lstinline{if} expression evaluates to \lstinline{undefined}.
-To create multi-conditional statements, you can nest if calls. For example, here is an example of a nested if-statement in Scheme:
+Other special forms are also expressions that evaluate to values. 
+Therefore, when we say ``returns $x$,'' we mean ``the special form evaluates to $x$.''
+
+\subsubsection{\lstinline{cond} expression}
+
 \begin{lstlisting}
-(if <predicate> <do if true> (if <predicate2> <do if true2> <do if both false>))
+(cond 
+    (<predicate1> <expr1>) 
+    ... 
+    (<predicateN> <exprN>) 
+    (else <else-expr>))
 \end{lstlisting}
 
-The Python equivalent would be:
+A \lstinline{cond} expression is similar to a Python \lstinline{if}-\lstinline{elif}-\lstinline{else} statement. It is an alternative to using many nested \lstinline{if} expressions. 
+
+\begin{itemize}
+    \item Evaluate \lstinline{<predicate1>}. If it is true, evaluate and return \lstinline{<expr1>}.
+    \item Otherwise, continue down the list by evaluating \lstinline{<predicate2>}. If it is true, evaluate and return \lstinline{<expr2>}.
+    \item Continue in this fashion down the list until you hit a true predicate.
+    \item If every predicate is false, return \lstinline{<else-expr>}. 
+\end{itemize}
+
+\subsubsection{\lstinline{and} expression}
 \begin{lstlisting}
-if <predicate>:
-    <do if true>
-elif <predicate2>:
-    <do if true2>
-else:
-    <do if both false>
+(and <expr1> ... <exprN>)
+\end{lstlisting}
+\lstinline{and} in Scheme works similarly to \lstinline{and} in Python. Evaluate the expressions in order and return the value of the first false expression. If all of the values are true, return the last value. If no operands are provided, return \lstinline{#t}.
+
+\subsubsection{\lstinline{or} expression}
+\begin{lstlisting}
+(or <expr1> ... <exprN>)
+\end{lstlisting}
+\lstinline{or} in Scheme works similarly to \lstinline{or} in Python. Evaluate the expressions in order and return the value of the first true expression. If all of the values are false, return the last value. If no operands are provided, return \lstinline{#f}.
+
+\subsubsection{\lstinline{define} expression}
+
+\lstinline{define} does two things. It can define variables, similar to the Python \lstinline{=} assignment operator:
+\begin{lstlisting}
+(define <symbol> <expr>)
+\end{lstlisting}
+This will evaluate \lstinline{<expr>} and bind the resulting value to \lstinline{<symbol>} in the current frame. 
+
+\lstinline{define} is also used to define procedures. 
+
+\begin{lstlisting}
+(define (<symbol> <op1> ... <opN>) 
+    <body>)
+    \end{lstlisting} 
+This code will create a new procedure that takes in the formal parameters \lstinline{<op1> ... <opN>} and bind it to \lstinline{<symbol>} in the current frame. When that procedure is called, the \lstinline{<body>}, which may have multiple expressions, will be executed with the provided arguments bound to \lstinline{<op1> ... <opN>}. The value of the final expression of \lstinline{<body>} will be returned. 
+
+With either version of \lstinline{define}, \lstinline{<symbol>} is returned. 
+
+Dealing with the different types of \lstinline{define} can be tricky. Scheme differentiates between the two by whether the first operand is a symbol or a list:  
+\begin{lstlisting}
+(define (x) 1) ; like x = lambda: 1
+(define x 1) ; like x = 1
 \end{lstlisting}
 
-While this works, your code can become incredibly messy and hard to keep track of. A more efficient way of creating multi-conditional statements is through use of the \textit{cond} special form.
-The preceding code can become more effectively accomplished through:
+\subsubsection{\lstinline{lambda} expressions}
 \begin{lstlisting}
-(cond
-    ((predicate) (do if predicate is true))
-    ((predicate2) (do if predicate2 is true))
-    (else (do if both predicates are false)))
+(lambda (<op1> ... <opN>) 
+    <body>) 
 \end{lstlisting}
+Returns a new procedure that takes in the formal parameters \lstinline{<op1> ... <opN>}. When that procedure is called, the \lstinline{<body>}, which may have multiple expressions, will be executed with the provided arguments bound to \lstinline{<op1> ... <opN>}. The value of the final expression of \lstinline{<body>} will be returned. 
 
-Ultimately, it's your choice which special form to use in such cases: the nested if special forms may be more intuitive, while the cond special form may be more organized. Both accomplish the same general purpose.
-
-\vspace{4mm}
-
-\textbf{Define Expression: }
-\lstinline{define} does two things in Scheme. The first is that it defines variables using the following syntax:
+\subsubsection{\lstinline{begin} special form}
 \begin{lstlisting}
-(define <name> <expression>)
+(begin 
+    <expr1>
+    ... 
+    <exprN>) 
 \end{lstlisting}
+Evaluates \lstinline{<expr1>}, \lstinline{<expr2>}, ..., \lstinline{<exprN>} in order in the current environment. Returns the value of \lstinline{<exprN>}. 
 
-The way this works is Schme will evaluates \lstinline{<expression>} and binds the value to \lstinline{<name>} in the current environment. \lstinline{<name>} must be a valid Scheme symbol (you can think of a symbol as an identifier or variable name).
-
-\lstinline{define} is also used to define functions using the following syntax (note that this is different from using \lstinline{define} to create variables as there is an extra pair of parentheses around \lstinline{<name> [param] ...}):
+\subsubsection{\lstinline{let} special form}
 \begin{lstlisting}
-(define (<name> [param] ...) <body> ...)
+(let ((<symbol1> <expr1>) 
+     ... 
+     (<symbolN> <exprN>)) 
+  <body>) 
 \end{lstlisting}
+Evaluates \lstinline{<expr1>}, ..., \lstinline{<exprN>} in the current environment. Then, creates a new frame as a child of the current frame and binds the values of \lstinline{<expr1>}, ..., \lstinline{<exprN>} to \lstinline{<symbol1>}, ..., \lstinline{<symbolN>}, respectively, in that new frame. Finally, Scheme evaluates the \lstinline{<body>}, which may have multiple expressions, in the new frame. The value of the final expression of \lstinline{<body>} is be returned. 
 
-Either way, after the \lstinline{<name>} is bound to either a function or value, the define expression evaluates to the symbol \lstinline{<name>}.
+\subsubsection{\lstinline{quote} special form}
 \begin{lstlisting}
-scm> (define x 3)
-x
+(quote <expr>)
+'<expr> ; shorthand syntax
 \end{lstlisting}
+Returns an expression that evaluates to \lstinline{<expr>} \textit{in its unevaluated form}. In other words, if you put \lstinline{'<expr>} into the Scheme interpreter, you should get \lstinline{<expr>} out \textit{exactly}. 
 
-\url{https://cs61a.org/articles/scheme-spec/} will direct you to a page with all of the explanations and syntax descriptions of Scheme. Use it when filling out the WWSD section!
+
+\subsubsection{Summary of special forms}
+We have presented the main details of the most important special forms here, but this account is not comprehensive. Please see \url{https://cs61a.org/articles/scheme-spec/} for a fuller explanation of the Scheme language. 
+\vspace{0.2in}
+\begin{center}
+\begin{tabular}{ |c|c| }
+    \hline
+    behavior & syntax \\
+    \hline
+    if/else & \texttt{(if <predicate> <true-expr> <false-expr>)}  \\
+    \hline
+    if/elif/else  
+& \begin{lstlisting}
+(cond 
+    (<predicate1> <expr1>) 
+    ... 
+    (<predicateN> <exprN>) 
+    (else <else-expr>))
+\end{lstlisting} \\
+    \hline
+    and & \texttt{(and <expr1> ... <exprN>)} \\
+    \hline
+    or & \texttt{(or <expr1> ... <exprN>)} \\
+    \hline
+    variable assignment   & \texttt{(define <symbol> <expr>)} \\
+    \hline
+    function definition & 
+\begin{lstlisting}
+(define (<symbol> <op1> ... <opN>) 
+    <body>)
+\end{lstlisting}  \\
+    \hline
+    lambdas & 
+\begin{lstlisting} 
+(lambda (<op1> ... <opN>) 
+    <body>) 
+\end{lstlisting} \\
+\hline
+    evaluate many lines & 
+\begin{lstlisting}
+(begin 
+    <expr1>
+    ... 
+    <exprN>) 
+\end{lstlisting} \\
+    \hline
+    temporary environment & 
+\begin{lstlisting} 
+(let ((<symbol1> <expr1>) 
+      ... 
+      (<symbolN> <exprN>)) 
+    <body>) 
+\end{lstlisting}\\
+    \hline
+    quote & \texttt{(quote <expr>)} or \texttt{'<expr>}  \\
+    \hline
+\end{tabular}
+\end{center}
 
 \begin{blocksection}
 \begin{guide}

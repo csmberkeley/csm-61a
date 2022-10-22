@@ -6,6 +6,7 @@
 \discnumber{8}
 \title{\textsc{Scheme}}
 \date{October 31--November 4, 2022}
+\lstset{language=Scheme}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -16,33 +17,7 @@
 \begin{guide}
 \begin{blocksection}
 \textbf{Recommended Timeline}
-\begin{outline}[enumerate]
-  \1 Scheme Mini-Lecture - 10 min
-  \1 WWSD - 5 min
-  \2 Could incorporate into minilecture
-  \1 Hailstone - 8 min
-  \2 Students should have seen this problem many times by now
-  \2 Introduction to scheme with something they are familiar with
-  \1 Scheme Lists Mini-Lecture - 6 min
-  \1 Scheme List WWSD - 8 min
-  \2 Could incorporate into minilecture
-  \2 Drawing box \& pointer diagrams and making analogies to linked lists may be helpful
-  \1 Decay - 8 min
-  \2 introduces 'cond'
-  \1 Waldo - 8 min
-  \2 fun 'where's waldo' question haha
-  \1 Challenge problem - if you have time
-  \2 extension to Waldo, find the index waldo is at - if any
-  \1 Exam Questions
-  \2 completely optional, included as a reference so students can refer to these questions while studying
-  \2 the best prep for exams is exam questions!
-  \2 Sp22 Final Q11
-  \3 requires 'append' function - might want to bring this up as a hint, if students haven't learned about this built-in function yet
-  \3 constructing a scheme list
-  \2 Su18 Final Q3b
-  \3 drawing the box \& pointer diagrams of scheme lists
-  \3 good to test and visualize understanding
-\end{outline}
+% Fix this
 \end{blocksection}
 \end{guide}
 
@@ -67,20 +42,21 @@
 \end{guide}
 
 \subimport{../../topics/scheme/text/}{scheme-basics-overview.tex}
-\begin{questions}
 \newpage
-\section{What Would Scheme Print?}
+\begin{questions}
 \subimport{../../topics/scheme/easy/wwsd/}{basics.tex}
+\subimport{../../topics/scheme/medium/}{apply-n.tex}
 \subimport{../../topics/scheme/easy/}{hailstone.tex}
+\end{questions}
 
 \section{Scheme Lists}
 \subimport{../../topics/scheme/text/}{scheme-lists-overview.tex}
-\includegraphics{../../topics/scheme/text/scheme_list.png}
-\subimport{../../topics/scheme/text/}{special-forms.tex}
 \newpage
+\begin{questions}
 \subimport{../../topics/scheme/easy/wwsd/}{lists_nodots.tex}
-\subimport{../../topics/scheme/medium/}{binary-list.tex}
 \subimport{../../topics/scheme/medium/}{is-prefix.tex}
+\subimport{../../topics/scheme/medium/}{argmax.tex}
+
 
 \end{questions}
 
