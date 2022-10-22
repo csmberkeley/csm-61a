@@ -106,8 +106,12 @@ def get_dependencies(filepath):
 #############
 
 def read_file(filepath):
-    with open(filepath, 'r', encoding="utf-8") as f:
-        return f.read()
+    try:  
+        with open(filepath, 'r', encoding="utf-8") as f:
+            return f.read()
+    except Exception as error: 
+        trace = sys.exc_info()[2]
+        raise Exception(f"Exception encountered while reading from {filepath}:\n\n{type(error).__name__}: {str(error)}") from error
 
 def write_file(filepath, text):
     dirname = os.path.dirname(filepath)
