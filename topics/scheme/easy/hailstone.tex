@@ -61,6 +61,20 @@ Assume the hailstone sequence starting at \lstinline$seed$ has a length of at le
           (hailstone
           (+ 1 (* seed 3))
           (- n 1)))))
+
+; Alternative solution with cond
+
+(define (hailstone seed n)
+    (cond 
+        ((= n 0) seed)
+        ((= 0 (remainder seed 2))
+          (hailstone
+          (quotient seed 2)
+          (- n 1)))
+        (else 
+          (hailstone
+          (+ 1 (* seed 3))
+          (- n 1)))))
 \end{lstlisting}
 \end{blocksection}
 \end{solution}
@@ -85,6 +99,7 @@ def hailstone(seed, n):
     \item If they’re confused, point them towards the \% in Python and how they can get the same value back in Scheme (answer: remainder function) 
     \item Remind them to be careful about parentheses
     \item If you don’t use cond, how might you write an equivalent function? 
+    \item In problems like this, I like to emphasize to my students how valuable it is to indent their code so that they can keep everything well organized. Scheme can be very confusing when not properly formatted because the language seems to just be an endless stream of parentheses. 
 \end{itemize}
 \end{blocksection}
 \end{guide}
