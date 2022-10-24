@@ -29,7 +29,7 @@ neighbors by whitespace. All call expressions are evaluated in the same way:
 \end{enumerate}
 For example, to evaluate the call expression \lstinline{(+ (+ 1 2) 2)}, we first evaluate the operator \lstinline{+}, which returns the procedure \lstinline{#[+]}. Then we evaluate the first operand \lstinline{(+ 1 2)}, which returns \lstinline{3}. Then, we evaluate the last operand \lstinline{2}, receiving \lstinline{2}. Finally, we apply the \lstinline{#[+]} procedure to \lstinline{3} and \lstinline{2}, which returns \lstinline{5}. So this call expression evaluates to \lstinline{5}. 
 
-Note that in order to add two numbers, we had to call a function. In Python, \lstinline{+} is a binary operator that can add two numbers without calling a function. Scheme has no such constructs, so even the most basic arithmetic requires you to call a function. 
+Note that in order to add two numbers, we had to call a function. In Python, \lstinline{+} is a binary operator that can add two numbers without calling a function. Scheme has no such constructs, so even the most basic arithmetic requires you to call a function. The other math operators, including \lstinline{-} (both subtraction and negation), \lstinline{*}, \lstinline{/}, \lstinline{expt} (exponentiation), \lstinline{=}, \lstinline{<}, \lstinline{>}, \lstinline{<=}, and \lstinline{>=} function in the same way. 
 
 \subsection{Special Forms}
 
@@ -39,8 +39,7 @@ Special forms \textit{look} just like call expressions but are distinct in two w
     \item They do not follow the evaluation rules for call expressions.
 \end{enumerate}
 
-Below, we will go through a few . Recall that these are all expressions, so they evaluate
-to some value. For clarity, when we say ``returns'', we mean that 
+Below, we will go through a few commonly seen special forms. 
 
 \subsubsection{\lstinline{if} expression}
 \begin{lstlisting}
@@ -213,6 +212,7 @@ We have presented the main details of the most important special forms here, but
 \begin{guide}
 \textbf{Teaching Tips}
 \begin{itemize}
+    \item For the love of God, please do not mini-lecture all of this stuff. This information is presented as a reference for you, and you should ask your students what they would like to go over so that you do not waste their time. 
     \item Boolean checks
         \begin{itemize}
         \item \lstinline{=} only works for integers/numbers

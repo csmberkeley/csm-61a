@@ -46,18 +46,43 @@ scm> '(1 (+ 1 1) 3)
 \end{lstlisting}
 Note that quotation will prevent any of the list items from being evaluated, which can occasionally be inconvenient. 
 
+\begin{meta}
+If relevant, I like to discuss when it makes the most sense to use the different ways of constructing a list. 
+\begin{itemize}
+ \item \lstinline{cons} is useful when you have a way to construct the first element and rest of the list, e.g. in recursive problem solving, 
+ \item \lstinline{list} and quotation are useful when you want to hardcode a list into your code beforehand, but typically aren't that useful if you want to dynamically create a list based on program input. 
+\end{itemize}
+\end{meta}
+
+\subsection{Useful procedures}
+In addition to the procedures mentioned above, the following procedures are often useful when dealing with Scheme lists: 
+\begin{itemize}
+  \item \lstinline{(null? s)}: returns true if \lstinline{s} is \lstinline{nil}. 
+  \item \lstinline{(length s)}: returns the length of \lstinline{s}. 
+  \item \lstinline{(append s1 ... sn)}: returns the result of concatenating lists \lstinline{s1}, ..., \lstinline{sn}. 
+  \item \lstinline{(map f s)}: returns the result of applying the procedure \lstinline{f} to each element of \lstinline{s}. 
+  \item \lstinline{(filter pred s)}: returns a list containing the elements of \lstinline{s} for which the single-argument procedure \lstinline{pred} returns true. 
+  \item \lstinline{(reduce comb s)}: combines the elements of \lstinline{s} into a single value using the two-argument procedure \lstinline{comb}.
+\end{itemize}
+
+\subsection{Equality testing}
+Equality testing in Scheme is a bit confusing as it is handled by three separate procedures: 
+\begin{itemize}
+  \item \lstinline{(= a b)}: returns true if \lstinline{a} equals \lstinline{b}. Both must be numbers.
+  \item \lstinline{(eq? a b)}: returns true if \lstinline{a} and \lstinline{b} are equivalent primitive values. For two objects, \lstinline{eq?} returns true if both refer to the exactly same object in memory (like \lstinline{is} in Python). 
+  \item \lstinline{(equal? a b)}: returns true if \lstinline{a} and \lstinline{b} are equivalent. Two lists are equivalent if their elements are equivalent. 
+\end{itemize}
+
 \begin{guide}
 \begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
+  \item For the love of God, please do not mini-lecture all of this stuff. This information is presented as a reference for you, and you should ask your students what they would like to go over so that you do not waste their time. 
   \item Emphasize to students that Scheme lists are linked lists and NOT Python lists
   \begin{itemize}
     \item Discuss the limitations (e.g. no indexing) and capabilities (e.g. recursion)
   \end{itemize}
-  \item If you're an old bear\textsuperscript{TM}, keep in mind that dotted lists have been removed from the curriculum, so Scheme lists have the same functionality as linked lists
-  \begin{itemize}
-    \item \lstinline{(cons 1 2)} will now raise a SchemeError instead of creating a Malformed list
-  \end{itemize}
+  \item If you're an old bear\textsuperscript{TM}, keep in mind that dotted lists (thank god) have been removed from the curriculum, so Scheme lists have the same functionality as linked lists
   \item The \href{https://code.cs61a.org/}{61A Scheme Web interpreter} is \textbf{very useful} for visualizing lists!
   \item If you choose to give a mini-lecture on Scheme list syntax, try using each keyword in an example instead of just talking about them!
 \end{itemize}

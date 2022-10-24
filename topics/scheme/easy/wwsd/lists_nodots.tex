@@ -93,13 +93,13 @@ scm> (cdr a)
 \end{solution}
 
 \begin{lstlisting}
-scm> (cadr a)
+scm> (car (cdr a))
 \end{lstlisting}
 \begin{solution}[.25in]
 \begin{lstlisting}
 2
 \end{lstlisting}
-Recall that cadr is short for \texttt{(car (cdr a))}. From above, we know that \texttt{(cdr a)} is \texttt{(2 3)}. From that, we can evaluate \texttt{(car (cdr a))} to 2.
+From above, we know that \texttt{(cdr a)} is \texttt{(2 3)}. From that, we can evaluate \texttt{(car (cdr a))} to 2.
 \end{solution}
 
 How can we get the 3 out of a?
@@ -115,7 +115,6 @@ To get to the pair that contains 3, we need to call \texttt{(cdr (cdr a))}. To g
 \begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
-  \item Make sure students know \lstinline{(cadr a)} is short for \lstinline{(car (cdr a))} and \lstinline{(cddr a)} is short for \lstinline{(cdr (cdr a))}
   \item Draw diagrams or use the \href{https://code.cs61a.org/}{61A Scheme Web interpreter} for visualizing lists
   \item Encourage students to ask questions and experiment with extra \lstinline{cons}, \lstinline{car}, and \lstinline{cdr} statements to see how they change the outputs of statments!
   \item While unrelated to the problem, it may be helpful to teach students these keywords:
