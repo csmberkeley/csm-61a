@@ -207,27 +207,3 @@ We have presented the main details of the most important special forms here, but
     \hline
 \end{tabular}
 \end{center}
-
-\begin{blocksection}
-\begin{guide}
-\textbf{Teaching Tips}
-\begin{itemize}
-    \item For the love of God, please do not mini-lecture all of this stuff. This information is presented as a reference for you, and you should ask your students what they would like to go over so that you do not waste their time. 
-    \item Boolean checks
-        \begin{itemize}
-        \item \lstinline{=} only works for integers/numbers
-        \item \lstinline{eq?} is analogous to Python's \lstinline{is} (\textit{may} not work for numbers)
-        \item \lstinline{eqv?} is a combination of Python's \lstinline{==} and \lstinline{is}
-        \begin{itemize}
-            \item For numbers, empty lists, booleans and symbols, it functions as \lstinline{==}
-            \item For everything else (like pairs/lists), it functions as \lstinline{is}
-        \end{itemize}
-        \item \lstinline{equal?} is analogous to Python's \lstinline{==}
-        \begin{itemize}
-            \item It is also \lstinline{eqv?} with deep equality for lists
-        \end{itemize}
-        \item \lstinline{null?} checks if something is \lstinline{}
-        \end{itemize}
-\end{itemize}
-\end{guide}
-\end{blocksection}

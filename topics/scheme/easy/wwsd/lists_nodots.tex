@@ -19,6 +19,7 @@ scm> (cons 1 '(2 3 4 5))
 \texttt{(1 2 3 4 5)}
 \begin{center}
 \includegraphics[scale=0.7]{scheme_lists_3.png}
+
 When we use the quote before the list, we are saying that we should put the literal list (2 3 4 5) in the cdr of this list. So in this case we create a list where the first element (car) is 1, and the cdr is the list (2 3 4 5).
 \end{center}
 \end{solution}
@@ -30,6 +31,7 @@ scm> (cons 1 '(2 (cons 3 nil)))
 \texttt{(1 2 (cons 3 ()))}
 \begin{center}
 \includegraphics[scale=0.7]{scheme_lists_5.png}
+
 Since we also used a quote here, we do not evaluate the \texttt{(cons 3 nil)}. We keep everything inside the quotes the same so the \texttt{cdr} of this list is the list \texttt{(2 (cons 3 nil))}. That means that we add the element 2, and then the nested list \texttt{(cons 3 nil)}.
 \end{center}
 \end{solution}
