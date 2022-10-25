@@ -1,0 +1,69 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{Tail Recursion, Interpreters}
+\date{November 7--November 11, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Tail Recursion Intro - 8 minutes
+        \begin{itemize}
+            \item Feel free to work questions 1 and 2 into your mini-lecture/intro
+        \end{itemize}
+        \item Q3, Q4 \lstinline{count-instance} - 10 minutes
+        \item Q5 \lstinline{filter} - 10 minutes
+        \item Interpreters Intro (10-15 min): Consider walking through Q1 to Q4 as 
+        you give a mini-lecture/review to leave more time for later problems. If you do this give students time to try 
+        Q3 and Q4 on their own though
+        \item Eval Apply (10 min): You may want to do one in its entirety before leaving students to try the rest
+        (and explain the rules in a step-by-step manner), since students often find these types of problems unintuitive or challenging.
+        \item There's a "Scheme Challenge" problem at the end if your students would prefer to get more practice with Scheme code writing
+        \item There are also two past exam questions on tail calls at the end for students to reference later!
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+\section{Tail Recursion}
+\subimport{../../topics/tail-recursion/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/tail-recursion/easy/}{intro.tex}
+\newpage
+\subimport{../../topics/tail-recursion/medium/}{count-instance.tex}
+\subimport{../../topics/tail-recursion/medium/}{filter.tex}
+\end{questions}
+
+\newpage
+\section{Interpreters}
+\subimport{../../topics/interpreters/text/}{intro-text.tex}
+\begin{questions}
+    \subimport{../../topics/interpreters/easy/}{intro.tex}
+    \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\section{Scheme Challenge}
+\begin{questions}
+\subimport{../../topics/scheme/challenge/}{max-depth.tex}
+\end{questions}
+
+\newpage
+\section{Past Exam Questions}
+\begin{itemize}
+    \item \href{https://cs61a.org/exam/su19/final/61a-su19-final.pdf#page=10}{Su19 Final Q7b}
+    \item \href{https://cs61a.org/exam/sp19/final/61a-sp19-final.pdf#page=8}{Sp19 Final Q7a}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
