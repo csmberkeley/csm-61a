@@ -1,53 +1,88 @@
-Unlike Python, all Scheme lists are linked lists. Recall a linked list is made up of Links that have a first and a rest, where the rest is another Link. Similarly, Scheme lists are made up of pairs with a first and a rest, where the rest is another pair.
+Unlike Python, all Scheme lists are linked lists. Recall that, in Python, a linked list is made up of \lstinline{Link}s that each have a \lstinline{first} and a \lstinline{rest}, where the \lstinline{rest} is another \lstinline{Link}. Similarly, each Scheme list is a ``pair'' where the first element of the pair is the first element of the list, and the second element of the pair is the rest of the list (also a pair).
 
-\textbf{Ways to make scheme lists:}
-\begin{itemize}
-\item Cons \\
-\textbf{Syntax:} \lstinline{(cons <car-elem> <cdr-elem>)} \\
-Takes in a pair of two elements; similar to how a python linked list has 2 elements as well- first and rest
-\item List \\
-\textbf{Syntax:} \lstinline{(list <elem1> <elem2> ...)} \\
-Takes in an arbitrary number of elements/arguments, and constructs a list where each elem is the first of its own pair. Note how this differs from \lstinline{cons} where you specify a first and rest rather than just specifying the first of each pair. All the arguments will be evaluated before being collected into the scheme list.
-\item ' (aka single quote) \\
-\textbf{Syntax:} \lstinline{'(<elem1> <elem2> ...)} \\
-Also takes in an arbitrary number of elements and construct a list out of the elements, but the arguments are not evaluated.
-\end{itemize}
-Example:
-\lstinline{(cons 1 (cons 2 (cons 3 nil)))} = \lstinline{(list 1 2 3)} = \lstinline{'(1 2 3)}
-\includegraphics[scale=0.6]{scheme_list}
+We use the \lstinline{cons} procedure to construct Scheme lists, and \lstinline{nil} to represent empty lists. The sequence $1, 2, 3$ may then be represented as follows: 
+\begin{lstlisting}
+scm> (cons 1 (cons 2 (cons 3 nil)))
+(1 2 3)
+\end{lstlisting}
 
-\textbf{Ways to access list items:}
+\begin{meta}
+It's worth pointing out to your students that, unlike with the \lstinline{Link} class, the \lstinline{nil} must be explicitly provided at the end of the linked list. 
+\end{meta}
+
+The \lstinline{car} and \lstinline{cdr} procedures are used to access the elements of a Scheme list. \lstinline{car} gets the first element of a list, while \lstinline{cdr} gets the rest of the list: 
+
+\begin{lstlisting}
+scm> (define lst (cons 1 (cons 2 (cons 3 nil))))
+lst
+scm> (car lst)
+1
+scm> (cdr lst)
+(2 3)
+\end{lstlisting}
+
+You can make the following analogy between linked lists in Python and Scheme: 
+\begin{center}
+\begin{tabular}{ |l|l| }
+\hline
+ \texttt{Link(1, Link.empty)} & \texttt{(cons 1 nil)} \\
+ \texttt{a = Link(1, Link(2, Link.empty))} & \texttt{(define a (cons 1 (cons 2 nil)))}  \\
+ \texttt{a.first} & \texttt{(car a)} \\
+ \texttt{a.rest} & \texttt{(cdr a)} \\
+ \hline
+\end{tabular}
+\end{center}
+
+The \lstinline{list} procedure and quotation give us additional convenient ways to construct lists: 
+\begin{lstlisting}
+scm> (list 1 2 3)
+(1 2 3)
+scm> '(1 2 3)
+(1 2 3)
+scm> (list 1 (+ 1 1) 3)
+(1 2 3)
+scm> '(1 (+ 1 1) 3)
+(1 (+ 1 1) 3)
+\end{lstlisting}
+Note that quotation will prevent any of the list items from being evaluated, which can occasionally be inconvenient. 
+
+\begin{meta}
+If relevant, I like to discuss when it makes the most sense to use the different ways of constructing a list. 
 \begin{itemize}
-\item Car \\
-\textbf{Syntax:} \lstinline{(car <pair>)} \\
-Gets you the first item of a pair
-\item Cdr \\
-\textbf{Syntax:} \lstinline{(cdr <pair>)} \\
-Gets you the second item of a pair
+ \item \lstinline{cons} is useful when you have a way to construct the first element and rest of the list, e.g. in recursive problem solving, 
+ \item \lstinline{list} and quotation are useful when you want to hardcode a list into your code beforehand, but typically aren't that useful if you want to dynamically create a list based on program input. 
 \end{itemize}
+\end{meta}
+
+\subsection{Useful procedures}
+In addition to the procedures mentioned above, the following procedures are often useful when dealing with Scheme lists: 
 \begin{itemize}
-\item Cadr \\
-\textbf{Syntax:} \lstinline{(cadr <pair>)} \\
-Gets you the \lstinline{car} of the \lstinline{cdr}
+  \item \lstinline{(null? s)}: returns true if \lstinline{s} is \lstinline{nil}. 
+  \item \lstinline{(length s)}: returns the length of \lstinline{s}. 
+  \item \lstinline{(append s1 ... sn)}: returns the result of concatenating lists \lstinline{s1}, ..., \lstinline{sn}. 
+  \item \lstinline{(map f s)}: returns the result of applying the procedure \lstinline{f} to each element of \lstinline{s}. 
+  \item \lstinline{(filter pred s)}: returns a list containing the elements of \lstinline{s} for which the single-argument procedure \lstinline{pred} returns true. 
+  \item \lstinline{(reduce comb s)}: combines the elements of \lstinline{s} into a single value using the two-argument procedure \lstinline{comb}.
 \end{itemize}
+
+\subsection{Equality testing}
+Equality testing in Scheme is a bit confusing as it is handled by three separate procedures: 
 \begin{itemize}
-\item Cddr \\
-\textbf{Syntax:} \lstinline{(cddr <pair>)} \\
-Gets you the \lstinline{cdr} of the \lstinline{cdr}
+  \item \lstinline{(= a b)}: returns true if \lstinline{a} equals \lstinline{b}. Both must be numbers.
+  \item \lstinline{(eq? a b)}: returns true if \lstinline{a} and \lstinline{b} are equivalent primitive values. For two objects, \lstinline{eq?} returns true if both refer to the exactly same object in memory (like \lstinline{is} in Python). 
+  \item \lstinline{(equal? a b)}: returns true if \lstinline{a} and \lstinline{b} are equivalent. Two lists are equivalent if their elements are equivalent. 
 \end{itemize}
 
 \begin{guide}
 \begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
+  \item For the love of God, please do not mini-lecture all of this stuff. This information is presented as a reference for you, and you should ask your students what they would like to go over so that you do not waste their time. 
   \item Emphasize to students that Scheme lists are linked lists and NOT Python lists
   \begin{itemize}
     \item Discuss the limitations (e.g. no indexing) and capabilities (e.g. recursion)
   \end{itemize}
-  \item If you're an old bear\textsuperscript{TM}, keep in mind that dotted lists have been removed from the curriculum, so Scheme lists have the same functionality as linked lists
-  \begin{itemize}
-    \item \lstinline{(cons 1 2)} will now raise a SchemeError instead of creating a Malformed list
-  \end{itemize}
+  \item If you're an old bear\textsuperscript{TM}, keep in mind that dotted lists (thank god) have been removed from the curriculum, so Scheme lists have the same functionality as linked lists
   \item The \href{https://code.cs61a.org/}{61A Scheme Web interpreter} is \textbf{very useful} for visualizing lists!
   \item If you choose to give a mini-lecture on Scheme list syntax, try using each keyword in an example instead of just talking about them!
 \end{itemize}
