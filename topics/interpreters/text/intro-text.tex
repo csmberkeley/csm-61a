@@ -1,18 +1,19 @@
 \textbf{Interpreters Overview} 
 
-An \textbf{interpreter} is essentially a program that understands and processes other programs. 
+An \textbf{interpreter} is essentially a program that understands and processes other programs. Often this involves supporting abstraction in some capacity with the binding of names to values and the definiton of new operations (i.e. functions).
 
 The interpreter design we will be covering in 61A is the \textbf{Read-Eval-Print Loop}, which consists of the following steps:
 \begin{enumerate}
-    \item Read the text input and load it into Python as a \texttt{Pair}
-    \item In each Scheme list, evaluate the operator (figure out if it's a +, car, etc.)
-    \item Recursively evaluate the operands (i.e. parameters) of the operation
-    \item Apply the operator to the operands and return the result
+    \item Reading: Parse the text input and load it into Python as a \texttt{Pair}
+    \item Evaluation: In each Scheme list, evaluate the operator (figure out if it's a +, car, special form, etc.)
+    \item Eval/apply Recursion: Recursively evaluate the operands (i.e. parameters) of the operation
+    \item Application: Apply the operator to the operands and return the result
 \end{enumerate}
 
 One of the challenges of designing interpreters is to represent the input in a way that the interpreter's language can understand.
-For example, since our Scheme interpreter is written in Python, we need to convert Scheme tokens to a Python representation.
+For example, since our Scheme interpreter is written in Python, we need to convert Scheme tokens into a Python representation, which we often call parsing.
 To achieve this, we will use the \texttt{Pair} object, which is essentially a Linked List that takes in \texttt{nil} instead of \texttt{Link.empty}.
+One other tricky feature in the structure of this interpreter is the fact that evaluation and application can be mutually recursive. In applying a part of code, further evaluation will be needed and vice versa.
 
 As an example, \texttt{(list 1 2 3)} in Scheme can be converted to \texttt{Pair('list', Pair(1, Pair(2, Pair(3, nil))))}.
 This conversion is done in the Read step of the Read-Eval-Print loop. Note that nothing is evaluated in the Read step yet- everything is treated as just another token.
