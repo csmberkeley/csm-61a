@@ -61,6 +61,15 @@
 )
 \end{lstlisting}
 \end{solution}
+\begin{meta}
+    Creating tail-recursive functions may initially be tricky for students, so I would try and organize your approach into a few steps
+    \begin{enumerate}
+      \item What variables do you need to keep track of in the helper function that are not present in the outer function. You will almost always need an additional parameter in the helper function to keep track of your progress, in this case, \lstinline{sofar}, which keeps track of the sum of all of the numbers
+      \item What is our base case? In this case we know we want to look at all of the elements \lstinline{lst}, so once we are done we return our stored sum, \lstinline{sofar}
+      \item How are we updating our result as we go on? Are we adding to a list, keeping track of a number? In this case we are keeping a running sum with each \lstinline{(car lst)}
+      \item What should we initialize our helper function with? In this case our sum starts at 0, so \lstinline{sofar} is initialized to 0 in the first helper function call
+    \end{enumerate}
+\end{meta}
 \end{blocksection}
 \begin{blocksection}
 \part As we increase the length of \lstinline{lst}, how does the total amount of space used by our optimized version of \lstinline{sum-list} change? Why? 
