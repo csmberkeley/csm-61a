@@ -9,22 +9,28 @@
   )
 )
 \end{lstlisting}
-
-\vspace{2\baselineskip}
-
-Why is sum-list not a tail call? Optional: draw out the environment diagram of this sum-list with list: (1 2 3
-). When do you add 2 and 3?
-
-\begin{solution}[0.5in]
-Sum list is not the last call we make, it's actually the other addition which we do after we evaluate sum-list.
-Sum list is not the last expression we evaluate.
-\end{solution}
 \end{blocksection}
-
-\newpage
-
+\begin{parts}
+  \begin{blocksection}
+  \part What are all of expressions of \lstinline{sum-list} that are in tail contexts? (Hint: there are three.) Is the call to \lstinline{sum-list} tail recursive?  
+  \begin{solution}[1.5in]
+  The tail context expressions are: 
+  \begin{itemize}
+    \item The entire \lstinline{if} expression is in a tail context because it is the last operand of the body of a function. 
+    \item The \lstinline{0} is in a tail context because it is the second operand of a tail-context \lstinline{if} expression. 
+    \item The expression \lstinline{(+ (car lst) (sum-list (cdr lst)))} is in a tail context because it is the third operand of a tail-context \lstinline{if} expression. 
+  \end{itemize}
+  The call to \lstinline{sum-list} is not tail recursive because it is not in a tail context. On a more conceptual level, it is not the last expression we evaluate; after the recursive call returns, we still have to perform the addition operation. 
+  \end{solution}
+\end{blocksection}
 \begin{blocksection}
-\question Rewrite sum-list in a tail recursive context.
+  \part As we increase the length of \lstinline{lst}, how does the total amount of space used by \lstinline{sum-list} change? Why? 
+  \begin{solution}[1.5in]
+    Space usage increases linearly with the length of \lstinline{lst}. The recursive call to \lstinline{sum-list} is not in a tail context, so Scheme is not able to optimize it. That means that each time \lstinline{sum-list} is recursively called, another active frame is opened, taking up more space. 
+    \end{solution}
+  \end{blocksection}
+\begin{blocksection}
+\part Rewrite \lstinline{sum-list} to be tail recursive.
 
 \begin{lstlisting}
 (define (sum-list-tail lst)
@@ -55,5 +61,11 @@ Sum list is not the last expression we evaluate.
 )
 \end{lstlisting}
 \end{solution}
-
 \end{blocksection}
+\begin{blocksection}
+\part As we increase the length of \lstinline{lst}, how does the total amount of space used by our optimized version of \lstinline{sum-list} change? Why? 
+\begin{solution}[0.8in]
+  Space usage is constant due to tail call optimization. 
+  \end{solution}
+\end{blocksection}
+\end{parts}

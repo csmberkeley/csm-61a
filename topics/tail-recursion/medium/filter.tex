@@ -1,11 +1,10 @@
 \begin{blocksection}
 
-\question Implement \texttt{filter-lst}, which takes in a one-argument function \texttt{f} and
-a list \texttt{lst}, and returns a new list containing only the elements in \texttt{lst}
-for which \texttt{f} returns true. Your function must be tail recursive.
-\newline
-You may wish to use the built-in append function, which takes in two lists and returns a
-new list containing the elements of the first list followed by the elements of the second.
+\question Implement \lstinline{filter-lst}, which takes in a one-argument function \lstinline{f} and
+a list \lstinline{lst}, and returns a new list containing only the elements in \texttt{lst}
+for which \texttt{f} returns true. Your function must use a constant number of active frames.
+
+\textit{Hint: recall that the built-in \lstinline{append} procedure concatenates two lists together. }
 
 \begin{lstlisting}
 ;Doctests
@@ -44,6 +43,7 @@ scm> (filter-lst (lambda (x) (> x 2)) '(1 2 3 4 5))
 \begin{blocksection}
 \textbf{Teaching Tips}
   \begin{itemize}
+    \item What does a constant number of active frames mean? (It means use tail recursion.) Make sure your students get this before they start writing the problem. 
     \item Again, we use a helper function to store the variable that we want to return
     \item Note that f is not a necessary argument for the helper function because it does not change between calls
     \item In this case, we use \lstinline{so-far} to keep track of which elements pass our filter

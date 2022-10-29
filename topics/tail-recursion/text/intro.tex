@@ -1,10 +1,52 @@
-\textbf{Tail Recursion Overview }
+Recursion has an efficiency problem. Consider the factorial function. In order to calculate \lstinline{factorial(6)}, we have to call \lstinline{factorial(5)}, \lstinline{factorial(4)}, ..., \lstinline{factorial(0)}. In all, 7 frames are opened to calculate this one value. Now what if we tried \texttt{factorial(1000000)}? 1,000,001 frames would be opened, and our computer would surely crash. 
 
-Often, when we write recursive functions, they can take up a lot of space by opening a bunch of frames. Think about \texttt{factorial(6)}. In order to solve it, we will have to open 6 frames. Now what if we tried \texttt{factorial(1000000)}? To avoid opening 1,000,000 frames, we can use a method called \textbf{tail recursion}. In tail call optimized languages, like Scheme (but not Python), tail recursive functions only use a \textbf{constant} amount of space. The key to defining a tail recursive function is to make sure no further calculations are done after the recursive call, so that none of the values in the current frame have to be saved. If we don’t have to save any values in the current frame, we can close it as we make the next recursive call, ensuring that we only have one frame open. 
+There must be a better way. In languages such as Python, baked-in iterative tools like \lstinline{for} and \lstinline{while} loops allow us to complete large repetitive tasks with a small amount of computer resources. In Scheme, which lacks native support for iteration, are we doomed to inefficiency?
 
-In order to identify whether a function is tail recursive, first find the recursive call in your function. Then, check whether you return the exact result of your recursive call, or if you do work on the result. If you simply return the result of your recursive call, then your function is tail recursive! However, if you do additional work to the result of your recursive call, then it is not tail recursive. Additional work could be adding one to the result of your recursive call and returning the new value, or appending it to a list and returning the resulting list.
+No. Because Scheme implements a feature called \textbf{tail recursion optimization}, certain kinds of recursive functions can be computed in constant space, just like a Python \lstinline{while} loop. These ``tail-recursive'' functions are simply recursive functions where the \textit{very last} thing we do during execution is return the recursive call: 
 
-The general way we convert a recursive function to a tail recursive one is to move the calculation outside the recursive call into one of the recursive call arguments to accumulate the results. However, this is not always possible if our function doesn’t have an argument that accumulates the results, so we may have to create a helper function with an accumulating argument and have the helper be a tail recursive function.
+\begin{minipage}[t]{0.5\textwidth}
+  \begin{lstlisting}
+(define (fact n)
+  (if (= n 0) 
+    1
+    (* n (fact (- n 1)))))
+  \end{lstlisting}
+  \end{minipage}
+  \begin{minipage}[t]{0.5\textwidth}
+  \begin{lstlisting}
+(define (fact-tail n)
+  (define (fact-help product n)
+    (if (= n 0)
+      product
+      (fact-help (* n product) (- n 1))))
+  (fact-help 1 n))
+  \end{lstlisting}
+  \end{minipage}
+
+The implementation of \lstinline{fact-tail} on the right is tail-recursive; when we make a recursive call, it is the last thing we do in the function's execution. The implementation on the left is not tail recursive; after the recursive call to \lstinline{fact} returns, we have to still multiply it by \lstinline{n}. That multiplication, not the recursive call, is the last thing we do in the function's execution. 
+
+Let's break \lstinline{fact} down some more. In order to determine the value of \lstinline{fact(6)}, we have to pause and save the current frame to calculate the value of \lstinline{fact(5)} and then resume execution to multiply by 6 and get our final answer. However, if we define a tail-recursive function in which no further calculations are done after the recursive call, none of the values in the current frame have to be saved. So we can close the current as we make the next recursive call, ensuring that we only have one frame open at any time. This is the mechanism behind tail recursion. 
+
+Generally, it's best to think about tail recursion in this conceptual manner. However, there are formal rules for determining whether recursive calls can be optimized: 
+
+We can optimize recursive calls that are in a tail context. In Python, which does not optimize tail calls, the tail contexts are the return statements. In Scheme, a tail context is recursively defined as the last line (return value) of a function or 
+\begin{itemize}
+\item the second or third operand in a tail context \lstinline{if} expression
+\item any of the non-predicate sub-expressions in a tail context \lstinline{cond} expression (i.e. the second expression of each clause)
+\item the last operand in a tail context \lstinline{and} or \lstinline{or} expression
+\item the last operand in a tail context \lstinline{begin} expression's body
+\item the last operand in a tail context \lstinline{let} expression's body
+\end{itemize}
+
+\begin{meta}
+  Some analogies I like to use:
+  \begin{itemize}
+    \item Does the current frame have to ``wait'' on the recursive call? Or once it has handed the buck to the recursive call, is there nothing left for it to do? 
+    \item Don't overthink tail contexts. They're basically just the return statements of Scheme. Think about where you would see a return statement in Python; those are where your tail contexts are in Scheme. 
+  \end{itemize}
+  \end{meta}
+
+As hinted at in the factorial example, the general way to convert a recursive function to a tail recursive one is to move the calculation from outside the recursive call to one of the recursive call arguments and thereby accumulate the result. This frequently requires the creation of a tail-recursive helper. 
 
 \begin{guide}
 \begin{blocksection}
@@ -12,8 +54,6 @@ The general way we convert a recursive function to a tail recursive one is to mo
   \begin{itemize}
     \item Note that Python is not tail-call-optimized, but Scheme is!
     \item Super useful resource on tail recursion: albertwu.org/cs61a/review/tail/basic.html
-    \item I highly recommend covering Questions 2 and 3 on this link in your introduction.
-    \item Question 2 is especially good if students want a list of tail contexts.
     \item If students want more practice on tail recursion problems, feel free to try some more with them: albertwu.org/cs61a/review/tail/exam.html
   \end{itemize}
 \end{blocksection}

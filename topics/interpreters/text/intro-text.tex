@@ -1,19 +1,33 @@
-\textbf{Interpreters Overview} 
-
-An \textbf{interpreter} is essentially a program that understands and processes other programs. Often this involves supporting abstraction in some capacity with the binding of names to values and the definiton of new operations (i.e. functions).
-
-The interpreter design we will be covering in 61A is the \textbf{Read-Eval-Print Loop}, which consists of the following steps:
+An \textbf{interpreter} is a computer program that understands, processes, and executes other programs. The Scheme interpreter we will cover in CS 61A is built around the \textbf{Read-Eval-Print Loop}, which consists of the following steps:
 \begin{enumerate}
-    \item Reading: Parse the text input and load it into Python as a \texttt{Pair}
-    \item Evaluation: In each Scheme list, evaluate the operator (figure out if it's a +, car, special form, etc.)
-    \item Eval/apply Recursion: Recursively evaluate the operands (i.e. parameters) of the operation
-    \item Application: Apply the operator to the operands and return the result
+    \item \textbf{Read} the raw input and parse it into a data structure we can easily handle. 
+    \item \textbf{Evaluate} the parsed expression. 
+    \item \textbf{Print} the result to output. 
 \end{enumerate}
 
 One of the challenges of designing interpreters is to represent the input in a way that the interpreter's language can understand.
-For example, since our Scheme interpreter is written in Python, we need to convert Scheme tokens into a Python representation, which we often call parsing.
-To achieve this, we will use the \texttt{Pair} object, which is essentially a Linked List that takes in \texttt{nil} instead of \texttt{Link.empty}.
-One other tricky feature in the structure of this interpreter is the fact that evaluation and application can be mutually recursive. In applying a part of code, further evaluation will be needed and vice versa.
+For example, since our Scheme interpreter is written in Python, we need to parse Scheme tokens into a usaable Python representation.
+To achieve this, we will represent Scheme lists with the \texttt{Pair} class, which is essentially a linked list that uses \texttt{nil} instead of \texttt{Link.empty}.
 
-As an example, \texttt{(list 1 2 3)} in Scheme can be converted to \texttt{Pair('list', Pair(1, Pair(2, Pair(3, nil))))}.
-This conversion is done in the Read step of the Read-Eval-Print loop. Note that nothing is evaluated in the Read step yet- everything is treated as just another token.
+Once we have parsed our input, we evaluate the expression by calling \lstinline{scheme_eval} on it. If it's a procedure call, we recursively call \lstinline{scheme_eval} on the operator and the operands. Then we return the result of calling \lstinline{scheme_apply} on the evaluated operator and operands, which computes the procedure call. If it's a special form, the relevant evaluation rules are followed in a similar matter.
+
+For example, when we provide \lstinline{(+ 1 (+ 2 3))} as input to the interpreter, the following happen: 
+\begin{itemize}
+    \item \lstinline{(+ 1 (+ 2 3))} is parsed to \lstinline{Pair('+', Pair(1, Pair(Pair('+', Pair(2, Pair(3, nil))), nil)))}
+    \item The interpreter recognizes this is a procedure call. 
+    \item \lstinline{scheme_eval} is called on the operator, \lstinline{'+'}, and returns the addition procedure.
+    \item \lstinline{scheme_eval} is called on the operand \lstinline{1} and returns \lstinline{1}. 
+    \item \lstinline{scheme_eval} is called on the operand \lstinline{Pair('+', Pair(2, Pair(3, nil)))}. 
+    \begin{itemize}
+        \item The interpreter recognizes this is a procedure call. 
+        \item \lstinline{scheme_eval} is called on the operator, \lstinline{'+'}, and returns the addition procedure.
+        \item \lstinline{scheme_eval} is called on the operand \lstinline{2} and returns \lstinline{2}. 
+        \item \lstinline{scheme_eval} is called on the operand \lstinline{3} and returns \lstinline{3}. 
+        \item \lstinline{scheme_apply} is called on the evaluated procedure and parameters (\lstinline{Pair(2, Pair(3, nil))}) and returns \lstinline{5}. 
+    \end{itemize}
+    \item \lstinline{scheme_apply} is called on the evaluated procedure and parameters (\lstinline{Pair(1, Pair(5, nil))}) and returns \lstinline{6}. 
+    \item \lstinline{6} is printed to output. 
+\end{itemize}
+\begin{meta}
+Everything in Scheme is lists!!!! 
+\end{meta}

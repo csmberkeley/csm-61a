@@ -1,7 +1,10 @@
+\question Slice and Dice
+
+\begin{parts}
 \begin{blocksection}
 
-\question Implement \texttt{slice}, which takes in a a list \texttt{lst}, a starting index \texttt{i}, and an ending index \texttt{j},
-and returns a new list containing the elements of \texttt{lst} from index \texttt{i} to \texttt{j - 1}.
+\part Implement \lstinline{slice}, which takes in a list \lstinline{lst}, a starting index \lstinline{i}, and an ending index \lstinline{j},
+and returns a new list containing the elements of \lstinline{lst} from index \lstinline{i} to \lstinline{j - 1}. 
 
 \begin{lstlisting}
 ;Doctests
@@ -51,10 +54,7 @@ scm> (slice '(0 1 2 3 4) 3 1)
 
 \begin{blocksection}
 
-\question Now implement slice with the same specifications, but make you implementation tail recurisve.
-\newline
-You may wish to use the built-in append function, which takes in two lists and returns a 
-new list containing the elements of the two lists concatenated together.
+\part Now implement \lstinline{slice} tail recursively!
 
 \begin{lstlisting}
 (define (slice lst i j)
@@ -95,7 +95,7 @@ Alternate Solution:
 \end{solution}
 
 \end{blocksection}
-
+\end{parts}
 
 \begin{blocksection}
 \begin{guide}
