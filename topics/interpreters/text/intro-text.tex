@@ -6,8 +6,14 @@ An \textbf{interpreter} is a computer program that understands, processes, and e
 \end{enumerate}
 
 One of the challenges of designing interpreters is to represent the input in a way that the interpreter's language can understand.
-For example, since our Scheme interpreter is written in Python, we need to parse Scheme tokens into a usaable Python representation.
-To achieve this, we will represent Scheme lists with the \texttt{Pair} class, which is essentially a linked list that uses \texttt{nil} instead of \texttt{Link.empty}.
+For example, since our Scheme interpreter is written in Python, we need to parse Scheme tokens into a usable Python representation.
+To achieve this, we will represent Scheme lists with the \lstinline{Pair} class, which is very similar in structure to linked lists.
+
+A \lstinline{Pair} has two instance attributes, \lstinline{first}, similar to Link.first and \lstinline{second}, Link.rest.
+
+It is important to recall that every Scheme expression is represented as a Scheme list, which allows us to break down any expression and store it as a Pair.
+
+For example if the Scheme expression \lstinline{(+ 1 2)} would be tokenized into \lstinline{'(', '+', '1', '2', ')'} and then organized into a Pair instance as \lstinline{(Pair('+', Pair(1, Pair(2, nil))))}. 
 
 Once we have parsed our input, we evaluate the expression by calling \lstinline{scheme_eval} on it. If it's a procedure call, we recursively call \lstinline{scheme_eval} on the operator and the operands. Then we return the result of calling \lstinline{scheme_apply} on the evaluated operator and operands, which computes the procedure call. If it's a special form, the relevant evaluation rules are followed in a similar matter.
 
