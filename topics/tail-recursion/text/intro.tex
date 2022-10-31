@@ -38,22 +38,20 @@ We can optimize recursive calls that are in a tail context. In Python, which doe
 \item the last operand in a tail context \lstinline{let} expression's body
 \end{itemize}
 
-\begin{meta}
+As hinted at in the factorial example, the general way to convert a recursive function to a tail recursive one is to move the calculation from outside the recursive call to one of the recursive call arguments and thereby accumulate the result. This frequently requires the creation of a tail-recursive helper. 
+
+\begin{guide}
+\begin{blocksection}
   Some analogies I like to use:
   \begin{itemize}
     \item Does the current frame have to ``wait'' on the recursive call? Or once it has handed the buck to the recursive call, is there nothing left for it to do? 
     \item Don't overthink tail contexts. They're basically just the return statements of Scheme. Think about where you would see a return statement in Python; those are where your tail contexts are in Scheme. 
   \end{itemize}
-  \end{meta}
 
-As hinted at in the factorial example, the general way to convert a recursive function to a tail recursive one is to move the calculation from outside the recursive call to one of the recursive call arguments and thereby accumulate the result. This frequently requires the creation of a tail-recursive helper. 
-
-\begin{guide}
-\begin{blocksection}
 \textbf{Teaching Tips}
   \begin{itemize}
     \item Note that Python is not tail-call-optimized, but Scheme is!
-    \item Super useful resource on tail recursion: albertwu.org/cs61a/review/tail/basic.html
+    \item Super useful resource on tail recursion: \url{albertwu.org/cs61a/review/tail/basic.html}
     \item If students want more practice on tail recursion problems, feel free to try some more with them: albertwu.org/cs61a/review/tail/exam.html
   \end{itemize}
 \end{blocksection}
