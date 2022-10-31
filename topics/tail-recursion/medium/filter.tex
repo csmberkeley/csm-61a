@@ -42,7 +42,8 @@ scm> (filter-lst (lambda (x) (> x 2)) '(1 2 3 4 5))
 \begin{guide}
 \begin{blocksection}
 \textbf{Teaching Tips}
-  Recall that normal recursion uses many frames, so when this function requires a constant number of active frames, it is referring to tail recursion. Ensure that your students know this before approaching the problem.
+
+  Recall that normal recursion uses many frames, so when this function says it requires a constant number of active frames, it is referring to tail recursion. Ensure that your students know this before approaching the problem.
 
   When explaining this problem I would once again use a general formula to approaching tail-recursive problems and apply it to this problem
   \begin{enumerate}
@@ -50,7 +51,6 @@ scm> (filter-lst (lambda (x) (> x 2)) '(1 2 3 4 5))
     \item What is our base case? In this case we know we want to look at all of the elements \lstinline{lst}, so once we are done we return our stored list, \lstinline{sofar}
     \item How are we updating our result as we go on? Are we adding to a list, keeping track of a number? In this case we are adding to a list \lstinline{sofar}, so we are only adding an element to \lstinline{sofar} in our recursive call if it satisfies \lstinline{f}, otherwise we are going to call our function to move onto the next element without appending anything to \lstinline{sofar}
     \item What should we initialize our helper function with? In this case we are returning a list, so \lstinline{sofar} is initialized to an empty list in the first helper function call
-    
   \end{enumerate}
 \end{blocksection}
 \end{guide}
