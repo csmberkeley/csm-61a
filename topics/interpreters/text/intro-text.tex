@@ -7,13 +7,12 @@ An \textbf{interpreter} is a computer program that understands, processes, and e
 
 One of the challenges of designing interpreters is to represent the input in a way that the interpreter's language can understand.
 For example, since our Scheme interpreter is written in Python, we need to parse Scheme tokens into a usable Python representation.
-To achieve this, we will represent Scheme lists with the \lstinline{Pair} class, which is very similar in structure to linked lists.
+Conveniently, every Scheme call expression and special form is represented in Scheme as a linked list. 
+Therefore, we will represent Scheme lists with the \lstinline{Pair} class, which is a type of linked list. 
 
-A \lstinline{Pair} has two instance attributes, \lstinline{first}, similar to Link.first and \lstinline{second}, Link.rest.
+Just like \lstinline{Link}, a \lstinline{Pair} instance has two attributes, \lstinline{first} and \lstinline{second}, which contain the first element and rest of the linked list, respectively. Instead of using \lstinline{Link.empty} to represent an empty list, \lstinline{Pair} uses \lstinline{nil}.
 
-It is important to recall that every Scheme expression is represented as a Scheme list, which allows us to break down any expression and store it as a Pair.
-
-For example if the Scheme expression \lstinline{(+ 1 2)} would be tokenized into \lstinline{'(', '+', '1', '2', ')'} and then organized into a Pair instance as \lstinline{(Pair('+', Pair(1, Pair(2, nil))))}. 
+For example, during the read step, the Scheme expression \lstinline{(+ 1 2)} would be \textbf{tokenized} into \lstinline{'(', '+', '1', '2', ')'} and then organized into a \lstinline{Pair} instance as \lstinline{(Pair('+', Pair(1, Pair(2, nil))))}. 
 
 Once we have parsed our input, we evaluate the expression by calling \lstinline{scheme_eval} on it. If it's a procedure call, we recursively call \lstinline{scheme_eval} on the operator and the operands. Then we return the result of calling \lstinline{scheme_apply} on the evaluated operator and operands, which computes the procedure call. If it's a special form, the relevant evaluation rules are followed in a similar matter.
 
@@ -34,6 +33,15 @@ For example, when we provide \lstinline{(+ 1 (+ 2 3))} as input to the interpret
     \item \lstinline{scheme_apply} is called on the evaluated procedure and parameters (\lstinline{Pair(1, Pair(5, nil))}) and returns \lstinline{6}. 
     \item \lstinline{6} is printed to output. 
 \end{itemize}
+
 \begin{meta}
-Everything in Scheme is lists!!!! 
+Explaining interpreters can be quite tricky. You will probably need to field a lot of student questions
+in order to ensure that they are understanding things. 
+
+Everything in Scheme is lists!!!! I think this is something tricky that a lot of students don't really understand. 
+Understanding this once and for all is what finally made Scheme make sense to me, but your mileage may
+vary. 
+
+Here are a feq questions that you probably want to be answered by your mini-lecture: 
+
 \end{meta}
