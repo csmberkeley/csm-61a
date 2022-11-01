@@ -1,0 +1,37 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{13}
+\title{\textsc{Programs as Data \& Macros}}
+\date{November 14--November 18, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Macros Intro - 10 minutes
+        \item \lstinline{macros-quasi} - 10 minutes
+        \item \lstinline{if-macro} - 15 minutes
+        \item \lstinline{apply-twice} - 15 minutes
+    \end{itemize}
+\end{blocksection}
+\newpage
+\end{guide}
+
+\section{Macros}
+\subimport {../../topics/macros/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/medium/}{if-macro.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
+\end{questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
