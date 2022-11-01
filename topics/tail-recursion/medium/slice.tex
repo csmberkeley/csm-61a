@@ -1,7 +1,10 @@
+\question Slice and Dice
+
+\begin{parts}
 \begin{blocksection}
 
-\question Implement \texttt{slice}, which takes in a a list \texttt{lst}, a starting index \texttt{i}, and an ending index \texttt{j},
-and returns a new list containing the elements of \texttt{lst} from index \texttt{i} to \texttt{j - 1}.
+\part Implement \lstinline{slice}, which takes in a list \lstinline{lst}, a starting index \lstinline{i}, and an ending index \lstinline{j},
+and returns a new list containing the elements of \lstinline{lst} from index \lstinline{i} to \lstinline{j - 1}. 
 
 \begin{lstlisting}
 ;Doctests
@@ -41,9 +44,9 @@ scm> (slice '(0 1 2 3 4) 3 1)
 \begin{guide}
 \textbf{Teaching Tips}
 \begin{itemize}
-	\item Begin by exploring base cases. Ask them to consider the case where i $\geq$ j.
+	\item Begin by exploring base cases. Ask them to consider the case where $i \geq j$.
 	\item Consider how we would find a single element instead of a slice.
-	\item Ask them about the significance of i=0 and j=0.
+	\item Ask them about the significance of $i=0$ and $j=0$.
 \end{itemize}
 \end{guide}
 \end{blocksection}
@@ -51,10 +54,7 @@ scm> (slice '(0 1 2 3 4) 3 1)
 
 \begin{blocksection}
 
-\question Now implement slice with the same specifications, but make you implementation tail recurisve.
-\newline
-You may wish to use the built-in append function, which takes in two lists and returns a 
-new list containing the elements of the two lists concatenated together.
+\part Now implement \lstinline{slice} tail recursively!
 
 \begin{lstlisting}
 (define (slice lst i j)
@@ -95,10 +95,17 @@ Alternate Solution:
 \end{solution}
 
 \end{blocksection}
-
+\end{parts}
 
 \begin{blocksection}
 \begin{guide}
+The purpose of this problem is to show the different considerations that go into non-tail-recursive
+and tail-recursive procedure design. This develops the critical reasoning skills that can help
+them design tail-recursive functions in the future. 
+
+We expect this problem to take a very long time. If you are strapped for time, you may skip straight to the second
+half of the problem and simply give your students the solution to the first half (by perhaps writing it on the board). 
+
 \textbf{Teaching Tips}
 \begin{itemize}
 	\item Walk through why the previous solution was not tail recursive.

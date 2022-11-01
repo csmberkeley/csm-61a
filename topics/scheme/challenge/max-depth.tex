@@ -1,4 +1,4 @@
-\begin{blocksection}
+% \begin{blocksection}
 \question Finish the functions \lstinline{max} and \lstinline{max-depth}. \lstinline{max} takes in two numbers and returns the larger. Function \lstinline{max-depth} takes in a list \lstinline{lst} and returns the maximum depth of the list. In a nested scheme list, we define the depth as the number of scheme lists a sublist is nested within. A scheme list with no nested lists has a \lstinline{max-depth} of 0. 
 
 \begin{lstlisting}
@@ -18,18 +18,19 @@ scm> (max-depth '(0 (1 (2 (3 (4) 5) 6) 7))
     (define (helper lst curr)
         (cond 
             ((__________) ________________________)
+
             ((__________) (max ______________________________
+
                             ________________________________))
+
             (else (helper ________________________))
         )
     )
     (____________________________)
 )
 \end{lstlisting}
-\end{blocksection}
 
-\begin{blocksection}
-\begin{solution}
+\begin{solution}[0in]
 \begin{lstlisting}
 (define (max x y) (if (> x y) x y))
 
@@ -45,13 +46,10 @@ scm> (max-depth '(0 (1 (2 (3 (4) 5) 6) 7))
       )
     (helper lst 0)
 )
-
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
-
-\begin{blocksection}
-\begin{guide}
+% \end{blocksection}
+\begin{questionmeta}
 \textbf{Teaching Tips}
 \begin{itemize}
 	\item Think about how the two functions can be used together. What should you be comparing with max? What can max-depth do to get you those comparable values?
@@ -59,5 +57,4 @@ scm> (max-depth '(0 (1 (2 (3 (4) 5) 6) 7))
 	\item Again encourage students to think about how they would go about solving this problem without starter code. Consider which base case(s) will be necessary when they are working with lists and keep in mind the possible methods of iteration on a list (cdr, cddr, etc.).
 	\item Think about how the pair? check can be useful in this problem!
 \end{itemize}
-\end{guide}
-\end{blocksection}
+\end{questionmeta}

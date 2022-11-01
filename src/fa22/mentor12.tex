@@ -1,0 +1,82 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{12}
+\title{Tail Recursion \& Interpreters}
+\date{November 7--November 11, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta}
+    Interpreters and tail recursion are the most brutal topics in CS 61A.
+    Students are typically very confused by the content, and mentors find them difficult to
+    teach as well. You probably will not be able to get through as many problems this
+    week as you usually do, and that's OK. Go at the requisite pace so that students
+    can properly follow what you're teaching. It's likely that they'll leave your 
+    section still feeling uneasy, which is to be expected given the difficulty
+    of these topics. Just know that they will have much more time and practice with
+    interpreters and tail recursion, so you don't have to get them to the finish line.
+    You will make a difference, and in my book, that's amazing. 
+
+    As usual, there are many more problems on this worksheet than any reasonable mentor
+    could cover in section. Please treat the worksheet as a problem bank around which
+    you can structure your section to best meet the needs of you students. 
+
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Tail Recursion Mini Lecture: 10 minutes
+        \item Q1 (Sum List): 14 minutes
+        \item Q2 (Filter List): 10 minutes
+        \item Q3 (Slice and Dice): 20 minutes
+        \item Interpreters Mini Lecture: 12 minutes
+        \item Q1 (Intro): 14 minutes
+        \item Q2 (Eval Apply): 10 minutes
+        \item Q3 (Hack Pi): 20 minutes
+        \item Q4 (Scheme Challenge): 20 minutes
+s    \end{itemize}
+\newpage
+\end{meta}
+
+\section{Tail Recursion}
+\subimport{../../topics/tail-recursion/text/}{intro.tex}
+\vspace{1in}
+\begin{questions}
+    \subimport{../../topics/tail-recursion/medium/}{sum-list.tex}
+    \subimport{../../topics/tail-recursion/medium/}{filter.tex}
+    \subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\end{questions}
+
+\section{Interpreters}
+\subimport{../../topics/interpreters/text/}{intro-text.tex}
+\begin{questions}
+    \subimport{../../topics/interpreters/easy/}{intro.tex}
+
+    \begin{meta}
+        You will have likely gone through a lot of this stuff in your mini-lecture, so you
+        can either gloss over/skip this, or incorporate it into your instruction (i.e. go
+        over it together).
+    \end{meta}
+
+    \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+
+    \begin{questionmeta}
+        This problem and the one that follow are very similar, so you probably do not have to 
+        do both of them if you are strapped for time. In fact, you should probably just do as many of these
+        ``count the number of times \lstinline{scheme_eval} is called'' problems as your students need
+        to understand what is going on. 
+    \end{questionmeta}
+    
+    \subimport{../../topics/interpreters/medium/}{hack-pi.tex}
+\end{questions}
+
+\section{Scheme Challenge}
+\begin{questions}
+\subimport{../../topics/scheme/challenge/}{max-depth.tex}
+\end{questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
