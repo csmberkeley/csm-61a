@@ -14,11 +14,12 @@ This process requires us to store expressions themselves, not their outputs -- b
 
 \begin{enumerate}[1.]
 \item Evaluate the operator
-\item Evaluate the body of the macro procedure without evaluating the operands
-\item Evaluate the expression produced by the body and return the result.
+\item Apply the macro procedure (read: body) to the \textit{unevaluated} operands
+\item Evaluate the expression produced by the macro procedure (read: body) in the same frame it was called in and return the result.
 \end{enumerate}
 
-Because the body is evaluated without evaluating the operands at first, macros are powerful and allow us to do more than scheme procedures, like implementing new special forms, control the order of evaluation, and more. 
+This may look overwhelming at first, but just note that the key difference between macro procedures and regular procedures is that the expressions taken as input aren't evaluated before running the body of the macro procedure.
+Because the body is evaluated without evaluating the operands at first, macros allow us to implement new special forms, control the order of evaluation, and more. 
 
 Below is a simple example of a macro. Note that even though we pass in \texttt{(print 'hello)} as an operands, we don't evaluate the expression and print right away. Instead we first evaluate the body of the macro procedure, and afterwards we evaluate the expression produced by the macro. 
 \vspace{1cm}
