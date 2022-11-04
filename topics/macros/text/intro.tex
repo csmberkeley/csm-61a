@@ -29,6 +29,22 @@ The interpreter will then automaticaly call \texttt{eval} on this list of litera
 
 The \texttt{(quote expression)} special form, also denoted by a \textbf{\'}, simply returns \texttt{expression} - it does not evaluate it. 
 This means we can write a Scheme expression and have the expression remain as an expression; if an expression is a call expression or special form, this means the expression will remain a list. 
+Quotes return everything to the right of them unevaluated. Here are some brief examples:
+
+\begin{lstlisting}
+scm> '(+ 3 4)
+(+ 3 4)
+\end{lstlisting}
+\begin{lstlisting}
+scm> (+ 3 4)'
+7
+\end{lstlisting}
+\begin{lstlisting}
+scm> (* 3 3)'(* 3 3)
+9
+(* 3 3)
+\end{lstlisting}
+Quote wisely! If you throw a quote in the middle of an expression that's to be evaluated a specific way, say (+ 3 '4), you'll run into an operand error!
 
 The \texttt{(quasiquote expression)} special form, \textbf{\`}, has the same effect as \texttt{quote}, except that any expression within \texttt{expression} can be unquoted by preceding it with \texttt{,} or the \texttt{unquote} special form; any unquoted expression is evaluated, whereas everything else within \texttt{expression} is not, as normal. 
 As a way of equating quasiquote to Python, quasiquote acts as an f-string of sorts. Take the following Python expression, for example:
