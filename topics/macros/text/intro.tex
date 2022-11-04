@@ -2,6 +2,10 @@
 In order to ease into macros, it's important to understand the basic concepts of why macros exist and what functions they serve.
 Macros essentially function as a way of representing \textit{programs as data}.
 Up until now, all of our programs have taken data -- ints, strings, floats, and more -- and manipulated such data for the purposes of calculations, object manipulation, data structure creation, and more!
+
+\includegraphics{macro_black_box.png}
+\caption{Credit: Rachel de Jaen and Kevin Li, CS 61A Fall 22 Macros Guide}
+
 The purpose of macros is to take full, unevaluated expressions, and treat them as "variables" for which we can take their expression form and evaluate them within the "black box" of the macro, eventually outputting an expression that can be interpreted regularly.
 This process requires us to store expressions themselves, not their outputs -- be it primitive, a function, or more -- as data for which the macro can manipulate.
 
