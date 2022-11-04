@@ -1,0 +1,29 @@
+\textbf{Programs as Data} 
+In order to ease into macros, it's important to understand the basic concepts of why macros exist and what functions they serve.
+Macros essentially function as a way of representing \textit{programs as data}.
+Up until now, we've been 
+
+
+\begin{enumerate}[1.]
+\item Evaluate the operator
+\item Evaluate the body of the macro procedure without evaluating the operands
+\item Evaluate the expression produced by the body and return the result.
+\end{enumerate}
+
+Because the body is evaluated without evaluating the operands at first, macros are powerful and allow us to do more than scheme procedures, like implementing new special forms, control the order of evaluation, and more. 
+
+Below is a simple example of a macro. Note that even though we pass in \texttt{(print 'hello)} as an operands, we don't evaluate the expression and print right away. Instead we first evaluate the body of the macro procedure, and afterwards we evaluate the expression produced by the macro. 
+\vspace{1cm}
+\begin{lstlisting}
+(define-macro (twice expr)
+    (list 'begin expr expr)
+)
+
+scm> (twice (print 'hello))
+hello
+hello
+\end{lstlisting}
+
+When \texttt{twice} is called, it will first generate a Scheme list that looks like \texttt{(list 'begin '(print 'hello) '(print 'hello))} (the input is automatically quoted rather than evaluated).
+
+The interpreter will then automaticaly call \texttt{eval} on this list of literals to treat it as if you had just typed it into the interpreter directly. 

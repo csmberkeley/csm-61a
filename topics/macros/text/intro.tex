@@ -27,9 +27,35 @@ The interpreter will then automaticaly call \texttt{eval} on this list of litera
 \newpage
 \textbf{Quoting, Quasiquoting, Unquoting} All Scheme expressions are lists except for atomic expressions like numbers and symbols; so call expressions and special forms are lists too; Example: (+ 1 2)
 
-The \texttt{(quote expression)} special form, also denoted by a \textbf{\'}, simply returns \texttt{expression} - it does not evaluate it. This means we can write a Scheme expression and have the expression remain as an expression; if an expression is a call expression or special form, this means the expression will remain a list. 
+The \texttt{(quote expression)} special form, also denoted by a \textbf{\'}, simply returns \texttt{expression} - it does not evaluate it. 
+This means we can write a Scheme expression and have the expression remain as an expression; if an expression is a call expression or special form, this means the expression will remain a list. 
 
-The \texttt{(quasiquote expression)} special form, \textbf{\`}, has the same effect as \texttt{quote}, except that any expression within \texttt{expression} can be unquoted by preceding it with \texttt{,} or the \texttt{unquote} special form; any unquoted expression is evaluated, whereas everything else within \texttt{expression} is not, as normal. Quasiquote and unquote are often used in the body of macro procedures to selectively evaluate certain parts. 
+The \texttt{(quasiquote expression)} special form, \textbf{\`}, has the same effect as \texttt{quote}, except that any expression within \texttt{expression} can be unquoted by preceding it with \texttt{,} or the \texttt{unquote} special form; any unquoted expression is evaluated, whereas everything else within \texttt{expression} is not, as normal. 
+As a way of equating quasiquote to Python, quasiquote acts as an f-string of sorts. Take the following Python expression, for example:
+
+\begin{lstlisting}
+def cool_string(tens_digit, ones_digit, letter):
+    return f"My favorite course at Berkeley is {tens_digit}{ones_digit}{letter}"
+
+>>> cool_string(6, 1, "a")
+'My favorite course at Berkeley is 61a"
+\end{lstlisting}
+
+Its quasiquoted equivalent in Scheme would be:
+
+\begin{lstlisting}
+(define tens_digit 6)
+(define ones_digit 1)
+(define letter "a")
+
+scm> `(My favorite course at Berkeley is ,tens_digit ,ones_digit ,letter)
+(my favorite course at berkeley is 6 1 a)
+\end{lstlisting}
+
+Anything denoted with a , preceding it acts as variable in brackets as in the f-string.
+
+
+Quasiquote and unquote are often used in the body of macro procedures to selectively evaluate certain parts. 
 
 \texttt{(eval expression)} is a procedure that simply evaluates its argument. Note that since \texttt{eval} is a procedure, \texttt{expression} is evaluated first before applying \texttt{eval}.
 
