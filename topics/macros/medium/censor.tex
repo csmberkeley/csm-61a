@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question Write a macro procedure \lstinline{censor}, which takes in an expression \lstinline{expr} and a phrase \lstinline{phrase}. If \lstinline{expr} does not contain any instance of \lstinline{phrase}, then \lstinline{censor} simply evaluates \lstinline{expr}. However, if \lstinline{expr} does contain an instance of the censored phrase, the symbol \lstinline{censored} is returned and the expression is not evaluated. (You may assume the phrase is atomic.)
+
+\begin{lstlisting}
+;Doctests
+scm> (censor (list 1 24 3) 4)
+(1 24 3)
+scm> (censor (list 1 4 3) 4)
+censored
+scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) stanford)
+censored
+scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) tree)
+censored
+scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) ree)
+9
+
+(define-macro (censor expr phrase)
+    
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define-macro (censor expr phrase)
+    (define (contains-phrase expr)
+        (cond 
+            ((equal? expr phrase) #t)
+            ((or (not (list? expr)) (null? expr)) #f)
+            (else (or (contains-phrase (car expr)) (contains-phrase (cdr expr))))))
+    (if (contains-phrase expr)
+        ''censored
+        expr))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
