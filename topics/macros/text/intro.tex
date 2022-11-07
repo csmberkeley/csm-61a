@@ -119,7 +119,7 @@ In Scheme, a \textbf{macro} is similar to a procedure, but it operates on expres
 \item Evaluate the expression produced by the macro procedure in the same frame it was called in and return the result.
 \end{enumerate}
 
-This may sound overwhelming at first, but just remember that the key difference between macro procedures and regular procedures are that 1) in macros, operands are not evaluated and 2) after the body of the macro produces an expression, there is one more evaluation step.  
+This may sound overwhelming at first, but just remember that the key difference between macro procedures and regular procedures are that 1) in macros, operands are not evaluated and 2) after the body of the macro produces an expression, the expression is automatically evaluated one more time.  
 
 New macros are defined using the special form \lstinline{define-macro}. Below is an example of a macro \lstinline{twice} that evaluates a given expression twice. 
 
