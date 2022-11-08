@@ -1,0 +1,41 @@
+\begin{blocksection}
+\question Recall that in Scheme, all expressions are truthy except for the boolean \lstinline{#f}. In contrast, Python considers empty lists, \lstinline{None}, and \lstinline{0} falsey as well. Implement the macro \lstinline{python-if}, which acts just like the \lstinline{if} special form, but it treats empty lists, \lstinline{undefined}, \lstinline{0}, and \lstinline{#f} as falsey and all other values as truthy. 
+
+\begin{lstlisting}
+;Doctests
+scm> (python-if (- 1 1) (/ 1 0) 1)
+1
+scm> (python-if (not #t) (/ 1 0) 2)
+2
+scm> (python-if (cdr '(1)) (/ 1 0) 3)
+3
+scm> (python-if (print 4) (/ 1 0) 5)
+4
+5
+scm> (python-if (- 4 3) 6 (/ 1 0))
+6
+(define-macro (python-if pred if-true if-false)
+
+
+
+
+
+
+
+
+
+
+
+)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{lstlisting}
+(define-macro (python-if pred if-true if-false)
+    (let ((pred-val (eval pred)))
+         (if (or (not pred-val) (null? pred-val) (equal? 0 pred-val) (equal? undefined pred-val))
+            if-false
+            if-true)))
+\end{lstlisting}
+\end{solution}

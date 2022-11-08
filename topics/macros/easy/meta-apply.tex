@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question The built-in \lstinline{apply} procedure in Scheme applies a procedure to a given list of arguments. For example, \lstinline{(apply f '(1 2 3))} is equivalent to \lstinline{(f 1 2 3)}. Write a macro procedure \lstinline{meta-apply}, which is similar to \lstinline{apply}, except that it works not only for procedures, but also for macros and special forms. That is, \lstinline{(meta-apply operator (operand1 ... operandN))} should be equivalent to \lstinline{(operator operand1 ... operandN)} for any operator and operands. See doctests for examples. 
+
+\begin{lstlisting}
+; Doctests
+scm> (meta-apply print (1)) 
+1
+scm> (meta-apply or (#t (/ 1 0) #f))
+#t
+(define-macro (meta-apply operator operands)
+    
+
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define-macro (meta-apply operator operands)
+    (cons operator operands))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

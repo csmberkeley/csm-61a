@@ -1,0 +1,27 @@
+%Requires meta-apply
+\begin{blocksection}
+\question NAND (not and) is a logical operation that returns false if all of its operands are true, and true otherwise. That is, it returns the opposite of AND. Implement the \lstinline{nand} macro procedure below, which takes in a list of expressions and returns the NAND of their values. Similar to \lstinline{and}, \lstinline{nand} should short circuit and return true as soon as it encounters a false operand, evaluating from left to right. 
+
+Hint: You may use \lstinline{meta-apply} in your implementation. 
+
+\begin{lstlisting}
+;Doctests
+scm> (nand (#t #t #t #t #t #t))
+#f
+scm> (nand (#t #f #t))
+#t
+scm> (nand (#f (/ 1 0)))
+#t
+(define-macro (nand operands))
+
+
+)
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+(define-macro (nand operands)
+    `(not (meta-apply and ,operands)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
