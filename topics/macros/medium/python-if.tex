@@ -14,6 +14,7 @@ scm> (python-if (print 4) (/ 1 0) 5)
 5
 scm> (python-if (- 4 3) 6 (/ 1 0))
 6
+
 (define-macro (python-if pred if-true if-false)
 
 
@@ -39,3 +40,20 @@ scm> (python-if (- 4 3) 6 (/ 1 0))
             if-true)))
 \end{lstlisting}
 \end{solution}
+
+\begin{questionmeta}
+This is a relatively straightforward problem, so we offered no skeleton to encourage students to think through the design process a little bit more. If you students are having trouble, this is the logical process they would hopefully work through. 
+
+\begin{itemize}
+\item Evaluate the predicate. We really only want to evaluate the predicate once, so in this case, we use a \lstinline{let} expression to store it, but you could also use \lstinline{define} for the same purpose. 
+\item Determine if the value of the predicate is truthy or falsy. The predicate is falsy if it is 
+\begin{itemize}
+    \item \lstinline{#f},
+    \item \lstinline{nil},
+    \item \lstinline{0}, or
+    \item \lstinline{undefined}.
+\end{itemize}
+\end{itemize}
+
+There are a few tricky technical details here. For this problem, students should use \lstinline{equal?} or \lstinline{eq?} because \lstinline{=} only works with numbers (and we must be able to check if everything, not just numbers, is falsy). Students may also be unfamiliar with \lstinline{undefined}; you can just tell them it is like Python's \lstinline{None} and that it is returned by functions that don't evaluate to anything (like \lstinline{print}).  
+\end{questionmeta}

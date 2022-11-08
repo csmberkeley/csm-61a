@@ -43,8 +43,10 @@ scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) ree)
         expr))
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
 
 \begin{questionmeta}
-There are many, many ways to solve this problem, especially to complete the \lstinline{contains-phrase} helper procedure. 
-\end{questionmeta}
-\end{blocksection}
+    There are many, many ways to complete the \lstinline{contains-phrase} helper procedure, which is why no skeleton code was offered for that portion. Once the helper procedure is defined, the problem is relatively straightforward, except for the double quote on the censored. We expect that very few students will recognize the need for a double quote there, and that's ok. When they have questions about it, you should note that two quotes are needed because the return expression is evaluated once within the body of the macro and then again as it is returned. 
+    
+    The \lstinline{contains-phrase} helper procedure is a relatively straightforward recursive procedure. Note that it is a procedure, not a macro. If students are confused about how to approach the design of the procedure, you can help lead them toward the fact that \lstinline{expr} is just a bunch of nested lists, and they just need to determine if the \lstinline{phrase} is contained somewhere in those nested lists. 
+    \end{questionmeta}

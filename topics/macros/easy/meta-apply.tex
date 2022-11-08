@@ -3,8 +3,9 @@
 
 \begin{lstlisting}
 ; Doctests
-scm> (meta-apply print (1)) 
+scm> (meta-apply print (1 2)) 
 1
+2
 scm> (meta-apply or (#t (/ 1 0) #f))
 #t
 (define-macro (meta-apply operator operands)
@@ -20,3 +21,11 @@ scm> (meta-apply or (#t (/ 1 0) #f))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{questionmeta}
+This is supposed to be a relatively gentle introduction to the process of writing macros. Nothing much to see here. Though there may be some students who want to just write \lstinline{(operator operands)}. The issue with this, of course, is that it is treated as a call expression in the body of the macro, which causes an error. An alternate solution with quasiquote is also possible: 
+\begin{lstlisting}
+(define-macro (meta-apply operator operands)
+    `(,operator ,operands))
+\end{lstlisting}
+\end{questionmeta}
