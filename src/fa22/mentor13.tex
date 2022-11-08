@@ -12,18 +12,28 @@
 \maketitle
 \rule{\textwidth}{0.15em}
 
-\begin{guide}
+\begin{meta}
 \begin{blocksection}
     \textbf{Recommended Timeline}
     \begin{itemize}
         \item Macros Intro - 10 minutes
-        \item \lstinline{macros-quasi} - 10 minutes
-        \item \lstinline{and-odds} - 15 minutes
-        \item \lstinline{apply-twice} - 15 minutes
+        \item \lstinline{macros-quasi-wwsd} - 8 minutes
+        \item \lstinline{meta-apply} - 7 minutes
+        \item \lstinline{NAND} - 7 minutes
+        \item \lstinline{apply-twice} - 10 minutes
+        \item \lstinline{python-if} - 10 minutes
     \end{itemize}
 \end{blocksection}
-\newpage
-\end{guide}
+\end{meta}
+\begin{meta}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Before we jump into Macros, it is very important to ensure that your students understand quasiquotation.
+    \item Take your time with the quasiquotation WWSD and drawing parallels with Python's f-strings may make it easier for your students to understand 
+    \item Draw out box and pointer diagrams to show how the expressions in macros are being stored when the operands are unevaluated
+    \item If you would like a quick refresher on how to think about macros, please refer to this link! \href{https://docs.google.com/document/d/1JSbvtJ5bYUEhovDZd_gQnBvkG_WDcafmX-4B3QeIXZU/edit}{guide}
+\end{itemize}
+\end{meta}
 
 \section{Macros}
 \subimport{../../topics/macros/text/}{intro.tex}

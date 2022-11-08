@@ -14,20 +14,17 @@ hi
 undefined
 
 (define-macro (apply-twice call-expr)
+		_______________________
+)
 
-    `(let ((operator _______________________)
-
-            (operand  _______________________))
-
-            (___________________________________________)))
 \end{lstlisting}
 
 \begin{solution}[0.5in]
 \begin{lstlisting}
 (define-macro (apply-twice call-expr)
-    `(let ((operator ,(car call-expr))
-            (operand ,(car (cdr call-expr))))
-          (operator (operator operand))))
+  (list (car call-expr) call-expr)
+)
+
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -36,22 +33,10 @@ undefined
 \begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
-  \item Recall that the \lstinline{let} special form allows us to define temporary variables— in this case,
-    we have \lstinline{operator} and \lstinline{operand}
-  \item The order of evaluation of a macro can get extremely tricky- here is a brief overview:
-  \item When a macro is created, none of the body evaluated. (This is analogous to a
-  function body, where it is only evaluated when called.)
-  \item When we apply the macro on some inputs, the macro’s body is then evaluated.
-  \item Note that the macro’s input does not get evaluated before the macro is evaluated!
-  \item For example, a call on \lstinline{(apply-twice (add-one 1))} causes the \lstinline{(add-one 1)} list to be
-  parsed by \lstinline{apply-twice}.
-  \item This means that we create a list (because of the quasiquote
-  operator), and inside the list, we will need to unquote some things (ie. substitute some
-  values in)
-  \item Here, the values are the operator and the operand, both bound in the let
-  statement
-  \item When we bind this, it transforms the body into a "new body" that will cause a
-  function to be applied to its input.
+  \item The first question to ask your students would be, "What are the inputs to our function?" In this case, we are accepting a scheme list called call-expr containing an operator and an operand.
+  \item The second question to ask your students would be, "How should our function behave?" We want to apply the operator onto the result of applying the operator to the operand. So applying our function twice, so for an arbitrary function \lstinline{f}, and input \lstinline{x}, \lstinline{f(f(x))}
+  \item So how do we apply both of these. We create the list! The expression should have two elements, the first one being the operator of \lstinline{call-expr}, and the second being another list, with the operator and operand of \lstinline{call-expr}
+  \item if your students ask why this has to be a macro procedure, consider running through the function normally to see that you would have to initially evaluate the operands of the function, which wouldn't be particularly useful. For example if we had the call \lstinline{(apply-twice (add-one 3))} with a function \lstinline{add-one} that adds one to our input, we would simply pass in 4 into our function \lstinline{apply-twice} which isn't that helpful
 \end{itemize}
 
 \end{blocksection}
