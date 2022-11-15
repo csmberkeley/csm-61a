@@ -1,0 +1,52 @@
+\begin{blocksection}
+\question Write a macro procedure \lstinline{censor}, which takes in an expression \lstinline{expr} and a symbol \lstinline{phrase}. If \lstinline{expr} does not contain any instance of \lstinline{phrase}, then \lstinline{censor} simply evaluates \lstinline{expr}. However, if \lstinline{expr} does contain an instance of the censored phrase, the symbol \lstinline{censored} is returned and the expression is not evaluated.
+
+\begin{lstlisting}
+;Doctests
+scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) stanford)
+censored
+scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) tree)
+censored
+scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) ree)
+9
+
+(define-macro (censor expr phrase)
+    (define (contains-phrase expr)
+    
+    
+    
+    
+    
+
+
+
+
+    
+    )
+    (if ________________________________________
+
+        ________________________________________
+
+        ________________________________________))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define-macro (censor expr phrase)
+    (define (contains-phrase expr)
+        (cond 
+            ((equal? expr phrase) #t)
+            ((or (not (list? expr)) (null? expr)) #f)
+            (else (or (contains-phrase (car expr)) (contains-phrase (cdr expr))))))
+    (if (contains-phrase expr)
+        ''censored
+        expr))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+    There are many, many ways to complete the \lstinline{contains-phrase} helper procedure, which is why no skeleton code was offered for that portion. Once the helper procedure is defined, the problem is relatively straightforward, except for the double quote on the censored. We expect that very few students will recognize the need for a double quote there, and that's ok. When they have questions about it, you should note that two quotes are needed because the return expression is evaluated once within the body of the macro and then again as it is returned. 
+    
+    The \lstinline{contains-phrase} helper procedure is a relatively straightforward recursive procedure. Note that it is a procedure, not a macro. If students are confused about how to approach the design of the procedure, you can help lead them toward the fact that \lstinline{expr} is just a bunch of nested lists, and they just need to determine if the \lstinline{phrase} is contained somewhere in those nested lists. 
+    \end{questionmeta}

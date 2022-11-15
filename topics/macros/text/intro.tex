@@ -1,46 +1,137 @@
-\textbf{Macros Overview} Whereas normal Scheme evaluation entails evaluating the operator, then evaluating the operands, before finally applying the operator on operands, macros evaluation involves three steps:
+Up to now, all of our programs have taken data---integers, strings, numbers, lists, and more---and manipulated this data to accomplish a wide variety of tasks. What if computer code itself could serve as the data used and produced by programs? What if we could treat \textbf{programs as data}?
+
+We've already seen something similar when we built higher order functions. Functions can be thought of as ``bundles of code,'' and HOFs allowed us to treat this code as input and output to other functions. For example, the \lstinline{twice} function below takes in a zero-argument function \lstinline{f} and calls \lstinline{f} twice. 
+
+\begin{minipage}[t]{0.4\textwidth}
+\lstset{language=Python}
+\begin{lstlisting}
+def twice(f):
+    f()
+    f()
+
+>>> twice(lambda: print(5))
+5
+5
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.6\textwidth}
+\lstset{language=Scheme}
+\begin{lstlisting}
+(define (twice f)
+    (f)
+    (f))
+
+scm> (twice (lambda () (print 5)))
+5
+5
+\end{lstlisting}
+\end{minipage}
+
+Beyond HOFs, Scheme gives us many more tools for the treatment of programs as data. 
+
+\begin{meta}
+It's worth asking your students why this function is different from something like this: 
+
+\begin{lstlisting}
+(define (twice arg)
+    arg
+    arg)
+
+scm> (twice (lambda () (print 5)))
+5
+\end{lstlisting}
+
+The answer, of course, is that the expression written in the operand slot of \lstinline{twice} is only evaluated once, whereas using functions to ``wrap'' this expression has allowed us to delay evaluation until we want it. 
+\end{meta}
+
+\subsection{Quotation}
+
+Recall that Scheme is a list processing language. The call expression \lstinline{(+ 1 2)} is a list literally consisting of the symbol \lstinline{+} and the numbers \lstinline{1} and \lstinline{2}. When this list is provided the interpreter, the appropriate evaluation rules are followed and the expression evaluates to \lstinline{3}. Similarly, when we provide the list \lstinline{(1 2 3)} to the Scheme interpreter, it attempts to evaluate the list as a call expression and encounters an error. In Scheme, there is no distinction between lists and call expressions/special forms. 
+
+Since Scheme programs are essentially stored as a long list, if we are to use programs as input to other programs, we need a way to prevent them from being evaluated while we manipulate them. The \texttt{quote} special form, also denoted by an apostrophe \textbf{\'}, which simply returns its unevaluated operand: 
+
+\begin{lstlisting}
+scm> '(+ 1 2)
+(+ 1 2)
+scm> (list '(if #t (\ 1 0) 3)(+ 2 3))
+((if #t (\ 1 0) 3) 5)
+\end{lstlisting}
+
+Quotation is a ``protective shell'' that prevents the immediately following expression from being evaluated as it passes through the interpreter.  
+
+On the other hand, \lstinline{eval} is a procedure that simply evaluates its argument. Note that since \lstinline{eval} is a procedure, its argument is evaluated first before applying \lstinline{eval}. Whereas quotation prevents evaluation, \lstinline{eval} evaluates things another time. 
+\begin{lstlisting}
+scm> (eval '(+ 1 2))
+3
+scm> (eval (list 1 2 3))
+Error: int is not callable
+\end{lstlisting}
+
+Quotation allows us to begin taking code as input. For example, the following version of \lstinline{twice} takes in an expression and evaluates it twice: 
+
+\begin{lstlisting}
+(define (twice expr)
+    (eval expr)
+    (eval expr))
+
+scm> (twice '(print 5))
+5
+5
+\end{lstlisting}
+
+\subsection{Quasiquotation}
+
+The quasiquote special form, denoted with a backtick \lstinline{`}, has the same effect as \lstinline{'}, except that any subexpressions can be ``unquoted'' by preceding them with a comma \lstinline{,}. Any unquoted subexpression is evaluated as normal, whereas everything else is left unevaluated. 
+
+\begin{lstlisting}
+(define (cool-string tens-digit ones-digit letter)
+    (I love ,tens_digit ,ones_digit ,letter))
+
+scm> (cool-string 6 1 'a)
+(i love 6 1 a)
+\end{lstlisting}
+
+This is very similar to f-string behavior in Python: 
+
+\begin{lstlisting}
+def cool_string(tens_digit, ones_digit, letter):
+    return f"I love {tens_digit}{ones_digit}{letter}"
+
+>>> cool_string(6, 1, "a")
+'I love 61a'
+\end{lstlisting}
+
+The analogy is summed up by the following: 
+\begin{itemize}
+    \item Quotation \lstinline{'...} in Scheme is like strings \lstinline{"..."} in Python
+    \item Quasiquotation \lstinline{`...} in Scheme is like f-strings in Python \lstinline{f"..."}
+    \item Unquotation \lstinline{,...} in Schemes is like replacement fields \lstinline|{...}| in Python
+\end{itemize}
+
+\subsection{Macros}
+A call expression in Scheme is evaluated by evaluating the operator, then evaluating the operands, before finally applying the operator to the operands. Because the parameters of a Scheme procedure are evaluated before the body of the procedure is evaluated, we say that procedures operate on values. 
+
+In Scheme, a \textbf{macro} is similar to a procedure, but it operates on expressions rather than value. Thus the input to macros is code that we can manipulate as data. Macro evaluation involves three steps:
 
 \begin{enumerate}[1.]
-\item Evaluate the operator
-\item Evaluate the body of the macro procedure without evaluating the operands
-\item Evaluate the expression produced by the body and return the result.
+\item Evaluate the operator to a macro procedure. 
+\item Apply the macro procedure to the \textit{unevaluated} operands
+\item Evaluate the expression produced by the macro procedure in the same frame it was called in and return the result.
 \end{enumerate}
 
-Because the body is evaluated without evaluating the operands at first, macros are powerful and allow us to do more than scheme procedures, like implementing new special forms, control the order of evaluation, and more. 
+This may sound overwhelming at first, but just remember that the key difference between macro procedures and regular procedures are that 1) in macros, operands are not evaluated and 2) after the body of the macro produces an expression, the expression is automatically evaluated one more time.  
 
-Below is a simple example of a macro. Note that even though we pass in \texttt{(print 'hello)} as an operands, we don't evaluate the expression and print right away. Instead we first evaluate the body of the macro procedure, and afterwards we evaluate the expression produced by the macro. 
-\vspace{1cm}
+New macros are defined using the special form \lstinline{define-macro}. Below is an example of a macro \lstinline{twice} that evaluates a given expression twice. 
+
 \begin{lstlisting}
 (define-macro (twice expr)
-    (list 'begin expr expr)
-)
+    (list 'begin expr expr))
 
 scm> (twice (print 'hello))
 hello
 hello
 \end{lstlisting}
 
-When \texttt{twice} is called, it will first generate a Scheme list that looks like \texttt{(list 'begin '(print 'hello) '(print 'hello))} (the input is automatically quoted rather than evaluated).
+When \texttt{twice} is called, the unevaluated expression \lstinline{'(print 'hello)} is bound to the symbol \lstinline{expr}. The body of the macro is executed as normal, producing the expression \lstinline{(begin (print 'hello) (print 'hello))}. Finally, this expression is evaluated in the global frame, and the macro call prints \lstinline{hello} twice. 
 
-The interpreter will then automaticaly call \texttt{eval} on this list of literals to treat it as if you had just typed it into the interpreter directly. 
-
-\newpage
-\textbf{Quoting, Quasiquoting, Unquoting} All Scheme expressions are lists except for atomic expressions like numbers and symbols; so call expressions and special forms are lists too; Example: (+ 1 2)
-
-The \texttt{(quote expression)} special form, also denoted by a \textbf{\'}, simply returns \texttt{expression} - it does not evaluate it. This means we can write a Scheme expression and have the expression remain as an expression; if an expression is a call expression or special form, this means the expression will remain a list. 
-
-The \texttt{(quasiquote expression)} special form, \textbf{\`}, has the same effect as \texttt{quote}, except that any expression within \texttt{expression} can be unquoted by preceding it with \texttt{,} or the \texttt{unquote} special form; any unquoted expression is evaluated, whereas everything else within \texttt{expression} is not, as normal. Quasiquote and unquote are often used in the body of macro procedures to selectively evaluate certain parts. 
-
-\texttt{(eval expression)} is a procedure that simply evaluates its argument. Note that since \texttt{eval} is a procedure, \texttt{expression} is evaluated first before applying \texttt{eval}.
-
-To build off of the \texttt{twice} example introduced earlier, it is possible to replace all \texttt{list} or \texttt{cons} operations with an expression involving quotes, quasiquotes, and unquotes to produce an identical result:
-
-\begin{lstlisting}
-(define-macro (twice expr)
-    `(begin ,expr ,expr)
-)
-
-scm> (twice (print 'hello))
-hello
-hello
-\end{lstlisting}
+Note that even though we pass in \texttt{(print 'hello)} as an operand, we don't evaluate the expression and print right away. Because the body is evaluated without evaluating the operands at first, macros allow us to implement new special forms, control the order of evaluation, and more. 

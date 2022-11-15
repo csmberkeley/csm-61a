@@ -1,0 +1,56 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{13}
+\title{\textsc{Programs as Data \& Macros}}
+\date{November 14--November 18, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Macros Intro - 10 minutes
+        \item Q1 (\lstinline{macros-quasi-wwsd}): 8 minutes
+        \item Q2 (\lstinline{meta-apply}): 5 minutes
+        \item Q3 (\lstinline{NAND}): 5 minutes
+        \item Q4 (\lstinline{apply-twice}): 10 minutes
+        \item Q5 (\lstinline{python-if}): 10 minutes
+        \item Q6 (\lstinline{combine-num}): 10 minutes
+        \item Q7 (\lstinline{censor}): 15 minutes 
+    \end{itemize}
+\end{blocksection}
+\end{meta}
+We have provided a very large number of problems with this worksheet. You should pick and choose the ones you want to best help your students! Take a healthy sampling of the different difficulty levels and have fun!
+
+As always, no mentor is expected to get through every problem on this worksheet. 
+\begin{meta}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Before we jump into Macros, it is very important to ensure that your students understand quasiquotation.
+    \item Take your time with the quasiquotation WWSD and drawing parallels with Python's f-strings may make it easier for your students to understand 
+    \item Draw out box and pointer diagrams to show how the expressions in macros are being stored when the operands are unevaluated
+    \item If you would like a quick refresher on how to think about macros, please refer to this link! \href{https://docs.google.com/document/d/1JSbvtJ5bYUEhovDZd_gQnBvkG_WDcafmX-4B3QeIXZU/edit}{guide}
+\end{itemize}
+\end{meta}
+
+\section{Macros}
+\subimport{../../topics/macros/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/easy/}{meta-apply.tex}
+\subimport{../../topics/macros/easy/}{nand.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
+\subimport{../../topics/macros/medium/}{python-if.tex}
+\subimport{../../topics/macros/easy/}{combine-num.tex}
+\subimport{../../topics/macros/medium/}{censor.tex}
+\end{questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

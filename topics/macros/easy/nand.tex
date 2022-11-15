@@ -1,0 +1,39 @@
+%Requires meta-apply
+\begin{blocksection}
+\question NAND (not and) is a logical operation that returns false if all of its operands are true, and true otherwise. That is, it returns the opposite of AND. Implement the \lstinline{nand} macro procedure below, which takes in a list of expressions and returns the NAND of their values. Similar to \lstinline{and}, \lstinline{nand} should short circuit and return true as soon as it encounters a false operand, evaluating from left to right. 
+
+Hint: You may use \lstinline{meta-apply} in your implementation. 
+
+\begin{lstlisting}
+;Doctests
+scm> (nand (#t #t #t #t #t #t))
+#f
+scm> (nand (#t #f #t))
+#t
+scm> (nand (#f (/ 1 0)))
+#t
+(define-macro (nand operands))
+
+
+)
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+(define-macro (nand operands)
+    `(not (meta-apply and ,operands)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+This problem must be completed after \lstinline{meta-apply} because the solution involves \lstinline{meta-apply}. 
+
+If students are having trouble with this problem, first try to make sure that they have a good understanding of how \lstinline{nand} works. You can walk though the problem, or draw them a table to show them the values of \lstinline{nand} with different arrangements of true and false. 
+
+A common issue with macro problems is that our Scheme interpreter does not allow us to define procedures and macros that take arbitrary numbers of elements. Therefore, \lstinline{nand} must take a list of operands rather than taking the operands directly. This is a difference that you should note for your students (though you don't have to explain to them why.)
+
+A good way to think of this problem is to ask your students: ``How could you logically NAND something without defining a function? What sequence of operations would allow you to do that?'' The answer, of course, is that you would take the \lstinline{and} of the expressions and the apply \lstinline{not} to the result, i.e., \lstinline{(not (and a b))}. Therefore, the body of your macro procedure should probably evaluate to an expression that looks something like that. 
+
+The next hiccup is how you apply \lstinline{and} to a list of operands; hopefully the hint will guide them to the conclusion that they should employ the previously defined \lstinline{meta-apply}, but if not you can ask them a leading question to that effect. 
+\end{questionmeta}
