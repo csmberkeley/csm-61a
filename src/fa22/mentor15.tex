@@ -1,0 +1,69 @@
+
+
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{15 \& 16}
+\title{SQL \& Final Review}
+\date{November 28--December 2, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+
+\begin{guide}
+    This worksheet will be extra long because we expect to do half of it 
+\end{guide}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{SQL}
+\subimport{../../topics/sql/text/}{intro.tex}
+
+\subimport{../../topics/sql/fish/text/}{intro.tex}
+\subimport{../../topics/sql/fish/tables/}{fish.tex}
+\begin{questions}
+  \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+  \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+  \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+\end{questions}
+
+% You can add more review problems! Please make sure to get macros and few other things, and try to look at past worksheets to ensure that we are not duplicating problems. 
+
+\section{Environment Diagrams}
+\begin{questions}
+\subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
+\subimport{../../topics/environments/medium/}{fruit_loops.tex}
+\end{questions}
+
+\section{OOP}
+\begin{questions}
+\subimport{../../topics/oop/easy/}{dll.tex}
+\end{questions}
+
+\section{Complexity}
+\begin{questions}
+\subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+\end{questions}
+
+\section{Trees}
+\begin{questions}
+\subimport{../../topics/interview/}{rot.tex}
+\end{questions}
+
+\section{Scheme Lists}
+\begin{questions}
+\subimport{../../topics/scheme/medium/}{reverse-map.tex}
+\subimport{../../topics/scheme/medium/}{backwards-sum.tex}
+\end{questions}
+
+\section{Tail Recursion}
+\begin{questions}
+\subimport{../../topics/tail-recursion/medium/}{slice.tex}
+\end{questions}
+
+\section{Regex}
+Here's a Regex reference sheet courtesy of Data100 Course Staff. \href{https://drive.google.com/file/d/1lhIy1fIJZKXeIZYGv4ltkFMwq0OxdKNn/view?usp=sharing}{Check it out here!}
+
+\end{document}
