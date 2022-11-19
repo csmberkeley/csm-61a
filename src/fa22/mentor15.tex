@@ -2,11 +2,12 @@
 
 \documentclass{exam}
 \usepackage{../../commonheader}
+\lstset{language=SQL}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{15 \& 16}
 \title{SQL \& Final Review}
-\date{November 28--December 2, 2022}
+\date{November 28--December 9, 2022}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -23,8 +24,7 @@
 
 \section{SQL}
 \subimport{../../topics/sql/text/}{intro.tex}
-
-
+\newpage
 \begin{questions}
   \question 
   \subimport{../../topics/sql/fish/text/}{intro.tex}
@@ -35,6 +35,7 @@
     \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
     \subimport{../../topics/sql/fish/medium/}{competitor.tex}
   \end{parts}
+  \newpage
   \question
   \subimport{../../topics/sql/outfits/}{text.tex}
   \subimport{../../topics/sql/outfits/tables/}{outfits.tex}
@@ -46,58 +47,35 @@
 \end{questions}
 
 % You can add more review problems! Please make sure to get macros and few other things, and try to look at past worksheets to ensure that we are not duplicating problems. 
-
+\begin{questions}
 \section{Environment Diagrams}
-\begin{questions}
-\subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
 \subimport{../../topics/environments/medium/}{fruit_loops.tex}
-\end{questions}
 
-\section{HOF}
-\begin{questions}
-\subimport{../../topics/hof/medium/}{mystery.tex}
-\end{questions}
-
+\newpage
 \section{Iterators}
-\begin{questions}
-\subimport{../../topics/iterators/easy/}{iterator-vs-iterable.tex}
-\end{questions}
+\subimport{../../topics/generators/medium/}{nondecreasing-paths.tex}
 
 \section{Data Abstraction}
-\begin{questions}
 \subimport{../../topics/data-abstraction/medium/}{bookshelf.tex}
-\end{questions}
+
+\section{Efficiency}
+\subimport{../../topics/growth/hard/}{hiya.tex}
 
 \section{OOP}
-\begin{questions}
-\subimport{../../topics/oop/medium/}{musician.tex}
-\end{questions}
+\subimport{../../topics/oop/medium/}{pingpong-su21.tex}
 
 \section{Trees}
-\begin{questions}
 \subimport{../../topics/interview/}{rot.tex}
-\end{questions}
 
 \section{Scheme Lists}
-\begin{questions}
-\subimport{../../topics/scheme/medium/}{reverse-map.tex}
-\subimport{../../topics/scheme/medium/}{backwards-sum.tex}
-\end{questions}
+\subimport{../../topics/scheme/medium/}{guardians-and-asteroids.tex}
 
 \section{Tail Recursion}
-\begin{questions}
-\subimport{../../topics/tail-recursion/medium/}{slice.tex}
-\end{questions}
+\subimport{../../topics/tail-recursion/medium/}{filter-nested.tex}
 
 \section{Macros}
-\begin{questions}
 \subimport{../../topics/macros/final-review/}{lambda-macro.tex}
 \subimport{../../topics/macros/final-review/}{eval-and-check.tex}
-\subimport{../../topics/macros/final-review/}{decorators.tex}
 \end{questions}
-
-%i'm assuming there's no regex this year..?
-%\section{Regex}
-%Here's a Regex reference sheet courtesy of Data100 Course Staff. \href{https://drive.google.com/file/d/1lhIy1fIJZKXeIZYGv4ltkFMwq0OxdKNn/view?usp=sharing}{Check it out here!}
 
 \end{document}

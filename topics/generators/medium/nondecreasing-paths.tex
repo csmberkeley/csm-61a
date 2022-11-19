@@ -1,6 +1,7 @@
 \question
 Define a \textbf{non-decreasing path} as a path from the root where each node's label is greater than or equal to the previous node along the path. A \textbf{subpath} is a path between nodes X and Y, where Y must be a descendent of X (ex: Y is a branch of a branch of X).
 \begin{parts}
+\begin{blocksection}
 \part
 Write a generator function \lstinline{root_to_leaf} that takes in a tree \lstinline{t} and yields all non-decreasing paths from the root to a leaf node, in any order. Assume that \lstinline{t} has at least one node.
 
@@ -26,6 +27,7 @@ def root_to_leaf(t):
 
                 ______________________________
 \end{lstlisting}
+\end{blocksection}
 
 \begin{solution}
 \begin{lstlisting}
@@ -43,6 +45,7 @@ The easiest way to approach this is to notice the two blocks of code that are pr
 In our recursive case we want to do two things. First, we want to check if the next branch value really is non-decreasing. Then, if it is, we want to append the result of calling \lstinline{root_to_leaf} on the branch to the value of our current tree to create a complete path. So we recurse through each of the branches in \lstinline{t} (\lstinline{for b in t.branches}), then check if it is nondecreasing (\lstinline{t.label <= b.label}), then yield our tree’s label appended to the recursive call (the last two lines).
 \end{solution}
 
+\begin{blocksection}
 \part
 Write a generator function \lstinline{subpaths} that takes in a tree \lstinline{t} and yields all non-decreasing subpaths that end with a leaf node, in any order. You may use the \lstinline{root_to_leaf} function above, and assume again that \lstinline{t} has at least one node.
 
@@ -55,6 +58,7 @@ def subpaths(t):
 
         ______________________________
 \end{lstlisting}
+\end{blocksection}
 
 \begin{solution}
 \begin{lstlisting}

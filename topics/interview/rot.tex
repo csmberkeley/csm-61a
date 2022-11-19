@@ -3,6 +3,7 @@
 
 For example, given tree \texttt{t} on the left, \texttt{rotate(t)} should mutate \texttt{t} to give us the right.
 
+\begin{minipage}[t]{0.4\textwidth}
 \begin{tikzpicture}[scale=1, transform shape]
 \tikzstyle{level 2}=[sibling distance=10mm]
     \node [circle, draw] (z){$1$}
@@ -12,6 +13,8 @@ For example, given tree \texttt{t} on the left, \texttt{rotate(t)} should mutate
         }
         child {node [circle, draw] (b) {$5$}};
 \end{tikzpicture}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
 \begin{tikzpicture}[scale=1, transform shape]
 \tikzstyle{level 2}=[sibling distance=10mm]
     \node [circle, draw] (z){$1$}
@@ -21,6 +24,7 @@ For example, given tree \texttt{t} on the left, \texttt{rotate(t)} should mutate
         }
         child {node [circle, draw] (b) {$2$}};
 \end{tikzpicture}
+\end{minipage}
 
 \begin{lstlisting}
 def rotate(t):

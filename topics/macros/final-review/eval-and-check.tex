@@ -46,42 +46,42 @@ ok
 \end{guide}
 \end{blocksection}
 
-\begin{blocksection}
-\question Now expand \texttt{eval-and-check} to take in any number of expressions (as long as there is at least one).
+% \begin{blocksection}
+% \question Now expand \texttt{eval-and-check} to take in any number of expressions (as long as there is at least one).
 
-\begin{lstlisting}
-;Doctests
-scm> (eval-and-check #f #f #f #f #t)
-ok
-scm> (eval-and-check (print 2) (> 2 3))
-2
-fail
+% \begin{lstlisting}
+% ;Doctests
+% scm> (eval-and-check #f #f #f #f #t)
+% ok
+% scm> (eval-and-check (print 2) (> 2 3))
+% 2
+% fail
 
 
-(define-macro (eval-and-check expr1 . args)
+% (define-macro (eval-and-check expr1 . args)
      
-     _______________________________________
+%      _______________________________________
 
-     _______________________________________
+%      _______________________________________
 
-     _______________________________________)
-\end{lstlisting}
-\begin{solution}[.25in]
-\begin{lstlisting}
-(define-macro (eval-and-check expr1 . args)
-        `(if ,(cons 'begin (cons expr1 args))
-                'ok
-                'fail))
-\end{lstlisting}
-\end{solution}
-\end{blocksection}
+%      _______________________________________)
+% \end{lstlisting}
+% \begin{solution}[.25in]
+% \begin{lstlisting}
+% (define-macro (eval-and-check expr1 . args)
+%         `(if ,(cons 'begin (cons expr1 args))
+%                 'ok
+%                 'fail))
+% \end{lstlisting}
+% \end{solution}
+% \end{blocksection}
 
-\begin{blocksection}
-\begin{guide}
-\textbf{Teaching Tips}
-\begin{itemize}
-	\item Remind them of the usage of \lstinline{. args} and have them consider how we can require at least one expression.
-	\item Ask them to try to make as few edits as possible to the previous solution.
-\end{itemize}
-\end{guide}
-\end{blocksection}
+% \begin{blocksection}
+% \begin{guide}
+% \textbf{Teaching Tips}
+% \begin{itemize}
+% 	\item Remind them of the usage of \lstinline{. args} and have them consider how we can require at least one expression.
+% 	\item Ask them to try to make as few edits as possible to the previous solution.
+% \end{itemize}
+% \end{guide}
+% \end{blocksection}
