@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a series of SQL statements which will create a table containing each species of fish, their population, and the year (n) for this year (year 0), next year, and the year after.
+\part Suppose these fish breed every day. The population of each fish gets multiplied by its breeding rate every year. Write a series of SQL statements which will create a table containing each species of fish, their population, and the year (n) for this year (year 0), next year, and the year after.
 You have access to all tables defined in previous parts.
 
 \begin{lstlisting}
@@ -17,14 +17,14 @@ INSERT INTO yearly_pop SELECT yearly_pop.species, yearly_pop.pop * rate, n + 1
 \end{lstlisting}
 \end{solution}
 
-\question Mutate the same table to only include rows for year 2.
+\part Mutate the same table to only include rows for year 2.
 \begin{solution}[1in]
 \begin{lstlisting}
 DELETE FROM yearly_pop WHERE n <> 2;
 \end{lstlisting}
 \end{solution}
 
-\question Tragedy strikes! In year 2, all fish with a population less than 1,000 die, so remove them from the table. In addition, the remaining fish have their population halved, so mutate the table for them similarly.
+\part Tragedy strikes! In year 2, all fish with a population less than 1,000 die, so remove them from the table. In addition, the remaining fish have their population halved, so mutate the table for them similarly.
 \begin{solution}[1in]
 \begin{lstlisting}
 DELETE FROM yearly_pop WHERE pop < 1000;
