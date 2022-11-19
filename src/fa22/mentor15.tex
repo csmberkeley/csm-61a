@@ -13,7 +13,10 @@
 \maketitle\rule{\textwidth}{0.15em}
 
 \begin{guide}
-    This worksheet will be extra long because we expect to do half of it 
+    This is a bit of an unusual worksheet because it covers not one but two weeks. The SQL section should be covered in week 15, while the 
+    remaining topics of final review should be covered during week 16. Students should make sure to keep the worksheet . 
+
+    On the other hand, you could also just do various exam problems during week 16, which is probably what I would do if I were teaching a section. 
 \end{guide}
 
 %%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21,12 +24,25 @@
 \section{SQL}
 \subimport{../../topics/sql/text/}{intro.tex}
 
-\subimport{../../topics/sql/fish/text/}{intro.tex}
-\subimport{../../topics/sql/fish/tables/}{fish.tex}
+
 \begin{questions}
-  \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
-  \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
-  \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+  \question 
+  \subimport{../../topics/sql/fish/text/}{intro.tex}
+  \subimport{../../topics/sql/fish/tables/}{fish.tex}
+  \begin{parts}
+    \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+    \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+    \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+    \subimport{../../topics/sql/fish/medium/}{competitor.tex}
+  \end{parts}
+  \question
+  \subimport{../../topics/sql/outfits/}{text.tex}
+  \subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+  \subimport{../../topics/sql/outfits/tables/}{grades.tex}
+  \begin{parts}
+  \subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
+  \subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+  \end{parts}
 \end{questions}
 
 % You can add more review problems! Please make sure to get macros and few other things, and try to look at past worksheets to ensure that we are not duplicating problems. 
@@ -63,7 +79,8 @@
 \subimport{../../topics/tail-recursion/medium/}{slice.tex}
 \end{questions}
 
-\section{Regex}
-Here's a Regex reference sheet courtesy of Data100 Course Staff. \href{https://drive.google.com/file/d/1lhIy1fIJZKXeIZYGv4ltkFMwq0OxdKNn/view?usp=sharing}{Check it out here!}
-
+\section{Macros}
+\begin{questions}
+\subimport{../../topics/macros/final-review/}{eval-and-check.tex}
+\end{questions}
 \end{document}
