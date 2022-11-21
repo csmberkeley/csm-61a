@@ -3,9 +3,8 @@
 
 \begin{lstlisting}
 ; Doctests
-scm> (meta-apply print (1 2)) 
-1
-2
+scm> (meta-apply + (1 2)) 
+3
 scm> (meta-apply or (#t (/ 1 0) #f))
 #t
 (define-macro (meta-apply operator operands)
