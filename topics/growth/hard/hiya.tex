@@ -11,11 +11,31 @@ def hiii(m):
 def hiya(n):
     i = 1
     while i < n:
-        print(hello(i))
+        print(hiii(i))
         i *= 2
 \end{lstlisting}
+\end{blocksection}
 
 \begin{solution}
 $\Theta(n^2)$.
+
+Solution: 
+We can determine the efficiency by approximately counting the number of characters we have to store upon a call to \lstinline{hiya(n)}. First, let us determine the efficiency of a call \lstinline{hiii(m)}. Within \lstinline{hiii}'s for loop: 
+\begin{itemize}
+    \item When \lstinline{i} is \lstinline{1}, we store the string "hi", which is 2 characters.
+    \item When \lstinline{i} is \lstinline{2}, we store the string "hii", which is 3 characters. 
+
+    ...
+    \item When \lstinline{i} is \lstinline{m}, we store \lstinline{m + 1} characters. 
+\end{itemize}
+
+Adding up these values, we see that calling \lstinline{hiii(m)} causes us to store on the order of $m^2$ characters. (The exact value is $\frac{m(m+3)}{2} = \frac{m^2}2 + \frac{3}2 m$, but we really only care about the highest order term.)
+
+Now, when we make a call \lstinline{hiya(n)}, we will make calls to \lstinline{hiii(1)}, \lstinline{hiii(2)}, \lstinline{hiii(4)}, ..., \lstinline{hiii(4)}. This will store approximately $1^2 + 2^2 + 4^2 + 8^2 + ... + n^2$ characters. Calculating out the partial sums of this sequence shows that
+$$1^2 = 1$$
+$$1^2 + 2^2 = 5 < 2\cdot 2^2$$
+$$1^2 + 2^2 + 4^2 = 21 < 2\cdot 4^2$$
+$$1^2 + 2^2 + 4^2 + 8^2 = 85 < 2\cdot 8^2$$
+
+At some point, we are reasonably convinced that this pattern holds. Thus the value of $1^2 + 2^2 + 4^2 + 8^2 + ... + n^2$ is approximately $n^2$, within a constant factor. So we store about $n^2$ characters upon a call to \lstinline{hiya(n)}, which means the efficiency is $\Theta(n^2)$. 
 \end{solution}
-\end{blocksection}

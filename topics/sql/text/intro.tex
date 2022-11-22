@@ -1,19 +1,18 @@
 SQL (Structured Query Language) is a declarative programming language that allows us to store, access, and manipulate data stored in databases.
-Each database contains tables, which can store many rows of data that all share the same properties (columns). 
-
+Each database contains tables, which are rectangular collections of data with rows and columns. This section gives a brief overview of the small subset of SQL used by CS 61A; the full language has many more features. 
 
 \subsection{Creating Tables}
 \subsubsection{\lstinline{SELECT}}
-\lstinline{SELECT} statements are used to create tables. The following creates a table with a single row: 
+\lstinline{SELECT} statements are used to create tables. The following creates a table with a single row and two columns: 
 \begin{lstlisting}
 sqlite> SELECT "Adit" AS first, "Balasubramanian" AS last;
 Adit|Balasubramanian    
 \end{lstlisting}
 
-\lstinline{AS} is an ``aliasing'' operation that gives the columns of the table names. Note that built-in keywords such as \lstinline{AS} and \lstinline{SELECT} are capitalized by convention in SQL. However, SQL is case insensitive, so we could just as easily write \lstinline{as} and \lstinline{select}. Also, each SQL query must end with a semicolon. 
+\lstinline{AS} is an ``aliasing'' operation that names the columns of the table. Note that built-in keywords such as \lstinline{AS} and \lstinline{SELECT} are capitalized by convention in SQL. However, SQL is case insensitive, so we could just as easily write \lstinline{as} and \lstinline{select}. Also, each SQL query must end with a semicolon. 
 
 \subsubsection{\lstinline{UNION}}
-\lstinline{UNION} joins together two tables with the same number of columns. The column names of the first table are kept. 
+\lstinline{UNION} joins together two tables with the same number of columns by ``stacking them on top of each other''. The column names of the first table are kept. 
 
 \begin{lstlisting}
 sqlite> SELECT "Adit" AS first, "Balasubramanian" AS last UNION
@@ -23,13 +22,11 @@ Gabe|Classon
 \end{lstlisting}
 
 \subsubsection{\lstinline{CREATE TABLE}}
-To create a named table (that can be used again), the \lstinline{CREATE TABLE} command is used: 
+To create a named table (so that we can use it again), the \lstinline{CREATE TABLE} command is used: 
 \begin{lstlisting}
-sqlite> CREATE TABLE scms AS 
-...> SELECT "Adit" AS first, "Balasubramanian" AS last UNION
-...> SELECT "Gabe", "Classon";
-Adit|Balasubramanian
-Gabe|Classon
+CREATE TABLE scms AS 
+    SELECT "Adit" AS first, "Balasubramanian" AS last UNION
+    SELECT "Gabe", "Classon";
 \end{lstlisting}
 
 \begin{meta}
@@ -37,44 +34,46 @@ It is nice to note that SQL syntax is supposed to mirror English grammar closely
 \end{meta}
 
 The remaining examples will use the following \lstinline{team} table: 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|l|l|r|}
-    \hline
-    \textbf{name}  & \textbf{pet} & \textbf{birth\_month} \\ \hline
-    Gabe   & cat  & 11                              \\ \hline
-    Adit   & none  & 10                              \\ \hline
-    Alyssa & dog   & 4                               \\ \hline
-    Esther & dog   & 6                               \\ \hline
-    Maya   & none   & 3                               \\ \hline
-    Manas  & none   & 11                              \\ \hline
-    \end{tabular}
-    \end{table}
+
+\begin{blocksection}
+\begin{lstlisting}
+CREATE TABLE team AS 
+    SELECT "Gabe" AS name, "cat" AS pet, 11 AS birth_month UNION
+    SELECT "Adit",         "none",       10 UNION
+    SELECT "Alyssa",       "dog",         4 UNION
+    SELECT "Esther",       "dog",         6 UNION
+    SELECT "Maya",         "dog",         3 UNION
+    SELECT "Manas",        "none",       11;
+\end{lstlisting}
+\end{blocksection}
+
 \subsection{Manipulating other tables}
 We can also write \lstinline{SELECT} statements to create new tables from other tables. We write the columns we want after the \lstinline{SELECT} command and use a \lstinline{FROM} clause to designate the source table. For example, the following will create a new table containing only the \lstinline{name} and \lstinline{birth_month} columns of \lstinline{team}: 
 \begin{lstlisting}
 sqlite> SELECT name, birth_month FROM team; 
-Gabe|11
+Adit|10
 ...
-Manas|11
+Maya|3
 \end{lstlisting}
+
+Note that the order in which rows are returned is undefined. 
 
 An asterisk \lstinline{*} selects for all columns of the table: 
 \begin{lstlisting}
 sqlite> SELECT * FROM team; 
-Gabe|cat|11
+Adit|none|10
 ...
-Manas|none|11
+Maya|dog|3
 \end{lstlisting}
 
-This is a convenient way to view all columns of a table. 
+This is a convenient way to view all of the content of a table. 
 
-We may also manipulate the table columns and use \lstinline{AS} to provide a (new) name to the columns of the source table. The following query creates a table with each teammate's name and the number of months between their birth month and June: 
+We may also manipulate the table columns and use \lstinline{AS} to provide a (new) name to the columns of the resulting table. The following query creates a table with each teammate's name and the number of months between their birth month and June: 
 \begin{lstlisting}
 sqlite> SELECT name, ABS(birth_month - 6) AS june_dist FROM team; 
-Gabe|5
+Adit|4
 ...
-Manas|5
+Maya|3
 \end{lstlisting}
 
 \subsubsection{\lstinline{WHERE}}
@@ -83,6 +82,7 @@ Manas|5
 sqlite> SELECT name FROM team WHERE pet = "dog"; 
 Alyssa
 Esther
+Maya
 \end{lstlisting}
 
 Note that \lstinline{=} in SQL is used for equality checking, not assignment. 
@@ -92,6 +92,7 @@ Note that \lstinline{=} in SQL is used for equality checking, not assignment.
 
 \begin{lstlisting}
 sqlite> SELECT name FROM team WHERE pet = "dog" ORDER BY name DESC; 
+Maya
 Esther
 Alyssa
 \end{lstlisting}
@@ -103,16 +104,22 @@ An inner join is created by specifying multiple source tables in a \lstinline{WH
 
 For example, to determine all pairs of people with the same birth month, we can use an inner join: 
 \begin{lstlisting}
-sqlite> SELECT * FROM team AS a, team AS b WHERE a.name < b.name AND a.birth_month = b.birth_month;
+sqlite> SELECT a.name, b.name FROM team AS a, team AS b WHERE a.name < b.name AND a.birth_month = b.birth_month;
 Gabe|Manas
 \end{lstlisting}
 
+\begin{meta}
+We include \lstinline{a.name < b.name} to ensure that each pair of people is only listed once. Otherwise, we would get both \lstinline{Gabe|Manas} and \lstinline{Manas|Gabe}. 
+\end{meta}
+
 \subsection{Aggregation}
-Aggregation uses information from multiple rows in our table to create a single row. Using an aggregation function such as \lstinline{MAX}, \lstinline{MIN}, \lstinline{COUNT}, and \lstinline{SUM} will automatically aggregate the table data into a single row. For example, the following will collapse the entire table into one row containing the name of the person with the earliest birth month: 
+Aggregation uses information from multiple rows in our table to create a single row. Using an aggregation function such as \lstinline{MAX}, \lstinline{MIN}, \lstinline{COUNT}, and \lstinline{SUM} will automatically aggregate the table data into a single row. For example, the following will collapse the entire table into one row containing the name of the person with the latest birth month: 
 \begin{lstlisting}
-sqlite> SELECT name, MIN(birth_month) FROM team; 
-Maya
+sqlite> SELECT name, MAX(birth_month) FROM team; 
+Manas|11
 \end{lstlisting}
+
+Note that there are multiple rows with the largest birth month. When this happens, SQL arbitrarily chooses one of the rows to use. 
 
 The \lstinline{COUNT} aggregation function collapses the table into one row containing the number of rows in the table: 
 \begin{lstlisting}
@@ -121,26 +128,30 @@ sqlite> SELECT COUNT(*) FROM team;
 \end{lstlisting}
 
 \subsubsection{\lstinline{GROUP BY}}
-\lstinline{GROUP BY} groups together all rows with the same value for a particular column. Aggregation is performed on each group instead of on the entire table. There is then exactly one row in the resulting table for each group. As before, type of aggregation performed is determined by the choice of aggregation function. The following gives the information of the person with the earliest birth month among all people with each type of pet: 
+\lstinline{GROUP BY} groups together all rows with the same value for a particular column. Aggregation is performed on each group instead of on the entire table. There is then \textit{exactly one row} in the resulting table for each group. As before, type of aggregation performed is determined by the choice of aggregation function. The following gives, for each type of pet, the information of the person with the earliest birth month who has that pet: 
 \begin{lstlisting}
 sqlite> SELECT name, pet, MIN(birth_month) FROM team GROUP BY pet; 
-Maya|none|3
-Alyssa|dog|4
 Gabe|cat|11
+Maya|dog|3
+Adit|none|10
 \end{lstlisting}
 
+\begin{meta}
+I like to emphasize to my students that there is always exactly one row in the resulting table for each group. 
+\end{meta}
+
 \subsubsection{\lstinline{HAVING}}
-Just like \lstinline{WHERE} filters out rows, \lstinline{HAVING} filters out groups. For example, the following selects for all types of pets owned by more than one teammate: 
+Just as \lstinline{WHERE} filters out rows, \lstinline{HAVING} filters out groups. For example, the following selects for all types of pets owned by more than one teammate: 
 \begin{lstlisting}
-sqlite> SELECT pet FROM team GROUP BY pet WHERE COUNT(*) > 1; 
-none
+sqlite> SELECT pet FROM team GROUP BY pet HAVING COUNT(*) > 1; 
 dog
+none
 \end{lstlisting}
 
 \subsection{Syntax}
-The clauses of an SQL statement always come in this order: 
+The clauses of a \lstinline{SELECT} statement always come in this order: 
 \begin{lstlisting}
-SELECT ... FROM ... AS ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...;
+SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...;
 \end{lstlisting}
 The order roughly reflects the order in which the processing steps are applied. Note that all filtering of rows comes \textit{before} aggregation. That is, aggregation is always performed after the row-by-row filtering is complete. 
 
@@ -148,10 +159,9 @@ The order roughly reflects the order in which the processing steps are applied. 
 \begin{blocksection}
 \textbf{Teaching Tips}
 \begin{itemize}
-    \item \lstinline{code.cs61a.org} has an interactive SQL terminal that lets you see visually the rows you extract from a given query.
-    % \item To help understand aggregation, presenting a simple example of why this may be useful can help. For example, take a table where each row is the result of a game,
-    % where it's a 1 if team A won and a 0 if team B won. Then, aggregation can be used to pick, for example,
-    % all teams with at least 7 wins.
+    \item Make sure to emphasize the difference between \lstinline{HAVING} and \lstinline{WHERE}. Students are often confused by the similarity of these two clauses. 
+    \item \url{code.cs61a.org} has an interactive SQL terminal that lets you see visually the rows you extract from a given query and also the logical order in which queries are processed. This is a super useful tool. 
+    \item When I was learning about SQL, I had many confusions about edge cases. When you use \url{code.cs61a.org}, try asking your students if there is anything they would like you to type in the interpreter to see how it handles things. 
 \end{itemize}
 \end{blocksection}
 \end{guide}
