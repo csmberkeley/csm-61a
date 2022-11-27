@@ -1,99 +1,102 @@
+\begin{blocksection}
 \question
-    In the following problem, we will represent 
-    a bookshelf object using dictionaries.
-    \newline
-    \newline
-    In the first section, we will set up the format. Here, we will directly work with the internals of the
-    Bookshelf, so don't worry about abstraction barriers for now. Fill in the following functions based
-    on their descriptions (the constructor is given to you):
-    
-    \begin{lstlisting}
-    def Bookshelf(capacity):
-        """ Creates an empty bookshelf with a certain max capacity. """
-        return {'size': capacity, 'books': {}}
+In the following problem, we will represent 
+a bookshelf object using dictionaries.
 
-    def add_book(bookshelf, author, title):
-        """
-        Adds a book to the bookshelf. If the bookshelf is full,
-        print "Bookshelf is full!" and do not add the book.
-        >>> books = Bookshelf(2)
-        >>> add_book(books, 'Jane Austen', 'Pride and Prejudice')
-        >>> add_book(books, 'Daniel Kleppner', 'An Introduction to Mechanics 5th Edition')
-        >>> add_book(books, 'Kurt Vonnegut', 'Galapagos')
-        Bookshelf is full!
-        """
-        if _______________________________:
-            print('Bookshelf is full!')
+In the first section, we will set up the format. Here, we will directly work with the internals of the
+Bookshelf, so don't worry about abstraction barriers for now. Fill in the following functions based
+on their descriptions (the constructor is given to you):
+
+\begin{lstlisting}
+def Bookshelf(capacity):
+    """ Creates an empty bookshelf with a certain max capacity. """
+    return {'size': capacity, 'books': {}}
+
+def add_book(bookshelf, author, title):
+    """
+    Adds a book to the bookshelf. If the bookshelf is full,
+    print "Bookshelf is full!" and do not add the book.
+    >>> books = Bookshelf(2)
+    >>> add_book(books, 'Jane Austen', 'Pride and Prejudice')
+    >>> add_book(books, 'Daniel Kleppner', 'An Introduction to Mechanics 5th Edition')
+    >>> add_book(books, 'Kurt Vonnegut', 'Galapagos')
+    Bookshelf is full!
+    """
+    if _______________________________:
+        print('Bookshelf is full!')
+    else:
+        if author in bookshelf['books']:
+            ____________________________________
         else:
-            if author in bookshelf['books']:
-                ____________________________________
-            else:
-                ____________________________________
-    \end{lstlisting}
+            ____________________________________
+\end{lstlisting}
+\end{blocksection}
 
-
-    \begin{solution}
-        \begin{lstlisting}
-        if len(bookshelf['books']) == bookshelf['size']:
-            print('Bookshelf is full!')
+\begin{solution}
+    \begin{lstlisting}
+    if len(bookshelf['books']) == bookshelf['size']:
+        print('Bookshelf is full!')
+    else:
+        if author in bookshelf['books']:
+            bookshelf['books'][author].append(title)
         else:
-            if author in bookshelf['books']:
-                bookshelf['books'][author].append(title)
-            else:
-                bookshelf['books'][author] = [title]
-        \end{lstlisting}
-    \end{solution}
-
-    \newpage
-    \begin{lstlisting}
-    def get_all_authors(bookshelf):
-        """
-        Returns a list of all authors who have at least one book in the bookshelf.
-        >>> books = Bookshelf(10)
-        >>> add_book(books, 'Jane Austen', 'Pride and Prejudice')
-        >>> add_book(books, 'Sheldon Axler', 'Linear Algebra Done Right')
-        >>> add_book(books, 'Kurt Vonnegut', 'Galapagos')
-        >>> get_all_authors(books)
-        ['Jane Austen', 'Sheldon Axler', 'Kurt Vonnegut']
-        """
-        return ___________________________________
+            bookshelf['books'][author] = [title]
     \end{lstlisting}
+\end{solution}
 
-    \begin{solution}[1in]
-        \begin{lstlisting}
-            return list(bookshelf['books'].keys())
-        \end{lstlisting}
-    \end{solution}
+\begin{blocksection}
+\begin{lstlisting}
+def get_all_authors(bookshelf):
+    """
+    Returns a list of all authors who have at least one book in the bookshelf.
+    >>> books = Bookshelf(10)
+    >>> add_book(books, 'Jane Austen', 'Pride and Prejudice')
+    >>> add_book(books, 'Sheldon Axler', 'Linear Algebra Done Right')
+    >>> add_book(books, 'Kurt Vonnegut', 'Galapagos')
+    >>> get_all_authors(books)
+    ['Jane Austen', 'Sheldon Axler', 'Kurt Vonnegut']
+    """
+    return ___________________________________
+\end{lstlisting}
+\end{blocksection}
 
-    \newpage
-    Now, complete the function \lstinline{most_popular_author} \textbf{without breaking the abstraction barrier}.
-    In other words, you are not allowed to assume anything about the implementation of a Bookshelf object, or
-    use the fact that it is a dictionary. You can only use the methods above and their stated return values.
-
+\begin{solution}
     \begin{lstlisting}
-    def most_popular_author(bookshelf):
-        """
-        Returns the author with the greatest number of books on this bookshelf.
-        You can assume that the bookshelf is not empty.
-        >>> books = Bookshelf(100)
-        >>> add_book(books, 'Orson Scott Card', 'Xenocide')
-        >>> add_book(books, 'Orson Scott Card', 'Children of the Mind')
-        >>> add_book(books, 'J.R.R. Tolkien', 'The Hobbit')
-        >>> most_popular_author(bookshelf)
-        'Orson Scott Card'
-        """
-        return max(________________________________________________, key=_______________________________________________________)
+        return list(bookshelf['books'].keys())
     \end{lstlisting}
+\end{solution}
 
+\begin{blocksection}
+Now, complete the function \lstinline{most_popular_author} \textbf{without breaking the abstraction barrier}.
+In other words, you are not allowed to assume anything about the implementation of a Bookshelf object, or
+use the fact that it is a dictionary. You can only use the methods above and their stated return values.
 
-    \begin{solution}[1in]
-        \begin{lstlisting}
-            return max(get_all_authors(bookshelf), key=lambda x: len(get_author_books(x))
-        \end{lstlisting}
-    \end{solution}
+\begin{lstlisting}
+def most_popular_author(bookshelf):
+    """
+    Returns the author with the greatest number of books on this bookshelf.
+    You can assume that the bookshelf is not empty.
+    >>> books = Bookshelf(100)
+    >>> add_book(books, 'Orson Scott Card', 'Xenocide')
+    >>> add_book(books, 'Orson Scott Card', 'Children of the Mind')
+    >>> add_book(books, 'J.R.R. Tolkien', 'The Hobbit')
+    >>> most_popular_author(bookshelf)
+    'Orson Scott Card'
+    """
+    return max(________________________________________________, 
+        
+        key=_______________________________________________________)
+\end{lstlisting}
+\end{blocksection}
 
-    \begin{questionmeta}
-        This is a hard question! Only do it if your students are absolutely assured in their definition of data abstraction and the abstraction barrier.
+\begin{solution}
+    \begin{lstlisting}
+        return max(get_all_authors(bookshelf), key=lambda x: len(get_author_books(x))
+    \end{lstlisting}
+\end{solution}
 
-        Feel free to spend even more time on this. Lists are more important for students generally, but understanding data abstraction deeply is a great setup for OOP!
-    \end{questionmeta}
+\begin{questionmeta}
+    This is a hard question! Only do it if your students are absolutely assured in their definition of data abstraction and the abstraction barrier.
+
+    Feel free to spend even more time on this. Lists are more important for students generally, but understanding data abstraction deeply is a great setup for OOP!
+\end{questionmeta}
