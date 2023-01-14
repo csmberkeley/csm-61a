@@ -1,3 +1,11 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REVIEW OF PROBLEM S23
+% REVIEWER: ALYSSA SMITH
+% Easy question that familiarizes students with how the order of operations of functions works.
+% Arguably the easier of the two basics questions.
+% For future content mentors, I encourage you to add a degree of complexity to this problem, perhaps even working
+% in print statements? It's up to you, but overall this problem should not be a major brain tickler as it's a "warm-up" of sorts.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question For the following expressions, simplify the operands in the order of evaluation of the entire expression
 
 Example: \lstinline{add(3, mul(4, 5))}
@@ -34,8 +42,8 @@ max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)
 \begin{solution}[.85in]
 \begin{lstlisting}
 max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)
-max(2, add(5, 6), 3, mul(mul(3, 4), 1), 7)
-max(2, 11, 3, mul(mul(3, 4), 1), 7)
+max(mul(1, 2), add(5, 6), 3, mul(12, 1), 7)
+max(2, add(5, 6), 3, mul(12, 1), 7)
 max(2, 11, 3, mul(12, 1), 7)
 max(2, 11, 3, 12, 7)
 12
