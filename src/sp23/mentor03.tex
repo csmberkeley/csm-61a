@@ -1,0 +1,60 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{3}
+\title{Environment Diagrams \titlebreak and Higher Order Functions}
+\date{September 7--September 9, 2022}
+
+\begin{document}
+\maketitle
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Recommended Timeline}
+
+Times do not add to one hour because it is not expected that any mentor will get through all questions in a single hour. 
+
+\begin{itemize}
+    \item Environment Diagrams Mini-Lec + New Frame Written Question - 12 mins
+    \item Swap - 8 mins
+    \item Joke - 7 mins
+    \item Higher Order Functions Mini-Lec + Written Question - 3 mins
+    \item Foobar or Apple (Q2 or Q3): these two problems are pretty similar - 10 mins
+    \item xyz - 8 mins
+    \item whole\_sum or mystery (Q5 or Q6+7) - if there isn't enough time, pick depending and how students feel;
+    5 is a pretty standard HOF question that involves digit manipulation, 6+7 for some more practice with lambdas - 10 mins
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+
+\section{Environment Diagrams}
+
+\begin{questions}
+\subimport{../../topics/environments/easy/}{new-frame.tex}
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{joke.tex}
+\end{questions}
+
+\section{Higher-Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/easy/}{why.tex}
+\subimport{../../topics/hof/easy/env-diagram/}{foobar.tex}
+\begin{questionmeta}
+    It's probably not super important for you to do both \lstinline{foobar} and \lstinline{apple}, as these questions are pretty similar. 
+\end{questionmeta}
+\subimport{../../topics/hof/medium/env-diagram/}{apple.tex}
+\begin{questionmeta}
+    It's probably not super important for you to do both \lstinline{foobar} and \lstinline{apple}, as these questions are pretty similar. 
+\end{questionmeta}
+
+\subimport{../../topics/hof/medium/}{xyz.tex}
+\subimport{../../topics/hof/medium/}{check-sum.tex}
+
+\subimport{../../topics/hof/medium/}{mystery.tex}
+\subimport{../../topics/hof/medium/wwpd/}{mystery.tex}
+\clearpage
+
+\end{questions}
+
+\end{document}
