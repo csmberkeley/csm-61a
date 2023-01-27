@@ -42,8 +42,8 @@ max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)
 \begin{solution}[.85in]
 \begin{lstlisting}
 max(mul(1, 2), add(5, 6), 3, mul(mul(3, 4), 1), 7)
-max(mul(1, 2), add(5, 6), 3, mul(12, 1), 7)
-max(2, add(5, 6), 3, mul(12, 1), 7)
+max(2, add(5, 6), 3, mul(mul(3, 4), 1), 7)
+max(2, 11, 3, mul(mul(3, 4), 1), 7)
 max(2, 11, 3, mul(12, 1), 7)
 max(2, 11, 3, 12, 7)
 12
