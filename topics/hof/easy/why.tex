@@ -1,9 +1,15 @@
 \begin{blocksection}
-\question Why and where do we use lambda and higher-order functions?
+\question Why and where do we use lambda and higher-order functions? Can you give a practical example of where we would use a HOF?
 
 \begin{solution}[0.5in]
 In practice, we use lambda functions to pass code as data in a concise manner. One specific example to illustrate the use of lambdas is the optional \lstinline{key} parameter for \lstinline{min} and \lstinline{max} functions.
 Higher order functions serve as a tool of abstraction, allowing us to simplify repeated actions into one function that we can use over and over again, also referred to as currying.
+Students can have varying answers for practice uses of HOFs, though here are some suggestions for the average student coming across this worksheet:
+\begin{itemize}
+    \item Our method signature is composed of one parameter, but we wish to use a higher order function with more parameters to abstract extra steps.
+    \item When our function is long and complex; easier to read code when it's organized into several different higher order functions.
+    \item Of course, the uses of higher order functions aren't limited to just these, but these are perhaps the most prominent uses. Feel free to email a CSM mentor about more uses!
+\end{itemize}
 
 \end{solution}
 \end{blocksection}
