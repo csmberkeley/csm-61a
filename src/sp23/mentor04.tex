@@ -1,0 +1,36 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{Recursion}
+\date{September 12--September 16, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item Recursion Mini Lecture and Wrong Factorial: 15 minutes
+    \item Selective Sum: 10 minutes
+    \item is\_sorted and/or collapse: 10--20 minutes
+    \item Mandelbrot: 20+ minutes, only do if your students are very comfortable with recursion
+\end{itemize}
+As a reminder, there is no expectation that you get through all problems in a section. Since is\_sorted and collapse are so similar, it is probably not necessary to get through both. 
+\end{meta}
+
+\subimport{../../topics/recursion/text/}{recursion_overview.tex}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{wrong-factorial.tex}
+    \subimport{../../topics/recursion/medium/}{selective-sum.tex}
+    \subimport{../../topics/recursion/medium/}{is-sorted-su21.tex}
+    \subimport{../../topics/recursion/medium/}{collapse.tex}
+    \subimport{../../topics/recursion/hard/}{mandelbrot.tex}
+\end{questions}
+
+\end{document}
