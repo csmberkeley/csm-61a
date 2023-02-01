@@ -2,6 +2,11 @@
 \question What would Python display?
 
 \begin{lstlisting}
+def mystery(f, x):
+    def helper(y):
+        return f(x, y)
+    return helper
+
 >>> foo = mystery(lambda a, b: a(b), lambda c: 5 + square(c))
 >>> foo(-2)
 \end{lstlisting}
