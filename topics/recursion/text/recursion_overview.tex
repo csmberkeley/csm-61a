@@ -31,6 +31,7 @@ Looking at this example, we see that we have broken down the problem of "how man
 			\item "Recursive Leap of Faith"---When writing the recursive statement, assume the function works as intended for the smaller problems. Trust. (Abstraction! woohoo!)
 			\item If you don't know what the recursive call needs to be, you can take an educated guess and see what happens. 
 			\item It's often extremely helpful to run line by line through a doctest to test both a tentative solution and your understanding to a problem.
+			\item When running through a problem, it's often helpful to find a way to visualize the recursion in action! For shorter problems, one way you can do this is through drawing a stack of ``boxes,'' each containing the result of a recursive call inside them, going all the way until the base case. Other linear visualizations work also!
 		\end{itemize}
 \end{enumerate}
 We tend to throw around the term ``recursive leap of faith'' a lot, and I think that it confuses students. The ``recursive leap of faith'' is not synonymous with ``the recursive call is correct''. Rather it's a specific assumption we make while writing a recursive function that the recursive calls we make produce the correct output, even if we're not done writing our function. That is, the function we're writing works even if we're not done writing it. The fact that recursive calls return the correct value in the completed function is a mathematical fact that does not require any faith, so you should not conflate the two. Recursion is not magic; it is math.
