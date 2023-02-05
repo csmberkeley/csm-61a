@@ -2,8 +2,8 @@
 \usepackage{../commonheader}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{4}
-\title{Recursion}
+\discnumber{5}
+\title{Recursion, Tree Recursion}
 \date{February 13--February 17, 2022}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -16,21 +16,23 @@
 \begin{meta}
 \textbf{Recommended Timeline}
 \begin{itemize}
-    \item Recursion Mini Lecture and Wrong Factorial: 15 minutes
+    \item Tree recursion mini lecture: 8 minutes
+    \item Gibonacci: 15 minutes -- skippable if your students feel especially comfortable with tree recursion; otherwise please do this.
+    \item Has Sum: 10 minutes
     \item Selective Sum: 10 minutes
-    \item is\_sorted and/or collapse: 10--20 minutes
-    \item Mandelbrot: 20+ minutes, only do if your students are very comfortable with recursion
+    \item Mario Number: 8 minutes
+    \item Collapse: 10--20 minutes
 \end{itemize}
-As a reminder, there is no expectation that you get through all problems in a section. Since is\_sorted and collapse are so similar, it is probably not necessary to get through both. 
+As a reminder, there is no expectation that you get through all problems in a section.
 \end{meta}
 
-\subimport{../../topics/recursion/text/}{recursion_overview.tex}
+\subimport{../../topics/recursion/text/}{tree_recursion_overview.tex}
 \begin{questions}
-    \subimport{../../topics/recursion/easy/}{wrong-factorial.tex}
+    \subimport{../../topics/recursion/easy/}{gibonacci.tex}
+    \subimport{../../topics/recursion/medium/}{discussions1.tex}
     \subimport{../../topics/recursion/medium/}{selective-sum.tex}
-    \subimport{../../topics/recursion/medium/}{is-sorted-su21.tex}
+    \subimport{../../topics/recursion/medium/}{mario-number.tex}
     \subimport{../../topics/recursion/medium/}{collapse.tex}
-    \subimport{../../topics/recursion/hard/}{mandelbrot.tex}
 \end{questions}
 
 \end{document}
