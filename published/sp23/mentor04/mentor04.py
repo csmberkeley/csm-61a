@@ -1,8 +1,8 @@
 def dream1(f):
-    kick = lambda x: mind()
     def dream2(secret):
         mind = f(secret)
-        kick(2)
+        kick = lambda x: mind()
+        return kick(2)
     return dream2
 
 inception = lambda secret: lambda: secret
@@ -21,7 +21,7 @@ a(lambda x: 4 - x + d)
 def compound(base_func, prev_compound=lambda x: x):
     """
     >>> add_one = lambda x: x + 1
-    >>> adder = compound(adder)
+    >>> adder = compound(add_one)
     >>> adder = adder(3, 2)
     3       # 3
     4       # f(3)
