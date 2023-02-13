@@ -8,7 +8,7 @@ Each call to \texttt{g} will print the result of calling \texttt{f} repeatedly 0
 def compound(base_func, prev_compound=lambda x: x):
     """
     >>> add_one = lambda x: x + 1
-    >>> adder = compound(adder)
+    >>> adder = compound(add_one)
     >>> adder = adder(3, 2)
     3       # 3
     4       # f(3)
