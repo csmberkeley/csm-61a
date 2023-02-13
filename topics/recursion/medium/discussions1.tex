@@ -3,19 +3,19 @@
     \question In an alternate universe, 61A software is not that good (inconceivable!). 
     Tyler is in charge of assigning students to discussion sections, but sections.cs61a.org 
     only knows how to list sections with either \lstinline{m} or \lstinline{n} number of students (the two most popular sizes). 
-    Given a \lstinline{total} number of students, can Tyler create sections and not have any leftover students? 
+    Given a \lstinline{total} number of students, can Tyler create sections with only sizes of either \lstinline{m} or \lstinline{n} and not have any leftover students? 
     Return \lstinline{True} if he can and \lstinline{False} otherwise.
     
     \begin{lstlisting}
-    def has_sum(total, n, m):
+    def fit_sections(total, n, m):
         """
-        >>> has_sum(1, 3, 5)
+        >>> fit_sections(1, 3, 5)
         False
-        >>> has_sum(5, 3, 5) # 0 * 3 + 1 * 5 = 5
+        >>> fit_sections(5, 3, 5) # 0 * 3 + 1 * 5 = 5
         True
-        >>> has_sum(11, 3, 5) # 2 * 3 + 1 * 5 = 11
+        >>> fit_sections(11, 3, 5) # 2 * 3 + 1 * 5 = 11
         True
-        >>> has_sum(61, 11, 15) # can't express 61 as a * 11 + b * 15
+        >>> fit_sections(61, 11, 15) # can't express 61 as a * 11 + b * 15
         False
         """
         if _______________________________________________:
@@ -34,21 +34,21 @@
     \begin{solution}[1.5in]
     \begin{blocksection}
     \begin{lstlisting}
-    def has_sum(total, n, m):
+    def fit_sections(total, n, m):
         if total == 0:
             return True
         elif total < 0: # you could also put total < min(m, n)
             return False
-        return has_sum(total - n, n, m) or has_sum(total - m, n, m)
+        return fit_sections(total - n, n, m) or fit_sections(total - m, n, m)
     \end{lstlisting}
     An alternate solution you could write that may be slightly faster in certain cases:
     \begin{lstlisting}
-    def has_sum(total, n, m):
+    def fit_sections(total, n, m):
         if total == 0 or total % n == 0 or total % m == 0:
             return True
         elif total < 0: # you could also put total < min(m, n)
             return False
-        return has_sum(total - n, n, m) or has_sum(total - m, n, m)
+        return fit_sections(total - n, n, m) or fit_sections(total - m, n, m)
     \end{lstlisting}
     
     \textbf{(Solution continues on the next page)}
@@ -59,7 +59,7 @@
     \begin{blocksection}
     When thinking about the recursive calls, we need to think about how each step of the problem works. Tree recursion allows us to explore the two options we have: 
     either create a new \lstinline{m}-person discussion at this step or create a new \lstinline{n}-person discussion at this step and can combine the results after exploring both options. 
-    Inside the recursive call for \lstinline{has_sum(total - n, n, m)}, which represents accommodating \lstinline{n} students, we again consider adding either
+    Inside the recursive call for \lstinline{fit_sections(total - n, n, m)}, which represents accommodating \lstinline{n} students, we again consider adding either
     \lstinline{n} or \lstinline{m} students to the next section.
     
     Once we have these recursive calls we need to think about how to put them together. We know the return should be a boolean so we want to use either \lstinline{and} or \lstinline{or} to combine the values for a final result. Given that we only need one of the calls to work, we can use \lstinline{or} to reach our final answer.
