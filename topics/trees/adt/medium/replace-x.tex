@@ -34,16 +34,23 @@ We would expect it to return
 
 \begin{lstlisting}
 def replace_x(t, x):
-    
+    """
+    >>> t = tree(2, [tree(1), tree(2)])
+    >>> replace_x(t, 2)
+    tree(0, [tree(1), tree(0)])
+    """
+    ___________________________________________
 
+    if ________________________________________:
 
+        return ________________________________
 
-
-
+    return ________________________________
 \end{lstlisting}
 
 \begin{solution}
 \begin{lstlisting}
+def replace_x(t, x):
    new_branches = [replace_x(b, x) for b in branches(t)]
    if label(t) == x:
         return tree(0, new_branches)
