@@ -41,5 +41,9 @@ def gen_list(n):
 
 def gen_increasing(n):
 	return [[i for i in range(sum(range(j+1)), sum(range(j+1)) + j+1)] for j in range(n)]
+
+\textit{An alternate solution for gen_increasing is:}
+def gen_increasing(n):
+    return [[i + sum(range(j + 1)) for i in range(j + 1)] for j in range(n)]
 \end{lstlisting}
 \end{solution}
