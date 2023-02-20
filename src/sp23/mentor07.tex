@@ -24,8 +24,10 @@
     \item Q3: Cross type friends (7 min)
     \item Q4: Pokemon constructor (8 min)
     \item Q5: Replace x (8 min)
-    \item Q6: All Paths (12 min)
-    \item Q7: Contains N (12 min)
+    \item Q6: Contains N (12 min)
+    \item Mutability mini-lecture (10 min)
+    \item Q7: WWPD (Mutability Edition) (8 min)
+    \item Q8: Accumulate (12 min)
 \end{itemize}
 The times in the recommended timeline do not add up to 50 minutes because no mentor
 is expected to get through all the problems during section. The worksheet is a skeleton
@@ -45,13 +47,12 @@ over---ADTs or trees---and then allocate time appropriately.
     
     Emphasize the \textbf{importance of selectors} -- useful for 2).
     
-    A good visualization is to draw the data abstraction out using box and pointer diagrams. \textbf{Make sure not to get caught up on any specific representation of the data abstraction}, as they should be easy to change 3) is an alternate representation].
+    A good visualization is to draw the data abstraction out using box and pointer diagrams. \textbf{Make sure not to get caught up on any specific representation of the data abstraction}, as they should be easy to change 3) is an alternate representation.
     
     Talk about what it means to \textbf{break the abstraction barrier. How do you make sure that you are not breaking the abstraction barrier?}
-    \end{meta}
+\end{meta}
 \begin{questions}
     \subimport{../../topics/data-abstraction/easy/}{pokemon.tex}
-    \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
 \end{questions}
 
 \newpage
@@ -59,8 +60,20 @@ over---ADTs or trees---and then allocate time appropriately.
 \subimport{../../topics/trees/adt/text/}{tree_overview.tex}
 \begin{questions}
     \subimport{../../topics/trees/adt/medium}{replace-x.tex}
-    \subimport{../../topics/trees/adt/medium}{all-paths.tex}
     \subimport{../../topics/trees/adt/hard}{contains-n.tex}
+\end{questions}
+
+\newpage
+\section{Mutability}
+\begin{meta}
+    We realize that the topic of mutability is kind of ``thrown in'' here in a worksheet primarily concerning ADTs, but please touch upon this section a little with your students! While data abstraction (in my opinion) is a fundamental part of computer science, mutability is important to students for midterm 2 and the final!
+
+    We've only included a few beginning problems as an ``intro'' to mutability. Mutability will be covered more extensively next worksheet.
+\end{meta}
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+\begin{questions}
+    \subimport{../../topics/lists/mutable/easy/}{wwpd-mixed.tex}
+    \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
 \end{questions}
 
 \end{document}
