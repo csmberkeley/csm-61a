@@ -1,8 +1,8 @@
 \begin{blocksection}
-\question Complete the function \lstinline{snapshot}, which takes a single-argument function \lstinline{f} and a list \lstinline{inputs} and returns a ``snapshot'' of \lstinline{f} on \lstinline{inputs}. A ``snapshot'' is a dictionary where the keys are the provided \lstinline{inputs} and the values are the corresponding outputs of \lstinline{f} on each input.
+\question Complete the function \lstinline{snapshot}, which takes a single-argument function \lstinline{f} and a list \lstinline{snap_inputs} and returns a ``snapshot'' of \lstinline{f} on \lstinline{snap_inputs}. A ``snapshot'' is a dictionary where the keys are the provided \lstinline{snap_inputs} and the values are the corresponding outputs of \lstinline{f} on each input.
 
 \begin{lstlisting}
-def snapshot(f, inputs):
+def snapshot(f, snap_inputs):
     """
     >>> snapshot(lambda x: x**2, [1, 2, 3])
     {1: 1, 2: 4, 3: 9}
@@ -19,10 +19,10 @@ def snapshot(f, inputs):
 
 \begin{solution}
 \begin{lstlisting}
-def snapshot(f, inputs):
+def snapshot(f, snap_inputs):
     snap = {}
-    for input in inputs:
-        snap[input] = f(input)
+    for snap_input in snap_inputs:
+        snap[snap_input] = f(snap_input)
     return snap
 \end{lstlisting}
 \end{solution}
