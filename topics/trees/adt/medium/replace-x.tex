@@ -34,16 +34,23 @@ We would expect it to return
 
 \begin{lstlisting}
 def replace_x(t, x):
-    
+    """
+    >>> t = tree(2, [tree(1), tree(2)])
+    >>> replace_x(t, 2)
+    tree(0, [tree(1), tree(0)])
+    """
+    ___________________________________________
 
+    if ________________________________________:
 
+        return ________________________________
 
-
-
+    return ________________________________
 \end{lstlisting}
 
 \begin{solution}
 \begin{lstlisting}
+def replace_x(t, x):
    new_branches = [replace_x(b, x) for b in branches(t)]
    if label(t) == x:
         return tree(0, new_branches)
@@ -53,17 +60,9 @@ def replace_x(t, x):
 Here, we construct and return a new tree. First, we make 
 a new list of branches where each branch is the same
 as the previous branch but all occurrences of x have been
-replaced with 0 (this is what the output of \lstinline$replace_x$
-is defined to be.)
-\newline
-\newline
-If the label of our tree is equal to x, we will additionally need 
-to "replace" our current label with 0 in the tree we return. Otherwise,
-we can keep our previous label.
-\newline
-\newline
-These two steps guarantee that each occurrence of x is replaced.
-\newline
+replaced with 0 as per our recursive function. The if statement guarantees that if our root node's label is an occurence of x,
+we replace the subtree we're on starting at its root --  
+keeping all else before it the same while replacing the specific subtree's root node label to be zero.
 \newline
 We do not need a base case here, as if we are at a leaf, the list
 comprehension we use to create the new branches will evaluate to an 

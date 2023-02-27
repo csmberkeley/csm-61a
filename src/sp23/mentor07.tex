@@ -1,0 +1,63 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Data Abstraction and Function-based Trees}}
+\date{February 27--March 03, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item ADT mini-lecture (5 min)
+    \item Q1: Pokemon selectors (5 min)
+    \item Q2: Are friends (3 min)
+    \item Q3: Cross type friends (7 min)
+    \item Q4: Pokemon constructor (8 min)
+    \item ADT Tree mini-lecture (8 min)
+    \item Q5: Replace x (8 min)
+    \item Q6: Contains N (12 min)
+\end{itemize}
+The times in the recommended timeline do not add up to 50 minutes because no mentor
+is expected to get through all the problems during section. The worksheet is a skeleton
+around which you should structure your section to best meet the needs of your students.
+If you get stressed out about covering a lot of content, I encourage you to be open with
+your students about the way these sessions are structured.  
+
+You should probably ask your students at the beginning of section what they would rather go
+over---ADTs or trees---and then allocate time appropriately. 
+\end{meta}
+
+
+\section{Abstraction}
+\subimport{../../topics/data-abstraction/text/}{abstraction-summary.tex}
+\begin{meta}
+    If data abstraction is new to your students or they don't feel very confident in the topic, \textbf{consider walking them through the following problems}.
+    
+    Emphasize the \textbf{importance of selectors} -- useful for 2).
+    
+    A good visualization is to draw the data abstraction out using box and pointer diagrams. \textbf{Make sure not to get caught up on any specific representation of the data abstraction}, as they should be easy to change 3) is an alternate representation.
+    
+    Talk about what it means to \textbf{break the abstraction barrier. How do you make sure that you are not breaking the abstraction barrier?}
+\end{meta}
+\begin{questions}
+    \subimport{../../topics/data-abstraction/easy/}{pokemon.tex}
+\end{questions}
+
+\newpage
+\section{Tree ADT}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+\begin{questions}
+    \subimport{../../topics/trees/adt/medium}{replace-x.tex}
+    \subimport{../../topics/trees/adt/hard}{contains-n.tex}
+\end{questions}
+
+\end{document}
