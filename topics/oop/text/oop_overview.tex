@@ -1,4 +1,4 @@
-\textbf{Object oriented programming} is a paradigm that organizes relationships among data into \textbf{objects} and \textbf{classes}. For example, we can write a \lstinline{Car} class to represent the concept of cars in general: 
+\textbf{Object oriented programming} is a programming paradigm that organizes relationships within data into \textbf{objects} and \textbf{classes}. In object oriented programming, each object is an \textbf{instance} of some particular class. For example, we can write a \lstinline{Car} class that acts as a template for cars in general: 
 
 \begin{lstlisting}
 class Car:
@@ -13,11 +13,11 @@ class Car:
 my_car = Car()
 \end{lstlisting}
 
-To represent an individual car, we can then create a new instance of \lstinline{Car} by ``calling'' the class. Doing so will automatically construct a new object of type \lstinline{Car}, pass it into the \lstinline{__init__} method (also called the \textbf{constructor}), and then return it. Often, the \lstinline{__init__} method will initialize the \textbf{instance attributes} of an object, which represent the state of an individual object. In this case, the \lstinline{__init__} method initially sets the \lstinline{gas} instance attribute of each car to $100$. 
+To represent an individual car, we can then initialize a new instance of \lstinline{Car} as \lstinline{my_car} by ``calling'' the class. Doing so will automatically construct a new object of type \lstinline{Car}, pass it into the \lstinline{__init__} method (also called the \textbf{constructor}), and then return it. Often, the \lstinline{__init__} method will initialize an object's \textbf{instance attributes}, variables specific to one object instead of all objects in its class. In this case, the \lstinline{__init__} method initially sets the \lstinline{gas} instance attribute of each car to $100$. 
 
-Classes can also have \textbf{class attributes}, which are variables shared by all instances of a class. In the above example, \lstinline{wheels} is shared by all instances of the \lstinline{Car} class. 
+Classes can also have \textbf{class attributes}, which are variables shared by all instances of a class. In the above example, \lstinline{wheels} is shared by all instances of the \lstinline{Car} class. In other words, all cars have 4 wheels. 
 
-\textbf{Instance methods} are special functions that act on the instances of a class. We've already seen the \lstinline{__init__} method. We can call instance methods by using the dot notation we use for instance attributes: 
+Functions within classes are known as methods. \textbf{Instance methods} are special functions that act on the instances of a class. We've already seen the \lstinline{__init__} method. We can call instance methods by using the dot notation we use for instance attributes: 
 \begin{lstlisting}
 >>> my_car.drive()
 Current gas level: 90
