@@ -15,12 +15,12 @@ StopIteration
 \lstinline{StopIteration} is an exception that is raised when an iterator has no more elements to produce; it's how we know we've reached the end of an iterator. Iterators that will never produce a \lstinline{StopIteration} exception are called \textit{infinite}. 
 
 Under this regime, an iterable is formally defined as an object that can be turned into an iterator by passing it into the \lstinline{iter} function. When you iterate over an iterable, Python first uses \lstinline{iter} to create an iterator from the iterable and then iterates over the iterator. The simple \lstinline{for} loop syntax abstracts away this fact. 
-
+f
 There are a few useful functions that act on iterables that are particularly useful: 
 \begin{itemize}
-    \item \lstinline{map(f, it)}: Returns an iterable that produces each element of \lstinline{it} with the function \lstinline{f} applied to it.
-    \item \lstinline{filter(pred, it)}: Returns an iterable that includes only the elements of \lstinline{it} where the predicate function \lstinline{pred} returns true. 
-    \item \lstinline{reduce(f, it, init)}: Reduces \lstinline{it} to a single value by repeatedly calling the two-argument function \lstinline{f} on the elements of \lstinline{it}: \lstinline{reduce(add, [1, 2, 3])} $\rightarrow$ \lstinline{6}. Optionally, an initializer may be provided: \lstinline{reduce(add, [1], 0)} $\rightarrow$ \lstinline{1}. 
+    \item \lstinline{map(f, it)}: Returns an iterator that produces each element of \lstinline{it} with the function \lstinline{f} applied to it.
+    \item \lstinline{filter(pred, it)}: Returns an iterator that includes only the elements of \lstinline{it} where the predicate function \lstinline{pred} returns true. 
+    \item \lstinline{reduce(f, it, init)}: Reduces \lstinline{it} to a single value by repeatedly calling the two-argument function \lstinline{f} on the elements of \lstinline{it}: \lstinline{reduce(add, [1, 2, 3])} $\rightarrow$ \lstinline{6}. Optionally, an initializer may be provided: \lstinline{reduce(add, [1], 5)} $\rightarrow$ \lstinline{6}. 
 \end{itemize}
 
 \begin{meta}

@@ -21,38 +21,12 @@ We can fix this issue with list mutation. In Python, some objects, such as lists
 \includegraphics[scale=0.75]{pointers_mutate.PNG}
 \end{center}
 
-% Note to future semseters: replace this text overview with this table. You should
-% probably typeset it in LaTeX instead of doing it with an image. SP23 NOTE: img doesn't exist so we removed :(
+Here are more list methods that mutate:
+\newline
+% Note to future semseters: replace this text overview with this table. SP23 UPDATE; table doesn't exist in repo :( WAIT LOL NVM IT DOES just not pathed correctly
+\includegraphics[width=.9\textwidth]{list-mutation.png}
 
 \text{(credits: Mihira Patel)}
-
-Here are a few other list methods that mutate:
-\begin{itemize}
-\item \lstinline{append(el)}: Adds \lstinline{el} to the end of the list
-\item \lstinline{extend(lst)}: Extends the list by concatenating \lstinline{lst} onto the end
-\item \lstinline{insert(i, el)}: Inserts \lstinline{el} at index \lstinline{i} (does not replace element but adds a new one)
-\item \lstinline{remove(el)}: Removes the first occurrence of \lstinline{el} in the list; errors if \lstinline{el} is not in the list 
-\item \lstinline{pop(i)}: Removes and returns the element at index \lstinline{i}; if no index is provided, it removes and returns the last element of the list
-\end{itemize}
-
-In addition to these methods, there are a few other built-in ways to mutate lists: 
-
-\begin{itemize}
-\item \lstinline$lst += lst$ (\textbf{This is distinct from} \lstinline$lst = lst + lst$)
-\item \lstinline$lst[i] = x$
-\item \lstinline$lst[i:j] = lst$
-\end{itemize}
-
-\vspace{\parskip}
-
-On the other hand, the following non-mutative (\emph{non-destructive}) operations do not change the original list but create a new list instead:
-
-\begin{itemize}
-\item \lstinline$lst + lst$
-\item \lstinline$lst * n$
-\item \lstinline$lst[i:j]$
-\item \lstinline$list(lst)$
-\end{itemize}
 
 \begin{guide}
 	\textbf{Teaching Tips}
