@@ -18,8 +18,8 @@ Under this regime, an iterable is formally defined as an object that can be turn
 f
 There are a few useful functions that act on iterables that are particularly useful: 
 \begin{itemize}
-    \item \lstinline{map(f, it)}: Returns an iterable that produces each element of \lstinline{it} with the function \lstinline{f} applied to it.
-    \item \lstinline{filter(pred, it)}: Returns an iterable that includes only the elements of \lstinline{it} where the predicate function \lstinline{pred} returns true. 
+    \item \lstinline{map(f, it)}: Returns an iterator that produces each element of \lstinline{it} with the function \lstinline{f} applied to it.
+    \item \lstinline{filter(pred, it)}: Returns an iterator that includes only the elements of \lstinline{it} where the predicate function \lstinline{pred} returns true. 
     \item \lstinline{reduce(f, it, init)}: Reduces \lstinline{it} to a single value by repeatedly calling the two-argument function \lstinline{f} on the elements of \lstinline{it}: \lstinline{reduce(add, [1, 2, 3])} $\rightarrow$ \lstinline{6}. Optionally, an initializer may be provided: \lstinline{reduce(add, [1], 5)} $\rightarrow$ \lstinline{6}. 
 \end{itemize}
 
