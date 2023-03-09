@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Write \lstinline$TeamBaller$, a subclass of \lstinline$Baller$. An instance of \lstinline$TeamBaller$ cheers on the team every time it passes a ball and returns whether or not it passed the ball. If the \lstinline$TeamBaller$ did not pass the ball, it'll say it hasn't done so and return False. Assume \lstinline$Baller$, the class \lstinline$TeamBaller$ inherits from, has a defined pass_ball method.
+\question Write \lstinline$TeamBaller$, a subclass of \lstinline$Baller$. An instance of \lstinline$TeamBaller$ cheers on the team every time it passes a ball/states it doesn't have the ball when it doesn't and returns a boolean of whether or not it passed the ball. If the \lstinline$TeamBaller$ did not pass the ball, it'll say it hasn't done so and return False. Assume \lstinline$Baller$ has a defined \textit{pass\_ball} method.
 
 \ifprintanswers\else
 \begin{lstlisting}
@@ -8,11 +8,11 @@ class TeamBaller(_______________):
     >>> alyssa = BallHog('Alyssa')
     >>> cheerballer = TeamBaller('Esther', has_ball=True)
     >>> cheerballer.pass_ball(alyssa)
-    Yay! \textit{# Esther was in possession of the ball and with the .pass_ball method, passed to Alyssa.}
-    True \textit{# Esther has passed the ball.}
+    Yay! 
+    True 
     >>> cheerballer.pass_ball(alyssa)
-    I don't have the ball \textit{# Esther cannot pass the ball because she is not in possession of the ball.}
-    False \textit{# Esther has not passed the ball}
+    I don't have the ball 
+    False 
     """
     def pass_ball(_______________, ________________):
 \end{lstlisting}

@@ -161,12 +161,9 @@ AttributeError
 \end{solution}
 
 \begin{questionmeta}
-In previous semesters, we received feedback about going over nuanced examples from this WWPD in the text overview. For the sake of brevity and not overwhelming students, we're putting our inputs/nuanced points in the meta as points you can teach students/encourage students to note on their worksheet. 
-\begin{itemize}
-    \item You may realize that as both a ForceWielder and Jedi, \lstinline{anakin} has no attribute named \lstinline{master} at first. Note to students that it is possible in our OOP objects for us to declare object attributes on the fly. Also communicate to students that while you can declare object attributes on the fly, that does not mean that such attributes persist to the class the object exists in as a whole.
-\end{itemize}
-Additionally, as a non-Star Wars fan (sacrelige, I know), I realized that I myself was confused by the context behind certain methods/attributes. If you think it'd help students, feel free to explain Star Wars lore
-As for teaching tips, in my opinion, going through an example like this is far more helpful for students than a mini-lecture. Try to foresee some questions and confusions might have and how you might address them, for example:
+To address a point brought up in previous semesters: You may realize that as both a ForceWielder and Jedi, \lstinline{anakin} has no attribute named \lstinline{master} at first. Note to students that it is possible in our OOP objects for us to declare object attributes on the fly. Also communicate to students that while you can declare object attributes on the fly, that does not mean that such attributes persist to the class the object exists in as a whole.
+\newline
+In my opinion, going through an example like this is far more helpful for students than a mini-lecture. Try to foresee some questions and confusions might have and how you might address them, for example:
 \begin{itemize}
     \item Why, in the \lstinline{__init__} method of \lstinline{Sith} can we use \lstinline{self.num_sith} instead of \lstinline{Sith.num_sith}? And why can't we write \lstinline{self.num_sith += 1}?
     \item Why does evaluating \lstinline{rey} give us \lstinline{<__main__.ForceWielder object>}, but this is not the case when we evaluated \lstinline{anakin.master}? 
