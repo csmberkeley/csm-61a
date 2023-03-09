@@ -161,6 +161,8 @@ AttributeError
 \end{solution}
 
 \begin{questionmeta}
+To address a point brought up in previous semesters: You may realize that as both a ForceWielder and Jedi, \lstinline{anakin} has no attribute named \lstinline{master} at first. Note to students that it is possible in our OOP objects for us to declare object attributes on the fly. Also communicate to students that while you can declare object attributes on the fly, that does not mean that such attributes persist to the class the object exists in as a whole.
+\newline
 In my opinion, going through an example like this is far more helpful for students than a mini-lecture. Try to foresee some questions and confusions might have and how you might address them, for example:
 \begin{itemize}
     \item Why, in the \lstinline{__init__} method of \lstinline{Sith} can we use \lstinline{self.num_sith} instead of \lstinline{Sith.num_sith}? And why can't we write \lstinline{self.num_sith += 1}?

@@ -1,6 +1,6 @@
-\textbf{Inheritance} is an important feature of object oriented programs. In addition to making our code more concise, it allows us to create classes based on other classes in a similar way to how real-world categories are often divided into smaller subcategories. 
+\textbf{Inheritance} is an important feature of object oriented programming. To create an object that shares its attributes or methods with an existing object, we can have the object inherit these similarities instead of repeating code. In addition to making our code more concise, it allows us to create classes based on other classes, similar to how real-world categories are often divided into smaller subcategories. 
 
-For example, the \lstinline{HybridCar} class may inherit from the \lstinline{Car} class: 
+For example, say the \lstinline{HybridCar} class inherits from the \lstinline{Car} class as a type of car: 
 
 \begin{lstlisting}
 class HybridCar(Car):
@@ -19,11 +19,13 @@ class HybridCar(Car):
 my_hybrid = HybridCar()
 \end{lstlisting}
 
-By default, the child class inherits all of the attributes and methods of its parent class. So from the \lstinline{HybridCar} instance \lstinline{my_hybrid}, we can call \lstinline{my_hybrid.drive()} and access \lstinline{my_hybrid.wheels}, for example. When dot notation is used on an instance, Python will first check the instance to see if the attribute exists, then the instance's class, and then its parent class, etc. If Python goes all the way up the class tree without finding the attribute, an \lstinline{AttributeError} is thrown. 
+By default, the child class inherits all of the attributes and methods of its parent class. Consequently, we would be able to call \lstinline{my_hybrid.drive()} and access \lstinline{my_hybrid.wheels} from the \lstinline{HybridCar} instance \lstinline{my_hybrid}. When dot notation is used on an instance, Python will first check the instance to see if the attribute exists, then the instance's class, and then its parent class, etc. If Python goes all the way up the class tree without finding the attribute, an \lstinline{AttributeError} is thrown. 
 
-Additional or redefined instance and class attributes can be added in a child class. We can also \textbf{override} inherited instance methods by redefining them in the child class. If we would like to call the parent class's version of a method, we can use \lstinline{super()} to access it. 
+Additional or redefined instance and class attributes can be added in a child class, such as \lstinline{battery}. If we decided that hybrid cars should have 3 wheels, we could assign 3 to a class attribute \lstinline{wheels} in \lstinline{HybridCar}. \lstinline{my_hybrid.wheels} would return 3, but \lstinline{my_car.wheels} would still return 4. We can also \textbf{override} inherited instance methods by redefining them in the child class. If we would like to call the parent class's version of a method, we can use \lstinline{super()} to access it.
 
 \begin{meta}
+NOTE: AS OF THE SPRING 2023 ITERATION OF THIS COURSE, IT IS DEFINITELY POSSIBLE THAT THIS IS YOUR STUDENTS' FIRST INTERACTION WITH INHERITANCE. We included this section as, honestly, there's not much you can do with OOP without the concepts of inheritance and representation, so as such, we included some baseline examples of such in the problems following this overview.
+
 Again, you probably want to go over this differently than the reference material presented here. I like to draw out a class tree on the board and emphasize that there should be an ``is-a'' relationship between child class and parent class. For example, a hybrid car ``is a'' car. The reasoning behind this ``is-a'' rule of thumb is that objects of the child class should generally have all the same properties as objects of the parent class. It's also often instructive to give some examples that do not work in a class hierarchy. A wagon is not a car. A vehicle is not a car (but a car is a vehicle). A car is not a garage (although a car is contained in a garage). 
 
 Variable look-up can be rather confusing for students. If you draw the class hierarchy as a tree on the board, you can demonstrate the process of successively looking up from instance to class and then from child class to parent class until you find the attribute or error out. I tell my students that you can only look up the class hierarchy, not down it. 

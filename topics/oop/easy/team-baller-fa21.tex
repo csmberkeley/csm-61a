@@ -1,18 +1,18 @@
 \begin{blocksection}
-\question Write \lstinline$TeamBaller$, a subclass of \lstinline$Baller$. An instance of \lstinline$TeamBaller$ cheers on the team every time it passes a ball.
+\question Write \lstinline$TeamBaller$, a subclass of \lstinline$Baller$. An instance of \lstinline$TeamBaller$ cheers on the team every time it passes a ball/states it doesn't have the ball when it doesn't and returns a boolean of whether or not it passed the ball. If the \lstinline$TeamBaller$ did not pass the ball, it'll say it hasn't done so and return False. Assume \lstinline$Baller$ has a defined \textit{pass\_ball} method.
 
 \ifprintanswers\else
 \begin{lstlisting}
 class TeamBaller(_______________):
     """
-    >>> pamela = BallHog('Pamela')
-    >>> cheerballer = TeamBaller('Vanshaj', has_ball=True)
-    >>> cheerballer.pass_ball(pamela)
-    Yay!
-    True
-    >>> cheerballer.pass_ball(pamela)
-    I don't have the ball
-    False
+    >>> alyssa = BallHog('Alyssa')
+    >>> cheerballer = TeamBaller('Esther', has_ball=True)
+    >>> cheerballer.pass_ball(alyssa)
+    Yay! 
+    True 
+    >>> cheerballer.pass_ball(alyssa)
+    I don't have the ball 
+    False 
     """
     def pass_ball(_______________, ________________):
 \end{lstlisting}
@@ -22,12 +22,12 @@ class TeamBaller(_______________):
 \begin{lstlisting}
 class TeamBaller(Baller):
     """
-    >>> pamela = BallHog('Pamela')
-    >>> cheerballer = TeamBaller('Vanshaj', has_ball=True)
-    >>> cheerballer.pass_ball(pamela)
+    >>> alyssa = BallHog('Alyssa')
+    >>> cheerballer = TeamBaller('Esther', has_ball=True)
+    >>> cheerballer.pass_ball(alyssa)
     Yay!
     True
-    >>> cheerballer.pass_ball(pamela)
+    >>> cheerballer.pass_ball(alyssa)
     I don't have the ball
     False
     """
@@ -45,6 +45,7 @@ class TeamBaller(Baller):
 \begin{blocksection}
 \textbf{Teaching Tips}
     \begin{itemize}
+    \item This is mean to be an introduction to how object interact with other objects, overwriting methods, and inheritance. As of the Spring 2023 iteration of this course, students are fairly new to the concept of inheritance, and as such, may need a little hand-holding through this problem. Let this serve as a gentle introduction and if they get confused on nuances, clarify.
     \item Let students think about what methods are being inherited, along with the attributes that are inherited in the init method.
     \item Remember that although the pass\_ball method will be overridden in the TeamBaller method, it can call the inherited class's method.
     \item Remember that the pass\_ball method of the Baller class will return whether the ball was passed or not, which decides whether the TeamBaller instance should cheer or not.
