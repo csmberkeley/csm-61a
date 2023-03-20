@@ -59,21 +59,6 @@ loops.
 
 \part
 \begin{lstlisting}
-def crepe(n):
-    folds = n
-    total_crepes = 0
-    for i in range(n):
-        for j in range(folds):
-            total_crepes += 1
-    return total
-\end{lstlisting}
-\begin{solution}[0.25in]
-$\Theta(n^2)$ Though the inner loop goes by a different name, it's still equal to $n$, meaning it runs $n$ times.
-The outer loop also runs $n$ times. Multiplying those two run times together, we get $\Theta(n^2)$.
-\end{solution}
-
-\part
-\begin{lstlisting}
 def belgian_waffle(n):
     i = 0
     total = 0
