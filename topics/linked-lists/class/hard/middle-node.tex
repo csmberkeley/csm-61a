@@ -1,0 +1,94 @@
+\begin{blocksection}
+\question Write a function \lstinline{middle_node} that takes as input a linked list \lstinline{lst}. \lstinline{middle_node} should return  the middle node of the linked list. If there are two middle nodes, return the second middle node.
+
+\begin{lstlisting}
+def middle_node(lst):
+    """
+    >>> head = Link(1, Link(2, Link(3, Link(4, Link(5)))))
+    >>> middle_node(head)
+    Link(3, Link(4, Link(5))) # The middle node of the list is node 3
+    >>> head = Link(1, Link(2, Link(3, Link(4, Link(5, Link(6))))))
+    Link(4, Link(5, Link(6))) # Since the list has two middle nodes with values 3 and 4, we return the second one
+    """
+    list_iter, middle = _______________, ________________
+    
+    length = _________________________________
+
+    while _________________________________:
+
+        length = _________________________________
+
+        list_iter = _________________________________
+    
+    for _________________________________:
+
+        middle = _________________________________
+    
+    if length % 2 == 1:
+
+        middle = _________________________________
+
+    return middle  
+
+\end{lstlisting}  
+
+
+Challenge version \textbf{(Optional)}:
+\begin{lstlisting}
+def middle_node(lst):
+
+    list_iter, middle = _______________, ________________
+
+    while ___________________ and ___________________:
+
+        list_iter = _________________________________
+
+        middle = _________________________________
+
+    return middle
+
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}[0.6in]
+\begin{lstlisting}
+def middle_node(lst):
+    list_iter, middle = lst, lst
+    length = 0
+
+    while list_iter:
+        length = length + 1
+        list_iter = list_iter.rest
+    
+    for i in range(length // 2):
+        middle = middle.rest
+    
+    if length % 2 == 1:
+        middle = middle.rest
+
+    return middle   
+\end{lstlisting} 
+
+In this solution, we first calculate the length of the linked list, and then finding the middle node based on that length.
+
+\textbf{Challenge version}
+\begin{lstlisting}
+def middle_node(lst):
+    list_iter, middle = lst, lst
+
+    while list_iter and list_iter.rest:
+        list_iter = list_iter.rest.rest
+        middle = list_iter.rest
+
+    return middle
+\end{lstlisting}
+
+In this solution, we iterate through the linked list with two pointers at different speeds. One pointer, \lstinline{list_iter}, moves through the list one node at a time, while the other pointer, \lstinline{middle}, moves through the list at half the speed of \lstinline{list_iter}. 
+\end{solution}
+
+\begin{questionmeta}
+Despite being just a few lines, this problem is quite difficult, so one thing I would emphasize is to draw out this problem with a box-and-pointer diagram and illustrate the different steps of our function. Illustrate how the function works for the doctests.
+    
+You should tell your students that they should feel free to disregard the provided skeleton, because it is quite difficult to think of the solution to this problem when you are trying to fit everything into the skeleton. 
+\end{questionmeta}
+    
