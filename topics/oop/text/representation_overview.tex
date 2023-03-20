@@ -1,6 +1,6 @@
-\textbf{\lstinline{__str__}} is special method to convert an object to a human-readable string. It may be invoked by directly calling \lstinline{str} on an object. Additionally, whenever we call \lstinline{print()} on an object, it will call the \lstinline{__str__} method of that object and print whatever value the \lstinline{__str__} call returned. 
+\textbf{\lstinline{__str__}} is special method that converts an object to a string meant to be readable by humans. It may be invoked by directly calling \lstinline{str} on an object. Additionally, calling \lstinline{print()} on an object will call the \lstinline{__str__} method of that object and print whatever value the \lstinline{__str__} call returns. 
 
-The \textbf{\lstinline{__repr__}} method also returns a string representation of an object. However, the representation created by \lstinline{repr} is not meant to be human readable, and it should contain all information about the object. When you evaluate some object in the Python interpreter, it will automatically call \lstinline{repr} on that object and then print out the string that \lstinline{repr} returns. 
+The \textbf{\lstinline{__repr__}} method also returns a string representation of an object. However, the representation created by \lstinline{repr} is meant to be read by the Python interpreter, not by humans. When we evaluate some object in the Python interpreter, it will automatically call \lstinline{repr} on that object and then print out the string that \lstinline{repr} returns. It should contain all information about the object.
 
 For example, if we had a \lstinline{Person} class with a name instance variable, we can create a \lstinline{__repr__} and \lstinline{__str__} method like so:
 \begin{lstlisting}
