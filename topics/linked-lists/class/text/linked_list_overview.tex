@@ -2,6 +2,7 @@
 
 For example, \lstinline{Link(1, Link(2, Link(3)))} is a linked list representation of the sequence $1, 2, 3$. 
 
+\begin{blocksection}
 Like trees, linked lists naturally lend themselves to recursive problem solving. Consider the following example, in which we double every value in linked list. We mutate the current link and then recursively double the rest. 
 \begin{lstlisting}
 def double_values(link): 
@@ -11,6 +12,7 @@ def double_values(link):
                               # of the linked list
     # if the link is empty then do nothing
 \end{lstlisting}
+\end{blocksection}
 
 \begin{guide}
     \textbf{Teaching Tips}
