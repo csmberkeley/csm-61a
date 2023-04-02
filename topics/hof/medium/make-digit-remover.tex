@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Write a function, \lstinline{make_digit_remover}, which takes in a single digit \texttt{i}. It returns another function that takes in an integer and, scanning from right to left, removes all digits from the integer up to and including the first occurrence of \texttt{i}. If \texttt{i} does not occur in the integer, the original number is returned. 
+\question Write a function, \lstinline{make_digit_remover}, which takes in a single digit \texttt{i}. It returns another function that takes in an integer and, scanning from right to left, removes all digits from the integer up to and including the first occurrence of \texttt{i}, starting from the ones place. If \texttt{i} does not occur in the integer, the original number is returned. 
 
 \begin{lstlisting}
 def make_digit_remover(i):

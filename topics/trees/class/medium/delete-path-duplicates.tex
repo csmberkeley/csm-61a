@@ -45,7 +45,7 @@ def delete_path_duplicates(t):
             seen_so_far = seen_so_far + [t.label]
         for b in t.branches:
             helper(b, seen_so_far)
-    helper(t, [])
+    return helper(t, [])
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
