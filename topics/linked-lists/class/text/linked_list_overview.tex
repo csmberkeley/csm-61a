@@ -1,9 +1,9 @@
-\textbf{Linked lists} are a recursive data structure for representing sequences. They consist of a series of ``links,'' each of which has two attributes: \lstinline{first} and \lstinline{rest}. The \lstinline{first} attribute contains the value of the link (which can be an integer, string, list, even another linked list!). The \lstinline{rest} attribute, on the other hand, is a pointer to another link or \lstinline{Link.empty}, which is just an empty linked list. 
+\textbf{Linked lists} are a recursive data structure for representing sequences. They consist of a series of ``links,'' each of which has two attributes: \lstinline{first} and \lstinline{rest}. The \lstinline{first} attribute contains the value of the link (which can hold any type of data, even another linked list!). The \lstinline{rest} attribute, on the other hand, is a pointer to another link or \lstinline{Link.empty}, which is just a ``None'' type value. 
 
 For example, \lstinline{Link(1, Link(2, Link(3)))} is a linked list representation of the sequence $1, 2, 3$. 
 
 \begin{blocksection}
-Like trees, linked lists naturally lend themselves to recursive problem solving. Consider the following example, in which we double every value in linked list. We mutate the current link and then recursively double the rest. 
+Like trees, linked lists naturally lend themselves to recursive problem solving. Consider the following example, in which we double every value in linked list. We double the value of the current link and then recursively double the rest. 
 \begin{lstlisting}
 def double_values(link): 
      if link is not Link.empty:
