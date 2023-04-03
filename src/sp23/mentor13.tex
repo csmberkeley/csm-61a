@@ -1,0 +1,51 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{13}
+\title{\textsc{Introduction to Scheme}}
+\date{April 10--April 14, 2023}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Scheme Guided Minilecture: 25 mins (esther and i will handle this)
+        \item Practice Problem #1: 5 mins
+        \item Practice Problem #2: 5 mins
+        \item Practice Problem #3: 7 mins
+        \item Practice Problem #4: 8 mins
+    \end{itemize}
+\end{blocksection}
+\end{meta}
+You'll notice that the times on the meta for this worksheet actually add up to 50 minutes this time! This is because this section is meant to act as your students' first introduction to Scheme, as they haven't even been exposed to it during lecture (we're just giving them a head start ;-)).
+\begin{meta}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Before we jump into Macros, it is very important to ensure that your students understand quasiquotation.
+    \item Take your time with the quasiquotation WWSD and drawing parallels with Python's f-strings may make it easier for your students to understand 
+    \item Draw out box and pointer diagrams to show how the expressions in macros are being stored when the operands are unevaluated
+    \item If you would like a quick refresher on how to think about macros, please refer to this link! \href{https://docs.google.com/document/d/1JSbvtJ5bYUEhovDZd_gQnBvkG_WDcafmX-4B3QeIXZU/edit}{guide}
+\end{itemize}
+\end{meta}
+
+\section{Macros}
+\subimport{../../topics/macros/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/easy/}{meta-apply.tex}
+\subimport{../../topics/macros/easy/}{nand.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
+\subimport{../../topics/macros/medium/}{python-if.tex}
+\subimport{../../topics/macros/easy/}{combine-num.tex}
+\subimport{../../topics/macros/medium/}{censor.tex}
+\end{questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
