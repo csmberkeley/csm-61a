@@ -1,0 +1,17 @@
+\begin{blocksection}
+Let's practice and/or statements!
+
+\begin{lstlisting}
+    scm> (and #t (= 3 3) (> (- 61 42) (+ 61 42)))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{\#f}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (or #f (< 3 3) (< (- 61 42) (+ 61 42)))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{\#t}
+\end{solution}
+\end{blocksection}
