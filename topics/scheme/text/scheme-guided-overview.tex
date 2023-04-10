@@ -13,49 +13,7 @@ Atomics are the simplest expressions. Some atomics, such as numbers and booleans
 
 \textbf{Symbols} (variables) are also atomic expressions; they evaluate to the values to which they are bound. For example, the symbol \lstinline{+} evaluates to the addition \textbf{procedure} (function) \lstinline{#[+]}. 
 
-\question Let's practice identifying atomic expressions in Scheme!
-
-\begin{lstlisting}
-    True or False: 3.14 is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-\texttt{True. Floats are atomic expressions.}
-\end{solution}
-
-\begin{lstlisting}
-    True or False: pi is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-    \texttt{False. Pi in most cases isn't naturally defined within the programming language -- rather, it's a variable name. As we haven't defined pi in this case, Scheme doesn't know what to interpret pi as, so we get an Error if we try to evaluate this on its own.}
-\end{solution}
-
-\begin{lstlisting}
-    True or False: - is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-    \texttt{True. - is an operator for subtraction.}
-\end{solution}
-
-\begin{lstlisting}
-    True or False: // is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-    \texttt{False. Scheme can only interpret the basic symbols of +, -, *, /. We'll have to define our own floor division function!}
-\end{solution}
-
-\begin{lstlisting}
-    True or False: 'b' is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-    \texttt{True. 'b' is a character, which is an atomic data type!}
-\end{solution}
-
-\begin{lstlisting}
-    True or False: "is this atomic?" is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-    \texttt{True. Even though a string is a list of characters, Scheme still treats them as an atomic. It's important to note that in Scheme's case, strings can only be denoted with ".}
-\end{solution}
+\subimport{../easy/wwsd/}{atomic-wwsd.tex}
 
 In general, if you want to check if an input is atomic, use (atom? [input]) in the Scheme interpreter.
 
@@ -79,40 +37,7 @@ Note that in order to add two numbers, we had to call a function. In Python, \ls
 
 \question Let's do some practice with call expressions! What would Scheme do for each expression?
 
-\begin{lstlisting}
-    scm> (+ 1 (* 3 4))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{13}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (* 1 (+ 3 4))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{7}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (/ 2)
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{0.5 || When Scheme sees only one operand in the case of multiplication and division, it fills in <operand0> to be 1.}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (- 2)
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{-2 || When Scheme sees only one operand in the case of addition and subtraction, it fills in <operand0> to be 0.}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (* 4 (+ 3 (- 2 (/ 1))))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{16}
-\end{solution}
+\subimport{../easy/wwsd/}{call-expression-wwsd.tex}
 
 \subsection{Special Forms}
 
@@ -164,36 +89,7 @@ A \lstinline{cond} expression is similar to a Python \lstinline{if}-\lstinline{e
     \item If every predicate is false, return \lstinline{<else-expr>}. 
 \end{itemize}
 
-\question Let's practice using \lstinline{if}s and \lstinline{cond}s to evaluate Scheme problems!
-
-\begin{lstlisting}
-    scm> (if 2 3 4)
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{3}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (if 0 3 4)
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{4}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (- 5 (if #f 3 4))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{1}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (cond ((< -5 -7) 3)
-          (else 4))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{4}
-\end{solution}
+\subimport{../easy/wwsd/}{if-cond-wwsd.tex}
 
 \subsubsection{\lstinline{and} expression}
 \begin{lstlisting}
@@ -207,21 +103,7 @@ A \lstinline{cond} expression is similar to a Python \lstinline{if}-\lstinline{e
 \end{lstlisting}
 \lstinline{or} in Scheme works similarly to \lstinline{or} in Python. Evaluate the expressions in order and return the value of the first true expression. If all of the values are false, return the last value. If no operands are provided, return \lstinline{#f}.
 
-\question Let's practice and/or statements!
-
-\begin{lstlisting}
-    scm> (and #t (= 3 3) (> (- 61 42) (+ 61 42)))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{#f}
-\end{solution}
-
-\begin{lstlisting}
-    scm> (or #f (< 3 3) (< (- 61 42) (+ 61 42)))
-\end{lstlisting}
-\begin{solution}[.25in]
-    \texttt{#t}
-\end{solution}
+\subimport{../easy/wwsd/}{and-or.tex}
 
 \subsubsection{\lstinline{define} expression}
 

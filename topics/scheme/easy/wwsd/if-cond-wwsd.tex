@@ -1,0 +1,32 @@
+\begin{blocksection}
+Let's practice using \lstinline{if}s and \lstinline{cond}s to evaluate Scheme problems!
+
+\begin{lstlisting}
+    scm> (if 2 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{3}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (if 0 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{4}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (- 5 (if #f 3 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{1}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (cond ((< -5 -7) 3)
+          (else 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{4}
+\end{solution}
+\end{blocksection}
