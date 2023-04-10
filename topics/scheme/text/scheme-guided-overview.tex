@@ -129,7 +129,7 @@ Below, we will go through a few commonly seen special forms.
 (if <predicate> <true-expr> <false-expr>)
 \end{lstlisting}
 
-An \lstinline{if} expression is similar to a Python \lstinline{if} statement. First, evaluate \lstinline{<predicate>}. 
+An \lstinline{if} expression is similar to a Python \lstinline{if} statement. First, evaluate \lstinline{<predicate>}. The general structure follows (if \lstinline{<predicate>} \lstinline{<true-expr>} \lstinline{<false-expr>}).
 \begin{itemize}
     \item If \lstinline{<predicate>} is true, evaluate and return \lstinline{<true-expr>}.
     \item If \lstinline{<predicate>} is false, evaluate and return \lstinline{<false-expr>}.
@@ -164,6 +164,37 @@ A \lstinline{cond} expression is similar to a Python \lstinline{if}-\lstinline{e
     \item If every predicate is false, return \lstinline{<else-expr>}. 
 \end{itemize}
 
+\question Let's practice using \lstinline{if}s and \lstinline{cond}s to evaluate Scheme problems!
+
+\begin{lstlisting}
+    scm> (if 2 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{3}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (if 0 3 4)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{4}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (- 5 (if #f 3 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{1}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (cond ((< -5 -7) 3)
+          (else 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{4}
+\end{solution}
+
 \subsubsection{\lstinline{and} expression}
 \begin{lstlisting}
 (and <expr1> ... <exprN>)
@@ -175,6 +206,22 @@ A \lstinline{cond} expression is similar to a Python \lstinline{if}-\lstinline{e
 (or <expr1> ... <exprN>)
 \end{lstlisting}
 \lstinline{or} in Scheme works similarly to \lstinline{or} in Python. Evaluate the expressions in order and return the value of the first true expression. If all of the values are false, return the last value. If no operands are provided, return \lstinline{#f}.
+
+\question Let's practice and/or statements!
+
+\begin{lstlisting}
+    scm> (and #t (= 3 3) (> (- 61 42) (+ 61 42)))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{#f}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (or #f (< 3 3) (< (- 61 42) (+ 61 42)))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{#t}
+\end{solution}
 
 \subsubsection{\lstinline{define} expression}
 
