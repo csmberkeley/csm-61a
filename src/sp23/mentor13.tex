@@ -28,15 +28,19 @@ You'll notice that the times on the meta for this worksheet actually add up to 5
 \begin{meta}
 \textbf{Teaching Tips}
 \begin{itemize}
-    \item Before we jump into Macros, it is very important to ensure that your students understand quasiquotation.
-    \item Take your time with the quasiquotation WWSD and drawing parallels with Python's f-strings may make it easier for your students to understand 
-    \item Draw out box and pointer diagrams to show how the expressions in macros are being stored when the operands are unevaluated
-    \item If you would like a quick refresher on how to think about macros, please refer to this link! \href{https://docs.google.com/document/d/1JSbvtJ5bYUEhovDZd_gQnBvkG_WDcafmX-4B3QeIXZU/edit}{guide}
+    \item To ease in Scheme, it can help to start by comparing and contrasting with Python
+    \item Have students write a basic function in Python (like an iterative countdown), then replicate it in Scheme
+    \item Have students list language features of Python (variable assignments, conditional statements, logic operators, etc.), and explain how Scheme implements those features
+    \item Make sure to give a disclaimer that while high level features may be analogous, the internals are different!
+    \item Scheme features break into three broad categories: Primitives, Call Expressions, and Special Forms (the latter two are called Compound Expressions)
+    \item Primitives evaluate to themselves (4 evaluates to 4, \#t to \#t, etc.)
+    \item Call Expressions begin with a function name and are followed by arguments- evaluate function name, evaluate arguments, and apply function to arguments
+    \item Special Forms begin with a keyword and are followed by subexpressions, which are evaluated in a way based on the specific keyword
 \end{itemize}
 \end{meta}
 
-\section{Macros}
-\subimport{../../topics/macros/text/}{intro.tex}
+\section{Scheme}
+\subimport{../../topics/scheme/text/}{scheme-guided-overview.tex}
 \begin{questions}
 \subimport{../../topics/macros/easy/}{macros-quasi.tex}
 \subimport{../../topics/macros/easy/}{meta-apply.tex}
