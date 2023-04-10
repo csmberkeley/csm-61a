@@ -1,0 +1,94 @@
+
+
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=SQL}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{15 \& 16}
+\title{SQL \& Final Review}
+\date{April 24--May 5, 2023}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle\rule{\textwidth}{0.15em}
+
+This worksheet is to be used in both week 15 (SQL) and week 16 (Final Review). Please save this worksheet after week 15's section and remember to bring it for week 16.
+
+\begin{guide}
+    This is a bit of an unusual worksheet because it covers not one but two weeks. The SQL section should be covered in week 15, while the 
+    remaining topics of final review should be covered during week 16. Students should make sure to keep the worksheet in the 
+    intervening time so that they can follow along with the section.  
+
+    On the other hand, if I were a mentor, I would not even use the latter portion of this worksheet for week 16.
+    Instead, I would choose random exam-level problems to help students prep. 
+
+    If you finish the SQL portion early, of if your students do not feel it is necessary, you can skip to final review during week 15. 
+
+    \textbf{Recommended Timeline (for week 15)}
+    \begin{itemize}
+        \item SQL minilecture: 10 minute
+        \item Q1 (Fish): 20 minutes
+        \item Q2 (Outfits): 20 minutes
+    \end{itemize}
+\end{guide}
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{SQL}
+\subimport{../../topics/sql/text/}{intro.tex}
+\newpage
+\begin{questions}
+  \question 
+  \subimport{../../topics/sql/fish/text/}{intro.tex}
+  \subimport{../../topics/sql/fish/tables/}{fish.tex}
+  \begin{parts}
+    \subimport{../../topics/sql/fish/easy/}{most-populated-species.tex}
+    \subimport{../../topics/sql/fish/easy/}{number-fish.tex}
+    \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
+    \subimport{../../topics/sql/fish/medium/}{competitor.tex}
+  \end{parts}
+  \newpage
+  \question
+  \subimport{../../topics/sql/outfits/}{text.tex}
+  \subimport{../../topics/sql/outfits/tables/}{outfits.tex}
+  \subimport{../../topics/sql/outfits/tables/}{grades.tex}
+  \begin{parts}
+  \subimport{../../topics/sql/outfits/medium/}{lucky-shirt.tex}
+  \subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
+  \end{parts}
+\end{questions}
+
+% You can add more review problems! Please make sure to get macros and few other things, and try to look at past worksheets to ensure that we are not duplicating problems. 
+\begin{questions}
+\section{Environment Diagrams}
+\subimport{../../topics/environments/medium/}{fruit_loops.tex}
+
+\newpage
+\section{Iterators}
+\subimport{../../topics/generators/medium/}{nondecreasing-paths.tex}
+
+\section{Data Abstraction}
+\subimport{../../topics/data-abstraction/medium/}{bookshelf.tex}
+
+\section{Efficiency}
+\subimport{../../topics/growth/hard/}{hiya.tex}
+
+\section{OOP}
+\subimport{../../topics/oop/medium/}{photosynthesis.tex}
+
+\section{Trees}
+\subimport{../../topics/interview/}{rot.tex}
+
+\section{Scheme Lists}
+\subimport{../../topics/scheme/medium/}{guardians-and-asteroids.tex}
+
+\section{Tail Recursion}
+\subimport{../../topics/tail-recursion/medium/}{filter-nested.tex}
+
+\section{Macros}
+\subimport{../../topics/macros/final-review/}{lambda-macro.tex}
+\subimport{../../topics/macros/final-review/}{eval-and-check.tex}
+\end{questions}
+
+\end{document}
