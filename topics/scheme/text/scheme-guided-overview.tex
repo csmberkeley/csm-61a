@@ -19,7 +19,7 @@ Atomics are the simplest expressions. Some atomics, such as numbers and booleans
     True or False: 3.14 is an atomic expression.
 \end{lstlisting}
 \begin{solution}[0.25in]
-\texttt{True! Floats are atomic expressions.}
+\texttt{True. Floats are atomic expressions.}
 \end{solution}
 
 \begin{lstlisting}
@@ -37,10 +37,10 @@ Atomics are the simplest expressions. Some atomics, such as numbers and booleans
 \end{solution}
 
 \begin{lstlisting}
-    True or False: ** is an atomic expression.
+    True or False: // is an atomic expression.
 \end{lstlisting}
 \begin{solution}[0.25in]
-    \texttt{False. Scheme can only interpret the basic symbols of +, -, *, /. We'll have to define our own exponentiation function!}
+    \texttt{False. Scheme can only interpret the basic symbols of +, -, *, /. We'll have to define our own floor division function!}
 \end{solution}
 
 \begin{lstlisting}
@@ -56,6 +56,8 @@ Atomics are the simplest expressions. Some atomics, such as numbers and booleans
 \begin{solution}[0.25in]
     \texttt{True. Even though a string is a list of characters, Scheme still treats them as an atomic. It's important to note that in Scheme's case, strings can only be denoted with ".}
 \end{solution}
+
+In general, if you want to check if an input is atomic, use (atom? [input]) in the Scheme interpreter.
 
 \subsection{Call Expressions}
 
@@ -74,6 +76,43 @@ neighbors by whitespace. All call expressions are evaluated in the same way:
 For example, to evaluate the call expression \lstinline{(+ (+ 1 2) 2)}, we first evaluate the operator \lstinline{+}, which returns the procedure \lstinline{#[+]}. Then we evaluate the first operand \lstinline{(+ 1 2)}, which returns \lstinline{3}. Then, we evaluate the last operand \lstinline{2}, receiving \lstinline{2}. Finally, we apply the \lstinline{#[+]} procedure to \lstinline{3} and \lstinline{2}, which returns \lstinline{5}. So this call expression evaluates to \lstinline{5}. 
 
 Note that in order to add two numbers, we had to call a function. In Python, \lstinline{+} is a binary operator that can add two numbers without calling a function. Scheme has no such constructs, so even the most basic arithmetic requires you to call a function. The other math operators, including \lstinline{-} (both subtraction and negation), \lstinline{*}, \lstinline{/}, \lstinline{expt} (exponentiation), \lstinline{=}, \lstinline{<}, \lstinline{>}, \lstinline{<=}, and \lstinline{>=} function in the same way. 
+
+\question Let's do some practice with call expressions! What would Scheme do for each expression?
+
+\begin{lstlisting}
+    scm> (+ 1 (* 3 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{13}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (* 1 (+ 3 4))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{7}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (/ 2)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{0.5 || When Scheme sees only one operand in the case of multiplication and division, it fills in <operand0> to be 1.}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (- 2)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{-2 || When Scheme sees only one operand in the case of addition and subtraction, it fills in <operand0> to be 0.}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (* 4 (+ 3 (- 2 (/ 1))))
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{16}
+\end{solution}
 
 \subsection{Special Forms}
 
