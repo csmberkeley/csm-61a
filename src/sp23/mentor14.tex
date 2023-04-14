@@ -1,7 +1,6 @@
-
-
 \documentclass{exam}
 \usepackage{../../commonheader}
+\lstset{language=Scheme}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{14}
@@ -13,15 +12,20 @@
 \maketitle\rule{\textwidth}{0.15em}
 
 %%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scheme Review}
+\begin{questions}
+    \subimport{../../topics/scheme/easy/}{sixty-ones.tex}
+    \subimport{../../topics/scheme/medium/}{apply-n.tex}
+\end{questions}
 
 \section{Scheme Lists}
 \subimport{../../topics/scheme/text/}{scheme-lists-overview.tex}
 \newpage
 \begin{questions}
 \subimport{../../topics/scheme/easy/wwsd/}{lists_nodots.tex}
+\subimport{../../topics/scheme/medium/}{binary-list.tex}
 \subimport{../../topics/scheme/medium/}{is-prefix.tex}
 \subimport{../../topics/scheme/medium/}{argmax.tex}
-
 \end{questions}
 
 \end{document}
