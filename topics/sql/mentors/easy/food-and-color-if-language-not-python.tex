@@ -3,21 +3,22 @@
 favorite language is \emph{not} Python.
 
 \begin{lstlisting}
-Thai|Purple
-Pie|Green
-Sushi|Orange
+Pork Bulgogi|Navy Blue
+Pasta|Teal
+Fries|Sky Blue
+Popcorn|Blue
 \end{lstlisting}
 
 \begin{solution}[1in]
 \begin{lstlisting}
-select food, color
-  from mentors
-  where language != 'Python';
+SELECT food, color
+  FROM mentors
+  WHERE language != 'Python';
 
--- With aliasing
-select m.food, m.color
-  from mentors as m
-  where m.language <> 'Python';
+-- With aliasing (treating the table as a Python object) --
+SELECT m.food, m.color
+  FROM mentors as m
+  WHERE m.language <> 'Python';
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
