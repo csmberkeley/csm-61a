@@ -2,16 +2,20 @@
 \part Write a query that has the same data, but alphabetizes the rows by name. (Hint: Use \lstinline$order by$.)
 
 \begin{lstlisting}
-Alina|Sushi|Orange|Emacs|Ruby
-Catherine|Thai|Purple|Notepad++|Java
-Ethan|Ramen|Green|Vim|Python
-Jamie|Pie|Green|Sublime|Java
-Kenny|Tacos|Blue|Vim|Python
+Adit|Protein Bar|Black|Vim|Python|Gorilla
+Aiko|Fries|Sky Blue|VSCode|Java|Cat
+Alyssa|Pork Bulgogi|Navy Blue|Vim|Java|Sea Otter
+Aurelia|Dumpling|Pastel Yellow|VSCode|Python|Panda
+Esther|Goldfish|Pastel Pink|VSCode|Python|Bunny
+Kaelyn|Popcorn|Blue|VSCode|Java|Panda
+Vibha|Pasta|Teal|VSCode|Java|Naked Mole Rat
 \end{lstlisting}
 
 \begin{solution}[1in]
 \begin{lstlisting}
-select * from mentors order by name;
+SELECT * 
+FROM mentors 
+ORDER BY name;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

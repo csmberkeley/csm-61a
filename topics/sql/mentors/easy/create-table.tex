@@ -1,0 +1,17 @@
+\begin{blocksection}
+\part Create a new table \lstinline$mentors$ that contains all the information above.
+(You only have to write out the first two rows.)
+
+\begin{solution}[3in]
+\begin{lstlisting}
+CREATE TABLE mentors AS
+  SELECT 'Alyssa' as name, 'Pork Bulgogi' as food, 'Navy Blue' as color, 'Vim' as editor, 'Java' as language, 'Sea Otter' as animal UNION
+  SELECT 'Vibha', 'Pasta', 'Teal', 'VSCode', 'Java', 'Naked Mole Rat' UNION
+  SELECT 'Adit', 'Protein Bar', 'Black', 'Vim', 'Python', 'Gorilla' UNION
+  SELECT 'Esther', 'Goldfish', 'Pastel Pink', 'VSCode', 'Python', 'Bunny' UNION
+  SELECT 'Aiko', 'Fries', 'Sky Blue', 'VSCode', 'Java', 'Cat' UNION
+  SELECT 'Aurelia', 'Dumpling', 'Pastel Yellow', 'VSCode', 'Python', 'Panda' UNION
+  SELECT 'Kaelyn', 'Popcorn', 'Blue', 'VSCode', 'Java', 'Panda';
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

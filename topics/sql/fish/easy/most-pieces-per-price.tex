@@ -1,10 +1,12 @@
 \begin{blocksection}
-\part Profit is good, but more profit is better. Write a query to select the species that yields the most number of pieces for each price. Your output should include the species, price, and pieces.
+\part Profit is good, but more profit is better. Write a query to select the species that yields the greatest number of pieces for each price. Your output should include the species, price, and pieces.
 
 
 \begin{solution}[0.7in]
 \begin{lstlisting}
-SELECT species, price, MAX(pieces) FROM fish GROUP BY price;
+SELECT species, price, MAX(pieces) 
+FROM fish 
+GROUP BY price;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

@@ -5,32 +5,34 @@
 \lstset{language=SQL}
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\discnumber{15 \& 16}
-\title{SQL \& Final Review}
+\discnumber{15}
+\title{SQL}
 \date{April 24--May 5, 2023}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \maketitle\rule{\textwidth}{0.15em}
 
-This worksheet is to be used in both week 15 (SQL) and week 16 (Final Review). Please save this worksheet after week 15's section and remember to bring it for week 16.
-
 \begin{guide}
-    This is a bit of an unusual worksheet because it covers not one but two weeks. The SQL section should be covered in week 15, while the 
-    remaining topics of final review should be covered during week 16. Students should make sure to keep the worksheet in the 
-    intervening time so that they can follow along with the section.  
 
-    On the other hand, if I were a mentor, I would not even use the latter portion of this worksheet for week 16.
-    Instead, I would choose random exam-level problems to help students prep. 
-
-    If you finish the SQL portion early, of if your students do not feel it is necessary, you can skip to final review during week 15. 
-
-    \textbf{Recommended Timeline (for week 15)}
+    \textbf{Recommended Timeline}
     \begin{itemize}
-        \item SQL minilecture: 10 minute
-        \item Q1 (Fish): 20 minutes
-        \item Q2 (Outfits): 20 minutes
+        \item SQL minilecture: 10 minutes
+        \item Q1 (Mentors): 10 minutes
+        \item Q2 (Fish): 20 minutes
+        \item Q3 (Outfits) : 20 minutes
+        \item Segue into Final Exam Review: ~ minutes
+        \item Q4 (Froot Loops): 10 minutes
+        \item Q5 (Nondecreasing Paths): 13 minutes
+        \item Q6 (Bookshelf): 12 minutes
+        \item Q7 (Hiya - VERY HARD): 10 minutes
+        \item Q8 (Supermarket - PURELY CONCEPTUAL): 15 minutes
+        \item Q9 (Rotate): 12 minutes
+        \item Q10 (Guardians and Asteroids): 8 minutes
     \end{itemize}
+
+    Alas, the final worksheet of the semester. It's been real, it's been fun, it's been real fun. :'-) The SQL questions take an ungodly amount of time as they're supposed to take up one whole section, though, feel free to skip ahead to the exam prep problems if your students so desire.
+
 \end{guide}
 
 %%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,6 +41,15 @@ This worksheet is to be used in both week 15 (SQL) and week 16 (Final Review). P
 \subimport{../../topics/sql/text/}{intro.tex}
 \newpage
 \begin{questions}
+  \question
+  \subimport{../../topics/sql/mentors/}{table.tex}
+  \begin{parts}
+    \subimport{../../topics/sql/mentors/easy/}{create-table.tex}
+    \subimport{../../topics/sql/mentors/easy/}{alphabetical.tex}
+    \subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+  \end{parts}
+  
+  \newpage
   \question 
   \subimport{../../topics/sql/fish/text/}{intro.tex}
   \subimport{../../topics/sql/fish/tables/}{fish.tex}
@@ -48,6 +59,7 @@ This worksheet is to be used in both week 15 (SQL) and week 16 (Final Review). P
     \subimport{../../topics/sql/fish/easy/}{most-pieces-per-price.tex}
     \subimport{../../topics/sql/fish/medium/}{competitor.tex}
   \end{parts}
+
   \newpage
   \question
   \subimport{../../topics/sql/outfits/}{text.tex}
@@ -60,11 +72,11 @@ This worksheet is to be used in both week 15 (SQL) and week 16 (Final Review). P
 \end{questions}
 
 % You can add more review problems! Please make sure to get macros and few other things, and try to look at past worksheets to ensure that we are not duplicating problems. 
+\newpage
 \begin{questions}
 \section{Environment Diagrams}
 \subimport{../../topics/environments/medium/}{fruit_loops.tex}
 
-\newpage
 \section{Iterators}
 \subimport{../../topics/generators/medium/}{nondecreasing-paths.tex}
 
@@ -75,20 +87,13 @@ This worksheet is to be used in both week 15 (SQL) and week 16 (Final Review). P
 \subimport{../../topics/growth/hard/}{hiya.tex}
 
 \section{OOP}
-\subimport{../../topics/oop/medium/}{photosynthesis.tex}
+\subimport{../../topics/oop/medium/}{supermarket-design.tex}
 
 \section{Trees}
 \subimport{../../topics/interview/}{rot.tex}
 
 \section{Scheme Lists}
 \subimport{../../topics/scheme/medium/}{guardians-and-asteroids.tex}
-
-\section{Tail Recursion}
-\subimport{../../topics/tail-recursion/medium/}{filter-nested.tex}
-
-\section{Macros}
-\subimport{../../topics/macros/final-review/}{lambda-macro.tex}
-\subimport{../../topics/macros/final-review/}{eval-and-check.tex}
 \end{questions}
 
 \end{document}
