@@ -1,0 +1,58 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Python, Functions, Expressions, and Control}
+\date{August 28--September 1, 2023}
+
+\begin{document}
+\maketitle
+\begin{meta}
+\textbf{Recommended Timeline -- TO UPDATE}
+\begin{itemize}
+  \item Introductions/Expectations/Icebreaker [10 minutes]
+  \item Q1: What Would Python Display + Minilecture/explanations [15 minutes]
+  \item Q2: Order of evaluation [5 min]
+    \subitem{Note: don't need to do all parts if students get the idea}
+  \item Code Writing [20 minutes]
+    \subitem{- Again, no need to do all questions}
+    \subitem{- 2 and 3 are medium difficulty \& the last one is a bit more challenging, pick based on how your students are feeling}
+  \item Tips and Tricks for succeeding in CS61A [leftover time]
+\end{itemize}
+\end{meta}
+
+
+\section{Intro to Python -- TO UPDATE}
+\begin{questions}
+\subimport{../../topics/basics/}{potpurri.tex}
+\subimport{../../topics/basics/}{funky-funcs.tex}
+\begin{questionmeta}
+  It's probably not necessary to get through all the parts of this problem if your students get the idea. The last subpart is probably the most instructive. 
+  For question 2, feel free to remind students of the general ``order of operations'' of functions, in that they start inward and expand outward. Feel free to use any analogies, that help students understand.
+  If your students are still confused, it's advisable to walk through the first few problems with them step by step.
+\end{questionmeta}
+\end{questions}
+
+\section{Control -- TO UPDATE}
+\begin{questions}
+\subimport{../../topics/control/easy/}{divisible-by-4.tex}
+\begin{questionmeta}
+  The purpose of this problem is essentially to ensure that students are familiar with Python syntax. Its solution involves little complex thought. 
+\end{questionmeta}
+\subimport{../../topics/control/medium/}{fizzbuzz.tex} 
+\begin{questionmeta}
+  Students may overthink this problem, trying to find a ``clever'' way to do it with a smaller number of comparisons.
+  There are many variations of this problem. If students solve this easily, encourage them to find a way to solve this with a for loop, or some other variation.
+\end{questionmeta}
+\subimport{../../topics/control/medium/}{pow-of-2.tex}
+\begin{questionmeta}
+  If your students are not familiar with factorials, you may want to give them a brief overview before going over this problem. 
+\end{questionmeta}
+\subimport{../../topics/control/challenge/}{min_fact.tex}
+\begin{questionmeta}
+  This question differs significantly from a similar question that was used in past years. Please review it carefully before teaching it.
+  One area in which students may need help is addressing the edge case in which n is greater than the limit.
+\end{questionmeta}
+\end{questions}
+
+\end{document}
