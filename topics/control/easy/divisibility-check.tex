@@ -1,0 +1,27 @@
+\begin{blocksection}
+\question Write a function that returns \lstinline{True} if a number is divisible by 4, 1 if a number is divisible by 7 and is not already divisible by 4, and returns \lstinline{False} if neither condition is fulfilled.
+
+
+
+
+
+
+
+\vspace{2in}
+\begin{solution}[1in]
+\begin{lstlisting}
+def divisibility_check(num):
+    if num % 4 == 0:
+        return True
+    elif num % 7 == 0:
+        return 1
+    else:
+        return False
+\end{lstlisting}
+This also works as an alternate solution:
+\begin{lstlisting}
+def divisibility_check(num):
+    return True if num % 4 == 0 else 1 if num % 7 == 0 else False
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
