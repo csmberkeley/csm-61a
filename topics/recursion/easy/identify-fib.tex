@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Here is a Python function that computes the \lstinline$n$th Fibonnacci number. What's the domain and range of this function? Identify the three parts of this recursive program.
+\question Here is a Python function that computes the \lstinline$n$th Fibonnacci number. Identify the three parts of this recursive program.
 
 \begin{lstlisting}
 def fib(n):
@@ -16,5 +16,14 @@ The domain is in the integers and the range is in the integers. There are two
 base cases for checking if \lstinline$n == 0$ or if \lstinline$n == 1$. There
 is one recursive case that makes two recursive calls, reducing the problem down
 to \lstinline$fib(n - 1)$ and \lstinline$fib(n - 2)$, respectively.
+
+The first part of recognizing what a recursive program is doing is by checking it's base cases, or, "ending cases." 
+\lstinline$fib$ has two base cases: when we recurse down to either 0 or 1, to which we just return 0 or 1. You can liken this to a while loop's conditional, whereas the while loop loops until it reaches a certain criterion. The same logic applies to base cases: we keep opening new recursive frames until we get down to our base case.
+
+The second part of this recursive program is how the recursive program breaks down the argument passed in into different subproblems. 
+In the case of our problem here, we break down our argument by incrementing our arguments down linearly by 1 and 2. Continuing the while loop analogy, these act as "indices" telling us how much to step down in terms of value for our argument.
+
+The third part of our program is seeing how we recursively call the method (aka, recognizing where our "recursive leap of faith" is). These recursive calls are acted upon when the base case is not fulfilled.
+In this case, we take a "recursive leap of faith" by calling fib(n - 1) and fib(n - 2), trusting that our fib method works as intended.
 \end{solution}
 \end{blocksection}
