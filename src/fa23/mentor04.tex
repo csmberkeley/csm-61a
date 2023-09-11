@@ -1,0 +1,48 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{Higher-Order Environments, Currying, and Introductory Recursion}
+\date{September 11--September 15, 2023}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item HOFs and Environment Diagrams mini-lecture/review - 5 mins
+    \item Inception OR ABDE - 10 mins (check in with your students to see how they feel about the general structure of higher order functions and drawing environment diagrams; do this if they feel a bit shaky)
+    \item General recursion mini-lecture - 10 mins (Since this week is a bit weird, this will likely be your students' first interaction with recursion! Take more time on this if needed.)
+    \item Identify Fibonnacci - 7 mins
+    \item Wrong factorial - 5 to 10 mins
+    \item num\_digits - 5 mins
+    \item
+\end{itemize}
+As a reminder, there is no expectation that you get through all problems in a section. Pick the most pertinent problems for your section. 
+\end{meta}
+
+\begin{questions}
+    % aurelia
+    \section{Higher-Order Functions in Environment Diagrams cont.}
+    \subimport{../../topics/hof/medium/env-diagram/}{inception.tex}
+    \subimport{../../topics/environments/medium/}{abde.tex}
+    \begin{questionmeta}
+        Inception and ABDE are very similar in terms of the skills they test. If your students struggle on visualizing how higher-order functions work, focus on those for section, the consider moving onto the HOF challenge problems.
+        % Generally only choose either Compound or Partial Summer for your challenge problem, since they cover similar ground in terms of HOFs. These are on the harder side so also consider doing the rest of the worksheet and coming back.
+    \end{questionmeta}
+
+    % alyssa
+    \section{Recursion}
+    \subimport{../../topics/recursion/text/}{recursion_overview.tex}
+    \subimport{../../topics/recursion/easy/}{identify-fib.tex}
+    \subimport{../../topics/recursion/easy/}{wrong_factorial.tex}
+    \subimport{../../topics/recursion/easy/}{num-digits.tex}
+\end{questions}
+
+\end{document}
