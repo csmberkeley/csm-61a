@@ -5,12 +5,13 @@
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{6}
 \title{\textsc{Sequences and Containers}}
-\date{February 20--February 24, 2023}
+\date{September 25--September 29, 2022}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \maketitle
 \rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
 
 %%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19,33 +20,33 @@
     \begin{itemize}
         %%% MODIFY %%%%
         \item Lists Minilecture: 10 minutes
-        \item Lists WWPD: 8 minutes
+        \item Lists WWPD: 5 minutes
+        \item Lists Environment Diagram: 15 minutes
         \item Comprehensions: 12 minutes
-        \item Gen List: 7 minutes
-        \item Dictionaries Minilecture/example: 5 minutes/0 minutes
+        \item Duplicate List: 7 minutes
+        \item Dictionaries Minilecture/Example: 0-5 minutes
         \item Snapshot: 4 minutes
-        \item Count-t: 8 minutes
         \item Digraph: 10 minutes
     \end{itemize}
 
     As a reminder, these times do not add up to 50 minutes because no one is expected 
     to get through all questions in a section. This is especially true this week, 
     because this worksheet is rather long. You should use the worksheet as a problem bank
-     around which you can structure your section to best accommodate the needs of your 
-     students. Both before and during section, consider which questions would be most 
-     instructive and how you should budget your time.
+    around which you can structure your section to best accommodate the needs of your 
+    students. Both before and during section, consider which questions would be most 
+    instructive and how you should budget your time.
 
     This week, we're providing slides! Check them out in the content team folder. 
     Feel free to use these while you mini-lecture, and make a copy and modify them 
     if you'd like. 
 
     Teaching sequences can be tricky because there's a lot of material to cover, but 
-    it tends to be pretty boring ``this is how this works''-type content instead of 
-    deeper conceptual, information. So please, for the love of God, do not do a detailed 
+    it tends to be pretty boring ``this is how this works'' type content instead of 
+    deeper conceptual, information. So please do not do a detailed 
     mini-lecture on every aspect of sequences. This will take up far too much time and 
     will probably not be a valuable experience for your students. Before mini-lecturing, 
     it's valuable to ask your students what they would like you to go over specifically 
-    so that you're not repeating a bunch of information they already know. 
+    so that you're not repeating information they already know. 
 \end{meta}
 
 \section{Sequences}
@@ -55,10 +56,11 @@
     \begin{questionmeta}
         An alternative to doing a super detailed mini-lecture is going over these problems with your students and ``learning by doing.'' 
     \end{questionmeta}
-    \subimport{../../topics/lists/immutable/medium/}{comprehensions.tex}
+    \subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
     \begin{questionmeta}
-        I think it's probably not necessary to go over all of these with your students, just do enough to where they're comfortable with things. 
+        Beware that this problem is very tricky and takes a lot of time.
     \end{questionmeta}
+    \subimport{../../topics/lists/immutable/medium/}{duplicate-list.tex}
 \end{questions}
 
 \section{Dictionaries}
@@ -66,12 +68,12 @@
 \begin{questions}
     \subimport{../../topics/dictionaries/}{snapshot.tex}
     \begin{questionmeta}
-        This problem is pretty easy, so you can probably skip over it if your students are strapped for time or if you think they probably don't need it. If they seem to be struggling understanding the basics of dictionaries this is a good way to ease them into the more difficult problems.
+        This problem is relatively easier, so skip over it if strapped for time or if you think your students most likely wouldn't need it. 
+        If you're deciding between this question and Count_Digraphs, however, choose to do this question. :)
     \end{questionmeta}
-    \subimport{../../topics/dictionaries/}{count-t.tex}
     \subimport{../../topics/dictionaries/}{digraph.tex}
     \begin{questionmeta}
-        This problem is pretty difficult, so its a good one to do if your students were able to understand the other problems pretty well. If you don't get to this one or don't think all your students are ready for this level of difficulty, remind students all solutions are online so they can review it on their own.
+        This question errs on the side of being a challenge for students due to the "LeetCode"-y nature of it. Feel free to skip it as the majority of your time will most likely be dedicated to focusing on list mutations and similar topics.
     \end{questionmeta}
 \end{questions}
 \end{document}
