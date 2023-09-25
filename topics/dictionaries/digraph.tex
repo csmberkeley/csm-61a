@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question A \textit{digraph} is any pair of immediately adjacent letters; for example, ``otto'' contains three digraphs: ``ot'', ``tt'', and ``to''. Write a function \lstinline{count_digraphs}, which takes a piece of \lstinline{text} and a list of letters \lstinline{alphabet} and analyzes the frequency of diagraphs in \lstinline{text}. Specifically, \lstinline{count_digraphs} returns a dictionary whose keys are the valid digraphs of \lstinline{text} and whose values are the number of times each digraph occurred. (A digraph is valid if it is formed out of letters from the specified \lstinline{alphabet}.)
+\question A \textit{digraph} is any pair of immediately adjacent letters; for example, ``otto'' contains three digraphs: ``ot'', ``tt'', and ``to''. Write a function \lstinline{count_digraphs}, which takes a string, \lstinline{text} and a list of letters, \lstinline{alphabet} and analyzes the frequency of digraphs in \lstinline{text} pertaining to the specific letters in \lstinline{alphabet}. Specifically, \lstinline{count_digraphs} returns a dictionary whose keys are the valid digraphs of \lstinline{text} and whose values are the number of times each digraph appears.
 
 \begin{lstlisting}
 def count_digraphs(text, alphabet):
@@ -10,21 +10,23 @@ def count_digraphs(text, alphabet):
     {'tt': 1}
     >>> count_digraphs("6161 6", ['6', '1'])
     {'61': 2, '16': 1}
+    >>> count_digraphs("lalala", ['l', 'a'])
+    {'la': 3, 'al': 2}
     """
 
     freq = {}
 
     _____________________________________________________:
 
-        if ________________________________________________:
+        if ____________________________________________________________________:
 
             digraph = __________________________________
 
-            __________________________________________
+            if ____________________ in _________________:
 
                 __________________________________________
 
-            __________________________________________
+            else:
 
                 __________________________________________
 
