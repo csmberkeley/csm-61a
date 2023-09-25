@@ -1,0 +1,80 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Sequences and Containers}}
+\date{September 25--September 29, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{meta}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        %%% MODIFY %%%%
+        \item Lists Minilecture: 0-10 minutes
+        \item Lists WWPD: 5 minutes
+        \item Lists Environment Diagram: 15 minutes
+        \item Comprehensions: 12 minutes
+        \item Duplicate List: 7 minutes
+        \item Dictionaries Minilecture/Example: 0-5 minutes
+        \item Snapshot: 4 minutes
+        \item Digraph: 10 minutes
+    \end{itemize}
+
+    As a reminder, these times do not add up to 50 minutes because no one is expected 
+    to get through all questions in a section. This is especially true this week, 
+    because this worksheet is rather long. You should use the worksheet as a problem bank
+    around which you can structure your section to best accommodate the needs of your 
+    students. Both before and during section, consider which questions would be most 
+    instructive and how you should budget your time.
+
+    This week, we're providing slides! Check them out in the content team folder. 
+    Feel free to use these while you mini-lecture, and make a copy and modify them 
+    if you'd like. 
+
+    Teaching sequences can be tricky because there's a lot of material to cover, but 
+    it tends to be pretty boring ``this is how this works'' type content instead of 
+    deeper conceptual, information. So please do not do a detailed 
+    mini-lecture on every aspect of sequences. This will take up far too much time and 
+    will probably not be a valuable experience for your students. Before mini-lecturing, 
+    it's valuable to ask your students what they would like you to go over specifically 
+    so that you're not repeating information they already know. 
+\end{meta}
+
+\section{Sequences}
+\subimport{../../topics/sequences/text/}{sequences_overview.tex}
+\begin{questions}
+    \subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified-2.tex}
+    \begin{questionmeta}
+        An alternative to doing a super detailed mini-lecture is going over these problems with your students and ``learning by doing.'' 
+    \end{questionmeta}
+    \subimport{../../topics/lists/immutable/easy/env-diagram/}{reverse.tex}
+    \begin{questionmeta}
+        Beware that this problem is very tricky and takes a lot of time.
+    \end{questionmeta}
+    \subimport{../../topics/lists/immutable/medium/}{duplicate-list.tex}
+    \vspace{3in}
+\end{questions}
+
+\section{Dictionaries}
+\subimport{../../topics/dictionaries/text}{dictionary-overview.tex}
+\begin{questions}
+    \subimport{../../topics/dictionaries/}{snapshot.tex}
+    \begin{questionmeta}
+        This problem is relatively easier, so skip over it if strapped for time or if you think your students most likely wouldn't need it. 
+        If you're deciding between this question and Count\_Digraphs, however, choose to do this question. :)
+    \end{questionmeta}
+    \subimport{../../topics/dictionaries/}{digraph.tex}
+    \begin{questionmeta}
+        This question errs on the side of being a challenge for students due to the ``LeetCode''-y nature of it. Feel free to skip it as the majority of your time will most likely be dedicated to focusing on list mutations and similar topics.
+    \end{questionmeta}
+\end{questions}
+\end{document}
