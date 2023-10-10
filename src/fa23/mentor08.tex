@@ -4,7 +4,7 @@
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{8}
 \title{\textsc{Mutability, Iterators, and Generators}}
-\date{March 6--March 10, 2023}
+\date{October 9--October 13, 2023}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -20,17 +20,17 @@
         \begin{itemize}
             \item Mutability Mini Lecture: 6 minutes
             \item What Would Python Do: 5 minutes
-            \item Nice Ice Cream: 10 minutes
-            \item Accumulate: 13 minutes
+            \item Accumulate: 10 minutes
+            \item Nice Ice Cream: 15 minutes (beware that this is a relatively longer environment diagram question!)
             \item There are a lot of questions and topics, so pick and choose between these problems based on your students comfortability.
         \end{itemize}
         \item Iterators \& Generators:
         \begin{itemize}
             \item Iterators \& Generators Mini Lecture: 7 minutes
-            \item Skip Machine: 16 minutes (worth it though, in content's humble opinion)
-            \item Foo: 8 minutes
             \item In Order: 5 minutes
-            \item All Sums: 10 minutes
+            \item Foo: 8 minutes
+            \item All Sums: 10 minutes (a question that combines tree recursion and generators)
+            \item Skip Machine: 16 minutes (worth to go though, in content's humble opinion, but will take some time)
         \end{itemize}
     \end{itemize}
 
@@ -39,29 +39,28 @@
     because this worksheet is rather long. You should use the worksheet as a problem bank
      around which you can structure your section to best accommodate the needs of your 
      students. Both before and during section, consider which questions would be most 
-     instructive and how you should budget your time. I also highly recommend directly asking your students what they would like to focus on.
+     instructive and how you should budget your time. As always, we highly recommend directly asking your students what they would like to focus on.
      
-    In general, though, I'd recommend planning at the start of section how long you're going to 
-    spend on each section (say, 25 minutes on mutability and 25 minutes on iterators and generators)
-    and then restrict yourself to that time budget so that you can get good coverage of different topics. 
+    In general, we recommend planning how long you're going to spend on each section (say, 25 minutes on mutability and 25 minutes on iterators and generators)
+    and then restrict yourself to that time budget so that you can get a good coverage of different topics. You can budget the time according to how your students feel on the different topics.
 \end{guide}
 
 \section{Mutability}
 	\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
 	\begin{questions}
 	    \subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
-        \subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
         \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+        \subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
 	\end{questions}
 
 \newpage
 \section{Iterators \& Generators}
 \subimport{../../topics/generators/text/}{generators_overview.tex}
 \begin{questions}
-    \subimport{../../topics/iterators/easy/}{skipmachine.tex}
-    \subimport{../../topics/generators/easy/}{foo.tex}
     \subimport{../../topics/generators/medium/}{in-order-adt.tex}
+    \subimport{../../topics/generators/easy/}{foo.tex}
     \subimport{../../topics/generators/medium/}{all-sums.tex}
+    \subimport{../../topics/iterators/easy/}{skipmachine.tex}
 \end{questions}
 
 \end{document}
