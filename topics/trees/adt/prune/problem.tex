@@ -8,9 +8,9 @@ levels of \lstinline$t$. Suppose \lstinline$t$ is the tree shown to the right. T
 \begin{lstlisting}
 def prune(t, k):
     if k == 0:
-        return tree(root(t))
+        return tree(label(t))
     else:
-        return tree(root(t), [prune(b, k - 1) for b in branches(t)])
+        return tree(label(t), [prune(b, k - 1) for b in branches(t)])
 \end{lstlisting}
 \end{solution}
 \end{blocksection}

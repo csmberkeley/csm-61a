@@ -57,8 +57,8 @@ def replace_x(t, x):
 \begin{lstlisting}
 def replace_x(t, x):
     new_branches = []
-    for b in t(branches):
-        new_branches.append(replace_x(b, x) for b in branches(t))
+    for b in branches(t):
+        new_branches.append(replace_x(b, x))
     if label(t) == x:
         return tree(0, new_branches)
     return tree(label(t), new_branches)
