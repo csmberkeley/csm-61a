@@ -1,0 +1,64 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{3}
+\title{Environmental Diagrams \titlebreak and Higher-Order Functions}
+\date{January 30--February 3, 2023}
+
+\begin{document}
+\maketitle
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Recommended Timeline}
+
+Times do not add to one hour because it is not expected that any mentor will get through all questions in a single hour. 
+
+\begin{itemize}
+    \item Environment Diagrams Mini-Lec + New Frame Written Question - 12 mins
+    % esther
+    \item Swap - 8 mins
+    \item Joke - 7 mins
+    \item Higher Order Functions Mini-Lec + Written Question - 5 mins
+    % alyssa
+    \item Foobar(Q2): A good introduction to higher order functions and essentiality of environment diagrams! - 10 mins
+    \item xyz (Q3) - 6 mins
+    \item whole\_sum (Q4) - if there isn't enough time, pick depending and how students feel; - 8 mins
+    \item mystery or lambda-wwpd (Q5 or Q6) Do this only if you have enough time, or your students particularly want to work on lambdas and currying - 10 mins
+\end{itemize}
+\end{guide}
+\end{blocksection}
+
+
+\section{Environment Diagrams}
+
+\begin{questions}
+\subimport{../../topics/environments/easy/}{new-frame.tex}
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{joke.tex}
+\end{questions}
+
+\section{Higher-Order Functions}
+\begin{questions}
+\subimport{../../topics/hof/easy/}{why.tex}
+\subimport{../../topics/hof/easy/env-diagram/}{foobar.tex}
+\begin{questionmeta}
+    This question is a good introduction to integrating environment diagrams with higher order functions. If your students struggle to wrap their heads around it (most do) suggest practicing this problem first to gauge comfort of students. 
+\end{questionmeta}
+
+\subimport{../../topics/hof/medium/}{xyz.tex}
+\begin{questionmeta}
+    This question is also good as an introduction to testing the waters on how students feel about currying/lambda functions. Be sure to try this out to gauge students' comfort in this regard.
+\end{questionmeta}
+\subimport{../../topics/hof/medium/}{check-sum.tex}
+
+\subimport{../../topics/hof/medium/wwpd/}{mystery.tex}
+\subimport{../../topics/hof/medium/wwpd/}{lambda-wwpd.tex}
+\begin{questionmeta}
+    Mystery and lambda-wwpd are both okay at understanding the general structure of currying and how the interpreter works with such. Do this only if you have time at the end.
+\end{questionmeta}
+\clearpage
+
+\end{questions}
+
+\end{document}
