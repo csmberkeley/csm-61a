@@ -1,6 +1,3 @@
-\documentclass{article}
-
-\usepackage{graphicx}
 \begin{blocksection}
 \textbf{There are three steps to writing a recursive function:}
 \begin{enumerate}
@@ -16,23 +13,25 @@
 
 Imagine that you're in line for boba, but the line is really long, so you want to know what position you're in. 
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{Mascots.png}
-  \caption{CSM Mascots in line!}
-\end{figure}
+\begin{center}
+	\includegraphics[scale=0.5]{Mascots.PNG}
+\end{center}
 
 You decide to ask the person in front of you how many people are in front of them. That way, you can take their response and add 1 to it to find your place. Now, the person in front of you is faced with the same problem that you were trying to solve, with one less person in front of them than you. They decide to take the same approach that you did by asking the person in front of them. This continues until the very first person in line is asked. At this point, the person at the front knows that there are 0 people in front of them, so they can tell the person behind them that there are 0 people in front. Now, the second person can figure out that there is 1 person in front of them, and can relay that back to the person behind them, and so on, until the answer reaches you.
 
 Looking at this example, we see that we have broken down the problem of ``how many people are there in front of me?'' to 1 + ``how many people are there in front of the person in front of me''? This problem will terminate with the person at the front of the line (with 0 people in front of them). Putting this into more formal terms, we are breaking down the problem into a \textbf{recurrence relationship}, and the termination case (when the question gets to the very first person in line) is called the \textbf{base case}.
+\end{blocksection}
 
-\pagebreak
 
+\begin{blocksection}
 As a program goes through recursion, it doesn't formally solve the problem until it reaches the base case, in which case it works its way up from the base case to the original input to construct your final answer. Just like your question as you stand in line, the program: 
 
 \begin{enumerate}
 	\item goes out (down the call stack), person by person (call by call) \textbf{(recursive case)}
 	\item until the person at the very front is reached \textbf{(base case)}
 	\item when the answers get added onto and eventually passed back to you, solving the problem. \textbf{(constructing the final solution with solutions to subparts)}
+\end{enumerate}
+
 \end{blocksection}
 
 \begin{meta}
