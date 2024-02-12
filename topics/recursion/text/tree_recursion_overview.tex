@@ -1,17 +1,79 @@
 \begin{blocksection}
 \textbf{Tree Recursion vs Recursion}
-
-
+\newline
 In most recursive problems we've seen so far, the solution function contains only one call to itself. However, some problems will require multiple recursive calls -- we colloquially call this type of recursion "tree recursion," since the propagation of function frames reminds us of the branches of a tree. "Tree recursive" or not, these problems are still solved the same way as those requiring a single function call: a base case, the recursive leap of faith on a subproblem, and solving the original problem with the solution to our subproblems. The difference? We simply may need to use multiple subproblems to solve our original problem.
 
 Tree recursion will often be needed when solving counting problems (how many ways are there of doing something?) and optimization problems (what is the maximum or minimum number of ways of doing something?), but remember there are all sorts of problems that may need multiple recursive calls! Always come back to the recursive leap of faith.
 
-Two rules that are often useful in solving counting problems:
-\begin{enumerate}
-\item If there are \textit{x ways} of doing something and \textit{y ways} of doing another thing, there are \textit{xy ways} of doing \textbf{both} at the same time.
-
-\item If there are \textit{x ways} of doing one thing and \textit{y ways} of doing another, but we can't do both things at the same time, there are \textit{x + y} ways of doing either the first thing \textbf{or} the second thing.
-\end{enumerate}
+Let's work through an example of tree recursion in action! The \textbf{counting partitions} problem is a common utilization of tree recursion.
+Say we want to define a function that will count all the ways we can fill up a space with a certain amount of blocks. For the purposes of working out this problem, we'll usea space of size 4. If we use brute force to solve this problem in terms of adding blocks of sizes 1, 2, 3, and 4, here's what we come up with:
+\begin{itemize}
+    \item 4 = 4 // filling up the space with a block that perfectly fits it
+    \item 4 = 3 + 1 // filling up the space with a block of size 3 and a block of size 1
+    \item 4 = 2 + 2
+    \item 4 = 2 + 1 + 1
+    \item 4 = 1 + 1 + 1 + 1
+\end{itemize}
+This doesn't seem too bad, but with bigger spaces, this is exponentially harder to brute force! With this in mind, however, we can recognize a pattern with the number of possibilities present with different ``partition'' sizes. 
+\newline
+\newline
+Recall that within recursive questions, arguments are used as ways to keep track of certain possibilities. We want to specify our arguments within this problem to be what's changing on iteration. Therefore, within our recursive arguments, we want to keep track of the maximum block size on each iteration, and how much more space we have left after adding that partition. 
+\newline
+\newline
+Now we know what arguments we want, we can construct the body of our code!
+\end{blocksection}
+\clearpage
+\begin{blocksection}
+\begin{lstlisting}
+    def count_partitions(space_left, block_size):
+\end{lstlisting}
+We know that a recursive function will have base cases and recursive cases. While everybody's way of working through these is different, for the sake of explanation, we'll start with our base cases. When working with recursion questions, we generally want to start with the biggest problem and work our way down to the most atomic ways of solving our problem, similar to the way in which our doctests are structured.
+\newline
+\newline
+We will consider a way of counting partitions valid if the partitions we add perfectly fit the space provided. When a space is perfectly fit, the \lstinline{space_left} will be zero! Therefore, we will count a case when it's \lstinline{space_left} is equal to 0.
+\newline
+\newline
+A doctest demonstrating this would be the most atomic iteration of \lstinline{count_partitions}, \lstinline{count_partitions(0, 0)}. There is only one way to count to zero with the maximum number to add being zero! 
+\newline
+\newline
+Now we consider invalid ways of counting partitions -- a way of counting would be invalid if we \textit{overfill} or \textit{underfill} the space provided. Therefore, if our \lstinline{block_size} is greater than the space left, we would overfill the space! Similarly if the \lstinline{block_size} we're adding is 0, that means we've run out of partitions to add, resulting in an \textit{underfilled} space.
+\newline
+\newline
+With this in mind, here is our current working of \lstinline{count_partitions} with the base cases in hand.
+\begin{lstlisting}
+    def count_partitions(space_left, block_size):
+        if (space_left == 0): 
+            return 1 // valid! we've fit the space perfectly
+        elif (space_left < block_size): 
+            return 0 // not valid! overfilled
+        elif (block_size == 0):
+            return 0 // not valid! space is underfilled
+        else:
+            // recursive cases :D
+\end{lstlisting}
+As with any recursive case, we want to consider how we can break our problem into possibilities that allow us to get closer to our base cases.
+\end{blocksection}
+\clearpage
+\begin{blocksection}
+On each frame of \lstinline{count_partitions}, we want to have both the \lstinline{space_left} and \lstinline{block_size} go closer to zero such that they can reach the base case.
+\newline
+\newline
+Consider the first case for the 4 example we used earlier. We want to see how many different potential ways we can fill up a space of 4 blocks with maximum block size of 4. Upon our first call to this function we would want to include the way of filling up the space with the partition of size 4 in our recursive call.
+With this in mind, to include this way of counting, we would have to subtract the \lstinline{block_size} of size 4 from the \lstinline{space_left} of size 4 such that we can get to our base case! This would result in a recursive call of \lstinline{count_partitions(space_left - block_size, block_size)} (We keep m the same as we would want to see if we can add more blocks of that same size). However, having just that case would end our counting prematurely. Thus we need to include a separate branch where we \textit{don't} use that block and instead use smaller block sizes.
+\newline
+\newline
+Similar to the doctest, we want to see every possibility using blocks of every possible size. The next block size down from 4 would be 3, thus resulting in a recursive call of \lstinline{count_partitions(space_left, block_size - 1)}. From here, there are no other recursive cases we can call upon, thus completing our code. We add the recursive cases together as we want to sum all possibilities of counting such partitions, resulting in the following:
+\begin{lstlisting}
+    def count_partitions(space_left, block_size):
+        if (space_left == 0):
+            return 1
+        elif (space_left < block_size):
+            return 0
+        elif (block_size == 0):
+            return 0
+        else:
+            return count_partitions(space_left - block_size, block_size) + count_partitions(space_left, block_size - 1)
+\end{lstlisting}
 \end{blocksection}
 
 \begin{guide}
@@ -19,6 +81,8 @@ Two rules that are often useful in solving counting problems:
 \textbf{Teaching Tips}
 \begin{itemize}
     \item Stress the power of tree recursion: it lets us find a single solution among 14,000,605 futures.
+    \item Before going into the counting partitions example within the text overview, teach tree recursion with Fibonacci and \textit{then} go into counting partitions. Counting partitions is pretty abstract for most people the first time around!
+    \item If you choose to explain the counting partitions example
     \item Try dividing tree recursion questions into three parts: base cases, recursive calls, and combining recursive calls.
     \begin{enumerate}
         \item What are the simplest possible arguments for the function?
