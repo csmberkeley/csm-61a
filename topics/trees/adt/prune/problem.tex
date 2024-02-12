@@ -8,9 +8,20 @@ levels of \lstinline$t$. Suppose \lstinline$t$ is the tree shown to the right. T
 \begin{lstlisting}
 def prune(t, k):
     if k == 0:
-        return tree(root(t))
+        return tree(label(t))
     else:
-        return tree(root(t), [prune(b, k - 1) for b in branches(t)])
+        return tree(label(t), [prune(b, k - 1) for b in branches(t)])
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{guide}
+    \begin{blocksection}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item Emphasize what the base case is/draw it out.
+        \item Emphasize how we can use a tree constructor to create the recursive case. What do we increment down by in the arguments of \lstinline$prune$ to get the base case?
+        \item Tree problems lend themselves to list comprehensions. How are list comprehensions utilized in this problem?
+    \end{itemize}
+    \end{blocksection}
+\end{guide}
