@@ -1,10 +1,16 @@
 \begin{blocksection}
 \question
-Fill in \lstinline{collapse}, which takes in a non-negative integer \lstinline{n} and returns the number resulting from removing all digits that are equal to an adjacent digit, i.e. the number has no adjacent digits that are the same.
+Fill in \lstinline{collapse}, which takes in a non-negative integer \lstinline{n} and returns the number resulting from removing consecutive repeating digits, i.e. while the number may have digits repeating elsewhere in the number, the same number cannot appear next to itself.
 
 \begin{lstlisting}
 def collapse(n):
     """
+    >>> collapse(9)
+    9
+    >>> collapse(12)
+    12
+    >>> collapse(22)
+    2
     >>> collapse(12234441)
     12341
     >>> collapse(11200000013333)

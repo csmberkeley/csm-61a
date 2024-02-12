@@ -1,0 +1,40 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{5}
+\title{Recursion, Tree Recursion}
+\date{February 12--February 16, 2024}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item Tree Recursion Mini-lecture: 8 minutes
+    \item Q1: Gibonacci: 15 minutes -- skippable if your students feel especially comfortable with tree recursion; otherwise, please do this.
+    \item Q2: FizzBuzz: 8 minutes -- could be used as a step between Gibonacci and Selective Sum.
+    \item Q3: Selective Sum: 10 minutes
+    \item Q4: Discussions: 10 minutes
+    \item Q5: Mario Number: 10 minutes
+    \item Q6: Collapse: 10--20 minutes
+\end{itemize}
+As a reminder, there is no expectation that you get through all problems in a section. Choose questions that will best benefit your students (temperature checks are a great way to do this!).
+\end{meta}
+
+\subimport{../../topics/recursion/text/}{tree_recursion_overview.tex}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{gibonacci.tex}
+    \subimport{../../topics/recursion/medium/}{fizzbuzz.tex}
+    \subimport{../../topics/recursion/medium/}{selective-sum.tex}
+    \subimport{../../topics/recursion/medium/}{discussions1.tex} 
+    \subimport{../../topics/recursion/medium/}{mario-number.tex}
+    \subimport{../../topics/recursion/medium/}{collapse.tex}
+\end{questions}
+
+\end{document}
