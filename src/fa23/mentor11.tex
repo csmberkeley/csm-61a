@@ -1,0 +1,56 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{11}
+\title{\textsc{Introduction to Scheme}}
+\date{October 30--November 3, 2023}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Midterm \#2 Check-in: 5 mins
+        \item Scheme Guided Minilecture: 25 mins
+        \item If, and, or WWSD: 6 mins
+        \item Define Eval: 7 mins
+        \item Hailstone: 15 mins
+    \end{itemize}
+    \vspace{10px}
+\end{blocksection}
+\end{meta}
+\begin{meta}
+    This section is meant to act as your students' first introduction to Scheme, as they haven't even been exposed to it during lecture (we're just giving them a head start ;-)). 
+    You'll notice that the minilecture this time around is long. This is because we've added check-in WWSD questions to go along with the explanations in the Scheme overview text. \\
+    \vspace{10px}
+
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item To ease in Scheme, it can help to start by comparing and contrasting with Python
+    \item Have students write a basic function in Python (like an iterative countdown), then replicate it in Scheme
+    \item Have students list language features of Python (variable assignments, conditional statements, logic operators, etc.), and explain how Scheme implements those features
+    \item Make sure to give a disclaimer that while high level features may be analogous, the internals are different!
+    \item Scheme features break into three broad categories: Primitives, Call Expressions, and Special Forms (the latter two are called Compound Expressions)
+    \item Primitives evaluate to themselves (4 evaluates to 4, \#t to \#t, etc.)
+    \item Call Expressions begin with a function name and are followed by arguments- evaluate function name, evaluate arguments, and apply function to arguments (just like how we evaluate operators then operands in Python!)
+    \item Special Forms begin with a keyword and are followed by subexpressions, which are evaluated in a way based on the specific keyword
+    \item Familiarize your students with Scheme by using the upcoming overview! It's up to you how much you want to follow the overview compared to minilecturing based on your own plan. Keep in mind that students are learning a completely new language, so remember to take frequent temperature checks and to be patient.
+\end{itemize}
+\end{meta}
+
+\section{Scheme}
+\subimport{../../topics/scheme/text/}{scheme-guided-overview.tex}
+\begin{questions}
+\subimport{../../topics/scheme/easy/wwsd/}{if-and-or.tex}
+\subimport{../../topics/scheme/easy/wwsd/}{define-eval.tex}
+\subimport{../../topics/scheme/easy/}{hailstone.tex}
+\end{questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
