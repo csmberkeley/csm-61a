@@ -1,21 +1,21 @@
 \begin{tikzpicture}[very thick, level/.style={sibling distance=15mm/#1}, level distance=24pt]
-\node[vertex] {$1$}
+\node[circle, draw] {$1$}
 child {
-    node[vertex] {$5$}
+    node[circle, draw] {$5$}
     child {
-        node[vertex] {$7$}
+        node[circle, draw] {$7$}
     }
 }
 child {
-    node[vertex] {$3$}
+    node[circle, draw] {$3$}
     child[sibling distance=10mm] {
-        node[vertex] {$9$}
+        node[circle, draw] {$9$}
     }
     child[sibling distance=10mm] {
-        node[vertex] {$4$}
+        node[circle, draw] {$4$}
     }
 }
 child {
-    node[vertex] {$6$}
+    node[circle, draw] {$6$}
 };
 \end{tikzpicture}
