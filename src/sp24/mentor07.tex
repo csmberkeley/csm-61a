@@ -1,0 +1,87 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Function-based Trees, Mutability, Iterators + Generators}}
+\date{February 19--February 23, 2023}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item ADT Tree mini-lecture (8 min)
+    \item Q1: Draw Tree ADT (4 min)
+    \item Q2: Prune (7 min)
+    \item Q3: Replace x (10 min)
+    \item Mutation mini-lecture (6 min)
+    \item Q4: Mutative WWPD (15 min)
+    \item Q5: Accumulate (15 min)
+    \item Iterators + Generators Mini-lecture (8 min)
+    \item Q6: Foo (5 min)
+    \item Q7: All Sums (10 min)
+\end{itemize}
+The times in the recommended timeline do not add up to 50 minutes because no mentor
+is expected to get through all the problems during section. The worksheet is a skeleton
+around which you should structure your section to best meet the needs of your students.
+If you get stressed out about covering a lot of content, I encourage you to be open with
+your students about the way these sessions are structured. This is an extremeley packed worksheet, with three extremely
+important topics for the midterm being covered in a surface-level way. The problems in this worksheet, with the exception of Accumulate 
+and All Sums, are meant to be a gentle introduction to all of the necessary topics. We will be more in-depth in the midterm review worksheet.
+
+You should probably ask your students at the beginning of section what they would rather go
+over---Trees, mutability, or iterators + generators---and then allocate time appropriately.
+Feel free to go slow and go over your methods of solving tree questions with students, emphasizing how the abstraction barrier can give clues 
+as to how to solve problems. For mutability, don't spend too long on the mini-lecture, as it's moreso realizing what methods are mutative and what aren't.
+Iterators + generators will be gone over in greater difficulty + depth in the next worksheet so feel free to spend more time on trees and mutability.
+\end{meta}
+
+\section{Tree ADT}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+\newpage
+\begin{questions}
+    \subimport{../../topics/trees/adt/draw-tree}{draw-tree.tex}
+    \newpage
+
+    % BEGIN PRUNE %
+    \begin{blocksection}
+    \textbf{BEFORE \lstinline{prune(1)}:}
+    \subimport{../../topics/trees/adt/prune}{before.tex}
+    \hspace{0.5in}
+    \textbf{AFTER \lstinline{prune(1)}:}
+    \subimport{../../topics/trees/adt/prune}{after.tex}
+    \end{blocksection}
+    
+
+    \subimport{../../topics/trees/adt/prune}{problem.tex}
+    % END PRUNE %
+
+    \subimport{../../topics/trees/adt/medium}{replace-x.tex}
+\end{questions}
+
+\newpage
+\section{Mutability}
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+	\begin{questions}
+	    \subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
+        \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+	\end{questions}
+
+
+\newpage
+\section{Iterators \& Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+    \subimport{../../topics/generators/easy/}{foo.tex}
+    \subimport{../../topics/generators/medium/}{all-sums.tex}
+\end{questions}
+
+\end{document}
