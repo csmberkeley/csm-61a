@@ -1,0 +1,64 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{8}
+\title{\textsc{Iterators, Generators, and a Light Intro to OOP}}
+\date{March 4--March 8, 2023}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Introduction to OOP:
+        \begin{itemize}
+            \item OOP Mini Lecture: 10 minutes
+            \item Foobar: 8 minutes
+            \item Hoops: 8 minutes
+        \end{itemize}
+        \item Iterators \& Generators:
+        \begin{itemize}
+            \item Iterators \& Generators Mini Lecture: 7 minutes
+            \item In Order: 5 minutes
+            \item Foo: 8 minutes
+            \item All Sums: 10 minutes (a question that combines tree recursion and generators)
+            \item Skip Machine: 16 minutes (worth to go though, in content's humble opinion, but will take some time -- also includes some OOP concepts, so if you didn't go over that, you might want to in case you want to cover this section)
+        \end{itemize}
+    \end{itemize}
+
+    As a reminder, these times do not add up to 50 minutes because no one is expected 
+    to get through all questions in a section. This is especially true this week, 
+    because this worksheet is rather long. You should use the worksheet as a problem bank
+     around which you can structure your section to best accommodate the needs of your 
+     students. Both before and during section, consider which questions would be most 
+     instructive and how you should budget your time. As always, we highly recommend directly asking your students what they would like to focus on.
+     
+    In general, we recommend planning how long you're going to spend on each section (say, 25 minutes on OOP introductions and 25 minutes on iterators and generators)
+    and then restrict yourself to that time budget so that you can get a good coverage of different topics. You can budget the time according to how your students feel on the different topics.
+\end{guide}
+
+\newpage
+\section{Intro to OOP}
+\subimport{../../topics/oop/text/}{oop_overview.tex}
+\begin{questions}
+    \subimport{../../topics/oop/easy/wwpd/}{foobar.tex}
+    \subimport{../../topics/oop/easy/wwpd/}{hoop.tex}
+\end{questions}
+
+\newpage
+\section{Iterators \& Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+    \subimport{../../topics/generators/medium/}{in-order-adt.tex}
+    \subimport{../../topics/generators/easy/}{foo.tex}
+    \subimport{../../topics/generators/medium/}{all-sums.tex}
+    \subimport{../../topics/iterators/easy/}{skipmachine.tex}
+\end{questions}
+
+\end{document}
