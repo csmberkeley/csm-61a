@@ -1,13 +1,13 @@
 \begin{blocksection}
 \question
-Define a generator function \lstinline{in_order}, which takes in a tree \lstinline{t}; assume that \lstinline{t} and each of its subtrees have either 0 or 2 branches only. Fill in \lstinline{in_order} to yield the labels of \lstinline{t} ``in order''; that is, for each node, the labels of the left branch should precede the parent label, which should precede the labels of the right branch. 
+Define a generator function \lstinline{in_order}, which takes in a tree \lstinline{t}; assume that \lstinline{t} and each of its subtrees have either 0 or 2 branches only. Fill in \lstinline{in_order} to yield the labels of \lstinline{t} ``in order''; that is, for each node, the labels of the left branch should precede the parent label, which should precede the labels of the right branch. You can think of ``in order'' traversal as reading the tree like you would a book. 
 
 \begin{lstlisting}
 def in_order(t):
     """
     >>> t = tree(0, [tree(1), tree(2, [tree(3), tree(4)])])
     >>> list(in_order(t))
-    [1, 0, 3, 2, 4]
+    [1, 0, 3, 2, 4] # 1 goes first because it's the leftmost node
     """
 \end{lstlisting}
 
