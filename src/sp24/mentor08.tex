@@ -3,8 +3,8 @@
 
 %%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \discnumber{8}
-\title{\textsc{Mutability, Iterators, and Generators}}
-\date{October 9--October 13, 2023}
+\title{\textsc{Iterators, Generators, and a Light Intro to OOP}}
+\date{March 4--March 8, 2023}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -16,13 +16,11 @@
 \begin{guide}
     \textbf{Recommended Timeline}
     \begin{itemize}
-        \item Mutability
+        \item Introduction to OOP:
         \begin{itemize}
-            \item Mutability Mini Lecture: 6 minutes
-            \item What Would Python Do: 5 minutes
-            \item Accumulate: 10 minutes
-            \item Nice Ice Cream: 15 minutes (beware that this is a relatively longer environment diagram question!)
-            \item There are a lot of questions and topics, so pick and choose between these problems based on your students comfortability.
+            \item OOP Mini Lecture: 10 minutes
+            \item Foobar: 8 minutes
+            \item Hoops: 8 minutes
         \end{itemize}
         \item Iterators \& Generators:
         \begin{itemize}
@@ -30,7 +28,7 @@
             \item In Order: 5 minutes
             \item Foo: 8 minutes
             \item All Sums: 10 minutes (a question that combines tree recursion and generators)
-            \item Skip Machine: 16 minutes (worth to go though, in content's humble opinion, but will take some time)
+            \item Skip Machine: 16 minutes (worth to go though, in content's humble opinion, but will take some time -- also includes some OOP concepts, so if you didn't go over that, you might want to in case you want to cover this section)
         \end{itemize}
     \end{itemize}
 
@@ -41,17 +39,17 @@
      students. Both before and during section, consider which questions would be most 
      instructive and how you should budget your time. As always, we highly recommend directly asking your students what they would like to focus on.
      
-    In general, we recommend planning how long you're going to spend on each section (say, 25 minutes on mutability and 25 minutes on iterators and generators)
+    In general, we recommend planning how long you're going to spend on each section (say, 25 minutes on OOP introductions and 25 minutes on iterators and generators)
     and then restrict yourself to that time budget so that you can get a good coverage of different topics. You can budget the time according to how your students feel on the different topics.
 \end{guide}
 
-\section{Mutability}
-	\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
-	\begin{questions}
-	    \subimport{../../topics/lists/mutable/medium/}{wwpd-mutation.tex}
-        \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
-        \subimport{../../topics/lists/mutable/medium/env-diagram/}{nice-ice-cream.tex}
-	\end{questions}
+\newpage
+\section{Intro to OOP}
+\subimport{../../topics/oop/text/}{oop_overview.tex}
+\begin{questions}
+    \subimport{../../topics/oop/easy/wwpd/}{foobar.tex}
+    \subimport{../../topics/oop/easy/wwpd/}{hoop.tex}
+\end{questions}
 
 \newpage
 \section{Iterators \& Generators}
