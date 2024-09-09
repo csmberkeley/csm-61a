@@ -1,0 +1,44 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{4}
+\title{Higher-Order Environments, Currying, and Recursion}
+\date{September 16--September 20, 2024}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+%%% INCLUDE TOPICS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{meta}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item HOFs mini-lecture/review - 5 mins
+    \item Inception OR ABDE - 10 mins (check in with your students to see how they feel about the general structure of higher order functions; do this if they feel a bit shaky)
+    \item Compound - 15 mins
+    \item General recursion mini-lecture - 10 mins (Remember, recursion can be a challenging concept when encountered for the first time. It's perfectly fine to spend extra time on this topic if needed to ensure students grasp the fundamentals.)
+    \item Wrong factorial - 5 to 10 mins
+    \item num\_digits - 5 mins
+\end{itemize}
+Please remember, there is no expectation that you get through all problems in a section. Pick the most pertinent problems for your section. 
+\end{meta}
+
+\begin{questions}
+    \section{Higher-Order Functions cont.}
+    \subimport{../../topics/hof/medium/env-diagram/}{inception.tex}
+    \subimport{../../topics/environments/medium/}{abde.tex}
+    \subimport{../../topics/hof/hard/}{compound.tex}
+    \begin{questionmeta}
+        Inception and ABDE are very similar in terms of the skills they test. If your students are finding this concept challenging, focus on these problems during your section before moving on to the HOF challenge problems. It's important to work on either Compound or Partial Summer, as they both cover essential aspects of higher-order functions. Since these problems are more challenging, consider working on the rest of the worksheet first and then dedicate time to thoroughly working through one of these challenge problems.
+    \end{questionmeta}
+
+    \section{Recursion}
+    \subimport{../../topics/recursion/text/}{recursion_overview.tex}
+    \subimport{../../topics/recursion/easy/}{wrong_factorial.tex}
+    \subimport{../../topics/recursion/easy/}{num-digits.tex}
+\end{questions}
+
+\end{document}
