@@ -1,0 +1,77 @@
+\begin{blocksection}
+    \question
+    Fill in \lstinline{near}, which takes in a non-negative integer \lstinline{n} and returns the largest, non-consecutively repeating, near increasing sequence of digits within n as an integer. The arguments \lstinline{smallest} and \lstinline{d} are part of the implementation; you must determine their purpose. You may \underline{\textbf{not}} use any values except
+    integers and booleans (\lstinline{True} and \lstinline{False}) in your solution (no lists, strings, etc.).
+
+    A sequence is \textit{near increasing} if each element but the last two is smaller than all elements following its subsequent element. That is, element $i$ must be smaller than elements $i + 2$, $i + 3$, $i + 4$, etc. A \textit{non-consecutively repeating} number is one that \underline{do not} have two of the same digits next to each other. [Adapted from CS61A Fa18 Final Q3(c)]
+    
+    \begin{lstlisting}
+def near(n, smallest=10, d=10):
+    """
+    >>> near(123)
+    123
+    >>> near(153)
+    153
+    >>> near(1523)
+    153
+    >>> near(15123)
+    153
+    >>> near(985357)
+    537
+    >>> near(11111111)
+    1
+    >>> near(14735476)
+    143576
+    >>> near(14735476)
+    1234567
+    """
+    if n == 0:
+
+        return ____________________________________
+
+    no = near(n//10, smallest, d)
+
+    if (smallest > _________________) and (___________________):
+            
+        yes = ____________________________________
+
+        return ____________________________________(yes, no)
+            
+    return ____________________________________
+    \end{lstlisting}
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \begin{solution}
+    \begin{lstlisting}
+    def near(n, smallest=10, d=10):
+        if n == 0:
+            return 0
+        
+        no = near(n//10, smallest, d)
+
+        if (smallest > n % 10) and (n % 10 != d):
+            yes = 10 * near(n//10, min(smallest, d), n%10) + n%10
+            # OR yes = 10 * near(n//10, d, min(d, n%10)) + n%10
+            return max(yes, no)
+
+        return no
+
+    \end{lstlisting}
+    \lstinline{smallest} = smallest digit
+
+    \lstinline{d} = previous digit
+
+    For a video walkthrough of the unadapted exam problem, see https://youtu.be/NnE6qFZsoGo. This should give you a good idea how to approach the adapted version.
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \begin{guide}
+    \begin{itemize}
+      \item Demonstrating with the doc tests is very important - the problem description can be confusing.
+      \item This is probably a decently tricky problem -- even for an exam level problem. I think even mentors should watch the walk through video as that gives you some good ideas on how to teach this problem. \item Essentially it boils down to figuring out what \lstinline{smallest} \& \lstinline{d} is and how to decide whether to use the last digit or not in the computation (when you apply recursion to this, you can construct the entire number of the solution).
+    \end{itemize}
+    \end{guide}
+    \end{blocksection}
+    
