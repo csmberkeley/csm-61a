@@ -26,10 +26,13 @@ def modular_exponentiation(base, exponent, modulus):
     if _____________________:
             
         half_power = ____________________________________
+        # Hint: Which math formula above has exponent *just* divided by half?
 
         return ____________________________________ % modulus
 
     else:  
+
+        half_power = ____________________________________
 
         return _________________________________________ % modulus
     \end{lstlisting}
@@ -46,11 +49,12 @@ def modular_exponentiation(base, exponent, modulus):
         return 1
     
     # Recursive case
-    if exponent % 2 == 0:
+    if exponent % 2 == 0: # If exponent is even
         half_power = modular_exponentiation(base, exponent // 2,modulus)
         return (half_power * half_power) % modulus
-    else:
-        return (base * modular_exponentiation(base, exponent - 1, modulus)) % modulus
+    else: # If exponent is odd
+        half_power = modular_exponentiation(base, (exponent - 1) // 2, modulus)
+        return (base * half_power * half_power) % modulus
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
