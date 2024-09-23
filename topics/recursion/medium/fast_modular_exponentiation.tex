@@ -1,0 +1,71 @@
+\begin{blocksection}
+    \question \textbf{Fast Modular Exponentiation:} In many computing applications, we need to quickly compute $n^{x} \mod z $ where $n > 0$, and $x$ and $z$ are arbitary whole numbers. Computing $n^{x} \mod z$ for large numbers can get extremely slow if we repeatedly multiply $n$ for $x$ times. We can implement the following recursive algorithm to help us speed up the exponentiation operation.
+
+    \begin{gather*}
+        x^{n} \mod z = 
+        \begin{cases}
+            x * (x^{2})^{(n-1)/2} \, \% \, z & \text{if $n$ is odd}\\
+            (x^{2})^{(n/2)} \, \% \, z & \text{if $n$ is even}
+        \end{cases}
+    \end{gather*}
+
+    This is an example of a "divide \& conquer" algorithm and follows the same train of thought as tree-recursion problems (you are dividing some complex problem into smaller parts and performing both options).
+    
+    \begin{lstlisting}
+def modular_exponentiation(base, exponent, modulus):
+    """
+    >>> modular_exponentiation(2, 2, 2)
+    0
+    >>> modular_exponentiation(4, 2, 3)
+    1
+    """
+    if _____________________:
+
+        return ____________________________________
+
+    if _____________________:
+            
+        half_power = ____________________________________
+        # Hint: Which math formula above has exponent *just* divided by half?
+
+        return ____________________________________ % modulus
+
+    else:  
+
+        half_power = ____________________________________
+
+        return _________________________________________ % modulus
+    \end{lstlisting}
+
+    Note: The algorithm you just implemented is a key part of modern day cryptography techniques such as RSA and Diffie-Hellman key exchange. In some cases, the exact operations you just implemented is used in modern day, state of the art, programs (if you are curious, Google "Right-to-left binary method"). You will learn more about RSA in CS70. If you want to learn more about computer security, consider taking CS161 after CS61C.
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \begin{solution}
+    \begin{lstlisting}
+    def modular_exponentiation(base, exponent, modulus):
+    # Base case: exponent is 0
+    if exponent == 0:
+        return 1
+    
+    # Recursive case
+    if exponent % 2 == 0: # If exponent is even
+        half_power = modular_exponentiation(base, exponent // 2,modulus)
+        return (half_power * half_power) % modulus
+    else: # If exponent is odd
+        half_power = modular_exponentiation(base, (exponent - 1) // 2, modulus)
+        return (base * half_power * half_power) % modulus
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \begin{guide}
+    \begin{itemize}
+      \item This problem doesn't exactly follow the scheme of tree recursion discussed in lecture, but it does follow the general philosophy behind tree recursion. You probably want to reiterate this.
+      \subitem I think it is important for students to relate "tree recursion" which is a SICP concept to something in the real world (whether that'd be a type of \st{leetcode} algorithms problem or a real world use). Here real world use made more sense as a lot of algorithms problems with tree recursion involved binary trees (and trees in general), which hasn't been introduced in lecture yet. 
+      \item This problem is not meant to be tricky or as much of a "drill" problem as the other ones. This is more of a "here is what tree recursion can do" type -- so feel free to walk through this problem if you want.
+    \end{itemize}
+    \end{guide}
+    \end{blocksection}
+    

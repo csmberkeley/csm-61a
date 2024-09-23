@@ -1,0 +1,80 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{5}
+\title{Recursion, Tree Recursion}
+\date{September 23 -- September 27, 2024}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Tree Recursion Mini Lecture [8 Mins]
+            \subitem 1. Consider creating a simple example to demonstrate recursion. Example: A recursive accumulation function (ie: next \# = $\sum$ previous \#s)
+        \item Problems: Recursion [20 Mins]
+        \begin{itemize}
+            \item Q1 - FizzBuzz
+            \item Q2 - Sum Prime digits
+            % \item Q3 - Near
+        \end{itemize}
+        \item Problems: Tree Recursion [20 Mins]
+        \begin{itemize}
+            \item Q4 - Copy Machine
+            \item Q5 - Mario Number
+            \item Q6 - [Conceptual \& Optional] Fast Modular Exponentiation
+        \end{itemize}
+        
+    \end{itemize}
+\end{meta}
+
+\section{Recursion}
+\begin{questions}
+    \subimport{../../topics/recursion/medium/}{fizzbuzz.tex}
+    \begin{questionmeta}
+        This is an intro example of recursion - Feel free to skip if your students are clear on the concept of recursion.\\
+        $\Rightarrow$ Suggested Time: 3 min; Difficulty (Official): Medium; Difficulty (Adjusted): Easy/Intro
+      \end{questionmeta}
+
+    \subimport{../../topics/recursion/medium/}{sum-prime-digits.tex}
+    \begin{questionmeta}
+        \begin{itemize}
+            \item Again, this problem is likely skippable if you have advanced students.
+            \item Make sure your students understand why you are calling \lstinline{sum_prime_digits} twice.
+        \end{itemize}    
+        Suggested Time: 5 min; Difficulty (Official): Medium; Difficulty (Adjusted): Easy $\rightarrow$ Medium Mezzanine
+      \end{questionmeta}
+    
+    % \subimport{../../topics/recursion/hard/}{near.tex}
+    % \begin{questionmeta}
+        % $\Rightarrow$ Suggested Time: 20 min; Difficulty (Official): Hard -- Exam level; Difficulty (Adjusted): Hard -- Exam level
+    % \end{questionmeta}
+\end{questions}
+
+
+\section{Tree Recursion}
+\subimport{../../topics/recursion/text/}{tree_recursion_overview.tex}
+\begin{questions}
+    \subimport{../../topics/recursion/medium/}{copy-machine1.tex}
+    \begin{questionmeta}
+        \begin{itemize}
+            \item This is a good mini-lecture problem to use as a demo since this is probably the closest thing the students have seen to what they demo-ed in lecture.
+        \end{itemize}
+        $\Rightarrow$ Suggested Time: 6 min; Difficulty (Official): Medium; Difficulty (Adjusted): Easy
+    \end{questionmeta}
+    \newpage
+    \subimport{../../topics/recursion/medium/}{mario-number.tex}
+    \begin{questionmeta}
+        $\Rightarrow$ Suggested Time: 10 min; Difficulty (Official): Medium; Difficulty (Adjusted): Easy $\rightarrow$ Medium (Mezzanine) \\ \\
+        The classic mario-number problem from CSM. A worksheet wouldn't be complete without it!
+    \end{questionmeta}
+    \newpage
+    \subimport{../../topics/recursion/medium/}{fast_modular_exponentiation.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty (Official): Medium; Difficulty (Adjusted): Medium
+    \end{questionmeta}
+
+\end{questions}
+
+\end{document}
