@@ -1,0 +1,78 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\usepackage{setspace}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{6}
+\title{\textsc{Sequences and Containers}}
+\date{September 30--October 40, 2024}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+%%% INCLUDE TOPICS  HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{meta}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        %%% MODIFY %%%%
+        \item Lists Minilecture: 10 minutes
+        \item Lists WWPD: 5 minutes
+        \item Lists Environment Diagram: 9 minutes
+        \item Comprehensions: 12 minutes
+        \item Gen List: 7 minutes
+        \item Dictionaries Minilecture/example: 5 minutes/0 minutes
+        \item Snapshot: 4 minutes
+        \item Count-t: 8 minutes
+        \item Digraph: 10 minutes
+    \end{itemize}
+
+    As a reminder, these times do not add up to 50 minutes because no one is expected 
+    to get through all questions in a section. This is especially true this week, 
+    because this worksheet is rather long. You should use the worksheet as a problem bank
+     around which you can structure your section to best accommodate the needs of your 
+     students. Both before and during section, consider which questions would be most 
+     instructive and how you should budget your time.
+
+	Teaching sequences can be challenging because there’s a lot to cover, often leading to tedious 	explanations that focus on basic mechanics rather than deeper concepts. To prioritize time and 	student success, please avoid giving a detailed mini-lecture on every single aspect of sequences. 	This can consume too much time and may not be beneficial for your students. Instead, consider 	asking your students what specific topics they’d like to cover before you dive into any mini-lectures. 	This way, you can avoid rehashing information they’re already familiar with.
+\end{meta}
+
+\section{Sequences}
+\subimport{../../topics/sequences/text/}{sequences_overview.tex}
+\begin{questions}
+    \subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified-2.tex}
+    \begin{questionmeta}
+        An alternative to doing a super detailed mini-lecture is going over these problems with your students and ``learning by doing.'' 
+    \end{questionmeta}
+    \newpage
+    \subimport{../../topics/lists/immutable/medium/wwpd/}{assignment-and-slicing.tex}
+    \begin{questionmeta}
+        This is a short question to get your students to understand slicing and concatenation of lists. Honestly, a skippable problem as it's a reiteration of some aspects of the previous WWPD problem, but feel free to do this if students don't understand the \textit{ASSIGNMENT} of slicing/immutable list comprehensions *ba-dum-tss*.
+    \end{questionmeta}
+    \subimport{../../topics/lists/immutable/medium/}{comprehensions.tex}
+    \begin{questionmeta}
+        I think it's probably not necessary to go over all of these with your students, just do enough to where they're comfortable with things. 
+    \end{questionmeta}
+        \newpage
+    \subimport{../../topics/lists/immutable/medium/}{gen-list.tex}
+    \begin{questionmeta}
+        The additional challenge is harder and is not necessary to go over if there is no time for it. It gives good practice on thinking about using other tools to help put everything in one line (i.e. range), so encourage students to try it on their own.
+    \end{questionmeta}
+\end{questions}
+    \newpage
+\section{Dictionaries}
+\subimport{../../topics/dictionaries/text}{dictionary-overview.tex}
+\begin{questions}
+    \subimport{../../topics/dictionaries/}{snapshot.tex}
+    \begin{questionmeta}
+        This problem is pretty easy, so you can probably skip over it if your students are strapped for time or if you think they probably don't need it. If they seem to be struggling understanding the basics of dictionaries this is a good way to ease them into the more difficult problems.
+    \end{questionmeta}
+    \subimport{../../topics/dictionaries/}{count-t.tex}
+    \subimport{../../topics/dictionaries/}{digraph.tex}
+    \begin{questionmeta}
+        This problem is pretty difficult, so its a good one to do if your students were able to understand the other problems pretty well. If you don't get to this one or don't think all your students are ready for this level of difficulty, remind students all solutions are online so they can review it on their own.
+    \end{questionmeta}
+\end{questions}
+\end{document}

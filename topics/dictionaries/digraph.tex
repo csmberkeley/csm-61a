@@ -16,23 +16,18 @@ def count_digraphs(text, alphabet):
 
     freq = {}
 
-    _____________________________________________________:
-
-        if ____________________________________________________________________:
-
-            digraph = __________________________________
-
-            if ____________________ in _________________:
-
-                __________________________________________
-
+    for i in range(len(text) - 1):
+        if text[i] in alphabet and text[i + 1] in alphabet:
+            digraph = text[i] + text[i + 1]
+            if digraph in freq:
+                freq[digraph] += 1
             else:
-
-                __________________________________________
+                freq[digraph] = 1
 
     return freq
 \end{lstlisting}
 \end{blocksection}
+
 \begin{solution}
 \begin{lstlisting}
 def count_digraphs(text, alphabet):
@@ -49,17 +44,27 @@ def count_digraphs(text, alphabet):
 \end{solution}
 
 \begin{questionmeta}
-What's the point of this question? Well, analyzing the frequency of digraphs can be valuable in all sorts of situations, including cryptanalysis. But in a more general sense, using dictionaries to count things is very common. So hopefully this problem will give students some guidance on that front.
+What's the point of this question? Well, analyzing the frequency of digraphs can be valuable in all sorts of situations, including cryptanalysis. More broadly, using dictionaries to count occurrences is a common programming task, and this problem aims to provide practice with that concept.
 
-Students will probably need to look at the doc tests to fully understand the problem, including what we mean by `valid' and whether spaces should count or not. 
+Students will probably need to look at the doc tests to fully understand the problem, including what we mean by `valid` and whether spaces should count or not. 
 
-If your students are completely lost, walk through the doctests with them, and ask them how they would find digraphs by hand, and try and lead them to understand what two elements they should be checking in each iteration.
+If your students are completely lost, walk through the doctests with them, asking how they would find digraphs by hand. This can lead them to identify which two characters they should check in each iteration.
 
-Students will likely find a significant amount of trouble in differentiating what to do when the digraph is present in the dictionary and when it is not. If they are stuck on this,, here are some leading questions you could ask: 
+Students may struggle with differentiating actions based on whether a digraph is already in the dictionary. Here are some guiding questions to help:
 \begin{itemize}
-    \item What happens when we encounter a digraph we haven't seen before?
-    \item What happens when we try to add a digraph to the dictionary that's not already in there? 
-    \item What do we need to know is true before we can add onto the digraph that's already in the dictionary? How can we do that? 
+    \item What happens when we encounter a new digraph that isn't already in the dictionary?
+    \item How should we update the count for a digraph that is already present?
+    \item What conditions must be met to add to the count of an existing digraph?
 \end{itemize}
 
+**Tips and Tricks**:
+\begin{itemize}
+    \item **Iterate Over Indices**: Use a loop that iterates through indices of the string, checking each character and the next one to form the digraph.
+    \item **String Concatenation**: Remember that you can easily create a digraph by concatenating two characters with `text[i] + text[i + 1]`.
+    \item **Dictionary Methods**: Utilize the `get` method for dictionaries, which can simplify checking if a key exists and providing a default value if it doesn't. For example, `freq[digraph] = freq.get(digraph, 0) + 1`.
+    \item **Edge Cases**: Discuss how to handle cases where the text is very short or contains no valid letters. Ensure students consider input validation.
+    \item **Testing**: Encourage students to add their own test cases, especially edge cases, to ensure their function behaves as expected.
+\end{itemize}
+
+By addressing these questions and employing these tips, students will better understand the logic behind updating the dictionary and how to implement the function effectively.
 \end{questionmeta}
