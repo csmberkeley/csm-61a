@@ -1,0 +1,56 @@
+\begin{blocksection}
+    \question \textbf{Scrabble!} \text{[Exam Level - Adapted from CS61A Su19 Midterm Q7(b)]} 
+    
+    Implement \lstinline{scrabbler} which takes in a string \lstinline{chars}, a list of strings \lstinline{words}, and a dictionary \lstinline{values} which maps letters to point values. It should return a dictionary where each key is a word in \lstinline{words} which can be formed from the letters in \lstinline{chars} and each value is the point value of that word.
+
+    For this problem, we will only consider words we can form using letters in \lstinline{chars} in the same order they appear in the string. Assume values contains all the letters across valid words as keys.
+
+    Furthermore, you have access to the function \lstinline{is_subseq} which returns \lstinline{true} if a string is a subsequence of another string. A string is a sequence of another string if  all the letters in the first string appear in the second string in the same order (but they do not need to be next to each other).
+    
+    \begin{lstlisting}
+def scrabbler(chars, words, values):
+    """ Given a list of words and point values for letters, returns a
+    dictionary mapping each word that can be formed from letters in chars
+    to their point value. You may not need all lines
+    >>> words = ["easy", "as", "pie"]
+    >>> values = {"e": 2, "a": 2, "s": 1, "p": 3, "i": 2, "y": 4}
+    >>> scrabbler("heuaiosby", words, values)
+    {'easy': 9, 'as': 3}
+    >>> scrabbler("piayse", words, values)
+    {'pie': 7, 'as': 3}
+    """
+    result = ____________________________________
+
+    for ___________________________________________:
+
+        if ________________________________________:
+
+            ____________________________________
+
+            ____________________________________
+    
+    return result
+    \end{lstlisting}
+    \end{blocksection}
+    
+    \begin{blocksection}
+    \begin{solution}
+    \begin{lstlisting}
+    def scrabbler(chars, words, values):
+        result = {}
+        for w in words:
+            if is_subseq(w, chars):
+                total = sum([values[c] for c in w])
+                result[w] = total
+        return result
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{questionmeta}
+        \textbf{Teaching Tips}
+        \begin{enumerate}
+                \item The original exam problem had 4 lines after the \lstinline{if} statement, so a solution that doesn't use list comprehension is acceptable. You might want to go over that case with your students.
+                \item I did not leave space for the non-list comprehension solution here because it seems like list comprehension is becoming almost an "expectation" of MT2 \& the final, so it is good to get students used to using them where ever possible.
+        \end{enumerate}
+    \end{questionmeta}
