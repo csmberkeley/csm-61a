@@ -1,3 +1,5 @@
+\small % Adjust font size for better fit
+
 Sequences are ordered data structures that have length and support element selection. Here are some common types of sequences you'll be dealing with in this class: 
 \begin{itemize}
 	\item Lists: \lstinline{[1, [2], 'a', lambda x: 5]}
@@ -7,41 +9,47 @@ Sequences are ordered data structures that have length and support element selec
 
 While each type of sequence is different, they all share a common interface for manipulating and accessing their data: 
 \begin{itemize}
-\item \textbf{Item selection}: Use square brackets to select an element at an index: 
-	
-\lstinline{(3, 1, 2)[0]} $\rightarrow$ \lstinline{"3"}, \quad \lstinline{"Hello"[-1]} $\rightarrow$ \lstinline{"o"}
+	\item \textbf{Item selection}: Use square brackets to select an element at an index: 
+	\begin{lstlisting}
+(3, 1, 2)[0]  # returns 3
+"Hello"[-1]   # returns "o"
+	\end{lstlisting}
 
-\item\textbf{Length}: The built-in \lstinline{len} function returns the length of a sequence: 
-	
-\lstinline{len((1,2))} $\rightarrow$ \lstinline{2}
+	\item \textbf{Length}: The built-in \lstinline{len} function returns the length of a sequence: 
+	\begin{lstlisting}
+len((1, 2))  # returns 2
+	\end{lstlisting}
 
-\item \textbf{Concatenation}: Sequences can be concatenated with the \lstinline{+} operator, which returns a \textit{new} sequence:
+	\item \textbf{Concatenation}: Sequences can be concatenated with the \lstinline{+} operator, which returns a \textit{new} sequence:
+	\begin{lstlisting}
+[1, 2] + [3, 4]  # returns [1, 2, 3, 4]
+	\end{lstlisting}
 
-\lstinline{[1, 2] + [3,4]} $\rightarrow$ \lstinline{[1,2,3,4]}
-
-\item \textbf{Membership}: The \lstinline{in} operator tests for sequence membership: 
-
-\lstinline{1 in (1, 2, 3)} $\rightarrow$ \lstinline{True}, \quad \lstinline{5 not in (1, 2, 3)} $\rightarrow$ \lstinline{True}, \quad \lstinline{``apple'' in "snapple"} $\rightarrow$ \lstinline{True}
+	\item \textbf{Membership}: The \lstinline{in} operator tests for sequence membership: 
+	\begin{lstlisting}
+1 in (1, 2, 3)          # returns True
+5 not in (1, 2, 3)     # returns True
+"apple" in "snapple"   # returns True
+	\end{lstlisting}
 
     \subitem \textbf{Membership in Strings vs. Lists and Tuples}: As a short aside, while the \lstinline{in} operator works the same for lists and tuples, checking if an element is contained within the list/tuple container, the \lstinline{in} operator instead for strings checks for direct substrings rather than the existence of distinct elements within the string.
 
-\item \textbf{Looping}: Sequences can be looped through with \lstinline{for} loops:
-
-\begin{blocksection} 
-\begin{lstlisting}
+	\item \textbf{Looping}: Sequences can be looped through with \lstinline{for} loops:
+	\vspace{-0.5em} % Reduces space between text and code block
+	\begin{lstlisting}
 >>> for x in [1, 2, 3]:
 ...     print(x)
 1
 2
 3
-\end{lstlisting}
-\end{blocksection}
+	\end{lstlisting}
 
-\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value:
+	\item \textbf{Aggregation}: Common built-in functions---including \lstinline{sum}, \lstinline{min}, and \lstinline{max}---can take sequences and aggregate them into a single value:
+	\begin{lstlisting}
+max((3, 4, 5))  # returns 5
+	\end{lstlisting}
 
-\lstinline{max((3, 4, 5))} $\rightarrow$ \lstinline{5}
-
-\item \textbf{Slicing}: Slicing is a way to create a copy of all or part of a sequence. The general syntax for slicing a sequence \lstinline{seq} is as follows:
+	\item \textbf{Slicing}: Slicing is a way to create a copy of all or part of a sequence. The general syntax for slicing a sequence \lstinline{seq} is as follows:
 	\begin{lstlisting}
 seq[<start index>:<end index>:<step size>]
 	\end{lstlisting}
