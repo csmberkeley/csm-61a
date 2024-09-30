@@ -13,20 +13,9 @@ def count_digraphs(text, alphabet):
     >>> count_digraphs("lalala", ['l', 'a'])
     {'la': 3, 'al': 2}
     """
-
-    freq = {}
-
-    for i in range(len(text) - 1):
-        if text[i] in alphabet and text[i + 1] in alphabet:
-            digraph = text[i] + text[i + 1]
-            if digraph in freq:
-                freq[digraph] += 1
-            else:
-                freq[digraph] = 1
-
-    return freq
 \end{lstlisting}
 \end{blocksection}
+
 
 \begin{solution}
 \begin{lstlisting}
