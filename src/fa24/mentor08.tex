@@ -1,0 +1,57 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{8}
+\title{\textsc{Iterators, Generators, and a Light Intro to OOP}}
+\date{October 14 -- October 18, 2024}
+
+\begin{document}
+\maketitle
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Introduction to OOP:
+        \begin{itemize}
+            \item OOP Mini Lecture: 10 minutes
+            \item Foobar: 8 minutes
+            \item Hoops: 8 minutes
+        \end{itemize}
+        \item Iterators \& Generators:
+        \begin{itemize}
+            \item Iterators \& Generators Mini Lecture: 7 minutes
+            \item In Order: 5 minutes
+            \item Foo: 8 minutes
+            \item All Sums: 10 minutes (a question that combines tree recursion and generators)
+            \item Skip Machine: 16 minutes (worth to go though, in content's humble opinion, but will take some time -- also includes some OOP concepts, so if you didn't go over that, you might want to in case you want to cover this section)
+           \item Unequal pairs: 5-7 minutes (question adopted from Final Fall-23 )
+        \end{itemize}
+    \end{itemize}
+
+Please remember that these times don’t add up to 50 minutes because you’re not expected to cover every question—especially since this week’s worksheet is a bit longer! Think of it as a problem bank that you can use to shape your section based on what your students need. Before and during section, try to decide which questions would be the most helpful and how you want to budget your time. And feel free to ask your students directly what they’d like to focus on!
+
+As a tip, try planning out how long you’ll spend on each topic (like 25 minutes on OOP and 25 minutes on iterators and generators) and do your best to stick to it. That way, you can cover a variety of topics while making sure your students get the most out of it!
+\end{guide}
+
+
+\section{Intro to OOP}
+\subimport{../../topics/oop/text/}{oop_overview.tex}
+\begin{questions}
+    \subimport{../../topics/oop/easy/wwpd/}{foobar.tex}
+    \subimport{../../topics/oop/easy/wwpd/}{hoop.tex}
+\end{questions}
+
+\newpage
+\section{Iterators \& Generators}
+\subimport{../../topics/generators/text/}{generators_overview.tex}
+\begin{questions}
+    \subimport{../../topics/generators/medium/}{in-order-adt.tex}
+    \newpage
+    \subimport{../../topics/generators/easy/}{foo.tex}
+    \subimport{../../topics/generators/medium/}{all-sums.tex}
+       \newpage
+    \subimport{../../topics/iterators/easy/}{skipmachine.tex}
+     \subimport{../../topics/generators/exam_level/}{unequal_pairs.tex}
+\end{questions}
+
+
+\end{document}
