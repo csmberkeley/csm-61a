@@ -1,12 +1,12 @@
 \begin{blocksection}
-\question(Exam Level) Implement \texttt{unequal\_pairs}, a generator function that yields all \textbf{non-empty} pairings of a list \texttt{s} in which no pair contains two equal elements.
+\question(Exam Level: Final Fall-23) Implement \texttt{unequal\_pairs}, a generator function that yields all \textbf{non-empty} pairings of a list \texttt{s} in which no pair contains two equal elements.
 
 \begin{lstlisting}
-def unequal_pairs(s):
+def distinct_pairs(s):
     """
-    Yield all non-empty pairings for a list s in which each pair's values are unequal.
+  Yield all non-empty pairings from the list s, where each pair consists of two distinct elements.
 
-    >>> sorted(unequal_pairs([4, 2, 2, 4, 4, 1, 1]))  # Four different pairings!
+    >>> sorted(distinct_pairs([4, 2, 2, 4, 4, 1, 1]))  # Four different pairings!
     [[(2, 4)], [(4, 1)], [(4, 2)], [(4, 2), (4, 1)]]
     >>> max(unequal_pairs([4, 2, 2, 4, 5, 4, 4, 1, 5, 5, 6]), key=len)  # The longest pairing
     [[(4, 2), (4, 5), (4, 1), (5, 6)]]
@@ -21,7 +21,8 @@ def unequal_pairs(s):
 
             _____________________          # (3)
 
-            for rest in unequal_pairs(s[3:]):  # Note: [0, 1][3:] evaluates to []
+            for rest in distinct_pairs(s[3:]):  # Note: [0, 1][3:]  
+                                                # evaluates to []
 
                 yield _____________________ # (4)
 \end{lstlisting}
@@ -32,14 +33,15 @@ def unequal_pairs(s):
 \begin{solution}[0in]
 
 \begin{lstlisting}
-def unequal_pairs(s):
+def distinct_pairs(s):
  
     if len(s) >= 2:
-        yield from  unequal_pairs(s[1:])  # (1)
+        yield from  distinct_pairs(s[1:])  # (1)
         if  s[0] != s[1]:                  # (2)
             pair = (s[0], s[1])
              yield [pair]                  # (3)
-            for rest in unequal_pairs(s[3:]):  # Note: [0, 1][3:] evaluates to []
+            for rest in distinct_pairs(s[3:]):  # Note: [0, 1][3:]  
+                                                # evaluates to []
                 yield [pair] + rest]    # (4)
 \end{lstlisting}
 
