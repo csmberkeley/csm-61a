@@ -1,0 +1,60 @@
+\begin{blocksection}
+    \question \text{[Exam Level]} Implement the \lstinline{Poll} class and the \lstinline{tally} function, which takes a choice \lstinline{c} and returns a list describing the number of votes for \lstinline{c}. 
+    This list contains pairs, each with a name and the number of times \lstinline{vote} was called on that \lstinline{choice} at the \lstinline{Poll} with that name. Pairs can be in any order. Assume all \lstinline{Poll}
+    instances have distinct names. Hint: the dictionary \lstinline{get(key, default)} method (MT 2 guide, page 1
+    top-right) returns the value for a \lstinline{key} if it appears in the dictionary and \lstinline{default} otherwise. [Adapted from CS61A Fa18 Midterm 2 Q5(a)]
+
+    \begin{lstlisting}
+class Poll:
+    s = []
+
+    def __init__(self, n):
+
+        self.name = _________________________________________________
+
+        self.votes = {}
+
+        _____________________________________________________________
+
+    def vote(self, choice):
+
+        self._________________________ = ________________________________
+    
+
+
+def tally(c):
+    """Tally all votes for a choice c as a list of (poll name, vote count) pairs.
+    >>> a, b, c = Poll('A'), Poll('B'), Poll('C')
+    >>> c.vote('dog')
+    >>> a.vote('dog')
+    >>> a.vote('cat')
+    >>> b.vote('cat')
+    >>> a.vote('dog')
+    >>> tally('dog')
+    [('A', 2), ('C', 1)]
+    >>> tally('cat')
+    [('A', 1), ('B', 1)]
+    """
+
+    return____________________________________________________________________
+    \end{lstlisting}
+    
+    
+    \begin{solution}
+
+    \begin{lstlisting}
+class Poll:
+    s = []
+    def __init__(self, n):
+        self.name = n
+        self.votes = {}
+        Poll.s.append(self)
+    def vote(self, choice):
+        self.votes[choice] = self.votes.get(choice, 0) + 1
+
+def tally(c):
+    return [(p.name, p.votes[c]) for p in Poll.s if c in p.votes]
+    \end{lstlisting}
+    
+    \end{solution}
+    \end{blocksection}
