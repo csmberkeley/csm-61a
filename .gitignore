@@ -1,5 +1,5 @@
 ## Published handouts and Makefile dependencies
-made/
+# made/ -- make this available so folks can see latest build
 deps/
 Makefile
 
