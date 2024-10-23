@@ -1,0 +1,86 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{10}
+\title{Linked Lists, Mutable Trees and Midterm Review}
+\date{October 28 -- November 1, 2024}
+
+\begin{document}
+\maketitle
+\begin{guide}
+\raggedright
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Linked Lists Mini Lecture: 5 min
+        \item WWPD: 5 min
+        \item Middle of a Linked List: 12 min ( Prioritize this problem because it ensures students grasp how to iterate through linked lists, which is essential for solving other list-related problems.)
+        \item Insert At: 8 min
+    \end{itemize}
+\begin{itemize}
+    \item Trees
+    \begin{itemize}
+        \item Trees Mini Lecture: 5 min
+        \item Delete Path Duplicates: 13 min (Prioritize this problem: it teaches recursion, mutation, and path-based traversal—key concepts essential for mastering trees)
+        \item Replace Leaves Sum: 11 min 
+        \item Tulip Mania (from Sp22): 10 min
+    \end{itemize}
+    \item Midterm Review Topics
+    \begin{itemize}
+        \item Make Digit Remover: 6 min
+        \item Bless Up: 8 min
+        \item Incredibles: 7 min
+        \item Duplicate List: 5 min
+        \item Add Up: 7 min
+        \item Num Elems: 9 min
+    \end{itemize}
+\end{itemize}
+    This worksheet has plenty of problems, so think of it as a problem bank for any review activities you want to run. You’re free to skip anything that feels less relevant or, if your students want to prioritize midterm prep, you can tailor the section however you see fit—that’s probably what I’d do if I were teaching this week!
+
+    There aren’t any OOP problems here since we’d prefer students focus on Linked Lists and Mutable Trees this week. If your section wants to review OOP, Fall 2021 Midterm 2 Q3a is a good quick refresher, or Spring 2022 Final Q10 offers deeper practice. You can also check out Spring 2023 Midterm 2 Q2 (great for str and repr) and Fall 2022 Midterm 2 Q1 (WWPD + OOP basics) for more practice.
+
+    All problems after Trees are review for the midterm your students will have this week.
+\end{guide}
+
+\section{Linked Lists}
+    \subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+    \subimport{../../topics/linked-lists/class/text/}{linked_list_overview.tex}
+\begin{questions}
+    \subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+    \subimport{../../topics/linked-lists/class/medium/}{combine-two.tex}
+    \subimport{../../topics/linked-lists/class/hard/}{middle-node.tex}
+    \newpage
+    \subimport{../../topics/linked-lists/class/hard/}{insert-at.tex}
+\end{questions}
+
+\newpage
+\section{Trees}
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\subimport{../../topics/trees/class/text/}{adt_vs_class_overview.tex}
+\newpage
+\begin{questions}
+    \subimport{../../topics/trees/class/medium/}{delete-path-duplicates.tex}
+    \newpage
+    \subimport{../../topics/trees/class/medium/}{replace-leaves-sum.tex}
+    \newpage
+    \subimport{../../topics/trees/class/medium/}{tulip-mania.tex}
+\end{questions}
+
+\section{Higher Order Functions}
+\begin{questions}
+    \subimport{../../topics/hof/medium/}{make-digit-remover.tex}
+\end{questions}
+
+\section{Lists}
+\begin{questions}
+    \subimport{../../topics/lists/mutable/medium/env-diagram/}{bless-up.tex}
+    \subimport{../../topics/lists/mutable/medium/}{incredibles.tex}
+    \subimport{../../topics/lists/immutable/medium}{duplicate-list.tex}
+    \subimport{../../topics/recursion/medium/}{add-up.tex}
+\end{questions}
+
+\section{Iterators and Generators}
+\begin{questions}
+    \subimport{../../topics/generators/medium/}{num-elems.tex}
+\end{questions}
+
+\end{document}
