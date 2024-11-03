@@ -1,0 +1,35 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+\discnumber{9}
+\title{\textsc{Introduction to Scheme}}
+\date{November 4 -- November 8, 2024}
+
+\begin{document}
+\maketitle
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+      \item Scheme Mini-Lecture: 10-15 mins
+      \item WWSD: 10-15 mins
+      \item Hailstone: 10 mins
+    \end{itemize}
+
+\begin{meta}
+    Since it was midterm week and students basically have not had lecture, this worksheet is going just be a short intro to scheme. 
+    
+    Monday sections students will just have had lecture and may not have completely covered all topics on this worksheets so go slow as you need. There is plenty of time allocated in the worksheet for going slow.
+\end{meta}
+\end{guide}
+
+
+\section{Scheme}
+\subimport{../../topics/scheme/text/}{scheme-guided-overview.tex}
+\begin{questions}
+    \subimport{../../topics/scheme/easy/wwsd/}{if-and-or.tex}
+    \subimport{../../topics/scheme/easy/wwsd/}{define-eval.tex}
+    \subimport{../../topics/scheme/easy/}{hailstone.tex}
+\end{questions}
+
+\end{document}
