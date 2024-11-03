@@ -8,13 +8,6 @@
 (and (and) (or))
 
 
-    scm> (if 2 3 4)
-    scm> (if 0 3 4)
-    scm> (- 5 (if #f 3 4))
-    scm> (cond ((< -5 -7) 3)
-          (else 4))
-
-
 scm> (define c 2)
 scm> (eval 'c)
 scm> '(cons 1 nil)
