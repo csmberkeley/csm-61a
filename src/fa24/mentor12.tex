@@ -1,0 +1,42 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\usepackage{listings} % Ensure listings package is included
+\lstset{language=Scheme}
+\discnumber{12}
+\title{\textsc{Scheme Review and Lists}}
+\date{November 12 -- November 15, 2024}
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta} % Fixed missing backslash
+    \begin{blocksection}
+        \textbf{Recommended Timeline}
+        \begin{itemize}
+            \item Apply n: 7 mins
+            \item Scheme Lists Overview: 10 mins
+            \item WWSD -- Scheme Lists: 10 mins
+            \item Sixty Ones: 8 mins
+            \item Is Prefix: 10 mins
+            \item Argmax: 15 mins
+        \end{itemize}
+    \end{blocksection}
+\end{meta}
+
+\section{Scheme Review}
+\begin{questions}
+    \subimport{../../topics/scheme/medium/}{apply-n.tex}
+\end{questions}
+
+\section{Scheme Lists}
+\subimport{../../topics/scheme/text/}{scheme-lists-overview.tex}
+\newpage
+\begin{questions}
+\subimport{../../topics/scheme/easy/wwsd/}{lists_nodots.tex}
+\subimport{../../topics/scheme/easy/}{sixty-ones.tex}
+\subimport{../../topics/scheme/medium/}{is-prefix.tex}
+\newpage
+\subimport{../../topics/scheme/medium/}{argmax.tex} 
+\end{questions}
+\end{document}
