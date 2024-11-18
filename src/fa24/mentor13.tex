@@ -1,0 +1,45 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\usepackage{listings} % Ensure listings package is included
+\lstset{language=Scheme}
+\discnumber{12}
+\title{\textsc{Scheme Review and Lists}}
+\date{November 18 -- November 23, 2024}
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta} % Fixed missing backslash
+    \begin{blocksection}
+        \textbf{Recommended Timeline}
+        \begin{itemize}
+            \item Interpreters Intro [5 Mins]
+            \item Eval Apply [5 Mins]
+            \item Macro Quasi [10 Mins]
+            \item Meta Apply [5 Mins]
+            \item NAND [5 Mins]
+            \item Apply Twice [5 Mins]
+            \item Censor [10 Mins]
+        \end{itemize}
+
+        Note: Monday's lecture is Scheme macros, so Monday CSM Sections may need more explanation about Scheme Macros, but the first few questions should be attemptable. 
+    \end{blocksection}
+\end{meta}
+
+\section{Interpreters}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+\subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\section{Scheme Macros}
+\begin{questions}
+    \subimport{../../topics/macros/easy/}{macros-quasi.tex}
+    \subimport{../../topics/macros/easy/}{meta-apply.tex}
+    \subimport{../../topics/macros/easy/}{nand.tex}
+    \subimport{../../topics/macros/medium/}{apply-twice.tex}
+    \subimport{../../topics/macros/medium/}{censor.tex}
+\end{questions}
+
+\end{document}
