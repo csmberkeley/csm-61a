@@ -1,0 +1,56 @@
+\question
+It's Thanksgiving, and we need to ensure the odd-indexed dishes on the table pass the "taste test"! Write a macro, \lstinline{and-odds}, which takes in a list of dishes, \lstinline{exprs}, and evaluates to a true value only if all of the \underline{odd-indexed} elements of \lstinline{exprs} evaluate to true values. If any of the odd-indexed elements evaluate to false, \lstinline{and-odds} should return false.
+
+Can you help us determine which dishes make the cut for the Thanksgiving feast?
+
+\begin{lstlisting}
+; doctests
+scm> (and-odds '((= 10 10)))
+#t
+scm> (and-odds '((= 1 2)))
+#f
+scm> (and-odds '(#f #t #t))
+#f
+scm> (and-odds '((< 5 3) (= 5 5)))
+#f
+scm> (and-odds '((> 3 2) (< 5 0) (= 5 5)))
+#t
+scm> (and-odds '((< 1 5) (< 5 2) (< 3 5) (< 5 3) (< 4 5)))
+#t
+scm> (define a (list 1 #f 3))
+a
+scm> (and-odds a)
+3
+
+(define-macro (and-odds exprs)
+
+    `(if _________________________________________________
+
+         _________________________________________________
+
+         _________________________________________________
+    )
+)
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+(define-macro (and-odds exprs)
+    `(if (> (length ,exprs) 2)
+          (and (car ,exprs) (and-odds (cdr (cdr ,exprs))))
+          (eval (car ,exprs))
+    )
+)
+\end{lstlisting}
+\end{solution}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item Quickly review boolean evaluation and boolean operations \lstinline{and} and \lstinline{or}.
+	\item Begin with the intuition behind the recursive call. Have them consider an arbitrarily long list and guide them to the intuition behind the call on \lstinline{(cdr (cdr exprs))}.
+	\item If they add a base case for nil, have them consider an odd-length list.
+\end{itemize}
+\end{guide}
+\end{blocksection}

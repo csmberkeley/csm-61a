@@ -149,11 +149,11 @@ none
 \end{lstlisting}
 
 \subsection{Syntax}
-The clauses of a \lstinline{SELECT} statement always come in this order: 
+The clauses of a \lstinline{SELECT} statement are written in the following order: 
 \begin{lstlisting}
 SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...;
 \end{lstlisting}
-The order roughly reflects the order in which the processing steps are applied. Note that all filtering of rows comes \textit{before} aggregation. That is, aggregation is always performed after the row-by-row filtering is complete. 
+However, the actual processing steps differ slightly. Notably, all row-by-row filtering (via the \lstinline{WHERE} clause) occurs \textit{before} aggregation (via the \lstinline{GROUP BY} clause), ensuring that only filtered rows are aggregated.
 
 \begin{guide}
 \begin{blocksection}
