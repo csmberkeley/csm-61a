@@ -1,0 +1,78 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Python Functions, Expressions \& Control}
+\date{January 27 -- January 31, 2024}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Intros, Ice Breakers, Expectations \& Logstics [15 min]
+            \subitem{Don't be afraid to spend some time on this! It'll likely make your job in the future easier! This worksheet is relatively short.}
+        \item Mini-lecture + Q1: WWPD [10 min]
+        \item Q2: Py function order of operations [5 min]
+            \subitem{Feel free to skip parts}
+        \item Coding [15-17 min]
+            \subitem{Note: \textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).}
+            \subitem{\textbf{However, the time in brackets will add up to ~50 minutes, and is intended to be a suggested outline for your section.}}
+        \item How to be successful in 61A [3-5 min]
+            \subitem{Give any tips you want!}
+    \end{itemize}
+\end{meta}
+
+\section{Intro to Python}
+\begin{questions}
+    \subimport{../../topics/basics/}{potpurri.tex}
+    \subimport{../../topics/basics/}{funky-funcs.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min
+        \begin{itemize}
+            \item Again, you can probably skip a lot of these as soon as your students get the idea.
+                \subitem {The last one probably has the most teaching potential.}
+            \item Your students might be new to solving "compound" questions like the last one; Consider giving them tips on how to break down such problems.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+
+\section{Control}
+\begin{questions}
+    \subimport{../../topics/control/easy/}{divisibility-check.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Easy
+        \begin{itemize}
+            \item Strongly recommend going over the alternate solution since it tends to appear on exams.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/control/medium/}{pow-of-2.tex}
+    \begin{questionmeta}
+        Suggested Time: 7-10 min; Difficulty: Medium
+        \begin{itemize}
+            \item This question has \lstinline{while} loops! You may want to discuss the difference between \lstinline{for} and \lstinline{while} loops. 
+            \item Consider also comparing the syntax style of Python loops to Java for loops (Since AP CompSci A teaches in Java and many students' understanding of for-loops will be from the Java for-loop syntax). Tl;dr: Python's loops are closer to Java For-each loops than the traditional Java for loop.
+            \item Also make sure your students understand that print returns None and that it is valid for a Python function to not have a return statement.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/control/medium/}{leap-year.tex}
+    \begin{questionmeta}
+    Suggested Time: 5 min; Difficulty: Medium
+    This question is similar to Divisibility Check (Q1), except it tests for students' knowledge of how ``and'' and ``or'' work.
+    Only do this question if you decide to skip Divisibility Check, as the concepts it exercises are very similar.
+    \end{questionmeta}
+
+    \subimport{../../topics/control/challenge/}{min_fact.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Hard
+        \begin{itemize}
+            \item This problem is probably optional and it'd be better to spend the rest of the time talking about general strategies for success in 61A. Unless you have advanced students in your section, I suggest skipping this question.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\end{document}

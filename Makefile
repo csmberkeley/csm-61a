@@ -1,11 +1,11 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
 
-RELEASED = mentor15
-SOLUTIONS = mentor15
+RELEASED = mentor02
+SOLUTIONS = mentor02
 
 DST = made
-SRC = src/fa24
+SRC = src/sp25
 
 DEPEND = python3 make_dependency.py
 TEX = pdflatex
