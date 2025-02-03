@@ -1,0 +1,81 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{3}
+\title{Higher-Order Functions, Environment Diagrams, \& Functional Abstraction}
+\date{February 3 -- February 7, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Intros, Ice Breakers, Expectations, Logstics \& Brief Intro of CSM [15 min]
+        \subitem Don't be afraid to spend some time on this! It'll likely make your job in the future easier! Prospective mentees will also get to know how CSM works and doing icebreakers will make it a welcoming experience for all of them but try to keep them kind of short since this is not their official session.
+        \subitem Also, something we want to do this semester more of is emphasize the conceptual topics and concepts in 61A like functional abstraction and more. So make sure to talk about them regularly throughout all of your teaching sessions and tell junior mentors to also emphasize them as well.
+    \end{itemize}
+\end{meta} 
+
+\section{Environment Diagrams}
+\begin{questions}
+    \subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Medium
+        \begin{itemize}
+            \item This question stresses variables in different scopes. 
+            \subitem Show difference between \lstinline{x} and \lstinline{y} in both global and local frames.
+            \subitem Also note to students that a call to \lstinline{swap(x, y)} will not actually swap the values of \lstinline{x} and \lstinline{y} in the frame where it is called.
+            \item It might also be good to recap what \lstinline{x, y = y, x} does in python -- ensure students know that this is a special feature of python and that switching happens in 1 line, by order of how the values are listed. 
+        \end{itemize}
+      \end{questionmeta}
+    \subimport{../../topics/functions-and-expressions/medium/env-diagram/}{joke.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Medium
+        \begin{itemize}
+            \item Make sure that the students understand how Python looks for a value of a variable, from local (to parent(s)) to global.
+            \item Make sure your students understand the difference between an intrinsic name and a bound name
+            \subitem Intrinsic: For user defined functions, this intrinsic name is the name used in the \lstinline{def} statement 
+            \subitem Bound: Names of variables that point to the function object. A function can have many bound names, and the bound names of a function can often change. 
+            \item It may be good to remind your students to evaluate the functions on the right hand side first, then assign to variables on the left hand side.
+        \end{itemize}    
+      \end{questionmeta}
+          
+\end{questions}
+
+\section{Higher-Order Functions}
+\begin{questions}
+    \subimport{../../topics/hof/easy/}{why.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 mins
+        
+        Try to give examples when explaining HOFs. Some examples are linked at this link: \url{https://tinyurl.com/5fsd3h8b}.
+    \end{questionmeta}
+    \subimport{../../topics/hof/easy/env-diagram/}{foo.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 mins; Difficulty: Easy
+        \begin{itemize}
+            \item Emphasize that if line with return statement is reached, then expression after return keyword will be evaluated and that value is thenreturned to the environment/frame in which the function returning the value was called in. 
+            \item Also, emphasize that if no return statement is encountered while calling a function with certain arguments then the return value is None.
+        \end{itemize}
+    \end{questionmeta}
+    \subimport{../../topics/hof/easy/}{compose.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 mins; Difficulty: Easy
+    \end{questionmeta}
+    \subimport{../../topics/hof/medium/}{check_sum.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 Mins; Difficulty: Medium
+        \begin{itemize}
+            \item Remind your students that for HOFs, you must \lstinline{return} the inner function (ie we must \lstinline{return check} to use it).
+            \item Also depending on the skill level of students in your section, a recap of digit manipulation may be needed (ie x // 10, x \% 10, etc.)
+        \end{itemize}
+    \end{questionmeta}
+    \subimport{../../topics/hof/medium}{alternator.tex}
+    \begin{questionmeta}
+        Idk anymore
+    \end{questionmeta}
+
+\end{questions}
+
+\end{document}
