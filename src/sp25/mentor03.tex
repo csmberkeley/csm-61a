@@ -2,7 +2,7 @@
 \usepackage{../commonheader}
 
 \discnumber{3}
-\title{Higher-Order Functions, Environment Diagrams, \& Functional Abstraction}
+\title{Higher-Order Functions \& Environment Diagrams}
 \date{February 3 -- February 7, 2025}
 
 \begin{document}
@@ -11,9 +11,20 @@
 \begin{meta}
     \textbf{Example Timeline}
     \begin{itemize}
-        \item Intros, Ice Breakers, Expectations, Logstics \& Brief Intro of CSM [15 min]
+        \item Intros, Ice Breakers, Expectations, Logistics \& Brief Intro of CSM [5 min]
         \subitem Don't be afraid to spend some time on this! It'll likely make your job in the future easier! Prospective mentees will also get to know how CSM works and doing icebreakers will make it a welcoming experience for all of them but try to keep them kind of short since this is not their official session.
         \subitem Also, something we want to do this semester more of is emphasize the conceptual topics and concepts in 61A like functional abstraction and more. So make sure to talk about them regularly throughout all of your teaching sessions and tell junior mentors to also emphasize them as well.
+        \item Environment Diagrams Mini Lecture + Q1 [15 mins]
+        \subitem 1. You can use Q1 as an example for the mini-lecture
+        \subitem 2. A lot of students (even those with significant programming background) get confused by env. diagrams. It's probably worth doing the minilecture even if you have advanced students.
+        \subitem 3. You should address when we need to make a new frame in an environment diagram.
+        \item Higher Order Functions Overview + Reasoning + Q1 [5 mins]
+        \item Problems (You pick which ones): HOF 
+        \subitem 1. Foo: has an example of a function which is returned along with return in the middle of function and returning None
+        \subitem 2. Compose: easy example to build skill in writing lambda functions.
+        \subitem 3. WholeSum: Another HOF example and digit manipulation and while loop practice; Skeleton code practice
+        \subitem 4. Alternator: HOF example with while loop practice. Implementing whole function from beginning
+        \subitem 5. Curryforever: An example with writing code for a function which takes in a variable number of arguments; the number of arguments that will be taken is input earlier. Skeleton code practice
     \end{itemize}
 \end{meta} 
 
@@ -23,21 +34,23 @@
     \begin{questionmeta}
         Suggested Time: 5 min; Difficulty: Medium
         \begin{itemize}
+            \item Go over the order in which call expressions are evaluated and emphasize that a lot since that is a fundamental of this class.
+            \item Remind them that for user-defined functions, both lambda functions and functions created with def keyword, that parent is the function it is defined in.
+            \item Another tip we find useful is creating a sort of graph to graph how the functions are being called where vertices are fxn(arguments) and directed edges start from the vertex containing fxn where fxn where edge ends at is called in. 
             \item This question stresses variables in different scopes. 
             \subitem Show difference between \lstinline{x} and \lstinline{y} in both global and local frames.
             \subitem Also note to students that a call to \lstinline{swap(x, y)} will not actually swap the values of \lstinline{x} and \lstinline{y} in the frame where it is called.
-            \item It might also be good to recap what \lstinline{x, y = y, x} does in python -- ensure students know that this is a special feature of python and that switching happens in 1 line, by order of how the values are listed. 
+            \item It might also be good to recap what \lstinline{x, y = y, x} does in python -- ensure students know that this is a special feature of python and that switching happens in 1 line, by order of how the values are listed. Here, the expressions on the right hand side of the assignment operator are evaluated first from left to right, then the assignment happens to the names on the left of the assignment operator from left to right. 
         \end{itemize}
       \end{questionmeta}
     \subimport{../../topics/functions-and-expressions/medium/env-diagram/}{joke.tex}
     \begin{questionmeta}
-        Suggested Time: 7 min; Difficulty: Medium
+        Suggested Time: 10 min; Difficulty: Medium
         \begin{itemize}
             \item Make sure that the students understand how Python looks for a value of a variable, from local (to parent(s)) to global.
             \item Make sure your students understand the difference between an intrinsic name and a bound name
             \subitem Intrinsic: For user defined functions, this intrinsic name is the name used in the \lstinline{def} statement 
             \subitem Bound: Names of variables that point to the function object. A function can have many bound names, and the bound names of a function can often change. 
-            \item It may be good to remind your students to evaluate the functions on the right hand side first, then assign to variables on the left hand side.
         \end{itemize}    
       \end{questionmeta}
           
@@ -48,14 +61,13 @@
     \subimport{../../topics/hof/easy/}{why.tex}
     \begin{questionmeta}
         Suggested Time: 5 mins
-        
         Try to give examples when explaining HOFs. Some examples are linked at this link: \url{https://tinyurl.com/5fsd3h8b}.
     \end{questionmeta}
     \subimport{../../topics/hof/easy/env-diagram/}{foo.tex}
     \begin{questionmeta}
         Suggested Time: 7 mins; Difficulty: Easy
         \begin{itemize}
-            \item Emphasize that if line with return statement is reached, then expression after return keyword will be evaluated and that value is thenreturned to the environment/frame in which the function returning the value was called in. 
+            \item Emphasize that if line with return statement is reached, then expression after return keyword will be evaluated and that value is then returned to the environment/frame in which the function returning the value was called in. 
             \item Also, emphasize that if no return statement is encountered while calling a function with certain arguments then the return value is None.
         \end{itemize}
     \end{questionmeta}
@@ -73,9 +85,17 @@
     \end{questionmeta}
     \subimport{../../topics/hof/medium}{alternator.tex}
     \begin{questionmeta}
-        Idk anymore
+        Suggested Time: 8 mins; Difficulty: Medium
+        \begin{itemize}
+            \item Walk students through each iteration from 1 to x, and show how each of the two functions \verb|f,g| alternate on incrementing inputs.
+            \item Remember the general structure needed whenever a function must return a function.
+        \end{itemize}
     \end{questionmeta}
-
+    \subimport{../../topics/hof/medium/}{curry_forever.tex}
+    \begin{questionmeta}
+        Suggested Time: 15 mins; Difficulty: Medium
+        \item Students might be confused on how to build a function which takes in a variable number of arguments. If they are stuck, give them some hints on how to approach in general questions with skeleton code.
+    \end{questionmeta}
 \end{questions}
 
 \end{document}

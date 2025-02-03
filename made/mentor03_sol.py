@@ -75,3 +75,12 @@ def make_alternator(f, g):
     return alternator
 
 
+def curry_forever(f, arg_num, base=0):
+    def helper(arg_num, amt):
+   	    if arg_num == 0:
+   		    return amt
+   	    return lambda x: helper(arg_num - 1, f(amt, x))
+    return helper(arg_num, base)
+
+
+
