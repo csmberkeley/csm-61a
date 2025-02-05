@@ -1,10 +1,10 @@
 \begin{blocksection}
-\question Write a function, \texttt{curry\_forever}, which takes in a two-argument function, \texttt{f}, and an integer, \texttt{arg\_num}. It returns another function that allows us to enter arg\_num amount of numbers into f one by one.
+\question Write a function, \texttt{curry\_forever}, which takes in a two-argument function, \texttt{f}, and an integer, \texttt{arg\_num}. It returns another function that helps in calling \texttt{f} \texttt{arg\_num} number of times on input provided to this returned function.
 
 \begin{lstlisting}
 def curry_forever(f, arg_num, base=0):
     """
-    >>> g = curry_forever(add, 4)
+    >>> g = curry_forever(lambda x, y: x + y, 4)
     >>> g(1)(2)(3)(4) # 1 + 2 + 3 + 4
     10 
     """
@@ -23,8 +23,8 @@ def curry_forever(f, arg_num, base=0):
 
 \begin{solution}
 \begin{lstlisting}
-def curry_forever (f, arg_num, base=0):
-    def helper(arg_num, amt)
+def curry_forever(f, arg_num, base=0):
+    def helper(arg_num, amt):
    	    if arg_num == 0:
    		    return amt
    	    return lambda x: helper(arg_num - 1, f(amt, x))
@@ -32,9 +32,4 @@ def curry_forever (f, arg_num, base=0):
 
 \end{lstlisting}
 \end{solution}
-
-\begin{questionmeta}
-This problem is a little tricky. In particular, students may be confused at how they are supposed to use 
-\end{questionmeta}
 \end{blocksection}
-
