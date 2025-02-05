@@ -34,12 +34,6 @@ x = y(7)
 z = foo(7)
 
 
-def compose(f, g):
-    """
-    >>> a = compose(lambda x: x * x, lambda x: x + 4)
-    >>> a(2)
-    36
-    """
     return lambda x: f(g(x))
 
 
@@ -54,16 +48,6 @@ def whole_sum(n):
     return check
 
 
-def make_alternator(f, g):
-    """
-    >>> a = make_alternator(lambda x: x * x, lambda x: x + 4)
-    >>> a(5)
-    1
-    6
-    9
-    8
-    25
-    """
     def alternator(x):
         i = 1
         while i <= x:

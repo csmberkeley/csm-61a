@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Implement \lstinline$make_alternator$ which takes in two functions and outputs a function. The returned function takes in a number \texttt{x} and prints out all the numbers from 1 to \texttt{x}, applying \texttt{f} to the odd numbers and applying \texttt{g} to the even numbers before printing.
+\question Implement \lstinline$make_alternator$ which takes in two functions \texttt{f} and \texttt{g} and outputs a function. The returned function takes in a number \texttt{x} and the function goes through the numbers in the sequence {1, 2, 3, ... n} in ascending order; for each number in the sequence the function applies \texttt{f} if the number is odd and \texttt{g} if the number is even and then prints the result of applying \texttt{f} or \texttt{g} and moves on to the next number in the sequence.  
 
 \begin{lstlisting}
 def make_alternator(f, g):
@@ -12,6 +12,25 @@ def make_alternator(f, g):
     8
     25
     """
+
+    ___ alternator(x):
+
+        ______________
+
+        _______ i ______:
+
+            if _____________:
+
+                print(___)
+
+            ________________:
+
+                ____________
+
+            _____________
+
+    __________________
+
 \end{lstlisting}
 
 \begin{solution}[1.5in]
@@ -27,15 +46,5 @@ def make_alternator(f, g):
     return alternator
 \end{lstlisting}
 \end{solution}
-
-\begin{blocksection}
- \begin{guide}
-   \textbf{Teaching Tips}
-   \begin{itemize}
-   	   \item Again, walk students through each iteration from 1 to x, and show how each of the two functions \verb|f,g| alternate on incrementing inputs.
-   	   \item Remember the general structure needed whenever a function must return a function.
-   \end{itemize}
- \end{guide}
-\end{blocksection}
 
 \end{blocksection}

@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Write a function, \texttt{curry\_forever}, which takes in a two-argument function, \texttt{f}, and an integer, \texttt{arg\_num}. It returns another function that allows us to enter arg\_num amount of numbers into f one by one.
+\question Write a function, \texttt{curry\_forever}, which takes in a two-argument function, \texttt{f}, and an integer, \texttt{arg\_num}. It returns another function that helps in calling \texttt{f} \texttt{arg\_num} number of times on input provided to this returned function.
 
 \begin{lstlisting}
 def curry_forever(f, arg_num, base=0):
@@ -33,4 +33,3 @@ def curry_forever(f, arg_num, base=0):
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
-
