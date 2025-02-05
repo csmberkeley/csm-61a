@@ -19,12 +19,12 @@
         \subitem 2. A lot of students (even those with significant programming background) get confused by env. diagrams. It's probably worth doing the minilecture even if you have advanced students.
         \subitem 3. You should address when we need to make a new frame in an environment diagram.
         \item Higher Order Functions Overview + Reasoning + Q1 [5 mins]
-        \item Problems (You pick which ones): HOF 
+        \item Problems (You pick which ones): HOF  
         \subitem 1. Foo: has an example of a function which is returned along with return in the middle of function and returning None
         \subitem 2. Compose: easy example to build skill in writing lambda functions.
-        \subitem 3. WholeSum: Another HOF example and digit manipulation and while loop practice; Skeleton code practice
-        \subitem 4. Alternator: HOF example with while loop practice. Implementing whole function from beginning
-        \subitem 5. Curryforever: An example with writing code for a function which takes in a variable number of arguments; the number of arguments that will be taken is input earlier. Skeleton code practice
+        \subitem 3. WholeSum: Another HOF example and digit manipulation and while loop practice
+        \subitem 4. Alternator: HOF example with while loop practice
+        \subitem 5. Curryforever: An example with writing code for a function which takes in a variable number of arguments; the number of arguments that will be taken is input earlier
     \end{itemize}
 \end{meta} 
 
@@ -63,7 +63,8 @@
         Suggested Time: 5 mins
         
         Treat this as more of a guiding question to start discussion on HOFs, like talk about it and do not treat it like other CSM questions. Try to give examples when explaining HOFs. Some examples are linked at this link: \url{https://tinyurl.com/5fsd3h8b}.
-        One specific example to illustrate the use of lambdas is the optional \lstinline{key} parameter for \lstinline{min} and \lstinline{max} functions, but you could also pass in a function defined using the keyword def for the \lstinline{key} parameter.
+        One specific example to illustrate the use of lambdas is the optional \lstinline{key} parameter for \lstinline{min} and \lstinline{max} functions, but just as a side note you could also pass in a function defined using the keyword def for the \lstinline{key} parameter.
+        Might want to show examples that illustrate each of the bullet points in action. 
     \end{questionmeta}
     
     \subimport{../../topics/hof/easy/env-diagram/}{foo.tex}
@@ -78,7 +79,6 @@
     \subimport{../../topics/hof/easy/}{compose.tex}
     \begin{questionmeta}
         Suggested Time: 5 mins; Difficulty: Easy
-        Lead students toward using a lambda function if they are stuck by seeing only one line after a couple of minutes.
     \end{questionmeta}
 
     \subimport{../../topics/hof/medium/}{check_sum.tex}
@@ -102,7 +102,9 @@
     \subimport{../../topics/hof/medium/}{curry_forever.tex}
     \begin{questionmeta}
         Suggested Time: 15 mins; Difficulty: Medium
+        \begin{itemize}
         \item Students might be confused on how to build a function which takes in a variable number of arguments. If they are stuck, give them some hints on how to approach in general questions with skeleton code.
+        \end{itemize}
     \end{questionmeta}
 \end{questions}
 
