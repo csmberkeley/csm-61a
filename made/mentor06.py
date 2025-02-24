@@ -1,168 +1,108 @@
-def fizzbuzz(n):
-    """Prints the numbers from 1 to n. If the number is divisible by 3, it
-    instead prints 'fizz'. If the number is divisible by 5, it instead prints
-    'buzz'. If the number is divisible by both, it prints 'fizzbuzz'. You must do this recursively!
+>>> a = [1, 2, 3]
+>>> a
+>>> a[2]
+>>> a[-1]
+>>> b = a
+>>> a = a + [4, [5, 6]]
+>>> a
+>>> b
+>>> c = a
+>>> a = [4, 5]
+>>> a
+>>> c
+>>> d = c[3:5]
+>>> c[3] = 9
+>>> d
 
-    >>> fizzbuzz(15)
-    1
-    2
-    fizz
-    4
-    buzz
-    fizz
-    7
-    8
-    fizz
-    buzz
-    11
-    fizz
-    13
-    14
-    fizzbuzz
+>>> c[4][0] = 7
+>>> d
+>>> c[4] = 10
+>>> d
+>>> c
+
+
+L = [1, 2, 3]
+B = L
+B
+A = L[1:3]
+L[0] = A
+L = L + A
+B
+
+
+
+
+def gen_list(n):
+    """
+    Returns a nested list structure of n elements where the 
+    ith element is a list from 0 (inclusive) to i (exclusive).
+    >>> gen_list(3)
+    [[0], [0, 1], [0, 1, 2]]
+    >>> gen_list(5)
+    [[0], [0, 1], [0, 1, 2], [0, 1, 2, 3], [0, 1, 2, 3, 4]]
+    """
+    return _______________________________________________
+def gen_increasing(n):
+    """
+    Returns a nested list structure of n elements where the 
+    ith element of each list is one more than the previous 
+    element (even if the previous is in a prior sublist).
+    >>> gen_increasing(3)
+    [[0], [1, 2], [3, 4, 5]]
+    >>> gen_increasing(5)
+    [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13, 
+    14]]
+    """
+    return ______________________________________________
+
+
+def snapshot(f, snap_inputs):
+    """
+    >>> snapshot(lambda x: x**2, [1, 2, 3])
+    {1: 1, 2: 4, 3: 9}
     """
 
+    snap = __________________________________________
 
-def sum_prime_digits(n):
+    __________________________________________:
+
+        __________________________________________
+        
+    return snap
+
+
+def count_t(d, word):
     """
-    >>> sum_prime_digits(12345)
-    10 # 2 + 3 + 5
-    >>> sum_prime_digits(4681029)
-    2 # 2 is the only prime number
+    >>> words = {}
+    >>> count_t(words, "tatter")
+    >>> words["tatter"]
+    3
+    >>> count_t(words, "tree")
+    >>> words
+    {'tatter': 3, 'tree': 1}
     """
-    if ____________________________________________:		
-
-        return ____________________________________	
-
-    if ________________________________________:		
-
-        return ________________________________				
-
-    return ____________________________________
-				
-
-
-    def fit_sections(total, n, m):
-        """
-        >>> fit_sections(1, 3, 5)
-        False
-        >>> fit_sections(5, 3, 5) # 0 * 3 + 1 * 5 = 5
-        True
-        >>> fit_sections(11, 3, 5) # 2 * 3 + 1 * 5 = 11
-        True
-        >>> fit_sections(61, 11, 15) # can't express 61 as a * 11 + b * 15
-        False
-        """
-        if _______________________________________________:
+    _______________________________
     
-            return True
-    
-        elif __________________________________________________:
-    
-            return False
-    
-        return ___________________________________________
-    
+    for ____________________________:
+
+        if ____________________________:
+
+            __________________________________
+
+    _______________________________
 
 
-def near(n, smallest=10, d=10):
+
+def count_digraphs(text, alphabet):
     """
-    >>> near(123)
-    123
-    >>> near(153)
-    153
-    >>> near(1523)
-    153
-    >>> near(15123)
-    153
-    >>> near(985357)
-    537
-    >>> near(11111111)
-    1
-    >>> near(14735476)
-    143576
-    >>> near(14735476)
-    1234567
+    >>> count_digraphs("otto", ['o', 't'])
+    {'ot': 1, 'tt': 1, 'to': 1}
+    >>> count_digraphs("otto", ['t'])
+    {'tt': 1}
+    >>> count_digraphs("6161 6", ['6', '1'])
+    {'61': 2, '16': 1}
+    >>> count_digraphs("lalala", ['l', 'a'])
+    {'la': 3, 'al': 2}
     """
-    if n == 0:
-
-        return ____________________________________
-
-    no = near(n//10, smallest, d)
-
-    if (smallest > _________________) and (___________________):
-            
-        yes = ____________________________________
-
-        return ____________________________________(yes, no)
-            
-    return ____________________________________
-
-
-def has_sum(total, n, m):
-    """
-    >>> has_sum(1, 3, 5)
-    False
-    >>> has_sum(5, 3, 5) # 0 * 3 + 1 * 5 = 5
-    True
-    >>> has_sum(11, 3, 5) # 2 * 3 + 1 * 5 = 11
-    True
-    """
-    if ____________________________________________________:
-
-        return ____________________________________
-
-    elif __________________________________________________:
-
-        return ____________________________________
-
-    return ________________________________________________
-
-
-
-def mario_number(level):
-    """
-    >>> mario_number(10101)
-    1
-    >>> mario_number(11101)
-    2
-    >>> mario_number(100101)
-    0
-    """
-    if _______________________:
-
-        ______________________
-
-    elif _____________________:
-
-        ______________________
-
-    else:
-
-        ___________________________________________________
-
-
-def modular_exponentiation(base, exponent, modulus):
-    """
-    >>> modular_exponentiation(2, 2, 2)
-    0
-    >>> modular_exponentiation(4, 2, 3)
-    1
-    """
-    if _____________________:
-
-        return ____________________________________
-
-    if _____________________:
-            
-        half_power = ____________________________________
-        # Hint: Which math formula above has exponent *just* divided by half?
-
-        return ____________________________________ % modulus
-
-    else:  
-
-        half_power = ____________________________________
-
-        return _________________________________________ % modulus
 
 

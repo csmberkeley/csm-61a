@@ -1,109 +1,93 @@
-def fizzbuzz(n):
-    """Prints the numbers from 1 to n. If the number is divisible by 3, it
-    instead prints 'fizz'. If the number is divisible by 5, it instead prints
-    'buzz'. If the number is divisible by both, it prints 'fizzbuzz'. You must do this recursively!
+>>> a = [1, 2, 3]
+>>> a
+[1, 2, 3]
+>>> a[2]
+>>> a[-1]
+>>> b = a
+>>> a = a + [4, [5, 6]]
+>>> a
+[1, 2, 3, 4, [5, 6]]
+>>> b
+[1, 2, 3]
+>>> c = a
+>>> a = [4, 5]
+>>> a
+[4, 5]
+>>> c
+[1, 2, 3, 4, [5, 6]]
+>>> d = c[3:5]
+>>> c[3] = 9
+>>> d
 
-    >>> fizzbuzz(15)
-    1
-    2
-    fizz
-    4
-    buzz
-    fizz
-    7
-    8
-    fizz
-    buzz
-    11
-    fizz
-    13
-    14
-    fizzbuzz
+[4, [5, 6]]
+>>> c[4][0] = 7
+>>> d
+[4, [7, 6]]
+>>> c[4] = 10
+>>> d
+[4, [7, 6]]
+>>> c
+[1, 2, 3, 9, 10]
+
+
+L = [1, 2, 3]
+B = L
+B
+A = L[1:3]
+L[0] = A
+L = L + A
+B
+
+
+[x ** 2 for x in lst]
+sum([x * y for x, y in zip(lst1, lst2)])
+a = [[x for x in range(y)] for y in range(1, 6)]
+b = [[x for x in range(y) if x != 2] for y in range(1, 6)]
+
+
+def gen_list(n):
+    return [[i for i in range(j+1)] for j in range(n)]
+
+def gen_increasing(n):
+    return [[i for i in range(sum(range(j+1)), sum(range(j+1)) + j+1)] for j in range(n)]
+def gen_increasing(n):
+    return [[i + sum(range(j + 1)) for i in range(j + 1)] for j in range(n)]
+
+
+def snapshot(f, snap_inputs):
+    snap = {}
+    for snap_input in snap_inputs:
+        snap[snap_input] = f(snap_input)
+    return snap
+
+
+count = 0
+for c in word:
+    if c == 't':
+        count += 1
+d[word] = count
+
+
+def count_digraphs(text, alphabet):
     """
-    if n == 1:
-        print(n)
-    else:
-        fizzbuzz(n - 1)
-        if n % 3 == 0 and n % 5 == 0:
-            print('fizzbuzz')
-        elif n % 3 == 0:
-            print('fizz')
-        elif n % 5 == 0:
-            print('buzz')
-        else:
-            print(n)
-
-
-    if n == 0:
-        return 0
-    if is_prime(n % 10):
-        return n % 10 + sum_prime_digits(n // 10)
-    return sum_prime_digits(n // 10)
-
-
-    def fit_sections(total, n, m):
-        if total == 0:
-            return True
-        elif total < 0: # you could also put total < min(m, n)
-            return False
-        return fit_sections(total - n, n, m) or fit_sections(total - m, n, m)
-    def fit_sections(total, n, m):
-        if total == 0 or total % n == 0 or total % m == 0:
-            return True
-        elif total < 0: # you could also put total < min(m, n)
-            return False
-        return fit_sections(total - n, n, m) or fit_sections(total - m, n, m)
-
-
-    def near(n, smallest=10, d=10):
-        if n == 0:
-            return 0
-        
-        no = near(n//10, smallest, d)
-
-        if (smallest > n % 10) and (n % 10 != d):
-            yes = 10 * near(n//10, min(smallest, d), n%10) + n%10
-            # OR yes = 10 * near(n//10, d, min(d, n%10)) + n%10
-            return max(yes, no)
-
-        return no
-
-
-
-def has_sum(total, n, m):
-    if total == 0:
-        return True
-    elif total < 0: # you could also put total < min(m, n)
-        return False
-    return has_sum(total - n, n, m) or has_sum(total - m, n, m)
-def has_sum(total, n, m):
-    if total == 0 or total % n == 0 or total % m == 0:
-        return True
-    elif total < 0: # you could also put total < min(m, n)
-        return False
-    return has_sum(total - n, n, m) or has_sum(total - m, n, m)
-
-
-def mario_number(level):
-    if level == 1:
-        return 1
-    elif level % 10 == 0:
-        return 0
-    else:
-        return mario_number(level // 10) + mario_number((level // 10) // 10)
-
-
-    def modular_exponentiation(base, exponent, modulus):
-    # Base case: exponent is 0
-    if exponent == 0:
-        return 1
-    
-    # Recursive case
-    if exponent % 2 == 0: # If exponent is even
-        half_power = modular_exponentiation(base, exponent // 2,modulus)
-        return (half_power * half_power) % modulus
-    else: # If exponent is odd
-        half_power = modular_exponentiation(base, (exponent - 1) // 2, modulus)
-        return (base * half_power * half_power) % modulus
+    >>> count_digraphs("otto", ['o', 't'])
+    {'ot': 1, 'tt': 1, 'to': 1}
+    >>> count_digraphs("otto", ['t'])
+    {'tt': 1}
+    >>> count_digraphs("6161 6", ['6', '1'])
+    {'61': 2, '16': 1}
+    >>> count_digraphs("lalala", ['l', 'a'])
+    {'la': 3, 'al': 2}
+    """
+def count_digraphs(text, alphabet):
+    freq = {}
+    for i in range(len(text) - 1):
+        if text[i] in alphabet and text[i + 1] in alphabet:
+            digraph = text[i] + text[i + 1]
+            if digraph in freq:
+                freq[digraph] += 1
+            else: 
+                freq[digraph] = 1
+    return freq
 
 
