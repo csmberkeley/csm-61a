@@ -8,15 +8,39 @@
 \begin{document}
 \maketitle
 
+\begin{meta}
+    \textbf{Example Timeline}\\
+    General: There is a lot of problems in this worksheet. The timings below are suggested times and those are a note for you in case you do choose to do that problem. And do not try to do all of them; better to go slow with a couple of problems than rush through all of them.
+    \begin{enumerate}
+        \item Tree ADT [17 Minutes] {\begin{itemize} 
+        \item Mini-Lecture [5 Mins]
+        \item Q1 - Tree Drawing - Difficulty: Easy [2 Mins]
+        \item Q2 - Prune - Difficulty: Medium [7 Mins]
+        \item Q3 - Replace x - Difficulty: Medium [10 Mins]
+        \item Q4 - Contains N - Difficulty Hard, Exam Level [13 Mins]
+        \end{itemize}}
+        \item Mutability [17 Minutes] {\begin{itemize} 
+            \item Mini-Lecture [7-8 Mins]
+            \item Q1 - WWPD - Difficulty: Medium: 
+            \item Q2 - Accumulate - Difficulty: Medium [7 Mins]
+            \item Q3 - Scrabble! - Difficulty: Medium+, Exam Level [10 Mins]
+        \end{itemize}}
+        \item Iterators [10 Minutes] {\begin{itemize} 
+            \item Mini-Lecture [5 Mins]
+            \item Q1 - WWPD - Difficulty: Medium [7-8 Mins]
+        \end{itemize}}
+    \end{enumerate}
+
 \section{Function-Based Trees}
 \subimport{../../topics/trees/adt/text/}{tree_overview.tex}
 \begin{questions}
     \subimport{../../topics/trees/adt/draw-tree/}{draw-tree.tex}
     \begin{questionmeta}
         Suggested Time: 2-3 min; Difficulty: Easy
-        This question is just there for them to practice and solidify their understanding of the releationship between the code and the diagram. 
+        This question is just there for them to practice and solidify their understanding of the relationship between the code and the tree diagram. 
         If you decide to do this, have them do this on their own.
     \end{questionmeta}
+    \newpage
     % BEGIN PRUNE %
     \begin{blocksection} 
         \textbf{BEFORE \lstinline{prune(1)}:}
@@ -26,7 +50,7 @@
         \subimport{../../topics/trees/adt/prune}{after.tex}
     \end{blocksection}
     \subimport{../../topics/trees/adt/prune}{problem.tex}
-    \subimport{../../topics/trees/adt/min-heap/}{problem.tex}
+    \subimport{../../topics/trees/adt/medium/}{replace-x.tex} 
     \subimport{../../topics/trees/adt/hard/}{contains-n.tex}
 \end{questions}
 

@@ -15,14 +15,19 @@ less than or equal to the values of all of its branches.
 
 Implement \lstinline$is_min_heap$ which takes in a tree and returns whether the tree satisfies
 the min-heap property or not.
-
-\begin{solution}[1.5in]
-\begin{lstlisting}
 def is_min_heap(t):
     ____ b __________:
         if _____________ or ______________:
              return _____
     return ______
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+def is_min_heap(t):
+    for b in branches(t):
+        if root(t) > root(b) or not is_min_heap(b):
+             return False
+    return True
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
