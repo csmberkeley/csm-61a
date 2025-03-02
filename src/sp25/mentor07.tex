@@ -1,0 +1,50 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{7}
+\title{Function-Based Trees, Mutability, \& Iterators}
+\date{March 3 -- March 7, 2025}
+
+\begin{document}
+\maketitle
+
+\section{Function-Based Trees}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+\begin{questions}
+    \subimport{../../topics/trees/adt/draw-tree/}{draw-tree.tex}
+    \begin{questionmeta}
+        Suggested Time: 2-3 min; Difficulty: Easy
+        This question is just there for them to practice and solidify their understanding of the releationship between the code and the diagram. 
+        If you decide to do this, have them do this on their own.
+    \end{questionmeta}
+    % BEGIN PRUNE %
+    \begin{blocksection} 
+        \textbf{BEFORE \lstinline{prune(1)}:}
+        \subimport{../../topics/trees/adt/prune}{before.tex}
+        \hspace{0.5in}
+        \textbf{AFTER \lstinline{prune(1)}:}
+        \subimport{../../topics/trees/adt/prune}{after.tex}
+    \end{blocksection}
+    \subimport{../../topics/trees/adt/prune}{problem.tex}
+    \subimport{../../topics/trees/adt/min-heap/}{problem.tex}
+    \subimport{../../topics/trees/adt/hard/}{contains-n.tex}
+\end{questions}
+
+\newpage
+    
+\section{Mutability}
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+\begin{questions}
+    \subimport{../../topics/lists/mutable/medium/env-diagram/}{spooky-list.tex}
+    \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+    \newpage
+    \subimport{../../topics/lists/mutable/hard/}{scrabbler.tex}
+\end{questions}
+
+\section{Iterators}
+\subimport{../../topics/iterators/}{iterators_overview.tex}
+\begin{questions}
+    \subimport{../../topics/iterators/easy/}{wwpd.tex}
+\end{questions}
+
+\end{document}

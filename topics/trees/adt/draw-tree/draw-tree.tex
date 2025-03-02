@@ -1,29 +1,28 @@
 % \begin{blocksection}
 
-\question 
-Draw the tree that is created by the following statement:
+\question Draw the tree that is created by the following statement:
 
 \begin{lstlisting}
-tree(4,
-    [tree(5, []),
-     tree(2,
-        [tree(2, []),
-         tree(1, [])]),
-     tree(1, []),
-     tree(8,
-        [tree(4, [])])])
+tree('hello',
+    [tree('how', []),
+     tree('are',
+        [tree('you', []),
+         tree('doing', [])]),
+     tree('from', []),
+     tree('CSM',
+        [tree('61A', [])])])
 \end{lstlisting}
 \begin{solution}
 \begin{tikzpicture}[scale=1.5, transform shape]
-    \node [circle, draw] (z){$4$}
-        child {node [circle, draw] (a) {$5$}}
-        child {node [circle, draw] (b) {$2$}
-            child {node [circle, draw] (e) {$2$}}
-            child {node [circle, draw] (f) {$1$}}
+    \node [circle, draw] (z) {$'hello'$}
+        child {node [circle, draw] (a) {$'how'$}}
+        child {node [circle, draw] (b) {$'are'$}
+            child {node [circle, draw] (e) {$'you'$}}
+            child {node [circle, draw] (f) {$'doing'$}}
         }
-        child {node [circle, draw] (c) {$1$}}
-        child {node [circle, draw] (d) {$8$}
-            child {node [circle, draw] (g) {$4$}}
+        child {node [circle, draw] (c) {$'from'$}}
+        child {node [circle, draw] (d) {$'CSM'$}
+            child {node [circle, draw] (g) {$'61A'$}}
         };
 \end{tikzpicture}
 \end{solution}
