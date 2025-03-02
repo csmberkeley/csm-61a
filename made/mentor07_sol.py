@@ -19,6 +19,18 @@ def prune(t, k):
         return tree(label(t), [prune(b, k - 1) for b in branches(t)])
 
 
+def replace_x(t, x):
+    new_branches = []
+    for b in branches(t):
+        new_branches.append(replace_x(b, x))
+    if label(t) == x:
+        return tree(0, new_branches)
+    return tree(label(t), new_branches)
+def replace_x(t, x):
+   new_branches = [replace_x(b, x) for b in branches(t)]
+   if label(t) == x:
+        return tree(0, new_branches)
+   return tree(label(t), new_branches)
 
 
 def contains_n(elem, n, t):

@@ -14,6 +14,22 @@ tree('hello',
 
 
 
+def replace_x(t, x):
+    """
+    >>> t = tree(2, [tree(1), tree(2)])
+    >>> replace_x(t, 2)
+    tree(0, [tree(1), tree(0)])
+    """
+    new_branches = []
+    for _______ in ____________________________:
+
+        new_branches._____________________________
+
+    if ________________________________________:
+
+        return ________________________________
+
+    return ________________________________
 
 
 def contains_n(elem, n, t):
