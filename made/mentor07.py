@@ -1,11 +1,11 @@
 tree('hello',
     [tree('how', []),
      tree('are',
-        [tree('you', []),
+        [tree('you'),
          tree('doing', [])]),
      tree('from', []),
      tree('CSM',
-        [tree('61A', [])])])
+        [tree('61A')])])
 
 
 
@@ -159,7 +159,7 @@ StopIteration
 >>> next(y)
 >>> next(x)
 >>> next(x)
->>> z = iter(y) [2, 3]
+>>> z = iter(y) 
 >>> next(z)
 >>> [next(y), next(y), next(z)]
 >>> a = iter(filter(lambda x: x % 2, map(lambda x: x - 1, range(10))))

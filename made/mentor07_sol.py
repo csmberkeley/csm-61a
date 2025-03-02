@@ -1,11 +1,11 @@
 tree('hello',
     [tree('how', []),
      tree('are',
-        [tree('you', []),
+        [tree('you'),
          tree('doing', [])]),
      tree('from', []),
      tree('CSM',
-        [tree('61A', [])])])
+        [tree('61A')])])
 
 
 
@@ -113,7 +113,7 @@ N/A
 3
 >>> next(x)
 StopIteration Error
->>> z = iter(y) [2, 3]
+>>> z = iter(y) 
 >>> next(z)
 2
 >>> [next(y), next(y), next(z)]
