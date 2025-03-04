@@ -46,6 +46,30 @@ def contains_n(elem, n, t):
           branches(t)]
 
 
+>>> a = [1, 2]
+>>> a.append([3, 4])
+>>> a
+[1, 2, [3, 4]]
+>>> a.extend([3])
+Nothing
+>>> b = ['Hello']
+>>> c = ['Hi', 'student']
+>>> b += c
+>>> b
+['Hello', 'Hi', 'student']
+>>> b.pop()
+'student'
+>>> b.remove('Hello')
+>>> b[:]
+['Hi']
+>>> b *= 2
+>>> b
+['Hi', 'Hi']
+>>> e = b + [1, 23]
+>>> b
+['Hi', 'Hi']
+
+
 ghost = [1, 0,[3], 1]
 def boo(spooky):
   ghost.append(spooky.append(ghost))
