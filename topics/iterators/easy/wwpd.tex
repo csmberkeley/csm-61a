@@ -1,0 +1,98 @@
+\begin{blocksection}
+\question What Would Python Display? If you think nothing will be displayed, write N/A.
+
+\begin{lstlisting}
+>>> a = [1, 2, 3]
+>>> x = iter(a)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+N/A
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(x)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(x)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> y = iter(a)
+>>> next(y)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(x)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(x)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+StopIteration Error
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> z = iter(y) 
+>>> next(z)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> [next(y), next(y), next(z)]
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+[2, 3, 3]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> a = iter(filter(lambda x: x % 2, map(lambda x: x - 1, range(10))))
+>>> next(a)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+-1
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> reduce(lambda x, y: x + y, a)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+16
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
