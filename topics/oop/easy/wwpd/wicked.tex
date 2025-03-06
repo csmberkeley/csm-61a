@@ -1,0 +1,75 @@
+\begin{blocksection}
+\question What would Python display in the land of Oz?
+
+\begin{lstlisting}
+class Elphaba(object):
+    magic = 'Defying Gravity'
+
+    def __init__(self, magic):
+        self.magic = magic
+
+    def spell(self):
+        return type(self).magic + ' and ' + self.magic
+
+class Glinda(Elphaba):
+    magic = 'Popular'
+
+    def __init__(self, magic):
+        Elphaba.__init__(self, 'good ' + magic)
+
+elphaba = Elphaba('Wicked')
+\end{lstlisting}   
+
+\begin{parts}
+\part \lstinline$>>> Elphaba.magic$
+
+\begin{solution}[2em]
+\lstinline$'Defying Gravity'$
+\end{solution}
+
+\part \lstinline$>>> elphaba.magic$
+
+\begin{solution}[2em]
+\lstinline$'Wicked'$
+\end{solution}
+
+\part \lstinline$>>> elphaba.spell()$
+
+\begin{solution}[2em]
+\lstinline$'Defying Gravity and Wicked'$
+\end{solution}
+
+\part \lstinline$>>> Elphaba.spell()$
+
+\begin{solution}[2em]
+\lstinline$Error$
+\end{solution}
+
+\part \lstinline$>>> Elphaba.spell(elphaba)$
+
+\begin{solution}[2em]
+\lstinline$'Defying Gravity and Wicked'$
+\end{solution}
+
+\part \begin{lstlisting}
+>>> glinda = Glinda('Power')
+>>> Glinda.magic
+\end{lstlisting}
+
+\begin{solution}[2em]
+\lstinline$'Popular'$
+\end{solution}
+
+\part \lstinline$>>> glinda.magic$
+
+\begin{solution}[2em]
+\lstinline$'good Power'$
+\end{solution}
+
+\part \lstinline$>>> glinda.spell()$
+
+\begin{solution}[2em]
+\lstinline$'Popular and good Power'$
+\end{solution}
+\end{parts}
+\end{blocksection}

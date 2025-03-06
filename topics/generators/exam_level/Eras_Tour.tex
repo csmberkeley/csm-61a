@@ -1,0 +1,34 @@
+\begin{blocksection}
+\question(Exam Level: Final Spring-25) Taylor Swift is performing at \textbf{The Eras Tour}, and she wants to make sure her fans get to hear their favorite songs! However, her setlist is \textbf{finite}, so after she runs through all her songs, she \textbf{starts over from the beginning} to keep the show going.
+
+Implement \texttt{eras\_cycle}, a generator function that takes a \textbf{non-empty finite list} \texttt{songs} (representing her setlist) and a \textbf{positive integer} \texttt{k}. It yields \texttt{k} songs from \texttt{songs}, restarting from the first song each time the end is reached. It is \textbf{okay to mutate} \texttt{songs}.
+
+\begin{lstlisting}
+def eras_cycle(songs, k):
+    """
+    Yield k songs from a non-empty finite list, restarting from the beginning when needed.
+
+    >>> t = eras_cycle(["Cruel Summer", "Lover", "Karma"], 10)
+    >>> [next(t), next(t), next(t), next(t)]
+    ['Cruel Summer', 'Lover', 'Karma', 'Cruel Summer']
+    >>> list(t)  # 6 of the 10 songs remain
+    ['Lover', 'Karma', 'Cruel Summer', 'Lover', 'Karma', 'Cruel Summer']
+    """
+    for song in _______:  # (d)
+        yield _______  # (e)
+    _______  # (f)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}[0in]
+
+\begin{lstlisting}
+def eras_cycle(songs, k):
+    n = len(songs)
+    for i in range(k):  # Loop for k items
+        yield songs[i % n]  # Restart when reaching the end
+\end{lstlisting}
+
+\end{solution}
+\end{blocksection}
