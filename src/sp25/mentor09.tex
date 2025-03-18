@@ -1,0 +1,36 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{9}
+\title{\textsc{Object Oriented Programming}}
+\date{March 17 -- March 21, 2024}
+
+\begin{document}
+\maketitle
+\begin{guide}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+       \item Inheritance Mini Lecture: 5 mins
+       \item Q1: Star Wars WWPD: 10 mins (long and pretty comprehensive)
+       \item Q2 TeamBaller: 8 mins - Easy difficulty
+       \item Q3 Pingpong: 10 mins - Medium difficulty
+       \item Q4 Photosynthesis: 15 mins [Optional] - Medium difficulty but very long.
+       \item Q5 Midterm Elections: 10 mins [Exam Level] - Hard. The use of dictionaries combined with list comprehension might make things a bit tricky, be prepared to explain to students what's happening.
+    \end{itemize}
+\end{guide}
+
+
+\section{Object Oriented Programming}
+\subimport{../../topics/oop/text/}{inheritance_overview.tex}
+
+
+\begin{questions}
+    \subimport{../../topics/oop/easy}{star-wars.tex}
+    \subimport{../../topics/oop/easy/}{team-baller-fa21.tex}
+    \subimport{../../topics/oop/medium/}{pingpong.tex}
+    \subimport{../../topics/oop/medium/}{photosynthesis.tex}
+    \subimport{../../topics/oop/hard/}{midterm-elections.tex}
+\end{questions}
+
+
+\end{document}
