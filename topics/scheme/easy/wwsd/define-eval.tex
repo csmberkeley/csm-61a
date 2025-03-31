@@ -1,15 +1,42 @@
 \begin{blocksection}
 \question What will Scheme output?
-
+	
 \begin{lstlisting}
-scm> (define c 2)
+scm> (define c 4)
 \end{lstlisting}
 \begin{solution}[0.25in]
 \begin{lstlisting}
 c
 \end{lstlisting}
 \end{solution}
-
+	
+\begin{lstlisting}
+scm> ((define (x) 1))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+Error: str is not callable: x
+\end{lstlisting}
+\end{solution}
+	
+\begin{lstlisting}
+scm> (x)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+	
+\begin{lstlisting}
+scm> ((lambda (x y) (+ c)) 1 2)
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+4
+\end{lstlisting}
+\end{solution}
+	
 \begin{lstlisting}
 scm> (eval 'c)
 \end{lstlisting}
@@ -18,7 +45,7 @@ scm> (eval 'c)
 2
 \end{lstlisting}
 \end{solution}
-
+	
 \begin{lstlisting}
 scm> '(cons 1 nil)
 \end{lstlisting}
@@ -27,18 +54,18 @@ scm> '(cons 1 nil)
 (cons 1 nil)
 \end{lstlisting}
 \end{solution}
-
+	
 \begin{comment}
-\begin{lstlisting}
-scm> (eval '(cons 1 nil))
-\end{lstlisting}
-\begin{solution}[0.25in]
-\begin{lstlisting}
-(1)
-\end{lstlisting}
-\end{solution}
+	\begin{lstlisting}
+	scm> (eval '(cons 1 nil))
+	\end{lstlisting}
+	\begin{solution}[0.25in]
+	\begin{lstlisting}
+	(1)
+	\end{lstlisting}
+	\end{solution}
 \end{comment}
-
+	
 \begin{lstlisting}
 scm> (eval (list 'if '(even? c) 1 2))
 \end{lstlisting}
@@ -47,17 +74,27 @@ scm> (eval (list 'if '(even? c) 1 2))
 1
 \end{lstlisting}
 \end{solution}
+	
+\begin{lstlisting}
+scm> (let ((a (+ 3 1)) (b 3)) (+ a b) (/ a b))
+\end{lstlisting}
+\begin{solution}[0.25in]
+\begin{lstlisting}
+1.333333333333333
+\end{lstlisting}
+\end{solution}
 \end{blocksection}
-
+	
 \begin{blocksection}
 \begin{guide}
 \textbf{Teaching Tips}
 \begin{itemize}
-	\item Quotation marks are easily one of the trickiest concepts in Scheme, so spend a lot of time making sure your students understand these problems thoroughly! It would help to do a quick mini lecture or review of quotation marks if your students need.
-	\item In some cases it is easier to think of the single quotation mark as double quotes in Python that encompass a string, such as in "standalone" expressions like the third one. In such cases the exact "string" is returned
+	\item Emphasize that you cannot call functions defined on the same line using the define keyword they are defined in, however when you use the lambda keyword then you can call them on the same line they are defined in. In the example above, Scheme thinks x is a string when you are calling it on the same line and so gives the error that it does.
+	\item Quotation marks are easily one of the trickiest concepts in Scheme, so spend a lot of time making sure your students understand these problems thoroughly! It would help to do a quick mini lecture or review of quotation marks if your students need.		\item In some cases it is easier to think of the single quotation mark as double quotes in Python that encompass a string, such as in "standalone" expressions like the third one. In such cases the exact "string" is returned
 	\item Encourage students to make the connection between Scheme lists and Scheme expressions as often as they can. Being able to read Scheme expressions as lists will be very helpful in the future.
 	\item Whenever there is an eval with a quote, you go down one level of evaluation and essentially pretend the quote is not there.
 	\item Going off of the third point, it could be beneficial to model Scheme expressions on a pyramid of evaluation: exact string, evaluating the string, etc.
+	\item While doing the one with the list operator, go to the Scheme Specification and the other links and show them how to navigate through the pages. 
 \end{itemize}
 \end{guide}
 \end{blocksection}
