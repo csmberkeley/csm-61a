@@ -2,6 +2,20 @@
 Let's practice and/or statements!
 
 \begin{lstlisting}
+    scm> (and 1 2)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{2}
+\end{solution}
+
+\begin{lstlisting}
+    scm> (or #f 1 2)
+\end{lstlisting}
+\begin{solution}[.25in]
+    \texttt{1}
+\end{solution}
+
+\begin{lstlisting}
     scm> (and #t (= 3 3) (> (- 61 42) (+ 61 42)))
 \end{lstlisting}
 \begin{solution}[.25in]

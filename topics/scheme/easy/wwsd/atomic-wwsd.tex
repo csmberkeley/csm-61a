@@ -5,21 +5,21 @@ Let's practice identifying atomic expressions in Scheme.
     True or False: 3.14 is an atomic expression.
 \end{lstlisting}
 \begin{solution}[0.25in]
-\texttt{True. Floats are atomic expressions.}
+\texttt{True. Floats are numbers and numbers in turn are atomic expressions.}
 \end{solution}
 
 \begin{lstlisting}
     True or False: pi is an atomic expression.
 \end{lstlisting}
 \begin{solution}[0.25in]
-    \texttt{False. Pi in most cases isn't naturally defined within the programming language -- rather, it's a variable name. As we haven't defined pi in this case, Scheme doesn't know what to interpret pi as, so we get an Error if we try to evaluate this on its own.}
+    \texttt{False. Pi in most cases isn't naturally defined within the programming language -- rather, it's a variable name. As we have not defined pi in the current environment in this case, Scheme doesn't know what to interpret pi as, so we get an Error if we try to evaluate this on its own.}
 \end{solution}
 
 \begin{lstlisting}
     True or False: - is an atomic expression.
 \end{lstlisting}
 \begin{solution}[0.25in]
-    \texttt{True. - is an operator for subtraction.}
+    \texttt{True. - is an operator for subtraction and this symbol is bound to \lstinline{#[+]}.}
 \end{solution}
 
 \begin{lstlisting}
@@ -28,13 +28,9 @@ Let's practice identifying atomic expressions in Scheme.
 \begin{solution}[0.25in]
     \texttt{False. Scheme can only interpret the basic symbols of +, -, *, /. We'll have to define our own floor division function!}
 \end{solution}
-
-\begin{lstlisting}
-    True or False: 'b' is an atomic expression.
-\end{lstlisting}
-\begin{solution}[0.25in]
-    \texttt{True. b is a character, which is an atomic data type!}
-\end{solution}
+\begin{meta}
+    Direct them to Built in Reference as they can find whether or not a certain operator is built in to the version of Scheme taught in the course.
+\end{meta}
 
 \begin{lstlisting}
     True or False: "is this atomic?" is an atomic expression.
