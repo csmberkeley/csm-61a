@@ -36,7 +36,7 @@ Each ``element'' of a call expression is an expression itself and is separated f
 \begin{enumerate}
 \item Evaluate the operator, which will return a procedure.
 \item Evaluate the operands.
-\item Apply operator on operands.
+\item Apply evaluated operator got from first step on evaluated operands got from second step.
 \end{enumerate}
 For example, to evaluate the call expression \lstinline{(+ (+ 1 2) 2)}, we first evaluate the operator \lstinline{+}, which returns the procedure \lstinline{#[+]}. Then we evaluate the first operand \lstinline{(+ 1 2)}, which returns \lstinline{3}. Then, we evaluate the last operand \lstinline{2}, receiving \lstinline{2}. Finally, we apply the \lstinline{#[+]} procedure to \lstinline{3} and \lstinline{2}, which returns \lstinline{5}. So this call expression evaluates to \lstinline{5}. 
 
