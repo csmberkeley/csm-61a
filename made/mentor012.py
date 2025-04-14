@@ -82,10 +82,6 @@ scm> (censor ((lambda (stanford tree) (+ stanford tree)) 4 5) ree)
     
     
     
-
-
-
-
     
     )
     (if ________________________________________
