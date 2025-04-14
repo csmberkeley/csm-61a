@@ -1,0 +1,54 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\usepackage{listings} 
+\lstset{language=Scheme}
+\discnumber{12}
+\title{\textsc{Interpreters, Programs as Data \& Macros}}
+\date{April 14 -- April 18, 2025}
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+
+\begin{guide}
+\textbf{Recommended Timeline}
+\begin{itemize}
+  \item Interpreters Intro (10-15 min): Consider walking through these problems as 
+  you give a mini-lecture/review to leave more time for later problems.
+  \item Eval Apply (10 min): You may want to do one in its entirety before leaving students to try the rest
+  (and explain the rules in a step-by-step manner), since students often find these types of problems unintuitive or challenging.
+  \item Macros Intro / mini-lecture (5 min)
+  \item \lstinline{macros-quasi} (5 min): A WWSD-type problem.
+  \item Macro Quasi [10 Mins]
+  \item Meta Apply [5 Mins]
+  \item NAND [5 Mins]
+  \item Apply Twice [5 Mins]
+  \item Censor [10 Mins]
+\end{itemize}
+\newpage
+\end{guide}
+
+
+\section{Interpreters}
+\subimport{../../topics/interpreters/text/}{intro-text.tex}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+\subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+\newpage
+\section{Macros}
+\subimport {../../topics/macros/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\vspace{1.5 em}
+
+ \subimport{../../topics/macros/easy/}{meta-apply.tex}
+  \subimport{../../topics/macros/easy/}{nand.tex}
+  \subimport{../../topics/macros/medium/}{apply-twice.tex}
+  \subimport{../../topics/macros/medium/}{censor.tex}
+\end{questions}
+
+\end{document}
