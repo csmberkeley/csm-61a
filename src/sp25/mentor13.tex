@@ -1,0 +1,65 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{14}
+\title{\textsc{Macros Review \& Intro to SQL}}
+\date{November 25--November 29, 2024}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+
+\begin{meta}
+\begin{blocksection}
+    \textbf{Recommended Timeline}
+    \begin{itemize}
+        \item Macros Intro: 10 minutes
+        \item Q1. \lstinline{and-odds-thanksgiving}: 8 minutes
+        \item SQL mini-lecture: 10 minutes
+        \item Q1 (Mentors): 10 minutes
+        \item Q2 (Circus): 20 minutes
+        \item Q3 (Fish): 20 minutes
+    \end{itemize}
+\end{blocksection}
+\vspace{5mm}
+\end{meta}
+
+\vspace{3mm}
+
+\begin{meta}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Before we jump into macros, it is very important to ensure that your students understand quasiquotation.
+    \item Draw out box-and-pointer diagrams to show how the expressions in macros are being stored when the operands are unevaluated, if needed.
+    \item If you would like a quick refresher on how to think about macros, please refer to this \href{https://docs.google.com/document/d/1JSbvtJ5bYUEhovDZd_gQnBvkG_WDcafmX-4B3QeIXZU/edit}{guide}.
+\end{itemize}
+\end{meta}
+
+\vspace{5mm}
+
+\section{Macros Review}
+\begin{questions}
+\subimport{../../topics/macros/medium/}{and-odds-thanksgiving.tex}
+\newpage
+\end{questions}
+
+\section{SQL}
+\subimport{../../topics/sql/text/}{intro.tex}
+\newpage
+
+\begin{questions}
+  \question
+  \subimport{../../topics/sql/mentors/}{table.tex}
+  \begin{parts}
+    \subimport{../../topics/sql/mentors/easy/}{create-table.tex}
+    \subimport{../../topics/sql/mentors/easy/}{alphabetical.tex}
+    \subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+  \end{parts}
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
