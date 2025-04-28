@@ -9,3 +9,7 @@ GROUP BY price;
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{meta}
+    Show them that when you aggregate over a group and then select a column which you neither group over or aggregate over (in this case species), then the value on a particular row for that column which you selected is going to correspond to the value which is on the same row as the value of the aggregated result in the actual table. For instance, here in the group where price is 3 since max of pieces in that group is going to correspond to 30 thus yellowtail will be yielded in the species column with price 3 and pieces 30. Notice when we do this we cannot use aggregation functions like sum and etc.
+\end{meta}
