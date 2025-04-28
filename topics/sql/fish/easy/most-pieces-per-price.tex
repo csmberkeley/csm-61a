@@ -8,6 +8,15 @@ FROM fish
 GROUP BY price;
 \end{lstlisting}
 \end{solution}
+\begin{solution}
+    Alternate solution
+    \begin{lstlisting}
+    SELECT species, price, pieces 
+    FROM fish 
+    ORDER BY pieces / price DESC 
+    LIMIT 1;
+    \end{lstlisting}
+\end{solution}
 \end{blocksection}
 
 \begin{meta}
