@@ -82,3 +82,22 @@ SELECT fish.species, (fish.price - competitor.price) * pieces
     WHERE fish.species = competitor.species;
 
 
+
+
+
+
+
+
+SELECT color, count(g.day) AS cnt
+    FROM outfits AS o, grades AS g
+    WHERE o.day = g.day
+    GROUP BY color
+    ORDER BY cnt DESC
+    LIMIT 1;
+
+
+SELECT SUM(score), class
+    FROM grades GROUP BY class
+    HAVING MIN(score) < 80 ORDER BY SUM(score) DESC;
+
+

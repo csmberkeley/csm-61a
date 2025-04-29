@@ -1,8 +1,5 @@
-\begin{blocksection}
-\part Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish. \\
-\begin{meta}
-  \textbf{Note:} It may be helpful to remind students of the formula for revenue: price per unit * number of units
-\end{meta}
+\part Write a query that returns, for each species, the difference between our hatchery's revenue versus the competitor's revenue for one whole fish. Assume that number of pieces per one whole fish of a certain species of fish stays the same across both our hatchery and our comptitor's hatchery.
+The revenue formula is price per unit * number of units.
 % This is because we make 30 pieces at \$4 a piece for \$120, whereas the competitor will make 30 pieces at \$2 a piece for \$60. Therefore, the difference is 60.
 
 \begin{solution}[1.5in]
@@ -12,7 +9,6 @@ SELECT fish.species, (fish.price - competitor.price) * pieces
     WHERE fish.species = competitor.species;
 \end{lstlisting}
 \end{solution}
-\end{blocksection}
 
 \begin{blocksection}
 \begin{guide}
