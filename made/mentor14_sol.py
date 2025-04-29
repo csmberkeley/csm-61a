@@ -75,6 +75,10 @@ FROM fish;
 SELECT species, price, MAX(pieces) 
 FROM fish 
 GROUP BY price;
+    SELECT species, price, pieces 
+    FROM fish 
+    ORDER BY pieces / price DESC 
+    LIMIT 1;
 
 
 SELECT fish.species, (fish.price - competitor.price) * pieces
