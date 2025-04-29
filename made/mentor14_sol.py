@@ -78,7 +78,12 @@ GROUP BY price;
     SELECT species, price, pieces 
     FROM fish 
     ORDER BY pieces / price DESC 
-    LIMIT 1;
+    LIMIT 2;
+
+
+        SELECT fish.species, fish.price, competitor.price
+        FROM fish, competitor
+        WHERE fish.species = competitor.species;
 
 
 SELECT fish.species, (fish.price - competitor.price) * pieces
@@ -103,5 +108,11 @@ SELECT color, count(g.day) AS cnt
 SELECT SUM(score), class
     FROM grades GROUP BY class
     HAVING MIN(score) < 80 ORDER BY SUM(score) DESC;
+
+
+    SELECT grades.day, sum(score) 
+    FROM grades, outfits 
+    WHERE outfits.color = "blue" and outfits.day = grades.day 
+    GROUP BY grades.day;
 
 
