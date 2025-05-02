@@ -1,0 +1,43 @@
+\begin{blocksection}
+    \question Find an input to the year function that prints the following output:
+    2
+    0
+    2
+    5
+    
+    \begin{lstlisting}
+        def year(a):
+            x = iter(a)
+            y = iter(a)
+            z = iter(x)
+            for i in range(next(x)):
+                y = iter(a)
+                next(y)
+            print(next(x))
+            print(next(z))
+            print(next(y))
+            print(next(z))
+    \end{lstlisting}
+    
+    \begin{solution}[1in]
+    \begin{lstlisting}
+        year([__, 2, 0, 5, _____])
+        There can be any number in the first blank, and there can be any number of values after the 5.
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{guide}
+    \begin{blocksection}
+        \textbf{Teaching Tips}
+        \begin{itemize}
+        \item The first step to this problem is drawing out the initial states of the x and y iterators as pointers under the element at index 0 of an unknown list
+        \item Recognize that iter(x) returns the iterator x itself, so z is x.
+        \item Note that the for loop header moves the x iterator's position up by one. The body of the for loop assigns y to a new iter(a) so no matter how many times the for loop runs, the for loop will always end with the y iterator pointing to the item at the first index of a.
+        \item We want the function to print 2, 0, 2, and 5 in that order. We know that the x iterator is pointing to the element at index 1 of the list, so the element at index 1 must be a 2. Calling print(next(x)) should print 2 and move the x iterator to point to the element at index 2.
+        \item We know that the z iterator is the same as the x iterator, so since it is pointing the the element at index 2, the element at index 2 must be 0. Calling print(next(z)) should print 2 and also moves the iterator up to point to the item at index 3 in the list.
+        \item We know from the end of the for loop that the y iterator points to the item at index 1, which we want to be 2. Fortunately, we already know that this item is 2 from when we figured out what print(next(x)) was.
+        \item Lastly, we look at the z iterator (the same as the x iterator) and see its position is under the item at index 3, so we know that the item at index 3 should be 5. 
+        \end{itemize}
+    \end{blocksection}
+    \end{guide}

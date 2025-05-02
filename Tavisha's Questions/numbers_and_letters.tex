@@ -1,0 +1,33 @@
+\begin{blocksection}
+    \question WWPD? Write what this python program will print.
+    
+    \begin{lstlisting}
+        a = [1, 'A', 'B', 'C', 5, 6, 7, 'D', 'E']
+        x = iter(a)
+        for i in range(5 - next(x)):
+            next(x)
+        print(next(x))
+        y = iter(a)
+        print(next(y))
+        z = iter(y)
+        print(next(z))        
+    \end{lstlisting}
+    
+    \begin{solution}[0.7in]
+    \begin{lstlisting}
+        6
+        1
+        A
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}
+    
+    \begin{guide}
+    \begin{blocksection}
+        \textbf{Teaching Tips}
+        \begin{itemize}
+        \item iter(y) returns z so z is the same iterator as y.
+        \item Every call to next moves the iterator's pointer forward by one.
+        \end{itemize}
+    \end{blocksection}
+    \end{guide}
