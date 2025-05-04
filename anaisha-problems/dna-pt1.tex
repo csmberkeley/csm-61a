@@ -1,0 +1,52 @@
+%Linked List --> Class --> Medium
+
+\begin{blocksection}
+    \question DNA carries the genetic instructions that enable the functioning of many living creatures, including us. The bases of a DNA sequence include adenine (A), guanine (G), cytosine (C), and thymine (T). Adenine (A) pairs with thymine (T), and guanine (G) pairs with cytosine (C).
+
+    Let us represent DNA as a linked list with values representing A, G, C, and T.
+        
+    Implement \textit{reverse\_dna}, which takes in a linked list \textit{strand} that represents a DNA strand. It destructively alters the linked list to reverse it. This function does not return anything.
+    
+    \begin{lstlisting}
+        def reverse_dna(strand):
+        """Reverses a DNA strand 
+        >>> d = Link(“C”, Link(“A”, Link(“C”, Link(“G”)))) # <C A C G>
+        >>> reverse_dna(d)
+        >>> print(d)
+        <G C A C>
+        """
+        assert isinstance(strand, Link)
+            if ___________:
+                return ____
+            reverse_dna(_____)
+            _________________
+            _________________
+            return strand        
+    \end{lstlisting}
+    
+    \begin{solution}
+        def reverse_dna(strand):
+        """Reverses a DNA strand 
+        >>> d = Link(“C”, Link(“A”, Link(“C”, Link(“G”)))) # <C A C G>
+        >>> reverse_dna(d)
+        >>> print(d)
+        <G C A C>
+        """
+        assert isinstance(strand, Link)
+            if strand is Link.empty or strand.rest is Link.empty:
+                return strand
+            reverse_dna(strand.rest)
+            strand.rest.rest = strand
+            strand.rest = Link.empty
+            return strand
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{questionmeta}
+        Through this question. I hope to first introduce the theme of the next few questions of the worksheet. I used DNA as I thought it is a nice way of modelling real-world phenomena with a concept that people have learned. 
+
+        This question requires students to have a good understanding of working with linked list pointers, for example the difference between .rest.rest and rest or when you can set a Link.empty. 
+
+        This also shows how recursion can be integrated into a linked list question. I tried to add blanks in a manner that mirrors the 61a exams, as the blanks try to guide the student towards a particular solution. 
+    \end{questionmeta}
+    
