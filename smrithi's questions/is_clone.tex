@@ -1,0 +1,77 @@
+\begin{blocksection}
+\question You're part of a company that builds armies of robot clones from a single robot. When a robot is cloned, you can create two copies of it. The company uses trees to track how many robots are descended from each other.
+Implement \lstinline$is_clone$, which takes in a tree \lstinline$t$ and checks if the tree is equally balanced on both sides.
+
+\begin{lstlisting}
+def is_clone(t):
+    """Return True if t is an exactly balanced tree and False if not.
+
+    >>> t1 = Tree(1)
+    >>> is_clone(t1)
+    True
+    >>> t2 = Tree(1, [Tree(2), Tree(3)])
+    >>> is_clone(t2)
+    True
+    >>> t3 = Tree(1, [Tree(2, [Tree(4), Tree(5)]), Tree(3)])
+    >>> is_clone(t3)
+    False
+    """
+	if t.is_leaf():
+		return True
+	if ___________:
+		return False
+	
+	left, right = t.branches
+	if not (is_clone(left) and is_clone(right)):
+		return False
+	
+	def count_leaves(t):
+		if t.is_leaf():
+			return 1
+		return sum(________)
+	
+	return count_leaves(left) == __________
+\end{lstlisting}
+
+\question Your teacher hides hints for the final exam in trees. However, they give you too many trees that it's hard for you to manually go through them and search for the hints. Implement a function \lstinline$find_hint$ that mutates a tree \lstinline$t$ so that it only keeps the path which does not end in a leaf node whose label is "Blank".
+\begin{lstlisting}
+def find_hint(t):
+    """Mutates the tree t so that it only keeps paths that do NOT end in a leaf labeled "Blank".
+
+    >>> ft1 = Tree("Start", [Tree("A", [Tree("Blank")]), Tree("B", [Tree("C")]), Tree("Blank")])
+    >>> find_hint(t1)
+    >>> print(t1)
+    Tree('Start', [Tree('B', [Tree('C')])])
+    >>> t2 = Tree("Start", [Tree("A", [Tree("B", [Tree("Blank")])]), Tree("X", [Tree("Y")])])
+    >>> find_hint(t2)
+    >>> print(t2)
+    Tree('Start', [Tree('X', [Tree('Y')])])
+    """
+	for b in ______:
+		_________
+	________ = [_____ for b in _______ if _______]
+\end{lstlisting}
+
+\begin{solution}[0.7in]
+\begin{lstlisting}
+def is_clone(t):
+    if t.is_leaf():
+        return True
+    if len(t.branches) != 2:
+        return False
+    left, right = t.branches
+    if not (is_clone(left) and is_clone(right)):
+        return False
+    def count_leaves(t):
+        if t.is_leaf():
+            return 1
+        return sum(count_leaves(b) for b in t.branches)
+    return count_leaves(left) == count_leaves(right)
+
+def find_hint(t):
+    for b in t.branches:
+        find_hint(b)
+    t.branches = [b for b in t.branches if not (b.is_leaf() and b.label == "Blank")]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

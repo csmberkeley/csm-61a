@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question Implement \lstinline$best_study_spot$ which takes in a tree \lstinline$t$ full of attributes about different study spots on campus, and outputs the most ideal study spot depending on a function \lstinline$key$ that you pass in. For example, if you have a tree consisting of the distances of different spots from your dorm and you want to find the closest study spot, \lstinline$key$ would be set to min.
+
+\begin{lstlisting}
+def best_study_spot(t, key):
+    """Return the node in t that corresponds to the maximum value for key without using min or max.
+
+    >>> t = Tree(7, [Tree(5, [Tree(9)]), Tree(3), Tree(10, [Tree(4)])])
+    >>> best_study_spot(t, key=lambda x: x)
+    10
+    >>> best_study_spot(t, key=lambda x: -x)
+    3
+    >>> best_study_spot(t, key=lambda x: -abs(x - 4))
+    4
+    """
+    if t.________():
+        return ________
+    best = ________
+    for b in ________:
+        candidate = best_study_spot(b, key)
+        if ________(candidate) > key(best):
+            ________ = candidate
+    return ________
+\end{lstlisting}
+
+\begin{solution}[0.7in]
+\begin{lstlisting}
+def best_study_spot(t, key):
+    if t.is_leaf():
+        return t.label
+    best = t.label
+    for b in t.branches:
+        candidate = best_study_spot(b, key)
+        if key(candidate) > key(best):
+            best = candidate
+    return best
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
