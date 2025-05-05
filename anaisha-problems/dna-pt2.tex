@@ -1,0 +1,55 @@
+%Linked List --> Class --> Easy
+
+
+\begin{blocksection}
+    \question Implement \textit{is\_equal}, which takes in two linked lists \textit{strand1} and \textit{strand2} that each represent a DNA strand. Return true if both strands are the same and false if they differ.
+
+    
+    
+    \begin{lstlisting}
+        def is_equal(strand1, strand2):
+        """Returns if the two strands are equal 
+        >>> d = Link(“C”, Link(“A”, Link(“C”, Link(“G”)))) # <C A C G>
+        >>> g = Link(“C”, Link(“A”, Link(“C”, Link(“G”)))) # <C A C G>
+        >>> is_equal(d,g)
+        True
+        >>> f = Link(“C”, Link(“C”, Link(“G”))) # <C G C>
+        >>> is_equal(d,f)
+        False
+        >>> n = Link(“C”, Link(“T”, Link(“C”, Link(“G”)))) <C T C G>
+        >>> is_equal(d,n)
+        False
+        """
+        assert isinstance(strand1, Link)
+        assert isinstance(strand2, Link)
+        	
+        
+    \end{lstlisting}
+    
+    \begin{solution}
+        #Recursive Solution
+        def is_equal(strand1, strand2):
+            if strand1 is Link.empty and strand2 is Link.empty:
+                return True
+            if strand1 is Link.empty or strand2 is Link.empty:
+                return False
+            if strand1.first != strand2.first:
+                return False
+            return is_equal(strand1.rest, strand2.rest)
+
+        #Iterative Solution
+        def is_equal(strand1, strand2):
+            while strand1 is not Link.empty and strand2 is not Link.empty:
+                if strand1.first != strand2.first:
+                    return False
+                strand1 = strand1.rest
+                strand2 = strand2.rest
+            return strand1 is Link.empty and strand2 is Link.empty
+
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{questionmeta}
+        This should be a mostly straightforward linked list recursion question that requires either iterating or recursively going through two linked lists and checking whether their values are equal. Students should be mindful with reading the test cases, as two DNA strands can be unequal if they differ in length or in value.  
+    \end{questionmeta}
+    
