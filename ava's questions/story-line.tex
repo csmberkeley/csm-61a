@@ -1,0 +1,55 @@
+\begin{blocksection}
+    \question You're writing a plot outline for a fantasy novel. Each plot point 
+    consists of a character and an event they’re involved in.
+    Define a function build-plot-outline that takes two lists: 
+        A list of characters (symbols), A list of events (symbols)
+
+    The function should return a list of plot points, where each plot point 
+    is a pair (character . event), following these rules:
+
+    Plot points are created by pairing the first character with the first event, the second with the second, and so on.
+    If one list is longer than the other, ignore the extra elements.
+    If any character or event is 'plot-hole, skip that pairing entirely.
+    
+    \begin{lstlisting}
+        scm> (build-plot-outline '(hero villain plot-hole bard) '(battle scheme rescue plot-hole))
+        ((hero . battle) (villain . scheme) (bard . rescue))
+
+        scm> (build-plot-outline '(dragon knight) '(flight plot-hole))
+        ((dragon . flight))
+
+        scm> (build-plot-outline '(plot-hole) '(plot-hole))
+        ()
+
+        scm> (build-plot-outline '() '(event1 event2))
+        ()
+        
+        (define (build-plot-outline characters events)
+            (cond ((__________________________) '())
+                    (else
+                    (let ((c (car characters))
+                        (e (car events)))
+                    (if (__________________________)
+                        (build-plot-outline (__________________________) (__________________________))
+                        (cons (__________________________)
+                                (build-plot-outline (__________________________) (__________________________))))))))
+
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+            
+            (define (build-plot-outline characters events)
+            (cond ((or (null? characters) (null? events)) '())
+                    (else
+                    (let ((c (car characters))
+                        (e (car events)))
+                    (if (or (eq? c 'plot-hole) (eq? e 'plot-hole))
+                        (build-plot-outline (cdr characters) (cdr events))
+                        (cons (cons c e)
+                                (build-plot-outline (cdr characters) (cdr events))))))))
+
+        \end{lstlisting}
+    \end{solution}
+    
+\end{blocksection}

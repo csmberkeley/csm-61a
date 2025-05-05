@@ -1,0 +1,51 @@
+\begin{blocksection}
+    \question Write a function plan-coffee-tour that takes two lists of Berkeley coffee shops and creates 
+    an optimized tour according to the following rules:
+    The function creates a tour by alternating shops from each list (similar to interleaving)
+    If a coffee shop appears in both lists, it should only be visited once in the tour at its first occurrence
+    If one list is longer than the other, the remaining unique shops should be added to the end of the tour
+    
+    \begin{lstlisting}
+        scm> (plan-coffee-tour '(binge strada philz) '(philz blue-bottle binge))
+        (binge philz strada blue-bottle)
+        
+        scm> (plan-coffee-tour '(strada mind peets) '(elaichi-co philz))
+        (strada elaichi-co mind philz peets)
+        
+        scm> (plan-coffee-tour '(strada qargo) '(strada qargo peets))
+        (strada qargo peets)
+        
+        scm> (plan-coffee-tour '() '(delah signal))
+        (delah signal)
+
+        (define (plan-coffee-tour lst1 lst2)
+            (cond ((________________________) lst2)
+                ((________________________) lst1)
+                (else
+                (let ((first (car lst1))
+                        (rest1 (cdr lst1))
+                        (rest2 (________________________)))
+                    (if (________________________)
+                        (cons first (plan-coffee-tour rest1 rest2))
+                        (cons first (cons (________________________)
+                                        (plan-coffee-tour rest1 (________________________)))))))))
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+            (define (plan-coffee-tour lst1 lst2)
+                (cond ((null? lst1) lst2)
+                    ((null? lst2) lst1)
+                    (else
+                        (let ((first (car lst1))
+                            (rest1 (cdr lst1))
+                            (rest2 (filter (lambda (shop) (not (eq? shop (car lst1)))) lst2)))
+                        (if (null? rest2)
+                            (cons first (plan-coffee-tour rest1 rest2))
+                            (cons first (cons (car rest2)
+                                                (plan-coffee-tour rest1 (cdr rest2)))))))))
+
+        \end{lstlisting}
+    \end{solution}
+    
+\end{blocksection}

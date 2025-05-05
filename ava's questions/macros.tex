@@ -1,0 +1,26 @@
+\begin{blocksection}
+    \question 
+    Implement the macro unless, which takes a condition and a single expression.
+    It evaluates the expression only if the condition is false.
+    
+    \begin{lstlisting}
+        scm> (unless #f (print 'nope))
+        nope
+        scm> (unless #t (print 'nope))
+        ; nothing is printed
+
+       (define-macro (unless condition body)
+            (________________________))
+
+    \end{lstlisting}
+
+    \begin{solution}[1in]
+        \begin{lstlisting}
+
+            (define-macro (unless condition body)
+                (list 'if (list 'not condition) body))
+
+        \end{lstlisting}
+    \end{solution}
+    
+\end{blocksection}
