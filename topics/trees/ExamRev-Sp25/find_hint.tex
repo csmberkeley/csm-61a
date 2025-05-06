@@ -1,0 +1,32 @@
+% find_hint.tex
+
+\begin{blocksection}
+    \question Your teacher hides hints for the final exam in trees. However, they give you too many trees that it's hard for you to manually go through them and search for the hints. Implement a function \lstinline$find_hint$ that mutates a tree \lstinline$t$ so that it only keeps the path which does not end in a leaf node whose label is "Blank".
+
+    \begin{lstlisting}
+def find_hint(t):
+    """Mutates the tree t so that it only keeps paths that do NOT end in a leaf labeled "Blank".
+
+    >>> t1 = Tree("Start", [Tree("A", [Tree("Blank")]), Tree("B", [Tree("C")]), Tree("Blank")])
+    >>> find_hint(t1)
+    >>> print(t1)
+    Tree('Start', [Tree('B', [Tree('C')])])
+    >>> t2 = Tree("Start", [Tree("A", [Tree("B", [Tree("Blank")])]), Tree("X", [Tree("Y")])])
+    >>> find_hint(t2)
+    >>> print(t2)
+    Tree('Start', [Tree('X', [Tree('Y')])])
+    """
+    for b in t.branches:
+        find_hint(b)
+    t.branches = [b for b in t.branches if not (b.is_leaf() and b.label == ____________________)]
+    \end{lstlisting}
+
+    \begin{solution}[0.7in]
+    \begin{lstlisting}
+def find_hint(t):
+    for b in t.branches:
+        find_hint(b)
+    t.branches = [b for b in t.branches if not (b.is_leaf() and b.label == "Blank")]
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}

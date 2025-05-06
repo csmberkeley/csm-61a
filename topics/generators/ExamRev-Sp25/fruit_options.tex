@@ -1,0 +1,48 @@
+\begin{blocksection}
+    \question Write a generator that, given m (the amount of money you have), pc (the cost of one pear), and ac (the cost of one apple)
+    yields all possible combinations of fruit that you can buy that uses up the most of your money. In other words, each combination of fruits
+    should not result in enough money left over to buy another fruit. Combinations of the same number of each fruit in different orders is okay.
+    It is also okay if each combination has an extra space at the end.
+    
+    \begin{lstlisting}
+    def fruitOptions(m, pc, ac):
+        """
+        >>> print(list(fruitOptions(10, 2, 5)))
+        ['pear pear pear pear pear ', 'pear pear apple ', 'pear apple pear ',
+         'apple pear pear ', 'apple apple ']
+        """
+        if __________________________________:
+            yield ""
+        if m >= pc:
+            for ______________________________________:
+                ________________________________
+        if m >= ac:
+            for ______________________________________:
+                ____________________________________
+                
+    \end{lstlisting}
+    
+    \begin{solution}[1in]
+    \begin{lstlisting}
+        def fruitOptions(m, pc, ac): 
+            if m < pc and m < ac:
+                yield ""
+            if m >= pc:
+                for p in fruitOptions(m-pc, pc, ac):
+                    yield "pear " + p;
+            if m >= ac:
+                for a in fruitOptions(m-ac, pc, ac):
+                    yield "apple " + a;    
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{guide}
+    \begin{blocksection}
+        \textbf{Teaching Tips}
+        \begin{itemize}
+        \item This problem shows that some generator problems can be approached in a similar way as recursion problems, except with yield instead of return.
+        \item Another goal of this problem is to show how iterating through a generator can be done through a through a $for \_\_ in \_\_\_$ loop.
+        \end{itemize}
+    \end{blocksection}
+    \end{guide}
