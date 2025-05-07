@@ -1,0 +1,45 @@
+%Linked List --> Class --> Hard
+
+
+\begin{blocksection}
+    \question A frameshift mutation causes a DNA strand to shift by n nucleotides. For example, if the original DNA strand is ATTGCGA, the strand mutated by two nucleotides would be TGCGA. 
+    
+    
+    Implement \textit{findFrameShift}, which takes in two linked lists \textit{original} and \textit{mutated} that each represent a DNA strand. It returns the number of nucleotides that \textit{original} has been shifted by. You can use the \textit{isEqual} function. Assume the length of \textit{original} is greater than the length of \textit{mutated}. 
+
+    
+    
+    \begin{lstlisting}
+        def findFrameShift(original, mutated):
+        """Return the number of nucleotides that original has been shifted by after being mutated
+        >>> o = Link("C", Link("A", Link("C", Link("G", Link("T", Link ("A")))))) 
+         <C A C G T A>
+        >>> m = Link("C", Link("G", Link("T", Link ("A")))) 
+         <C G T A>
+        >>> n = findFrameshift(o,m)
+        >>> print(n)
+        2
+        """
+        assert isinstance(original, Link)
+        assert isinstance(mutated, Link)
+        	
+        
+    \end{lstlisting}
+    
+    \begin{solution}
+        def findFrameShift(original, mutated):
+            shift = 0
+            while mutated is not Link.empty:
+                if isEqual(original, mutated):
+                    return shift
+                mutated = mutated.rest
+                shift += 1
+            return 0
+
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{questionmeta}
+        This question mirrors a lot of exam questions that use a helper function from a previous question part. If students are struggling, point them towards using an iterative approach. 
+    \end{questionmeta}
+    
