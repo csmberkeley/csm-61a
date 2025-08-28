@@ -1,0 +1,79 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{3}
+\title{Python Control, Expressions \& Higher Order Functions}
+\date{September 8 -- September 12, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Tips for Mentors
+            \subitem{Note: \textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).}
+            \subitem{\textbf{However, the time in brackets will add up to ~50 minutes, and is intended to be a suggested outline for your section.}}
+
+        \item Intros \& Logstics [6 min]
+            \subitem{Introduce yourself! Go over how CSM works/answer any logistical questions.}
+        \item Mini-lecture abt control/functions [5 min]  
+        \item Q1: WWPD: Potpourri [6 min]
+            \subitem{Feel free to skip parts!}
+        \item Q2: Handle Overflow [7 min]
+        \item Q3: FizzBuzz [7 min]
+        \item Mini-lecture abt higher order functions [10 min] 
+        \item Q4: check_sum [10 min]
+        \item If extra time: Q5: curry_forever_alt
+        \item How to be successful in 61A [5 min]
+            \subitem{Give any tips you want!}
+    \end{itemize}
+\end{meta}
+
+\section{Intro to Python}
+\begin{questions}
+    \subimport{../../topics/basics/}{potpurri.tex}
+    \begin{questionmeta}
+        Suggested Time: 6 min
+        \begin{itemize}
+            \item Again, you can probably skip a lot of these as soon as your students get the idea.
+            \item Your students might be new to solving "compound" questions like the last one; Consider giving them tips on how to break down such problems.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+
+\section{Control}
+\begin{questions}
+    \subimport{../../topics/control/easy/}{handle-overflow.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Easy
+        \begin{itemize}
+            \item Make sure students understand the difference between using else and elif in these types of problems.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/control/medium/}{fizzbuzz.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Medium
+        \begin{itemize}
+            \item This question has \lstinline{while} loops! You may want to discuss the difference between \lstinline{for} and \lstinline{while} loops. 
+            \item Also make sure your students understand that print returns None [as seen in the final doctest] and that it is valid for a Python function to not have a return statement.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\section{Higher Order Functions}
+\begin{questions}
+    \subimport{../../topics/hof/medium/}{check_sum.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        \begin{itemize}
+            \item This question has a lot of blank lines and also combines multiple topics, like while loops, that students have been learning
+            \item Focus on why we return check, and not a boolean! 
+        \end{itemize}
+    \end{questionmeta}
+
+\end{questions}
+
+\end{document}
