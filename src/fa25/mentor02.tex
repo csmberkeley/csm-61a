@@ -1,0 +1,83 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Python Functions and Expressionsl}
+\date{September 2 -- September 5, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Teaching tips:
+            \subitem{\textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).}
+            \subitem{\textbf{However, the time in brackets will add up to ~50 minutes, and is intended to be a suggested outline for your section.}}
+        \item How to be successful in 61A [3-5 min]
+        \item Intros, Ice Breakers, \& Logstics [10 min]
+            \subitem{Introduce yourself, and give an overview of what CSM offers. Start off with an icebreaker of your choice!}
+        \item Mini-lecture: Python Expressions and Functions [10 min]
+        \item Q1: Potpourri [7 min]
+            \subitem{You can skip the question with the if statements, and feel free to skip some parts!}
+        \item Q2: Identify Types [7 min]
+        \item Q3: Funky Functions [7 min]
+        \item Q4: Fahrenheit to Celsius [5 min]
+        \item Q5: Score Needed [7 min]
+        \item Q6: WWPD [If Extra Time]
+            
+    \end{itemize}
+\end{meta}
+
+\section{Expressions}
+\begin{questions}
+    \subimport{../../topics/basics/}{potpurri.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min
+        \begin{itemize}
+            \item You can probably skip a lot of these as soon as your students get the idea.
+            \item Your students might be new to solving "compound" questions like the last one; Consider giving them tips on how to break down such problems.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/medium/}{identify-types.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min, Difficulty: Medium
+        \begin{itemize}
+            \item Make sure students understand why '3' + 4 errors, as well as how string concatention works in the case of '3' + '4'
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+
+\section{Functions}
+\begin{questions}
+    \subimport{../../topics/basics/}{funky-funcs.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min
+        \begin{itemize}
+            \item Show students how to tackle problems with nested expressions (like the process in the solution for this problem).
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/easy/}{celsius.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min, Difficulty: Easy
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/medium/}{score-needed.tex}
+    \begin{questionmeta}
+    Suggested Time: 7 min, Difficulty: Medium
+    Make sure that students understand the question prompt and how to come up with the formula.
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/medium/}{fgh.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min, Difficulty: Medium
+        \begin{itemize}
+            \item Optional, for if you have time at the end!
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\end{document}
