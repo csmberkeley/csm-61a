@@ -1,0 +1,18 @@
+\begin{blocksection}
+\question Complete the function \lstinline{apply_to_even}, which takes a single-argument function \lstinline{f} and a dictionary \lstinline{d} and returns a new dictionary with only the keys that are even, and applies \lstinline{f} to these keys' values.
+def apply_to_even(f, snap_inputs):
+    """
+    >>> apply_to_even(lambda x: x**2, {1:3, 2:5, 4:2, 3:2})
+    {2:25, 4:4}
+    """
+        
+    return [____________________________________________________________________________]
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+def apply_to_even(f, d):
+    return {i: f(d[i]) for i in d if i % 2 == 0}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

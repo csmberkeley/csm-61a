@@ -29,68 +29,48 @@
     \begin{blocksection}
     
     \begin{lstlisting}
-    >>> b = a
-    >>> a = a + [4, [5, 6]]
-    >>> a
+    >>> a[:2]
     \end{lstlisting}
     \begin{solution}[.25in]
     \begin{lstlisting}
-    [1, 2, 3, 4, [5, 6]]
+    [1, 2]
     \end{lstlisting}
     \end{solution}
     \begin{lstlisting}
+    >>> b = [1, 2, 3, a, 4]
     >>> b
     \end{lstlisting}
     \begin{solution}[.25in]
     \begin{lstlisting}
-    [1, 2, 3]
+    [1, 2, 3, [1, 2, 3], 4]
+    \end{lstlisting}
+    \end{solution}
+
+    \begin{lstlisting}
+    >>> b[3][2]
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    3
+    \end{lstlisting}
+    \end{solution}
+
+     \begin{lstlisting}
+    >>> b + a
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    [1, 2, 3, [1, 2, 3], 4, 1, 2, 3]
     \end{lstlisting}
     \end{solution}
     
     \end{blocksection}
-    \begin{blocksection}
     
-    \begin{lstlisting}
-    >>> c = a
-    >>> a = [4, 5]
-    >>> a
-    \end{lstlisting}
-    \begin{solution}[.25in]
-    \begin{lstlisting}
-    [4, 5]
-    \end{lstlisting}
-    \end{solution}
-    
-    \begin{lstlisting}
-    >>> c
-    \end{lstlisting}
-    \begin{solution}[.25in]
-    \begin{lstlisting}
-    [1, 2, 3, 4, [5, 6]]
-    \end{lstlisting}
-    \end{solution}
-    \begin{lstlisting}
-    >>> d = c * 2
-    >>> d
-    \end{lstlisting}
-    \begin{solution}[.25in]
-    \begin{lstlisting}
-    [1, 2, 3, 4, [5, 6], 1, 2, 3, 4, [5, 6]]
-    \end{lstlisting}
-    \end{solution}
-    
-
-    \end{blocksection}
-
         
     \begin{questionmeta}
         \textbf{Teaching Tips}
         \begin{enumerate}
-                \item Encourage students to draw box and pointer diagrams if they seem stuck
-                \item It can be helpful to visually go through indexing and list slicing in the box and pointer diagram
-                \item Python is confusing when adding on to a list with \lstinline{lst += [element]} and \lstinline{lst = lst + element}. The former mutates and the latter creates a new list
-                \item Make sure you clearly state when you’re making a new list object (i.e. at \lstinline{a = a + [4, [5, 6]]} and list slicing like \lstinline{d = c[3:5]})
-                \item Be sure to touch on negative indices and reiterate the difference between shallow and deep copies -- as it's a nuance in list comprehension, we decided not to include it in the overview, but when going over this problem, please make sure to touch on this!
-                \item If students need additional help with shallow and deep copying, feel free to come up with your own creative iterations on the shallow and deep copying problems.
+                \item Encourage students to draw box and pointer diagrams if they seem stuck. 
+                \item Make sure to state that list adding two lists with + creates a new list. It may be helpful to draw a box and pointer diagram to show which statements make a new list.
         \end{enumerate}
     \end{questionmeta}
