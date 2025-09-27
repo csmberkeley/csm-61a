@@ -1,5 +1,6 @@
 \begin{blocksection}
-\question Complete the function \lstinline{apply_to_even}, which takes a single-argument function \lstinline{f} and a dictionary \lstinline{d} and returns a new dictionary with only the keys that are even, and applies \lstinline{f} to these keys' values.
+\question Using a dictionary comprehension, complete the function, which takes a single-argument function \lstinline{f} and a dictionary \lstinline{d} and returns a new dictionary with only the keys that are even, and applies \lstinline{f} to these keys' values.
+\begin{lstlisting}
 def apply_to_even(f, snap_inputs):
     """
     >>> apply_to_even(lambda x: x**2, {1:3, 2:5, 4:2, 3:2})
