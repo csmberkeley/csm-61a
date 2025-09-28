@@ -1,13 +1,15 @@
 \begin{blocksection}
-\question Using a dictionary comprehension, complete the function, which takes a single-argument function \lstinline{f} and a dictionary \lstinline{d} and returns a new dictionary with only the keys that are even, and applies \lstinline{f} to these keys' values.
+\question Using a dictionary comprehension, complete the function below. It takes a single-argument function \lstinline{f} and a dictionary \lstinline{d}, and returns a new dictionary containing only the entries whose keys are even numbers, with \lstinline{f} applied to their values.
+
+    
+    
 \begin{lstlisting}
-def apply_to_even(f, snap_inputs):
-    """
+def apply_to_even(f, d):
+    '''
     >>> apply_to_even(lambda x: x**2, {1:3, 2:5, 4:2, 3:2})
-    {2:25, 4:4}
-    """
-        
-    return [____________________________________________________________________________]
+    {2: 25, 4: 4}
+    '''
+    return {__ : _____ for ____ in ____ if ___________}
 \end{lstlisting}
 
 \begin{solution}
