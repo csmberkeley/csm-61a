@@ -4,6 +4,7 @@
     'CS 61A CS Mentors'
     >>> colors = ['red', 'yellow', 'green']
     >>> 'green' in colors
+    True
     >>> 'GREEN' in colors
     False
     >>> luggage = [c + ' suitcase' for c in colors]
@@ -15,6 +16,7 @@
     >>> a
     [1, 2, 3]
     >>> a[2]
+            3
     >>> a[:2]
     [1, 2]
     >>> b = [1, 2, 3, a, 4]
@@ -25,7 +27,7 @@
 
 
 [x ** 2 for x in lst]
-sum([x for x lst1 if x % 2 == 0])
+sum([x for x in lst if x % 2 == 0])
 a = [[x for x in range(y)] for y in range(1, 6)]
 b = [[x for x in range(y) if x != 2] for y in range(1, 6)]
 
