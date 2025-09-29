@@ -2,60 +2,52 @@
     \question What would Python display? Draw box-and-pointer diagrams for the following:
     
     \begin{lstlisting}
-    >>> a = [1, 2, 3]
-    >>> a
+    >>> x = 'CS61A '
+    >>> y = 'CS Mentors'
+    >>> x + y
     \end{lstlisting}
     \begin{solution}[.25in]
     \begin{lstlisting}
-    [1, 2, 3]
+    'CS 61A CS Mentors'
     \end{lstlisting}
     \end{solution}
     
     \begin{lstlisting}
-    >>> a[2]
+    >>> colors = ['red', 'yellow', 'green']
+    >>> 'green' in colors
     \end{lstlisting}
     \begin{solution}[.25in]
     \begin{lstlisting}
-            3
+    True
     \end{lstlisting}
     \end{solution}
-    
     \end{blocksection}
     \begin{blocksection}
     
     \begin{lstlisting}
-    >>> a[:2]
+    >>> 'GREEN' in colors
     \end{lstlisting}
     \begin{solution}[.25in]
     \begin{lstlisting}
-    [1, 2]
+    False
     \end{lstlisting}
     \end{solution}
     \begin{lstlisting}
-    >>> b = [1, 2, 3, a, 4]
-    >>> b
+    >>> luggage = [c + ' suitcase' for c in colors]
+    >>> luggage
     \end{lstlisting}
     \begin{solution}[.25in]
     \begin{lstlisting}
-    [1, 2, 3, [1, 2, 3], 4]
+    ['red suitcase', 'yellow suitcase', 'green suitcase']
     \end{lstlisting}
     \end{solution}
-
-    \begin{lstlisting}
-    >>> b[3][2]
-    \end{lstlisting}
-    \begin{solution}[.25in]
-    \begin{lstlisting}
-    3
-    \end{lstlisting}
-    \end{solution}    
 \end{blocksection}
         
         
     \begin{questionmeta}
         \textbf{Teaching Tips}
         \begin{enumerate}
-                \item Encourage students to draw box and pointer diagrams if they seem stuck. 
-                \item Make sure to state that list adding two lists with + creates a new list. It may be helpful to draw a box and pointer diagram to show which statements make a new list.
+                \item Make sure that they understand that strings are case sensitive for Python and how string concatenation works
+                \item The last question combines a lot of topics that they've recently learned so if short on time, feel free to skip to that. 
         \end{enumerate}
     \end{questionmeta}
