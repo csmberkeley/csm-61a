@@ -57,3 +57,29 @@ StopIteration Error
 16
 
 
+def interleave(iter1, iter2):
+    '''
+    >>> gen = interleave(iter([1, 3, 5, 7, 9]),
+                         iter([2, 4, 6, 8, 10]))
+    >>> for elem in gen:
+    ...     print(elem)
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    '''
+    t1, t2 = next(iter1), next(iter2)
+    while True:
+        if t1 > t2:
+            yield t2
+            t2 = next(iter2)
+        else:
+            yield t1
+            t1 = next(iter1)
+
+
