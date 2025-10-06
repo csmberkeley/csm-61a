@@ -1,0 +1,73 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Trees, Mutability and Iterators}
+\date{September 29 -- October 6, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Note:} Feel free to ask students about what topics they'd like to go through, since we have more questions in the worksheet than usual because many concepts were covered in the last week. 
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Ice Breaker [5 min]
+            \subitem{If you want, start off with an icebreaker of your choice!}
+            \subitem{Also, there is a link to a feedback form at the bottom of this worksheet! It would be amazing if you could highlight 
+            this/fill it out yourself so we can improve the worksheets in the future! }
+        \item Mini-lecture: Trees [3 min]
+        \item Q1: Factor Tree [6 min]
+        \item Q2: Even Square Tree [11 min]
+        \item Q3: Pompom [8 min]
+        \item Q4: Accumulate [12 min]
+        \item Mini-lecture: iterators [5 min]
+        \item Q4: WWPD Iterators [8 min]
+    \end{itemize}
+
+\end{meta}
+
+\section{Trees}
+\subimport{../../topics/trees/adt/text/}{tree_overview.tex}
+
+\begin{questions}
+
+    \subimport{../../topics/trees/adt/medium/}{factor-tree.tex}
+    \begin{questionmeta}
+        Suggested Time: 6 min
+    \end{questionmeta}
+
+    \subimport{../../topics/trees/adt/medium/}{even-square-tree.tex}
+    \begin{questionmeta}
+        Suggested Time: 11 min
+    \end{questionmeta}
+
+
+\end{questions}
+
+\section{Mutability}
+\begin{questions}
+
+
+    \subimport{../../topics/lists/mutable/easy/env-diagram/}{pompom.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 min
+    \end{questionmeta}
+
+    \subimport{../../topics/lists/mutable/medium/}{accumulate.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+    \end{questionmeta}
+\end{questions}
+
+
+\section{Iterators}
+
+\begin{questions}
+\subimport{../../topics/iterators/easy/}{wwpd.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 min
+    \end{questionmeta}
+\end{questions}
+
+\end{document}
