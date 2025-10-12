@@ -2,7 +2,7 @@
 \question Implement the classes so the following code runs.
 
 \begin{lstlisting}
-"""
+'''
 >>> p = Plant()
 >>> p.height
 1
@@ -22,7 +22,7 @@
 2
 >>> p.leaf.sugars_used
 1
-"""
+'''
 \end{lstlisting}
 \end{blocksection}
 
@@ -30,15 +30,15 @@
 \begin{lstlisting}
 class Plant:
     def __init__(self):
-        """A Plant has a Leaf, a list of sugars created so far,
+        '''A Plant has a Leaf, a list of sugars created so far,
         and an initial height of 1.
-        """
+        '''
         self.leaf = Leaf(self)
         self.materials = ___________
         self.height = ___________
 
     def absorb(self):
-        """Calls the Leaf to create sugar."""
+        '''Calls the Leaf to create sugar.'''
 
 
 
@@ -46,9 +46,9 @@ class Plant:
 
 
     def grow(self):
-        """A Plant consumes all of its sugars to grow, each of which
+        '''A Plant consumes all of its sugars to grow, each of which
         increases its height by 1.
-        """
+        '''
 
 
 
@@ -57,16 +57,16 @@ class Plant:
 
 class Leaf:
     def __init__(self, plant): # plant is a Plant instance
-        """A Leaf is initially alive, and keeps track of how many
+        '''A Leaf is initially alive, and keeps track of how many
         sugars it has created.
-        """
+        '''
 
 
 
     def absorb(self):
-        """If this Leaf is alive, a Sugar is added to the plant's
+        '''If this Leaf is alive, a Sugar is added to the plant's
         list of sugars.
-        """
+        '''
         if self.alive:
 
 
@@ -81,7 +81,7 @@ class Sugar:
 
 
     def activate(self):
-        """A sugar is used."""
+        '''A sugar is used.'''
 
 
 
@@ -95,38 +95,25 @@ class Sugar:
 \begin{lstlisting}
 class Plant:
     def __init__(self):
-        """A Plant has a Leaf, a list of sugars created so far,
-        and an initial height of 1.
-        """
         self.leaf = Leaf(self)
         self.materials = []
         self.height = 1
 
     def absorb(self):
-        """Calls the Leaf to create sugar."""
         self.leaf.absorb()
 
     def grow(self):
-        """A Plant consumes all of its sugars to grow, each of which
-        increases its height by 1.
-        """
         for sugar in self.materials:
             sugar.activate()
             self.height += 1
 
 class Leaf:
     def __init__(self, plant): # plant is a Plant instance
-        """A Leaf is initially alive, and keeps track of how many
-        sugars it has used.
-        """
         self.alive = True
         self.sugars_used = 0
         self.plant = plant
 
     def absorb(self):
-        """If this Leaf is alive, a Sugar is added to the plant's
-        list of sugars.
-        """
         if self.alive:
             self.plant.materials.append(Sugar(self, self.plant))
 
@@ -143,7 +130,6 @@ class Sugar:
         Sugar.sugars_created += 1
 
     def activate(self):
-        """A sugar is used."""
         self.leaf.sugars_used += 1
         self.plant.materials.remove(self)
 

@@ -6,13 +6,13 @@
     
     \begin{lstlisting}
     def fruitOptions(m, pc, ac):
-        """
+        '''
         >>> print(list(fruitOptions(10, 2, 5)))
         ['pear pear pear pear pear ', 'pear pear apple ', 'pear apple pear ',
          'apple pear pear ', 'apple apple ']
-        """
+        '''
         if __________________________________:
-            yield ""
+            yield ''
         if m >= pc:
             for ______________________________________:
                 ________________________________
@@ -26,13 +26,13 @@
     \begin{lstlisting}
         def fruitOptions(m, pc, ac): 
             if m < pc and m < ac:
-                yield ""
+                yield ''
             if m >= pc:
                 for p in fruitOptions(m-pc, pc, ac):
-                    yield "pear " + p;
+                    yield 'pear ' + p;
             if m >= ac:
                 for a in fruitOptions(m-ac, pc, ac):
-                    yield "apple " + a;    
+                    yield 'apple ' + a;    
     \end{lstlisting}
     \end{solution}
     \end{blocksection}
