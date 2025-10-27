@@ -77,20 +77,3 @@ ben[1][1][1] = ben
 print(ben)
 
 
-    def fruitOptions(m, pc, ac):
-        '''
-        >>> print(list(fruitOptions(10, 2, 5)))
-        ['pear pear pear pear pear ', 'pear pear apple ', 'pear apple pear ',
-         'apple pear pear ', 'apple apple ']
-        '''
-        if __________________________________:
-            yield ''
-        if m >= pc:
-            for ______________________________________:
-                ________________________________
-        if m >= ac:
-            for ______________________________________:
-                ____________________________________
-                
-
-

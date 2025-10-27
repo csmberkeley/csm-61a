@@ -57,14 +57,3 @@ ben[1][1][1] = ben
 print(ben)
 
 
-        def fruitOptions(m, pc, ac): 
-            if m < pc and m < ac:
-                yield ''
-            if m >= pc:
-                for p in fruitOptions(m-pc, pc, ac):
-                    yield 'pear ' + p;
-            if m >= ac:
-                for a in fruitOptions(m-ac, pc, ac):
-                    yield 'apple ' + a;    
-
-
