@@ -1,0 +1,22 @@
+\question How many seconds would this function call take to run?
+
+\begin{lstlisting}
+>>> async def sleepy(a):
+        await asyncio.sleep(a)
+        await asyncio.sleep(a-1)
+>>> async def sleepy2(b):
+        await asyncio.gather(sleepy(b), sleepy(b-1))
+>>> asyncio.run(sleepy2(5))
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+9
+
+asyncio.gather() runs the arguments concurrently, so the total time this takes to run will just be the longest coroutine call. 
+sleepy(5) will take 5 + 4 seconds to run (since the asyncio.sleep() calls are in sequence/not in a gather call), 
+while sleepy(4) will take 4 + 3 seconds to run. So the total time taken will be 4 + 5 = 9 seconds.
+
+(This is a new question! Please let us know if this answer seems wrong!)
+\end{lstlisting}
+\end{solution}
