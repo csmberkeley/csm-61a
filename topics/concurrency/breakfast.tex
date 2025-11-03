@@ -1,0 +1,71 @@
+\question Super Speedy Sam wants to make breakfast! It takes Sam two seconds to toast bread and one second to brew coffee. Both tasks should happen at the same time. Fill in the blanks for the functions below to make this happen. 
+
+\begin{lstlisting}
+    import asyncio
+
+    async def make_task(name: str, delay: float):
+        '''
+        Simulates a breakfast task by waiting for a delay period of time. 
+        '''
+        print(f'Starting: {name}')
+        await asyncio.___(___)
+        print(f'Finished: {name}')
+        return f'{name} is ready'
+    async def main():
+        '''
+        Runs both breakfast tasks concurrently.
+        
+        >>> asyncio.run(main())
+        Making breakfast...
+        Starting: Toast
+        Starting: Coffee
+        Finished: Coffee
+        Finished: Toast
+        Breakfast is ready: ['Toast is ready', 'Coffee is ready']
+        '''
+        print('Making breakfast...')
+        results = await asyncio._____(make_task(____,____), make_task(____, _____))
+        print(f'Breakfast is ready: {results}')
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+
+    import asyncio
+
+    async def make_task(name: str, delay: float):
+        '''
+        Simulates a breakfast task by waiting for a delay period of time.  
+        '''
+        print(f'Starting: {name}')
+        await asyncio.sleep(delay)
+        print(f'Finished: {name}')
+        return f'{name} is ready'
+
+    async def main():
+        '''
+        Runs both breakfast tasks concurrently.
+        
+        >>> asyncio.run(main())
+        Making breakfast...
+        Starting: Toast
+        Starting: Coffee
+        Finished: Coffee
+        Finished: Toast
+        Breakfast is ready: ['Toast is ready', 'Coffee is ready']
+        '''
+        print('Making breakfast...')
+        results = await asyncio.gather(make_task('Toast', 2.0), make_task('Coffee', 1.0))
+        print(f'Breakfast is ready: {results}')
+\end{lstlisting}
+For Fall 2025 mentors (if future sem feel free to delete this): PLEASE give us feedback on this section, since all of the concurrency questions are new and this is a new topic! \\
+Make sure to review what each async function does (like sleep and gather), and feel free to ask clarifying questions or probe more about why concurrency is important. 
+\end{solution}
+
+
+        
+
+
+
+    
+    
