@@ -20,8 +20,8 @@ follows \lstinline$6$ in the list.
 \begin{lstlisting}
 (define (six-sevens lst)
     (cond ((or (null? lst) (null? (cdr lst))) 0)
-          ((and (= 6 (car lst)) (= 7 (cadr lst))) (+ 1 (sixty-ones (cddr lst))))
-          (else (sixty-ones (cdr lst)))))
+          ((and (= 6 (car lst)) (= 7 (car (cdr lst)))) (+ 1 (six-sevens (cdr(cdr lst)))))
+          (else (six-sevens (cdr lst)))))
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
