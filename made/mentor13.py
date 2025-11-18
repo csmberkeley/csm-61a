@@ -16,51 +16,17 @@ nil = Link.empty
 (+ 1 2)
 
 
-> (six-sevens '(4 6 7 6 0 7))
-1
-> (sixty-ones '(7 6 7 4 6 7 6 0 7))
-2
-> (sixty-ones '(6 7 6 7 4 6 7 6 0 7))
+; Doctests
+scm> (meta-apply + (1 2)) 
 3
-
-(define (six-sevens lst)
-    (cond (____________________________________________)
-          (_______________________________________________________________________)
-          (else ______________________________)))
-
-
-scm> (waldo '(1 4 waldo))
+scm> (meta-apply or (#t (/ 1 0) #f))
 #t
-scm> (waldo '())
-#f
-scm> (waldo '(1 4 9))
-#f
-
-(define (waldo lst))
-scm> (waldo '(1 4 waldo))
-2
-scm> (waldo '())
-#f
-scm> (waldo '(1 4 9))
-#f
-
-(define (waldo lst)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(define-macro (meta-apply operator operands)
+    
 
 )
+(define-macro (meta-apply operator operands)
+    `(,operator ,operands))
 
 
 ;Doctests
@@ -80,5 +46,32 @@ scm> (+ (combine-num (1 2 3 4)) 5)
 
 )
 
+
+
+; doctests
+scm> (and-odds '((= 10 10)))
+#t
+scm> (and-odds '((= 1 2)))
+#f
+scm> (and-odds '(#f #t #t))
+#f
+scm> (and-odds '((< 5 3) (= 5 5)))
+#f
+scm> (and-odds '((> 3 2) (< 5 0) (= 5 5)))
+#t
+scm> (and-odds '((< 1 5) (< 5 2) (< 3 5) (< 5 3) (< 4 5)))
+#t
+scm> (define a (list 1 #f 3))
+a
+scm> (and-odds a)
+3
+(define-macro (and-odds exprs)
+    `(if _________________________________________________
+
+         _________________________________________________
+
+         _________________________________________________
+    )
+)
 
 

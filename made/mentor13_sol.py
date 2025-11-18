@@ -16,70 +16,19 @@ nil = Link.empty
 (+ 1 2)
 
 
-(define (six-sevens lst)
-    (cond ((or (null? lst) (null? (cdr lst))) 0)
-          ((and (= 6 (car lst)) (= 7 (car (cdr lst)))) (+ 1 (six-sevens (cdr(cdr lst)))))
-          (else (six-sevens (cdr lst)))))
-
-
-scm> (waldo '(1 4 waldo))
+; Doctests
+scm> (meta-apply + (1 2)) 
+3
+scm> (meta-apply or (#t (/ 1 0) #f))
 #t
-scm> (waldo '())
-#f
-scm> (waldo '(1 4 9))
-#f
-
-(define (waldo lst))
-(define (waldo lst)
-    (cond ((null? lst) #f)
-          ((eq? (car lst) 'waldo) #t)
-          (else (waldo (cdr lst)))
-      )
-  )
-
-
-(define (waldo lst)
-    (if (null? lst)
-        #f
-        (if (eq? (car lst) 'waldo)
-            #t
-            (waldo (cdr lst))
-        )
-    )
-)
-scm> (waldo '(1 4 waldo))
-2
-scm> (waldo '())
-#f
-scm> (waldo '(1 4 9))
-#f
-
-(define (waldo lst)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(define-macro (meta-apply operator operands)
+    
 
 )
-(define (waldo lst)
-    (define (helper lst index)
-        (cond ((null? lst) #f)
-              ((eq? (car lst) 'waldo) index)
-              (else (helper (cdr lst) (+ index 1)))
-          )
-      )
-    (helper lst 0)
-  )
+(define-macro (meta-apply operator operands)
+    (cons operator operands))
+(define-macro (meta-apply operator operands)
+    `(,operator ,operands))
 
 
 ;Doctests
@@ -105,5 +54,13 @@ scm> (+ (combine-num (1 2 3 4)) 5)
   )
 )
 
+
+
+(define-macro (and-odds exprs)
+    `(if (> (length ,exprs) 2)
+          (and (car ,exprs) (and-odds (cdr (cdr ,exprs))))
+          (eval (car ,exprs))
+    )
+)
 
 
