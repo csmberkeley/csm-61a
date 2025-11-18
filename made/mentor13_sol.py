@@ -1,40 +1,18 @@
-scm> (cons 1 (cons 2 nil))
-scm> (cons 1 '(2 3 4 5))
-scm> (cons 1 '(2 (cons 3 nil)))
-scm> (cons 1 (2 (cons 3 nil)))
-eval: bad function in : (2 (cons 3 nil))
-scm> (cons 3 (cons (cons 4 nil) nil))
-scm> (define a '(1 2 3))
-a
-scm> a
-(1 2 3)
-scm> (car a)
-1
-scm> (cdr a)
-(2 3)
-scm> (car (cdr a))
-2
-(car (cdr (cdr a)))
+class Link:
+    '''A Scheme list is a Link in which rest is a Link or nil.'''
+    empty = ()
+    def __init__(self, first, rest=empty):
+        self.first = first
+        self.rest = rest
+
+    # There are also __str__, __repr__, and map methods, omitted here.
+
+nil = Link.empty
+>>> Link('*', Link(5, Link(Link('-', Link(10, Link(2, nil))), nil)))
+    >>> Link('or', Link(Link('>', Link(5, Link(2, nil))), Link(Link('/', Link(1, Link(2, nil))), nil)))
 
 
-scm> (define c 4)
-c
-scm> ((define (x) 1))
-Error: str is not callable: x
-scm> (x)
-1
-scm> ((lambda (x y) (+ c)) 1 2)
-4
-scm> (eval 'c)
-2
-scm> '(cons 1 nil)
-(cons 1 nil)
-	scm> (eval '(cons 1 nil))
-	(1)
-scm> (eval (list 'if '(even? c) 1 2))
-1
-scm> (let ((a (+ 3 1)) (b 3)) (+ a b) (/ a b))
-1.333333333333333
+(+ 1 2)
 
 
 (define (six-sevens lst)

@@ -1,24 +1,18 @@
-scm> (cons 1 (cons 2 nil))
-scm> (cons 1 '(2 3 4 5))
-scm> (cons 1 '(2 (cons 3 nil)))
-scm> (cons 1 (2 (cons 3 nil)))
-scm> (cons 3 (cons (cons 4 nil) nil))
-scm> (define a '(1 2 3))
-scm> a
-scm> (car a)
-scm> (cdr a)
-scm> (car (cdr a))
+class Link:
+    '''A Scheme list is a Link in which rest is a Link or nil.'''
+    empty = ()
+    def __init__(self, first, rest=empty):
+        self.first = first
+        self.rest = rest
+
+    # There are also __str__, __repr__, and map methods, omitted here.
+
+nil = Link.empty
+>>> Link('*', Link(5, Link(Link('-', Link(10, Link(2, nil))), nil)))
+    >>> Link('or', Link(Link('>', Link(5, Link(2, nil))), Link(Link('/', Link(1, Link(2, nil))), nil)))
 
 
-scm> (define c 4)
-scm> ((define (x) 1))
-scm> (x)
-scm> ((lambda (x y) (+ c)) 1 2)
-scm> (eval 'c)
-scm> '(cons 1 nil)
-	scm> (eval '(cons 1 nil))
-scm> (eval (list 'if '(even? c) 1 2))
-scm> (let ((a (+ 3 1)) (b 3)) (+ a b) (/ a b))
+(+ 1 2)
 
 
 > (six-sevens '(4 6 7 6 0 7))
