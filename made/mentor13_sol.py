@@ -9,7 +9,8 @@ class Link:
 
 nil = Link.empty
 >>> Link('*', Link(5, Link(Link('-', Link(10, Link(2, nil))), nil)))
-    >>> Link('or', Link(Link('>', Link(5, Link(2, nil))), Link(Link('/', Link(1, Link(2, nil))), nil)))
+>>> Link('or', Link(Link('>', Link(5, Link(2, nil))), Link(Link('/', Link(1, Link(2, nil))), nil)))
+    >>> Link('+', Link(1, Link(Link('*', Link(Link('-', Link(5, Link(2, nil))), Link(Link('+', Link(3, Link(1, nil))), nil))), Link(5, nil))))
 
 
 (+ 1 2)
@@ -81,25 +82,28 @@ scm> (waldo '(1 4 9))
   )
 
 
-def list_sum(lst):
-    '''
-    >>> list_sum([1, 2, 3, 4, 5])
-    15
-    >>> list_sum([1, '2', 3, '4', 5])
-    9
-    >>> list_sum(['1', '2', 3, 4, 5])
-    12
-    '''
-    i = 0
-    total = 0
-    while True:
-        try:
-            total = total + lst[i]
-        except IndexError:
-            return total
-        except TypeError:
-            i += 1
-            continue
-        i += 1
+;Doctests
+scm> (combine-num (1 2)) 
+; 21
+scm> (combine-num (2 5 3 5)) 
+; 5352
+scm> (combine-num (1)) 
+; 1
+scm> (+ (combine-num (1 2 3 4)) 5)
+; 4326      # (4321 + 5)
+
+
+(define-macro (combine-num lst) 
+
+
+
+)
+
+(define-macro (combine-num lst) 
+  (if (null? lst) 0 
+    `(+ ,(car lst)(* 10 (combine-num ,(cdr lst))))
+  )
+)
+
 
 
