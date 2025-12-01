@@ -17,9 +17,11 @@
             this/fill it out yourself so we can improve the worksheets in the future! }
         \item Mini-lecture: SQL [10 min]
         \item Q1: Fish [10 min]
-        \item Q2: Party [10 min]
-        \item Q3: Circus [10 min]
-        \item Q4: Outfits [10 min]
+        \item Q2: Circus [10 min]
+        \item Q3: Mentors [10 min]
+        \item Q4: Outfits [8 min]
+        \item Mini-lecture: Tree-Refresher [5 min]
+        \item Q5: Weighted Tree [10 min] (optional tho or you can do this question instead of a 4th SQL one)
         
     \end{itemize}
 
@@ -27,6 +29,8 @@
 
 \section{SQL}
 \begin{questions}
+
+
 
     \subimport{../../topics/sql/fish/text/}{intro.tex}
     \subimport{../../topics/sql/fish/tables/}{fish.tex}
@@ -37,10 +41,8 @@
         Suggested Time: 10 min
     \end{questionmeta}
 
-    \subimport{../../topics/sql/party/}{}
-    \begin{questionmeta}
-        Suggested Time: 10 min
-    \end{questionmeta}
+    \newpage
+
 
     \subimport{../../topics/sql/circus/}{text.tex}
     \subimport{../../topics/sql/circus/}{table.tex}
@@ -50,14 +52,39 @@
         Suggested Time: 10 min
     \end{questionmeta}
 
+    \newpage
+
+    \subimport{../../topics/sql/mentors/}{table.tex}
+    \subimport{../../topics/sql/mentors/easy/}{alphabetical.tex}
+    \subimport{../../topics/sql/mentors/easy/}{food-and-color-if-language-not-python.tex}
+    \subimport{../../topics/sql/mentors/easy/}{food-if-color-green.tex}
+    \subimport{../../topics/sql/mentors/medium/}{pairs-same-language.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+    \end{questionmeta}
+
+    \newpage
+
+
     \subimport{../../topics/sql/outfits/}{text.tex}
     \subimport{../../topics/sql/outfits/tables/}{grades.tex}
     \subimport{../../topics/sql/outfits/medium/}{blueshirt.tex}
     \subimport{../../topics/sql/outfits/medium/}{sum-scores.tex}
     \begin{questionmeta}
-        Suggested Time: 5 min
+        Suggested Time: 8 min
     \end{questionmeta}
 
 \end{questions}
+
+
+\section{Trees}
+\begin{questions}
+    \subimport{../../topics/trees/class/medium/}{weighted-tree.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 min
+    \end{questionmeta}
+
+\end{questions}
+
 
 \end{document}
