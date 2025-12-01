@@ -3,7 +3,7 @@
 
 \begin{solution}[0.7in]
 \begin{lstlisting}
-    SELECT grades.day, sum(score) 
+    SELECT grades.day, SUM(score) 
     FROM grades, outfits 
     WHERE outfits.color = "blue" and outfits.day = grades.day 
     GROUP BY grades.day;
