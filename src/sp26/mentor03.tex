@@ -1,0 +1,90 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{3}
+\title{Higher-Order Functions \& Environment Diagrams}
+\date{February 2 -- February 6, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Intros, Ice Breakers, Expectations, Logistics \& Brief Intro of CSM [5 min]
+        \subitem Don't be afraid to spend some time on this! It'll likely make your job in the future easier! 
+        Prospective mentees will also get to know how CSM works and doing icebreakers will make it a welcoming experience for all of them but try to keep them kind of short since this is not their official session.
+        \subitem Also, a new change is that we will be trying to give more worksheet problems in hopes that you can choose which questions work best for your section based on their understanding of the topic!
+        \item Environment Diagrams Mini Lecture + Q1 [15 mins]
+        \subitem 1. You can use Q1 as an example for the mini-lecture
+        \subitem 2. A lot of students (even those with significant programming background) get confused by env. diagrams. 
+        It's probably worth doing the minilecture even if you have advanced students.
+        \subitem 3. You should address when we need to make a new frame in an environment diagram.
+        \item Higher Order Functions Overview + Reasoning + Q1 [5 mins]
+        \item Problems (You pick which ones): HOF  
+        \subitem 1. Print_n: simpler HOF example function
+        \subitem 2. WholeSum: Another HOF example and digit manipulation and while loop practice
+        \subitem 3. Alternator: HOF example with while loop practice
+        \subitem 4. Snowflake: HOF environment diagram example, make sure to look at the solution thru the link shown if you need any help! 
+        \subitem 5. Partial Summer: Harder HOF problem that might take a while for students to grasp what function should do, exam prep (only if extra time or advanced section)
+    \end{itemize}
+\end{meta} 
+
+\section{Environment Diagrams}
+\begin{questions}
+    \subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Medium
+        \begin{itemize}
+            \item Go over the order in which call expressions are evaluated and emphasize that a lot since that is a fundamental of this class.
+            \item Remind them that for user-defined functions, both lambda functions and functions created with def keyword, that parent is the function it is defined in.
+            \subitem Show difference between \lstinline{x} and \lstinline{y} in both global and local frames.
+            \item It might also be good to recap what \lstinline{x, y = y, x} does in python
+        \end{itemize}
+      \end{questionmeta}          
+\end{questions}
+
+\section{Higher-Order Functions}
+\begin{questions}
+    
+    \subimport{../../topics/hof/easy/}{print_n.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 mins; Difficulty: Easy
+    \end{questionmeta}
+
+    \subimport{../../topics/hof/medium/}{check_sum.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 Mins; Difficulty: Medium
+        \begin{itemize}
+            \item Remind your students that for HOFs, you must \lstinline{return} the inner function (ie we must \lstinline{return check} to use it).
+            \item Also depending on the skill level of students in your section, a recap of digit manipulation may be needed (ie x // 10, x \% 10, etc.)
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/hof/medium}{alternator.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 mins; Difficulty: Medium
+        \begin{itemize}
+            \item Walk students through each iteration from 1 to x, and show how each of the two functions \verb|f,g| alternate on incrementing inputs.
+            \item Remember the general structure needed whenever a function must return a function.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/medium/env-diagram}{snowflake.tex}
+    \begin{questionmeta}
+        Suggested Time: 12 mins; Difficulty: Medium
+        \begin{itemize}
+        \item This question combines both HOF and environment diagram so highly recommended. Make sure to clarify what happens when two variables/functions are the same name and make sure they first understand how the function works before attempting to draw the env diagram.  
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/hof/hard/}{snowflake.tex}
+    \begin{questionmeta}
+        Suggested Time: 15 mins; Difficulty: Hard
+        \begin{itemize}
+        \item First go over a few examples before letting students work on question. Feel free to give a hint about what while loop should be doing and the use of the helper function. 
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\end{document}

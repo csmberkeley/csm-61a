@@ -1,18 +1,18 @@
 \begin{blocksection}
-\question Make a function \texttt{print\_n} which returns a repeatable print function that can print the next \texttt{n} parameters. When there are no parameters left, it prints "done" each time the function is called.
+\question Make a function \texttt{print\_n} which returns a repeatable print function that can print the next \texttt{n} parameters. When there are no parameters left, it prints 'done' each time the function is called.
 \begin{lstlisting}
 def print_n(n):
-    """
+    '''
     >>> f = print_n(2)
-    >>> f = f("hi")
+    >>> f = f('hi')
     hi
-    >>> f = f("hello")
+    >>> f = f('hello')
     hello
-    >>> f = f("bye")
+    >>> f = f('bye')
     done
-    >>> f = f("no, not done")
+    >>> f = f('no, not done')
     done
-    """
+    '''
     def inner_print(print_str):
         if ___________________:
            ___________________
@@ -29,9 +29,21 @@ def print_n(n):
         if n > 0:
             print(print_str)
         else:
-            print("done")
+            print('done')
         return print_n(n - 1)
     return inner_print
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{blocksection}
+    \begin{guide}
+      \textbf{Teaching Tips}
+      \begin{itemize}
+             \item Make sure to explain why we return print_n(n-1) instead of modifying n in place.
+             \item Feel free to walk through some examples as well before going into the problem itself. 
+      \end{itemize}
+    \end{guide}
+   \end{blocksection}
+    
+   \end{blocksection}
