@@ -1,0 +1,40 @@
+\begin{blocksection}
+\question Translate the example of standing in a line for boba into Python! We can represent our line as an integer of 0s and 1s, where the 0s represent an empty space and the 1s represent a person standing in line.
+You are about to stand at the end of the line, but first, you need to count how many people would be in front of you!
+Complete the definition for \texttt{boba\_line}, which takes in an integer $n$ and returns the number of 1s in it. Implement the function recursively, with a base case and a recursive case.
+
+Hint: To get the last digit of an integer n, you can do n \% 10 
+      To remove the last digit from an integer, you can do n // 10 
+
+\begin{lstlisting}
+def boba_line(n):
+    """Takes in an integer of 0s and 1s and returns the number of 1s.
+
+    >>> boba_line(0)
+    0
+    >>> boba_line(1)
+    1
+    >>> boba_line(10101)
+    3
+    >>> boba_line(10001)
+    2
+    """
+    if __________________ :             # base case
+
+        return _________________
+
+    else:
+
+        return ________________  +  ____________________   # recursive case
+
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    if n < 10:
+        return n
+    else:
+        return (n % 10) + boba_line(n // 10)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

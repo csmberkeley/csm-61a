@@ -1,0 +1,70 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Environment Diagram Review and Introduction to Recursion}
+\date{February 10, 2026 -- February 13, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Teaching tips:
+            \subitem{\textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).}
+            \subitem{\textbf{However, the time in brackets will add up to ~50 minutes, and is intended to be a suggested outline for your section.}}
+            \subitem{Also, the worksheet feedback form is linked at the bottom of this worksheet!}
+        
+        \item Intros, Ice Breakers, \& Logstics [5 min]
+            \subitem{Introduce yourself, and give an overview of what CSM offers. Start off with an icebreaker of your choice!}
+        \item Mini-lecture: Review of Environment Diagrams, Lambda Expressions (If Needed) [5 min]
+        \item Q1: Environment Diagram with Lambda Expressions [7 minutes]
+        \item Mini-Lecture: Introduction to Recursion [10 min]
+            \subitem{You can use the next question as an example, as it ties into the explanation of recursion!}
+        \item Q3: Boba Line [7 minutes]
+        \item Q4: Gibonacci [7 minutes]
+        \item Q5: Counting Digits [7 minutes]
+        \item Q6: FizzBuzz [If Extra Time]
+    
+    \end{itemize}
+\end{meta}
+
+\section{Environment Diagram Practice}
+\begin{questions}
+    \subimport{../../topics/environments/medium/}{abde.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 minutes
+        The goal of this problem is to show how lambda functions are represented in an environment diagram.
+        This problem can be confusing, so you may want to draw it out step by step.
+    \end{questionmeta}
+\end{questions}
+
+\section{Introduction to Recursion}
+\begin{questions}
+    \subimport{../../topics/recursion/text/}{recursion_overview_sp24.tex}
+
+    \subimport{../../topics/recursion/easy}{boba-line.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 minutes
+        Use this question as a step by step example of how to solve a recursion problem!
+        Also, this is a new question. Please let us know if you have any feedback!
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/easy/}{gibonacci.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 minutes
+
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/easy/}{num-digits.tex}
+    \begin{questionmeta}
+        Suggested Time: 
+        This question is similar to the Boba Line problem, so it may be helpful to have students try to figure it out on their own first and look back at the other problems for reference.
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/medium/}{fizzbuzz.tex}
+
+\end{questions}
+
+\end{document}
