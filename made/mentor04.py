@@ -7,6 +7,17 @@ d = 5
 a(lambda x: 4 - x + d)
 
 
+
+
+>>> make_interval = _____________________________________
+>>> in_interval = make_interval(-1, 2)
+>>> in_interval(0)
+True
+>>> in_interval(61)
+False
+
+
+
 def boba_line(n):
     """Takes in an integer of 0s and 1s and returns the number of 1s.
 

@@ -7,6 +7,17 @@ d = 5
 a(lambda x: 4 - x + d)
 
 
+
+
+>>> make_interval = lambda lower, upper: lambda x: x <= upper and x >= lower
+>>> in_interval = make_interval(-1, 2)
+>>> in_interval(0)
+True
+>>> in_interval(61)
+False
+
+
+
     if n < 10:
         return n
     else:
