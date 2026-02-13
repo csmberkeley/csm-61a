@@ -1,0 +1,61 @@
+\begin{blocksection}
+    \question What would Python display? Draw box-and-pointer diagrams for the following:
+    
+    \begin{lstlisting}
+    >>> a = [1, 2, 3]
+    >>> a
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    [1, 2, 3]
+    \end{lstlisting}
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> a[2]
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+            3
+    \end{lstlisting}
+    \end{solution}
+    
+    \end{blocksection}
+    \begin{blocksection}
+    
+    \begin{lstlisting}
+    >>> a[:2]
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    [1, 2]
+    \end{lstlisting}
+    \end{solution}
+    \begin{lstlisting}
+    >>> b = [1, 2, 3, a, 4]
+    >>> b
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    [1, 2, 3, [1, 2, 3], 4]
+    \end{lstlisting}
+    \end{solution}
+
+    \begin{lstlisting}
+    >>> b[3][2]
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    3
+    \end{lstlisting}
+    \end{solution}    
+\end{blocksection}
+        
+        
+    \begin{questionmeta}
+        \textbf{Teaching Tips}
+        \begin{enumerate}
+                \item Encourage students to draw box and pointer diagrams if they seem stuck. 
+                \item Make sure to state that list adding two lists with + creates a new list. It may be helpful to draw a box and pointer diagram to show which statements make a new list.
+        \end{enumerate}
+    \end{questionmeta}

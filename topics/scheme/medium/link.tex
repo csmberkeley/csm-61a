@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question Based on the Link class that is below, write the scheme expression represented by the Link class.  
+Assume that this is the Link class in Python that we will be using:
+\begin{lstlisting}
+class Link:
+    '''A Scheme list is a Link in which rest is a Link or nil.'''
+    empty = ()
+    def __init__(self, first, rest=empty):
+        self.first = first
+        self.rest = rest
+
+    # There are also __str__, __repr__, and map methods, omitted here.
+
+nil = Link.empty
+>>> Link('*', Link(5, Link(Link('-', Link(10, Link(2, nil))), nil)))
+\end{lstlisting}
+\begin{solution}
+(* 5 (- 10 2))
+\end{solution}
+
+\begin{lstlisting}
+>>> Link('or', Link(Link('>', Link(5, Link(2, nil))), Link(Link('/', Link(1, Link(2, nil))), nil)))
+\end{lstlisting}
+\begin{solution}
+\verb! (or (> 5 2) (/ 1 2))!
+\end{solution}
+
+\begin{lstlisting}
+    >>> Link('+', Link(1, Link(Link('*', Link(Link('-', Link(5, Link(2, nil))), Link(Link('+', Link(3, Link(1, nil))), nil))), Link(5, nil))))
+\end{lstlisting}
+
+\begin{solution}
+\verb! (+ 1 (* (- 5 2) (+ 3 1)) 5)!
+\end{solution}
+    
+\end{blocksection}
+
+
+
+\begin{guide}
+    \begin{blocksection}
+        \textbf{Teaching Tips}
+        \begin{itemize}
+        \item Explain the Link class thoroughly and if you have time, explain what its connection is to interpreters and the scheme project. 
+        \end{itemize}
+    \end{blocksection}
+    \end{guide}

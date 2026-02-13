@@ -1,18 +1,18 @@
 \begin{blocksection}
 \question Complete the definition for \texttt{all\char`_true}, which takes in a list \texttt{lst}
 and returns \texttt{True} if there are no False-y values in the list and \texttt{False} otherwise.
-Make sure that your implementation is recursive.
+Make sure that your implementation is recursive. What is the name of the built-in Python function that does this?
 
 \begin{lstlisting}
 def all_true(lst):
-    """
-    >>> all_true([True, 1, "True"])
+    '''
+    >>> all_true([True, 1, 'True'])
     True
     >>> all_true([1, 0, 1])
     False
     >>> all_true([])
     True
-    """
+    '''
 \end{lstlisting}
 
 \begin{solution}[1in]
@@ -24,5 +24,15 @@ def all_true(lst):
     else:
         return all_true(lst[1:])
 \end{lstlisting}
+\begin{lstlisting}:
+    The built-in Python function all does the same thing that all_true does!
+\end{lstlisting}
 \end{solution}
 \end{blocksection}
+
+\begin{questionmeta}
+    \textbf{Teaching Tips}
+    \begin{enumerate}
+            \item It may be helpful to review recursion and discuss what the base case and recursive case should be.
+    \end{enumerate}
+\end{questionmeta}

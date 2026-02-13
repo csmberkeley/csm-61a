@@ -1,0 +1,53 @@
+\begin{blocksection}
+    \question What would Python display? Draw box-and-pointer diagrams for the following:
+    
+    \begin{lstlisting}
+    >>> x = 'CS61A '
+    >>> y = 'CS Mentors'
+    >>> x + y
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    'CS 61A CS Mentors'
+    \end{lstlisting}
+    \end{solution}
+    
+    \begin{lstlisting}
+    >>> colors = ['red', 'yellow', 'green']
+    >>> 'green' in colors
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    True
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    \begin{blocksection}
+    
+    \begin{lstlisting}
+    >>> 'GREEN' in colors
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    False
+    \end{lstlisting}
+    \end{solution}
+    \begin{lstlisting}
+    >>> luggage = [c + ' suitcase' for c in colors]
+    >>> luggage
+    \end{lstlisting}
+    \begin{solution}[.25in]
+    \begin{lstlisting}
+    ['red suitcase', 'yellow suitcase', 'green suitcase']
+    \end{lstlisting}
+    \end{solution}
+\end{blocksection}
+        
+        
+    \begin{questionmeta}
+        \textbf{Teaching Tips}
+        \begin{enumerate}
+                \item Make sure that they understand that strings are case sensitive for Python and how string concatenation works
+                \item The last question combines a lot of topics that they've recently learned so if short on time, feel free to skip to that. 
+        \end{enumerate}
+    \end{questionmeta}

@@ -1,0 +1,90 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Environment Diagrams and Lambda Expressions}
+\date{September 16 -- September 19, 2025}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Intros + Ice Breaker [5 min]
+            \subitem{Introduce yourself. Start off with an icebreaker of your choice!}
+        \item Mini-lecture: Environment Diagrams [7 min]
+            \subitem{Feel free to use the first question as an example/part of the mini-lecture.}
+        \item Q1: FooBar [7 min]
+        \item Q2: ABCD [10 min]
+            \subitem{Feel free to spend more time on this if needed and skip the next question.}
+        \item Q3: Swap [If Time]
+        \item Mini-lecture: Lambda Expressions and Higher Order Functions [7 min]
+        \item Q4: Def to Lambda [5 min]
+        \item Q5: Make Interval [7 min]
+        \item Q6: Lambda Environment Diagram [If Time]
+            
+    \end{itemize}
+\end{meta}
+
+\section{Environment Diagrams}
+\begin{questions}
+
+
+    \subimport{../../topics/environments/easy/}{foobar.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min
+        \begin{itemize}
+            \item Go over this question as an example for the mini-lecture, if needed.
+            \item Make sure to explan when new frames are opened and how parent frames work when calling x and y at the end.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/easy/env-diagram/}{abcd.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+        \begin{itemize}
+            \item The environment diagram questions can be a little long, so take extra time on this and skip Questions 3 and 6 if needed.
+        \end{itemize}
+    \end{questionmeta}
+
+
+
+\subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+        \begin{itemize}
+            \item Optional, for if you have time after the first two questions or at the end.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+
+\section{Lambda Expressions and Higher Order Functions}
+\begin{questions}
+    \subimport{../../topics/hof/easy/}{def-to-lambda.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min
+        \begin{itemize}
+            \item This is a quick introduction to lambda functions. 
+            \item Make sure to highlight the structure of lambda expressions and how they are called.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/hof/easy/}{make-interval.tex}
+    \begin{questionmeta}
+        Suggested Time:  7 min
+    \end{questionmeta}
+
+    \subimport{../../topics/environments/medium/}{abde.tex}
+    \begin{questionmeta}
+    Suggested Time: 7 min
+    \begin{itemize}
+            \item Optional, for if you have time. 
+            \item This question is about how lambda expressions work in environment diagrams, so briefly go over how this works if you don't have time to complete the whole question.
+        \end{itemize}
+    \end{questionmeta}
+
+\end{questions}
+
+\end{document}

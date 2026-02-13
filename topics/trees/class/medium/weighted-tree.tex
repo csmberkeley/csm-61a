@@ -5,11 +5,11 @@ Complete the following functions for \lstinline{equally_weighted} and \lstinline
 
 \begin{lstlisting}
 def total_weight(t):
-  """
+  '''
   Return the total weight of a tree, i.e. the sum of all its labels.
   >>>total_weight(Tree(1, [Tree(2), Tree(3,[Tree(4)])]))
   10
-  """
+  '''
   weight =  t.label + sum([total_weight(branch) for branch in t.branches])
   return weight
 \end{lstlisting}
@@ -18,7 +18,7 @@ def total_weight(t):
 \part
 \begin{lstlisting}
 def equally_weighted(t):
-  """
+  '''
   Return whether a tree is equally weighted.
   >>>equally_weighted(Tree(1))
   True
@@ -26,7 +26,7 @@ def equally_weighted(t):
   True
   >>>equally_weighted(Tree(0, [Tree(3), Tree(2, [Tree(3)])]))
   False
-  """
+  '''
   _______________________ = [_________________________]
 
   for _______________ in _____________________________:
@@ -67,7 +67,7 @@ def equally_weighted(t):
 
 \begin{lstlisting}
 def num_eq_weight(t):
-  """
+  '''
   Return the number of equally weighted subtrees of t. Note that t is considered a subtree of itself.
   >>> num_eq_weight(Tree(1, [Tree(4), Tree(3,[Tree(1)])]))
   4
@@ -79,7 +79,7 @@ def num_eq_weight(t):
                              Tree(1, [Tree(4), 
                                       Tree(3,[Tree(1)])])]))
   7
-  """
+  '''
   val = ______________________________________________
 
   if ______________________________________:
