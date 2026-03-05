@@ -1,0 +1,29 @@
+\begin{blocksection}
+\question Draw the environment diagram that results from running the code.
+
+\begin{lstlisting}
+six = [6]
+seven = [7]
+
+def six_seven(sixty, seventy):
+    def six_or_seven(s):
+        if s.pop() == 6:
+            return 67
+        else:
+            return 7
+    seven = six_or_seven(sixty)
+    sixty.append(seventy)
+    seventy.append(seven)
+    sixty.extend(seventy)
+    sixty[0] = 67
+    return sixty_seven(sixty)
+    
+sixty_seven = lambda x: x.pop()
+ss = six_seven(six, seven)
+print(ss)
+\end{lstlisting}
+
+\begin{solution}[2in]
+\url{https://tinyurl.com/2epvtaev}
+\end{solution}
+\end{blocksection}
