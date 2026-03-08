@@ -1,0 +1,71 @@
+\begin{blocksection}
+\question Given the following code, what will Python output for the following prompts? If you think nothing will be outputted, write N/A.
+
+\begin{lstlisting}
+class Car:
+    wheels = 4
+    def __init__(self, gas):
+        self.gas = gas
+
+    def drive(self):
+        if self.gas <= 0:
+            print("Out of gas")
+        else:
+	      self.gas -= 1
+    
+    def fill(self, gas):
+        self.gas += gas
+
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> c1 = Car(2)
+>>> c1.gas
+\end{lstlisting}
+\begin{solution}[.2in]
+2
+\end{solution}
+
+\begin{lstlisting}
+>>> c1.drive()
+\end{lstlisting}
+\begin{solution}[.2in]
+N/A
+\end{solution}
+
+\begin{lstlisting}
+>>> c1.gas
+\end{lstlisting}
+\begin{solution}[.2in]
+1
+\end{solution}
+
+\begin{lstlisting}
+>>> c1.drive()
+>>> c1.drive()
+\end{lstlisting}
+\begin{solution}[.2in]
+Out of gas
+\end{solution}
+
+\begin{lstlisting}
+>>> c1.fill(10)
+>>> c1.drive()
+>>> c1.gas
+\end{lstlisting}
+\begin{solution}[.2in]
+9
+\end{solution}
+
+\begin{lstlisting}
+>>> c1.wheels
+>>> Car.wheels
+\end{lstlisting}
+\begin{solution}[.2in]
+4
+4
+\end{solution}
+
+\end{blocksection}

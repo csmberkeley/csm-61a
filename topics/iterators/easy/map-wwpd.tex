@@ -1,0 +1,49 @@
+\begin{blocksection}
+\question What Would Python Display? If you think nothing will be displayed, write N/A.
+
+\begin{lstlisting}
+>>> x = [1, 2, 3]
+>>> y = map(lambda x : x + 10, x)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+N/A
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(y)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+11
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> [z for z in y]
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+[12, 13]
+\end{lstlisting}
+\end{solution}
+
+\begin{lstlisting}
+>>> next(y)
+\end{lstlisting}
+\begin{solution}[0.2in]
+\begin{lstlisting}
+StopIteration
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{guide}
+\begin{blocksection}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+    \item This question is a quick introduction to the map function. 
+    \end{itemize}
+\end{blocksection}
+\end{guide}
