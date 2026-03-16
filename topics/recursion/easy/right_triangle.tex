@@ -1,0 +1,45 @@
+\begin{blocksection}
+\question Complete the definition for righttriangle, which takes in a number n and recursively prints out the levels of a right triangle of height n. 
+
+\begin{lstlisting}
+def right_triangle(n):
+    '''Takes in a non-negative integer n and recursively outputs the layers of a pyramid. The function does not need to return anything. 
+
+    >>> right_triangle(0)
+    
+    >>> right_triangle(3)
+    *
+    **
+    ***
+    >>> num_digits(6)
+    *
+    ** 
+    ***
+    **** 
+    ***** 
+    ****** 
+    '''
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}:
+    def right_triangle(n):
+        if n == 0:
+            return
+        right_triangle(n-1)
+        print('*' * n)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+
+\begin{questionmeta}
+    \begin{itemize}
+        \item This question is meant to help students develop a basic visual intuition behind recursion and a super good question to walk through problem cases with
+        \item Questions to ask your students:
+        \subitem 1. Why do we print after calling righttriangle?
+        \subitem 2. How could we instead print out a mirrored version of the right triangle? 
+        \subitem 3. Why aren't we returning anything? 
+    \end{itemize}
+\end{questionmeta}
+

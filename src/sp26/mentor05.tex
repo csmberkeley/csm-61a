@@ -1,0 +1,85 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{5}
+\title{Recursion}
+\date{February 17 -- February 21, 2026}
+
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Recursion Basics [4 min]
+        \subitem Recursion, imo, requires more practice to get the jist of, so I would recommend spending more time walking through the first two problems as opposed to a longer mini-lecture.
+        \subitem Make sure mentees understand the basic template of a basic case + recursive case 
+        \subitem Some common metaphors/analogies for this: dividing a pizza, factorials, etc.
+        \item 1. Num-Digits [6 min]
+        \item 2. Right-Triangle [7 min]
+        \item 3. Replace [10 min]
+        \item Tree Recursion [5 min]
+        \subitem introduce the idea of a recursive tree, what does depth mean? 
+        \item 4. Gibonacci [8 min] 
+        \item 5. Discussions1 [7 min]
+        \item 6. Positioner [15 min] - optional, only attempt for advanced students
+    \end{itemize}
+\end{meta} 
+
+\section{Recursion}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{num-digits.tex}
+    \begin{questionmeta}
+        Suggested Time: 6 min; Difficulty: Easy
+        \begin{itemize}
+            \item  Good fundemental question to go over recursion basic template, intuition behind recursive call
+        \end{itemize}
+      \end{questionmeta}    
+      
+      \subimport{../../topics/recursion/easy/}{right_triangle.tex}
+      \begin{questionmeta}
+          Suggested Time: 4 min; Easy
+          \begin{itemize}
+              \item  Nice way to visualize recursion and introduces students to the idea that recursion may not always involve returning
+              \item HIGHLY HIGHLY recommend asking follow up questions about what would happen if we changed parts of the code, or if we wanted to output a reversed triangle instead
+          \end{itemize}
+        \end{questionmeta}
+
+        \subimport{../../topics/recursion/medium/}{replace.tex}
+        \begin{questionmeta}
+            Suggested Time: 9 min; Medium
+            \begin{itemize}
+              \item  Think about how to process numbers digit by digit. Explain how the *10 rebuilds the number digit by digit as the recursion unwinds.
+          \end{itemize}
+        \end{questionmeta}
+\end{questions}
+
+\section{Tree Recursion}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{gibonacci.tex}
+    \begin{questionmeta}
+        Suggested Time: 9 min; Difficulty: Easy/Medium
+        \begin{itemize}
+            \item  Good introduction problem to tree recursion, especially with the similarity with fibonacci. 
+            \item Make sure students understand how the base case works. 
+        \end{itemize}
+      \end{questionmeta}    
+      
+      \subimport{../../topics/recursion/medium/}{discussions1.tex}
+      \begin{questionmeta}
+          Suggested Time: 9 min; Medium
+        \end{questionmeta}
+
+        \subimport{../../topics/recursion/medium/}{positionizer.tex}
+        \begin{questionmeta}
+            Suggested Time: 15 min; Hard
+          \end{questionmeta}
+
+
+        
+\end{questions}
+
+
+\end{document}
+

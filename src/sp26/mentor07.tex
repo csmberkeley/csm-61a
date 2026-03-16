@@ -1,0 +1,80 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{5}
+\title{Trees, Data Abstraction, Mutability}
+\date{February 23 -- February 28, 2026}
+
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Tree Basics [5 min]
+        \subitem Go over the structure of a tree, also define the tree class on the board! 
+        \item 1. Height [7 min]
+        \item 2. Tree Sum [7 min]
+        \item 3. Weighted Tree [12 min]
+        \item Data Abstraction [3 min]
+        \item 4. Bookshelf [10 min] 
+        \item Lists/Mutability [3 min]
+        \item 5. Insert-n [9 min] 
+    \end{itemize}
+\end{meta} 
+
+\section{Trees}
+\begin{questions}
+    \subimport{../../topics/trees/adt/easy/}{height.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Easy
+        \begin{itemize}
+            \item  Good fundemental question that goes over how tree recursion works. Think about why the base case would be isleaf, and how we can ensure the height takes into account the tallest subtree in a tree. 
+        \end{itemize}
+      \end{questionmeta}    
+      
+      \subimport{../../topics/trees/adt/easy/}{tree-sum.tex}
+      \begin{questionmeta}
+          Suggested Time: 7 min; Easy
+          \begin{itemize}
+              \item  Also fundemental question that tests how to do tree recursion without returning the recursive case. How can we take advantage of the qualities of a tree? 
+          \end{itemize}
+        \end{questionmeta}
+
+        \newpage
+
+        \subimport{../../topics/trees/adt/medium/}{weighted-tree.tex}
+        \begin{questionmeta}
+            Suggested Time: 12 min; Medium
+            \begin{itemize}
+              \item  Has considerably less scaffolding than previous questions but serves as a good challenge for how tree recursion works. Also allweghts is not recursive so make sure students understand that. 
+          \end{itemize}
+        \end{questionmeta}
+\end{questions}
+
+\section{Data Abstraction}
+\begin{questions}
+    \subimport{../../topics/data-abstraction/medium/}{bookshelf.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        \begin{itemize}
+            \item  One longer data abstraction problem which I think mimics the format of a midterm question. Highly recommend spending the full 10-12 min to go through this question though! 
+        \end{itemize}
+      \end{questionmeta}    
+\end{questions}
+
+\section{Mutability}
+\begin{questions}
+    \subimport{../../topics/lists/mutable/medium/}{insert-n.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        \begin{itemize}
+            \item    Go over all the terms for mutability in lists BEFORE this question. 
+        \end{itemize}
+      \end{questionmeta}    
+\end{questions}
+
+
+\end{document}
+

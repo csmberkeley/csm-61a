@@ -1,0 +1,43 @@
+\begin{blocksection}
+\question Implement \lstinline{tree_sum}, which takes in a \lstinline{Tree}
+object and replaces the label of the tree with the sum of all the values
+in the tree. \lstinline{tree_sum} should also return the new label.
+
+\begin{lstlisting}
+def tree_sum(t):
+    '''
+    >>> t = tree(1, [tree(2, [tree(3)]), tree(4)])
+    >>> tree_sum(t)
+    10
+    >>> label(t)
+    10
+    >>> label(branches(t)[0])
+    5
+    >>> label(branches(t)[1])
+    4
+    '''
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+    total = label(t)
+    for b in branches(t):
+        total += tree_sum(b)
+    t[0] = total
+    return total
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{guide}
+    \textbf{Teaching Tips}
+    \begin{itemize}
+        \item Make sure students understand why an explicit is\_leaf() base case is unnecessary. If the function is called on a leaf, the for loop does not run, and it simply returns the label.
+        \item The recursion occurs as part of the expression updating the label, which may confuse students at first. Explain how the returning of the label makes this work.
+        \begin{itemize}
+            \item It may also help to show how the code would be written without tree\_sum(b) on the right hand side of the expression to make the recursion clearer.
+        \end{itemize}
+        \item Consider first drawing the Tree out and running through a doctest, showing how you would sum the labels in subtrees first before updating the root label.
+    \end{itemize}
+\end{guide}
+    

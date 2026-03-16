@@ -1,0 +1,85 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{9}
+\title{OOP and Representation}
+\date{March 9 -- March 13, 2026}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item OOP Basics [6 min]
+        \subitem Go over how to use dot notation to lookup attributes of classes and objects, the order of evaluation. 
+        \subitem Refresh on inheritance, what does the syntax look like, etc. 
+        \item 1. Wicked  [7 min]
+        \item 2. DLL [12 min]
+        \item 3. PingPong [8 min]
+        \item Representation [4 min]
+        \subitem Next question goes over \lstinline{__repr__} and \lstinline{__str__}  in more detail but feel free to briefly introduce things via mini lecture as well. 
+        \item 4. Reprtilia [10 min] 
+        \item 5. Photosynthesis [10 min] 
+    \end{itemize}
+\end{meta} 
+
+\section{OOP}
+\begin{questions}
+    \subimport{../../topics/oop/easy/wwpd/}{wicked.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Easy
+        \begin{itemize}
+            \item What is the difference between Elphaba and elphaba in this problem?  Which one is considered the class vs the object and how is attribute access affected?
+            \item What does this line mean: type(self).magic? Think about what self is in that function
+            \item Explain how overriding works when it comes to inheritance through examples. 
+        \end{itemize}
+      \end{questionmeta}    
+      
+      \subimport{../../topics/oop/easy/}{dll.tex}
+      \begin{questionmeta}
+          Suggested Time: 12 min; Easy/Medium
+          \begin{itemize}
+              \item  More diffcult question that requires students to also think about the design of a doubly linked list. Feel free to help them with any logic/design questions they have. 
+          \end{itemize}
+        \end{questionmeta}
+
+        \newpage
+
+        \subimport{../../topics/oop/medium/}{pingpong.tex}
+        \begin{questionmeta}
+            Suggested Time: 10 min; Medium
+            \begin{itemize}
+              \item  Less scaffolding than previous questions and feel free to spend more time on this problem. Also spend some time explaining how the pingpong OOP representation works and what students have to do. 
+          \end{itemize}
+        \end{questionmeta}
+\end{questions}
+
+\section{Representation}
+\begin{questions}
+    \subimport{../../topics/oop/easy/}{reprtilia.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Easy
+        \begin{itemize}
+            \item  Introduces the distinction between the \lstinline{__repr__} and \lstinline{__str__} methods in Python and how it affects how objects are displayed. 
+            \item Explain how when evaluating an object in the interpreter, Python will call repr(obj)
+            \item If an object is placed in an f-string or print is called on it, Python will call str(obj)
+        \end{itemize}
+      \end{questionmeta}  
+      
+    \subimport{../../topics/oop/medium/}{photosynthesis.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        \begin{itemize}
+            \item This question revolves around how objects interact with each other and tracking a shared state
+            \item Explain why we save a leaf object as an attribute of Plant and why we can do Leaf(self)
+            \item As always spend some time going over the role of a Plant vs Leaf vs Sugar and feel free to answer as many questions relating to That
+        \end{itemize}
+      \end{questionmeta} 
+\end{questions}
+
+
+\end{document}
+
