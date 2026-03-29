@@ -5,7 +5,7 @@ RELEASED = mentor14
 SOLUTIONS = mentor14
 
 DST = made
-SRC = src/sp25
+SRC = src/cadence-worksheet
 
 DEPEND = python3 make_dependency.py
 TEX = pdflatex

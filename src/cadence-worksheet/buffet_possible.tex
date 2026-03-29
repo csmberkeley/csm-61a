@@ -1,0 +1,55 @@
+\begin{blocksection}
+\question
+You are at a buffet! Yummy.
+
+You see that the buffet line has many different dishes: p (protein), v (vegetable), r (rice), and f (fruit). \
+You note down the items in line as **options**.
+
+Now, you are very picky about the order in which food reaches your plate and want to get food **in a fixed order**, \
+but you are also very indecisive and want to know if different orders of getting food is possible.
+
+Complete the **buffet\_possible** function, that takes in the buffet options (options) and your desired choice (choice), \
+and returns whether it is possible to get your choice from the line.
+
+\begin{lstlisting}
+def buffet_possible(options, choice):
+    """
+    >>> buffet_possible("pvprprrpff", "p")
+    True
+    >>> buffet_possible("pvprprrvpff", "pvpvp")
+    True
+    >>> buffet_possible("pvprprrvpff", "fff")
+    False
+    >>> buffet_possible("pvprprrvpff", "")
+    True
+    """
+
+    if _________:
+        return ___________
+    elif ___________:
+        return ___________
+    else:
+        if ___________:
+            return ___________
+        else:
+            return ___________
+    
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{solution}
+\begin{lstlisting}
+def buffet_possible(options, choice):
+    if choice == "":
+        return True
+    elif options == "":
+        return False
+    else:
+        if options[0] == choice[0]:
+            return buffet_possible(options[1:], choice[1:])
+        else:
+            return buffet_possible(options[1:], choice)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
