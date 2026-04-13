@@ -27,7 +27,7 @@ If you are running behind schedule, consider just reminding them of the implemen
 \begin{lstlisting}
 (define (append lst1 lst2)
     (if (null? lst1) lst2        
-        (cons (car lst1) (append (cdr lst1) lst2)))))
+        (cons (car lst1) (append (cdr lst1) lst2))))
 \end{lstlisting}
 \end{solution}
 
@@ -53,31 +53,31 @@ If you are running behind schedule, consider just reminding them of the implemen
         (append (reverse (cdr lst)) (list (car lst)))))
 \end{lstlisting}
 \end{solution}
-\part Define \lstinline$reverse$ tail-recursively. Hint: use a helper function and
-\lstinline$cons$.
+% \part Define \lstinline$reverse$ tail-recursively. Hint: use a helper function and
+% \lstinline$cons$.
 
-\begin{lstlisting}
-(define (reverse lst)
-
-
+% \begin{lstlisting}
+% (define (reverse lst)
 
 
 
 
-)
-\end{lstlisting}
-\end{blocksection}
-\begin{blocksection}
-\begin{solution}%[1in]
-\begin{lstlisting}
-(define (reverse lst)
-    (define (helper lst reversed)
-        (if (null? lst) reversed
-            (helper (cdr lst) (cons (car lst) reversed ))))
-    (helper lst '()))
-\end{lstlisting}
-\end{solution}
-\end{blocksection}
+
+
+% )
+% \end{lstlisting}
+ \end{blocksection}
+% \begin{blocksection}
+% \begin{solution}%[1in]
+% \begin{lstlisting}
+% (define (reverse lst)
+%     (define (helper lst reversed)
+%         (if (null? lst) reversed
+%             (helper (cdr lst) (cons (car lst) reversed ))))
+%     (helper lst '()))
+% \end{lstlisting}
+% \end{solution}
+% \end{blocksection}
 \end{parts}
 \begin{blocksection}
 	\begin{guide}
@@ -86,7 +86,7 @@ If you are running behind schedule, consider just reminding them of the implemen
 			\item Board tip: this question requires creating several frames so save enough room on the board to draw this one out 
             \item The difficult part here is the fact that slicing or concatenating a list makes a new list. This is a good time to go over shallow copies.
             \item Talk about the recursive leap of faith for this problem since it shows how it works!
-            \item To check students’ understanding it’s good to check whether the list returned is the same original object as the list passed in. i.e. why doesn’t lst change after calling reverse on it?
+            \item To check students' understanding it's good to check whether the list returned is the same original object as the list passed in. i.e. why doesn't lst change after calling reverse on it?
 	\end{enumerate}
 	\end{guide}
 \end{blocksection}

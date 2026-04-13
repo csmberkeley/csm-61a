@@ -1,0 +1,77 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{More Scheme Lists, Scheme Eval/Apply}
+\date{April 14, 2026 -- April 17, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Teaching tips:
+            \subitem{\textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).}
+            \subitem{\textbf{However, the time in brackets will add up to ~50 minutes, and is intended to be a suggested outline for your section.}}
+            \subitem{Also, the worksheet feedback form is linked at the bottom of this worksheet!}
+        
+        \item Intros, Ice Breakers, \& Logstics [2 min]
+            \subitem{Start off with an icebreaker of your choice!}
+        \item Mini-lecture: Scheme Review/Scheme Lists
+        \item Q1: Bugs [7 min]
+        \item Q2: Where's Waldo [10 min]
+        \item Q3: Reverse [10 min]
+        \item Mini-Lecture: Scheme Eval/Apply
+        \item Q5: WWSD [7 min]
+        \item Q6: Eval/Apply Counting [10 min]
+        \item Optional: Coffee [If Time]
+    \end{itemize}
+\end{meta}
+
+\section{Scheme Lists}
+\begin{questions}
+
+    \subimport{../../topics/scheme/medium/}{find-bugs.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 minutes
+    \end{questionmeta}
+    \newpage
+    \subimport{../../topics/scheme/medium/}{waldo.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 minutes
+    \end{questionmeta}
+    \newpage
+    \subimport{../../topics/scheme/medium/}{reverse.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 minutes
+    \end{questionmeta}
+
+\end{questions}
+
+\section{Scheme Eval/Apply and Programs as Data}
+\begin{questions}
+
+    \subimport{../../topics/scheme/easy/wwsd/}{define-eval.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 minutes
+    \end{questionmeta}
+
+    \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 minutes
+    \end{questionmeta}
+
+\end{questions}
+
+\section{Optional}
+\begin{questions}
+
+    \subimport{../../topics/scheme/ExamRev-Sp25/}{coffee-shop.tex}
+    \begin{questionmeta}
+        Suggested Time: If Time
+    \end{questionmeta}
+
+\end{questions}
+
+\end{document}
