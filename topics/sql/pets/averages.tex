@@ -1,0 +1,15 @@
+\begin{blocksection}
+\part Write a query that gets the average age of each type of pet, and displays the rows in alphabetical order of the type of pet.
+
+\begin{lstlisting}
+Dog|3.5
+Cat|4
+Tortoise|40
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+SELECT name, AVG(age) FROM pets GROUP BY type ORDER BY type
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

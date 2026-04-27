@@ -1,0 +1,14 @@
+\begin{blocksection}
+\part From the above table (pets), Write a query that gets the top two oldest pet's name and age.
+
+\begin{lstlisting}
+Shelly|40
+Oreo|6
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+SELECT name, age FROM pets ORDER BY age DESC LIMIT 2
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
