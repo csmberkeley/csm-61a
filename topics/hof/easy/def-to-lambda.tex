@@ -1,27 +1,39 @@
 \begin{blocksection}
-\question Express the following expressions using lambdas instead of their named counterparts.
+\question Rewrite each function in the requested equivalent form. Preserve the
+function's parameters and behavior; only change whether it is written with
+\lstinline{def} or \lstinline{lambda}. For your reference, a \lstinline{lambda} assignment assigns a lambda function to a variable.
 
 \begin{parts}
-\part \lstinline$square(4)$
-
-\begin{solution}[0.25in]
-\lstinline$(lambda x: x * x)(4)$
-\end{solution}
-
-\part \lstinline$sum_of_squares(3, 4)$
-
-\begin{solution}[0.25in]
-\lstinline$(lambda x, y: x * x + y * y)(3, 4)$
-\end{solution}
-
-\part \begin{lstlisting}
-def hello_world():
-    return 'Hello, world!'
-hello_world()
+\part Rewrite the following \lstinline{def} as a lambda assignment.
+\begin{lstlisting}
+def square(x):
+    return x * x
 \end{lstlisting}
 
 \begin{solution}[0.25in]
-\lstinline$(lambda: 'Hello, world!')()$
+\lstinline$square = lambda x: x * x$
+\end{solution}
+
+\part Rewrite the following lambda assignment using \lstinline{def}.
+\begin{lstlisting}
+subtract = lambda x, y: x - y
+\end{lstlisting}
+
+\begin{solution}[0.45in]
+\begin{lstlisting}
+def subtract(x, y):
+    return x - y
+\end{lstlisting}
+\end{solution}
+
+\part Rewrite this zero-argument function as a lambda assignment.
+\begin{lstlisting}
+def greeting():
+    return 'Hello, world!'
+\end{lstlisting}
+
+\begin{solution}[0.25in]
+\lstinline$greeting = lambda: 'Hello, world!'$
 \end{solution}
 \end{parts}
 \end{blocksection}
