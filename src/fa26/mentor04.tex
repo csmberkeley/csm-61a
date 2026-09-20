@@ -1,0 +1,89 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{4}
+\title{Lambdas, Currying, and Environments}
+\date{September 14, 2026 - September 18, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item \textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).
+            \subitem{\textbf{The times in brackets are intended as a suggested outline; choose or skip problems as needed to fit your section.}}
+        
+        \item Intros, Ice Breakers, \& Logistics [10 min]
+            \subitem{Introduce yourself to your students. They will probably be your students for the rest of the semester. Start off with an icebreaker of your choice! Also, explain logistics like doing CSM for a unit and how many absences are allowed and etc.}
+        \item How to tackle terrified students after the midterm [5 min]
+        
+        Your students are also a bit terrified by the midterm which happened this past Monday so use any of the techniques which you have discussed in family meeting to alleviate them.
+        
+        Try to start the session off by acknowledging the midterm and the feelings around it (even ask them how they felt about it) and make them and all of their feelings and questions feel included. Tell them that a lot of people feel in the same way as they do and be realistic.
+        
+        Ask them what is one thing that felt hard to them during the midterm: reading questions, tracing code, writing functions, or something else and take a note of that so that when you prep for future sessions you can modify your teaching style to fit your students better.
+        \item Expressions and truth values warm-up [8 min]
+        \item Lambdas and converting function forms [10 min]
+        \item Currying and zero-argument functions [12 min]
+        \item Environment diagrams with functions and lambdas [20 min]
+        \item Function implementation [10 min]
+    \end{itemize}
+\end{meta}
+
+\section{Expressions and Truth Values}
+\begin{questions}
+    \subimport{../../topics/functions-and-expressions/medium/}{quick-maths.tex}
+    \begin{questionmeta}
+        Use the condition \lstinline{man \% 2 == 0 and free} to review
+        short-circuiting and the distinction between \lstinline{True}/
+        \lstinline{False} values and the value an \lstinline{and} expression
+        returns.
+    \end{questionmeta}
+\end{questions}
+
+\section{Lambda Expressions and Function Forms}
+\begin{questions}
+    \subimport{../../topics/hof/easy/}{what.tex}
+    \subimport{../../topics/hof/easy/}{def-to-lambda.tex}
+
+\end{questions}
+
+\section{Currying and Zero-Argument Functions}
+\begin{questions}
+    \subimport{../../topics/hof/medium/}{xyz.tex}
+    \begin{questionmeta}
+        This question combines currying, lambdas, and a zero-argument call.
+        Have students identify the value returned at each pair of parentheses.
+    \end{questionmeta}
+\end{questions}
+
+\section{Environment Diagrams with Lambdas}
+\begin{questions}
+    \subimport{../../topics/hof/easy/env-diagram/}{foobar.tex}
+    \begin{questionmeta}
+        Before tracing, ask: ``What frame does each function have as its
+        parent?'' Emphasize that calling \lstinline{y()} creates a frame even
+        though it has no parameters.
+    \end{questionmeta}
+
+    \subimport{../../topics/hof/medium/env-diagram/}{inception.tex}
+    \begin{questionmeta}
+        This is a stretch problem. Track function values carefully: a call may
+        return a function, and a lambda's parent is the frame in which it is
+        created.
+    \end{questionmeta}
+\end{questions}
+
+\section{Basic Function Implementation}
+\begin{questions}
+    \subimport{../../topics/hof/medium/}{mystery.tex}
+    \begin{questionmeta}
+        Encourage students to write the nested \lstinline{def} solution first,
+        then compare it with the one-line lambda challenge solution.
+    \end{questionmeta}
+
+    \subimport{../../topics/hof/easy/}{make-skipper.tex}
+\end{questions}
+
+\end{document}
