@@ -30,11 +30,53 @@
 [1, 2, 3, 9, 10]
 
 
-new_list = []
-for x in lst:
-     for i in range(x):
-          new_list = new_list + [x]
-return new_list
+>>> t: tuple[int, str, float, bool, None] = (
+...     3, "csm", 2.5, True, None
+... )
+>>> t
+(3, 'csm', 2.5, True, None)
+>>> 4, 5, 6, 7
+(4, 5, 6, 7)
+>>> (3,)
+(3,)
+>>> (3)
+3
+>>> ()
+>>> len(())
+()
+0
+>>> t[1:4]
+('csm', 2.5, True)
+>>> t[::-1]
+(None, True, 2.5, 'csm', 3)
+>>> list(t)
+[3, 'csm', 2.5, True, None]
+>>> list("csm")
+>>> list(())
+['c', 's', 'm']
+[]
+>>> (4, 5) + (6, 7)
+(4, 5, 6, 7)
+>>> (3,) * 3
+>>> (3) * 3
+(3, 3, 3)
+9
+>>> t[0] = 4
+TypeError
+>>> locations = {(4, 5): "CSM"}
+>>> locations[(4, 5)]
+'CSM'
+>>> locations[[4, 5]] = "office hours"
+TypeError
+>>> locations[(4, [5])] = "office hours"
+TypeError
+
+
+    new_list = []
+    for x in lst:
+         for i in range(x):
+              new_list = new_list + [x]
+    return new_list
 
 
 def all_primes(nums):
@@ -57,11 +99,11 @@ def gen_increasing(n):
     return [[i + sum(range(j + 1)) for i in range(j + 1)] for j in range(n)]
 
 
-count = 0
-for c in word:
-    if c == 't':
-        count += 1
-d[word] = count
+    count = 0
+    for c in word:
+        if c == 't':
+            count += 1
+    d[word] = count
 
 
 def snapshot(f, snap_inputs):

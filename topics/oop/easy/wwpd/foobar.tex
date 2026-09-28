@@ -18,39 +18,51 @@ class Bar(Foo):
         Foo.__init__(self, 'er' + x)
 
 foo = Foo('boo')
-\end{lstlisting}   
+\end{lstlisting}
+\end{blocksection}
 
 \begin{parts}
+\begin{blocksection}
 \part \lstinline$>>> Foo.x$
 
 \begin{solution}[2em]
 \lstinline$'bam'$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \lstinline$>>> foo.x$
 
 \begin{solution}[2em]
 \lstinline$'boo'$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \lstinline$>>> foo.baz()$
 
 \begin{solution}[2em]
 \lstinline$'bamboo'$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \lstinline$>>> Foo.baz()$
 
 \begin{solution}[2em]
 \lstinline$Error$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \lstinline$>>> Foo.baz(foo)$
 
 \begin{solution}[2em]
 \lstinline$'bamboo'$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \begin{lstlisting}
 >>> bar = Bar('ang')
 >>> Bar.x
@@ -59,17 +71,26 @@ foo = Foo('boo')
 \begin{solution}[2em]
 \lstinline$'boom'$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \lstinline$>>> bar.x$
 
 \begin{solution}[2em]
 \lstinline$'erang'$
 \end{solution}
+\end{blocksection}
 
+\begin{blocksection}
 \part \lstinline$>>> bar.baz()$
 
 \begin{solution}[2em]
 \lstinline$'boomerang'$
 \end{solution}
-\end{parts}
 \end{blocksection}
+\end{parts}
+
+\begin{questionmeta}
+    Suggested Time: 8 min; Difficulty: Medium; Optional
+    This existing problem includes class attributes, instance attributes, bound methods, and inheritance. Use the \lstinline{Foo} parts for initial object practice; use the \lstinline{Bar} parts only after inheritance has been introduced. Draw separate locations for class and instance attributes, and make the implicit \lstinline{self} argument explicit when tracing calls.
+\end{questionmeta}

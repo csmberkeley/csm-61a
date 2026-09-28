@@ -21,22 +21,46 @@
 >>> c
 
 
-def duplicate_list(lst):
-    """
-    >>> duplicate_list([1, 2, 3])
-    [1, 2, 2, 3, 3, 3]
-    >>> duplicate_list([5])
-    [5, 5, 5, 5, 5]
-    """
-    _______________________________
-    
-    for ____________________________:
+>>> t: tuple[int, str, float, bool, None] = (
+...     3, "csm", 2.5, True, None
+... )
+>>> t
+>>> 4, 5, 6, 7
+>>> (3,)
+>>> (3)
+>>> ()
+>>> len(())
+>>> t[1:4]
+>>> t[::-1]
+>>> list(t)
+>>> list("csm")
+>>> list(())
+>>> (4, 5) + (6, 7)
+>>> (3,) * 3
+>>> (3) * 3
+>>> t[0] = 4
+>>> locations = {(4, 5): "CSM"}
+>>> locations[(4, 5)]
+>>> locations[[4, 5]] = "office hours"
+>>> locations[(4, [5])] = "office hours"
 
-         for ____________________________:
 
-              __________________________________
+    def duplicate_list(lst: list[int]) -> list[int]:
+        """
+        >>> duplicate_list([1, 2, 3])
+        [1, 2, 2, 3, 3, 3]
+        >>> duplicate_list([5])
+        [5, 5, 5, 5, 5]
+        """
+        _______________________________
 
-    _______________________________
+        for ____________________________:
+
+             for ____________________________:
+
+                  __________________________________
+
+        _______________________________
 
 
 
@@ -45,7 +69,7 @@ def all_primes(nums):
 
 def gen_list(n):
     """
-    Returns a nested list structure of n elements where the 
+    Returns a nested list structure of n elements where the
     ith element is a list from 0 (inclusive) to i (exclusive).
     >>> gen_list(3)
     [[0], [0, 1], [0, 1, 2]]
@@ -55,37 +79,37 @@ def gen_list(n):
     return _______________________________________________
 def gen_increasing(n):
     """
-    Returns a nested list structure of n elements where the 
-    ith element of each list is one more than the previous 
+    Returns a nested list structure of n elements where the
+    ith element of each list is one more than the previous
     element (even if the previous is in a prior sublist).
     >>> gen_increasing(3)
     [[0], [1, 2], [3, 4, 5]]
     >>> gen_increasing(5)
-    [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13, 
+    [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13,
     14]]
     """
     return ______________________________________________
 
 
-def count_t(d, word):
-    """
-    >>> words = {}
-    >>> count_t(words, "tatter")
-    >>> words["tatter"]
-    3
-    >>> count_t(words, "tree")
-    >>> words
-    {'tatter': 3, 'tree': 1}
-    """
-    _______________________________
-    
-    for ____________________________:
+    def count_t(d: dict[str, int], word: str) -> None:
+        """
+        >>> words = {}
+        >>> count_t(words, "tatter")
+        >>> words["tatter"]
+        3
+        >>> count_t(words, "tree")
+        >>> words
+        {'tatter': 3, 'tree': 1}
+        """
+        _______________________________
 
-        if ____________________________:
+        for ____________________________:
 
-            __________________________________
+            if ____________________________:
 
-    _______________________________
+                __________________________________
+
+        _______________________________
 
 
 
@@ -100,7 +124,7 @@ def snapshot(f, snap_inputs):
     __________________________________________:
 
         __________________________________________
-        
+
     return snap
 
 
@@ -150,7 +174,7 @@ def linkify_rec(lst):
 
         __________________________________
 
-    else: 
+    else:
 
         __________________________________
 

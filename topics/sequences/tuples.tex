@@ -1,0 +1,200 @@
+\question \textbf{Tuples.} What would Python display? Run these statements in order. If a statement
+causes an error, identify the error and continue with the next statement.
+For \lstinline{(3,)} and \lstinline{(3)}, also name the type.
+
+\begin{blocksection}
+\textbf{Creating tuples}
+\begin{lstlisting}
+>>> t: tuple[int, str, float, bool, None] = (
+...     3, "csm", 2.5, True, None
+... )
+>>> t
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+(3, 'csm', 2.5, True, None)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> 4, 5, 6, 7
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+(4, 5, 6, 7)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> (3,)
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+(3,)
+\end{lstlisting}
+Type: \lstinline{tuple}.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> (3)
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+Type: \lstinline{int}.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> ()
+>>> len(())
+\end{lstlisting}
+\begin{solution}[.45in]
+\begin{lstlisting}
+()
+0
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\textbf{Slicing and converting}
+\begin{lstlisting}
+>>> t[1:4]
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+('csm', 2.5, True)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> t[::-1]
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+(None, True, 2.5, 'csm', 3)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> list(t)
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+[3, 'csm', 2.5, True, None]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> list("csm")
+>>> list(())
+\end{lstlisting}
+\begin{solution}[.45in]
+\begin{lstlisting}
+['c', 's', 'm']
+[]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\textbf{Combining tuples}
+\begin{lstlisting}
+>>> (4, 5) + (6, 7)
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+(4, 5, 6, 7)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> (3,) * 3
+>>> (3) * 3
+\end{lstlisting}
+\begin{solution}[.45in]
+\begin{lstlisting}
+(3, 3, 3)
+9
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> t[0] = 4
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+TypeError
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\textbf{Dictionary keys}
+\begin{lstlisting}
+>>> locations = {(4, 5): "CSM"}
+>>> locations[(4, 5)]
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+'CSM'
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> locations[[4, 5]] = "office hours"
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+TypeError
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> locations[(4, [5])] = "office hours"
+\end{lstlisting}
+\begin{solution}[.3in]
+\begin{lstlisting}
+TypeError
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+    Suggested Time: 8--10 min; Difficulty: Easy--Medium
+    \begin{itemize}
+        \item Ask students to read the annotation on \lstinline{t}: it describes a five-element tuple, with the type of each position listed in order. The annotation does not convert values or enforce their types at runtime.
+        \item A comma creates a tuple: parentheses usually group expressions.
+        The empty tuple is written \lstinline{()}; one item needs a trailing comma.
+        \item Tuples can hold different data types. Slicing returns a tuple;
+        \lstinline{list} builds a list from the elements of an iterable.
+        \item Tuple addition concatenates and multiplication repeats elements;
+        neither operation changes the original tuple. Tuple item assignment fails.
+        \item Dictionary keys must be hashable. A tuple can be a key only when
+        all its elements are hashable. Lists are unhashable, including a list
+        nested inside a tuple. Use the last example as a follow-up challenge.
+    \end{itemize}
+\end{questionmeta}

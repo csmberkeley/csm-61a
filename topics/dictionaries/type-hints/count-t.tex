@@ -1,0 +1,67 @@
+\begin{blocksection}
+    \question Write a function \lstinline$count_t$, which takes in a dictionary \lstinline$d$ and a string \lstinline$word$.
+    The function should count the instances of the letter "t" in \lstinline$word$ and add a key-value pair to the dictionary.
+    The key will be \lstinline$word$ and the value will be the number of "t"s in \lstinline$word$
+    
+    \begin{lstlisting}
+    def count_t(d: dict[str, int], word: str) -> None:
+        """
+        >>> words = {}
+        >>> count_t(words, "tatter")
+        >>> words["tatter"]
+        3
+        >>> count_t(words, "tree")
+        >>> words
+        {'tatter': 3, 'tree': 1}
+        """
+        _______________________________
+        
+        for ____________________________:
+    
+            if ____________________________:
+    
+                __________________________________
+    
+        _______________________________
+    
+    \end{lstlisting}
+    
+    \begin{solution}
+    \begin{lstlisting}
+    count = 0
+    for c in word:
+        if c == 't':
+            count += 1
+    d[word] = count
+    \end{lstlisting}
+    \end{solution}
+    
+\end{blocksection}
+
+\begin{questionmeta}
+\begin{blocksection}
+\textbf{Teaching Tips}
+
+\textbf{Suggested Time:} 6 min \qquad \textbf{Difficulty:} Easy
+\begin{itemize}
+    \item \textbf{Read the type hints.}
+    \lstinline{dict[str, int]} means string keys and integer values;
+    \lstinline{word: str} means a string input. Annotations describe expected
+    types; Python does not automatically enforce them.
+
+    \item \textbf{Review dictionary access.}
+    A dictionary maps keys to values. Use \lstinline{d[word]} to read a value
+    and \lstinline{d[word] = count} to add or update the entry.
+
+    \item \textbf{Plan the loop.}
+    Traverse the string directly with \lstinline{for c in word}.
+    Start the count at zero, increment it when \lstinline{c == 't'},
+    and update the dictionary after the loop.
+
+    \item \textbf{Distinguish mutation from returning.}
+    The function changes \lstinline{d} in place and implicitly returns
+    \lstinline{None}, matching \lstinline{-> None}.
+    Ask students why the doctests inspect \lstinline{words} after the call.
+\end{itemize}
+\end{blocksection}
+\end{questionmeta}
