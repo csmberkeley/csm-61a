@@ -1,0 +1,165 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+\discnumber{6}
+\title{Sequences, Containers, Objects, \& Linked Lists}
+\date{September 28, 2026 -- October 2, 2026}
+
+% All exercises and solutions are imported from the existing topic bank.
+% The supplied Python files guide selection; they are not exercise sources.
+% Playlist scope supplied by the user: tuples, container type hints, linked
+% lists, linked-list processing, and a linked-list comprehension example.
+\begin{document}
+\maketitle
+
+\begin{meta}
+\small
+\textbf{Example Timeline}
+\begin{itemize}
+    \item \textbf{This is a menu of problems, not a requirement to finish the worksheet.} Individual suggested times do not add up to one hour. Choose or skip problems based on your students, and give each mini-lecture immediately before its section.
+    \item Check-in and icebreaker [5 min]. Ask what students would like more practice with: tracing expressions, choosing a representation, or writing code.
+    \item Sequences: selected parts of Q1, then Q2 or Q3 [15 min]. Choose Q2 for nested loops or Q3 for filtering and comprehensions. Q4 is extra practice.
+    \item Containers: Q5 or Q6 [10 min]. Choose Q5 for strings and counting or Q6 to connect dictionaries to higher-order functions.
+    \item Objects and abstraction: Q7 [5 min]. Use the supplied linked-list class as the concrete object example. Q8 is optional practice if students have already seen methods and inheritance.
+    \item Linked lists: the first block of Q9, then Q10 or Q11 [20 min]. Choose Q10 for construction or Q11 for processing an existing linked list. Save cycles, representations, and the iterative version for students ready for more.
+    \item Wrap-up and questions [5 min]. Have students describe the interface of one representation in their own words.
+\end{itemize}
+\textbf{Teaching goals and coverage notes}
+\begin{itemize}
+    \item Keep emphasizing abstraction: what information does a value represent, and which operations does its interface support? Have students name intermediate values and their types before evaluating nested expressions.
+    \item Let students predict, discuss with a partner, and explain their reasoning before running code. For implementation problems, establish an example and a plan before filling in blanks.
+    \item Q1 includes mutation and shallow copying as well as indexing. Prioritize the indexing and nested-list expressions; treat the later mutation cases as an extension if needed.
+    \item The sequence overview below introduces tuples. Q9--Q11 cover linked-list structure, construction, traversal, and processing. Playlist scope is based on the user's topic summary, not a direct viewing of the videos.
+    \item Q12 practices the include/exclude counting pattern. The bank also has a counting-partitions overview in its recursion section; this is related practice rather than either constrained partition variant.
+\end{itemize}
+\end{meta}
+
+\begin{meta}
+\begin{blocksection}
+\textbf{Topics for Additional Questions}
+\begin{itemize}
+    \item \textbf{Tuples:} the bank has overview examples and incidental uses, but no focused introductory exercise was found. Add practice with construction (including a one-element tuple), indexing, unpacking, and immutability.
+    \item \textbf{Container type hints:} no matching exercise was found. Add practice reading and writing annotations for lists, tuples, dictionaries, and nested containers.
+    \item \textbf{Linked-list comprehension:} no matching map/filter-style exercise was found. Q11 processes pairs into a new linked list, but does not replace the video's comprehension example. Add a question that selects and transforms elements while constructing a new linked list.
+    \item \textbf{Dataclasses:} Q7--Q8 cover related object concepts, but there is no matching exercise for \lstinline{@dataclass} or its annotated fields.
+    \item \textbf{Constrained partitions:} add the at-most-three-pieces-total and at-most-three-of-each-size variants from \texttt{13.py}; no matching bank exercise was found.
+    \item \textbf{Other attachment coverage:} the selected questions do not directly exercise dictionary comprehensions, \lstinline{min} with a \lstinline{key}, \lstinline{any}, or string evaluation with \lstinline{eval}.
+\end{itemize}
+\end{blocksection}
+\end{meta}
+
+\section{Sequences}
+\subsection*{Sequence Overview}
+\begingroup
+\subimport{../../topics/sequences/text/}{sequences_overview.tex}
+\endgroup
+\par
+\begin{meta}
+\noindent
+\begin{blocksection}
+\textbf{Box-and-pointer preparation for Q1}
+
+The bank's list overview (\texttt{list\_overview.tex} in the lists/immutable/text folder) contains the diagram guidance that the original teaching tip referred to. Draw one box per element, label indices from zero, and draw arrows to nested list objects. A shallow copy creates a new outer list but keeps references to the same nested objects. The sequence overview above supplies the shared operations and comprehension syntax.
+\end{blocksection}\par
+\end{meta}
+\ifdefined\discussionmetas\else\newpage\fi
+\subsection*{Sequence Practice}
+\begin{questions}
+    \subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified-2.tex}
+    \begin{questionmeta}
+        Suggested Time: 8--12 min; Difficulty: Easy--Medium
+        Prioritize positive, negative, and nested indexing. Treat later mutation cases as an extension. Distinguish rebinding a name from changing a list; slices make a new outer list with references to the same elements.
+    \end{questionmeta}
+
+    \subimport{../../topics/lists/immutable/medium/}{duplicate-list.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Medium
+        Explain what each loop represents: the outer loop selects an element, and the inner loop repeats it. Connect \lstinline{range(x)} to exactly \lstinline{x} repetitions.
+    \end{questionmeta}
+
+    \subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Easy
+        Treat \lstinline{is_prime} as a provided abstraction. Focus on filtering a sequence, then compare the loop and comprehension solutions already supplied in the bank.
+    \end{questionmeta}
+
+    \begin{blocksection}
+    \subimport{../../topics/lists/immutable/medium/}{gen-list.tex}
+    \end{blocksection}
+    \begin{questionmeta}
+        Suggested Time: 7 min; add 5 min for the challenge; Difficulty: Medium
+        Build one inner list before reasoning about the outer comprehension. The doctests number the elements starting at one. In the challenge, \lstinline{sum(range(j + 1))} counts how many values earlier sublists contain. The wrapped final doctest output is one list, not separate outputs.
+    \end{questionmeta}
+\end{questions}
+
+\newpage
+\section{Containers and Dictionaries}
+\begin{questions}
+    \setcounter{question}{4}
+    \subimport{../../topics/dictionaries/}{count-t.tex}
+    \begin{questionmeta}
+        Suggested Time: 6 min; Difficulty: Easy
+        Review a dictionary as a mapping from keys to values. Strings can be traversed directly with a \lstinline{for} loop. Distinguish updating the supplied dictionary from returning a new value; this function implicitly returns \lstinline{None}.
+    \end{questionmeta}
+
+    \subimport{../../topics/dictionaries/}{snapshot.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min; Difficulty: Easy--Medium
+        Connect this to functional abstraction from earlier weeks: the function is an input, and the dictionary records its outputs on selected inputs. Identify the key and value before filling in the assignment. The supplied solution uses a loop, not a dictionary comprehension.
+    \end{questionmeta}
+\end{questions}
+
+\newpage
+\section{Objects and Data Abstraction}
+\begin{questions}
+    \setcounter{question}{6}
+    \subimport{../../topics/oop/easy/}{adt.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Conceptual
+        Treat this as a discussion, like the HOF reasoning question in mentor03. Connect the interface/representation distinction to lists, dictionaries, and the linked-list class below. A class is one way to implement an abstraction; it is not the definition of abstraction itself.
+    \end{questionmeta}
+
+    \subimport{../../topics/oop/easy/wwpd/}{foobar.tex}
+    \begin{questionmeta}
+        Suggested Time: 8 min; Difficulty: Medium; Optional
+        This existing problem includes class attributes, instance attributes, bound methods, and inheritance. Use the \lstinline{Foo} parts for initial object practice; use the \lstinline{Bar} parts only after inheritance has been introduced. It does not teach dataclasses. Draw separate locations for class and instance attributes, and make the implicit \lstinline{self} argument explicit when tracing calls.
+    \end{questionmeta}
+\end{questions}
+
+\newpage
+\section{Linked Lists}
+\begin{blocksection}
+\subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+\end{blocksection}
+\begin{questions}
+    \setcounter{question}{8}
+    \subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min for the first block; add 5 min for the rest; Difficulty: Easy--Medium
+        Prioritize \lstinline{first}, \lstinline{rest}, and the empty sentinel. Each attribute access operates on the value produced by the preceding expression. The second block introduces a cycle and string representations; treat those as extensions. Draw arrows instead of mentally tracking repeated \lstinline{rest} accesses.
+    \end{questionmeta}
+
+    \subimport{../../topics/linked-lists/class/easy/}{linkify.tex}
+    \begin{questionmeta}
+        Suggested Time: 9 min recursive; add 5 min iterative; Difficulty: Medium
+        State the recursive contract before filling blanks: the recursive call returns a linked list for the remaining Python list. Check the empty-input case. For iteration, build from right to left because each new node is placed at the front.
+    \end{questionmeta}
+
+    \subimport{../../topics/linked-lists/class/medium/}{combine-two.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        This is the bank's linked-list processing practice for the supplied video topics. The names \lstinline{add} and \lstinline{mul} in the doctests are the functions from Python's \lstinline{operator} module. Separate empty, one-element, and longer inputs. Each recursive step consumes two elements and constructs one result node; an unpaired last element is retained. Connect the supplied function argument to HOFs. This is pairwise processing, not a linked-list comprehension exercise.
+    \end{questionmeta}
+\end{questions}
+
+\newpage
+\section{Optional Extension: Tree-Recursive Counting}
+\begin{questions}
+    \setcounter{question}{11}
+    \subimport{../../topics/recursion/medium/}{donut.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        Use this existing problem to practice the same include/exclude reasoning as counting partitions. Taking a donut decreases the number of remaining slots; excluding a flavor decreases the available flavors. These are disjoint cases, so add their counts. This is related practice, not the exact integer-partition problem or either constrained variant from \texttt{13.py}.
+    \end{questionmeta}
+\end{questions}
+\end{document}
