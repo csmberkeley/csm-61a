@@ -1,0 +1,46 @@
+% Adapted from https://composingprograms.com/3ed/examples/#link-py
+For the following questions, use this dataclass-based linked list.
+A \lstinline{LinkedList[T]} is either a \lstinline{Link[T]} or the empty tuple
+\lstinline{()}. The type variable \lstinline{T} describes the element type.
+
+\begin{lstlisting}
+from __future__ import annotations
+from dataclasses import dataclass
+
+type LinkedList[T] = Link[T] | tuple[()]
+
+@dataclass
+class Link[T]:
+    first: T
+    rest: LinkedList[T] = ()
+
+    def __str__(self) -> str:
+        return format_link(self)
+
+def format_link[T](s: Link[T]) -> str:
+    string = '(' + str(s.first)
+    remaining = s.rest
+    while isinstance(remaining, Link):
+        string += ' ' + str(remaining.first)
+        remaining = remaining.rest
+    assert remaining == (), 'Not a valid linked list'
+    return string + ')'
+\end{lstlisting}
+
+Construct a list with \lstinline{Link(1, Link(2))}. Read its elements with
+\lstinline{first} and \lstinline{rest}. At the end, \lstinline{rest} is
+\lstinline{()}, which has no \lstinline{first} or \lstinline{rest} attributes.
+\lstinline{print} uses parentheses around the elements; entering a \lstinline{Link}
+at the prompt shows the dataclass representation with field names.
+
+\begin{meta}
+\textbf{Teaching the interface:} Establish construction, field access, and the
+empty case first. Treat \lstinline{format_link} as supplied display behavior;
+students need not implement it. In the questions, reason about element values
+and shorter lists. If using diagrams, draw the sequence structure without
+asking students to distinguish shared nodes from equal-valued nodes.
+
+This definition uses Python 3.12 or later. The future import also supports
+these annotations on Python 3.12--3.13. Reference:
+\href{https://composingprograms.com/3ed/compound-data/}{Composing Programs, Compound Data}.
+\end{meta}

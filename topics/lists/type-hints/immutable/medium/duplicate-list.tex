@@ -1,0 +1,50 @@
+\begin{blocksection}
+    \question Write a function \lstinline{duplicate_list}, which takes in a list of positive integers and returns a new list with each element \lstinline{x} in the original list duplicated \lstinline{x} times.
+    
+    \begin{lstlisting}
+    def duplicate_list(lst: list[int]) -> list[int]:
+        """
+        >>> duplicate_list([1, 2, 3])
+        [1, 2, 2, 3, 3, 3]
+        >>> duplicate_list([5])
+        [5, 5, 5, 5, 5]
+        """
+        _______________________________
+        
+        for ____________________________:
+    
+             for ____________________________:
+    
+                  __________________________________
+    
+        _______________________________
+    
+    \end{lstlisting}
+    
+    \begin{solution}
+    \begin{lstlisting}
+    new_list = []
+    for x in lst:
+         for i in range(x):
+              new_list = new_list + [x]
+    return new_list
+    \end{lstlisting}
+    \end{solution}
+    \end{blocksection}
+    
+    \begin{meta}
+    \textbf{Teaching Tips}
+        \begin{enumerate}
+                \item Read the signature before solving: \lstinline{list[int]} describes a list of integers, and \lstinline{-> list[int]} describes the expected return type. Type hints do not enforce types at runtime.
+                \item If students have trouble arriving at the solution, walk through the intuition of nested for loops
+                and discuss what each loop represents. For example, the first loop represents iterating over each element
+                of the list and the second one represents repeating that element.
+                \item This is a good problem to emphasize how we can format our logic and approach to problems based on 
+                the skeleton code.
+        \end{enumerate}
+    \end{meta}
+
+\begin{questionmeta}
+    Suggested Time: 7 min; Difficulty: Medium
+    Explain what each loop represents: the outer loop selects an element, and the inner loop repeats it. Connect \lstinline{range(x)} to exactly \lstinline{x} repetitions.
+\end{questionmeta}

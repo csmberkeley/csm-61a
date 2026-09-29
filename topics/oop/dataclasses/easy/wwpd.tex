@@ -1,0 +1,106 @@
+\begin{blocksection}
+\question \textbf{Session records.} What would Python display after executing
+the following definitions? Read the field annotations before tracing.
+
+\begin{lstlisting}
+from dataclasses import dataclass
+
+@dataclass
+class Session:
+    topic: str
+    room: int
+    minutes: int = 60
+
+morning = Session("Recursion", 310)
+afternoon = Session("Sequences", 205, 45)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> morning.topic
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+'Recursion'
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> morning.minutes
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+60
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> afternoon.room
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+205
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> afternoon.minutes
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+45
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> morning.minutes + afternoon.minutes
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+105
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> morning
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+Session(topic='Recursion', room=310, minutes=60)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> Session(room=220, topic="Linked lists").topic
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+'Linked lists'
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 6--8 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Fields and types:} \lstinline{topic} describes text, while \lstinline{room} and \lstinline{minutes} describe integers. Annotations communicate expected types.
+    \item \textbf{Construction:} \lstinline{@dataclass} supplies a constructor from the declared fields. Positional arguments follow field order; keyword arguments name the fields explicitly.
+    \item \textbf{Defaults:} Omitting \lstinline{minutes} uses 60. Supplying 45 uses that value for the constructed session.
+    \item \textbf{Access and display:} Dot notation reads one field. The generated representation names the class and its fields. Focus on constructing and reading instances; students do not need to implement special methods for this exercise.
+\end{itemize}
+\end{questionmeta}

@@ -1,0 +1,51 @@
+% Adapted from dictionaries/snapshot.tex using a dictionary comprehension.
+\begin{blocksection}
+\question Complete \lstinline{snapshot}. It takes a function from integers
+to integers and a list of integer inputs. Return a dictionary whose keys are
+those inputs and whose values are the corresponding outputs of the function.
+Use a dictionary comprehension.
+
+\begin{lstlisting}
+from collections.abc import Callable
+
+def snapshot(
+    f: Callable[[int], int], snap_inputs: list[int]
+) -> dict[int, int]:
+    """
+    >>> snapshot(lambda x: x**2, [1, 2, 3])
+    {1: 1, 2: 4, 3: 9}
+    >>> snapshot(lambda x: x + 1, [])
+    {}
+    """
+    return {
+        ____________: ____________
+        for _______________________________
+    }
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+def snapshot(
+    f: Callable[[int], int], snap_inputs: list[int]
+) -> dict[int, int]:
+    return {x: f(x) for x in snap_inputs}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 7 min; Difficulty: Easy--Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Read the function type:} In \lstinline{Callable[[int], int]},
+    the bracketed list gives the parameter types and the final type describes
+    the return value. Here \lstinline{f} accepts one integer and returns one.
+    \item \textbf{Connect to HOFs:} The argument is a function, not the result
+    of calling it. Evaluate \lstinline{f(x)} separately for each input.
+    \item \textbf{Choose key and value:} Each input \lstinline{x} is a key;
+    its output \lstinline{f(x)} is the value. The comprehension constructs
+    the complete result, with no separate dictionary-update step.
+    \item \textbf{Explain the name:} The dictionary records a function's
+    behavior on a finite selection of inputs: a snapshot of its behavior.
+\end{itemize}
+\end{questionmeta}

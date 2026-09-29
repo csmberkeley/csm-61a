@@ -40,12 +40,21 @@ d[word] = count
     \begin{meta}
     \textbf{Teaching Tips}
     \begin{enumerate}
-            \item Remind students of the general structure of dictionaries (map keys to values)
-            \item to access the value of dictionary using key, the syntax is \lstinline$dictionary[key]$, which is also used for assignment
+        \item \textbf{Review dictionary access.}
+        A dictionary maps keys to values. Use \lstinline{d[word]} to read a value
+        and \lstinline{d[word] = count} to add or update the entry.
+    
+        \item \textbf{Plan the loop.}
+        Traverse the string directly with \lstinline{for c in word}.
+        Start the count at zero, increment it when \lstinline{c == 't'},
+        and update the dictionary after the loop.
+    
+        \item \textbf{Distinguish mutation from returning.}
+        The function changes \lstinline{d} in place and implicitly returns
+        \lstinline{None}, matching \lstinline{-> None}.
+        Ask students why the doctests inspect \lstinline{words} after the call.
     \end{enumerate}
     \end{meta}
 \end{blocksection}
 
 \end{blocksection}
-    
-    

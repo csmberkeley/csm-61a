@@ -1,0 +1,127 @@
+% Adapted from nested-list-mutation-with-diagram.tex for sequence operations before mutation.
+\question What would Python display? Run the statements in order.
+For nested expressions, work from the innermost expression outward.
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a = [1, 2, 3]
+>>> a
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[1, 2, 3]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a[2]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a[-1]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a[1:]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[2, 3]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a[:2]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[1, 2]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a + [4, 5]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[1, 2, 3, 4, 5]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[1, 2, 3]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> nested = [1, 2, 3, 4, [5, 6]]
+>>> nested[4]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[5, 6]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> nested[4][0]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+5
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> nested[3:5]
+\end{lstlisting}
+\begin{solution}[.25in]
+\begin{lstlisting}
+[4, [5, 6]]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 6--8 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Indexing:} Indices start at zero; negative indices count from the end. Ask students to predict the type of each result before its value.
+    \item \textbf{Slicing:} Include the start index and exclude the stop index. An omitted bound extends to the corresponding end of the list.
+    \item \textbf{Concatenation:} The expression \lstinline{a + [4, 5]} produces a list value; evaluating it does not change the value of \lstinline{a}.
+    \item \textbf{Nested access:} First evaluate \lstinline{nested[4]}, then select index zero from that result. Focus on the elements and the operation at each step.
+\end{itemize}
+\end{questionmeta}

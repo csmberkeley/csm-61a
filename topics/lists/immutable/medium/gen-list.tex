@@ -1,4 +1,5 @@
 \begin{blocksection}
+\begin{blocksection}
 \question Fill in the methods below according to the doctests.
 \end{blocksection}
 
@@ -50,3 +51,9 @@ def gen_increasing(n):
     return [[i + sum(range(j + 1)) for i in range(j + 1)] for j in range(n)]
 \end{lstlisting}
 \end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+    Suggested Time: 7 min; add 5 min for the challenge; Difficulty: Medium
+    Build one inner list before reasoning about the outer comprehension. The doctests number the elements starting at one. In the challenge, \lstinline{sum(range(j + 1))} counts how many values earlier sublists contain. The wrapped final doctest output is one list, not separate outputs.
+\end{questionmeta}

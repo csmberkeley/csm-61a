@@ -1,0 +1,74 @@
+% Adapted from count-t.tex to return values and construct a dictionary.
+\begin{blocksection}
+\question Write \lstinline{count_t}, which returns the number of lowercase
+\lstinline{"t"} characters in \lstinline{word}. Then use it to construct a
+dictionary mapping each word in \lstinline{words} to its count.
+
+\begin{lstlisting}
+def count_t(word: str) -> int:
+    """
+    >>> count_t("tatter")
+    3
+    >>> count_t("tree")
+    1
+    >>> count_t("")
+    0
+    """
+    _______________________________
+
+    for ____________________________:
+
+        if ____________________________:
+
+            __________________________________
+
+    _______________________________
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+def count_t(word: str) -> int:
+    count = 0
+    for c in word:
+        if c == 't':
+            count += 1
+    return count
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Complete the dictionary comprehension. Its result should be
+\lstinline|{'tatter': 3, 'tree': 1}|.
+
+\begin{lstlisting}
+words = ["tatter", "tree"]
+counts: dict[str, int] = {
+    ____________: ____________ for word in words
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+counts: dict[str, int] = {
+    word: count_t(word) for word in words
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 7 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Read the types:} The function takes a string and returns
+    an integer. The dictionary has string keys and integer values.
+    \item \textbf{Plan the loop:} Start at zero, traverse the characters,
+    count each lowercase \lstinline{'t'}, and return the total.
+    \item \textbf{Construct the dictionary:} Identify the
+    \lstinline{key: value} pair and the iterable. Each word is a key;
+    its count is the associated value. The expression produces a dictionary.
+    \item \textbf{Connect the two stages:} Ask what \lstinline{count_t(word)}
+    returns for one word before evaluating the whole comprehension.
+    Updating the local integer count does not alter the input string.
+\end{itemize}
+\end{questionmeta}

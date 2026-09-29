@@ -1,0 +1,59 @@
+\begin{blocksection}
+\begin{blocksection}
+\question Fill in the functions below according to the doctests.
+\end{blocksection}
+
+\begin{lstlisting}
+def gen_list(n: int) -> list[list[int]]:
+    """
+    Returns a nested list structure of n elements where the
+    ith element is a list from 0 (inclusive) to i (exclusive).
+    >>> gen_list(3)
+    [[0], [0, 1], [0, 1, 2]]
+    >>> gen_list(5)
+    [[0], [0, 1], [0, 1, 2], [0, 1, 2, 3], [0, 1, 2, 3, 4]]
+    """
+    return _______________________________________________
+\end{lstlisting}
+
+For an additional challenge, try out the following:
+
+\begin{lstlisting}
+def gen_increasing(n: int) -> list[list[int]]:
+    """
+    Returns a nested list structure of n elements where the
+    ith element of each list is one more than the previous
+    element (even if the previous is in a prior sublist).
+    >>> gen_increasing(3)
+    [[0], [1, 2], [3, 4, 5]]
+    >>> gen_increasing(5)
+    [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13,
+    14]]
+    """
+    return ______________________________________________
+\end{lstlisting}
+
+\textbf{Hint:} You can sum ranges. E.g. \texttt{sum(range(3))} gives us $0 + 1 + 2 = 3$.
+
+\begin{solution}
+\begin{lstlisting}
+def gen_list(n: int) -> list[list[int]]:
+    return [[i for i in range(j+1)] for j in range(n)]
+
+def gen_increasing(n: int) -> list[list[int]]:
+    return [[i for i in range(sum(range(j+1)), sum(range(j+1)) + j+1)] for j in range(n)]
+\end{lstlisting}
+
+\textit{An alternate solution for \texttt{gen\_increasing} is shown below:}
+
+\begin{lstlisting}
+def gen_increasing(n: int) -> list[list[int]]:
+    return [[i + sum(range(j + 1)) for i in range(j + 1)] for j in range(n)]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+    Suggested Time: 7 min; add 5 min for the challenge; Difficulty: Medium
+    Build one inner list before reasoning about the outer comprehension. The doctests number the elements starting at one. In the challenge, \lstinline{sum(range(j + 1))} counts how many values earlier sublists contain. The wrapped final doctest output is one list, not separate outputs.
+\end{questionmeta}
