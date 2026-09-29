@@ -2,32 +2,24 @@
 >>> a
 [1, 2, 3]
 >>> a[2]
+3
 >>> a[-1]
->>> b = a
->>> a = a + [4, [5, 6]]
+3
+>>> a[1:]
+[2, 3]
+>>> a[:2]
+[1, 2]
+>>> a + [4, 5]
+[1, 2, 3, 4, 5]
 >>> a
-[1, 2, 3, 4, [5, 6]]
->>> b
 [1, 2, 3]
->>> c = a
->>> a = [4, 5]
->>> a
-[4, 5]
->>> c
-[1, 2, 3, 4, [5, 6]]
->>> d = c[3:5]
->>> c[3] = 9
->>> d
-
+>>> nested = [1, 2, 3, 4, [5, 6]]
+>>> nested[4]
+[5, 6]
+>>> nested[4][0]
+5
+>>> nested[3:5]
 [4, [5, 6]]
->>> c[4][0] = 7
->>> d
-[4, [7, 6]]
->>> c[4] = 10
->>> d
-[4, [7, 6]]
->>> c
-[1, 2, 3, 9, 10]
 
 
 >>> t: tuple[int, str, float, bool, None] = (
@@ -61,14 +53,12 @@
 >>> (3) * 3
 (3, 3, 3)
 9
->>> t[0] = 4
-TypeError
 >>> locations = {(4, 5): "CSM"}
 >>> locations[(4, 5)]
 'CSM'
->>> locations[[4, 5]] = "office hours"
+>>> locations[[4, 5]]
 TypeError
->>> locations[(4, [5])] = "office hours"
+>>> locations[(4, [5])]
 TypeError
 
 
@@ -79,116 +69,119 @@ TypeError
     return new_list
 
 
-def all_primes(nums):
+def all_primes(nums: list[int]) -> list[int]:
     result = []
     for i in nums:
         if is_prime(i):
             result = result + [i]
     return result
 
-    List comprehension:
+    # Alternative using a list comprehension:
     return [x for x in nums if is_prime(x)]
 
 
-def gen_list(n):
+def gen_list(n: int) -> list[list[int]]:
     return [[i for i in range(j+1)] for j in range(n)]
 
-def gen_increasing(n):
+def gen_increasing(n: int) -> list[list[int]]:
     return [[i for i in range(sum(range(j+1)), sum(range(j+1)) + j+1)] for j in range(n)]
-def gen_increasing(n):
+def gen_increasing(n: int) -> list[list[int]]:
     return [[i + sum(range(j + 1)) for i in range(j + 1)] for j in range(n)]
 
 
+def count_t(word: str) -> int:
     count = 0
     for c in word:
         if c == 't':
             count += 1
-    d[word] = count
+    return count
+counts: dict[str, int] = {
+    word: count_t(word) for word in words
+}
 
 
-def snapshot(f, snap_inputs):
-    snap = {}
-    for snap_input in snap_inputs:
-        snap[snap_input] = f(snap_input)
-    return snap
+def snapshot(
+    f: Callable[[int], int], snap_inputs: list[int]
+) -> dict[int, int]:
+    return {x: f(x) for x in snap_inputs}
 
 
 
 
-class Foo(object):
-    x = 'bam'
+from dataclasses import dataclass
 
-    def __init__(self, x):
-        self.x = x
+@dataclass
+class Session:
+    topic: str
+    room: int
+    minutes: int = 60
 
-    def baz(self):
-        return type(self).x + self.x
-
-class Bar(Foo):
-    x = 'boom'
-
-    def __init__(self, x):
-        Foo.__init__(self, 'er' + x)
-
-foo = Foo('boo')
->>> bar = Bar('ang')
->>> Bar.x
+morning = Session("Recursion", 310)
+afternoon = Session("Sequences", 205, 45)
+>>> morning.topic
+'Recursion'
+>>> morning.minutes
+60
+>>> afternoon.room
+205
+>>> afternoon.minutes
+45
+>>> morning.minutes + afternoon.minutes
+105
+>>> morning
+Session(topic='Recursion', room=310, minutes=60)
+>>> Session(room=220, topic="Linked lists").topic
+'Linked lists'
 
 
 >>> a = Link(1, Link(2, Link(3)))
-+---+---+  +---+---+  +---+---+
-| 1 | --|->| 2 | --|->| 3 | / |
-+---+---+  +---+---+  +---+---+
 >>> a.first
 1
->>> a.first = 5
-+---+---+  +---+---+  +---+---+
-| 5 | --|->| 2 | --|->| 3 | / |
-+---+---+  +---+---+  +---+---+
->>> a.first
 >>> a.rest.first
->>> a.rest.rest.rest.rest.first
->>> a.rest.rest.rest = a
-   +---+---+  +---+---+  +---+---+
-+->| 5 | --|->| 2 | --|->| 3 | --|--+
-|  +---+---+  +---+---+  +---+---+  |
-|                                   |
-+-----------------------------------+
->>> a.rest.rest.rest.rest.first
 2
->>> repr(Link(1, Link(2, Link(3, Link.empty))))
-"Link(1, Link(2, Link(3)))"
->>> Link(1, Link(2, Link(3, Link.empty)))
-Link(1, Link(2, Link(3)))
->>> str(Link(1, Link(2, Link(3))))
-'<1 2 3>'
->>> print(Link(Link(1), Link(2, Link(3))))
-<<1> 2 3>
+>>> a.rest.rest.first
+3
+>>> a.rest.rest.rest
+()
+>>> isinstance(a.rest, Link)
+True
+>>> isinstance(a.rest.rest.rest, Link)
+False
+>>> a.rest.rest.rest.first
+AttributeError: 'tuple' object has no attribute 'first'
+>>> a.rest.rest
+Link(first=3, rest=())
+>>> Link(1, Link(2))
+Link(first=1, rest=Link(first=2, rest=()))
+>>> print(a)
+(1 2 3)
 
 
-def linkify_rec(lst):
+def linkify_rec[T](lst: list[T]) -> LinkedList[T]:
     if not lst:
-        return Link.empty
+        return ()
     else:
         return Link(lst[0], linkify_rec(lst[1:]))
 
-def linkify_iter(lst):
-    retVal = Link.empty
+def linkify_iter[T](lst: list[T]) -> LinkedList[T]:
+    retVal: LinkedList[T] = ()
     for elem in lst[::-1]:
         retVal = Link(elem, retVal)
     return retVal
 
 
-def combine_two(lnk, fn):
-    if lnk is Link.empty:
-        return Link.empty
-    elif lnk.rest is Link.empty:
+def combine_two(
+    lnk: LinkedList[int], fn: Callable[[int, int], int]
+) -> LinkedList[int]:
+    if not isinstance(lnk, Link):
+        return ()
+    elif not isinstance(lnk.rest, Link):
         return Link(lnk.first)
     combined = fn(lnk.first, lnk.rest.first)
     return Link(combined, combine_two(lnk.rest.rest, fn))
 
 
-def donut(d, f):
+def donut(d: int, f: int) -> int:
     if d == 0:
         return 1
     if f == 0:

@@ -1,0 +1,125 @@
+% Adapted from class/easy/wwpd.tex for the dataclass interface.
+\question What would Python display? Run these statements in order.
+If a statement causes an error, identify the error and continue.
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a = Link(1, Link(2, Link(3)))
+>>> a.first
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+1
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a.rest.first
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a.rest.rest.first
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a.rest.rest.rest
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+()
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> isinstance(a.rest, Link)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+True
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> isinstance(a.rest.rest.rest, Link)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+False
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a.rest.rest.rest.first
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+AttributeError: 'tuple' object has no attribute 'first'
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a.rest.rest
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+Link(first=3, rest=())
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> Link(1, Link(2))
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+Link(first=1, rest=Link(first=2, rest=()))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> print(a)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(1 2 3)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 6--8 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Follow the structure:} Each \lstinline{rest} skips one element. Name the resulting value before taking another attribute.
+    \item \textbf{Recognize the base case:} \lstinline{()} is an empty linked list, not a \lstinline{Link} instance. It has no \lstinline{first} or \lstinline{rest}.
+    \item \textbf{Read the representations:} The dataclass representation shows \lstinline{first=} and \lstinline{rest=}; \lstinline{print} uses the supplied formatter to show the sequence as \lstinline{(1 2 3)}. Both describe the same element sequence.
+\end{itemize}
+\end{questionmeta}

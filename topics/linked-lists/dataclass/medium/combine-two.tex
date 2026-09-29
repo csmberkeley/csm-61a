@@ -1,0 +1,60 @@
+% Adapted from class/medium/combine-two.tex for the dataclass Link.
+\begin{blocksection}
+\question Write a function \texttt{combine\char`_two}, which takes in a linked list of integers \texttt{lnk} and a two-argument function \texttt{fn}. It returns a new linked list where every two elements of \texttt{lnk} have been combined using \texttt{fn}.\\
+
+\begin{lstlisting}
+from collections.abc import Callable
+def combine_two(
+    lnk: LinkedList[int], fn: Callable[[int, int], int]
+) -> LinkedList[int]:
+    """
+    >>> from operator import add, mul
+    >>> lnk1 = Link(1, Link(2, Link(3, Link(4))))
+    >>> print(combine_two(lnk1, add))
+    (3 7)
+    >>> lnk2 = Link(2, Link(4, Link(6)))
+    >>> print(combine_two(lnk2, mul))
+    (8 6)
+    >>> combine_two((), add)
+    ()
+    """
+    if ______________________________________:
+
+        return ______________________________
+    elif ____________________________________:
+
+        return ______________________________
+    combined = ______________________________
+
+    return __________________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def combine_two(
+    lnk: LinkedList[int], fn: Callable[[int, int], int]
+) -> LinkedList[int]:
+    if not isinstance(lnk, Link):
+        return ()
+    elif not isinstance(lnk.rest, Link):
+        return Link(lnk.first)
+    combined = fn(lnk.first, lnk.rest.first)
+    return Link(combined, combine_two(lnk.rest.rest, fn))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 10 min; Difficulty: Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Function type:} \lstinline{Callable[[int, int], int]}
+    describes two integer arguments and an integer result. Connect to HOFs.
+    \item \textbf{Base cases:} Separate empty and one-element inputs.
+    Use \lstinline{isinstance} to distinguish a node from \lstinline{()}.
+    \item \textbf{Recursive step:} Combine two values, recurse on the
+    remaining list, and construct the result. Retain an unpaired last value.
+\end{itemize}
+\end{questionmeta}

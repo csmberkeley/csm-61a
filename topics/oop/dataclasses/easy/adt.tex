@@ -1,0 +1,31 @@
+% Adapted from topics/oop/easy/adt.tex for dataclass-based compound data.
+\begin{blocksection}
+\question \begin{parts}
+\part What is an \define{Abstract Data Type}?
+\begin{solution}[0.65in]
+An abstract data type describes the information a value represents and the
+operations we can use with it, without requiring users to know how those
+operations are implemented. For example, a session record can provide a topic,
+room, and duration through named attributes.
+\end{solution}
+\part What is the relationship between a class and an ADT?
+\begin{solution}[0.65in]
+A class is one way to implement an ADT. A dataclass can bundle a session's
+information into fields such as \lstinline{topic}, \lstinline{room}, and
+\lstinline{minutes}. Calling \lstinline{Session("Recursion", 310)} constructs
+an instance, and reading \lstinline{s.room} accesses its room. Code using this
+interface need not know how the fields are stored. The class's definition
+implements the representation; the meaning and supported operations form the
+abstraction.
+\end{solution}
+\end{parts}
+\end{blocksection}
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 3--4 min; Difficulty: Conceptual
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Connect to functions:} Using a function without inspecting its body is analogous to using a compound value through its interface.
+    \item \textbf{Make the distinction concrete:} A dataclass provides a convenient implementation; the abstraction is the meaning of the data and what its interface lets us do. Use the session-record example in the solution.
+\end{itemize}
+\end{questionmeta}

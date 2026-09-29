@@ -16,17 +16,18 @@
     \item \textbf{This is a menu of problems, not a requirement to finish the worksheet.} Individual suggested times do not add up to one hour. Choose or skip problems based on your students, and give each mini-lecture immediately before its section.
     \item Check-in and icebreaker [5 min]. Ask what students would like more practice with: tracing expressions, choosing a representation, or writing code.
     \item Sequences: selected parts of Q1--Q2, then Q3 or Q4 [15 min]. Choose Q3 for nested loops or Q4 for filtering and comprehensions. Q5 is extra practice.
-    \item Containers: Q6 or Q7 [10 min]. Choose Q6 for strings and counting or Q7 to connect dictionaries to higher-order functions.
-    \item Objects and abstraction: Q8 [5 min]. Use the supplied linked-list class as the concrete object example. Q9 is optional practice if students have already seen methods and inheritance.
-    \item Linked lists: the first block of Q10, then Q11 or Q12 [20 min]. Choose Q11 for construction or Q12 for processing an existing linked list. Save cycles, representations, and the iterative version for students ready for more.
+    \item Containers: Q6 or Q7 [10 min]. Choose Q6 for strings, counting, and dictionary construction or Q7 to connect dictionary comprehensions to higher-order functions.
+    \item Objects and abstraction: Q8, then selected parts of Q9 [8 min]. Connect the ADT discussion to constructing dataclass instances, reading fields, and interpreting defaults.
+    \item Linked lists: selected parts of Q10, then Q11 or Q12 [17 min]. Choose Q11 for construction or Q12 for processing an existing linked list. Supply the dataclass definition and focus on its interface. The iterative version of Q11 is extra practice.
     \item Wrap-up and questions [5 min]. Have students describe the interface of one representation in their own words.
 \end{itemize}
 \textbf{Teaching Goals}
 \begin{itemize}
     \item Keep emphasizing abstraction: what information does a value represent, and which operations does its interface support? Have students name intermediate values and their types before evaluating nested expressions.
     \item Let students predict, discuss with a partner, and explain their reasoning before running code. For implementation problems, establish an example and a plan before filling in blanks.
-    \item Q1 includes mutation and shallow copying as well as indexing. Prioritize the indexing and nested-list expressions; treat the later mutation cases as an extension if needed.
-    \item \textbf{Container type hints (Q2, Q3, Q6):} Before solving, have students read the annotations aloud. A tuple annotation lists the types at each position; \lstinline{list[int]} describes integer elements; \lstinline{dict[str, int]} describes string keys and integer values. The arrow describes a function's return type. Annotations document expected types; Python does not automatically enforce them.
+    \item Q1 practices indexing, slicing, concatenation, and nested-list access. Across compound data, focus on reading values and constructing results; defer mutation, sharing, and cycles. Local assignments and integer counters remain useful tools for iteration.
+    \item \textbf{Type hints throughout:} Before solving, have students read the annotations aloud. A tuple annotation lists the types at each position; \lstinline{list[int]} describes integer elements; \lstinline{dict[str, int]} describes string keys and integer values. The arrow describes a function's return type. In linked-list annotations, \lstinline{T} is the element type and \lstinline{LinkedList[T]} also permits \lstinline{()}. Annotations document expected types; Python does not automatically enforce them.
+    \item Q6 and Q7 construct dictionaries with comprehensions. Have students identify the key and value for one input before reading the whole expression. In Q7 and Q12, \lstinline{Callable} describes the argument and return types of a function parameter.
     \item The sequence overview and Q2 introduce tuples and their operations. Q10--Q12 cover linked-list structure, construction, traversal, and processing.
     \item Q13 is optional tree-recursion practice: split the possibilities into taking one donut of the current flavor or using none of that flavor. Ask students why these two counts are added.
 \end{itemize}
@@ -41,55 +42,55 @@
 \ifdefined\discussionmetas\else\newpage\fi
 \subsection*{Sequence Practice}
 \begin{questions}
-    \subimport{../../topics/lists/immutable/easy/wwpd/}{simple-modified-2.tex}
+    \subimport{../../topics/lists/immutable/easy/wwpd/}{list-operations-without-mutation.tex}
 
     \subimport{../../topics/sequences/}{tuples.tex}
 
     \subimport{../../topics/lists/type-hints/immutable/medium/}{duplicate-list.tex}
 
-    \subimport{../../topics/lists/immutable/easy/}{all-primes.tex}
+    \subimport{../../topics/lists/type-hints/immutable/easy/}{all-primes.tex}
 
-    \subimport{../../topics/lists/immutable/medium/}{gen-list.tex}
+    \subimport{../../topics/lists/type-hints/immutable/medium/}{gen-list.tex}
 \end{questions}
 
 \newpage
 \section{Containers and Dictionaries}
 \begin{questions}
     \setcounter{question}{5}
-    \subimport{../../topics/dictionaries/type-hints/}{count-t.tex}
+    \subimport{../../topics/dictionaries/type-hints/}{count-t-values.tex}
 
-    \subimport{../../topics/dictionaries/}{snapshot.tex}
+    \subimport{../../topics/dictionaries/type-hints/}{snapshot.tex}
 \end{questions}
 
 \newpage
 \section{Objects and Data Abstraction}
 \begin{questions}
     \setcounter{question}{7}
-    \subimport{../../topics/oop/easy/}{adt.tex}
+    \subimport{../../topics/oop/dataclasses/easy/}{adt.tex}
 
-    % Leave ADT discussion/writing space so Q9 starts near mid-page.
-    \ifprintanswers\else\vspace{2.25in}\fi
-    \subimport{../../topics/oop/easy/wwpd/}{foobar.tex}
+    % Leave ADT writing space before the dataclass practice.
+    \ifprintanswers\else\vspace{1.95in}\fi
+    \subimport{../../topics/oop/dataclasses/easy/}{wwpd.tex}
 \end{questions}
 
 \newpage
 \section{Linked Lists}
 \begin{blocksection}
-\subimport{../../topics/linked-lists/class/text/}{implementation.tex}
+\subimport{../../topics/linked-lists/dataclass/text/}{implementation.tex}
 \end{blocksection}
 \begin{questions}
     \setcounter{question}{9}
-    \subimport{../../topics/linked-lists/class/easy/}{wwpd.tex}
+    \subimport{../../topics/linked-lists/dataclass/easy/}{wwpd.tex}
 
-    \subimport{../../topics/linked-lists/class/easy/}{linkify.tex}
+    \subimport{../../topics/linked-lists/dataclass/easy/}{linkify.tex}
 
-    \subimport{../../topics/linked-lists/class/medium/}{combine-two.tex}
+    \subimport{../../topics/linked-lists/dataclass/medium/}{combine-two.tex}
 \end{questions}
 
 \newpage
 \section{Optional Extension: Tree-Recursive Counting}
 \begin{questions}
     \setcounter{question}{12}
-    \subimport{../../topics/recursion/medium/}{donut.tex}
+    \subimport{../../topics/recursion/type-hints/medium/}{donut.tex}
 \end{questions}
 \end{document}

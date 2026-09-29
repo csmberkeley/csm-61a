@@ -2,23 +2,14 @@
 >>> a
 >>> a[2]
 >>> a[-1]
->>> b = a
->>> a = a + [4, [5, 6]]
+>>> a[1:]
+>>> a[:2]
+>>> a + [4, 5]
 >>> a
->>> b
->>> c = a
->>> a = [4, 5]
->>> a
->>> c
->>> d = c[3:5]
->>> c[3] = 9
->>> d
-
->>> c[4][0] = 7
->>> d
->>> c[4] = 10
->>> d
->>> c
+>>> nested = [1, 2, 3, 4, [5, 6]]
+>>> nested[4]
+>>> nested[4][0]
+>>> nested[3:5]
 
 
 >>> t: tuple[int, str, float, bool, None] = (
@@ -38,11 +29,10 @@
 >>> (4, 5) + (6, 7)
 >>> (3,) * 3
 >>> (3) * 3
->>> t[0] = 4
 >>> locations = {(4, 5): "CSM"}
 >>> locations[(4, 5)]
->>> locations[[4, 5]] = "office hours"
->>> locations[(4, [5])] = "office hours"
+>>> locations[[4, 5]]
+>>> locations[(4, [5])]
 
 
     def duplicate_list(lst: list[int]) -> list[int]:
@@ -64,10 +54,10 @@
 
 
 
-def all_primes(nums):
+def all_primes(nums: list[int]) -> list[int]:
 
 
-def gen_list(n):
+def gen_list(n: int) -> list[list[int]]:
     """
     Returns a nested list structure of n elements where the
     ith element is a list from 0 (inclusive) to i (exclusive).
@@ -77,7 +67,7 @@ def gen_list(n):
     [[0], [0, 1], [0, 1, 2], [0, 1, 2, 3], [0, 1, 2, 3, 4]]
     """
     return _______________________________________________
-def gen_increasing(n):
+def gen_increasing(n: int) -> list[list[int]]:
     """
     Returns a nested list structure of n elements where the
     ith element of each list is one more than the previous
@@ -91,84 +81,88 @@ def gen_increasing(n):
     return ______________________________________________
 
 
-    def count_t(d: dict[str, int], word: str) -> None:
-        """
-        >>> words = {}
-        >>> count_t(words, "tatter")
-        >>> words["tatter"]
-        3
-        >>> count_t(words, "tree")
-        >>> words
-        {'tatter': 3, 'tree': 1}
-        """
-        _______________________________
+def count_t(word: str) -> int:
+    """
+    >>> count_t("tatter")
+    3
+    >>> count_t("tree")
+    1
+    >>> count_t("")
+    0
+    """
+    _______________________________
 
-        for ____________________________:
+    for ____________________________:
 
-            if ____________________________:
+        if ____________________________:
 
-                __________________________________
+            __________________________________
 
-        _______________________________
+    _______________________________
+words = ["tatter", "tree"]
+counts: dict[str, int] = {
+    ____________: ____________ for word in words
+}
 
 
+from collections.abc import Callable
 
-def snapshot(f, snap_inputs):
+def snapshot(
+    f: Callable[[int], int], snap_inputs: list[int]
+) -> dict[int, int]:
     """
     >>> snapshot(lambda x: x**2, [1, 2, 3])
     {1: 1, 2: 4, 3: 9}
+    >>> snapshot(lambda x: x + 1, [])
+    {}
     """
-
-    snap = __________________________________________
-
-    __________________________________________:
-
-        __________________________________________
-
-    return snap
+    return {
+        ____________: ____________
+        for _______________________________
+    }
 
 
 
 
-class Foo(object):
-    x = 'bam'
+from dataclasses import dataclass
 
-    def __init__(self, x):
-        self.x = x
+@dataclass
+class Session:
+    topic: str
+    room: int
+    minutes: int = 60
 
-    def baz(self):
-        return type(self).x + self.x
-
-class Bar(Foo):
-    x = 'boom'
-
-    def __init__(self, x):
-        Foo.__init__(self, 'er' + x)
-
-foo = Foo('boo')
->>> bar = Bar('ang')
->>> Bar.x
+morning = Session("Recursion", 310)
+afternoon = Session("Sequences", 205, 45)
+>>> morning.topic
+>>> morning.minutes
+>>> afternoon.room
+>>> afternoon.minutes
+>>> morning.minutes + afternoon.minutes
+>>> morning
+>>> Session(room=220, topic="Linked lists").topic
 
 
 >>> a = Link(1, Link(2, Link(3)))
 >>> a.first
->>> a.first = 5
->>> a.first
 >>> a.rest.first
->>> a.rest.rest.rest.rest.first
->>> a.rest.rest.rest = a
->>> a.rest.rest.rest.rest.first
->>> repr(Link(1, Link(2, Link(3, Link.empty))))
->>> Link(1, Link(2, Link(3, Link.empty)))
->>> str(Link(1, Link(2, Link(3))))
->>> print(Link(Link(1), Link(2, Link(3))))
+>>> a.rest.rest.first
+>>> a.rest.rest.rest
+>>> isinstance(a.rest, Link)
+>>> isinstance(a.rest.rest.rest, Link)
+>>> a.rest.rest.rest.first
+>>> a.rest.rest
+>>> Link(1, Link(2))
+>>> print(a)
 
 
-def linkify_rec(lst):
+def linkify_rec[T](lst: list[T]) -> LinkedList[T]:
     """
     >>> lst = [0, 1, 2, 3]
-    >>> linkify_rec(lst)
-    Link(0, Link(1, Link(2, Link(3))))
+    >>> print(linkify_rec(lst))
+    (0 1 2 3)
+    >>> linkify_rec([])
+    ()
     """
     if ___________________________________:
 
@@ -179,7 +173,7 @@ def linkify_rec(lst):
         __________________________________
 
 
-def linkify_iter(lst):
+def linkify_iter[T](lst: list[T]) -> LinkedList[T]:
 
     ______________________________________
 
@@ -191,29 +185,33 @@ def linkify_iter(lst):
 
 
 
-def combine_two(lnk, fn):
+from collections.abc import Callable
+def combine_two(
+    lnk: LinkedList[int], fn: Callable[[int, int], int]
+) -> LinkedList[int]:
     """
+    >>> from operator import add, mul
     >>> lnk1 = Link(1, Link(2, Link(3, Link(4))))
-    >>> combine_two(lnk1, add)
-    Link(3, Link(7))
+    >>> print(combine_two(lnk1, add))
+    (3 7)
     >>> lnk2 = Link(2, Link(4, Link(6)))
-    >>> combine_two(lnk2, mul)
-    Link(8, Link(6))
+    >>> print(combine_two(lnk2, mul))
+    (8 6)
+    >>> combine_two((), add)
+    ()
     """
     if ______________________________________:
 
         return ______________________________
-
-    elif ____________________________________
+    elif ____________________________________:
 
         return ______________________________
-
     combined = ______________________________
 
     return __________________________________
 
 
-def donut(d, f):
+def donut(d: int, f: int) -> int:
     """
     >>> donut(12, 1)
     1

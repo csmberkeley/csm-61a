@@ -1,0 +1,69 @@
+% Adapted from class/easy/linkify.tex for the dataclass Link.
+\begin{blocksection}
+\question Write a function \texttt{linkify} that, given a list \texttt{lst}, returns a linked list with the same values. You may assume that there will be no nested lists. \\
+
+Try writing this function both recursively and iteratively. \\
+
+\begin{lstlisting}
+def linkify_rec[T](lst: list[T]) -> LinkedList[T]:
+    """
+    >>> lst = [0, 1, 2, 3]
+    >>> print(linkify_rec(lst))
+    (0 1 2 3)
+    >>> linkify_rec([])
+    ()
+    """
+    if ___________________________________:
+
+        __________________________________
+
+    else:
+
+        __________________________________
+
+
+def linkify_iter[T](lst: list[T]) -> LinkedList[T]:
+
+    ______________________________________
+
+    for __________________________________:
+
+        __________________________________
+
+    ______________________________________
+
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+def linkify_rec[T](lst: list[T]) -> LinkedList[T]:
+    if not lst:
+        return ()
+    else:
+        return Link(lst[0], linkify_rec(lst[1:]))
+
+def linkify_iter[T](lst: list[T]) -> LinkedList[T]:
+    retVal: LinkedList[T] = ()
+    for elem in lst[::-1]:
+        retVal = Link(elem, retVal)
+    return retVal
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 9 min recursive; add 5 min iterative; Difficulty: Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Read the types:} The type variable \lstinline{T} represents
+    the input element type, which is preserved in the output linked list.
+    \item \textbf{Use the recursive leap of faith:} Identify the base case,
+    smaller input, and how to build the answer. The recursive call returns
+    a linked list for the remaining Python list; empty input returns
+    \lstinline{()}.
+    \item \textbf{Build iteratively:} Process the input from right to left,
+    placing each element at the front of the result. This preserves the
+    input order. Use the recursive version first and the iterative version
+    as additional practice.
+\end{itemize}
+\end{questionmeta}
