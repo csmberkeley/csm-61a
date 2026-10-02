@@ -1,0 +1,50 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+\lstset{language=Scheme}
+
+%%% CHANGE THESE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\discnumber{7}
+\title{\textsc{Macros, Tail Recursion, and Interpreters}}
+\date{November 11 - November 14, 2019}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\rule{\textwidth}{0.15em}
+\fontsize{12}{15}\selectfont
+
+
+% \section{Let in Scheme}
+% \begin{questions}
+% \subimport{../../topics/scheme/easy/}{let-issues.tex}
+
+
+% \newpage
+%%% Question %%%
+
+\section{Macros}
+\subimport {../../topics/macros/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/macros/easy/}{macros-quasi.tex}
+\subimport{../../topics/macros/medium/}{if-macro.tex}
+\subimport{../../topics/macros/medium/}{apply-twice.tex}
+\end{questions}
+
+\newpage
+\section{Tail Recursion}
+\subimport{../../topics/tail-recursion/text/}{intro.tex}
+\begin{questions}
+\subimport{../../topics/tail-recursion/easy/}{intro.tex}
+\subimport{../../topics/tail-recursion/medium/}{count-instance.tex}
+\subimport{../../topics/tail-recursion/medium/}{filter.tex}
+\end{questions}
+
+\section{Interpreters}
+\begin{questions}
+\subimport{../../topics/interpreters/easy/}{intro.tex}
+% \subimport{../../topics/interpreters/medium/}{eval-apply.tex}
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

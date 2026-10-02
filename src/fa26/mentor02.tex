@@ -1,0 +1,103 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{2}
+\title{Expressions, Functions, and Control}
+\date{August 31, 2026 -- September 4, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Teaching tips:
+            \subitem{\textbf{Each problem's "Suggested Time" is not assigned with the 1 hour time for sections in mind.} It is more of a note of how long each individual problem may take. That is, if you added all the "Suggested Times" in the coding section, it could very well be greater than 1 hour (especially in more complicated worksheets in the future).}
+            \subitem{\textbf{The times in brackets are intended as a suggested outline; choose or skip problems as needed to fit your section.}}
+        
+        \item Intros, Ice Breakers, \& Logistics [10 min]
+            \subitem{Introduce yourself, and give an overview of what CSM offers. Start off with an icebreaker of your choice!}
+        \item Mini-lecture: Python Expressions, Functions, Environment Diagrams, Control, and Higher-Order Functions [10 min]. Do each topic's mini-lecture right before the questions for that section and do not do a whole big mini-lecture in the beginning.
+        \item Q1: Potpourri [5 min]
+            \subitem{Feel free to skip some parts!}
+        \item Q2: Funky Functions [7 min]
+        \item Q3: Score Needed [7 min]
+        \item Q4: Swap [10 min]
+        \item Q5: Divisibility Check [5 min]
+        \item Q6: Fizz Buzz [7 min]
+        \item Q7: Whole Sum [10 min]
+        \item Questions [5 min]
+            \subitem{Save some time at the end to answer questions about this week's content or CSM!}     
+    \end{itemize}
+\end{meta}
+
+\section{Expressions}
+\begin{questions}
+    \subimport{../../topics/basics/}{potpurri.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min
+        \begin{itemize}
+            \item You can probably skip a lot of these as soon as your students get the idea.
+            \item Introduce the idea of booleans, or/and, and that print returns None.
+            \item Your students might be new to solving "compound" questions like the last one; Consider giving them tips on how to break down such problems.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+
+\section{Functions}
+\begin{questions}
+    \subimport{../../topics/basics/}{funky-funcs.tex}
+    \begin{questionmeta}
+        Suggested Time: 7 min
+        \begin{itemize}
+            \item Show students how to tackle problems with nested expressions (like the process in the solution for this problem).
+            \item If students are comfortable with nested expressions, feel free to go over the example and skip straight to the last subpart. 
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/functions-and-expressions/medium/}{score-needed.tex}
+    \begin{questionmeta}
+    Suggested Time: 10 min
+    Make sure that students understand the question prompt and how to come up with the formula.
+    \end{questionmeta}  
+\end{questions}
+
+\section{Environment Diagrams}
+\begin{questions}
+    \subimport{../../topics/functions-and-expressions/medium/env-diagram/}{swap.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+        \begin{itemize}
+            \item Emphasize when a new frame is created and how local assignments differ from global assignments.
+            \item Track the return value of \lstinline{print} and the resulting value of \lstinline{a}.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\section{Control}
+\begin{questions}
+    \subimport{../../topics/control/easy/}{divisibility-check.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min
+    \end{questionmeta}
+
+    \subimport{../../topics/control/medium/}{fizzbuzz.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+    \end{questionmeta}
+\end{questions}
+
+\section{Higher-Order Functions}
+\begin{questions}
+    \subimport{../../topics/hof/medium/}{check_sum.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min
+        \begin{itemize}
+            \item Connect the returned function to the idea of a predicate that produces \lstinline{True} or \lstinline{False}.
+            \item Trace one iteration of the \lstinline{while} loop before students complete the implementation.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\end{document}
