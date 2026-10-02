@@ -5,6 +5,10 @@ Makefile
 
 # Created by https://www.gitignore.io/api/latex,linux,macos,windows
 
+## Editor files:
+.idea
+.vscode
+
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
