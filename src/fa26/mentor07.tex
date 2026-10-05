@@ -1,0 +1,64 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+\discnumber{7}
+\title{Linked Lists \& Trees}
+\date{October 5, 2026 -- October 9, 2026}
+
+% Exercises and solutions are imported from the topic bank.
+\begin{document}
+\maketitle
+
+\begin{meta}
+\small
+\textbf{Example Timeline}
+\begin{itemize}
+    \item \textbf{This is a menu of problems, not a requirement to finish the worksheet.} Individual suggested times do not add up to one hour. Choose or skip problems based on your students, and give each mini-lecture immediately before its section.
+    \item Check-in and icebreaker [5 min].
+    \item Linked lists: Q1, then Q2 or Q3 [15 min]. Choose Q2 for combining lists with \lstinline{Link} (append, then reverse) or Q3 for filtering an existing list. Q4 (merging sorted lists) is extra practice with multiple base cases.
+    \item Trees: Q5, then Q6 [15 min]. Have students draw the tree before reading the code.
+    \item Tree processing: Q7 or Q8 [20 min]. Choose Q7 for returning a list of linked lists or Q8 for passing a shrinking target down the tree.
+    \item Wrap-up and questions [5 min]. Ask students to compare how a linked list and a tree are each defined recursively.
+\end{itemize}
+\textbf{Teaching Goals}
+\begin{itemize}
+    \item A linked list is either empty (\lstinline{()}) or a \lstinline{first} value and a \lstinline{rest} that is a linked list. Check \lstinline{isinstance(s, Link)} before using \lstinline{first} or \lstinline{rest}.
+    \item A tree is a \lstinline{label} and a list of \lstinline{branches}, each a tree. Trees cannot be empty, so a leaf is the usual base case.
+    \item For both structures, use the recursive leap of faith: say what the recursive call returns, then decide how to combine it with the current node.
+    \item Every second argument to \lstinline{Link} must be a linked list, and every \lstinline{branches} value must be a list of trees. Have students name the type of each recursive result before writing the combine step.
+    \item These problems read and construct values; they do not mutate them.
+\end{itemize}
+\end{meta}
+
+\section{Linked Lists}
+\begin{blocksection}
+\subimport{../../topics/linked-lists/dataclass/text/}{implementation.tex}
+\end{blocksection}
+\begin{questions}
+    % \subimport{../../topics/linked-lists/dataclass/easy/}{construct.tex}
+
+    \subimport{../../topics/linked-lists/dataclass/easy/}{append-reverse.tex}
+
+    \subimport{../../topics/linked-lists/dataclass/easy/}{keep-if.tex}
+
+    \subimport{../../topics/linked-lists/dataclass/medium/}{merge.tex}
+\end{questions}
+
+\newpage
+\section{Trees}
+\begin{blocksection}
+\subimport{../../topics/trees/dataclass/text/}{implementation.tex}
+\end{blocksection}
+\begin{questions}
+    \setcounter{question}{4}
+    \subimport{../../topics/trees/dataclass/easy/}{wwpd.tex}
+
+    \subimport{../../topics/trees/dataclass/easy/}{height.tex}
+
+    % \subimport{../../topics/trees/dataclass/easy/}{link-to-tree.tex}
+
+    \subimport{../../topics/trees/dataclass/medium/}{all-paths.tex}
+
+    \subimport{../../topics/trees/dataclass/medium/}{count-paths.tex}
+\end{questions}
+\end{document}
