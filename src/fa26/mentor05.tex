@@ -1,0 +1,133 @@
+\documentclass{exam}
+\usepackage{../commonheader}
+
+\discnumber{5}
+\title{Recursion, Tree Recursion}
+\date{September 21, 2026 - September 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{meta}
+    \textbf{Example Timeline}
+    \begin{itemize}
+        \item Intros \& Logistics [5 min]
+        \item Recursion Basics: base cases, recursive cases, and the recursive leap of faith [10 min]
+        \item Writing Recursive Functions: turning a description of a process into code [15 min]
+        \item Recursive Helper Functions: carrying extra state through a helper [12 min]
+        \item Tree Recursion: exploring multiple choices with multiple recursive calls [18 min]
+        \subitem Don't 
+    \end{itemize}
+\end{meta}
+
+\section{Recursion Basics}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{three-parts.tex}
+    \begin{questionmeta}
+        Suggested Time: 3 min; Difficulty: Easy
+        \begin{itemize}
+            \item Feel free to give an example of a recursive function when explaining this question, and keep getting students to identify parts of recursive functions while solving problems!
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/easy/}{wrong_factorial.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Easy
+        \begin{itemize}
+            \item Ask students to trace \lstinline{factorial(3)} to see why it never terminates before asking them to fix it.
+            \item Emphasize that the base case's return type should match the type the rest of the function returns.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/medium/}{sum-prime-digits.tex}
+    \begin{questionmeta}
+        \begin{itemize}
+            \item Again, this problem is likely skippable if you have advanced students.
+            \item Make sure your students understand why you are calling \lstinline{sum_prime_digits} twice.
+        \end{itemize}    
+        Suggested Time: 5 min; Difficulty (Official): Medium; Difficulty (Adjusted): Easy $\rightarrow$ Medium Mezzanine
+      \end{questionmeta}
+\end{questions}
+
+\newpage
+\section{Writing Recursive Functions}
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{num-digits.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Easy
+        \begin{itemize}
+            \item Good warm-up for describing the recursive case in English first (``the number of digits of $n$ is 1 more than the number of digits of $n$ without its last digit'') before writing code.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/easy/}{combine.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        \begin{itemize}
+            \item Walk through \lstinline{combine(43, mul, 2)} concretely before filling in blanks, the same way lecture worked through \lstinline{streak} by picking an example and describing the process in words first.
+            \item Common misconception: the order of arguments to \lstinline{f} matters (\lstinline{f(n % 10, result)}, not the reverse).
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\section{Recursive Helper Functions}
+\begin{questions}
+    \subimport{../../topics/recursion/medium/}{positionizer.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min (Part a); Part b is a stretch problem, do it only if time allows.
+        \begin{itemize}
+            \item The given function doesn't have enough information on its own, so we introduce a helper function that takes an extra argument (\lstinline{pos}) to track additional state as we recurse.
+            \item Ask: ``What does \lstinline{helper} need to know that \lstinline{positionizer} doesn't pass it directly?'' and ``What should we call \lstinline{helper} with initially?''.
+        \end{itemize}
+    \end{questionmeta}
+\end{questions}
+
+\newpage
+\section{Tree Recursion}
+% \subimport{../../topics/recursion/text/}{tree_recursion_overview.tex}
+
+\begin{questions}
+    \subimport{../../topics/recursion/easy/}{recursion-vs-tree-recursion.tex}
+    \begin{questionmeta}
+        Suggested time: 3 min
+    \end{questionmeta}
+    \subimport{../../topics/recursion/easy/}{gibonacci.tex}
+    \begin{questionmeta}
+        Suggested Time: 5 min; Difficulty: Easy
+        \begin{itemize}
+            \item This is structurally the same idea as lecture's \lstinline{count_partitions}: at each step we explore using vs.\ not using a given coin size, except here we take a \lstinline{min} over choices instead of summing them.
+            \item Ask students what changes if the question instead asked for the \emph{number of ways} to make change rather than the minimum number of coins -- this connects directly back to \lstinline{count_partitions}.
+        \end{itemize}
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/medium/}{mario-number.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty (Official): Medium;
+        The classic mario-number problem from CSM. A worksheet wouldn't be complete without it!
+    \end{questionmeta}
+
+    \subimport{../../topics/recursion/medium/}{make-change.tex}
+    \begin{questionmeta}
+        Suggested Time: 10 min; Difficulty: Medium
+        \begin{itemize}
+            \item This is structurally the same idea as lecture's \lstinline{count_partitions}: at each step we explore using vs.\ not using a given coin size, except here we take a \lstinline{min} over choices instead of summing them.
+            \item Ask students what changes if the question instead asked for the \emph{number of ways} to make change rather than the minimum number of coins -- this connects directly back to \lstinline{count_partitions}.
+        \end{itemize}
+    \end{questionmeta}
+
+    % \subimport{../../topics/recursion/medium/}{fast_modular_exponentiation.tex}
+    % \begin{questionmeta}
+    %     Suggested Time: 10 min; Difficulty (Official): Medium; Difficulty (Adjusted): Medium
+    % \end{questionmeta}
+
+    % \subimport{../../topics/recursion/medium/}{discussions1.tex}
+    % \begin{questionmeta}
+    %     Suggested Time: 12 min; Difficulty: Medium
+    %     \begin{itemize}
+    %         \item Have students identify the two options being explored at each step (an \lstinline{n}-person section or an \lstinline{m}-person section) before writing any code, just like lecture's ``use at least one 4'' vs.\ ``don't use any 4'' split for \lstinline{count_partitions}.
+    %         \item Since we only need one option to succeed, the recursive calls are combined with \lstinline{or} rather than added -- a good moment to discuss how the way you combine recursive calls depends on what the function returns.
+    %     \end{itemize}
+    % \end{questionmeta}
+\end{questions}
+
+\end{document}
