@@ -1,0 +1,46 @@
+% Reconstructed from made/mentor07.py; currently commented out in fa26/mentor07.
+\begin{blocksection}
+\question Write \lstinline{link_to_tree}, which takes a non-empty linked list and returns a tree in which each node has the next element as its only branch. Then write \lstinline{tree_to_link}, which does the reverse.
+
+\begin{lstlisting}
+def link_to_tree[T](lnk: Link[T]) -> Tree[T]:
+    """
+    >>> print(link_to_tree(Link(6, Link(2, Link(9)))))
+    6
+      2
+        9
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    return ____________________________________________________
+
+
+def tree_to_link[T](t: Tree[T]) -> Link[T]:
+    """Assume every node of t has at most one branch.
+    >>> print(tree_to_link(Tree(6, [Tree(2, [Tree(9)])])))
+    (6 2 9)
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    return ____________________________________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def link_to_tree[T](lnk: Link[T]) -> Tree[T]:
+    if not isinstance(lnk.rest, Link):
+        return Tree(lnk.first)
+    return Tree(lnk.first, [link_to_tree(lnk.rest)])
+
+def tree_to_link[T](t: Tree[T]) -> Link[T]:
+    if is_leaf(t):
+        return Link(t.label)
+    return Link(t.label, tree_to_link(t.branches[0]))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}

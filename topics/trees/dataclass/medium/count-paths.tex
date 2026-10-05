@@ -1,0 +1,50 @@
+\begin{blocksection}
+\question Write \lstinline{count_paths}, which takes a tree \lstinline{t} of integers and an integer \lstinline{total}, and returns the number of root-to-leaf paths whose labels sum to \lstinline{total}.
+
+\begin{lstlisting}
+def count_paths(t: Tree[int], total: int) -> int:
+    """
+    >>> t = Tree(1, [Tree(3),
+    ...              Tree(3, [Tree(4),
+    ...                       Tree(0)]),
+    ...              Tree(4, [Tree(1)])
+    ...             ]
+    ...     )
+    >>> count_paths(t, 4)
+    2
+    >>> count_paths(t, 8)
+    1
+    >>> count_paths(t, 6)
+    1
+    >>> count_paths(t, 5)
+    0
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    return ____________________________________________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def count_paths(t: Tree[int], total: int) -> int:
+    if is_leaf(t):
+        return 1 if t.label == total else 0
+    return sum([count_paths(b, total - t.label) for b in t.branches])
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 10 min; Difficulty: Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Shrink the problem:} Once we use the root label, each branch only needs to produce a sum of \lstinline{total - t.label}.
+    \item \textbf{Base case:} A leaf is a complete path; it counts exactly when its label equals the remaining total.
+    \item \textbf{Combine:} Add the counts from all branches, as in \lstinline{count_leaves} from lecture.
+    \item \textbf{Stopping early:} A path must end at a leaf. \lstinline{count_paths(t, 5)} is the only doctest that catches a solution that returns 1 as soon as the remaining total matches an internal node's label: the path 1, 4 sums to 5 but continues to the leaf 1. Ask students to trace it.
+\end{itemize}
+\end{questionmeta}

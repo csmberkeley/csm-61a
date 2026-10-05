@@ -1,0 +1,25 @@
+For the following questions, use this dataclass-based tree.
+A \lstinline{Tree[T]} has a \lstinline{label} of type \lstinline{T} and a list of
+\lstinline{branches}, each of which is also a \lstinline{Tree[T]}. A tree is never empty.
+
+\begin{lstlisting}
+from __future__ import annotations
+from dataclasses import dataclass, field
+
+@dataclass
+class Tree[T]:
+    label: T
+    branches: list[Tree[T]] = field(default_factory=list)  # defaults to []
+
+    def __str__(self) -> str:
+        return format_tree(self)
+
+def is_leaf(t: Tree) -> bool:
+    return not t.branches
+
+def format_tree(t: Tree, indent: int = 0) -> str:
+    s = '  ' * indent + str(t.label)
+    for b in t.branches:
+        s += '\n' + format_tree(b, indent + 1)
+    return s
+\end{lstlisting}
