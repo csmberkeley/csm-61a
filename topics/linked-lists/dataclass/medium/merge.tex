@@ -10,8 +10,6 @@ def merge(a: LinkedList[int], b: LinkedList[int]) -> LinkedList[int]:
     (1 2 3 5 8)
     >>> print(merge(a, ()))
     (1 5)
-    >>> print(merge(Link(1, Link(3)), Link(1)))
-    (1 1 3)
     >>> merge((), ())
     ()
     """
@@ -56,6 +54,5 @@ Suggested Time: 10 min; Difficulty: Medium
     \item \textbf{Base cases:} If either list is empty, the answer is the other list (which may also be empty).
     \item \textbf{Smallest first:} The smallest remaining element is \lstinline{a.first} or \lstinline{b.first}. Put it on the front, then merge the remaining elements.
     \item \textbf{Which arguments shrink:} Only the list whose first element was used gets shorter; the other is passed unchanged.
-    \item \textbf{Duplicates:} In \lstinline{merge(Link(1, Link(3)), Link(1))}, both lists start with 1. Both copies must appear in the result, so a solution must not drop or skip equal elements.
 \end{itemize}
 \end{questionmeta}

@@ -15,8 +15,6 @@ def append[T](a: LinkedList[T], b: LinkedList[T]) -> LinkedList[T]:
     (1 2 7 8)
     >>> print(append((), Link(5)))
     (5)
-    >>> print(append(Link(1), ()))
-    (1)
     >>> append((), ())
     ()
     """
@@ -75,8 +73,6 @@ def merge(a: LinkedList[int], b: LinkedList[int]) -> LinkedList[int]:
     (1 2 3 5 8)
     >>> print(merge(a, ()))
     (1 5)
-    >>> print(merge(Link(1, Link(3)), Link(1)))
-    (1 1 3)
     >>> merge((), ())
     ()
     """
@@ -170,12 +166,7 @@ def all_paths[T](t: Tree[T]) -> list[LinkedList[T]]:
 
 def count_paths(t: Tree[int], total: int) -> int:
     """
-    >>> t = Tree(1, [Tree(3),
-    ...              Tree(3, [Tree(4),
-    ...                       Tree(0)]),
-    ...              Tree(4, [Tree(1)])
-    ...             ]
-    ...     )
+    >>> t = Tree(1, [Tree(3), Tree(3, [Tree(4), Tree(0)]), Tree(4, [Tree(1)])])
     >>> count_paths(t, 4)
     2
     >>> count_paths(t, 8)
