@@ -1,0 +1,24 @@
+\begin{blocksection}
+\question Implement \texttt{reduce}, a tail recursive function that applies a
+two-argument function \texttt{f} on the elements of a list from left to right,
+starting with \texttt{start}.
+\newline
+\begin{lstlisting}
+pub fn multiply(n: Int, m: Int) -> Int {
+  case n > 0 {
+    True -> ______ + ______________________________
+    False -> ______
+  }
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn multiply(n: Int, m: Int) -> Int {
+  case n > 0 {
+    True -> m + multiply(n - 1, m)
+    False -> 0
+  }
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
