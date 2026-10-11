@@ -1,3 +1,4 @@
+
 \begin{blocksection}
 \question Implement \textt{max\treemil} is a tree in which at least one of the child
 node(s) of each non-leaf node has a label that is a multiple of the label of the
@@ -6,7 +7,9 @@ from the node to a leaf consisting entirely of nodes that are multiples of its
 parent.
 \newline
 
-% TODO: insert the diagram of t here
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{topics/gleam/assets/treemil.png}
+\end{center}
 
 \begin{lstlisting}
 pub fn is_treemil(tree: Tree(Int)) -> Bool {
@@ -52,8 +55,7 @@ pub fn is_treemil(tree: Tree(Int)) -> Bool {
 \question Implement \texttt{max\treemil} which takes in a tree \texttt{t} and
 determines the highest number of nodes in a treemil that is a subtree of
 \texttt{t}. You may assume \texttt{is\_treemil} is implemented correctly from the
-previous question. The following diagram displays a tree \texttt{t}, which is not
-a treemil.
+previous question.
 \newline
 
 \begin{lstlisting}
