@@ -1,0 +1,12 @@
+%the tree class / tree type
+
+\begin{lstlisting}
+pub type Tree(a) {
+    Tree(label: a,
+        branches: List(Tree(a)))
+}
+
+pub fn leaf(label: a) -> Tree(a) {
+    Tree(label, [])
+}
+\end{lstlisting}
