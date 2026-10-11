@@ -1,0 +1,14 @@
+\begin{blocksection}
+\question Implement \texttt{prune\_even}, which prunes every branch in a tree that has
+an even label. Odd child branches of branches with even labels are not preserved.
+\newline
+\begin{lstlisting}
+pub fn prune_even(tree: Tree(Int)) -> Tree(Int) {
+    let Tree(label, branches) = tree
+
+    let remove_even = list.filter(branches, ________________________)
+    let prune_children = list.________(_____________________________)
+
+    Tree(label, prune_children)
+}
+\end{lstlisting}
