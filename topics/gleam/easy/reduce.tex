@@ -12,3 +12,15 @@ fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
   }
 }
 \end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case l {
+    [] -> start
+    [first] -> f(start, first)
+    [first, ..rest] -> reduce(rest, f, f(start, first))
+  }
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
