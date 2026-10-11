@@ -1,0 +1,35 @@
+\begin{blocksection}
+Gleam is a functional programming language. In computer science, functional programming is
+a paradigm where programs are constructed by applying and composing functions, and func-
+tion definitions are trees of expressions that map values to other values, rather than a sequence
+of statements which update the running state of the program. Gleam is a statically-typed,
+type-safe language. Type safety is the extent to which a programming language discourages or
+prevents type errors. The behaviors classified as type errors by a given programming language
+are usually those that result from attempts to perform operations on values that are not of the
+appropriate data type, e.g. trying to add a string to an integer.
+Type enforcement can be static (catching potential errors at compile time), dynamic (associating
+type information with values at run-time and consulting them as needed to detect imminent
+errors), or a combination of both. In the context of static type systems, type safety usually
+involves a guarantee that the eventual value of any expression will be a legitimate member of
+that expression’s static type.
+When writing functions that operate on a given input, Gleam requires that you handle any
+theoretically possible output case, even if you’ve potentially handled such a case earlier. For
+instance, the function list.max (which behaves very similarly to Python’s max function) does
+not return an integer directly, but a Result. This handles the case in which an empty list has
+been passed into max: it returns Ok(value) or Error(Nil) regardless of whether you’ve
+already handled the empty case earlier in your code, and are thus guaranteeing that it will
+always be an Ok result.
+When writing a case statement in Gleam, you must handle every theoretically possible case,
+even if that case may not be possible in the context of your own code. For instance, say you
+have a function that exclusively outputs even integers, and you use one of those integers n in a
+case statement:
+
+\begin{lstlisting}
+case n \% 2 {
+    0 -> //some code for the case in which n is even
+    1 -> //some code for the case in which n is odd
+    }
+\end{lstlisting}
+Gleam will require you to include the latter case, in which n % 2 == 1, regardless of whether
+your integer n could possibly be odd.
+\end{blocksection}
