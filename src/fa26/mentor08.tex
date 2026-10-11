@@ -1,0 +1,84 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+\discnumber{8}
+\title{Mutation, Classes, \& Attributes}
+\date{October 12, 2026 -- October 16, 2026}
+
+% Exercises and lessons are imported from the topic bank when possible.
+\begin{document}
+\maketitle
+
+\begin{meta}
+\small
+\textbf{Example Timeline}
+\begin{itemize}
+    \item \textbf{This is a menu of problems, not a requirement to finish the worksheet.} Choose or skip problems based on your students, and give each mini-lecture immediately before its section.
+    \item Check-in and icebreaker [5 min]. Ask students for one operation that constructs a list and one that mutates a list.
+    \item List mutation: selected parts of Q1 (WWPD), then Q2 (environment diagram) [15 min]. Track shallow copies, shared nested lists, and the return values of mutating methods. Q3, \lstinline{insert_n}, is extra implementation practice.
+    \item Tree mutation: Q4 (DoubleTree) [10 min]. Trace how recursion changes existing branches before assigning the expanded branch structure. The function mutates its input and returns \lstinline{None}.
+    \item Classes and dataclasses: compare the two \lstinline{Car} definitions, then selected parts of Q5 (museum tickets) [15 min]. Connect constructor arguments and defaults to instance attributes, then trace method calls, aliasing, and reassignment.
+    \item Attributes and methods: selected parts of Q6 (\lstinline{Account}) [10 min]. Distinguish functions from bound methods and trace lookup and assignment, including \lstinline{getattr} and \lstinline{hasattr}. Q7 (counters) extends this to saving a bound method and reassigning the original instance name.
+    \item Wrap-up and questions [5 min]. Ask students to explain mutation, attribute lookup, and bound methods in their own words.
+\end{itemize}
+\textbf{Teaching Goals}
+\begin{itemize}
+    \item Distinguish construction, reassignment, aliasing, and mutation. Mutation changes an existing object, so every reference to that object observes the change.
+    \item Use box-and-pointer or environment diagrams to track list and tree mutation, including shallow copies and shared nested objects.
+    \item Recognize that classes and instances are objects with attributes. Functions and bound methods are objects as well.
+    \item Compare explicit and generated initializers for \lstinline{Car}: both accept \lstinline{owner} and optional \lstinline{gas}; Python supplies \lstinline{self}. The unannotated \lstinline{wheels} remains a class attribute.
+    \item Dataclasses support methods with parameters, return values, and mutation. In Q5, distinguish the boolean returned by \lstinline{admit} from its change to \lstinline{remaining}. Equal field values do not imply object identity.
+    \item For Q6's ordinary attributes, lookup checks the instance and then its class. Assignment writes to the object before the dot: \lstinline{a.interest = 7} shadows the class attribute; \lstinline{Account.interest = 4} changes it.
+    \item A function stored as a class attribute acts as a method. Looking it up through an instance produces a bound method: \lstinline{a.deposit(5)} is equivalent to \lstinline{Account.deposit(a, 5)}. In Q7, a saved bound method retains its instance even after the original name is reassigned.
+    \item Connect dot lookup to \lstinline{getattr} and \lstinline{hasattr}: \lstinline{getattr(obj, "name")} performs attribute lookup, and \lstinline{hasattr(obj, "name")} reports whether that lookup succeeds.
+\end{itemize}
+\end{meta}
+
+\section{List Mutation and Environment Diagrams}
+\begingroup
+\subimport{../../topics/lists/mutable/text/}{mutation_overview.tex}
+\endgroup
+\begin{questions}
+    \subimport{../../topics/lists/mutable/easy/}{wwpd-mixed.tex}
+
+    \subimport{../../topics/lists/mutable/easy/env-diagram/}{mystery.tex}
+
+    \subimport{../../topics/lists/mutable/medium/}{insert-n.tex}
+\end{questions}
+
+\newpage
+\section{Tree Mutation}
+\begin{blocksection}
+\subimport{../../topics/trees/class/text/}{implementation.tex}
+\end{blocksection}
+\begin{questions}
+    \setcounter{question}{3}
+    \subimport{../../topics/trees/class/double-tree-needs-mutation/}{question.tex}
+\end{questions}
+
+\newpage
+\section{Classes and Instances}
+\begingroup
+\subimport{../../topics/oop/text/}{oop_overview.tex}
+\endgroup
+
+\subsection*{The Same Data with a Dataclass}
+\begingroup
+\subimport{../../topics/oop/dataclasses/text/}{dataclass.tex}
+\endgroup
+
+\begin{questions}
+    \setcounter{question}{4}
+    \subimport{../../topics/oop/dataclasses/easy/}{ticket-mutation.tex}
+\end{questions}
+
+\newpage
+\section{Attribute Lookup, Assignment, and Bound Methods}
+\begin{questions}
+\setcounter{question}{5}
+    \subimport{../../topics/oop/easy/wwpd/}{account.tex}
+
+    \subimport{../../topics/oop/easy/wwpd/}{counter-attributes.tex}
+\end{questions}
+
+\end{document}
