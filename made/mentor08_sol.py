@@ -51,68 +51,85 @@ def insert_n(lst, x, n):
             lst.remove(x)
 
 
-def double_tree(t):
-    """
-    Given a tree, mutate it such that each entry appears
-    twice.
-    >>> t = Tree(1)
-    >>> double_tree(t)
-    >>> t.label
-    1
-    >>> t.branches[0].label
-    1
-    """
-    if t.is_leaf():
-        t.branches = [Tree(t.label)]
-    else:
-        for b in t.branches:
-             double_tree(b)
-        t.branches = [Tree(t.label, t.branches)]
-
-
 from dataclasses import dataclass
 
 @dataclass
-class Session:
-    topic: str
-    room: int
-    minutes: int = 60
+class Ticket:
+    exhibit: str
+    remaining: int = 2
 
-morning = Session("Recursion", 310)
-afternoon = Session("Sequences", 205, 45)
->>> morning.topic
-'Recursion'
->>> morning.minutes
-60
->>> afternoon.room
-205
->>> afternoon.minutes
-45
->>> morning.minutes + afternoon.minutes
-105
->>> morning
-Session(topic='Recursion', room=310, minutes=60)
->>> Session(room=220, topic="Linked lists").topic
-'Linked lists'
+    def admit(self):
+        if self.remaining > 0:
+            self.remaining -= 1
+            return True
+        return False
+
+original = Ticket("Space")
+alias = original
+separate = Ticket("Space", 1)
+>>> original.remaining, separate.remaining
+>>> alias.admit()
+>>> original.remaining, separate.remaining
+>>> original is alias, original is separate
+(1, 1)
+(True, False)
+>>> alias = Ticket("Ocean")
+>>> alias.remaining = 5
+>>> original.exhibit, original.remaining, alias.remaining
+>>> original.admit(), original.admit(), original.remaining
 
 
-class Foo(object):
-    x = 'bam'
+class Account:
+    interest = 2
 
-    def __init__(self, x):
-        self.x = x
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
 
-    def baz(self):
-        return type(self).x + self.x
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
 
-class Bar(Foo):
-    x = 'boom'
+a = Account("Ada", 10)
+>>> a.interest = 7
+>>> Account.interest = 4
+>>> a.interest, Account("Bob").interest
+Account.deposit(a, 10)
 
-    def __init__(self, x):
-        Foo.__init__(self, 'er' + x)
 
-foo = Foo('boo')
->>> bar = Bar('ang')
->>> Bar.x
+class Counter:
+    step = 1
+
+    def __init__(self, value):
+        self.value = value
+
+    def advance(self):
+        self.value += self.step
+        return self.value
+
+left = Counter(0)
+right = Counter(10)
+saved = left.advance
+>>> Counter.step = 3
+>>> left.step = 2
+>>> left.step, right.step, Counter.step
+>>> saved()
+>>> Counter.advance(right)
+2
+13
+>>> left = right
+>>> saved()
+>>> left.value, right.value
+4
+(13, 13)
+
+
+def labels_at_depth(t: Tree, k: int) -> list[int]:
+    if k == 0:
+        return [t.label]
+    result = []
+    for b in t.branches:
+        result.extend(labels_at_depth(b, k - 1))
+    return result
 
 

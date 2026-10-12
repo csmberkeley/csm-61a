@@ -69,23 +69,24 @@ method still refers to the first.
 \end{solution}
 \end{blocksection}
 
-\begin{blocksection}
-\part
-\begin{lstlisting}
->>> hasattr(Counter, "value"), hasattr(right, "value")
->>> getattr(right, "advance")()
->>> Counter.value
-\end{lstlisting}
-\begin{solution}[.5in]
-\begin{lstlisting}
-(False, True)
-16
-Error
-\end{lstlisting}
-\lstinline{value} belongs to instances, not to the class. Looking up
-\lstinline{advance} with \lstinline{getattr} also produces a bound method.
-\end{solution}
-\end{blocksection}
+% Out of scope for mentor08: getattr and hasattr.
+% \begin{blocksection}
+% \part
+% \begin{lstlisting}
+% >>> hasattr(Counter, "value"), hasattr(right, "value")
+% >>> getattr(right, "advance")()
+% >>> Counter.value
+% \end{lstlisting}
+% \begin{solution}[.5in]
+% \begin{lstlisting}
+% (False, True)
+% 16
+% Error
+% \end{lstlisting}
+% \lstinline{value} belongs to instances, not to the class. Looking up
+% \lstinline{advance} with \lstinline{getattr} also produces a bound method.
+% \end{solution}
+% \end{blocksection}
 \end{parts}
 
 \begin{questionmeta}

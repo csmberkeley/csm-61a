@@ -1,0 +1,79 @@
+\begin{blocksection}
+\question \textbf{Labels at a depth.} Implement \lstinline{labels_at_depth},
+which takes a tree \lstinline{t} with integer labels and a nonnegative integer
+\lstinline{k}. Return a new Python list containing the labels exactly
+\lstinline{k} edges below the root, in left-to-right branch order. The root is
+at depth 0. If no nodes exist at that depth, return an empty list.
+
+Use recursion and \lstinline{extend} to add each recursive result to the local
+\lstinline{result} list. Do not change any tree labels or branches.
+
+\begin{lstlisting}
+def labels_at_depth(t: Tree, k: int) -> list[int]:
+    """
+    >>> t = Tree(1, [Tree(2, [Tree(4), Tree(5)]),
+    ...              Tree(3, [Tree(6)])])
+    >>> labels_at_depth(t, 0)
+    [1]
+    >>> labels_at_depth(t, 1)
+    [2, 3]
+    >>> labels_at_depth(t, 2)
+    [4, 5, 6]
+    >>> labels_at_depth(t, 3)
+    []
+    >>> labels_at_depth(Tree(9), 1)
+    []
+    """
+    if _________________________________:
+
+        return _________________________
+
+    result = []
+
+    for b in ___________________________:
+
+        result.extend(__________________)
+
+    return result
+\end{lstlisting}
+\end{blocksection}
+
+\begin{solution}
+\begin{lstlisting}
+def labels_at_depth(t: Tree, k: int) -> list[int]:
+    if k == 0:
+        return [t.label]
+    result = []
+    for b in t.branches:
+        result.extend(labels_at_depth(b, k - 1))
+    return result
+\end{lstlisting}
+At depth 0, return a one-element list containing the root's label. Otherwise,
+the requested nodes are at depth \lstinline{k - 1} within each branch.
+Each call creates its own result list. \lstinline{extend} mutates that list,
+but the input tree is only read. At a leaf with positive \lstinline{k}, the
+loop has no iterations, so the result is empty.
+\end{solution}
+
+\begin{blocksection}
+Explain what would change if \lstinline{extend} were replaced by
+\lstinline{append}. Why would \lstinline{return result.extend(...)} be wrong?
+\begin{solution}[.65in]
+\lstinline{append} adds each recursive result as a single list element,
+introducing nested lists. For example, at depth 1 the result would be
+\lstinline{[[2], [3]]}. \lstinline{extend} adds the elements individually.
+It returns \lstinline{None}, so we must return \lstinline{result} separately.
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+Suggested Time: 10 min; Difficulty: Medium
+\begin{itemize}
+    \item Ask what the recursive call returns before filling in the loop.
+    Decreasing \lstinline{k} measures the remaining distance, not a label value.
+    \item Draw a fresh result list for each recursive call. Mutation occurs in
+    those lists; no assignment targets a tree attribute or its branches list.
+    \item Trace an uneven tree or a depth beyond the leaves to explain why a
+    separate leaf base case is unnecessary.
+\end{itemize}
+\end{questionmeta}
