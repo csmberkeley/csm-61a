@@ -1,0 +1,111 @@
+\begin{blocksection}
+\question \textbf{Which counter changes?} Execute the prompts in order.
+Write each displayed value and draw separate attribute tables for the class
+and its two instances. If an expression raises an error, write \textbf{Error}
+and continue with the next prompt.
+
+\begin{lstlisting}
+class Counter:
+    step = 1
+
+    def __init__(self, value):
+        self.value = value
+
+    def advance(self):
+        self.value += self.step
+        return self.value
+
+left = Counter(0)
+right = Counter(10)
+saved = left.advance
+\end{lstlisting}
+\end{blocksection}
+
+\begin{parts}
+\begin{blocksection}
+\part
+\begin{lstlisting}
+>>> Counter.step = 3
+>>> left.step = 2
+>>> left.step, right.step, Counter.step
+\end{lstlisting}
+\begin{solution}[.4in]
+\lstinline{(2, 3, 3)}. Only \lstinline{left} has an instance attribute named
+\lstinline{step}; \lstinline{right} finds the class attribute.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+>>> saved()
+\end{lstlisting}
+\begin{solution}[.4in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+\begin{lstlisting}
+>>> Counter.advance(right)
+\end{lstlisting}
+\begin{solution}[.4in]
+\begin{lstlisting}
+13
+\end{lstlisting}
+The saved bound method supplies the original \lstinline{left} instance as \lstinline{self}. The class function requires an explicit instance.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part
+\begin{lstlisting}
+>>> left = right
+>>> saved()
+\end{lstlisting}
+\begin{solution}[.4in]
+\begin{lstlisting}
+4
+\end{lstlisting}
+\end{solution}
+\begin{lstlisting}
+>>> left.value, right.value
+\end{lstlisting}
+\begin{solution}[.4in]
+\begin{lstlisting}
+(13, 13)
+\end{lstlisting}
+Reassigning \lstinline{left} does not change the instance held by
+\lstinline{saved}. Both names now refer to the second counter, while the bound
+method still refers to the first.
+\end{solution}
+\end{blocksection}
+
+% Out of scope for mentor08: getattr and hasattr.
+% \begin{blocksection}
+% \part
+% \begin{lstlisting}
+% >>> hasattr(Counter, "value"), hasattr(right, "value")
+% >>> getattr(right, "advance")()
+% >>> Counter.value
+% \end{lstlisting}
+% \begin{solution}[.5in]
+% \begin{lstlisting}
+% (False, True)
+% 16
+% Error
+% \end{lstlisting}
+% \lstinline{value} belongs to instances, not to the class. Looking up
+% \lstinline{advance} with \lstinline{getattr} also produces a bound method.
+% \end{solution}
+% \end{blocksection}
+\end{parts}
+
+\begin{questionmeta}
+Suggested Time: 8--10 min; Difficulty: Medium
+\begin{itemize}
+    \item Draw a bound method as a reference to both a function and an instance.
+    It retains the instance even if the name used to obtain it is reassigned.
+    \item Track instance attributes separately from class attributes. Class
+    lookup does not search its instances for their attributes.
+\end{itemize}
+\end{questionmeta}

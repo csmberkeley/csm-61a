@@ -1,0 +1,63 @@
+We can use the same \lstinline{Car} example with either an explicit initializer
+or a dataclass. Here we extend the earlier example so construction accepts an
+owner and an optional starting gas level. These are alternative definitions;
+use one at a time.
+\begin{lstlisting}
+class Car:
+    wheels = 4
+
+    def __init__(self, owner, gas=100):
+        self.owner = owner
+        self.gas = gas
+
+    def drive(self):
+        self.gas -= 10
+        print("Current gas level:", self.gas)
+\end{lstlisting}
+
+A dataclass declares its instance attributes as annotated fields and generates
+an \lstinline{__init__} method automatically. We can define methods in its class
+body exactly as before:
+\begin{lstlisting}
+from dataclasses import dataclass
+
+@dataclass
+class Car:
+    wheels = 4
+    owner: str
+    gas: int = 100
+
+    def drive(self):
+        self.gas -= 10
+        print("Current gas level:", self.gas)
+\end{lstlisting}
+
+For this dataclass, the generated initializer takes
+\lstinline{(self, owner, gas=100)} and assigns \lstinline{self.owner} and
+\lstinline{self.gas}, just like the explicit initializer above. The unannotated
+\lstinline{wheels = 4} remains a class attribute, not a dataclass field or
+constructor argument. The default for \lstinline{gas} lets us omit that argument.
+
+The following works with either definition.
+\begin{lstlisting}
+>>> my_car = Car("Ada")
+>>> other_car = Car("Grace", 50)
+>>> my_car.owner, my_car.gas, other_car.gas
+('Ada', 100, 50)
+>>> my_car.drive()
+Current gas level: 90
+>>> Car.drive(my_car)
+Current gas level: 80
+>>> other_car.gas
+50
+\end{lstlisting}
+
+In either style, calling the class constructs an instance; Python supplies
+\lstinline{self} automatically during initialization. Methods also work the same
+way: \lstinline{my_car.drive} is a bound method, and \lstinline{my_car.drive()}
+has the same effect as \lstinline{Car.drive(my_car)}. A dataclass method can
+accept additional arguments, return a result, or mutate instance attributes.
+Here, \lstinline{drive} changes the gas level of just the instance passed as
+\lstinline{self}. The class object and each instance are objects with their own
+attributes. Dataclasses also generate conveniences such as a representation
+and field-based equality; they are still classes.

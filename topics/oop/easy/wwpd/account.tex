@@ -1,0 +1,65 @@
+\question Consider only the following class; no inheritance is involved.
+\begin{lstlisting}
+class Account:
+    interest = 2
+
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+
+a = Account("Ada", 10)
+\end{lstlisting}
+
+For each expression, write its value or the kind of object it produces. If an
+error occurs, write \textbf{Error}. Execute the expressions in order.
+\begin{parts}
+\part \lstinline{Account.interest, a.interest}
+\begin{solution}[.3in]\lstinline{(2, 2)}\end{solution}
+
+\part \lstinline{Account.deposit}
+\begin{solution}[.3in]A function object stored as a class attribute.\end{solution}
+
+\part \lstinline{a.deposit}
+\begin{solution}[.3in]A bound method object: \lstinline{Account.deposit} with \lstinline{a} already bound to \lstinline{self}.\end{solution}
+
+\part \lstinline{a.deposit(5)}
+\begin{solution}[.3in]\lstinline{15}\end{solution}
+
+\part \lstinline{Account.deposit(a, 5)}
+\begin{solution}[.3in]\lstinline{20}\end{solution}
+
+% getattr and hasattr.
+% \part \lstinline{getattr(a, "owner")}
+% \begin{solution}[.3in]\lstinline{"Ada"}\end{solution}
+
+% \part \lstinline{hasattr(a, "interest"), hasattr(a, "missing")}
+% \begin{solution}[.3in]\lstinline{(True, False)}\end{solution}
+
+\part
+\begin{lstlisting}
+>>> a.interest = 7
+>>> Account.interest = 4
+>>> a.interest, Account("Bob").interest
+\end{lstlisting}
+\begin{solution}[.55in]
+\lstinline{(7, 4)}. The first assignment writes an instance attribute on
+\lstinline{a}; the second writes an attribute on the class object. The instance
+attribute shadows the class attribute during lookup on \lstinline{a}.
+\end{solution}
+
+\part Explain how Python evaluates \lstinline{a.deposit(10)}.
+\begin{solution}[.75in]
+First evaluate \lstinline{a.deposit}. Attribute lookup checks \lstinline{a} and
+then \lstinline{Account}, where it finds the function \lstinline{deposit}.
+Looking up that function through an instance produces a bound method with
+\lstinline{a} bound to its first parameter. Python then calls it with 10.
+The equivalent function call is:
+\begin{lstlisting}
+Account.deposit(a, 10)
+\end{lstlisting}
+\end{solution}
+\end{parts}
