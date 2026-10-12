@@ -43,11 +43,17 @@ separate = Ticket("Space", 1)
 \begin{blocksection}
 \begin{lstlisting}
 >>> original.remaining, separate.remaining
->>> original is alias, original is separate
 \end{lstlisting}
-\begin{solution}[.5in]
+\begin{solution}[.35in]
 \begin{lstlisting}
 (1, 1)
+\end{lstlisting}
+\end{solution}
+\begin{lstlisting}
+>>> original is alias, original is separate
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
 (True, False)
 \end{lstlisting}
 Equal field values do not make two instances the same object.

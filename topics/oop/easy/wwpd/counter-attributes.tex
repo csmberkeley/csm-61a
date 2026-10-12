@@ -39,15 +39,20 @@ saved = left.advance
 \part
 \begin{lstlisting}
 >>> saved()
->>> Counter.advance(right)
 \end{lstlisting}
 \begin{solution}[.4in]
 \begin{lstlisting}
 2
+\end{lstlisting}
+\end{solution}
+\begin{lstlisting}
+>>> Counter.advance(right)
+\end{lstlisting}
+\begin{solution}[.4in]
+\begin{lstlisting}
 13
 \end{lstlisting}
-The saved bound method supplies the original \lstinline{left} instance as
-\lstinline{self}. The class function requires an explicit instance.
+The saved bound method supplies the original \lstinline{left} instance as \lstinline{self}. The class function requires an explicit instance.
 \end{solution}
 \end{blocksection}
 
@@ -56,11 +61,17 @@ The saved bound method supplies the original \lstinline{left} instance as
 \begin{lstlisting}
 >>> left = right
 >>> saved()
->>> left.value, right.value
 \end{lstlisting}
-\begin{solution}[.5in]
+\begin{solution}[.4in]
 \begin{lstlisting}
 4
+\end{lstlisting}
+\end{solution}
+\begin{lstlisting}
+>>> left.value, right.value
+\end{lstlisting}
+\begin{solution}[.4in]
+\begin{lstlisting}
 (13, 13)
 \end{lstlisting}
 Reassigning \lstinline{left} does not change the instance held by

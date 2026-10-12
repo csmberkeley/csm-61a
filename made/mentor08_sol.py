@@ -114,13 +114,13 @@ saved = left.advance
 >>> left.step = 2
 >>> left.step, right.step, Counter.step
 >>> saved()
->>> Counter.advance(right)
 2
+>>> Counter.advance(right)
 13
 >>> left = right
 >>> saved()
->>> left.value, right.value
 4
+>>> left.value, right.value
 (13, 13)
 
 
