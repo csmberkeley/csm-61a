@@ -1,14 +1,13 @@
-
 \begin{blocksection}
-\question Implement \textt{max\treemil} is a tree in which at least one of the child
+\question A \textit{treemil} is a tree in which at least one of the child
 node(s) of each non-leaf node has a label that is a multiple of the label of the
 node. Alternatively, a treemil is a tree where every node has at least one path
 from the node to a leaf consisting entirely of nodes that are multiples of its
-parent.
+parent. Implement \texttt{is\_treemil}, which returns whether a tree is a treemil.
 \newline
 
 \begin{center}
-    \includegraphics[width=0.5\textwidth]{topics/gleam/assets/treemil.png}
+    \includegraphics[width=0.5\textwidth]{../assets/Treemil.png}
 \end{center}
 
 \begin{lstlisting}
@@ -49,10 +48,12 @@ pub fn is_treemil(tree: Tree(Int)) -> Bool {
         }
     }
 }
+\end{lstlisting}
 \end{solution}
+\end{blocksection}
 
 \begin{blocksection}
-\question Implement \texttt{max\treemil} which takes in a tree \texttt{t} and
+\question Implement \texttt{max\_treemil} which takes in a tree \texttt{t} and
 determines the highest number of nodes in a treemil that is a subtree of
 \texttt{t}. You may assume \texttt{is\_treemil} is implemented correctly from the
 previous question.
@@ -78,6 +79,7 @@ pub fn max_treemil(tree: Tree(Int)) -> Int {
 }
 \end{lstlisting}
 \begin{solution}
+\begin{lstlisting}
 pub fn max_treemil(tree: Tree(Int)) -> Int {
     case tree {
         Tree(_, []) -> 1
@@ -93,4 +95,6 @@ pub fn max_treemil(tree: Tree(Int)) -> Int {
         }
     }
 }
+\end{lstlisting}
 \end{solution}
+\end{blocksection}
