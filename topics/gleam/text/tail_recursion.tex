@@ -22,6 +22,7 @@ fn factorial_loop(x: Int, accumulator: Int) -> Int {
     // In the previous lesson the last thing it did was multiply two ints
     _ -> factorial_loop(x - 1, accumulator * x)
   }
+  //credit to the Gleam language website for this example
 }
 \end{lstlisting}
 We've defined this helper function such that it checks our base condition and then immediately returns a recursive call. Because it doesn't do anything else with the result of the recursive call, we have no reason to keep the original frame open, and it will close the first frame to save computer memory. Ultimately, the very last recursive call will be returned with our correct value.
