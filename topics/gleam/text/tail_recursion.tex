@@ -1,6 +1,6 @@
 \begin{blocksection}
 %ana
-In regular recursion, our very first function will open a new frame, and each new frame will open new frames until we reach our base case. Typically, every frame must wait for subsequent frames to finish evaluating and return before they can return. That means that right before the base case, we may have a very large amount of frames all awaiting evaluation before doing something. Because each frame takes up physical space on our computer, recursion can be very space inefficient. One way of solving this is tail recursion. If we know that we can write our recursive function in such a way that a previous frame doesn't need to do anything with the later frames, we can just close previous frames as soon as we're done with them- saving a lot of space on our computer. 
+In regular recursion, our very first function will open a new frame, and each new frame will open new frames until we reach our base case. Typically, every frame must wait for subsequent frames to finish evaluating and return before they can return. That means that right before the base case, we have a lot of calls awaiting the call underneath it before doing something. Because each frame takes up physical space on our computer, recursion can be space inefficient. One way of solving this is tail recursion. If we know that we can write our recursive function in such a way that a previous frame doesn't need to do anything with the later frames, we can close previous frames once we're done with them- saving space on our computer. 
 Here's an example: 
 \begin{lstlisting}
     pub fn main() {
@@ -24,5 +24,6 @@ fn factorial_loop(x: Int, accumulator: Int) -> Int {
   }
 }
 \end{lstlisting}
-We've defined this helper function such that it checks our base condition and then immediately returns a recursive call. Because it doesn't do anything else with the result of the recursive call, we have no reason to keep the original frame open, and it will close the first frame to save space on our computer. Ultimately, the very last recursive call will be returned with our correct value.
+We've defined this helper function such that it checks our base condition and then immediately returns a recursive call. Because it doesn't do anything else with the result of the recursive call, we have no reason to keep the original frame open, and it will close the first frame to save computer memory. Ultimately, the very last recursive call will be returned with our correct value.
+Tail recursion only works when a language is tail-call optimized, meaning that the language knows to close unnecessary recursive frames. Python isn't tail-call optimized, so even if you write a tail recursive function, it won't be any more memory efficient. However, Gleam is tail-call optimized, so we can take advantage of this!
 \end{blocksection}
