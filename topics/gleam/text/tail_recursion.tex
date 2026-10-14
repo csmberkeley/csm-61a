@@ -1,3 +1,28 @@
 \begin{blocksection}
 %ana
+In regular recursion, our very first function will open a new frame, and each new frame will open new frames until we reach our base case. Typically, every frame must wait for subsequent frames to finish evaluating and return before they can return. That means that right before the base case, we may have a very large amount of frames all awaiting evaluation before doing something. Because each frame takes up physical space on our computer, recursion can be very space inefficient. One way of solving this is tail recursion. If we know that we can write our recursive function in such a way that a previous frame doesn't need to do anything with the later frames, we can just close previous frames as soon as we're done with them- saving a lot of space on our computer. 
+Here's an example: 
+\begin{lstlisting}
+    pub fn main() {
+  echo factorial(5)
+  echo factorial(7)
+}
+
+pub fn factorial(x: Int) -> Int {
+  // The public function calls the private tail recursive function
+  factorial_loop(x, 1)
+}
+
+fn factorial_loop(x: Int, accumulator: Int) -> Int {
+  case x {
+    0 -> accumulator
+    1 -> accumulator
+
+    // The last thing this function does is call itself
+    // In the previous lesson the last thing it did was multiply two ints
+    _ -> factorial_loop(x - 1, accumulator * x)
+  }
+}
+\end{lstlisting}
+We've defined this helper function such that it checks our base condition and then immediately returns a recursive call. Because it doesn't do anything else with the result of the recursive call, we have no reason to keep the original frame open, and it will close the first frame to save space on our computer. Ultimately, the very last recursive call will be returned with our correct value.
 \end{blocksection}
