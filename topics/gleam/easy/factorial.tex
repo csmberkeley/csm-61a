@@ -1,0 +1,21 @@
+\begin{blocksection}
+\question Implement \texttt{factorial}!
+\begin{lstlisting}
+pub fn factorial(n: Int) -> Int {
+  case n > 0 {
+    True -> ______ * ______________________________
+    False -> ______
+  }
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn factorial(n: Int) -> Int {
+  case n > 0 {
+    True -> n * factorial(n - 1)
+    False -> 1
+  }
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

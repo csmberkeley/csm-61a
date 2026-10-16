@@ -1,0 +1,37 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+\discnumber{11}
+\title{CSM Gleaming}
+\date{November 5, 2026 -- October 9, 2026}
+
+% Exercises and solutions are imported from the topic bank.
+\begin{document}
+\maketitle
+
+\section{Gleam basics}
+\begin{blocksection}
+\end{blocksection}
+\begin{questions}
+    \subimport{../../topics/gleam/text/}{gleam-intro.tex}
+    % \subimport{../../topics/gleam/easy}{multiply.tex}
+    \par\vspace*{1\baselineskip}
+    \subimport{../../topics/gleam/easy}{factorial.tex}
+    \newpage
+    \subimport{../../topics/gleam/text}{tail_recursion.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/easy}{sum.tex}
+    \par\vspace*{3\baselineskip}
+    \subimport{../../topics/gleam/text}{generics.tex}
+    \subimport{../../topics/gleam/easy}{reduce.tex}
+\end{questions}
+
+\newpage
+\section{Algebraic Data Types}
+\begin{questions}
+    \subimport{../../topics/gleam/text}{trees.tex}
+    \subimport{../../topics/gleam/text}{tree-type.tex}
+    \subimport{../../topics/gleam/medium}{prune-even.tex}
+    \subimport{../../topics/gleam/difficult}{treemil.tex}
+\end{questions}
+\end{document}

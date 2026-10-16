@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question Implement \texttt{sum}, a tail recursive function that returns the sum of
+all elements of a list of integers.
+\newline
+\begin{lstlisting}
+fn sum_helper(l: List(Int), curr: Int) -> Int {
+  case l {
+    [] -> ______
+    [first] -> ______ + ______
+    [first, ..rest] -> ______________________________
+  }
+}
+
+pub fn sum(l: List(Int)) -> Int {
+  sum_helper(______, ______)
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+fn sum_helper(l: List(Int), curr: Int) -> Int {
+  case l {
+    [] -> curr
+    [first] -> curr + first
+    [first, ..rest] -> sum_helper(rest, curr + first)
+  }
+}
+
+pub fn sum(l: List(Int)) -> Int {
+  sum_helper(l, 0)
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

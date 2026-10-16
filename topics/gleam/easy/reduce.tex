@@ -1,0 +1,26 @@
+\begin{blocksection}
+\question Implement \texttt{reduce}, a tail recursive function that applies a
+two-argument function \texttt{f} on the elements of a list from left to right,
+starting with \texttt{start}.
+\newline
+\begin{lstlisting}
+fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case l {
+    [] -> ______
+    [first] -> ______________________________
+    [first, ..rest] -> ______________________________
+  }
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case l {
+    [] -> start
+    [first] -> f(start, first)
+    [first, ..rest] -> reduce(rest, f, f(start, first))
+  }
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
