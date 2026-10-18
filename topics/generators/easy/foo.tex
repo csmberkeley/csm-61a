@@ -60,32 +60,6 @@ World
 \end{solution}
 \end{blocksection}
 
-\begin{blocksection}
-
-\begin{lstlisting}
->>> a = iter(filter(lambda x: x % 2, map(lambda x: x - 1, range(10))))
->>> next(a)
-\end{lstlisting}
-
-\begin{solution}[0.25in]
-    \begin{lstlisting}
--1
-    \end{lstlisting}
-    \end{solution}
-\end{blocksection}
-
-\begin{blocksection}
-\begin{lstlisting}
->>> reduce(lambda x, y: x + y, a)
-\end{lstlisting}
-
-\begin{solution}[0.25in]
-    \begin{lstlisting}
-16
-    \end{lstlisting}
-\end{solution}
-\end{blocksection}
-
 % \begin{blocksection}
 % \question Write a new function \lstinline$goo$ that satisfies the following doctests:
 % \\Optional: then write the body in one line using \lstinline{range(1, 11)}.
