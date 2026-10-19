@@ -56,7 +56,7 @@ class Sith(ForceWielder):
         return f"Sith({repr(self.name)})"
 >>> anakin = Jedi("Anakin")
 >>> anakin.lightsaber, anakin.force
->>> obiwan = Jedi("Obi-wan")
+>>> obiwan = Jedi('Obi-wan')
 >>> anakin.master = obiwan
 >>> anakin.master
 >>> Jedi.master
@@ -130,6 +130,7 @@ class TeamBaller(_______________):
 >>> [next(y), next(y), next(z)]
 >>> a = iter(filter(lambda x: x % 2, map(lambda x: x - 1, range(10))))
 >>> next(a)
+>>> from functools import reduce
 >>> reduce(lambda x, y: x + y, a)
 
 
@@ -182,6 +183,10 @@ def accumulate(it):
     >>> a = accumulate(all_ints())
     >>> [next(a) for x in range(6)]
     [0, 1, 3, 6, 10, 15]
+    >>> list(accumulate(iter([1, 2, 3])))
+    [1, 3, 6]
+    >>> list(accumulate(iter([])))
+    []
     """
 
 

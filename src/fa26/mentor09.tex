@@ -26,7 +26,7 @@
     \item A subclass inherits from a base class without copying its attributes. Attribute lookup checks the instance, then the class, then each base class up the chain, and only ever goes up.
     \item Overriding replaces an inherited method in the subclass; \lstinline{super()} (or \lstinline{Base.method(self, ...)}) lets the new method call the old one, and \lstinline{self} remains the subclass instance.
     \item Lookup and assignment differ: assignment through an object writes to that object, so \lstinline{self.x = ...} makes an instance attribute and \lstinline{Class.x = ...} changes the class attribute.
-    \item \lstinline{iter} creates an iterator from an iterable, and \lstinline{next} advances it. Two names for one iterator share a position; two calls to \lstinline{iter} create two iterators.
+    \item \lstinline{iter} creates an iterator from an iterable, and \lstinline{next} advances it. Two names for one iterator share a position; two calls to \lstinline{iter} on a list create two iterators, but \lstinline{iter} on an iterator returns that same iterator.
     \item \lstinline{map}, \lstinline{filter}, \lstinline{zip}, and generators are lazy: nothing is computed until a consumer asks for the next element. \lstinline{list} comprehensions are eager.
     \item A generator function returns a generator without running its body. The body runs on \lstinline{next}, pauses at \lstinline{yield}, and resumes where it left off; the body finishing raises \lstinline{StopIteration}.
     \item In recursive generators, use \lstinline{yield from} (or a \lstinline{for} loop) to pass along the values from a recursive call, and \lstinline{yield} to produce your own values.
@@ -34,7 +34,9 @@
 \end{meta}
 
 \section{Inheritance}
-\leavevmode
+\begingroup
+\subimport{../../topics/oop/text/}{inheritance.tex}
+\endgroup
 \begin{questions}
     \subimport{../../topics/oop/easy/wwpd/}{wicked.tex}
 

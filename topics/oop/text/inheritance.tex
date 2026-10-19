@@ -1,0 +1,45 @@
+Inheritance lets a \textbf{subclass} reuse and extend the behavior of a \textbf{base class}.
+
+\begin{lstlisting}
+class Animal:
+    kind = 'animal'
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        return self.name + ' says ' + self.speak()
+
+    def speak(self):
+        return 'hello'
+
+class Dog(Animal):
+    kind = 'dog'
+
+    def speak(self):
+        return 'woof'
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{Attribute lookup:} Python looks up \lstinline{obj.attr} by checking the instance first, then its class, then its base classes. Lookup does not search subclasses.
+    \item \textbf{Inherited methods:} If a subclass does not define a method, it uses the method defined in its base class. For example, \lstinline{Dog} inherits \lstinline{__init__} and \lstinline{introduce} from \lstinline{Animal}.
+    \item \textbf{Overriding:} A subclass can define its own version of an inherited method. Here, \lstinline{Dog.speak} overrides \lstinline{Animal.speak}.
+    \item \textbf{The meaning of \lstinline{self}:} When an inherited method runs, \lstinline{self} is still the instance on which the method was called. Thus, \lstinline{self.speak()} inside \lstinline{Animal.introduce} uses \lstinline{Dog.speak} when \lstinline{self} is a \lstinline{Dog}.
+    \item \textbf{Assignment versus lookup:} \lstinline{obj.attr = value} sets an instance attribute, whereas \lstinline{Class.attr = value} sets a class attribute. Setting an instance attribute does not change the class attribute.
+    \item \textbf{Calling a base-class method:} Inside a subclass method, \lstinline{super().method(...)} can call the inherited implementation. For single inheritance, \lstinline{Base.method(self, ...)} can also call it explicitly. Neither changes which object \lstinline{self} refers to.
+\end{itemize}
+
+\begin{lstlisting}
+>>> d = Dog('Maple')
+>>> d.name
+'Maple'
+>>> d.kind
+'dog'
+>>> d.introduce()
+'Maple says woof'
+>>> Animal.speak(d)
+'hello'
+>>> d.kind = 'friend'
+>>> d.kind, Dog.kind
+('friend', 'dog')
+\end{lstlisting}

@@ -72,7 +72,7 @@ StopIteration Error
 \end{lstlisting}
 \begin{solution}[0.2in]
 \begin{lstlisting}
-[2, 3, 3]
+StopIteration Error
 \end{lstlisting}
 \end{solution}
 
@@ -87,6 +87,7 @@ StopIteration Error
 \end{solution}
 
 \begin{lstlisting}
+>>> from functools import reduce
 >>> reduce(lambda x, y: x + y, a)
 \end{lstlisting}
 \begin{solution}[0.2in]

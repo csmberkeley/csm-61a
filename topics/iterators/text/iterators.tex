@@ -1,6 +1,6 @@
 An \textbf{iterable} is any object whose elements can be processed one at a time, such as a list, string, dictionary, or \lstinline{range}. An \textbf{iterator} is an object that keeps track of a position in a sequence and can produce the next element on request.
 \begin{itemize}
-    \item \lstinline{iter(iterable)} returns a \textit{new} iterator over the elements of the iterable. Calling \lstinline{iter} on an iterator returns that same iterator.
+    \item \lstinline{iter(iterable)} returns an iterator over the elements of the iterable. For a list, each call creates a new iterator; for an iterator, it returns the iterator itself.
     \item \lstinline{next(iterator)} returns the next element and advances the iterator. When no elements remain, it raises \lstinline{StopIteration}.
 \end{itemize}
 \begin{lstlisting}

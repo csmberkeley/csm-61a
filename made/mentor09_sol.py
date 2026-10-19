@@ -56,8 +56,8 @@ class Sith(ForceWielder):
         return f"Sith({repr(self.name)})"
 >>> anakin = Jedi("Anakin")
 >>> anakin.lightsaber, anakin.force
-("blue", 25)
->>> obiwan = Jedi("Obi-wan")
+('blue', 25)
+>>> obiwan = Jedi('Obi-wan')
 >>> anakin.master = obiwan
 >>> anakin.master
 Jedi("Obi-wan")
@@ -77,9 +77,9 @@ Two there should be. No more, no less.
 >>> ForceWielder.train(sidious, anakin)
 >>> anakin.lightsaber = "red"
 >>> anakin.lightsaber, anakin.force
-("red", 50.0)
+('red', 50.0)
 >>> Jedi.lightsaber 
-"blue"
+'blue'
 >>> print(Sith("Vader"), Sith("Maul").num_sith)
 Two there should be. No more, no less.
 Darth Vader 3
@@ -148,10 +148,11 @@ StopIteration Error
 >>> next(z)
 2
 >>> [next(y), next(y), next(z)]
-[2, 3, 3]
+StopIteration Error
 >>> a = iter(filter(lambda x: x % 2, map(lambda x: x - 1, range(10))))
 >>> next(a)
 -1
+>>> from functools import reduce
 >>> reduce(lambda x, y: x + y, a)
 16
 
@@ -216,11 +217,15 @@ def accumulate(it):
     >>> a = accumulate(all_ints())
     >>> [next(a) for x in range(6)]
     [0, 1, 3, 6, 10, 15]
+    >>> list(accumulate(iter([1, 2, 3])))
+    [1, 3, 6]
+    >>> list(accumulate(iter([])))
+    []
     """
 def accumulate(it):
     total = 0
-    while True:
-        total += next(it)
+    for value in it:
+        total += value
         yield total
 
 

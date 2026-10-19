@@ -4,7 +4,7 @@
 \begin{solution}[0.5in]
 Iterator: Mutable object that tracks a position in a sequence, advancing on each call to \lstinline$next$
 
-Iterable: Represents a sequence and returns a new iterator on each call to \lstinline$iter$
+Iterable: Represents a sequence and returns an iterator when passed to \lstinline$iter$. For a list, each call creates a new iterator; an iterator is also an iterable, and \lstinline$iter$ on an iterator returns that same iterator.
 
 To use in an English sentence:
 Lists are "iterable". To go through a list, you make an object called an "iterator" to scan through the list.
