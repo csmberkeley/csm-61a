@@ -1,0 +1,37 @@
+An \textbf{iterable} is any object whose elements can be processed one at a time, such as a list, string, dictionary, or \lstinline{range}. An \textbf{iterator} is an object that keeps track of a position in a sequence and can produce the next element on request.
+\begin{itemize}
+    \item \lstinline{iter(iterable)} returns an iterator over the elements of the iterable. For a list, each call creates a new iterator; for an iterator, it returns the iterator itself.
+    \item \lstinline{next(iterator)} returns the next element and advances the iterator. When no elements remain, it raises \lstinline{StopIteration}.
+\end{itemize}
+\begin{lstlisting}
+>>> s = [3, 4, 5]
+>>> t = iter(s)
+>>> next(t)
+3
+>>> next(t)
+4
+>>> u = iter(s)        # a separate iterator with its own position
+>>> next(u)
+3
+>>> w = t              # not a new iterator: another name for the same one
+>>> next(w)
+5
+>>> next(t)
+StopIteration
+\end{lstlisting}
+Iterators only move forward, and calling \lstinline{next} on any name for an iterator advances it for every name. A \lstinline{for} loop calls \lstinline{iter} on its iterable and repeatedly calls \lstinline{next} until \lstinline{StopIteration}.
+
+Many built-in functions return iterators that compute their results \textbf{lazily}, meaning each element is computed only when \lstinline{next} asks for it:
+\begin{itemize}
+    \item \lstinline{map(func, iterable)}: iterate over \lstinline{func(x)} for each \lstinline{x} in the iterable
+    \item \lstinline{filter(func, iterable)}: iterate over each \lstinline{x} in the iterable for which \lstinline{func(x)} is true
+    \item \lstinline{zip(first_iter, second_iter)}: iterate over pairs \lstinline{(x, y)}
+    \item \lstinline{reversed(sequence)}: iterate over the sequence in reverse
+\end{itemize}
+Functions such as \lstinline{list}, \lstinline{sum}, \lstinline{min}, \lstinline{max}, \lstinline{all}, and \lstinline{any} consume an iterable. \lstinline{all} stops at the first false value and \lstinline{any} stops at the first true value, so they may not use up the whole iterator.
+
+\begin{meta}
+The most common confusion is thinking \lstinline{d = c} makes a copy of an iterator. Draw one iterator object with two arrows to it, and one list with an arrow from the iterator showing its position. Contrast with \lstinline{iter(a)} called twice, which creates two iterator objects pointing at the same list.
+
+When introducing laziness, ask students what a list comprehension prints versus \lstinline{map} when the function has a \lstinline{print} side effect. The \lstinline{map} object does nothing until something consumes it. Also remind students that a list iterator looks at the \textit{current} list, so appending to the list before the iterator is exhausted affects what it produces.
+\end{meta}
