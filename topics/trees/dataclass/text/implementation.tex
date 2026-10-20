@@ -1,6 +1,7 @@
-For the following questions, use this dataclass-based tree.
-A \lstinline{Tree[T]} has a \lstinline{label} of type \lstinline{T} and a list of
-\lstinline{branches}, each of which is also a \lstinline{Tree[T]}. A tree is never empty.
+For the following question, use this dataclass-based tree. A
+\lstinline{Tree[T]} has a \lstinline{label} of type \lstinline{T} and a list of
+\lstinline{branches}, each of which is also a \lstinline{Tree[T]}.
+A tree is never empty.
 
 \begin{lstlisting}
 from __future__ import annotations
@@ -8,18 +9,45 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Tree[T]:
-    label: T
-    branches: list[Tree[T]] = field(default_factory=list)  # defaults to []
+    """A Tree has a label (of type T) and a list of branches,
+    which are trees.
 
-    def __str__(self) -> str:
+    >>> t = Tree(3, [Tree(1, []), Tree(2, [Tree(1, []), Tree(1, [])])])
+    >>> t.branches[0]
+    Tree(label=1, branches=[])
+    >>> len(t.branches)
+    2
+    >>> t.branches[1].label
+    2
+    >>> len(t.branches[1].branches)
+    2
+    >>> expr = Tree(10, [Tree(6, [Tree(2), Tree('*'), Tree(3)]),
+    ...                  Tree('+'), Tree(4)])
+    >>> print(expr)
+    10
+      6
+        2
+        *
+        3
+      +
+      4
+    """
+    label: T
+    branches: list[Tree[T]] = field(default_factory=list)  # branches defaults to []
+
+    def __str__(self):
         return format_tree(self)
 
-def is_leaf(t: Tree) -> bool:
-    return not t.branches
-
-def format_tree(t: Tree, indent: int = 0) -> str:
-    s = '  ' * indent + str(t.label)
+def format_tree(t: Tree, indent='') -> str:
+    "Format a tree with each branch indented below its label."
+    assert isinstance(t, Tree), f'{t!r} is not a Tree'
+    assert isinstance(t.branches, list), f'branches of {t!r} is not a list'
+    string = indent + str(t.label)
     for b in t.branches:
-        s += '\n' + format_tree(b, indent + 1)
-    return s
+        string += '\n' + format_tree(b, indent + '  ')
+    return string
+
+def is_leaf(t: Tree) -> bool:
+    "Return whether a Tree t is a leaf with no branches."
+    return not t.branches
 \end{lstlisting}

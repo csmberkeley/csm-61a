@@ -1,0 +1,94 @@
+\begin{blocksection}
+\question \textbf{Museum tickets.} Predict each result, executing the prompts
+in order. Draw the instances and the references to them as you trace.
+
+\begin{lstlisting}
+from dataclasses import dataclass
+
+@dataclass
+class Ticket:
+    exhibit: str
+    remaining: int = 2
+
+    def admit(self):
+        if self.remaining > 0:
+            self.remaining -= 1
+            return True
+        return False
+
+original = Ticket("Space")
+alias = original
+separate = Ticket("Space", 1)
+\end{lstlisting}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> original.remaining, separate.remaining
+\end{lstlisting}
+\begin{solution}[.35in]
+\lstinline{(2, 1)}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> alias.admit()
+\end{lstlisting}
+\begin{solution}[.35in]
+\lstinline{True}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> original.remaining, separate.remaining
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(1, 1)
+\end{lstlisting}
+\end{solution}
+\begin{lstlisting}
+>>> original is alias, original is separate
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(True, False)
+\end{lstlisting}
+Equal field values do not make two instances the same object.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> alias = Ticket("Ocean")
+>>> alias.remaining = 5
+>>> original.exhibit, original.remaining, alias.remaining
+\end{lstlisting}
+\begin{solution}[.4in]
+\lstinline{('Space', 1, 5)}. Reassigning \lstinline{alias} makes it refer to
+a new instance; the later attribute assignment changes that new instance.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> original.admit(), original.admit(), original.remaining
+\end{lstlisting}
+\begin{solution}[.35in]
+\lstinline{(True, False, 0)}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+Suggested Time: 8--10 min; Difficulty: Easy
+\begin{itemize}
+    \item The generated initializer assigns the fields; methods are still
+    ordinary function definitions in the class body.
+    \item Draw two instances initially and a third when \lstinline{alias} is
+    reassigned. Track which object receives each attribute assignment.
+    \item Ask students to rewrite \lstinline{alias.admit()} as
+    \lstinline{Ticket.admit(alias)} and identify the value of \lstinline{self}.
+\end{itemize}
+\end{questionmeta}

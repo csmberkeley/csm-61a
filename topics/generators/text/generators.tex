@@ -1,0 +1,32 @@
+A \textbf{generator function} is a function whose body contains \lstinline{yield}. A normal function returns once; a generator function can yield many times. A \textbf{generator} is an iterator created automatically by calling a generator function.
+
+\begin{lstlisting}
+>>> def plus_minus(x):
+...     yield x
+...     yield -x
+>>> t = plus_minus(3)    # no body code runs yet
+>>> t
+<generator object plus_minus ...>
+>>> next(t)              # run until the first yield
+3
+>>> next(t)              # resume after the first yield
+-3
+>>> next(t)              # the body finished
+StopIteration
+\end{lstlisting}
+
+Calling a generator function does not run its body. The body runs only when \lstinline{next} is called, and it pauses at each \lstinline{yield}, keeping its local variables and its place in the code until the next call to \lstinline{next}. When the body finishes (or reaches \lstinline{return}), \lstinline{StopIteration} is raised. Each call to a generator function creates an independent generator.
+
+\lstinline{yield from <iterable>} yields each element of the iterable in order, and is shorthand for a loop:
+\begin{lstlisting}
+def a():                      def b():
+    yield from range(3)           for x in range(3):
+                                      yield x
+\end{lstlisting}
+Recursive generators combine \lstinline{yield from} (to pass on everything the recursive call produces) with ordinary \lstinline{yield} (to add values of their own).
+
+\begin{meta}
+Emphasize the difference between executing a function and executing a generator function. The call \lstinline{plus_minus(3)} runs none of the body. Draw the generator as a box storing \lstinline{x = 3} and a bookmark at the current \lstinline{yield}; each \lstinline{next} moves the bookmark forward.
+
+Remind students that a \lstinline{for} loop over a generator stops silently on \lstinline{StopIteration}, and that a generator that has already been advanced starts from where it left off, not from the beginning.
+\end{meta}

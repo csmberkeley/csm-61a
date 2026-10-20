@@ -1,0 +1,76 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+\discnumber{9}
+\title{Inheritance, Iterators, \& Generators}
+\date{October 19, 2026 -- October 23, 2026}
+
+% Exercises and lessons are imported from the topic bank when possible.
+\begin{document}
+\maketitle
+
+\begin{meta}
+\small
+\textbf{Example Timeline}
+\begin{itemize}
+    \item \textbf{This is a menu of problems, not a requirement to finish the worksheet.} Individual suggested times do not add up to one hour. Choose or skip problems based on your students, and give each mini-lecture immediately before its section.
+    \item Check-in and icebreaker [5 min]. Ask students for an example of an ``is-a'' relationship (for instance, a checking account is an account).
+    \item Inheritance: Q1 (WWPD with \lstinline{Elphaba} and \lstinline{Glinda}), then Q2 (\lstinline{ForceWielder}) or Q3 (\lstinline{TeamBaller}) [20 min]. Q1 builds the lookup chain and \lstinline{type(self)}; Q2 adds \lstinline{super()} and class attributes; Q3 practices overriding and calling the base class's method.
+    \item Iterators: Q4 (iterator versus iterable), then Q5 and Q6 (WWPD) [10 min]. Q7 is a challenge: students work backward from the printed output by tracking iterator positions.
+    \item Generators: Q8 (WWPD) [8 min], then Q9 (\lstinline{accumulate}) for generator syntax with an infinite iterator [7 min].
+    \item Challenge: Q10 (\lstinline{fruitOptions}) is a recursive generator. Use it if students are comfortable with \lstinline{yield} in a \lstinline{for} loop over a recursive call.
+    \item Wrap-up and questions [5 min]. Ask students to explain the difference between calling a function and calling a generator function.
+\end{itemize}
+\textbf{Teaching Goals}
+\begin{itemize}
+    \item A subclass inherits from a base class without copying its attributes. Attribute lookup checks the instance, then the class, then each base class up the chain, and only ever goes up.
+    \item Overriding replaces an inherited method in the subclass; \lstinline{super()} (or \lstinline{Base.method(self, ...)}) lets the new method call the old one, and \lstinline{self} remains the subclass instance.
+    \item Lookup and assignment differ: assignment through an object writes to that object, so \lstinline{self.x = ...} makes an instance attribute and \lstinline{Class.x = ...} changes the class attribute.
+    \item \lstinline{iter} creates an iterator from an iterable, and \lstinline{next} advances it. Two names for one iterator share a position; two calls to \lstinline{iter} on a list create two iterators, but \lstinline{iter} on an iterator returns that same iterator.
+    \item \lstinline{map}, \lstinline{filter}, \lstinline{zip}, and generators are lazy: nothing is computed until a consumer asks for the next element. \lstinline{list} comprehensions are eager.
+    \item A generator function returns a generator without running its body. The body runs on \lstinline{next}, pauses at \lstinline{yield}, and resumes where it left off; the body finishing raises \lstinline{StopIteration}.
+    \item In recursive generators, use \lstinline{yield from} (or a \lstinline{for} loop) to pass along the values from a recursive call, and \lstinline{yield} to produce your own values.
+\end{itemize}
+\end{meta}
+
+\section{Inheritance}
+\begingroup
+\subimport{../../topics/oop/text/}{inheritance.tex}
+\endgroup
+\begin{questions}
+    \subimport{../../topics/oop/easy/wwpd/}{wicked.tex}
+
+    \subimport{../../topics/oop/easy/}{star-wars.tex}
+
+    \subimport{../../topics/oop/easy/}{team-baller-fa21.tex}
+\end{questions}
+
+\section{Iterators}
+\begingroup
+\subimport{../../topics/iterators/text/}{iterators.tex}
+\endgroup
+\begin{questions}
+    \setcounter{question}{3}
+    \subimport{../../topics/iterators/easy/}{iterator-vs-iterable.tex}
+
+    \subimport{../../topics/iterators/easy/}{wwpd.tex}
+
+    \subimport{../../topics/generators/ExamRev-Sp25/}{numbers_and_letters.tex}
+
+    \subimport{../../topics/generators/ExamRev-Sp25/}{year.tex}
+\end{questions}
+
+\section{Generators}
+\begingroup
+\subimport{../../topics/generators/text/}{generators.tex}
+\endgroup
+\begin{questions}
+    \setcounter{question}{7}
+    \subimport{../../topics/generators/easy/}{foo.tex}
+
+    \subimport{../../topics/generators/easy/}{accumulate.tex}
+
+    \subimport{../../topics/generators/ExamRev-Sp25/}{fruit_options.tex}
+\end{questions}
+
+\end{document}
