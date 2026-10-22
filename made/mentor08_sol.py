@@ -70,8 +70,8 @@ separate = Ticket("Space", 1)
 >>> original.remaining, separate.remaining
 >>> alias.admit()
 >>> original.remaining, separate.remaining
->>> original is alias, original is separate
 (1, 1)
+>>> original is alias, original is separate
 (True, False)
 >>> alias = Ticket("Ocean")
 >>> alias.remaining = 5
