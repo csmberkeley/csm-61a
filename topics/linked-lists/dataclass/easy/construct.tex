@@ -1,0 +1,81 @@
+% Reconstructed from made/mentor07.py; currently commented out in fa26/mentor07.
+\question What would Python display? Run these statements in order.
+If a statement causes an error, identify the error and continue.
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a = Link(8)
+>>> b = Link(6, a)
+>>> print(b)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(6 8)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> c = Link(2, b)
+>>> print(c)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(2 6 8)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> print(b)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(6 8)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> c.rest == b
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+True
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> Link(c, b).first.first
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> len(c)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+TypeError: object of type 'Link' has no len()
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Write an expression that constructs a linked list containing 1, 2, and 3, in that order.
+\begin{solution}[.35in]
+\begin{lstlisting}
+Link(1, Link(2, Link(3)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

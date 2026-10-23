@@ -1,0 +1,105 @@
+\question What would Python display? Run these statements in order.
+If a statement causes an error, identify the error and continue.
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> t = Tree(5, [Tree(3, [Tree(8)]), Tree(1), Tree(7)])
+>>> t.label
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+5
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> t.branches[0].label
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> is_leaf(t.branches[1])
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+True
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> len(t.branches)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> t.branches[1].branches[0]
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+IndexError: list index out of range
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> t.branches[0].branches
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+[Tree(label=8, branches=[])]
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> u = Tree(2, [t.branches[0]])
+>>> u.branches[0].branches[0].label
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+8
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> print(u)
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+2
+  3
+    8
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 6--8 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Name each value:} \lstinline{t.branches} is a list; \lstinline{t.branches[i]} is a \lstinline{Tree}. Have students state the type of each intermediate expression before taking another attribute.
+    \item \textbf{Leaves have no branches:} A leaf's \lstinline{branches} is the empty list, so indexing into it raises an \lstinline{IndexError}. Contrast with linked lists, where the empty case \lstinline{()} is not a \lstinline{Link} at all.
+    \item \textbf{Reading print:} Depth is shown by indentation; students can redraw the tree from the printout.
+\end{itemize}
+\end{questionmeta}

@@ -51,7 +51,7 @@ def merge(a: LinkedList[int], b: LinkedList[int]) -> LinkedList[int]:
 
 >>> t = Tree(5, [Tree(3, [Tree(8)]), Tree(1), Tree(7)])
 >>> t.label
-2
+5
 >>> t.branches[0].label
 3
 >>> is_leaf(t.branches[1])

@@ -1,0 +1,58 @@
+\begin{blocksection}
+\question Write \lstinline{merge}, which takes two linked lists of integers, each sorted in increasing order, and returns a new sorted linked list containing all of the elements of both.
+
+\begin{lstlisting}
+def merge(a: LinkedList[int], b: LinkedList[int]) -> LinkedList[int]:
+    """
+    >>> a = Link(1, Link(5))
+    >>> b = Link(2, Link(3, Link(8)))
+    >>> print(merge(a, b))
+    (1 2 3 5 8)
+    >>> print(merge(a, ()))
+    (1 5)
+    >>> merge((), ())
+    ()
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    elif ____________________________________:
+
+        return ______________________________
+
+    elif ____________________________________:
+
+        return ______________________________
+
+    else:
+
+        return ______________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def merge(a: LinkedList[int], b: LinkedList[int]) -> LinkedList[int]:
+    if not isinstance(a, Link):
+        return b
+    elif not isinstance(b, Link):
+        return a
+    elif a.first <= b.first:
+        return Link(a.first, merge(a.rest, b))
+    else:
+        return Link(b.first, merge(a, b.rest))
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 10 min; Difficulty: Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Base cases:} If either list is empty, the answer is the other list (which may also be empty).
+    \item \textbf{Smallest first:} The smallest remaining element is \lstinline{a.first} or \lstinline{b.first}. Put it on the front, then merge the remaining elements.
+    \item \textbf{Which arguments shrink:} Only the list whose first element was used gets shorter; the other is passed unchanged.
+\end{itemize}
+\end{questionmeta}
