@@ -30,7 +30,11 @@ pub fn sum(l: List(Int)) -> Int {
 }
 
 \begin{questionmeta}
-  
+  The purpose of this question is to demonstrate how we can define a helper function to make our function tail recursive when 
+  our original function does not have enough arguments. By introducing the function `sum_helper` with the extra argument curr,
+  we are able to store our intermediate results in curr so that the final call simply returns curr. Importantly, we have to 
+  define the helper function *outside* of sum. Gleam does not support nested named functions, so every nested function has to be 
+  an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
 \end{questionmeta}
 
 \end{lstlisting}
