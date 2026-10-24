@@ -35,6 +35,10 @@ pub fn sum(l: List(Int)) -> Int {
   we are able to store our intermediate results in curr so that the final call simply returns curr. Importantly, we have to 
   define the helper function *outside* of sum. Gleam does not support nested named functions, so every nested function has to be 
   an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
+
+  This question also introduces way to case match lists in Gleam. `[]` matches an empty list, `[first]` matches a list with one element
+  called first, and `[first, ..rest]` matches a list with at least two elements: first for the first element and rest for the rest 
+  of the list.
 \end{questionmeta}
 
 \end{lstlisting}
