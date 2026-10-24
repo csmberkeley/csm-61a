@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question Implement \texttt{reduce}, a tail recursive function that applies a
+two-argument function \texttt{f} on the elements of a list from left to right,
+starting with \texttt{start}.
+\newline
+\begin{lstlisting}
+fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case l {
+    [] -> ______
+    [first] -> ______________________________
+    [first, ..rest] -> ______________________________
+  }
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case l {
+    [] -> start
+    [first] -> f(start, first)
+    [first, ..rest] -> reduce(rest, f, f(start, first))
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  The purpose of this question is to demonstrate the use of generics in Gleam. \lstinline{reduce} accepts a list of any type, and only
+  enforces that the type of the elements of the list is the same as the type of \lstinline{fn} (both the arguments and return value), \lstinline{start},
+  and the return type of \lstinline{reduce}. \lstinline{reduce} is tail recursive because the only case where a recursive call is made makes no
+  modification to the return value of the recursive call.
+\end{questionmeta}
+\end{blocksection}

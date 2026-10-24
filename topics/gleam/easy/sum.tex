@@ -1,0 +1,45 @@
+\begin{blocksection}
+\question Implement \texttt{sum}, a tail recursive function that returns the sum of
+all elements of a list of integers.
+\newline
+\begin{lstlisting}
+fn sum_helper(l: List(Int), curr: Int) -> Int {
+  case l {
+    [] -> ______
+    [first] -> ______ + ______
+    [first, ..rest] -> ______________________________
+  }
+}
+
+pub fn sum(l: List(Int)) -> Int {
+  sum_helper(______, ______)
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+fn sum_helper(l: List(Int), curr: Int) -> Int {
+  case l {
+    [] -> curr
+    [first] -> curr + first
+    [first, ..rest] -> sum_helper(rest, curr + first)
+  }
+}
+
+pub fn sum(l: List(Int)) -> Int {
+  sum_helper(l, 0)
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  The purpose of this question is to demonstrate how we can define a helper function to make our function tail recursive when
+  our original function does not have enough arguments. By introducing the function \lstinline{sum_helper} with the extra argument \lstinline{curr},
+  we are able to store our intermediate results in \lstinline{curr} so that the final call simply returns \lstinline{curr}. Importantly, we have to
+  define the helper function \textit{outside} of \lstinline{sum}. Gleam does not support nested named functions, so every nested function has to be
+  an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
+
+  This question also introduces way to case match lists in Gleam. \lstinline{[]} matches an empty list, \lstinline{[first]} matches a list with one element
+  called first, and \lstinline{[first, ..rest]} matches a list with at least two elements: first for the first element and rest for the rest
+  of the list.
+\end{questionmeta}
+\end{blocksection}

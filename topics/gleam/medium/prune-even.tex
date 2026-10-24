@@ -1,0 +1,37 @@
+\begin{blocksection}
+\question Implement \texttt{prune\_even}, which prunes every branch in a tree that has
+an even label. Odd child branches of branches with even labels are not preserved.
+\newline
+\begin{lstlisting}
+pub fn prune_even(tree: Tree(Int)) -> Tree(Int) {
+    let Tree(label, branches) = tree
+
+    let remove_even = list.filter(branches, ________________________)
+    let prune_children = list.________(_____________________________)
+
+    Tree(label, prune_children)
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn prune_even(tree: Tree(Int)) -> Tree(Int) {
+    let Tree(label, branches) = tree
+
+    let remove_even =
+        list.filter(branches, fn(branch) { branch.label % 2 != 0 })
+    let prune_children = list.map(remove_even, prune_even)
+    Tree(label, prune_children)
+}
+\end{lstlisting}
+\end{solution}
+\begin{questionmeta}
+    We start with let Tree(label, branches) = tree so that we can assign the tree's label and branches to a name that we're able to reference in code. 
+    If we didn't do that, we wouldn't be able to explicitly reference the tree's label and branches.
+    We're going to do this in a similar way to a typical 61a solution, so basically filter out non-even branches and then recursively call the function on the remaining branches.
+    Data is immutable in Gleam, so we can't mutate the tree, we have to make a new one. Because of this, we make a new list of all our branches after being pruned. We have to do list.filter... instead of just calling filter. This is the case with all the standard list operations (like max and sum too) in Gleam.
+    The syntax for a lambda is \lstinline|fn(args) { body }|, and it works just like a python lambda.
+    After this we're going to recursively call the function on the rest of the branches. We can't do this with a for loop because Gleam doesn't have iteration, just recursion. However, we can do list.map. The prune and recurse steps could be done in the same line with \lstinline|let prune_children = list.map(list.filter(branches, fn(branch) { branch.label % 2 != 0 }), prune_even)|.
+    Once we're done that, we just return our new tree. We don't need to put a return statement, it will return the last statement evaluated.
+
+\end{questionmeta}
+\end{blocksection}
