@@ -28,19 +28,18 @@ fn sum_helper(l: List(Int), curr: Int) -> Int {
 pub fn sum(l: List(Int)) -> Int {
   sum_helper(l, 0)
 }
-
-\begin{questionmeta}
-  The purpose of this question is to demonstrate how we can define a helper function to make our function tail recursive when 
-  our original function does not have enough arguments. By introducing the function `sum_helper` with the extra argument curr,
-  we are able to store our intermediate results in curr so that the final call simply returns curr. Importantly, we have to 
-  define the helper function *outside* of sum. Gleam does not support nested named functions, so every nested function has to be 
-  an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
-
-  This question also introduces way to case match lists in Gleam. `[]` matches an empty list, `[first]` matches a list with one element
-  called first, and `[first, ..rest]` matches a list with at least two elements: first for the first element and rest for the rest 
-  of the list.
-\end{questionmeta}
-
 \end{lstlisting}
 \end{solution}
+
+\begin{questionmeta}
+  The purpose of this question is to demonstrate how we can define a helper function to make our function tail recursive when
+  our original function does not have enough arguments. By introducing the function \lstinline{sum_helper} with the extra argument \lstinline{curr},
+  we are able to store our intermediate results in \lstinline{curr} so that the final call simply returns \lstinline{curr}. Importantly, we have to
+  define the helper function \textit{outside} of \lstinline{sum}. Gleam does not support nested named functions, so every nested function has to be
+  an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
+
+  This question also introduces way to case match lists in Gleam. \lstinline{[]} matches an empty list, \lstinline{[first]} matches a list with one element
+  called first, and \lstinline{[first, ..rest]} matches a list with at least two elements: first for the first element and rest for the rest
+  of the list.
+\end{questionmeta}
 \end{blocksection}
