@@ -22,5 +22,12 @@ fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
   }
 }
 \end{lstlisting}
+
+\begin{questionmeta}
+  The purpose of this question is to demonstrate the use of generics in Gleam. `reduce` accepts a list of any type, and only
+  enforces that the type of the elements of the list is the same as the type of `fn` (both the arguments and return value), `start`,
+  and the return type of `reduce`. `reduce` is tail recursive because the only case where a recursive call is made makes no
+  modification to the return value of the recursive call.
+\end{questionmeta}
 \end{solution}
 \end{blocksection}
