@@ -11,7 +11,7 @@ static type systems, type safety usually guarantees that an expression's
 eventual value belongs to its static type.
 
 When writing functions that operate on a given input, Gleam requires that you
-handle any theoretically possible output case, even if you've potentially handled
+handle any theoretically possible input case, even if you've potentially handled
 such a case earlier. For instance, the function \texttt{list.max} (which behaves
 very similarly to Python's \texttt{max} function) does not return an integer
 directly, but a \texttt{Result}. This covers an empty list being passed into \texttt{max}: it returns
@@ -26,10 +26,12 @@ statement:
 \begin{lstlisting}
 case n % 2 {
     0 -> //some code for the case in which n is even
-    1 -> //some code for the case in which n is odd
+    _ -> //some code for the case in which n is odd
 }
 \end{lstlisting}
-Gleam will require you to include the \texttt{n \% 2 == 1} case,
-regardless of whether \texttt{n} could be odd.
+Gleam will require you to include the catch-all \texttt{\_} case, regardless of
+whether \texttt{n} could be odd. Even writing a \texttt{1} case is not enough:
+Gleam cannot prove that \texttt{n \% 2} is only ever \texttt{0} or \texttt{1}
+(it is \texttt{-1} for negative odd \texttt{n}), so an \texttt{Int} case always needs \texttt{\_}.
 \newline
 \end{blocksection}

@@ -39,7 +39,7 @@ pub fn sum(l: List(Int)) -> Int {
   an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
 
   This question also introduces way to case match lists in Gleam. \lstinline{[]} matches an empty list, \lstinline{[first]} matches a list with one element
-  called first, and \lstinline{[first, ..rest]} matches a list with at least two elements: first for the first element and rest for the rest
-  of the list.
+  called first, and \lstinline{[first, ..rest]} matches a list with at least one element: first for the first element and rest for the rest
+  of the list. Cases are checked in order, so here \lstinline{[first, ..rest]} only sees lists with two or more elements, since \lstinline{[first]} comes before it.
 \end{questionmeta}
 \end{blocksection}

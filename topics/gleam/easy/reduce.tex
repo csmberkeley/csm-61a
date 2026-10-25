@@ -26,7 +26,7 @@ fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
 
 \begin{questionmeta}
   The purpose of this question is to demonstrate the use of generics in Gleam. \lstinline{reduce} accepts a list of any type, and only
-  enforces that the type of the elements of the list is the same as the type of \lstinline{fn} (both the arguments and return value), \lstinline{start},
+  enforces that the type of the elements of the list is the same as the type of \lstinline{f} (both the arguments and return value), \lstinline{start},
   and the return type of \lstinline{reduce}. \lstinline{reduce} is tail recursive because the only case where a recursive call is made makes no
   modification to the return value of the recursive call.
 \end{questionmeta}
