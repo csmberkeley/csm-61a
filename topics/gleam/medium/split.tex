@@ -1,0 +1,30 @@
+\begin{blocksection}
+\question Implement \texttt{split}, which takes in a LinkedList \texttt{l} and a value \texttt{at}, and returns a tuple of the parts of \texttt{l} before and after the first occurrence of \texttt{at}. \texttt{at} is the first element of the second part. If \texttt{at} is not found, return \lstinline{#(l, Empty)}.
+\begin{lstlisting}
+pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
+  case l {
+    Empty -> #(Empty, Empty)
+    Link(first, _) if first == at -> ____________________
+    Link(first, rest) -> {
+      let #(before, after) = ____________________
+      ______________________________
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
+  case l {
+    Empty -> #(Empty, Empty)
+    Link(first, _) if first == at -> #(Empty, l)
+    Link(first, rest) -> {
+      let #(before, after) = split(rest, at)
+      #(Link(first, before), after)
+    }
+  }
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

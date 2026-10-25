@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question Implement \texttt{invert}, which takes in a LinkedList \texttt{list} and a value \texttt{at}, and moves the elements starting from the first occurrence of \texttt{at} to the front, before the elements that came before \texttt{at}. For example, inverting \lstinline{1 -> 2 -> 3 -> 4} at \lstinline{3} gives \lstinline{3 -> 4 -> 1 -> 2}. If \texttt{at} is not found, return \texttt{list} unchanged. You may use \texttt{split} and \texttt{extend}.
+\begin{lstlisting}
+pub fn invert(list: LinkedList(a), at: a) -> LinkedList(a) {
+  let #(before, after) = ____________________
+  ____________________
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn invert(list: LinkedList(a), at: a) -> LinkedList(a) {
+  let #(before, after) = split(list, at)
+  extend(after, before)
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
