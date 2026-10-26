@@ -1,0 +1,89 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+
+\discnumber{10}
+\title{Efficiency}
+\date{October 26, 2026 -- October 30, 2026}
+
+% Exercises and lessons are imported from the topic bank when possible.
+\begin{document}
+\maketitle
+
+\begin{meta}
+\small
+\textbf{Material Scope and Older Exam Notation}
+\begin{itemize}
+    \item \textbf{Out of scope:} \lstinline{__repr__}, linked list mutation, and tree mutation.
+    \item \textbf{Still in scope:} \lstinline{__str__} and everything else.
+    \item Older exam problems use older notation. Translate \lstinline{t.is_leaf()} to \lstinline{is_leaf(t)}, and \lstinline{Link.empty} to \lstinline{()}.
+\end{itemize}
+
+\textbf{Example Timeline}
+\begin{itemize}
+    \item Check-in and efficiency overview [10 min]. Compare constant, logarithmic, linear, quadratic, and exponential growth.
+    \item Q1: recursive call trees [12 min]. Contrast two continuing branches in \lstinline{strange_add} with one continuing branch in \lstinline{stranger_add}.
+    \item Q2: loops and recursion [10 min]. Contrast multiplying nested-loop counts with summing work across recursive calls.
+    \item Q3: fast exponentiation [12 min]. Compare decreasing an exponent by one with halving it, then account for extra work at each level.
+    \item Wrap-up [6 min]. Ask students to justify one runtime by counting operations. If useful, discuss how caching repeated inputs in Q1(a) would change its runtime.
+\end{itemize}
+
+\textbf{Teaching Goals}
+\begin{itemize}
+    \item Identify the input size and give tight bounds in $\Theta$ notation. Assume arithmetic, comparisons, and individual print operations take constant time for these exercises.
+    \item Count iterations and work per iteration before dropping constants or lower-order terms.
+    \item Count all recursive calls, not just recursion depth. Check which branches continue: Q1(b)'s two other calls return immediately.
+    \item Distinguish Q2's nested loops, whose counts multiply, from its recursive loops, whose decreasing lengths must be summed.
+    \item Optional memoization connection: caching each \lstinline{strange_add(n)} result makes the first computation take $\Theta(n)$ time and $\Theta(n)$ cache space under the constant-time arithmetic and dictionary-operation model. Each input from 0 through $n$ is computed once. A repeated call with the same persistent cache takes $\Theta(1)$ time.
+\end{itemize}
+\textbf{Optional Midterm Review: Problem Selection}
+These three topic-bank problems have not appeared on earlier Fall 2026
+worksheets. Efficiency remains this week's main topic; choose review problems
+as time permits rather than adding all three to the timeline above.
+\begin{itemize}
+    \item Q4: \lstinline{Poll} and \lstinline{tally} [12--15 min]. The bank
+    credits Fall 2018 Midterm 2 Q5(a). Students coordinate a shared class list,
+    per-instance dictionaries, and a filtered comprehension. This is comparable
+    to the object-state reasoning in Fall 2023 Midterm 2 Q3 (Library/Book),
+    without requiring out-of-scope representation methods.
+    \item Q5: \lstinline{max_subset_sum} [10--12 min]. Students track both
+    the remaining list and the number of elements still needed, then combine
+    include/exclude branches with \lstinline{max}. Compare Fall 2023 Midterm 2
+    Q4(a), \lstinline{fit}: both require coordinated recursive arguments and
+    base cases. This bank problem is somewhat more scaffolded.
+    \item Q6: \lstinline{SkipMachine} [8--10 min]. Track each generator's
+    local \lstinline{current}, its instance's \lstinline{skip}, and the shared
+    \lstinline{SkipMachine.skip}. Fall 2023 Midterm 2 Q1 similarly tests lazy
+    execution and iterator consumption; this problem adds shared class state.
+    Calling \lstinline{generate} does not execute its body. Each \lstinline{next}
+    resumes after the previous \lstinline{yield}; evaluate the parts in order.
+\end{itemize}
+Difficulty comparisons are teaching judgments, not official exam ratings.
+Reference: \href{https://website.cs61a.org/exam/fa23/mt2/61a-fa23-mt2_sol.pdf}{Fall 2023 Midterm 2 solutions}.
+\end{meta}
+
+\section{Efficiency}
+\begingroup
+\subimport{../../topics/growth/text/}{oog_overview.tex}
+\endgroup
+\begin{questions}
+    \subimport{../../topics/growth/easy/}{strange-add.tex}
+
+    \subimport{../../topics/growth/medium/}{runtimes-p1.tex}
+
+    \subimport{../../topics/growth/medium/}{fast-exponentiation.tex}
+\end{questions}
+
+\newpage
+\section{Optional Midterm Review}
+\begin{questions}
+    \setcounter{question}{3}
+    \subimport{../../topics/oop/hard/}{midterm-elections.tex}
+
+    \newpage
+    \subimport{../../topics/recursion/medium/}{max-subset-sum.tex}
+
+    \newpage
+    \subimport{../../topics/iterators/easy/}{skipmachine.tex}
+\end{questions}
+
+\end{document}

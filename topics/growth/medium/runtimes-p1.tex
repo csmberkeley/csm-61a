@@ -1,5 +1,7 @@
 \begin{blocksection}
-\question Find the runtime for each of the following functions. \\
+\question Find the runtime for each of the following functions in
+$\Theta$ notation. Assume \lstinline{n} is a non-negative integer and
+arithmetic and printing each take constant time.
 
 \begin{center}
 \begin{tabular}{ |p{13cm}|p{2cm}| }
@@ -27,3 +29,16 @@ def foo(n):
 \end{center}
 
 \end{blocksection}
+
+\begin{solution}
+\begin{itemize}
+    \item \lstinline{mystery}: $\Theta(n\log n)$. The outer loop runs
+    $\lfloor n/2\rfloor$ times. On every iteration, \lstinline{j} resets to
+    1 and doubles until it reaches or exceeds $n$, so the inner loop takes
+    $\Theta(\log n)$ time. Multiply the two counts.
+    \item \lstinline{foo}: $\Theta(n)$. The work across successive calls is
+    proportional to $n/2 + n/4 + n/8 + \cdots$, which sums to $\Theta(n)$.
+    The recursion has logarithmic depth, but its loops get shorter at each
+    level; multiplying $n$ by the depth would overcount the work.
+\end{itemize}
+\end{solution}
