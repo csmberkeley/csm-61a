@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Implement \texttt{split}, which takes in a LinkedList \texttt{l} and a value \texttt{at}, and returns a tuple of the parts of \texttt{l} before and after the first occurrence of \texttt{at}. \texttt{at} is the first element of the second part. If \texttt{at} is not found, return \lstinline{#(l, Empty)}.
+\question Implement \texttt{split}, which takes in a \lstinline{LinkedList} \texttt{l} and a value \texttt{at}, and returns a tuple of the parts of \texttt{l} before and after the first occurrence of \texttt{at}. \texttt{at} is the first element of the second part. If \texttt{at} is not found, return \lstinline{#(l, Empty)}.
 \begin{lstlisting}
 pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
   case l {
@@ -27,4 +27,11 @@ pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
 }
 \end{lstlisting}
 \end{solution}
+
+\begin{questionmeta}
+  Following a similar logic as \lstinline{append}, we build onto the list at the first element of the tuple until \lstinline{at} is found, at which point we stop recursing and put the rest of the list at the second element of the tuple.
+  The case where \lstinline{at} is not found occurs naturally when \lstinline{split} is eventually called on an empty list, at which point we would have the entire list in the first element and we simply put \lstinline{Empty} as the second element.
+  
+  The use of \lstinline{if} here is called a guard. Instead of splitting into cases like in Python, it is a further specification of a case, so the pattern \lstinline{Link(first, _) if first == at} is matched only when \lstinline{first == at}.
+\end{questionmeta}
 \end{blocksection}

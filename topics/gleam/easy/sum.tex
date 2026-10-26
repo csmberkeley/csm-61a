@@ -17,7 +17,7 @@ pub fn sum(l: List(Int)) -> Int {
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}
-fn sum_helper(l: List(Int), curr: Int) -> Int {
+pub fn sum_helper(l: List(Int), curr: Int) -> Int {
   case l {
     [] -> curr
     [first] -> curr + first
@@ -36,10 +36,10 @@ pub fn sum(l: List(Int)) -> Int {
   our original function does not have enough arguments. By introducing the function \lstinline{sum_helper} with the extra argument \lstinline{curr},
   we are able to store our intermediate results in \lstinline{curr} so that the final call simply returns \lstinline{curr}. Importantly, we have to
   define the helper function \textit{outside} of \lstinline{sum}. Gleam does not support nested named functions, so every nested function has to be
-  an anonymous lambda using a let, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
+  an anonymous lambda using a \lstinline{let}, but let-bound lambda functions can't refer to themselves, so they can't be used in recursion.
 
   This question also introduces way to case match lists in Gleam. \lstinline{[]} matches an empty list, \lstinline{[first]} matches a list with one element
-  called first, and \lstinline{[first, ..rest]} matches a list with at least one element: first for the first element and rest for the rest
+  called \lstinline{first}, and \lstinline{[first, ..rest]} matches a list with at least one element: \lstinline{first} for the first element and \lstinline{rest} for the rest
   of the list. Cases are checked in order, so here \lstinline{[first, ..rest]} only sees lists with two or more elements, since \lstinline{[first]} comes before it.
 \end{questionmeta}
 \end{blocksection}

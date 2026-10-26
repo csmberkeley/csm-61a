@@ -1,17 +1,21 @@
 \begin{blocksection}
-\question Implement \texttt{invert}, which takes in a LinkedList \texttt{list} and a value \texttt{at}, and moves the elements starting from the first occurrence of \texttt{at} to the front, before the elements that came before \texttt{at}. For example, inverting \lstinline{1 -> 2 -> 3 -> 4} at \lstinline{3} gives \lstinline{3 -> 4 -> 1 -> 2}. If \texttt{at} is not found, return \texttt{list} unchanged. Use \texttt{split} and \texttt{extend}.
+\question Implement \texttt{invert}, which takes in a \lstinline{LinkedList} \texttt{l} and a value \texttt{at}, and moves the elements starting from the first occurrence of \texttt{at} to the front, before the elements that came before \texttt{at}. For example, inverting \lstinline{1 -> 2 -> 3 -> 4} at \lstinline{3} gives \lstinline{3 -> 4 -> 1 -> 2}. If \texttt{at} is not found, return \texttt{l} unchanged. Use \texttt{split} and \texttt{append}.
 \begin{lstlisting}
-pub fn invert(list: LinkedList(a), at: a) -> LinkedList(a) {
+pub fn invert(l: LinkedList(a), at: a) -> LinkedList(a) {
   let #(before, after) = ____________________
   ____________________
 }
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}
-pub fn invert(list: LinkedList(a), at: a) -> LinkedList(a) {
-  let #(before, after) = split(list, at)
-  extend(after, before)
+pub fn invert(l: LinkedList(a), at: a) -> LinkedList(a) {
+  let #(before, after) = split(l, at)
+  append(after, before)
 }
 \end{lstlisting}
 \end{solution}
+
+\begin{questionmeta}
+  We first \lstinline{split} at \lstinline{at}, then \lstinline{append} \lstinline{before} after \lstinline{after}.
+\end{questionmeta}
 \end{blocksection}
