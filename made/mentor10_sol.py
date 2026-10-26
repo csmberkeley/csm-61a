@@ -1,54 +1,47 @@
-def strange_add(n):
-    if n == 0:
-        return 1
-    else:
-        return strange_add(n - 1) + strange_add(n - 1)
-def stranger_add(n):
-    if n < 3:
+def fib(n):
+    if n < 2:
         return n
-    elif n % 3 ==  0:
-        return stranger_add(n - 1) + stranger_add(n - 2) + stranger_add(n - 3)
-    else:
-        return n
+    return fib(n - 1) + fib(n - 2)
 
 
-def mystery(n):
-    total = 0
-    for i in range(n // 2):
-        j = 1
-        while j < n:
-            j *= 2
-            total += i * j
-    return total
-def foo(n):
-    if n == 0:
-        return
-    for i in range(n // 2):
-        print(i)
-    foo(n // 2)
+def make_fib():
+    cache = {0: 0, 1: 1}
+    def fib(n):
+        if n not in cache:
+            cache[n] = fib(n - 1) + fib(n - 2)
+        return cache[n]
+    return fib
+f = make_fib()
+f(5)
+f(5)
+f(6)
 
 
-def exp(b, n):
-    if n == 0:
-        return 1
-    else:
-        return b * exp(b, n - 1)
-def fast_exp(b, n):
-    if n == 0:
-        return 1
-    elif n % 2 == 0: # Assume square runs in constant time
-        return square(fast_exp(b, n // 2))
-    else:
-        return b * fast_exp(b, n - 1)
-def fast_exp(b, n):
-    for _ in range(50 * n):
-        print("Killing time")
-    if n == 0:
-        return 1
-    elif n % 2 == 0:
-        return square(fast_exp(b, n // 2))
-    else:
-        return b * fast_exp(b, n - 1)
+def greetings_a(names):
+    return ['Hi, ' + name for name in names]
+
+def greetings_b(names):
+    s = []
+    for name in names:
+        s.append('Hi, ' + name)
+    return s
+
+def greetings_c(names):
+    s = []
+    for name in names:
+        s = s + ['Hi, ' + name]
+    return s
+
+def greetings_d(names):
+    s = []
+    for name in names:
+        s.insert(0, 'Hi, ' + name)
+    return s
+['Hi, Ada', 'Hi, Bo', 'Hi, Cam']
+['Hi, Cam', 'Hi, Bo', 'Hi, Ada']
+def greetings_d(names):
+    return ['Hi, ' + names[i]
+            for i in range(len(names) - 1, -1, -1)]
 
 
 class Poll:

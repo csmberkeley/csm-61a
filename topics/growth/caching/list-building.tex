@@ -1,0 +1,57 @@
+\begin{blocksection}
+\question Compare these ways of building a list of greetings from a list of names.
+\begin{lstlisting}
+def greetings_a(names):
+    return ['Hi, ' + name for name in names]
+
+def greetings_b(names):
+    s = []
+    for name in names:
+        s.append('Hi, ' + name)
+    return s
+
+def greetings_c(names):
+    s = []
+    for name in names:
+        s = s + ['Hi, ' + name]
+    return s
+
+def greetings_d(names):
+    s = []
+    for name in names:
+        s.insert(0, 'Hi, ' + name)
+    return s
+\end{lstlisting}
+\begin{parts}
+\part What does each function return for \lstinline{names = ['Ada', 'Bo', 'Cam']}?
+\begin{solution}[0.5in]
+A, B, and C return:
+\begin{lstlisting}
+['Hi, Ada', 'Hi, Bo', 'Hi, Cam']
+\end{lstlisting}
+D returns the following because each new element goes at the front:
+\begin{lstlisting}
+['Hi, Cam', 'Hi, Bo', 'Hi, Ada']
+\end{lstlisting}
+\end{solution}
+\part Which two avoid repeatedly copying or shifting the growing list?
+Explain the extra work in the other two, without runtime notation.
+Focus on building the list; all four construct the same greeting strings.
+\begin{solution}[0.7in]
+A and B efficiently build the list. C constructs a new list each iteration
+and copies the previous elements into it. D shifts the existing elements
+each time it inserts at the front. As the list grows, C and D repeatedly
+move more elements. B may occasionally resize its storage, but does not
+copy the whole list on every append.
+\end{solution}
+\part Rewrite D with a list comprehension that returns the same elements
+in the same order, without inserting at the front.
+\begin{solution}[0.5in]
+\begin{lstlisting}
+def greetings_d(names):
+    return ['Hi, ' + names[i]
+            for i in range(len(names) - 1, -1, -1)]
+\end{lstlisting}
+\end{solution}
+\end{parts}
+\end{blocksection}
