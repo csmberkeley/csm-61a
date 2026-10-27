@@ -21,7 +21,7 @@ def f(n):
       print(n)
       n //= 2
 \end{lstlisting}
-An example of a quadratic runtime involves nested for loops. For every one of the \lstinline{n} iterations of the outer loop, there is \lstinline{n} work done in the inner loop. This means that the runtime is proportional to \lstinline{n}$^{2}$. \\
+An example of a quadratic runtime involves nested for loops. For every one of the \lstinline{n} iterations of the outer loop, there is \lstinline{n} work done in the inner loop. This means that the runtime is proportional to \lstinline{n}$^{2}$. 
 \begin{lstlisting}
 def f(n):
    for i in range(n):
@@ -29,12 +29,27 @@ def f(n):
          print(i*j)
 \end{lstlisting}
 
+\textbf{Exponential time:} Assume \lstinline{n} is a non-negative integer.
+Each non-base call below makes two recursive calls on an input smaller by one.
+\begin{lstlisting}
+def branches(n):
+    if n == 0:
+        return
+    branches(n - 1)
+    branches(n - 1)
+\end{lstlisting}
+There is one call at depth 0, two at depth 1, four at depth 2, and
+$2^n$ at depth $n$. The total number of calls is
+$1 + 2 + 4 + \cdots + 2^n = 2^{n+1} - 1$, so the runtime is
+$\Theta(2^n)$. Count all calls, not just the depth of the recursion.
+Multiple recursive calls do not always imply exponential time: check whether
+each call continues branching or immediately reaches a base case.
+
 \begin{guide}
    \textbf{Teaching Tips}
    \begin{itemize}
-      \item Try visualizing how orders of growth works for each orders of growth (Tables work especially well for quadratic).
-      \begin{itemize}
-      \item You can walk through each of the examples above and tally up the amount of times the program runs. 
+      %\item Try visualizing how orders of growth works for each orders of growth (Tables work especially well for quadratic).
+      \item You can walk through each of the examples above and tally up the amount of times the program runs to show them why the stated order of growth is the one for that piece of code.
       \item For example, in the second f(n), we would jot down that for f(6):
       \begin{itemize}
          \item Before while: n = 6. Runs: 0.
@@ -46,6 +61,5 @@ def f(n):
          \item During sixth iteration: n = 0. Runs: 6.
       \end{itemize}
       \item So, from that visualization, we can see that this program seems to run in linear time. 
-      \end{itemize}
    \end{itemize}
 \end{guide}

@@ -1,5 +1,7 @@
-\question What is the order of growth in time for the following functions? Use
-big-O notation.
+\question What is the order of growth in time for the following functions? Give
+tight bounds in $\Theta$ notation. Assume \lstinline{n} is a non-negative
+integer and arithmetic takes constant time. If different inputs follow
+different execution paths, describe their runtimes separately.
 \begin{parts}
 
 \part
@@ -11,9 +13,9 @@ def strange_add(n):
         return strange_add(n - 1) + strange_add(n - 1)
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(2^n)$. To see this, try drawing out the call tree. Each level will create
-two new calls to \texttt{strange\char`_add}, and there are $n$ levels.
-Therefore, $2^n$ calls.
+$\Theta(2^n)$. Every non-base call makes two recursive calls. At depth $k$
+there are $2^k$ calls, for depths 0 through $n$. The total is
+$1 + 2 + \cdots + 2^n = 2^{n+1} - 1$ calls, with constant work per call.
 \end{solution}
 
 \part
@@ -27,11 +29,19 @@ def stranger_add(n):
         return n
 \end{lstlisting}
 \begin{solution}[0.25in]
-$O(n)$ is $n$ is a multiple of 3, otherwise $O(1)$.\\
-The case where $n$ is not a multiple of 3 is fairly obvious -- we step into the
-else clause and immediately return.\\
-If $n$ is a multiple of 3, then neither $n - 1$ nor $n - 2$ are multiples of 3
-so those calls will take constant time. Therefore, we just run
-\texttt{stranger\char`_add}, decrementing the argument by 3 each time.
+$\Theta(n)$ for positive multiples of 3; $\Theta(1)$ otherwise, including
+\lstinline{n = 0}.
+
+Only calls whose argument is a positive multiple of 3 recurse. For example,
+\lstinline{stranger_add(9)} calls the function on 8, 7, and 6. The calls on
+8 and 7 return immediately through the \lstinline{else} branch. The call on
+6 calls the function on 5, 4, and 3; again, only the last call continues.
+The continuing chain is $9 \to 6 \to 3 \to 0$.
+
+Thus, each recursive stage does constant work and makes two constant-time
+calls plus one call on $n-3$: $T(n)=T(n-3)+\Theta(1)$.
+There are $n/3$ such stages, giving $\Theta(n)$ time. There are three calls
+in the code, but they do not form three continuing recursive branches.
+For inputs not divisible by 3, the initial call returns immediately.
 \end{solution}
 \end{parts}

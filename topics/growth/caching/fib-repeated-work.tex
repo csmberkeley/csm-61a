@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question Consider tree-recursive Fibonacci for non-negative integers.
+\begin{lstlisting}
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n - 1) + fib(n - 2)
+\end{lstlisting}
+\begin{parts}
+\part Draw the calls made by \lstinline{fib(4)}. Which inputs occur more
+than once, and what does the original call return?
+\begin{solution}[1.4in]
+\begin{verbatim}
+fib(4)
+  fib(3)
+    fib(2)
+      fib(1)
+      fib(0)
+    fib(1)
+  fib(2)
+    fib(1)
+    fib(0)
+\end{verbatim}
+Inputs 2, 1, and 0 repeat. The result is 3.
+\end{solution}
+\part Suppose every call checks the same cache and saves its result.
+What should the keys and values be? When the second request for
+\lstinline{fib(2)} occurs, what work is avoided?
+\begin{solution}[0.8in]
+Keys are input integers; values are their Fibonacci numbers. The first
+request stores 1 under key 2. The second returns that result without
+calling \lstinline{fib(1)} or \lstinline{fib(0)} again. Each distinct
+Fibonacci result is computed once, even if requested repeatedly.
+\end{solution}
+\end{parts}
+\end{blocksection}

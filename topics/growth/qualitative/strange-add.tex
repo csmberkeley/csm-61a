@@ -1,0 +1,56 @@
+% Same code as the original growth problem; qualitative solutions for Fall 2026.
+\question Classify the work as linear, sublinear, or superlinear relative to
+\lstinline{n}, and explain your reasoning in words. Assume \lstinline{n} is
+a non-negative integer and arithmetic takes a fixed amount of work.
+If different inputs follow different execution paths, describe them separately.
+\begin{parts}
+
+\part
+\begin{lstlisting}
+def strange_add(n):
+    if n == 0:
+        return 1
+    else:
+        return strange_add(n - 1) + strange_add(n - 1)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Superlinear. Each non-base call makes two calls on the same smaller input.
+Increasing \lstinline{n} by one adds another branching level and roughly
+doubles the total number of calls. The same smaller inputs are computed
+repeatedly.
+
+If every recursive call checks a shared cache, each distinct input from 0
+through \lstinline{n} needs to be computed only once. A first call with an
+empty cache then does linear work. Repeating it with the result already
+cached takes a fixed amount of work, which is sublinear. Storing only the
+top-level result would not remove repeated work within the first call.
+\end{solution}
+
+\part
+\begin{lstlisting}
+def stranger_add(n):
+    if n < 3:
+        return n
+    elif n % 3 ==  0:
+        return stranger_add(n - 1) + stranger_add(n - 2) + stranger_add(n - 3)
+    else:
+        return n
+\end{lstlisting}
+\begin{solution}[0.25in]
+Linear for positive multiples of 3; sublinear (a fixed amount of work)
+otherwise, including \lstinline{n = 0}.
+
+For \lstinline{stranger_add(9)}, the calls on 8 and 7 return immediately;
+only the call on 6 continues. At the next stage, the calls on 5 and 4
+return immediately; only 3 continues. The continuing chain is
+$9 \to 6 \to 3 \to 0$.
+
+Each stage does a fixed amount of work and reduces the continuing input by
+3. Doubling a positive multiple-of-3 input roughly doubles the number of
+stages. For inputs not divisible by 3, the initial call returns immediately.
+
+Unlike \lstinline{strange_add}, this function does not repeatedly solve the
+same inputs during a single call, so caching does not improve its first-call
+growth category. A persistent cache can still help repeated top-level calls.
+\end{solution}
+\end{parts}
