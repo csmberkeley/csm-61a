@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question Implement \texttt{factorial}!
+\begin{lstlisting}
+pub fn factorial(n: Int) -> Int {
+  case n > 0 {
+    True -> ____________ * ______________________________
+    False -> ____________
+  }
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn factorial(n: Int) -> Int {
+  case n > 0 {
+    True -> n * factorial(n - 1)
+    False -> 1
+  }
+}
+
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  This is an implementation of the standard factorial in Gleam. Instead of if statements, Gleam uses case matching.
+  \lstinline{n > 0} evaluates to a \lstinline{Bool}, which is a sum type between \lstinline{True} and \lstinline{False}. 
+  \lstinline{case} takes this \lstinline{Bool} type and evaluates to a different value for each value it can take: \lstinline{True} or \lstinline{False}.
+\end{questionmeta}
+\end{blocksection}
