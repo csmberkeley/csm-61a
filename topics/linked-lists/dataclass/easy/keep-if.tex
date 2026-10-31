@@ -1,0 +1,56 @@
+\begin{blocksection}
+\question Write \lstinline{keep_if}, which takes a linked list of integers \lstinline{lnk} and a predicate \lstinline{pred}, and returns a new linked list of only the elements for which \lstinline{pred} returns true, in their original order.
+
+\begin{lstlisting}
+from collections.abc import Callable
+def keep_if(
+    lnk: LinkedList[int], pred: Callable[[int], bool]
+) -> LinkedList[int]:
+    """
+    >>> lnk = Link(1, Link(2, Link(3, Link(4))))
+    >>> print(keep_if(lnk, lambda x: x % 2 == 0))
+    (2 4)
+    >>> print(keep_if(lnk, lambda x: x > 0))
+    (1 2 3 4)
+    >>> keep_if(lnk, lambda x: x > 10)
+    ()
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    rest = ____________________________________
+
+    if ______________________________________:
+
+        return ______________________________
+
+    return ____________________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def keep_if(
+    lnk: LinkedList[int], pred: Callable[[int], bool]
+) -> LinkedList[int]:
+    if not isinstance(lnk, Link):
+        return ()
+    rest = keep_if(lnk.rest, pred)
+    if pred(lnk.first):
+        return Link(lnk.first, rest)
+    return rest
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 8 min; Difficulty: Easy--Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Leap of faith:} \lstinline{keep_if(lnk.rest, pred)} is the filtered version of the rest. Only the first element is left to decide.
+    \item \textbf{Two outcomes:} Keep \lstinline{first} (put it on the front of the filtered rest) or drop it (return the filtered rest unchanged).
+    \item \textbf{Connect to lists:} This is the linked-list version of a list comprehension with an \lstinline{if} clause.
+\end{itemize}
+\end{questionmeta}

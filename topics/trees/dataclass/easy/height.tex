@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question Implement \lstinline{tree_height}, which takes in a tree and returns its height: the depth of the lowest leaf, where the root has depth 0.
+
+\begin{lstlisting}
+def tree_height(t: Tree[int]) -> int:
+    """
+    >>> tree_height(Tree(1))
+    0
+    >>> t = Tree(1, [Tree(4), Tree(2, [Tree(3)])])
+    >>> tree_height(t)
+    2
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    return 1 + ________________________________________________________
+\end{lstlisting}
+
+\begin{solution}[1in]
+\begin{lstlisting}
+def tree_height(t: Tree[int]) -> int:
+    if is_leaf(t):
+        return 0
+    return 1 + max([tree_height(b) for b in t.branches])
+\end{lstlisting}
+\end{solution}
+
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 5 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Use the lecture framework:} What small choice do we make (which branch?), what is the recursive call for each option, and how do we combine the results? Here, call \lstinline{tree_height} on every branch and take the \lstinline{max}.
+    \item \textbf{Why the base case matters:} \lstinline{max} of an empty list errors, so leaves must be handled separately.
+\end{itemize}
+\end{questionmeta}
