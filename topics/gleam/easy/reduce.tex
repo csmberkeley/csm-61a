@@ -4,8 +4,8 @@ two-argument function \texttt{f} on the elements of a list from left to right,
 starting with \texttt{start}.
 \newline
 \begin{lstlisting}
-pub fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
-  case l {
+pub fn reduce(lst: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case lst {
     [] -> ______
     [first] -> ______________________________
     [first, ..rest] -> ______________________________
@@ -14,8 +14,8 @@ pub fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}
-pub fn reduce(l: List(a), f: fn(a, a) -> a, start: a) -> a {
-  case l {
+pub fn reduce(lst: List(a), f: fn(a, a) -> a, start: a) -> a {
+  case lst {
     [] -> start
     [first] -> f(start, first)
     [first, ..rest] -> reduce(rest, f, f(start, first))

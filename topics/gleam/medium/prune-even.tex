@@ -1,6 +1,8 @@
 \begin{blocksection}
 \question Implement \texttt{prune\_even}, which prunes every branch in a tree that has
 an even label. Odd child branches of branches with even labels are not preserved.
+
+\texttt{let Tree(label, branches)} binds the tree's fields to the local names \texttt{label} and \texttt{branches}. We could also access them using \texttt{tree.label} and \texttt{tree.branches}.
 \newline
 \begin{lstlisting}
 pub fn prune_even(tree: Tree(Int)) -> Tree(Int) {

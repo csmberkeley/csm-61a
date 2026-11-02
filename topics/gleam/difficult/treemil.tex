@@ -59,7 +59,7 @@ pub fn is_treemil(tree: Tree(Int)) -> Bool {
 \end{blocksection}
 
 \begin{blocksection}
-\question Implement \texttt{max\_treemil} which takes in a tree \texttt{t} and
+\question Implement \texttt{max\_treemil} which takes in a tree \texttt{tree} and
 determines the highest number of nodes in a treemil that is a subtree of
 \texttt{t}. You may assume \texttt{is\_treemil} is implemented correctly from the
 previous question.
@@ -110,7 +110,7 @@ pub fn max_treemil(tree: Tree(Int)) -> Int {
     % We had to do int.sum instead of just sum because this is the way Gleam works
     % We had to do result.unwrap because the list.max function doesn't return a number, it returns a Result(Ok) or Result(Error), in case the max function was called on an empty list (in which case it would Error). We know that we're not calling it on an empty list, but the function doesn't know that.
     % Result.unwrap says "I want to use the value from this list.max function if it was a valid result, and if the function errored we'll use the number in the second argument", which we put as 0. This means, we're using the max of the branches, and if the branches list was empty for some reason we'll use zero instead.
-    We use \lstinline{int.sum} instead of just \lstinline{sum} the \lstinline{sum} builtin function is found in the \lstinline{int} module.
+    We use \lstinline{int.sum} instead of just \lstinline{sum} because the \lstinline{sum} builtin function is found in the \lstinline{int} module.
     
     We had to do \lstinline{result.unwrap} because the \lstinline{list.max} function doesn't return a number, it returns a \lstinline{Result}, which is an \lstinline{Ok(value)} or \lstinline{Error(reason)}. \lstinline{Error(reason)} is returned in case the \lstinline{max} function was called on an empty list. We know that we're not calling it on an empty list, but the function doesn't know that.
     \lstinline{result.unwrap} says "I want to use the value from this \lstinline{list.max} function if it was a valid result, and if the function errored we'll use the number in the second argument", which we put as 0. This means, we're using the max of the branches, and if the branches list was empty for some reason we'll use zero instead.

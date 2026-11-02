@@ -1,8 +1,8 @@
 \begin{blocksection}
-\question Implement \texttt{split}, which takes in a \lstinline{LinkedList} \texttt{l} and a value \texttt{at}, and returns a tuple of the parts of \texttt{l} before and after the first occurrence of \texttt{at}. \texttt{at} is the first element of the second part. If \texttt{at} is not found, return \lstinline{#(l, Empty)}.
+\question Implement \texttt{split}, which takes in a \lstinline{LinkedList} \texttt{lst} and a value \texttt{at}, and returns a tuple of the parts of \texttt{lst} before and after the first occurrence of \texttt{at}. \texttt{at} is the first element of the second part. If \texttt{at} is not found, return \lstinline{#(lst, Empty)}.
 \begin{lstlisting}
-pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
-  case l {
+pub fn split(lst: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
+  case lst {
     Empty -> #(Empty, Empty)
     Link(first, _) if first == at -> ____________________
     Link(first, rest) -> {
@@ -15,10 +15,10 @@ pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
 
 \begin{solution}
 \begin{lstlisting}
-pub fn split(l: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
-  case l {
+pub fn split(lst: LinkedList(a), at: a) -> #(LinkedList(a), LinkedList(a)) {
+  case lst {
     Empty -> #(Empty, Empty)
-    Link(first, _) if first == at -> #(Empty, l)
+    Link(first, _) if first == at -> #(Empty, lst)
     Link(first, rest) -> {
       let #(before, after) = split(rest, at)
       #(Link(first, before), after)
