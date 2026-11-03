@@ -1,0 +1,51 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\renewcommand{\staff}{Created by Ana Abell, Terry Hsu. }
+
+\discnumber{11}
+\title{CSM Gleaming}
+\date{November 2, 2026 -- November 6, 2026}
+
+% Exercises and solutions are imported from the topic bank.
+\begin{document}
+\maketitle
+
+\section{Gleam basics}
+\begin{blocksection}
+\end{blocksection}
+\begin{questions}
+    \subimport{../../topics/gleam/text/}{gleam-intro.tex}
+    % \subimport{../../topics/gleam/easy}{multiply.tex} 
+    \subimport{../../topics/gleam/easy}{factorial.tex}
+    \newpage
+    \subimport{../../topics/gleam/text}{tail-recursion.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/easy}{sum.tex}
+    \par\vspace*{3\baselineskip}
+    \subimport{../../topics/gleam/text}{generics.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/easy}{reduce.tex}
+\end{questions}
+
+\newpage
+\section{Algebraic Data Types}
+\begin{questions}
+    \subimport{../../topics/gleam/text}{algebraic-data-types.tex}
+    %\par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/text}{linked-lists-intro.tex}
+    \subimport{../../topics/gleam/easy}{append.tex}
+    \subimport{../../topics/gleam/medium}{split.tex}
+    \subimport{../../topics/gleam/medium}{invert.tex}
+    \newpage
+    \subimport{../../topics/gleam/text}{trees.tex}
+    \subimport{../../topics/gleam/text}{tree-type.tex}
+
+    You can find a list of useful builtin functions in Gleam here:\newline
+    https://gleam-stdlib.hexdocs.pm/gleam/list.html\newline
+    https://gleam-stdlib.hexdocs.pm/gleam/int.html\newline
+    https://gleam-stdlib.hexdocs.pm/gleam/result.html\newline
+
+    \subimport{../../topics/gleam/medium}{prune-even.tex}
+    \subimport{../../topics/gleam/difficult}{treemil.tex}
+\end{questions}
+\end{document}

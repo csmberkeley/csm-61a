@@ -1,0 +1,29 @@
+\begin{blocksection}
+\question Implement \texttt{append}, which takes in two \lstinline{LinkedList}s \texttt{a} and \texttt{b} and returns a \lstinline{LinkedList} with the elements of \texttt{b} after the elements of \texttt{a}.
+\begin{lstlisting}
+pub fn append(a: LinkedList(t), b: LinkedList(t)) -> LinkedList(t) {
+  case a {
+    Empty -> ___________
+    Link(first, rest) -> ____________________________________
+  }
+}
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn append(a: LinkedList(t), b: LinkedList(t)) -> LinkedList(t) {
+  case a {
+    Empty -> b
+    Link(first, rest) -> Link(first, append(rest, b))
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  This is an implementation of Gleam's \lstinline{list.append} using our custom linked lists.
+  
+  Note that we are creating a new \lstinline{Link} for every element of \lstinline{a}, but we are reusing the same \lstinline{b} as the inputed list.
+  In Python, this could be problematic because mutating \lstinline{b} would also change every output of \lstinline{append}, but because Gleam's data is immutable, there is no disadvantage to doing this and this is preferred for efficiency.
+\end{questionmeta}
+\end{blocksection}

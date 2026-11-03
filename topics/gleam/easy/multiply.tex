@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question Implement \texttt{multiply} without using the \texttt{*} operator.
+\newline
+\begin{lstlisting}
+pub fn multiply(n: Int, m: Int) -> Int {
+  case n > 0 {
+    True -> ______ + ______________________________
+    False -> ______
+  }
+}
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn multiply(n: Int, m: Int) -> Int {
+  case n > 0 {
+    True -> m + multiply(n - 1, m)
+    False -> 0
+  }
+}
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
