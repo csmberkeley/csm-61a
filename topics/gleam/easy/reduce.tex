@@ -11,6 +11,10 @@ pub fn reduce(lst: List(a), f: fn(a, a) -> a, start: a) -> a {
     [first, ..rest] -> ______________________________
   }
 }
+
+assert reduce([1, 2, 3, 4], fn(a, b) { a + b }, 0) == 10
+assert reduce(["C", "S", "M"], fn(a, b) { a <> b }, "") == "CSM"
+assert reduce([2, 3, 4], fn(a, b) { a * b }, 1) == 24
 \end{lstlisting}
 \begin{solution}
 \begin{lstlisting}
