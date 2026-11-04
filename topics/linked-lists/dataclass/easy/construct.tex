@@ -1,0 +1,92 @@
+% Constructing linked lists by nesting Link, as in the Fall 2026 Linked Lists lecture.
+\question What would Python display? Run these statements in order.
+If a statement causes an error, identify the error and continue.
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> a = Link(8)
+>>> b = Link(6, a)
+>>> print(b)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(6 8)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> c = Link(2, b)
+>>> print(c)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(2 6 8)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> print(b)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+(6 8)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> c.rest == b
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+True
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> Link(c, b).first.first
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{lstlisting}
+>>> len(c)
+\end{lstlisting}
+\begin{solution}[.35in]
+\begin{lstlisting}
+TypeError: object of type 'Link' has no len()
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+Write one expression, using only \lstinline{Link} and integers, that creates the linked list \lstinline{(1 2 3)}.
+\begin{solution}[.5in]
+\begin{lstlisting}
+Link(1, Link(2, Link(3)))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 6 min; Difficulty: Easy
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Build from the back:} Each \lstinline{Link(x, rest)} creates a new list with \lstinline{x} on the front of \lstinline{rest}; \lstinline{rest} still prints as before and is unchanged.
+    \item \textbf{Link elements can be anything:} \lstinline{Link(c, b)} has a linked list as its \lstinline{first}. The second argument must still be a linked list.
+    \item \textbf{Interface only:} Linked lists support \lstinline{first}, \lstinline{rest}, and \lstinline{isinstance} checks, not \lstinline{len}.
+\end{itemize}
+\end{questionmeta}

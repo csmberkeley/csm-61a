@@ -1,0 +1,54 @@
+\begin{blocksection}
+\question A tree in which every node has at most one child looks just like a linked list. Write \lstinline{link_to_tree}, which takes a non-empty linked list and returns a tree with the same labels, where each label's only branch holds the next label. Then write \lstinline{tree_to_link}, which does the reverse for such a tree.
+
+\begin{lstlisting}
+def link_to_tree[T](lnk: Link[T]) -> Tree[T]:
+    """
+    >>> print(link_to_tree(Link(6, Link(2, Link(9)))))
+    6
+      2
+        9
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    return ____________________________________________________
+
+
+def tree_to_link[T](t: Tree[T]) -> Link[T]:
+    """Assume every node of t has at most one branch.
+    >>> print(tree_to_link(Tree(6, [Tree(2, [Tree(9)])])))
+    (6 2 9)
+    """
+    if ______________________________________:
+
+        return ______________________________
+
+    return ____________________________________________________
+\end{lstlisting}
+\begin{solution}[1in]
+\begin{lstlisting}
+def link_to_tree[T](lnk: Link[T]) -> Tree[T]:
+    if not isinstance(lnk.rest, Link):
+        return Tree(lnk.first)
+    return Tree(lnk.first, [link_to_tree(lnk.rest)])
+
+def tree_to_link[T](t: Tree[T]) -> Link[T]:
+    if is_leaf(t):
+        return Link(t.label)
+    return Link(t.label, tree_to_link(t.branches[0]))
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\begin{questionmeta}
+\textbf{Teaching Tips}\par\nopagebreak[4]
+Suggested Time: 8 min; Difficulty: Easy--Medium
+\nopagebreak[4]
+\begin{itemize}
+    \item \textbf{Connect the two structures:} The last \lstinline{Link} (whose \lstinline{rest} is \lstinline{()}) corresponds to a leaf. Trees cannot be empty, so the base case tests for the last node rather than for \lstinline{()}.
+    \item \textbf{Branches are a list:} The recursive result must be wrapped in a list: \lstinline{[link_to_tree(lnk.rest)]}.
+    \item \textbf{Draw first:} Sketch the linked list and the chain-shaped tree side by side.
+\end{itemize}
+\end{questionmeta}

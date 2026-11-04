@@ -1,0 +1,20 @@
+\begin{blocksection}
+\question What is the difference between recursion and tree recursion? Give an example of a problem that might require tree recursion.
+
+\begin{solution}[1in]
+In the recursive functions we've seen so far, each recursive call makes only one call to itself. In tree recursion, a single function call can make multiple recursive calls, causing the calls to branch out like the branches of a tree (rather than a single chain).
+
+Despite this difference, tree recursive problems are solved the exact same way as any other recursive problem: find the base case(s), take the recursive leap of faith by trusting that each of our recursive calls correctly solves its subproblem, and combine the results of our subproblems to solve the original problem. The only real difference is that we may need to combine \textit{more than one} subproblem's result to get our answer.
+
+Tree recursion often comes up in counting problems (how many ways are there to do something?) and optimization problems (what is the max/min number of ways to do something?). For example, counting the number of ways to make change for an amount using a set of coin denominations, or computing the $n$th Fibonacci number, both require branching into multiple recursive calls per frame.
+
+Because tree recursive functions have more moving pieces, it can help to break the design process into three questions.
+\begin{itemize}
+  \item Base case(s): What are the simplest possible arguments to the function? (Doctests are often a good hint here.)
+  \item Recursive calls: What options should be recursively explored at each step? (Drawing a tree diagram of the recursive calls can help visualize this.)
+  \item Combining: How should the results of these subproblems be combined? (Trust the recursive leap of faith, then combine the results with a mathematical or logical operator.)
+\end{itemize}
+
+Even though a tree recursive function may branch into many, many recursive calls, we only need to reason about one level of the tree at a time -- the recursive leap of faith handles the rest.
+\end{solution}
+\end{blocksection}
