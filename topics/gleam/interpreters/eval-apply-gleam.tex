@@ -1,0 +1,113 @@
+\begin{blocksection}
+\question Identify the number of calls to \lstinline$eval$ and the number of calls
+to \lstinline$apply$ in \lstinline{evaluator.gleam} made when \lstinline{run} calls
+\lstinline{draw} in each program below. (\lstinline{run} evaluates the body of
+\lstinline{draw} directly, so \lstinline{draw} itself is not an \lstinline$apply$.)
+
+\begin{parts}
+\part \begin{lstlisting}
+fn draw(shape_slider: Int) -> Int {
+  case True {
+    True -> abs(3)
+    False -> abs(1)
+  }
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 4 & 5 & 7 & 9 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+7 \lstinline$eval$, 1 \lstinline$apply$
+\newline
+Evals: (1) on the \lstinline{At} around the body, (2) on the entire \lstinline{case}, (3) on the subject \lstinline{True} (the \lstinline{True} before \lstinline{->} is a pattern, which is only compared against the subject's value, never evaluated; the other arm is never evaluated either), (4) on the \lstinline{At} around the arm's body, (5) on \lstinline{abs(3)}, (6-7) on \lstinline{abs}/\lstinline{3}
+\newline
+Apply: (1) \lstinline{abs} on \lstinline{3}
+\end{solution}
+
+\part \begin{lstlisting}
+fn draw(shape_slider: Int) -> Point {
+  case abs(2) {
+    2 -> Point(1, 2)
+    _ -> Point(0, 0)
+  }
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 6 & 8 & 10 & 12 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+10 \lstinline$eval$, 2 \lstinline$apply$
+\newline
+Evals: (1) on the \lstinline{At} around the body, (2) on the entire \lstinline{case}, (3) on \lstinline{abs(2)}, (4-5) on \lstinline{abs}/\lstinline{2}, (6) on the \lstinline{At} around the first arm's body (patterns are matched, not evaluated), (7) on \lstinline{Point(1, 2)}, (8-10) on \lstinline{Point}/\lstinline{1}/\lstinline{2}
+\newline
+Apply: (1) \lstinline{abs} on \lstinline{2}, (2) \lstinline{Point} on \lstinline{1} and \lstinline{2}
+\end{solution}
+
+\part \begin{lstlisting}
+fn twin(x: Int) -> Point {
+  Point(x, x)
+}
+
+fn draw(shape_slider: Int) -> Point {
+  twin(abs(3))
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 6 & 9 & 11 & 14 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+11 \lstinline$eval$, 3 \lstinline$apply$
+\newline
+Evals: (1) on the \lstinline{At} around the body of \lstinline{draw}, (2) on \lstinline{twin(abs(3))}, (3) on \lstinline{twin}, (4) on \lstinline{abs(3)}, (5-6) on \lstinline{abs}/\lstinline{3}, then in the body of \lstinline{twin}: (7) on its \lstinline{At}, (8) on \lstinline{Point(x, x)}, (9-11) on \lstinline{Point}/\lstinline{x}/\lstinline{x}
+\newline
+Apply: (1) \lstinline{abs}, (2) \lstinline{twin}, (3) \lstinline{Point}
+\end{solution}
+
+\part \begin{lstlisting}
+fn pair(x: Int, y: Int) -> Point {
+  Point(x, y)
+}
+
+fn draw(shape_slider: Int) -> Point {
+  pair(abs(3), case True {
+    True -> 2
+    False -> 0
+  })
+}
+\end{lstlisting}
+
+\begin{solution}[1in]
+15 \lstinline$eval$, 3 \lstinline$apply$
+\newline
+Evals: (1) on the \lstinline{At} around the body of \lstinline{draw}, (2) on \lstinline{pair(abs(3), case ...)}, (3) on \lstinline{pair}, (4) on \lstinline{abs(3)}, (5-6) on \lstinline{abs}/\lstinline{3}, (7) on the entire \lstinline{case}, (8) on the subject \lstinline{True} (the \lstinline{True} before each \lstinline{->} is a pattern, not an expression: it is only compared against the subject's value, never evaluated), (9) on the \lstinline{At} around the matching arm's body, (10) on \lstinline{2} (the \lstinline{False} arm is never evaluated), then in the body of \lstinline{pair}: (11) on its \lstinline{At}, (12) on \lstinline{Point(x, y)}, (13-15) on \lstinline{Point}/\lstinline{x}/\lstinline{y}
+\newline
+Apply: (1) \lstinline{abs} on \lstinline{3}, (2) \lstinline{pair} on \lstinline{3} and \lstinline{2}, (3) \lstinline{Point} on \lstinline{3} and \lstinline{2}
+\end{solution}
+\end{parts}
+\end{blocksection}
+
+\begin{blocksection}
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item This has historically been a tricky concept for students. \lstinline$apply$ may come off as easier to understand so relate it to just applying functions to already-evaluated arguments for students.
+	\item Remind students of what gets \lstinline$eval$'ed: every \lstinline{Call} (the whole call, its function expression, and each operand), variables, literals, \lstinline{case} subjects and the chosen arm's body, and \lstinline{let} values and bodies.
+	\item The parser also wraps the body of every function (and each \lstinline{let} value and each \lstinline{case} arm's body) in an \lstinline{At} marker, which costs one \lstinline$eval$. Decide ahead of time whether you want students to count these; the solutions above do.
+	\item Operators are ordinary calls: \lstinline{1 + 2} is a \lstinline{Call} of the built-in \lstinline{+}, so it costs 4 \lstinline$eval$s (the call, \lstinline{+}, \lstinline{1}, \lstinline{2}) and 1 \lstinline$apply$. Record constructors like \lstinline{Point} are built-ins too.
+	\item Every \lstinline{Call} evaluates all of its operands. Only \lstinline{case} skips work, by evaluating just the arm whose pattern matches (patterns are matched, not evaluated). \lstinline{&&} and \lstinline{||} are rewritten by the parser into a \lstinline{case}, which is how they short-circuit.
+	\item For a \lstinline{Builtin}, \lstinline$apply$ just calls its \lstinline{run} function. A \lstinline{UserFn} \lstinline$eval$s its body in a new frame. Higher-order built-ins like \lstinline{list.map} call \lstinline$apply$ on the function they are given, once per element.
+	\item Be very conscious about not accidentally evaluating the expressions yourself when you are counting; that's the interpreter's job!
+	\item It might help to count the expressions by \lstinline$apply$ groups, i.e. count all of \lstinline$eval$ for one \lstinline$apply$able group and then move onto the next.
+	\item Consider referencing Josh's helpful \href{https://drive.google.com/file/d/1YH6eaOAzPx8MC0fO60bIbq9oZipC2lEd/view}{walkthrough video}.
+\end{itemize}
+\end{guide}
+\end{blocksection}
