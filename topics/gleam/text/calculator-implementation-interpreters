@@ -1,0 +1,45 @@
+\begin{blocksection}
+    %calculator implementation
+    This code defines how a calculator represents expressions: an Expr is a variable, a number, or a Binary node that holds an operator and two smaller expressions, such that (1 + 2) * x becomes a tree. The helper functions check that a variable is a single letter, convert operators to symbols, and do arithmetic on two numbers.
+    \begin{lstlisting}
+    // The four arithmetic operators: +, -, *, and /.
+    pub type Operator {
+        Add
+        Sub
+        Mul
+        Div
+    }
+
+    // An expression that can be evaluated.
+    pub type Expr {
+        Var(String)
+        N(Int)
+        Binary(operator: Operator, left: Expr, right: Expr)
+    }
+
+    // A variable name must be one letter from a to z.
+    pub fn is_variable(name: String) -> Bool {
+        string.length(name) == 1 && string.contains("abcdefghijklmnopqrstuvwxyz", name)
+    }
+
+    // The symbol for each operator.
+    pub fn symbol(operator: Operator) -> String {
+        case operator {
+            Add -> "+"
+            Sub -> "-"
+            Mul -> "*"
+            Div -> "/"
+        }
+    }
+
+    // The result of applying an operator to numbers.
+    pub fn calculate(operator: Operator, a: Int, b: Int) -> Int {
+        case operator {
+            Add -> a + b
+            Sub -> a - b
+            Mul -> a * b
+            Div -> a / b
+        }
+    }
+    \end{lstlisting}
+\end{blocksection}

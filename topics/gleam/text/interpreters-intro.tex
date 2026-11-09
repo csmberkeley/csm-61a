@@ -1,0 +1,54 @@
+\begin{blocksection}
+    %eval-apply
+    Interpreters can seem daunting to design, since an interpreter is a program that can carry out any possible computation depending on its input. Yet many share an elegant structure built from two mutually recursive functions: eval, which evaluates expressions in environments, and apply, which applies functions to arguments. They are defined in terms of each other because applying a function means evaluating the expressions in its body, while evaluating an expression may involve applying one or more functions. This back-and-forth is the eval-apply loop, and it continues until the whole program has been reduced to a single value. Gleam’s approach to types and pattern matching suits this design well, since an interpreter must constantly distinguish between the different forms an expression can take.
+    %counting calls
+    Sometimes it helps to visualize how an interpreter works by counting the calls to eval and apply as we run our code. There are some rules to it. Essentially, every time we encounter a new block of code whose value we're not sure of, we need to evaluate it. In a basic function call, we need to evaluate the function, then evaluate the operands, and only then can we apply the function to its operands. Here's a more detailed example: 
+    \begin{lstlisting}
+        //Here's the code we're going to run:
+        fn f(s) {
+            case s {
+                [] -> [3]
+                [first, ..rest] -> [first, ..f(rest)]
+            }
+        }
+        f([1, 1 + 1])
+
+        //And here's the corresponding series of calls to Eval and Apply:
+        eval f([1, 1 + 1])
+            eval f
+            eval [1, 1 + 1]
+                eval 1
+                eval 1 + 1
+                    eval +
+                    eval 1
+                    eval 1
+                apply + to 1, 1 → 2
+            apply f to [1, 2]
+                eval case s { [] -> [3] [first, ..rest] -> ... }
+                eval s
+                eval [first, ..f(rest)]
+                eval first
+                eval f(rest)
+                    eval f
+                    eval rest
+                    apply f to [2]
+                    eval case s { [] -> [3] [first, ..rest] -> ... }
+                        eval s
+                    eval [first, ..f(rest)]
+                        eval first
+                        eval f(rest)
+                        eval f
+                        eval rest
+                        apply f to []
+                            eval case s { [] -> [3] [first, ..rest] -> ... }
+                            eval s
+                            eval [3]
+                            eval 3
+                        apply f to [] → [3]
+                    apply f to [2] → [2, 3]
+            apply f to [1, 2] → [1, 2, 3]
+
+        result: [1, 2, 3]
+    \end{lstlisting}
+
+\end{blocksection}
