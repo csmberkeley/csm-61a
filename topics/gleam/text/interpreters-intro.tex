@@ -46,6 +46,10 @@
                           eval 3
                       apply f to [] → [3]
                 apply f to [2] → [2, 3]
-          apply f to [1, 2] → [1, 2, 3]
+          apply f to [1, 2] → [1, 2, 3] //Here it repeats the earlier "apply f to [1,2]", this is not actually an additional apply call, it just restated this apply call once it found the result.
         result: [1, 2, 3]
     \end{lstlisting}
+    Something worth noting (also shown as a comment in this trace), is that when we have this gleam interpreter print out the eval/apply trace, if the apply call ends up taking several more steps before finding the result, it will re-print the earlier apply call immediately once it's found the result.
+    We can see this with the call to "apply f to [1, 2]", it prints this and then once it's done applying, it prints "apply f to [1, 2] → [1, 2, 3]". We don't count this as an additional call to apply, it just printed this again to demonstrate that it found the result. 
+    Conversely, we can see that this call to apply "apply + to 1, 1 → 2" was only printed once, because it immediately found the result and didn't need to have any additional calls to eval/apply before finding the result.
+    Ultimately, if we're looking at this type of trace, we have to make sure we disregard any repeated printed calls to apply in order to come to the correct number. 
