@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question Implement \texttt{substitute}, which takes in an \lstinline{Expr} \texttt{expr}, a variable \texttt{name}, and an \lstinline{Expr} \texttt{replacement}, and returns \texttt{expr} with every occurrence of the variable \texttt{name} replaced by \texttt{replacement}. All other parts of \texttt{expr} stay the same. For example, substituting \lstinline{N(4)} for \texttt{"x"} in \lstinline{(x + y)} gives \lstinline{(4 + y)}.
+\begin{lstlisting}
+pub fn substitute(expr: Expr, name: String, replacement: Expr) -> Expr {
+  case expr {
+    Var(v) if ____________ -> ____________
+    Var(_) | N(_) -> ____________
+    Binary(operator, left, right) ->
+      ________________________________________________________
+  }
+}
+
+assert substitute(Binary(Add, Var("x"), Var("y")), "x", N(4))
+  == Binary(Add, N(4), Var("y"))
+assert substitute(Binary(Mul, Var("x"), Var("x")), "x", Binary(Sub, Var("a"), N(1)))
+  == Binary(Mul, Binary(Sub, Var("a"), N(1)), Binary(Sub, Var("a"), N(1)))
+assert substitute(Binary(Mul, N(2), Var("y")), "x", N(9))
+  == Binary(Mul, N(2), Var("y"))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn substitute(expr: Expr, name: String, replacement: Expr) -> Expr {
+  case expr {
+    Var(v) if v == name -> replacement
+    Var(_) | N(_) -> expr
+    Binary(operator, left, right) ->
+      Binary(operator, substitute(left, name, replacement), substitute(right, name, replacement))
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  This follows the same structure as \lstinline{to_string}: there is one case for each variant of \lstinline{Expr}, and the \lstinline{Binary} case recurses on both sides. The difference is that we build and return a new \lstinline{Expr} instead of a \lstinline{String}, so the \lstinline{Binary} case rebuilds a \lstinline{Binary} with the same operator around the two substituted sides.
+
+  The only place anything changes is a \lstinline{Var} whose name matches, which we check with a guard. Every other leaf, whether a different variable or a number, is returned as is. Note that \texttt{replacement} can be any expression, not just a number: substituting \lstinline{(a - 1)} for \texttt{"x"} in \lstinline{(x * x)} gives \lstinline{((a - 1) * (a - 1))}, with a copy of the replacement in each spot.
+\end{questionmeta}
+\end{blocksection}

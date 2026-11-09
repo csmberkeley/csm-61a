@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question Implement \texttt{compose}, which takes in two \lstinline{UserFn}s \texttt{f} and \texttt{g}, and returns a function \texttt{h} such that applying \texttt{h} to some arguments gives the same result as applying \texttt{g} to those arguments and then applying \texttt{f} to that result. For example, composing \lstinline|fn(x) { (x * x) }| with \lstinline|fn(x, y) { (y - x) }| gives \lstinline|fn(x, y) { ((y - x) * (y - x)) }|. Since \texttt{f} receives exactly one value, return a \lstinline{WrongArgumentCount} error if \texttt{f} does not take exactly one parameter. You may use \texttt{substitute}.
+\begin{lstlisting}
+pub fn compose(f: UserFn, g: UserFn) -> Result(UserFn, EvalError) {
+  case f.params {
+    ____________ -> Ok(________________________________________)
+    params -> Error(WrongArgumentCount(want: ____________, got: 1))
+  }
+}
+
+assert compose(
+    UserFn(["x"], Binary(Mul, Var("x"), Var("x"))),
+    UserFn(["x", "y"], Binary(Sub, Var("y"), Var("x"))),
+  )
+  == Ok(UserFn(
+    ["x", "y"],
+    Binary(Mul, Binary(Sub, Var("y"), Var("x")), Binary(Sub, Var("y"), Var("x"))),
+  ))
+assert compose(
+    UserFn(["x"], Binary(Mul, Var("x"), N(2))),
+    UserFn(["x"], Binary(Add, Var("x"), N(3))),
+  )
+  == Ok(UserFn(["x"], Binary(Mul, Binary(Add, Var("x"), N(3)), N(2))))
+assert compose(UserFn(["x", "y"], Binary(Sub, Var("y"), Var("x"))), UserFn(["x"], Var("x")))
+  == Error(WrongArgumentCount(want: 2, got: 1))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn compose(f: UserFn, g: UserFn) -> Result(UserFn, EvalError) {
+  case f.params {
+    [x] -> Ok(UserFn(g.params, substitute(f.body, x, g.body)))
+    params -> Error(WrongArgumentCount(want: list.length(params), got: 1))
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  The composed function takes whatever arguments \texttt{g} takes, so its parameters are \lstinline{g.params}. Its body should compute \texttt{f}'s body where \texttt{f}'s parameter is the value of \texttt{g}'s body, so we substitute the whole expression \lstinline{g.body} for \texttt{f}'s parameter. The pattern \lstinline{[x]} matches only a list with exactly one element, which both checks that \texttt{f} has one parameter and gives us its name. In the error, \texttt{f} wants \lstinline{list.length(params)} arguments but would only ever get the 1 value that \texttt{g} produces.
+
+  Using the same parameter name in both functions is fine. Composing \lstinline|fn(x) { (x * 2) }| with \lstinline|fn(x) { (x + 3) }| gives \lstinline|fn(x) { ((x + 3) * 2) }|, because \texttt{substitute} only makes one pass over \texttt{f}'s body and never looks inside the replacement it puts in.
+
+  Also note that \texttt{g}'s body is copied into every place \texttt{f} uses its parameter, so in the \texttt{(x * x)} example \lstinline{(y - x)} is evaluated twice. This gives the right answer because evaluating an expression has no side effects, but it does duplicate work.
+\end{questionmeta}
+\end{blocksection}
