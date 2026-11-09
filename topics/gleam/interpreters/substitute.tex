@@ -32,7 +32,7 @@ pub fn substitute(expr: Expr, name: String, replacement: Expr) -> Expr {
 \end{solution}
 
 \begin{questionmeta}
-%   This follows the same structure as \lstinline{to_string}: there is one case for each variant of \lstinline{Expr}, and the \lstinline{Binary} case recurses on both sides. The difference is that we build and return a new \lstinline{Expr} instead of a \lstinline{String}, so the \lstinline{Binary} case rebuilds a \lstinline{Binary} with the same operator around the two substituted sides.
+%   There is one case for each variant of \lstinline{Expr}. The \lstinline{Binary} case recurses on both sides and rebuilds a \lstinline{Binary} with the same operator around the two substituted sides, so the result has the same shape as \texttt{expr}.
 
 %   The only place anything changes is a \lstinline{Var} whose name matches, which we check with a guard. Every other leaf, whether a different variable or a number, is returned as is. Note that \texttt{replacement} can be any expression, not just a number: substituting \lstinline{(a - 1)} for \texttt{"x"} in \lstinline{(x * x)} gives \lstinline{((a - 1) * (a - 1))}, with a copy of the replacement in each spot.
 \end{questionmeta}
