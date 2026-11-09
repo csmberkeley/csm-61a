@@ -1,7 +1,9 @@
 % Adapted from Fall 2023 Final Q6 (How to Get Promoted)
  
+\question \textit{Adapted from CS 61A Fall 2023 Final Q6 (How to Get Promoted)}
+\begin{parts}
 \begin{blocksection}
-\question [Adapted from CS 61A Fall 2023 Final Q6 (How to Get Promoted)] Implement \texttt{promote}, which takes a function \texttt{f} and a list \texttt{s}. It returns a list containing all of the elements of \texttt{s}, with the elements for which \texttt{f} returns \lstinline{True} at the front. Otherwise, the elements stay in the same order as in \texttt{s}.
+\part Implement \texttt{promote}, which takes a function \texttt{f} and a list \texttt{s}. It returns a list containing all of the elements of \texttt{s}, with the elements for which \texttt{f} returns \lstinline{True} at the front. Otherwise, the elements stay in the same order as in \texttt{s}.
 \begin{lstlisting}
 pub fn promote(f: fn(a) -> Bool, s: List(a)) -> List(a) {
   ___________(________________, list.filter(s, ____________________))
@@ -27,7 +29,7 @@ pub fn promote(f: fn(a) -> Bool, s: List(a)) -> List(a) {
 \end{blocksection}
  
 \begin{blocksection}
-\question Implement \texttt{bigger\_first}, which takes a non-empty list \texttt{s}. It returns a list with all of the elements of \texttt{s} that are larger than the first element at the front, followed by all of the elements that are smaller than or equal to the first element. Each group keeps its original order. You may use \texttt{promote} from the previous question and the functions below. \textbf{You may not write} \lstinline{fn}, \lstinline{case}, \lstinline{[}, or \lstinline{]} in the blank.
+\part Implement \texttt{bigger\_first}, which takes a non-empty list \texttt{s}. It returns a list with all of the elements of \texttt{s} that are larger than the first element at the front, followed by all of the elements that are smaller than or equal to the first element. Each group keeps its original order. You may use \texttt{promote} from the previous part and the functions below. \textbf{You may not write} \lstinline{fn}, \lstinline{case}, \lstinline{[}, or \lstinline{]} in the blank.
 \begin{lstlisting}
 pub fn curry(f: fn(a, b) -> c) -> fn(a) -> fn(b) -> c {
   fn(x) { fn(y) { f(x, y) } }
@@ -68,3 +70,4 @@ pub fn bigger_first(s: List(Int)) -> List(Int) {
 \end{questionmeta}
 \end{blocksection}
  
+\end{parts}

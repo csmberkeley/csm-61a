@@ -1,7 +1,9 @@
 % Adapted from Fall 2024 Final Q7 (A Pair of Schemes)
 
+\question \textit{Adapted from CS 61A Fall 2024 Final Q7 (A Pair of Schemes)}
+\begin{parts}
 \begin{blocksection}
-\question [Adapted from CS 61A Fall 2024 Final Q7 (A Pair of Schemes)] Implement \texttt{all\_pairs}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns \lstinline{True} if \lstinline{f(x, y)} returns \lstinline{True} for every pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}. The function \texttt{inc} returns whether \lstinline{x + 1} equals \texttt{y}.
+\part Implement \texttt{all\_pairs}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns \lstinline{True} if \lstinline{f(x, y)} returns \lstinline{True} for every pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}. The function \texttt{inc} returns whether \lstinline{x + 1} equals \texttt{y}.
 \begin{lstlisting}
 pub fn inc(x: Int, y: Int) -> Bool {
   x + 1 == y
@@ -37,7 +39,7 @@ pub fn all_pairs(f: fn(a, a) -> Bool, s: List(a)) -> Bool {
 \end{blocksection}
 
 \begin{blocksection}
-\question Implement \texttt{show\_pairs}, which takes a list \texttt{s} and returns a list of all pairs of adjacent elements in \texttt{s}, in order. Each pair is a tuple.
+\part Implement \texttt{show\_pairs}, which takes a list \texttt{s} and returns a list of all pairs of adjacent elements in \texttt{s}, in order. Each pair is a tuple.
 \begin{lstlisting}
 pub fn show_pairs(s: List(a)) -> List(#(a, a)) {
   case s {
@@ -88,7 +90,7 @@ pub fn show_pairs(s: List(a)) -> List(#(a, a)) {
 % \end{blocksection}
 
 \begin{blocksection}
-\question Gleam cannot build an expression and evaluate it later the way Scheme's \texttt{eval} can, but it can build a list of \emph{delayed calls}: functions that take no arguments and make a call only when they are called.
+\part Gleam cannot build an expression and evaluate it later the way Scheme's \texttt{eval} can, but it can build a list of \emph{delayed calls}: functions that take no arguments and make a call only when they are called.
 Implement \texttt{all\_pairs\_calls}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns one delayed call for each pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}, which calls \lstinline{f(x, y)} when it is called. Then implement \texttt{run\_all}, which calls each delayed call in a list and returns whether all of them returned \lstinline{True}. You may use \texttt{show\_pairs}.
 \begin{lstlisting}
 pub fn all_pairs_calls(f: fn(a, a) -> Bool, s: List(a)) -> List(fn() -> Bool) {
@@ -120,3 +122,4 @@ pub fn run_all(calls: List(fn() -> Bool)) -> Bool {
 %   Together, \lstinline{run_all(all_pairs_calls(f, s))} gives the same answer as \lstinline{all_pairs(f, s)}. The difference is when the work happens. This is the same idea as the original Scheme question, which built the expression \lstinline{(and (inc 3 4) (inc 4 5) ...)} and passed it to \texttt{eval} later.
 \end{questionmeta}
 \end{blocksection}
+\end{parts}
