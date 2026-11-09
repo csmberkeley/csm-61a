@@ -37,10 +37,10 @@ pub fn compose(f: UserFn, g: UserFn) -> Result(UserFn, EvalError) {
 \end{solution}
 
 \begin{questionmeta}
-  The composed function takes whatever arguments \texttt{g} takes, so its parameters are \lstinline{g.params}. Its body should compute \texttt{f}'s body where \texttt{f}'s parameter is the value of \texttt{g}'s body, so we substitute the whole expression \lstinline{g.body} for \texttt{f}'s parameter. The pattern \lstinline{[x]} matches only a list with exactly one element, which both checks that \texttt{f} has one parameter and gives us its name. In the error, \texttt{f} wants \lstinline{list.length(params)} arguments but would only ever get the 1 value that \texttt{g} produces.
+%   The composed function takes whatever arguments \texttt{g} takes, so its parameters are \lstinline{g.params}. Its body should compute \texttt{f}'s body where \texttt{f}'s parameter is the value of \texttt{g}'s body, so we substitute the whole expression \lstinline{g.body} for \texttt{f}'s parameter. The pattern \lstinline{[x]} matches only a list with exactly one element, which both checks that \texttt{f} has one parameter and gives us its name. In the error, \texttt{f} wants \lstinline{list.length(params)} arguments but would only ever get the 1 value that \texttt{g} produces.
 
-  Using the same parameter name in both functions is fine. Composing \lstinline|fn(x) { (x * 2) }| with \lstinline|fn(x) { (x + 3) }| gives \lstinline|fn(x) { ((x + 3) * 2) }|, because \texttt{substitute} only makes one pass over \texttt{f}'s body and never looks inside the replacement it puts in.
+%   Using the same parameter name in both functions is fine. Composing \lstinline|fn(x) { (x * 2) }| with \lstinline|fn(x) { (x + 3) }| gives \lstinline|fn(x) { ((x + 3) * 2) }|, because \texttt{substitute} only makes one pass over \texttt{f}'s body and never looks inside the replacement it puts in.
 
-  Also note that \texttt{g}'s body is copied into every place \texttt{f} uses its parameter, so in the \texttt{(x * x)} example \lstinline{(y - x)} is evaluated twice. This gives the right answer because evaluating an expression has no side effects, but it does duplicate work.
-\end{questionmeta}
+%   Also note that \texttt{g}'s body is copied into every place \texttt{f} uses its parameter, so in the \texttt{(x * x)} example \lstinline{(y - x)} is evaluated twice. This gives the right answer because evaluating an expression has no side effects, but it does duplicate work.
+% \end{questionmeta}
 \end{blocksection}
