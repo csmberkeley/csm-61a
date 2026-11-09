@@ -3,8 +3,11 @@
 \begin{lstlisting}
 pub fn compose(f: UserFn, g: UserFn) -> Result(UserFn, EvalError) {
   case f.params {
-    ____________ -> Ok(________________________________________)
-    params -> Error(WrongArgumentCount(want: ____________, got: 1))
+    _______ -> {
+      let new_body = ____________(___________, ___________, ___________)
+      Ok(UserFn(___________, ___________))
+    }
+    params -> Error(WrongArgumentCount(want: ___________(______), got: 1))
   }
 }
 
@@ -16,11 +19,6 @@ assert compose(
     ["x", "y"],
     Binary(Mul, Binary(Sub, Var("y"), Var("x")), Binary(Sub, Var("y"), Var("x"))),
   ))
-assert compose(
-    UserFn(["x"], Binary(Mul, Var("x"), N(2))),
-    UserFn(["x"], Binary(Add, Var("x"), N(3))),
-  )
-  == Ok(UserFn(["x"], Binary(Mul, Binary(Add, Var("x"), N(3)), N(2))))
 assert compose(UserFn(["x", "y"], Binary(Sub, Var("y"), Var("x"))), UserFn(["x"], Var("x")))
   == Error(WrongArgumentCount(want: 2, got: 1))
 \end{lstlisting}
@@ -29,7 +27,10 @@ assert compose(UserFn(["x", "y"], Binary(Sub, Var("y"), Var("x"))), UserFn(["x"]
 \begin{lstlisting}
 pub fn compose(f: UserFn, g: UserFn) -> Result(UserFn, EvalError) {
   case f.params {
-    [x] -> Ok(UserFn(g.params, substitute(f.body, x, g.body)))
+    [x] -> {
+      let new_body = substitute(f.body, x, g.body)
+      Ok(UserFn(g.params, new_body))
+    }
     params -> Error(WrongArgumentCount(want: list.length(params), got: 1))
   }
 }

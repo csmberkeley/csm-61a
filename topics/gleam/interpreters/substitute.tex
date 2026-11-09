@@ -5,8 +5,11 @@ pub fn substitute(expr: Expr, name: String, replacement: Expr) -> Expr {
   case expr {
     Var(v) if ____________ -> ____________
     Var(_) | N(_) -> ____________
-    Binary(operator, left, right) ->
-      ________________________________________________________
+    Binary(operator, left, right) -> {
+      let new_left = ____________(___________, ___________, ___________)
+      let new_right = ____________(___________, ___________, ___________)
+      Binary(___________, ___________, ___________)
+    }
   }
 }
 
@@ -24,8 +27,11 @@ pub fn substitute(expr: Expr, name: String, replacement: Expr) -> Expr {
   case expr {
     Var(v) if v == name -> replacement
     Var(_) | N(_) -> expr
-    Binary(operator, left, right) ->
-      Binary(operator, substitute(left, name, replacement), substitute(right, name, replacement))
+    Binary(operator, left, right) -> {
+      let new_left = substitute(left, name, replacement)
+      let new_right = substitute(right, name, replacement)
+      Binary(operator, new_left, new_right)
+    }
   }
 }
 \end{lstlisting}

@@ -28,6 +28,25 @@ Two helper functions are provided in the homework:
   \item \lstinline{symbol(operator: Operator) -> String} returns the symbol for an operator, such as \lstinline{"+"} for \lstinline{Add}.
   \item \lstinline{calculate(operator: Operator, a: Int, b: Int) -> Int} applies an operator to two integers, so \lstinline{calculate(Mul, 2, 3)} is \texttt{6}. As in Gleam, \texttt{/} drops any remainder, and dividing by zero gives \texttt{0}.
 \end{itemize}
+\begin{lstlisting}
+pub fn symbol(operator: Operator) -> String {
+  case operator {
+    Add -> "+"
+    Sub -> "-"
+    Mul -> "*"
+    Div -> "/"
+  }
+}
+
+pub fn calculate(operator: Operator, a: Int, b: Int) -> Int {
+  case operator {
+    Add -> a + b
+    Sub -> a - b
+    Mul -> a * b
+    Div -> a / b
+  }
+}
+\end{lstlisting}
 
 \subsection*{Functions}
 
@@ -47,9 +66,9 @@ pub type EvalError {
 }
 \end{lstlisting}
 
-\subsection*{Homework 8 Functions}
+\subsection*{Homework Functions}
 
-For reference, Homework 8 asks you to implement the following functions. The questions in this section don't call them, but they are a good way to think about what each question is doing.
+For reference, the homework asks you to implement the following functions. The questions in this section don't call them, but they are a good way to think about what each question is doing.
 \begin{itemize}
   \item \lstinline{to_string(expr)} returns an expression written out as a string, with every \lstinline{Binary} expression in parentheses. For example, the \lstinline{Expr} above becomes \lstinline{"(x * (2 + 3))"}.
   \item \lstinline{eval(expr, bindings)} returns the value of an expression when each variable has the value it is bound to in the \lstinline{Dict} \texttt{bindings}, or a \lstinline{NameNotFound} error for a variable that isn't bound.

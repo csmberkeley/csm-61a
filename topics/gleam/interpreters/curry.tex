@@ -2,9 +2,12 @@
 \question Implement \texttt{curry}, which takes in a \lstinline{UserFn} \texttt{f} and an integer \texttt{arg}, and returns a function that takes all but the first parameter of \texttt{f}, with \texttt{arg} bound to the first parameter. For example, currying \lstinline|fn(x, y) { (y - x) }| with \texttt{1} gives \lstinline|fn(y) { (y - 1) }|. If \texttt{f} has no parameters, return \lstinline{Error(WrongArgumentCount(want: 0, got: 1))}. You may use \texttt{substitute} from the previous question.
 \begin{lstlisting}
 pub fn curry(f: UserFn, arg: Int) -> Result(UserFn, EvalError) {
-  case ____________ {
+  case f.params {
     [] -> Error(WrongArgumentCount(want: 0, got: 1))
-    [first, ..rest] -> ________________________________________
+    [first, ..rest] -> {
+      let new_body = ____________(___________, ___________, ___________)
+      Ok(UserFn(___________, ___________))
+    }
   }
 }
 
@@ -20,7 +23,10 @@ assert curry(UserFn([], N(7)), 1) == Error(WrongArgumentCount(want: 0, got: 1))
 pub fn curry(f: UserFn, arg: Int) -> Result(UserFn, EvalError) {
   case f.params {
     [] -> Error(WrongArgumentCount(want: 0, got: 1))
-    [first, ..rest] -> Ok(UserFn(rest, substitute(f.body, first, N(arg))))
+    [first, ..rest] -> {
+      let new_body = substitute(f.body, first, N(arg))
+      Ok(UserFn(rest, new_body))
+    }
   }
 }
 \end{lstlisting}
