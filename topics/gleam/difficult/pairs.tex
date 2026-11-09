@@ -1,7 +1,7 @@
 % Adapted from Fall 2024 Final Q7 (A Pair of Schemes)
 
 \begin{blocksection}
-\question Implement \texttt{all\_pairs}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns \lstinline{True} if \lstinline{f(x, y)} returns \lstinline{True} for every pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}. The function \texttt{inc} returns whether \lstinline{x + 1} equals \texttt{y}.
+\question [Adapted from CS 61A Fall 2024 Final Q7 (A Pair of Schemes)] Implement \texttt{all\_pairs}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns \lstinline{True} if \lstinline{f(x, y)} returns \lstinline{True} for every pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}. The function \texttt{inc} returns whether \lstinline{x + 1} equals \texttt{y}.
 \begin{lstlisting}
 pub fn inc(x: Int, y: Int) -> Bool {
   x + 1 == y
@@ -66,26 +66,26 @@ pub fn show_pairs(s: List(a)) -> List(#(a, a)) {
 \end{questionmeta}
 \end{blocksection}
 
-\begin{blocksection}
-\question What order of growth describes the time it takes to evaluate \lstinline{unpair(s)} in terms of the length of the input list \texttt{s}?
-\begin{lstlisting}
-pub fn unpair(s: List(#(a, a))) -> List(a) {
-  case s {
-    [] -> []
-    [#(x, y)] -> [x, y]
-    [#(x, _), ..rest] -> [x, ..unpair(rest)]
-  }
-}
-assert unpair(show_pairs([3, 5, 7, 9])) == [3, 5, 7, 9]
-\end{lstlisting}
-\begin{solution}
-Linear.
-\end{solution}
-\begin{questionmeta}
-%   \texttt{unpair} undoes \texttt{show\_pairs}: it keeps the first element of every pair, plus both elements of the last pair. Each call does a constant amount of work (one pattern match and one prepend) and makes at most one recursive call on a list that is one pair shorter. For a list of $n$ pairs, that is $n$ calls with constant work each, so the total is $\Theta(n)$.
-%   Prepending with \lstinline{[x, ..unpair(rest)]} takes constant time. If we had built the result with \lstinline{list.append(unpair(rest), ...)} at the end instead, each append would walk the whole result, and the total would be quadratic.
-\end{questionmeta}
-\end{blocksection}
+% \begin{blocksection}
+% \question What order of growth describes the time it takes to evaluate \lstinline{unpair(s)} in terms of the length of the input list \texttt{s}?
+% \begin{lstlisting}
+% pub fn unpair(s: List(#(a, a))) -> List(a) {
+%   case s {
+%     [] -> []
+%     [#(x, y)] -> [x, y]
+%     [#(x, _), ..rest] -> [x, ..unpair(rest)]
+%   }
+% }
+% assert unpair(show_pairs([3, 5, 7, 9])) == [3, 5, 7, 9]
+% \end{lstlisting}
+% \begin{solution}
+% Linear.
+% \end{solution}
+% \begin{questionmeta}
+% %   \texttt{unpair} undoes \texttt{show\_pairs}: it keeps the first element of every pair, plus both elements of the last pair. Each call does a constant amount of work (one pattern match and one prepend) and makes at most one recursive call on a list that is one pair shorter. For a list of $n$ pairs, that is $n$ calls with constant work each, so the total is $\Theta(n)$.
+% %   Prepending with \lstinline{[x, ..unpair(rest)]} takes constant time. If we had built the result with \lstinline{list.append(unpair(rest), ...)} at the end instead, each append would walk the whole result, and the total would be quadratic.
+% \end{questionmeta}
+% \end{blocksection}
 
 \begin{blocksection}
 \question Gleam cannot build an expression and evaluate it later the way Scheme's \texttt{eval} can, but it can build a list of \emph{delayed calls}: functions that take no arguments and make a call only when they are called.

@@ -42,5 +42,5 @@ pub fn compose(f: UserFn, g: UserFn) -> Result(UserFn, EvalError) {
 %   Using the same parameter name in both functions is fine. Composing \lstinline|fn(x) { (x * 2) }| with \lstinline|fn(x) { (x + 3) }| gives \lstinline|fn(x) { ((x + 3) * 2) }|, because \texttt{substitute} only makes one pass over \texttt{f}'s body and never looks inside the replacement it puts in.
 
 %   Also note that \texttt{g}'s body is copied into every place \texttt{f} uses its parameter, so in the \texttt{(x * x)} example \lstinline{(y - x)} is evaluated twice. This gives the right answer because evaluating an expression has no side effects, but it does duplicate work.
-% \end{questionmeta}
+\end{questionmeta}
 \end{blocksection}
