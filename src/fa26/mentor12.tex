@@ -3,27 +3,49 @@
 \renewcommand{\staff}{Created by Ana Abell, Terry Hsu. }
 
 \discnumber{12}
-\title{CSM Gleaming 2}
+\title{CSM Gleaming Part 2}
 \date{November 9, 2026 -- November 13, 2026}
 
 % Exercises and solutions are imported from the topic bank.
 \begin{document}
 \maketitle
 
-\section{section name}
+\section{More Gleam!}
 \begin{blocksection}
 \end{blocksection}
+These questions are adopted from past CS 61A exams related to linked lists, trees, and/or Scheme.
+% \subimport{../../topics/gleam/text/}{}
+
+% \subimport{../../topics/gleam/easy}{factorial.tex}
+
+\par\vspace{\baselineskip}
+You can find a list of useful builtin functions in Gleam here:\newline
+https://gleam-stdlib.hexdocs.pm/gleam/list.html\newline
+https://gleam-stdlib.hexdocs.pm/gleam/int.html\newline
+https://gleam-stdlib.hexdocs.pm/gleam/result.html
+\par\vspace{\baselineskip}
+
 \begin{questions}
-    \subimport{../../topics/gleam/text/}{}
-
-    \subimport{../../topics/gleam/easy}{factorial.tex}
-    
+    \subimport{../../topics/gleam/difficult}{pairs.tex}
+    \newpage
+    \subimport{../../topics/gleam/difficult}{promote.tex}
+    \newpage
+    \subimport{../../topics/gleam/difficult}{find-pair.tex}
     \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/difficult}{no-eleven.tex}
+    \newpage
+    \subimport{../../topics/gleam/difficult}{combo.tex}
+\end{questions}
 
-        You can find a list of useful builtin functions in Gleam here:\newline
-    https://gleam-stdlib.hexdocs.pm/gleam/list.html\newline
-    https://gleam-stdlib.hexdocs.pm/gleam/int.html\newline
-    https://gleam-stdlib.hexdocs.pm/gleam/result.html\newline
-    
+\newpage
+\section{Interpreters}
+\begin{questions}
+    \subimport{../../topics/gleam/interpreters}{simplify.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/interpreters}{substitute.tex}
+    \newpage
+    \subimport{../../topics/gleam/interpreters}{curry.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/interpreters}{compose.tex}
 \end{questions}
 \end{document}
