@@ -1,0 +1,46 @@
+% Adapted from Fall 2014 Midterm 2 Q3b (This One Goes to Eleven)
+
+\begin{blocksection}
+\question Implement \texttt{no\_eleven}, which takes a non-negative integer \texttt{n}. It returns a list of all distinct lists of length \texttt{n} that contain only \texttt{1}s and \texttt{6}s, in which two \texttt{1}s never appear next to each other.
+\begin{lstlisting}
+pub fn no_eleven(n: Int) -> List(List(Int)) {
+  case n {
+    0 -> ________
+    1 -> [[6], [1]]
+    _ ->
+      list.append(
+        list.map(____________, fn(s) { [6, ..s] }),
+        list.map(____________, fn(s) { ______________ }),
+      )
+  }
+}
+assert no_eleven(0) == [[]]
+assert no_eleven(2) == [[6, 6], [6, 1], [1, 6]]
+assert no_eleven(3)
+  == [[6, 6, 6], [6, 6, 1], [6, 1, 6], [1, 6, 6], [1, 6, 1]]
+assert no_eleven(4)
+  == [[6, 6, 6, 6], [6, 6, 6, 1], [6, 6, 1, 6], [6, 1, 6, 6],
+      [6, 1, 6, 1], [1, 6, 6, 6], [1, 6, 6, 1], [1, 6, 1, 6]]
+\end{lstlisting}
+\begin{solution}
+\begin{lstlisting}
+pub fn no_eleven(n: Int) -> List(List(Int)) {
+  case n {
+    0 -> [[]]
+    1 -> [[6], [1]]
+    _ ->
+      list.append(
+        list.map(no_eleven(n - 1), fn(s) { [6, ..s] }),
+        list.map(no_eleven(n - 2), fn(s) { [1, 6, ..s] }),
+      )
+  }
+}
+\end{lstlisting}
+\end{solution}
+\begin{questionmeta}
+%   Split the answers by their first element. If a list starts with \texttt{6}, nothing constrains what comes next, so the rest can be any valid list of length $n - 1$. If a list starts with \texttt{1}, the next element can't also be \texttt{1}, so it must be \texttt{6}. After that \texttt{6}, the rest can again be anything valid, now of length $n - 2$. That is why the second group prepends two elements, \lstinline{[1, 6, ..s]}, and recurses on \lstinline{n - 2}.
+%   The base case for \texttt{0} is \lstinline{[[]]}, not \lstinline{[]}. There is exactly one list of length 0, the empty list, and it contains no \texttt{11}. Returning \lstinline{[]} would claim there are no valid lists, and since \lstinline{list.map} over an empty list gives an empty list, every larger \texttt{n} would also return \lstinline{[]}.
+%   We need a separate base case for \texttt{1} because \lstinline{no_eleven(n - 2)} would otherwise be called with \lstinline{-1}. A list of length 1 can start with \texttt{1} without being followed by a \texttt{6}.
+%   The number of lists returned follows the Fibonacci sequence: 1, 2, 3, 5, 8, \ldots, because the count for $n$ is the count for $n - 1$ plus the count for $n - 2$.
+\end{questionmeta}
+\end{blocksection}
