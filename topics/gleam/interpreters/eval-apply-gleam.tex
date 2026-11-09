@@ -28,6 +28,8 @@ eval abs(3)
   eval abs
   eval 3
   apply abs to 3 → 3
+
+result: 3
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -61,6 +63,8 @@ eval Point(1, 2)
   eval 1
   eval 2
   apply Point to 1, 2 → Point(1, 2)
+
+result: Point(1, 2)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -97,7 +101,9 @@ eval twin(abs(3))
       eval x
       eval x
       apply Point to 3, 3 → Point(3, 3)
-  twin returns Point(3, 3)
+  apply twin to 3 → Point(3, 3)
+
+result: Point(3, 3)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
@@ -140,7 +146,9 @@ eval pair(abs(3), case True { True -> 2 False -> 0 })
       eval x
       eval y
       apply Point to 3, 2 → Point(3, 2)
-  pair returns Point(3, 2)
+  apply pair to 3, 2 → Point(3, 2)
+
+result: Point(3, 2)
 \end{lstlisting}
 \end{solution}
 \end{blocksection}
