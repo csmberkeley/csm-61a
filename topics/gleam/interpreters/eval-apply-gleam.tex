@@ -1,10 +1,10 @@
-\begin{blocksection}
 \question Identify the number of calls to \lstinline$eval$ and the number of calls
 to \lstinline$apply$ in \lstinline{evaluator.gleam} made when \lstinline{run} calls
 \lstinline{draw} in each program below. (\lstinline{run} evaluates the body of
 \lstinline{draw} directly, so \lstinline{draw} itself is not an \lstinline$apply$.)
 
 \begin{parts}
+\begin{blocksection}
 \part \begin{lstlisting}
 fn draw(shape_slider: Int) -> Int {
   case True {
@@ -20,14 +20,20 @@ fn draw(shape_slider: Int) -> Int {
 \end{tabular}
 
 \begin{solution}
-7 \lstinline$eval$, 1 \lstinline$apply$
-\newline
-Evals: (1) on the \lstinline{At} around the body, (2) on the entire \lstinline{case}, (3) on the subject \lstinline{True} (the \lstinline{True} before \lstinline{->} is a pattern, which is only compared against the subject's value, never evaluated; the other arm is never evaluated either), (4) on the \lstinline{At} around the arm's body, (5) on \lstinline{abs(3)}, (6-7) on \lstinline{abs}/\lstinline{3}
-\newline
-Apply: (1) \lstinline{abs} on \lstinline{3}
+5 \lstinline$eval$, 1 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval case True { True -> abs(3) False -> abs(1) }
+  eval True
+eval abs(3)
+  eval abs
+  eval 3
+  apply abs to 3 → 3
+\end{lstlisting}
 \end{solution}
+\end{blocksection}
 
 \vspace{0.75\baselineskip}
+\begin{blocksection}
 \part \begin{lstlisting}
 fn draw(shape_slider: Int) -> Point {
   case abs(2) {
@@ -43,14 +49,24 @@ fn draw(shape_slider: Int) -> Point {
 \end{tabular}
 
 \begin{solution}
-10 \lstinline$eval$, 2 \lstinline$apply$
-\newline
-Evals: (1) on the \lstinline{At} around the body, (2) on the entire \lstinline{case}, (3) on \lstinline{abs(2)}, (4-5) on \lstinline{abs}/\lstinline{2}, (6) on the \lstinline{At} around the first arm's body (patterns are matched, not evaluated), (7) on \lstinline{Point(1, 2)}, (8-10) on \lstinline{Point}/\lstinline{1}/\lstinline{2}
-\newline
-Apply: (1) \lstinline{abs} on \lstinline{2}, (2) \lstinline{Point} on \lstinline{1} and \lstinline{2}
+8 \lstinline$eval$, 2 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval case abs(2) { 2 -> Point(1, 2) _ -> Point(0, 0) }
+  eval abs(2)
+    eval abs
+    eval 2
+    apply abs to 2 → 2
+eval Point(1, 2)
+  eval Point
+  eval 1
+  eval 2
+  apply Point to 1, 2 → Point(1, 2)
+\end{lstlisting}
 \end{solution}
+\end{blocksection}
 
 \vspace{0.75\baselineskip}
+\begin{blocksection}
 \part \begin{lstlisting}
 fn twin(x: Int) -> Point {
   Point(x, x)
@@ -67,14 +83,27 @@ fn draw(shape_slider: Int) -> Point {
 \end{tabular}
 
 \begin{solution}
-11 \lstinline$eval$, 3 \lstinline$apply$
-\newline
-Evals: (1) on the \lstinline{At} around the body of \lstinline{draw}, (2) on \lstinline{twin(abs(3))}, (3) on \lstinline{twin}, (4) on \lstinline{abs(3)}, (5-6) on \lstinline{abs}/\lstinline{3}, then in the body of \lstinline{twin}: (7) on its \lstinline{At}, (8) on \lstinline{Point(x, x)}, (9-11) on \lstinline{Point}/\lstinline{x}/\lstinline{x}
-\newline
-Apply: (1) \lstinline{abs}, (2) \lstinline{twin}, (3) \lstinline{Point}
+9 \lstinline$eval$, 3 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval twin(abs(3))
+  eval twin
+  eval abs(3)
+    eval abs
+    eval 3
+    apply abs to 3 → 3
+  apply twin to 3
+    eval Point(x, x)
+      eval Point
+      eval x
+      eval x
+      apply Point to 3, 3 → Point(3, 3)
+  apply twin to 3 → Point(3, 3)
+\end{lstlisting}
 \end{solution}
+\end{blocksection}
 
 \vspace{0.75\baselineskip}
+\begin{blocksection}
 \part \begin{lstlisting}
 fn pair(x: Int, y: Int) -> Point {
   Point(x, y)
@@ -88,15 +117,34 @@ fn draw(shape_slider: Int) -> Point {
 }
 \end{lstlisting}
 
-\begin{solution}[1in]
-15 \lstinline$eval$, 3 \lstinline$apply$
-\newline
-Evals: (1) on the \lstinline{At} around the body of \lstinline{draw}, (2) on \lstinline{pair(abs(3), case ...)}, (3) on \lstinline{pair}, (4) on \lstinline{abs(3)}, (5-6) on \lstinline{abs}/\lstinline{3}, (7) on the entire \lstinline{case}, (8) on the subject \lstinline{True} (the \lstinline{True} before each \lstinline{->} is a pattern, not an expression: it is only compared against the subject's value, never evaluated), (9) on the \lstinline{At} around the matching arm's body, (10) on \lstinline{2} (the \lstinline{False} arm is never evaluated), then in the body of \lstinline{pair}: (11) on its \lstinline{At}, (12) on \lstinline{Point(x, y)}, (13-15) on \lstinline{Point}/\lstinline{x}/\lstinline{y}
-\newline
-Apply: (1) \lstinline{abs} on \lstinline{3}, (2) \lstinline{pair} on \lstinline{3} and \lstinline{2}, (3) \lstinline{Point} on \lstinline{3} and \lstinline{2}
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 10 & 12 & 13 & 15 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+12 \lstinline$eval$, 3 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval pair(abs(3), case True { True -> 2 False -> 0 })
+  eval pair
+  eval abs(3)
+    eval abs
+    eval 3
+    apply abs to 3 → 3
+  eval case True { True -> 2 False -> 0 }
+    eval True
+  eval 2
+  apply pair to 3, 2
+    eval Point(x, y)
+      eval Point
+      eval x
+      eval y
+      apply Point to 3, 2 → Point(3, 2)
+  apply pair to 3, 2 → Point(3, 2)
+\end{lstlisting}
 \end{solution}
-\end{parts}
 \end{blocksection}
+\end{parts}
 
 \begin{blocksection}
 \begin{guide}
@@ -104,7 +152,7 @@ Apply: (1) \lstinline{abs} on \lstinline{3}, (2) \lstinline{pair} on \lstinline{
 \begin{itemize}
 	\item This has historically been a tricky concept for students. \lstinline$apply$ may come off as easier to understand so relate it to just applying functions to already-evaluated arguments for students.
 	\item Remind students of what gets \lstinline$eval$'ed: every \lstinline{Call} (the whole call, its function expression, and each operand), variables, literals, \lstinline{case} subjects and the chosen arm's body, and \lstinline{let} values and bodies.
-	\item The parser also wraps the body of every function (and each \lstinline{let} value and each \lstinline{case} arm's body) in an \lstinline{At} marker, which costs one \lstinline$eval$. Decide ahead of time whether you want students to count these; the solutions above do.
+	\item The parser also wraps the body of every function (and each \lstinline{let} value and each \lstinline{case} arm's body) in an \lstinline{At} marker, which technically costs one \lstinline$eval$. The trace tool at \url{https://composingprograms.com/3ed/eval/} hides these, and the solutions above (which are its traces) don't count them, so don't have students count them either.
 	\item Operators are ordinary calls: \lstinline{1 + 2} is a \lstinline{Call} of the built-in \lstinline{+}, so it costs 4 \lstinline$eval$s (the call, \lstinline{+}, \lstinline{1}, \lstinline{2}) and 1 \lstinline$apply$. Record constructors like \lstinline{Point} are built-ins too.
 	\item Every \lstinline{Call} evaluates all of its operands. Only \lstinline{case} skips work, by evaluating just the arm whose pattern matches (patterns are matched, not evaluated). \lstinline{&&} and \lstinline{||} are rewritten by the parser into a \lstinline{case}, which is how they short-circuit.
 	\item For a \lstinline{Builtin}, \lstinline$apply$ just calls its \lstinline{run} function. A \lstinline{UserFn} \lstinline$eval$s its body in a new frame. Higher-order built-ins like \lstinline{list.map} call \lstinline$apply$ on the function they are given, once per element.

@@ -15,37 +15,37 @@
 
         //And here's the corresponding series of calls to Eval and Apply:
         eval f([1, 1 + 1])
-            eval f
-            eval [1, 1 + 1]
-                eval 1
-                eval 1 + 1
-                    eval +
-                    eval 1
-                    eval 1
-                apply + to 1, 1 → 2
-            apply f to [1, 2]
-                eval case s { [] -> [3] [first, ..rest] -> ... }
-                eval s
-                eval [first, ..f(rest)]
-                eval first
-                eval f(rest)
-                    eval f
-                    eval rest
-                    apply f to [2]
-                    eval case s { [] -> [3] [first, ..rest] -> ... }
-                        eval s
-                    eval [first, ..f(rest)]
-                        eval first
-                        eval f(rest)
-                        eval f
-                        eval rest
-                        apply f to []
-                            eval case s { [] -> [3] [first, ..rest] -> ... }
-                            eval s
-                            eval [3]
-                            eval 3
-                        apply f to [] → [3]
-                    apply f to [2] → [2, 3]
-            apply f to [1, 2] → [1, 2, 3]
+          eval f
+          eval [1, 1 + 1]
+            eval 1
+            eval 1 + 1
+              eval +
+              eval 1
+              eval 1
+              apply + to 1, 1 → 2
+          apply f to [1, 2]
+            eval case s { [] -> [3] [first, ..rest] -> ... }
+              eval s
+            eval [first, ..f(rest)]
+              eval first
+              eval f(rest)
+                eval f
+                eval rest
+                apply f to [2]
+                  eval case s { [] -> [3] [first, ..rest] -> ... }
+                    eval s
+                  eval [first, ..f(rest)]
+                    eval first
+                    eval f(rest)
+                      eval f
+                      eval rest
+                      apply f to []
+                        eval case s { [] -> [3] [first, ..rest] -> ... }
+                          eval s
+                        eval [3]
+                          eval 3
+                      apply f to [] → [3]
+                apply f to [2] → [2, 3]
+          apply f to [1, 2] → [1, 2, 3]
         result: [1, 2, 3]
     \end{lstlisting}
