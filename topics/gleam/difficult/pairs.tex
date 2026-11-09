@@ -90,8 +90,7 @@ pub fn show_pairs(s: List(a)) -> List(#(a, a)) {
 % \end{blocksection}
 
 \begin{blocksection}
-\part Gleam cannot build an expression and evaluate it later the way Scheme's \texttt{eval} can, but it can build a list of \emph{delayed calls}: functions that take no arguments and make a call only when they are called.
-Implement \texttt{all\_pairs\_calls}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns one delayed call for each pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}, which calls \lstinline{f(x, y)} when it is called. Then implement \texttt{run\_all}, which calls each delayed call in a list and returns whether all of them returned \lstinline{True}. You may use \texttt{show\_pairs}.
+\part Implement \texttt{all\_pairs\_calls}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns one \emph{delayed call} (a function that takes no arguments) for each pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}, which calls \lstinline{f(x, y)} when it is called. Then implement \texttt{run\_all}, which calls each delayed call in a list and returns whether all of them returned \lstinline{True}. You may use \texttt{show\_pairs}.
 \begin{lstlisting}
 pub fn all_pairs_calls(f: fn(a, a) -> Bool, s: List(a)) -> List(fn() -> Bool) {
   list.map(show_pairs(s), fn(pair) { ______________________________ })
