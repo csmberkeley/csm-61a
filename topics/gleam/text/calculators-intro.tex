@@ -50,7 +50,7 @@ pub fn calculate(operator: Operator, a: Int, b: Int) -> Int {
 
 \subsection*{Functions}
 
-A function such as \lstinline|fn(x, y) { 2 * y - x }| has a list of parameters and a body expression, which a \lstinline{UserFn} holds:
+A function such as \lstinline|fn(x, y) { (2 * y) - x }| has a list of parameters and a body expression, which a \lstinline{UserFn} holds:
 \begin{lstlisting}
 pub type UserFn {
   UserFn(params: List(String), body: Expr)
