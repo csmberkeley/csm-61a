@@ -56,7 +56,7 @@ pub type UserFn {
   UserFn(params: List(String), body: Expr)
 }
 \end{lstlisting}
-For example, \lstinline|fn(x, y) { ((2 * y) - x) }| is \lstinline{UserFn(["x", "y"], Binary(Sub, Binary(Mul, N(2), Var("y")), Var("x")))}. A function is \emph{valid} if no parameter is repeated and every variable in its body is one of its parameters. You may assume every \lstinline{UserFn} passed to a function in this section is valid.
+For example, \lstinline|fn(x, y) { 2 * y - x }| is \lstinline{UserFn(["x", "y"], Binary(Sub, Binary(Mul, N(2), Var("y")), Var("x")))}. A function is \emph{valid} if no parameter is repeated and every variable in its body is one of its parameters. You may assume every \lstinline{UserFn} passed to a function in this section is valid.
 
 Errors are represented by an \lstinline{EvalError}. In this section, we only use \lstinline{WrongArgumentCount}, which records how many arguments a function wants and how many it got:
 \begin{lstlisting}
