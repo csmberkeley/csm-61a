@@ -32,9 +32,9 @@ pub fn all_pairs(f: fn(a, a) -> Bool, s: List(a)) -> Bool {
 \end{lstlisting}
 \end{solution}
 \begin{questionmeta}
-%   Adjacent pairs overlap: in \lstinline{[3, 4, 5]}, the pairs are \lstinline{(3, 4)} and \lstinline{(4, 5)}, so \texttt{4} belongs to both. After checking \texttt{x} and \texttt{y}, the recursive call must start at \texttt{y}, not at the element after it. Writing \lstinline{all_pairs(f, rest)} would skip every other pair, and would incorrectly return \lstinline{True} on \lstinline{[3, 4, 6, 7]}.
-%   The pattern \lstinline{[x, y, ..rest]} only matches lists with at least two elements. Every other list (empty or one element) has no pairs, so the condition holds for all of them and the \lstinline{_} case returns \lstinline{True}.
-%   \lstinline{&&} only evaluates its right side when its left side is \lstinline{True}, so \texttt{all\_pairs} stops at the first pair that fails.
+   Adjacent pairs overlap: in \lstinline{[3, 4, 5]}, the pairs are \lstinline{(3, 4)} and \lstinline{(4, 5)}, so \texttt{4} belongs to both. After checking \texttt{x} and \texttt{y}, the recursive call must start at \texttt{y}, not at the element after it. Writing \lstinline{all_pairs(f, rest)} would skip every other pair, and would incorrectly return \lstinline{True} on \lstinline{[3, 4, 6, 7]}.
+   The pattern \lstinline{[x, y, ..rest]} only matches lists with at least two elements. Every other list (empty or one element) has no pairs, so the condition holds for all of them and the \lstinline{_} case returns \lstinline{True}.
+   \lstinline{&&} only evaluates its right side when its left side is \lstinline{True}, so \texttt{all\_pairs} stops at the first pair that fails.
 \end{questionmeta}
 \end{blocksection}
 
@@ -68,26 +68,26 @@ pub fn show_pairs(s: List(a)) -> List(#(a, a)) {
 \end{questionmeta}
 \end{blocksection}
 
-% \begin{blocksection}
-% \question What order of growth describes the time it takes to evaluate \lstinline{unpair(s)} in terms of the length of the input list \texttt{s}?
-% \begin{lstlisting}
-% pub fn unpair(s: List(#(a, a))) -> List(a) {
-%   case s {
-%     [] -> []
-%     [#(x, y)] -> [x, y]
-%     [#(x, _), ..rest] -> [x, ..unpair(rest)]
-%   }
-% }
-% assert unpair(show_pairs([3, 5, 7, 9])) == [3, 5, 7, 9]
-% \end{lstlisting}
-% \begin{solution}
-% Linear.
-% \end{solution}
-% \begin{questionmeta}
-% %   \texttt{unpair} undoes \texttt{show\_pairs}: it keeps the first element of every pair, plus both elements of the last pair. Each call does a constant amount of work (one pattern match and one prepend) and makes at most one recursive call on a list that is one pair shorter. For a list of $n$ pairs, that is $n$ calls with constant work each, so the total is $\Theta(n)$.
-% %   Prepending with \lstinline{[x, ..unpair(rest)]} takes constant time. If we had built the result with \lstinline{list.append(unpair(rest), ...)} at the end instead, each append would walk the whole result, and the total would be quadratic.
-% \end{questionmeta}
-% \end{blocksection}
+%  \begin{blocksection}
+% \part What order of growth describes the time it takes to evaluate \lstinline{unpair(s)} in terms of the length of the input list \texttt{s}?
+%  \begin{lstlisting}
+%  pub fn unpair(s: List(#(a, a))) -> List(a) {
+%    case s {
+%      [] -> []
+%      [#(x, y)] -> [x, y]
+%      [#(x, _), ..rest] -> [x, ..unpair(rest)]
+%    }
+%  }
+%  assert unpair(show_pairs([3, 5, 7, 9])) == [3, 5, 7, 9]
+%  \end{lstlisting}
+%  \begin{solution}
+%  Linear.
+%  \end{solution}
+%  \begin{questionmeta}
+%    \texttt{unpair} undoes \texttt{show\_pairs}: it keeps the first element of every pair, plus both elements of the last pair. Each call does a constant amount of work (one pattern match and one prepend) and makes at most one recursive call on a list that is one pair shorter. For a list of $n$ pairs, that is $n$ calls with constant work each, so the total is $\Theta(n)$.
+%    Prepending with \lstinline{[x, ..unpair(rest)]} takes constant time. If we had built the result with \lstinline{list.append(unpair(rest), ...)} at the end instead, each append would walk the whole result, and the total would be quadratic.
+%  \end{questionmeta}
+%  \end{blocksection}
 
 \begin{blocksection}
 \part Implement \texttt{all\_pairs\_calls}, which takes a two-argument function \texttt{f} and a list \texttt{s}. It returns one \emph{delayed call} (a function that takes no arguments) for each pair of adjacent elements \texttt{x} and \texttt{y} in \texttt{s}, which calls \lstinline{f(x, y)} when it is called. Then implement \texttt{run\_all}, which calls each delayed call in a list and returns whether all of them returned \lstinline{True}. You may use \texttt{show\_pairs}.
@@ -116,9 +116,10 @@ pub fn run_all(calls: List(fn() -> Bool)) -> Bool {
 \end{lstlisting}
 \end{solution}
 \begin{questionmeta}
-%   Writing \lstinline{f(pair.0, pair.1)} in the first blank would call \texttt{f} right away and put a \lstinline{Bool} in the list. Wrapping it as \lstinline|fn() { f(pair.0, pair.1) }| creates a function that will make that call later. So \texttt{all\_pairs\_calls} does none of the actual checking; it only describes what to check. The fields of a tuple are accessed by position with \lstinline{.0} and \lstinline{.1}. We could also have unpacked the tuple first with \lstinline|let #(x, y) = pair| and then returned \lstinline|fn() { f(x, y) }|.
-%   \texttt{run\_all} is where the calls actually happen: \lstinline{list.all} calls the function \lstinline|fn(call) { call() }| on each delayed call. Like \lstinline{&&}, \lstinline{list.all} stops at the first \lstinline{False}, so the later calls are never made.
-%   Together, \lstinline{run_all(all_pairs_calls(f, s))} gives the same answer as \lstinline{all_pairs(f, s)}. The difference is when the work happens. This is the same idea as the original Scheme question, which built the expression \lstinline{(and (inc 3 4) (inc 4 5) ...)} and passed it to \texttt{eval} later.
+   Writing \lstinline{f(pair.0, pair.1)} in the first blank would call \texttt{f} right away and put a \lstinline{Bool} in the list. Wrapping it as \lstinline|fn() { f(pair.0, pair.1) }| creates a function that will make that call later. So \texttt{all\_pairs\_calls} does none of the actual checking; it only describes what to check. The fields of a tuple are accessed by position with \lstinline{.0} and \lstinline{.1}. We could also have unpacked the tuple first with \lstinline|let #(x, y) = pair| and then returned \lstinline|fn() { f(x, y) }|.
+   \texttt{run\_all} is where the calls actually happen: \lstinline{list.all} calls the function \lstinline|fn(call) { call() }| on each delayed call. Like \lstinline{&&}, \lstinline{list.all} stops at the first \lstinline{False}, so the later calls are never made.
+   Together, \lstinline{run_all(all_pairs_calls(f, s))} gives the same answer as \lstinline{all_pairs(f, s)}. The difference is when the work happens. This is the same idea as the original Scheme question, which built the expression \lstinline{(and (inc 3 4) (inc 4 5) ...)} and passed it to \texttt{eval} later.
+   Read \lstinline{List(fn() -> Bool)} from the inside out: each element is a function with no arguments that returns a \lstinline{Bool}, and the outer list holds those functions. The inner \lstinline|fn() { ... }| is a closure: it remembers \texttt{f} and \texttt{pair} now, but calls \texttt{f} only when \texttt{call()} runs later. A helpful check is to compare the types: without the inner function, \lstinline{list.map} would produce \lstinline{List(Bool)}, which is not the declared return type.
 \end{questionmeta}
 \end{blocksection}
 \end{parts}

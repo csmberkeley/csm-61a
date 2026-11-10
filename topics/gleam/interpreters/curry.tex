@@ -33,10 +33,10 @@ pub fn curry(f: UserFn, arg: Int) -> Result(UserFn, EvalError) {
 \end{solution}
 
 \begin{questionmeta}
-%   A\lstinline{UserFn} is just a list of parameters and a body, so binding the first parameter means changing both: the new parameter list is everything after the first, and the new body is the old body with the first parameter replaced by the argument. Since the body is an \lstinline{Expr}, the argument has to be wrapped as \lstinline{N(arg)} before it can be substituted in.
+  A\lstinline{UserFn} is just a list of parameters and a body, so binding the first parameter means changing both: the new parameter list is everything after the first, and the new body is the old body with the first parameter replaced by the argument. Since the body is an \lstinline{Expr}, the argument has to be wrapped as \lstinline{N(arg)} before it can be substituted in.
 
-%   The expression \lstinline{f.params} accesses the \texttt{params} field of \texttt{f}, which works because \lstinline{UserFn} has only one variant. We could have instead written \lstinline{let UserFn(params, body) = f} first.
+  The expression \lstinline{f.params} accesses the \texttt{params} field of \texttt{f}, which works because \lstinline{UserFn} has only one variant. We could have instead written \lstinline{let UserFn(params, body) = f} first.
 
-%   Currying with the first argument and then applying the result to the remaining arguments gives the same value as applying \texttt{f} to all of them at once: \lstinline{apply(f, [1, 4])} and \lstinline{apply(g, [4])}, where \texttt{g} is \lstinline{curry(f, 1)}, both return \lstinline{Ok(3)}. This relies on \texttt{f} having no repeated parameters, which \lstinline{make_fn} guarantees; if \texttt{f} had parameters \lstinline{["x", "x"]}, substituting for the first \texttt{x} would replace both.
+  Currying with the first argument and then applying the result to the remaining arguments gives the same value as applying \texttt{f} to all of them at once: \lstinline{apply(f, [1, 4])} and \lstinline{apply(g, [4])}, where \texttt{g} is \lstinline{curry(f, 1)}, both return \lstinline{Ok(3)}. This relies on \texttt{f} having no repeated parameters, which \lstinline{make_fn} guarantees; if \texttt{f} had parameters \lstinline{["x", "x"]}, substituting for the first \texttt{x} would replace both.
 \end{questionmeta}
 \end{blocksection}

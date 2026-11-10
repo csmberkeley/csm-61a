@@ -38,10 +38,11 @@ pub fn combo(a: List(Int), b: List(Int)) -> List(Int) {
 \end{lstlisting}
 \end{solution}
 \begin{questionmeta}
-%   The answer has to begin with either the first digit of \texttt{a} or the first digit of \texttt{b}; any other digit would be wasted. When the two first digits are equal, a single digit can serve both lists at once, so we use it once and continue with the rest of both lists.
-%   When the first digits are different, we try both options. If the answer starts with \texttt{x}, that digit only accounts for the start of \texttt{a}, so we still need all of \texttt{b} afterward: \lstinline{combo(ar, b)}, not \lstinline{combo(ar, br)}. The other option is symmetric. \texttt{smaller} then picks the better of the two.
-%   When one list is empty, the answer is just the other list, since every digit of it has to appear and nothing else is needed.
-%   This is tree recursion with two branches, so it takes exponential time in the worst case.
-%   The original question used integers like \texttt{531} instead of lists of digits, and it started from the last digit using \lstinline|% 10| and \lstinline|// 10|. Starting from the front of a list gives the same answers. In the integer version, ``smallest'' compared numbers, which is why \texttt{smaller} first compares lengths and then digits.
+  The answer has to begin with either the first digit of \texttt{a} or the first digit of \texttt{b}; any other digit would be wasted. When the two first digits are equal, a single digit can serve both lists at once, so we use it once and continue with the rest of both lists.
+  When the first digits are different, we try both options. If the answer starts with \texttt{x}, that digit only accounts for the start of \texttt{a}, so we still need all of \texttt{b} afterward: \lstinline{combo(ar, b)}, not \lstinline{combo(ar, br)}. The other option is symmetric. \texttt{smaller} then picks the better of the two.
+  When one list is empty, the answer is just the other list, since every digit of it has to appear and nothing else is needed.
+  This is tree recursion with two branches, so it takes exponential time in the worst case.
+  The original question used integers like \texttt{531} instead of lists of digits, and it started from the last digit using \lstinline|% 10| and \lstinline|// 10|. Starting from the front of a list gives the same answers. In the integer version, ``smallest'' compared numbers, which is why \texttt{smaller} first compares lengths and then digits.
+  To make the two recursive choices concrete, try \lstinline{combo([5, 3], [4, 3])}: choosing 5 next leaves \lstinline{combo([3], [4, 3])}; choosing 4 next leaves \lstinline{combo([5, 3], [3])}. Both candidates must preserve each input's order, and \texttt{smaller} compares the completed candidates by length first, then lexicographically. This is a useful point to distinguish the problem's custom ordering from ordinary numeric comparison.
 \end{questionmeta}
 \end{blocksection}

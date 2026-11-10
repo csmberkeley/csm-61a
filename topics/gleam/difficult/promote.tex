@@ -22,9 +22,9 @@ pub fn promote(f: fn(a) -> Bool, s: List(a)) -> List(a) {
 \end{lstlisting}
 \end{solution}
 \begin{questionmeta}
-%   The result has two parts: the elements for which \texttt{f} is true, then the elements for which it is false. Each part is a \lstinline{list.filter} of \texttt{s}, and \lstinline{list.filter} keeps elements in their original order, so joining the two parts with \lstinline{list.append} keeps the order within each group.
-%   The second filter needs a function that is true exactly when \texttt{f} is false. Gleam has no built-in way to negate a function, so we write one: \lstinline|fn(x) { !f(x) }|.
-%   The standard library also has \lstinline{list.partition(s, f)}, which returns both groups at once as a tuple \lstinline{#(trues, falses)}. With it, we could have written \lstinline|let #(yes, no) = list.partition(s, f)| and then returned \lstinline{list.append(yes, no)}. This goes through \texttt{s} only once instead of twice.
+  The result has two parts: the elements for which \texttt{f} is true, then the elements for which it is false. Each part is a \lstinline{list.filter} of \texttt{s}, and \lstinline{list.filter} keeps elements in their original order, so joining the two parts with \lstinline{list.append} keeps the order within each group.
+  The second filter needs a function that is true exactly when \texttt{f} is false. Gleam has no built-in way to negate a function, so we write one: \lstinline|fn(x) { !f(x) }|.
+  The standard library also has \lstinline{list.partition(s, f)}, which returns both groups at once as a tuple \lstinline{#(trues, falses)}. With it, we could have written \lstinline|let #(yes, no) = list.partition(s, f)| and then returned \lstinline{list.append(yes, no)}. This goes through \texttt{s} only once instead of twice.
 \end{questionmeta}
 \end{blocksection}
  
@@ -63,10 +63,10 @@ pub fn bigger_first(s: List(Int)) -> List(Int) {
 \end{lstlisting}
 \end{solution}
 \begin{questionmeta}
-%   Without the restrictions, the answer would be \lstinline|promote(fn(y) { first(s) < y }, s)|. The difficulty is that the predicate depends on \texttt{s}, so \texttt{s} has to be used twice: once to build the predicate and once as the list to promote. \texttt{curry\_call} does exactly this. \lstinline{curry_call(f)(x, g)} is a function of \texttt{y} that computes \lstinline{f(x(g(y)), y)}, passing \texttt{y} both through \texttt{x} and \texttt{g} and directly.
-%   Matching this against what we want with \texttt{y} as \texttt{s}, \texttt{f} is \texttt{promote}, \lstinline{g(s)} should be \lstinline{first(s)}, and \lstinline{x(first(s))} should be the predicate \lstinline|fn(y) { first(s) < y }|. That is what \lstinline{curry(less_than)} gives: \lstinline{curry(less_than)(a)} is \lstinline|fn(y) { a < y }|.
-%   The types can guide you here too. \lstinline{curry_call(promote)} expects some \lstinline{fn(z) -> fn(Int) -> Bool} and some \lstinline{fn(List(Int)) -> z}. The only provided function that takes a \lstinline{List(Int)} is \texttt{first}, which fixes \texttt{z} as \lstinline{Int}, and the only way to get an \lstinline{fn(Int) -> fn(Int) -> Bool} is \lstinline{curry(less_than)}.
-%   The first element is never bigger than itself, so it always ends up at the front of the second group.
+  Without the restrictions, the answer would be \lstinline|promote(fn(y) { first(s) < y }, s)|. The difficulty is that the predicate depends on \texttt{s}, so \texttt{s} has to be used twice: once to build the predicate and once as the list to promote. \texttt{curry\_call} does exactly this. \lstinline{curry_call(f)(x, g)} is a function of \texttt{y} that computes \lstinline{f(x(g(y)), y)}, passing \texttt{y} both through \texttt{x} and \texttt{g} and directly.
+  Matching this against what we want with \texttt{y} as \texttt{s}, \texttt{f} is \texttt{promote}, \lstinline{g(s)} should be \lstinline{first(s)}, and \lstinline{x(first(s))} should be the predicate \lstinline|fn(y) { first(s) < y }|. That is what \lstinline{curry(less_than)} gives: \lstinline{curry(less_than)(a)} is \lstinline|fn(y) { a < y }|.
+  The types can guide you here too. \lstinline{curry_call(promote)} expects some \lstinline{fn(z) -> fn(Int) -> Bool} and some \lstinline{fn(List(Int)) -> z}. The only provided function that takes a \lstinline{List(Int)} is \texttt{first}, which fixes \texttt{z} as \lstinline{Int}, and the only way to get an \lstinline{fn(Int) -> fn(Int) -> Bool} is \lstinline{curry(less_than)}.
+  The first element is never bigger than itself, so it always ends up at the front of the second group.
 \end{questionmeta}
 \end{blocksection}
  

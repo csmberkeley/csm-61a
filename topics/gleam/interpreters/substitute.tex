@@ -38,8 +38,8 @@ pub fn substitute(expr: Expr, name: String, replacement: Expr) -> Expr {
 \end{solution}
 
 \begin{questionmeta}
-%   There is one case for each variant of \lstinline{Expr}. The \lstinline{Binary} case recurses on both sides and rebuilds a \lstinline{Binary} with the same operator around the two substituted sides, so the result has the same shape as \texttt{expr}.
+  There is one case for each variant of \lstinline{Expr}. The \lstinline{Binary} case recurses on both sides and rebuilds a \lstinline{Binary} with the same operator around the two substituted sides, so the result has the same shape as \texttt{expr}.
 
-%   The only place anything changes is a \lstinline{Var} whose name matches, which we check with a guard. Every other leaf, whether a different variable or a number, is returned as is. Note that \texttt{replacement} can be any expression, not just a number: substituting \lstinline{(a - 1)} for \texttt{"x"} in \lstinline{(x * x)} gives \lstinline{((a - 1) * (a - 1))}, with a copy of the replacement in each spot.
+  The only place anything changes is a \lstinline{Var} whose name matches, which we check with a guard. Every other leaf, whether a different variable or a number, is returned as is. Note that \texttt{replacement} can be any expression, not just a number: substituting \lstinline{(a - 1)} for \texttt{"x"} in \lstinline{(x * x)} gives \lstinline{((a - 1) * (a - 1))}, with a copy of the replacement in each spot.
 \end{questionmeta}
 \end{blocksection}

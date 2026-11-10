@@ -34,9 +34,10 @@ pub fn find_pair(s: List(Int)) -> List(Int) {
 \end{lstlisting}
 \end{solution}
 \begin{questionmeta}
-  % Instead of trying every pair, we only ask one question about each element \texttt{x}: does its partner \lstinline{2020 - x} appear later in the list? If so, we already know both numbers, so we can return \lstinline{[x, 2020 - x]} without finding where the partner is.
-  % We only search \texttt{rest} rather than all of \texttt{s}. Any partner earlier in the list would have been found when we were at that earlier element, so by the time we reach \texttt{x}, nothing before it can be part of the answer. Searching \texttt{rest} also means \texttt{x} can never be paired with itself, which is why the last assert works even though 1010 + 1010 is 2020. (The original exam guaranteed that \texttt{s} contains no 1010, since its Python version could pair an element with itself.)
-  % The \lstinline{[] -> []} case is never reached when a pair exists, but Gleam requires every case to be handled.
-  % This takes quadratic time: each call to \lstinline{list.contains} can scan the rest of the list, and there can be one call per element.
+  Instead of trying every pair, we only ask one question about each element \texttt{x}: does its partner \lstinline{2020 - x} appear later in the list? If so, we already know both numbers, so we can return \lstinline{[x, 2020 - x]} without finding where the partner is.
+  We only search \texttt{rest} rather than all of \texttt{s}. Any partner earlier in the list would have been found when we were at that earlier element, so by the time we reach \texttt{x}, nothing before it can be part of the answer. Searching \texttt{rest} also means \texttt{x} can never be paired with itself, which is why the last assert works even though 1010 + 1010 is 2020. (The original exam guaranteed that \texttt{s} contains no 1010, since its Python version could pair an element with itself.)
+  The \lstinline{[] -> []} case is never reached when a pair exists, but Gleam requires every case to be handled.
+  This takes quadratic time: each call to \lstinline{list.contains} can scan the rest of the list, and there can be one call per element.
+  When walking through the nested \lstinline{case}, have students name the values at each level: the outer match binds \texttt{x} and \texttt{rest}; the inner match branches on a \lstinline{Bool}. A \lstinline{case} is an expression in Gleam, so the inner one supplies the value used by the outer branch. The guard \lstinline{if x == y} pattern used in other Gleam questions has the same role of refining when a branch matches.
 \end{questionmeta}
 \end{blocksection}
