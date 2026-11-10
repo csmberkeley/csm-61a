@@ -1,0 +1,77 @@
+The questions in this section use the arithmetic expression language that you saw from homework, but they do not require finishing the homework.
+
+\subsection*{Expressions}
+
+An arithmetic expression is either a variable, an integer, or one of the operators \texttt{+}, \texttt{-}, \texttt{*}, or \texttt{/} applied to two smaller expressions. Each case is a variant of \lstinline{Expr}:
+\begin{lstlisting}
+pub type Operator {
+  Add
+  Sub
+  Mul
+  Div
+}
+
+pub type Expr {
+  Var(String)
+  N(Int)
+  Binary(operator: Operator, left: Expr, right: Expr)
+}
+\end{lstlisting}
+For example, \lstinline{(x * (2 + 3))} is represented as
+\begin{lstlisting}
+Binary(Mul, Var("x"), Binary(Add, N(2), N(3)))
+\end{lstlisting}
+Note that \lstinline{Binary} lists its operator \emph{before} its left and right expressions. A variable's name is a single letter from \texttt{a} to \texttt{z}. In this section, we often write an expression like \lstinline{(x * (2 + 3))} as shorthand for its \lstinline{Expr}, with every \lstinline{Binary} expression in parentheses.
+
+Two helper functions are provided in the homework:
+\begin{itemize}
+  \item \lstinline{symbol(operator: Operator) -> String} returns the symbol for an operator, such as \lstinline{"+"} for \lstinline{Add}.
+  \item \lstinline{calculate(operator: Operator, a: Int, b: Int) -> Int} applies an operator to two integers, so \lstinline{calculate(Mul, 2, 3)} is \texttt{6}. As in Gleam, \texttt{/} drops any remainder, and dividing by zero gives \texttt{0}.
+\end{itemize}
+\begin{lstlisting}
+pub fn symbol(operator: Operator) -> String {
+  case operator {
+    Add -> "+"
+    Sub -> "-"
+    Mul -> "*"
+    Div -> "/"
+  }
+}
+
+pub fn calculate(operator: Operator, a: Int, b: Int) -> Int {
+  case operator {
+    Add -> a + b
+    Sub -> a - b
+    Mul -> a * b
+    Div -> a / b
+  }
+}
+\end{lstlisting}
+
+\subsection*{Functions}
+
+A function such as \lstinline|fn(x, y) { 2 * y - x }| has a list of parameters and a body expression, which a \lstinline{UserFn} holds:
+\begin{lstlisting}
+pub type UserFn {
+  UserFn(params: List(String), body: Expr)
+}
+\end{lstlisting}
+For example, \lstinline|fn(x, y) { ((2 * y) - x) }| is \lstinline{UserFn(["x", "y"], Binary(Sub, Binary(Mul, N(2), Var("y")), Var("x")))}. A function is \emph{valid} if no parameter is repeated and every variable in its body is one of its parameters. You may assume every \lstinline{UserFn} passed to a function in this section is valid.
+
+Errors are represented by an \lstinline{EvalError}. In this section, we only use \lstinline{WrongArgumentCount}, which records how many arguments a function wants and how many it got:
+\begin{lstlisting}
+pub type EvalError {
+  NameNotFound(String)
+  WrongArgumentCount(want: Int, got: Int)
+}
+\end{lstlisting}
+
+\subsection*{Homework Functions}
+
+For reference, the homework asks you to implement the following functions. The questions in this section don't call them, but they are a good way to think about what each question is doing.
+\begin{itemize}
+  \item \lstinline{to_string(expr)} returns an expression written out as a string, with every \lstinline{Binary} expression in parentheses. For example, the \lstinline{Expr} above becomes \lstinline{"(x * (2 + 3))"}.
+  \item \lstinline{eval(expr, bindings)} returns the value of an expression when each variable has the value it is bound to in the \lstinline{Dict} \texttt{bindings}, or a \lstinline{NameNotFound} error for a variable that isn't bound.
+  \item \lstinline{make_fn(params, body)} returns a \lstinline{UserFn} if the function is valid, or an error listing the repeated parameters or the variables in the body that aren't parameters.
+  \item \lstinline{apply(f, args)} returns the value of the body of \texttt{f} when each parameter is bound to the argument in the same position, or a \lstinline{WrongArgumentCount} error if the number of arguments is wrong. For example, applying \lstinline|fn(x, y) { ((2 * y) - x) }| to \texttt{1} and \texttt{5} gives \texttt{9}.
+\end{itemize}

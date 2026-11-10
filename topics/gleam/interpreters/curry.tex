@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question Implement \texttt{curry}, which takes in a \lstinline{UserFn} \texttt{f} and an integer \texttt{arg}, and returns a function that takes all but the first parameter of \texttt{f}, with \texttt{arg} bound to the first parameter. For example, currying \lstinline|fn(x, y) { (y - x) }| with \texttt{1} gives \lstinline|fn(y) { (y - 1) }|. If \texttt{f} has no parameters, return \lstinline{Error(WrongArgumentCount(want: 0, got: 1))}. You may use \texttt{substitute} from the previous question.
+\begin{lstlisting}
+pub fn curry(f: UserFn, arg: Int) -> Result(UserFn, EvalError) {
+  case f.params {
+    [] -> Error(WrongArgumentCount(want: 0, got: 1))
+    [first, ..rest] -> {
+      let new_body = ____________(___________, ___________, ___________)
+      Ok(UserFn(___________, ___________))
+    }
+  }
+}
+
+assert curry(UserFn(["x", "y"], Binary(Sub, Var("y"), Var("x"))), 1)
+  == Ok(UserFn(["y"], Binary(Sub, Var("y"), N(1))))
+assert curry(UserFn(["c"], Binary(Add, N(10), Var("c"))), 1)
+  == Ok(UserFn([], Binary(Add, N(10), N(1))))
+assert curry(UserFn([], N(7)), 1) == Error(WrongArgumentCount(want: 0, got: 1))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn curry(f: UserFn, arg: Int) -> Result(UserFn, EvalError) {
+  case f.params {
+    [] -> Error(WrongArgumentCount(want: 0, got: 1))
+    [first, ..rest] -> {
+      let new_body = substitute(f.body, first, N(arg))
+      Ok(UserFn(rest, new_body))
+    }
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  A\lstinline{UserFn} is just a list of parameters and a body, so binding the first parameter means changing both: the new parameter list is everything after the first, and the new body is the old body with the first parameter replaced by the argument. Since the body is an \lstinline{Expr}, the argument has to be wrapped as \lstinline{N(arg)} before it can be substituted in.
+
+  The expression \lstinline{f.params} accesses the \texttt{params} field of \texttt{f}, which works because \lstinline{UserFn} has only one variant. We could have instead written \lstinline{let UserFn(params, body) = f} first.
+
+  Currying with the first argument and then applying the result to the remaining arguments gives the same value as applying \texttt{f} to all of them at once: \lstinline{apply(f, [1, 4])} and \lstinline{apply(g, [4])}, where \texttt{g} is \lstinline{curry(f, 1)}, both return \lstinline{Ok(3)}. This relies on \texttt{f} having no repeated parameters, which \lstinline{make_fn} guarantees; if \texttt{f} had parameters \lstinline{["x", "x"]}, substituting for the first \texttt{x} would replace both.
+\end{questionmeta}
+\end{blocksection}

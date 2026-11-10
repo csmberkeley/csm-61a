@@ -1,0 +1,173 @@
+\question Identify the number of calls to \lstinline$eval$ and the number of calls
+to \lstinline$apply$ in \lstinline{evaluator.gleam} made when \lstinline{run} calls
+\lstinline{draw} in each program below. (\lstinline{run} evaluates the body of
+\lstinline{draw} directly, so \lstinline{draw} itself is not an \lstinline$apply$.)
+For each program, count the calls made while evaluating that program, then choose
+one number from each row of the table. The numbers in the table are answer choices,
+not calls to add together.
+
+\begin{parts}
+\begin{blocksection}
+\part \begin{lstlisting}
+fn draw(shape_slider: Int) -> Int {
+  case True {
+    True -> abs(3)
+    False -> abs(1)
+  }
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 4 & 5 & 7 & 9 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+5 \lstinline$eval$, 1 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval case True { True -> abs(3) False -> abs(1) }
+  eval True
+eval abs(3)
+  eval abs
+  eval 3
+  apply abs to 3 → 3
+
+result: 3
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\vspace{0.75\baselineskip}
+\begin{blocksection}
+\part \begin{lstlisting}
+fn draw(shape_slider: Int) -> Point {
+  case abs(2) {
+    2 -> Point(1, 2)
+    _ -> Point(0, 0)
+  }
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 6 & 8 & 10 & 12 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+8 \lstinline$eval$, 2 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval case abs(2) { 2 -> Point(1, 2) _ -> Point(0, 0) }
+  eval abs(2)
+    eval abs
+    eval 2
+    apply abs to 2 → 2
+eval Point(1, 2)
+  eval Point
+  eval 1
+  eval 2
+  apply Point to 1, 2 → Point(1, 2)
+
+result: Point(1, 2)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\vspace{0.75\baselineskip}
+\begin{blocksection}
+\part \begin{lstlisting}
+fn twin(x: Int) -> Point {
+  Point(x, x)
+}
+
+fn draw(shape_slider: Int) -> Point {
+  twin(abs(3))
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 6 & 9 & 11 & 14 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+9 \lstinline$eval$, 3 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval twin(abs(3))
+  eval twin
+  eval abs(3)
+    eval abs
+    eval 3
+    apply abs to 3 → 3
+  apply twin to 3
+    eval Point(x, x)
+      eval Point
+      eval x
+      eval x
+      apply Point to 3, 3 → Point(3, 3)
+  apply twin to 3 → Point(3, 3) // same call as apply twin to 3
+
+result: Point(3, 3)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+
+\vspace{0.75\baselineskip}
+\begin{blocksection}
+\part \begin{lstlisting}
+fn pair(x: Int, y: Int) -> Point {
+  Point(x, y)
+}
+
+fn draw(shape_slider: Int) -> Point {
+  pair(abs(3), case True {
+    True -> 2
+    False -> 0
+  })
+}
+\end{lstlisting}
+
+\begin{tabular}{lrrrr}
+\lstinline$eval$ & 10 & 12 & 13 & 15 \\
+\lstinline$apply$ & 1 & 2 & 3 & 4
+\end{tabular}
+
+\begin{solution}
+12 \lstinline$eval$, 3 \lstinline$apply$
+\begin{lstlisting}[literate={→}{{$\rightarrow$}}1]
+eval pair(abs(3), case True { True -> 2 False -> 0 })
+  eval pair
+  eval abs(3)
+    eval abs
+    eval 3
+    apply abs to 3 → 3
+  eval case True { True -> 2 False -> 0 }
+    eval True
+  eval 2
+  apply pair to 3, 2
+    eval Point(x, y)
+      eval Point
+      eval x
+      eval y
+      apply Point to 3, 2 → Point(3, 2)
+  apply pair to 3, 2 → Point(3, 2) // same call as apply pair to 3, 2
+
+result: Point(3, 2)
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
+\end{parts}
+
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+	\item This has historically been a tricky concept for students. \lstinline$apply$ may come off as easier to understand so relate it to just applying functions to already-evaluated arguments for students.
+	\item Remind students of what gets \lstinline$eval$'ed: every \lstinline{Call} (the whole call, its function expression, and each operand), variables, literals, \lstinline{case} subjects and the chosen arm's body, and \lstinline{let} values and bodies.
+	\item The parser also wraps the body of every function (and each \lstinline{let} value and each \lstinline{case} arm's body) in an \lstinline{At} marker, which technically costs one \lstinline$eval$. The trace tool at \url{https://composingprograms.com/3ed/eval/} hides these, and the solutions above (which are its traces) don't count them, so don't have students count them either.
+	\item Operators are ordinary calls: \lstinline{1 + 2} is a \lstinline{Call} of the built-in \lstinline{+}, so it costs 4 \lstinline$eval$s (the call, \lstinline{+}, \lstinline{1}, \lstinline{2}) and 1 \lstinline$apply$. Record constructors like \lstinline{Point} are built-ins too.
+	\item Every \lstinline{Call} evaluates all of its operands. Only \lstinline{case} skips work, by evaluating just the arm whose pattern matches (patterns are matched, not evaluated). \lstinline{&&} and \lstinline{||} are rewritten by the parser into a \lstinline{case}, which is how they short-circuit.
+	\item For a \lstinline{Builtin}, \lstinline$apply$ just calls its \lstinline{run} function. A \lstinline{UserFn} \lstinline$eval$s its body in a new frame. Higher-order built-ins like \lstinline{list.map} call \lstinline$apply$ on the function they are given, once per element.
+	\item Be very conscious about not accidentally evaluating the expressions yourself when you are counting; that's the interpreter's job!
+	\item It might help to count the expressions by \lstinline$apply$ groups, i.e. count all of \lstinline$eval$ for one \lstinline$apply$able group and then move onto the next.
+	\item Consider referencing Josh's helpful \href{https://drive.google.com/file/d/1YH6eaOAzPx8MC0fO60bIbq9oZipC2lEd/view}{walkthrough video}.
+\end{itemize}
+\end{guide}

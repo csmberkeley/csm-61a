@@ -1,0 +1,83 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\renewcommand{\staff}{Created by Ana Abell, Terry Hsu. }
+
+\discnumber{12}
+\title{CSM Gleaming 2}
+\date{November 9, 2026 -- November 13, 2026}
+
+% Exercises and solutions are imported from the topic bank.
+\begin{document}
+\maketitle
+
+\section{More Gleam!}
+\begin{blocksection}
+\end{blocksection}\par
+% Indent every paragraph of the intro by the same amount.
+{\setlength{\leftskip}{0.7em}
+\noindent These questions are adopted from past CS 61A exams related to linked lists, trees, and/or Scheme.
+% \subimport{../../topics/gleam/text/}{}
+
+% \subimport{../../topics/gleam/easy}{factorial.tex}
+
+\par\vspace{\baselineskip}
+\noindent Here is some commonly used list syntax:
+\begin{itemize}
+  \item \lstinline|[]| is empty.
+  \item \lstinline|[first, ..rest]| splits a non-empty list.
+  \item \lstinline|[first, ..rest]| also constructs a new list.
+  \item \lstinline|#(x, y)| is a two-element tuple.
+\end{itemize}
+
+\vspace{\baselineskip}
+\noindent Here are some commonly used built-in list functions:
+\begin{itemize}
+  \item \lstinline{list.append(xs, ys)} joins two lists.
+  \item \lstinline{list.map(xs, f)} applies \texttt{f} to each value.
+  \item \lstinline{list.filter(xs, keep)} keeps values satisfying \texttt{keep}.
+  \item \lstinline{list.length(xs)} returns a list's length.
+\end{itemize}
+
+\vspace{\baselineskip}
+\noindent You can find other useful builtin functions in Gleam here:\newline
+https://gleam-stdlib.hexdocs.pm/gleam/list.html\newline
+https://gleam-stdlib.hexdocs.pm/gleam/int.html\newline
+https://gleam-stdlib.hexdocs.pm/gleam/result.html
+\par}
+\vspace{\baselineskip}
+
+\newpage
+\begin{questions}
+    \subimport{../../topics/gleam/difficult}{pairs.tex}
+    \newpage
+    \subimport{../../topics/gleam/difficult}{find-pair.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/difficult}{no-eleven.tex}
+    \newpage
+    \subimport{../../topics/gleam/difficult}{combo.tex}
+    \newpage
+    \subimport{../../topics/gleam/difficult}{promote.tex}
+\end{questions}
+
+\newpage
+\section{Interpreters}
+\subimport{../../topics/gleam/text}{interpreters-intro.tex}
+\newpage
+\begin{questions}
+    \subimport{../../topics/gleam/interpreters}{eval-apply-gleam.tex}
+\end{questions}
+
+\newpage
+\subimport{../../topics/gleam/text}{calculators-intro.tex}
+\newpage
+\begin{questions}
+    \setcounter{question}{1}
+    \subimport{../../topics/gleam/interpreters}{simplify.tex}
+    \par\vspace*{2\baselineskip}
+    \subimport{../../topics/gleam/interpreters}{substitute.tex}
+    \newpage
+    \subimport{../../topics/gleam/interpreters}{curry.tex}
+    \par\vspace*{\baselineskip}
+    \subimport{../../topics/gleam/interpreters}{compose.tex}
+\end{questions}
+\end{document}
