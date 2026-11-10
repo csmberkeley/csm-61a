@@ -1,4 +1,4 @@
-The questions in this section use the arithmetic expression language that you saw from homework, but they do not require finishing the homework.
+The questions in this section use the arithmetic expression language that you saw in the homework, but they do not require finishing the homework.
 
 \subsection*{Expressions}
 
@@ -50,7 +50,7 @@ pub fn calculate(operator: Operator, a: Int, b: Int) -> Int {
 
 \subsection*{Functions}
 
-A function such as \lstinline|fn(x, y) { (2 * y) - x }| has a list of parameters and a body expression, which a \lstinline{UserFn} holds:
+A function such as \lstinline|fn(x, y) { 2 * y - x }| has a list of parameters and a body expression, which a \lstinline{UserFn} holds:
 \begin{lstlisting}
 pub type UserFn {
   UserFn(params: List(String), body: Expr)
@@ -73,5 +73,5 @@ For reference, the homework asks you to implement the following functions. The q
   \item \lstinline{to_string(expr)} returns an expression written out as a string, with every \lstinline{Binary} expression in parentheses. For example, the \lstinline{Expr} above becomes \lstinline{"(x * (2 + 3))"}.
   \item \lstinline{eval(expr, bindings)} returns the value of an expression when each variable has the value it is bound to in the \lstinline{Dict} \texttt{bindings}, or a \lstinline{NameNotFound} error for a variable that isn't bound.
   \item \lstinline{make_fn(params, body)} returns a \lstinline{UserFn} if the function is valid, or an error listing the repeated parameters or the variables in the body that aren't parameters.
-  \item \lstinline{apply(f, args)} returns the value of the body of \texttt{f} when each parameter is bound to the argument in the same position, or a \lstinline{WrongArgumentCount} error if the number of arguments is wrong. For example, applying \lstinline|fn(x, y) { ((2 * y) - x) }| to \texttt{1} and \texttt{5} gives \texttt{9}.
+  \item \lstinline{apply(f, args)} returns the value of the body of \texttt{f} when each parameter is bound to the argument in the same position, or a \lstinline{WrongArgumentCount} error if the number of arguments is wrong. For example, applying \lstinline|fn(x, y) { 2 * y - x }| to \texttt{1} and \texttt{5} gives \texttt{9}.
 \end{itemize}
