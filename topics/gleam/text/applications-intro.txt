@@ -1,0 +1,25 @@
+//I will reformat this to .tex after
+
+Data Modeling
+
+Data modeling is the process of deciding how your program will represent information. Single Source of Truth means storing each aspect of the state of your program in one place. If a list and the length of a list are both stored, which one is right? Store what happened rather than derived consequences, which makes programs easier to test. To avoid invalid data, use a type system to describe what states are allowed. Ideally, your types can only represent valid states. Use a small set of functions to create or update data, which ensure validity. Finally, structure data into types that functions will consume or return. Each function should take only the input it needs, not the whole state.
+
+Web Pages
+
+A browser displays a page using three kinds of files. HTML describes what is on the page as a tree of elements, such as <div> and <button>. CSS describes how each element is displayed: its size, color, font, and position. JavaScript is run by the browser and can change the contents of the page and respond to user actions. Gleam compiles to JavaScript.
+
+A page is a tree of elements, and an element’s children are written between its opening tag and closing tag. Nodes in this tree have attributes that control their style (via CSS). For example, an element with class="cell" is styled by the CSS rules for that class. Events are associated with nodes in this tree; for example, a click is an event on a particular button node. Changing the page involves changing this tree, and when the tree changes, the browser displays the new tree.
+
+Model-View-Update (Lustre)
+
+A Lustre app has three parts. The model is the state of the app. The view is a function of the model that returns the tree of elements to display, and it specifies which message to send when the user takes an action. The update is a function that takes the current model and a message, and returns an updated model.
+
+Lustre runs the app in a loop: it calls view on the model and displays the result. For every message that comes in, Lustre calls update with the current model and that message, then calls view on the new model and efficiently updates the page (by changing the tree) to match what view returns.
+
+Building Elements
+
+Each function in lustre/element/html, such as html.div and html.button, creates a node in the tree. It takes a list of attributes and a list of children. For example, html.div([attribute.class("row")], [html.button([], [html.text("Hi")])]) is a div with one attribute (its class) and one child, a button with no attributes whose only child is the text “Hi”. It describes the HTML <div class="row"><button>Hi</button></div>.
+
+The function attribute.class("name") lets CSS style the node, and attribute.disabled(True) makes a button that can’t be clicked. The function event.on_click(msg) associates a click event with the node, which sends msg to update. A text child is created with html.text(s).
+
+element.to_string converts an element to HTML text. Events are associated with nodes in the tree but are not part of the HTML text, so they don’t appear. Layout can come from CSS rather than the shape of the tree.
