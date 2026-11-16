@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question Implement \texttt{view\_cell}, which takes in a \texttt{cell} and its index \texttt{i}, and returns a button with class \texttt{"cell"}. An empty cell has no text and sends \lstinline{UserClickedCell(i)} when clicked. A taken cell shows its player's name and is disabled, so it can't be clicked. You may find \lstinline{event.on_click(msg)}, \lstinline{attribute.disabled(True)}, \lstinline{html.text(s)}, and the provided \texttt{player\_name} helpful.
+\begin{lstlisting}
+pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
+  case cell {
+    Empty ->
+      html.button([attribute.class("cell"), ____________], [])
+    Taken(p) ->
+      html.button([attribute.class("cell"), ____________], [____________])
+  }
+}
+
+assert element.to_string(view_cell(Empty, 3)) == "<button class=\"cell\"></button>"
+assert element.to_string(view_cell(Taken(O), 3))
+  == "<button class=\"cell\" disabled>O</button>"
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
+  case cell {
+    Empty ->
+      html.button([attribute.class("cell"), event.on_click(UserClickedCell(i))], [])
+    Taken(p) ->
+      html.button([attribute.class("cell"), attribute.disabled(True)], [
+        html.text(player_name(p)),
+      ])
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  Every Lustre element function, like \lstinline{html.button}, takes two lists: the attributes of the element, and its children. Here, both buttons have the attribute \lstinline{class="cell"}, which CSS uses to give every cell the same size and font. An empty button has no children, while a taken button has one child, a text node holding \texttt{"X"} or \texttt{"O"}.
+
+  \lstinline{event.on_click(UserClickedCell(i))} attaches an event to this node in the tree: when the user clicks this button, Lustre sends \lstinline{UserClickedCell(i)} to \texttt{update}. This is why \texttt{view\_cell} needs the index \texttt{i}: each of the 9 buttons sends a different message. \lstinline{attribute.disabled(True)} makes the browser ignore clicks on a taken cell.
+
+  The \lstinline{on_click} handler doesn't show up in the output of \lstinline{element.to_string}, so the first assert can't tell whether you attached it. Events belong to nodes in the tree, but they aren't part of the HTML text. Try clicking cells in the running app to check that it works.
+
+  Note that \texttt{view\_board} puts all 9 cells directly inside one \lstinline{div}, with no rows. The 3-by-3 layout comes entirely from the CSS for the \texttt{"board"} class, not from the shape of the tree.
+\end{questionmeta}
+\end{blocksection}

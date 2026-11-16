@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question Implement \texttt{place}, which takes in a \texttt{board}, an index \texttt{i}, and a \texttt{player}, and returns a new board that is the same as \texttt{board} except that cell \texttt{i} is \lstinline{Taken(player)}. You may find \lstinline{list.index_map(list, f)}, which returns a list of \lstinline{f(x, j)} for each element \texttt{x} at index \texttt{j} of \texttt{list}, helpful.
+\begin{lstlisting}
+pub fn place(board: List(Cell), i: Int, player: Player) -> List(Cell) {
+  list.index_map(board, fn(cell, j) {
+    case ____________ {
+      True -> ____________
+      False -> ____________
+    }
+  })
+}
+
+assert place(list.repeat(Empty, 9), 4, X)
+  == [Empty, Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]
+assert place([Empty, Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty], 0, O)
+  == [Taken(O), Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn place(board: List(Cell), i: Int, player: Player) -> List(Cell) {
+  list.index_map(board, fn(cell, j) {
+    case j == i {
+      True -> Taken(player)
+      False -> cell
+    }
+  })
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  Gleam lists can't be changed, so instead of setting cell \texttt{i}, we build a new list where every cell is copied over except the one at index \texttt{i}, which becomes \lstinline{Taken(player)}. \lstinline{list.index_map} is like \lstinline{list.map}, except the function also receives the index of each element. Note the order of the arguments: the element comes first, then the index.
+
+  The index is named \texttt{j} so that it doesn't shadow \texttt{i}, the index we are placing at. If we had written \lstinline{fn(cell, i)}, then \lstinline{i == i} would always be \lstinline{True}, and every cell would be replaced.
+
+  \texttt{place} doesn't check whether cell \texttt{i} is already taken; it just overwrites it. Deciding whether a move is allowed is a rule of the game, which is \texttt{update}'s job in the next question.
+\end{questionmeta}
+\end{blocksection}

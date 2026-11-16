@@ -1,0 +1,27 @@
+\documentclass{exam}
+\usepackage{../../commonheader}
+\lstset{keywordstyle={}}
+\renewcommand{\staff}{Created by Ana Abell, Terry Hsu. }
+
+\discnumber{12}
+\title{CSM Gleaming 3}
+\date{November 16, 2026 -- November 20, 2026}
+
+% Exercises and solutions are imported from the topic bank.
+\begin{document}
+\maketitle
+
+\section{Applications}
+\subimport{../../topics/gleam/text}{tic-tac-toe-intro.tex}
+
+\newpage
+\begin{questions}
+    \subimport{../../topics/gleam/application}{current-player.tex}
+    \par\vspace*{4\baselineskip}
+    \subimport{../../topics/gleam/application}{place.tex}
+    \newpage
+    \subimport{../../topics/gleam/application}{update.tex}
+    \par\vspace*{4\baselineskip}
+    \subimport{../../topics/gleam/application}{view-cell.tex}
+\end{questions}
+\end{document}
