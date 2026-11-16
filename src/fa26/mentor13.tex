@@ -1,28 +1,58 @@
 \documentclass{exam}
 \usepackage{../../commonheader}
-\lstset{keywordstyle={}}
-\renewcommand{\staff}{Created by Ana Abell, Terry Hsu. }
 
 \discnumber{13}
-\title{CSM Gleaming 3}
+\title{CSM Gleaming 3 \& Intro to SQL}
 \date{November 16, 2026 -- November 20, 2026}
 
 % Exercises and solutions are imported from the topic bank.
 \begin{document}
 \maketitle
 
+\begin{meta}
+\begin{blocksection}
+\textbf{Recommended Timeline}
+\begin{itemize}
+    \item Applications overview: 5 minutes
+    \item Q1. \lstinline{current\_player}: 8 minutes
+    \item Q2. \lstinline{place}: 12 minutes
+    \item Q3. \lstinline{update}: 15 minutes
+    \item Q4. \lstinline{view\_cell}: 10 minutes
+    \item SQL intro: 5 minutes
+    \item Q5. Filter rows with \lstinline{WHERE}: 2 minutes
+    \item Q6. Arithmetic in \lstinline{SELECT}: 2 minutes
+    \item Q7. \lstinline{CREATE TABLE ... AS SELECT}: 2 minutes
+    \item Q8. Filter, sort, and limit rows: 2 minutes
+    \item Q9. Sort with a tie-breaker and \lstinline{LIMIT}: 2 minutes
+\end{itemize}
+\end{blocksection}
+\end{meta}
+
 \section{Applications}
-\newpage
 \subimport{../../topics/gleam/text}{tic-tac-toe-intro.tex}
 
 \newpage
 \begin{questions}
     \subimport{../../topics/gleam/application}{current-player.tex}
-    \par\vspace*{4\baselineskip}
     \subimport{../../topics/gleam/application}{place.tex}
     \newpage
     \subimport{../../topics/gleam/application}{update.tex}
-    \par\vspace*{2\baselineskip}
     \subimport{../../topics/gleam/application}{view-cell.tex}
 \end{questions}
+
+\section{SQL}
+\lstset{language=SQL}
+\subimport{../../topics/sql/text/}{intro-first-half.tex}
+\begin{questions}
+    \setcounter{question}{4}
+    \subimport{../../topics/sql/lift/easy/}{more-couples.tex}
+    \subimport{../../topics/sql/lift/easy/}{single-difference.tex}
+    \subimport{../../topics/sql/lift/easy/}{create-as-select.tex}
+    \subimport{../../topics/sql/lift/easy/}{where-order-by.tex}
+    \subimport{../../topics/sql/lift/easy/}{most-singles.tex}
+\end{questions}
+
+\newpage
 \end{document}
+
+from this week's videos has integer columns \lstinline{chair}, \lstinline{single}, and \lstinline{couple}. Each row describes one chair and how many single people and couples are in it. Write a query that returns the chair number and total number of people (count each couple as two people) for chairs with at least 3 couples. 

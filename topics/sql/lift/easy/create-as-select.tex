@@ -1,0 +1,10 @@
+\begin{blocksection}
+\question Assume \lstinline{lift} already exists. Create a table named \lstinline{lift_totals} containing each chair number and the total number of people in that chair, counting each couple as two people.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+CREATE TABLE lift_totals AS
+    SELECT chair, single + 2 * couple AS people FROM lift;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

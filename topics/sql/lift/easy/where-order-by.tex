@@ -1,0 +1,13 @@
+\begin{blocksection}
+\question Assume the \lstinline{lift} table exists. Return the two chairs with the greatest number of people first.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+SELECT chair, single + 2 * couple AS people
+FROM lift
+WHERE couple >= 3
+ORDER BY people DESC, chair ASC
+LIMIT 2;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,11 @@
+\begin{blocksection}
+\question For each chair with at least 4 single people, return its chair number and the difference between its number of single people and twice its number of couples. Name the computed column \lstinline{difference}.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+SELECT chair, single - 2 * couple AS difference
+FROM lift
+WHERE single >= 4;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}
