@@ -13,10 +13,12 @@ pub type Msg { UserClickedCell(Int) UserClickedNewGame }
 \end{lstlisting}
 For example, after \texttt{X} takes the center and \texttt{O} takes the top-left corner, the board is \lstinline{[Taken(O), Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]}. \texttt{X} always moves first, and there is no winner: the game continues until the board is full.
 
-Each Lustre element is made by a function that takes a list of \emph{attributes} and a list of \emph{children}. For example, \lstinline{html.button([attribute.class("cell"), event.on_click(UserClickedNewGame)], [html.text("X")])} is a button with class \texttt{"cell"} and text \texttt{X} that sends \lstinline{UserClickedNewGame} when clicked. \lstinline{attribute.disabled(True)} makes a button unclickable.
+\subsection*{Building the View}
+
+Each Lustre element is made by a function that takes a list of \emph{attributes} and a list of \emph{children}. For example, \lstinline{html.button([attribute.class("cell"), event.on_click(UserClickedCell(4))], [html.text("X")])} is a button with class \texttt{"cell"} and text \texttt{X} that sends \lstinline{UserClickedCell(4)} when clicked. \lstinline{attribute.disabled(True)} makes a button unclickable.
 \begin{itemize}
   \item \lstinline{init(Nil)} returns an empty board, and \lstinline{cell_at(board, i)} returns cell \texttt{i} of \texttt{board}.
-  \item \texttt{view} shows the status, the board, and a ``New game'' button. \texttt{view\_status} shows whose turn it is, such as \texttt{"X to move"}, or \texttt{"Board full"}.
+  \item \texttt{view} shows the status, the board, and a ``New game'' button. \texttt{view\_status} shows whose turn it is, such as \texttt{"X to move"}, or \texttt{"Board full"} once no cells are empty.
   \item \texttt{view\_board} puts one button per cell, made by \texttt{view\_cell}, in a \lstinline{div} with class \texttt{"board"}, which CSS displays as a 3-by-3 grid.
 \end{itemize}
 

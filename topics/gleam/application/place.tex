@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Implement \texttt{place}, which takes in a \texttt{board}, an index \texttt{i}, and a \texttt{player}, and returns a new board that is the same as \texttt{board} except that cell \texttt{i} is \lstinline{Taken(player)}. You may find \lstinline{list.index_map(list, f)}, which returns a list of \lstinline{f(x, j)} for each element \texttt{x} at index \texttt{j} of \texttt{list}, helpful.
+\question Implement \texttt{place}, which takes in a \texttt{board}, an index \texttt{i}, and a \texttt{player}, and returns a new board that is the same as \texttt{board} except that cell \texttt{i} is \lstinline{Taken(player)}. You may find \lstinline{list.index_map(xs, f)}, which returns a list of \lstinline{f(x, j)} for each element \texttt{x} at index \texttt{j} of \texttt{xs}, helpful.
 \begin{lstlisting}
 pub fn place(board: List(Cell), i: Int, player: Player) -> List(Cell) {
   list.index_map(board, fn(cell, j) {

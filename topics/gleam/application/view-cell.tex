@@ -6,7 +6,7 @@ pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
     Empty ->
       html.button(
         [attribute.class("cell"), _________________(____________________)],
-        []
+        [],
       )
     Taken(p) ->
       html.button([attribute.class("cell"), attribute.disabled(True)], [
@@ -15,7 +15,8 @@ pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
   }
 }
 
-assert element.to_string(view_cell(Empty, 3)) == "<button class=\"cell\"></button>"
+assert element.to_string(view_cell(Empty, 3))
+  == "<button class=\"cell\"></button>"
 assert element.to_string(view_cell(Taken(O), 3))
   == "<button class=\"cell\" disabled>O</button>"
 \end{lstlisting}

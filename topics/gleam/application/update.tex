@@ -14,8 +14,8 @@ pub fn update(model: Model, msg: Msg) -> Model {
   }
 }
 
-assert update(init(Nil), UserClickedCell(4))
-  == Model([Empty, Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty])
+assert update(init(Nil), UserClickedCell(4)).board
+  == [Empty, Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]
 assert cell_at(update(update(init(Nil), UserClickedCell(4)), UserClickedCell(0)).board, 0)
   == Taken(O)
 assert update(update(init(Nil), UserClickedCell(4)), UserClickedCell(4))

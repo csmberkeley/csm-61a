@@ -1,5 +1,5 @@
 \begin{blocksection}
-\question Implement \texttt{current\_player}, which takes in a \texttt{board} and returns the \lstinline{Player} whose turn it is. \texttt{X} always moves first, and the players take turns, so whose turn it is depends only on how many cells have been taken. You may find \lstinline{list.count(list, f)}, which returns the number of elements \texttt{x} in \texttt{list} for which \lstinline{f(x)} is \lstinline{True}, helpful.
+\question Implement \texttt{current\_player}, which takes in a \texttt{board} and returns the \lstinline{Player} whose turn it is. \texttt{X} always moves first, and the players take turns, so whose turn it is depends only on how many cells have been taken. You may find \lstinline{list.count(xs, f)}, which returns the number of elements \texttt{x} in \texttt{xs} for which \lstinline{f(x)} is \lstinline{True}, helpful.
 \begin{lstlisting}
 pub fn current_player(board: List(Cell)) -> Player {
   let taken = list.count(board, fn(cell) { ____________ })
