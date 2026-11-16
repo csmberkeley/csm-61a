@@ -13,14 +13,29 @@ pub type Msg { UserClickedCell(Int) UserClickedNewGame }
 \end{lstlisting}
 For example, after \texttt{X} takes the center and \texttt{O} takes the top-left corner, the board is \lstinline{[Taken(O), Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]}. \texttt{X} always moves first, and there is no winner: the game continues until the board is full.
 
-\subsection*{Provided Code}
-
 Each Lustre element is made by a function that takes a list of \emph{attributes} and a list of \emph{children}. For example, \lstinline{html.button([attribute.class("cell"), event.on_click(UserClickedNewGame)], [html.text("X")])} is a button with class \texttt{"cell"} and text \texttt{X} that sends \lstinline{UserClickedNewGame} when clicked. \lstinline{attribute.disabled(True)} makes a button unclickable.
 \begin{itemize}
   \item \lstinline{init(Nil)} returns an empty board, and \lstinline{cell_at(board, i)} returns cell \texttt{i} of \texttt{board}.
   \item \texttt{view} shows the status, the board, and a ``New game'' button. \texttt{view\_status} shows whose turn it is, such as \texttt{"X to move"}, or \texttt{"Board full"}.
-  \item \texttt{view\_board} puts one button per cell in a \lstinline{div} with class \texttt{"board"}, which CSS displays as a 3-by-3 grid. \lstinline{list.index_map} is like \lstinline{list.map}, but calls \lstinline{view_cell(cell, i)} with each cell and its index.
+  \item \texttt{view\_board} puts one button per cell, made by \texttt{view\_cell}, in a \lstinline{div} with class \texttt{"board"}, which CSS displays as a 3-by-3 grid.
 \end{itemize}
+
+\subsection*{Useful List Functions}
+
+The following functions from Gleam's \texttt{list} module are used in the provided code and the questions:
+{\sloppy
+\begin{itemize}
+  \item \lstinline{list.repeat(x: a, n: Int) -> List(a)} returns a list of \texttt{n} copies of \texttt{x}.
+  \item \lstinline{list.drop(xs: List(a), n: Int) -> List(a)} returns \texttt{xs} without its first \texttt{n} elements.
+  \item \lstinline{list.index_map(xs: List(a), f: fn(a, Int) -> b) -> List(b)} is like \lstinline{list.map}, but calls \lstinline{f(x, i)} with each element \texttt{x} and its index \texttt{i}.
+  \item \lstinline{list.contains(xs: List(a), x: a) -> Bool} returns whether \texttt{x} is in \texttt{xs}.
+  \item \lstinline{list.count(xs: List(a), f: fn(a) -> Bool) -> Int} returns the number of elements \texttt{x} in \texttt{xs} for which \lstinline{f(x)} is \lstinline{True}.
+\end{itemize}
+\par}
+
+\newpage
+\subsection*{Provided Code}
+
 \begin{lstlisting}
 pub fn init(_flags) -> Model {
   Model(board: list.repeat(Empty, 9))

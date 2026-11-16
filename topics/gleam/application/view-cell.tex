@@ -1,12 +1,17 @@
 \begin{blocksection}
-\question Implement \texttt{view\_cell}, which takes in a \texttt{cell} and its index \texttt{i}, and returns a button with class \texttt{"cell"}. An empty cell has no text and sends \lstinline{UserClickedCell(i)} when clicked. A taken cell shows its player's name and is disabled, so it can't be clicked. You may find \lstinline{event.on_click(msg)}, \lstinline{attribute.disabled(True)}, \lstinline{html.text(s)}, and the provided \texttt{player\_name} helpful.
+\question Implement \texttt{view\_cell}, which takes in a \texttt{cell} and its index \texttt{i}, and returns a button with class \texttt{"cell"}. An empty cell has no text and sends \lstinline{UserClickedCell(i)} when clicked. A taken cell shows its player's name and is disabled, so it can't be clicked. You may find \lstinline{event.on_click(msg)}, \lstinline{html.text(s)}, and the provided \texttt{player\_name} helpful.
 \begin{lstlisting}
 pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
   case cell {
     Empty ->
-      html.button([attribute.class("cell"), ____________], [])
+      html.button(
+        [attribute.class("cell"), _________________(____________________)],
+        []
+      )
     Taken(p) ->
-      html.button([attribute.class("cell"), ____________], [____________])
+      html.button([attribute.class("cell"), attribute.disabled(True)], [
+        ______________(________________),
+      ])
   }
 }
 
@@ -20,7 +25,10 @@ assert element.to_string(view_cell(Taken(O), 3))
 pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
   case cell {
     Empty ->
-      html.button([attribute.class("cell"), event.on_click(UserClickedCell(i))], [])
+      html.button(
+        [attribute.class("cell"), event.on_click(UserClickedCell(i))],
+        [],
+      )
     Taken(p) ->
       html.button([attribute.class("cell"), attribute.disabled(True)], [
         html.text(player_name(p)),

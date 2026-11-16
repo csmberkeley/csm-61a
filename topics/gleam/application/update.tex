@@ -4,10 +4,11 @@
 pub fn update(model: Model, msg: Msg) -> Model {
   case msg {
     UserClickedCell(i) ->
-      case ____________ {
+      case ____________(______________________) {
         Empty ->
-          Model(board: ____________(____________, ____________, ____________))
-        Taken(_) -> ____________
+          Model(board: ____________(________________, ____,
+            ____________________(________________)))
+        Taken(_) -> _________
       }
     UserClickedNewGame -> init(Nil)
   }
