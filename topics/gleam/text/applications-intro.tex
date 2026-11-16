@@ -1,7 +1,7 @@
 \begin{blocksection}
 \textbf{Data Modeling}
 
-Data modeling is the process of deciding how your program will represent information. Single Source of Truth means storing each aspect of the state of your program in one place. If a list and the length of a list are both stored, which one is right? You can store what happened rather than derived consequences, which will make programs easier to test. Using a type system helps to avoid invalid data. Ideally, your types can only represent valid states. You can help ensure validity by using a small amount of functions to alter data. Finally, structure your data into types that functions will consume or return. Each function should take only the input it needs, not the whole state.
+Data modeling is the process of deciding how your program will represent information. Ideally, you would have a single source of truth, meaning that storing each aspect of the state of your program in one place. If a list and the length of a list are both stored, which one is right? You can store what happened rather than derived consequences, which will make programs easier to test. In order to avoid invalid data, you can use a type system. Ideally, your types can only represent valid states. You can help ensure validity by using a small amount of functions to alter data. Finally, you can structure your data into types that functions will consume or return. Each function should take only the input it needs, not the whole state.
 
 \vspace{\baselineskip}
 \textbf{Web Pages}
