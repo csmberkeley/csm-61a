@@ -1,0 +1,81 @@
+% Same code as the original growth problem; qualitative solutions for Fall 2026.
+\question \textbf{Fast Exponentiation:} in this problem, we will examine a
+real-world algorithm used to improve the speed of calculating exponents.
+You can assume for the purposes of this problem that multiplication is a
+fixed-cost operation. Classify each version as linear, sublinear, or
+superlinear relative to the non-negative integer exponent \lstinline{n};
+explain your answer in words.
+
+\begin{parts}
+
+\begin{blocksection}
+\part First, determine the runtime efficiency of the naive exponentiation algorithm.
+\begin{lstlisting}
+def exp(b, n):
+    if n == 0:
+        return 1
+    else:
+        return b * exp(b, n - 1)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Linear. Each call reduces \lstinline{n} by one. Doubling the exponent
+roughly doubles the number of calls and multiplications.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part Now, express the runtime of the fast exponentiation algorithm.
+\begin{lstlisting}
+def fast_exp(b, n):
+    if n == 0:
+        return 1
+    elif n % 2 == 0: # Assume square runs in constant time
+        return square(fast_exp(b, n // 2))
+    else:
+        return b * fast_exp(b, n - 1)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Sublinear. An even exponent is halved; an odd exponent is reduced by one
+and then halved on the next step. Doubling the starting exponent adds only
+one initial halving step. The recursive result is computed once and then
+passed to \lstinline{square}.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\part What about this slightly modified version of \texttt{fast\char`_exp}?
+\begin{lstlisting}
+def fast_exp(b, n):
+    for _ in range(50 * n):
+        print("Killing time")
+    if n == 0:
+        return 1
+    elif n % 2 == 0:
+        return square(fast_exp(b, n // 2))
+    else:
+        return b * fast_exp(b, n - 1)
+\end{lstlisting}
+\begin{solution}[0.25in]
+Linear. The first loop alone does work proportional to \lstinline{n}.
+Subsequent loops shrink as the exponent is halved. Odd exponents add one
+extra stage before a halving, but the total work still stays proportional
+to the starting exponent. The fixed multiplier 50 does not change the
+category.
+\end{solution}
+\end{blocksection}
+
+\end{parts}
+
+\begin{guide}
+\textbf{Teaching Tips}
+\begin{itemize}
+    \item Compare small exponents and describe what changes when the exponent
+    doubles. No formal bounds or recurrence equations are needed.
+    \item Distinguish reusing a local recursive result from keeping a cache
+    across calls. Fast exponentiation reduces work by halving the problem;
+    it does not itself maintain a persistent cache.
+    \item These functions do not repeat subproblems within a call, so a cache
+    mainly helps when the same inputs are requested again. A cache for a
+    two-argument function must distinguish both the base and the exponent.
+\end{itemize}
+\end{guide}

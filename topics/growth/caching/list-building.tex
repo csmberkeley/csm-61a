@@ -1,0 +1,69 @@
+\begin{blocksection}
+\question Compare these ways of building a list of greetings from a list of names.
+\begin{lstlisting}
+def greetings_a(names):
+    return ['Hi, ' + name for name in names]
+
+def greetings_b(names):
+    s = []
+    for name in names:
+        s.append('Hi, ' + name)
+    return s
+
+def greetings_c(names):
+    s = []
+    for name in names:
+        s = s + ['Hi, ' + name]
+    return s
+
+def greetings_d(names):
+    s = []
+    for name in names:
+        s.insert(0, 'Hi, ' + name)
+    return s
+\end{lstlisting}
+\end{blocksection}
+\begin{parts}
+\part What does each function return for \lstinline{names = ['Ada', 'Bo', 'Cam']}?
+\begin{solution}[0.5in]
+\lstinline{greetings_a} (comprehension), \lstinline{greetings_b} (append),
+and \lstinline{greetings_c} (concatenation) all keep the input order and return:
+\begin{lstlisting}
+['Hi, Ada', 'Hi, Bo', 'Hi, Cam']
+\end{lstlisting}
+\lstinline{greetings_d} (front insertion) reverses the order because each
+new greeting is inserted before the previous greetings. It returns:
+\begin{lstlisting}
+['Hi, Cam', 'Hi, Bo', 'Hi, Ada']
+\end{lstlisting}
+\end{solution}
+\part Which two avoid repeatedly copying or shifting the growing list?
+Explain the extra work in the other two, without runtime notation.
+Focus on building the list; all four construct the same greeting strings.
+\begin{solution}[0.7in]
+\begin{itemize}
+    \item \lstinline{greetings_a} uses a list comprehension to build the
+    result without repeatedly copying the growing list.
+    \item \lstinline{greetings_b} uses \lstinline{append} to add each
+    greeting at the end without shifting existing elements. It may
+    occasionally resize its storage, but does not copy the whole list
+    on every append.
+    \item \lstinline{greetings_c} uses \lstinline{s = s + [...]} to
+    construct a new list each iteration, copying all the previous greetings
+    into it before adding the new greeting.
+    \item \lstinline{greetings_d} uses \lstinline{s.insert(0, ...)} to
+    insert at the front, shifting all existing greetings to make room.
+\end{itemize}
+\end{solution}
+\part Rewrite \lstinline{greetings_d} with a list comprehension that returns the same elements
+in the same order, without inserting at the front.
+\begin{solution}[0.5in]
+Visit the names from the last index to the first, so the comprehension
+produces the same reversed order without inserting at the front.
+\begin{lstlisting}
+def greetings_d(names):
+    return ['Hi, ' + names[i]
+            for i in range(len(names) - 1, -1, -1)]
+\end{lstlisting}
+\end{solution}
+\end{parts}

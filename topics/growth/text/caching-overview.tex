@@ -1,0 +1,53 @@
+\textbf{Efficiency: avoiding repeated work}
+
+A cache stores results so a later request can reuse them. Memoization is
+caching a function's return value for each input. On a \emph{cache miss},
+compute and store the result; on a \emph{cache hit}, return the stored result.
+
+\begin{lstlisting}
+def memo(f):
+    cache = {}
+    def remembered(x):
+        if x not in cache:
+            cache[x] = f(x)
+        return cache[x]
+    return remembered
+\end{lstlisting}
+
+Each call to \lstinline{memo} creates a new dictionary. The returned function
+keeps that dictionary across calls. Putting \lstinline|cache = {}| inside
+\lstinline{remembered} would discard earlier results on every call.
+Use membership testing: a stored result of 0 or \lstinline{False} is still
+a cached result. This version requires hashable inputs, such as integers.
+
+Caching works when the same input should produce the same result. A cache
+hit skips the original function body, including its printing or other side
+effects. If a result depends on changing external state, reusing it can be
+incorrect. Caching also uses memory to store results.
+
+\textbf{Fibonacci and repeated calls}
+
+Tree-recursive Fibonacci repeats calls on smaller inputs.
+For example, computing \lstinline{fib(5)} needs the results for inputs 4
+and 3. Computing the result for input 4 needs input 3 again.
+With memoization, every recursive call checks a shared dictionary keyed by
+the argument. Each \lstinline{fib(k)} is computed only once; later requests
+are just lookups. Saving only the final answer to the outermost call would
+not prevent repeated work within that computation.
+
+\textbf{List operations differ in cost}
+\begin{itemize}
+    \item \textbf{Fast list-building choices:} \lstinline{s.append(x)} adds
+    to the end without shifting existing elements. List comprehensions also
+    build results efficiently, evaluating their expression once per element.
+    Appending occasionally needs more storage, but does not copy the whole
+    list every time.
+    \item \textbf{Fast replacement:} \lstinline{s[k] = k * k} replaces
+    the element at an existing index without shifting other elements or
+    copying the list. It does not grow the list: index \lstinline{k} must
+    already be valid.
+    \item \textbf{Slow when repeated:} \lstinline{s.insert(0, x)} shifts
+    existing elements to make room at the front. \lstinline{s = s + [x]}
+    creates a new list, copying the growing old list every time.
+\end{itemize}
+Explain what work is repeated or avoided, rather than giving a runtime formula.

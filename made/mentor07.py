@@ -164,6 +164,7 @@ def all_paths[T](t: Tree[T]) -> list[LinkedList[T]]:
     return ____________________________________________________________
 
 
+
 def count_paths(t: Tree[int], total: int) -> int:
     """
     >>> t = Tree(1, [Tree(3), Tree(3, [Tree(4), Tree(0)]), Tree(4, [Tree(1)])])

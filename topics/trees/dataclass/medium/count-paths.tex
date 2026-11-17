@@ -20,7 +20,6 @@ def count_paths(t: Tree[int], total: int) -> int:
 
     return ____________________________________________________________
 \end{lstlisting}
-
 \begin{solution}[1in]
 \begin{lstlisting}
 def count_paths(t: Tree[int], total: int) -> int:
@@ -29,7 +28,6 @@ def count_paths(t: Tree[int], total: int) -> int:
     return sum([count_paths(b, total - t.label) for b in t.branches])
 \end{lstlisting}
 \end{solution}
-
 \end{blocksection}
 
 \begin{questionmeta}

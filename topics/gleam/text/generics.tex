@@ -1,0 +1,22 @@
+\begin{blocksection}
+%ana
+%Generic programming is a style of computer programming in which algorithms are written in terms of data types to-be-specified-later that are then instantiated when needed for specific types provided as parameters. This works by using a type variable instead of specifying a concrete type. It stands in for whatever specific type is being used when the function is called. These type variables are written with a lowercase name.
+Gleam supports generics, which let you write functions that work with any type. Instead of naming a concrete type, you use a type variable, written with a lowercase name, and it stands in for whatever type the function is called with.
+Here are some examples: 
+\begin{lstlisting}
+pub fn main() {
+  let add_one = fn(x) { x + 1 }
+  let exclaim = fn(x) { x <> "!" }
+  echo twice(10, add_one) // Outputs 12. The type variable is Int.
+  echo twice("Hello", exclaim) // Outputs "Hello!!". The type variable is String.
+}
+
+// The name `value` refers to the same type multiple times
+fn twice(argument: value, my_function: fn(value) -> value) -> value {
+  my_function(my_function(argument))
+}
+//credit to the Gleam language website for this example
+\end{lstlisting}
+\par
+We also don't have to restrict ourselves to only doing this with functions! We can do this in type definitions as well (see the \lstinline{Tree} type in Gleam).
+\end{blocksection}

@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question Complete \lstinline{make_fib} so the returned function remembers
+Fibonacci results across calls. Assume non-negative integer inputs.
+\begin{lstlisting}
+def make_fib():
+    cache = {0: 0, 1: 1}
+    def fib(n):
+        if __________________________:
+            cache[n] = __________________________
+        return __________________________
+    return fib
+\end{lstlisting}
+\begin{solution}[0.5in]
+\begin{lstlisting}
+def make_fib():
+    cache = {0: 0, 1: 1}
+    def fib(n):
+        if n not in cache:
+            cache[n] = fib(n - 1) + fib(n - 2)
+        return cache[n]
+    return fib
+\end{lstlisting}
+\end{solution}
+\begin{parts}
+\part Execute these calls in order. Give each return value and the new
+keys added to the cache during each call.
+\begin{lstlisting}
+f = make_fib()
+f(5)
+f(5)
+f(6)
+\end{lstlisting}
+\begin{solution}[0.8in]
+The first call returns 5 and adds keys 2, 3, 4, 5 in that order.
+The second returns 5 and adds no keys: it is a cache hit.
+The third returns 8 and adds only key 6; values for 5 and 4 are already stored.
+\end{solution}
+\part Why is the dictionary created outside \lstinline{fib}? Would
+\lstinline{g = make_fib()} share \lstinline{f}'s saved results?
+\begin{solution}[0.6in]
+The returned function retains the same dictionary across recursive and
+later calls. Creating it inside \lstinline{fib} would reset it on each
+call. Calling \lstinline{make_fib} again creates a separate dictionary,
+so \lstinline{g} does not share \lstinline{f}'s results.
+\end{solution}
+\end{parts}
+\end{blocksection}

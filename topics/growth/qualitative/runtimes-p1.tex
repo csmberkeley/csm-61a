@@ -1,0 +1,47 @@
+% Same code as the original growth problem; qualitative solutions for Fall 2026.
+\begin{blocksection}
+\question Classify each function's work as linear, sublinear, or superlinear
+relative to \lstinline{n}. Explain in words. Assume \lstinline{n} is a
+non-negative integer and arithmetic and printing each take a fixed amount
+of work.
+
+\begin{center}
+\begin{tabular}{ |p{13cm}|p{2cm}| }
+\hline
+\begin{lstlisting}
+def mystery(n):
+    total = 0
+    for i in range(n // 2):
+        j = 1
+        while j < n:
+            j *= 2
+            total += i * j
+    return total
+\end{lstlisting} &  \\  \hline
+
+\begin{lstlisting}
+def foo(n):
+    if n == 0:
+        return
+    for i in range(n // 2):
+        print(i)
+    foo(n // 2)
+\end{lstlisting} &  \\  \hline
+\end{tabular}
+\end{center}
+
+\end{blocksection}
+
+\begin{solution}
+\begin{itemize}
+    \item \lstinline{mystery}: superlinear. The outer loop runs about half
+    as many times as \lstinline{n}, and each iteration starts a fresh
+    doubling loop. As \lstinline{n} grows, both the number of outer
+    iterations and the work per iteration grow. Doubling \lstinline{n}
+    roughly doubles the outer iterations and adds an inner iteration.
+    \item \lstinline{foo}: linear. The loops do about half of \lstinline{n}
+    steps, then a quarter, then an eighth, and so on. All those shrinking
+    amounts together stay proportional to \lstinline{n}. The recursive
+    calls do not each repeat the original amount of work.
+\end{itemize}
+\end{solution}

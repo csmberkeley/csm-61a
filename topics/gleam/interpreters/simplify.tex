@@ -1,0 +1,45 @@
+\begin{blocksection}
+\question Implement \texttt{simplify}, which takes in an \lstinline{Expr} \texttt{expr} and returns an equivalent expression in which every \lstinline{Binary} expression whose two sides both simplify to numbers is replaced by the single number it computes. Parts of \texttt{expr} that contain variables are kept. For example, \lstinline{(x + (2 * 3))} simplifies to \lstinline{(x + 6)}. Use the provided \texttt{calculate} function.
+\begin{lstlisting}
+pub fn simplify(expr: Expr) -> Expr {
+  case expr {
+    Binary(operator, left, right) ->
+      case ____________(__________), ____________(__________) {
+        N(a), N(b) -> __________________________________
+        l, r -> __________________________________
+      }
+    _ -> ____________
+  }
+}
+
+assert simplify(Binary(Add, Var("x"), Binary(Mul, N(2), N(3))))
+  == Binary(Add, Var("x"), N(6))
+assert simplify(Binary(Mul, Binary(Sub, N(5), N(1)), N(2))) == N(8)
+assert simplify(Binary(Add, Binary(Add, Var("x"), N(1)), Binary(Add, N(2), N(3))))
+  == Binary(Add, Binary(Add, Var("x"), N(1)), N(5))
+assert simplify(Var("x")) == Var("x")
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn simplify(expr: Expr) -> Expr {
+  case expr {
+    Binary(operator, left, right) ->
+      case simplify(left), simplify(right) {
+        N(a), N(b) -> N(calculate(operator, a, b))
+        l, r -> Binary(operator, l, r)
+      }
+    _ -> expr
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  We simplify both sides first and then match on the two results at once. If both sides simplified all the way down to numbers, we can compute the result with \lstinline{calculate} and return a single \lstinline{N}. Otherwise, at least one side still has a variable in it, so we rebuild the \lstinline{Binary} around the simplified sides. A \lstinline{Var} or an \lstinline{N} is already as simple as it gets, so it is returned as is.
+
+  It is important to match on \lstinline{simplify(left)} and \lstinline{simplify(right)} rather than on \texttt{left} and \texttt{right} directly. In \lstinline{((5 - 1) * 2)}, the left side is a \lstinline{Binary}, not an \lstinline{N}, so it only becomes \lstinline{N(4)} after it has been simplified. Simplifying the sides first is what lets numbers collapse from the bottom of the tree up.
+
+  Note that \texttt{simplify} only combines two numbers that are directly joined by an operator. In \lstinline{((x + 1) + 2)}, the \texttt{1} and the \texttt{2} are never on the two sides of the same \lstinline{Binary}, so the expression stays the same even though it is equivalent to \lstinline{(x + 3)}.
+\end{questionmeta}
+\end{blocksection}
