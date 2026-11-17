@@ -26,7 +26,7 @@ def extension_for(file_path):
 		return LANGUAGE_EXTENSIONS.get(match.group(1), DEFAULT_EXTENSION)
 	return DEFAULT_EXTENSION
 
-def generate_file(file_name, file_paths, solution=False):
+def generate_file(file_paths, solution=False):
 	file = []
 	for file_path in file_paths:
 		with open(file_path, 'r', encoding="UTF-8") as f:
@@ -51,9 +51,8 @@ def generate_file(file_name, file_paths, solution=False):
 					file.append(line)
 					num_lines_since_start += 1
 		file.append("\n")
-	with open(file_name, 'w') as f:
-		f.write('\n'.join(file) + '\n')
-		
+	return file
+
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
@@ -75,5 +74,9 @@ if __name__ == '__main__':
 	if not paths_by_extension:
 		paths_by_extension[DEFAULT_EXTENSION] = []
 	for extension, paths in paths_by_extension.items():
-		out_file = os.path.join(worksheet_dest, base_name + extension)
-		generate_file(out_file, paths, solution=args.solution)
+		content = '\n'.join(generate_file(paths, solution=args.solution)) + '\n'
+		# Only the default file is written when it has no code.
+		if extension != DEFAULT_EXTENSION and not content.strip():
+			continue
+		with open(os.path.join(worksheet_dest, base_name + extension), 'w') as f:
+			f.write(content)
