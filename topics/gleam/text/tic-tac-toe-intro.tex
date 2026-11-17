@@ -1,0 +1,79 @@
+The questions in this section build a two-player tic-tac-toe web app using Lustre, the same framework as the rock-paper-scissors app from lab. They do not depend on the lab.
+
+\subsection*{The Model and Messages}
+
+In a Lustre app, the \emph{model} holds the entire state of the app, \texttt{view} turns the model into a tree of elements to display, and \texttt{update} takes the model and a \emph{message} and returns a new model. When the user clicks a button, Lustre sends that button's message to \texttt{update}, then calls \texttt{view} on the new model and changes the page to match.
+
+Here, the model is a board of 9 cells, numbered \texttt{0} to \texttt{8} from left to right, top to bottom. Clicking cell \texttt{i} sends \lstinline{UserClickedCell(i)}, and clicking ``New game'' sends \lstinline{UserClickedNewGame}.
+\begin{lstlisting}
+pub type Player { X O }
+pub type Cell { Empty Taken(Player) }
+pub type Model { Model(board: List(Cell)) }
+pub type Msg { UserClickedCell(Int) UserClickedNewGame }
+\end{lstlisting}
+For example, after \texttt{X} takes the center and \texttt{O} takes the top-left corner, the board is \lstinline{[Taken(O), Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]}. \texttt{X} always moves first, and there is no winner: the game continues until the board is full.
+
+\subsection*{Building the View}
+
+Each Lustre element is made by a function that takes a list of \emph{attributes} and a list of \emph{children}. For example, \lstinline{html.button([attribute.class("cell"), event.on_click(UserClickedCell(4))], [html.text("X")])} is a button with class \texttt{"cell"} and text \texttt{X} that sends \lstinline{UserClickedCell(4)} when clicked. \lstinline{attribute.disabled(True)} makes a button unclickable.
+\begin{itemize}
+  \item \lstinline{init(Nil)} returns an empty board, and \lstinline{cell_at(board, i)} returns cell \texttt{i} of \texttt{board}.
+  \item \texttt{view} shows the status, the board, and a ``New game'' button. \texttt{view\_status} shows whose turn it is, such as \texttt{"X to move"}, or \texttt{"Board full"} once no cells are empty.
+  \item \texttt{view\_board} puts one button per cell, made by \texttt{view\_cell}, in a \lstinline{div} with class \texttt{"board"}, which CSS displays as a 3-by-3 grid.
+\end{itemize}
+
+\subsection*{Useful List Functions}
+
+The following functions from Gleam's \texttt{list} module are used in the provided code and the questions:
+{\sloppy
+\begin{itemize}
+  \item \lstinline{list.repeat(x: a, n: Int) -> List(a)} returns a list of \texttt{n} copies of \texttt{x}.
+  \item \lstinline{list.drop(xs: List(a), n: Int) -> List(a)} returns \texttt{xs} without its first \texttt{n} elements.
+  \item \lstinline{list.index_map(xs: List(a), f: fn(a, Int) -> b) -> List(b)} is like \lstinline{list.map}, but calls \lstinline{f(x, i)} with each element \texttt{x} and its index \texttt{i}.
+  \item \lstinline{list.contains(xs: List(a), x: a) -> Bool} returns whether \texttt{x} is in \texttt{xs}.
+  \item \lstinline{list.count(xs: List(a), f: fn(a) -> Bool) -> Int} returns the number of elements \texttt{x} in \texttt{xs} for which \lstinline{f(x)} is \lstinline{True}.
+\end{itemize}
+\par}
+
+\newpage
+\subsection*{Code}
+
+\begin{lstlisting}
+pub fn init(_flags) -> Model {
+  Model(board: list.repeat(Empty, 9))
+}
+
+pub fn cell_at(board: List(Cell), i: Int) -> Cell {
+  case list.drop(board, i) {
+    [cell, ..] -> cell
+    [] -> Empty
+  }
+}
+
+pub fn player_name(player: Player) -> String {
+  case player {
+    X -> "X"
+    O -> "O"
+  }
+}
+
+pub fn view(model: Model) -> Element(Msg) {
+  html.div([attribute.class("game")], [
+    view_status(model),
+    view_board(model),
+    html.button([event.on_click(UserClickedNewGame)], [html.text("New game")]),
+  ])
+}
+
+pub fn view_status(model: Model) -> Element(Msg) {
+  let message = case list.contains(model.board, Empty) {
+    True -> player_name(current_player(model.board)) <> " to move"
+    False -> "Board full"
+  }
+  html.p([attribute.class("status")], [html.text(message)])
+}
+
+pub fn view_board(model: Model) -> Element(Msg) {
+  html.div([attribute.class("board")], list.index_map(model.board, view_cell))
+}
+\end{lstlisting}

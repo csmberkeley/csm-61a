@@ -1,0 +1,13 @@
+\begin{blocksection}
+\question Using the \lstinline{lift} table, write a query that returns the chair number and the total number of people (counting each couple as two people) for the two chairs with the most people, among chairs with at least 3 couples. Name the computed column \lstinline{people}, list the chairs from most to fewest people, and break ties by putting the smaller chair number first.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+SELECT chair, single + 2 * couple AS people
+FROM lift
+WHERE couple >= 3
+ORDER BY people DESC, chair ASC
+LIMIT 2;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

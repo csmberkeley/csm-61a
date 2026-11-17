@@ -1,0 +1,41 @@
+Q1. A rock-paper-scissors app stores its state in a model with three fields: your_score (an Int), computer_score (an Int), and rounds (a list of every round played so far, each recording both players’ choices). A new feature removes the most recent rounds from rounds. What must also happen?
+
+(A) Nothing, because scores are not part of the model’s state
+(B) The scores must be recomputed from the remaining rounds, because they can be derived from rounds and could otherwise disagree with it
+(C) view must be changed to ignore the scores
+(D) The scores must be removed from the model, because stored values that can be derived from other fields are not allowed
+
+Q2. The same app lets the user step back through past rounds. The model needs to remember which round is currently displayed. Which design is least likely to cause bugs?
+
+(A) Add a field displayed: Round holding a copy of the round being shown
+(B) Add a field back: Int, the number of rounds before the latest one, and find the displayed round from rounds and back
+(C) Add both displayed: Round and back: Int, so view can use whichever is convenient
+(D) Remove rounds and store only displayed
+
+Q3. In the same app, view shows both scores and the hands from the most recent round in rounds. A developer writes the UserChose case of update so that it correctly increases the scores but forgets to add the new round to rounds. The user clicks Rock. What does the page show?
+
+(A) The updated scores, but the hands from the previous round (or no hands, if this was the first click)
+(B) The old scores and the old hands, because nothing changed
+(C) The updated scores and the hands from the round the user just played, because Lustre remembers the click
+(D) An error, because the model’s fields are inconsistent
+
+Q4. What does element.to_string return for this element?
+
+gleam
+html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
+  html.text("Start over"),
+])
+(A) <button class="button" onclick="UserClickedReset">Start over</button>
+(B) <button class="button">Start over</button>
+(C) <button class="button">UserClickedReset</button>
+(D) <button>Start over</button>
+
+
+Solutions:
+Q1: (B). The scores can be computed from rounds, so after rounds are removed, the stored scores no longer match the history unless they are recomputed. Storing derived values is convenient, but every change to rounds must update them too. (A) is wrong because the scores are stored in the model. (C) doesn’t help, since view just displays whatever the model holds. (D) overcorrects, storing a derived value is allowed, it just means you must keep it consistent.
+
+Q2: (B). rounds already holds every round. back is just a position in that list, so the displayed round can always be found from rounds and back. (A) and (C) store a copy of a round, which can become wrong when rounds changes. (D) deletes the history, so there is nothing to step back through.
+
+Q3: (A). view only sees the model that update returns. The scores were updated, so the page shows the new scores. The new round was never added to rounds, so view still finds the previous round at the front of the list (or an empty list on the first click, which shows no hands). (B) is wrong because the scores did change. (C) is wrong because the click isn’t stored anywhere except in the model, so Lustre can’t show a round the model doesn’t contain. (D) is wrong because the model’s types are still valid, so nothing crashes; the page just shows stale hands.
+
+Q4: (B). element.to_string produces HTML text, and event handlers like event.on_click are associated with nodes in the tree but are not part of the HTML text. So only the class attribute and the text child appear. (A) wrongly includes the event as an onclick attribute. (C) confuses the message with the button’s text child. (D) leaves out the class attribute, which does appear in the HTML.

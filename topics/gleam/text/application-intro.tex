@@ -1,0 +1,35 @@
+\begin{blocksection}
+\textbf{Data Modeling}
+
+Data modeling is deciding how your program represents information. Ideally, each part of the state is stored in one place, a single source of truth (if both a list and its length are stored, which one is right?). Store what happened rather than values derived from it, use types that can only represent valid states, change data through a small number of functions, and have each function take only the input it needs.
+
+\end{blocksection}
+
+\vspace{0.5\baselineskip}
+\begin{blocksection}
+\textbf{Web Pages}
+
+A browser displays a page using three kinds of files. HTML describes what is on the page as a tree of elements, such as \lstinline$<div>$ and \lstinline$<button>$. CSS describes how each element is displayed: its size, color, font, and position. JavaScript is run by the browser and can change the contents of the page and respond to user actions. Gleam compiles to JavaScript.
+
+A page is a tree of elements; an element's children are written between its opening and closing tags. Attributes control a node's style: an element with \lstinline$class="cell"$ is styled by the CSS rules for that class. Events, such as a click on a particular button, are associated with nodes. When the tree changes, the browser displays the new tree.
+
+\end{blocksection}
+
+\vspace{0.5\baselineskip}
+\begin{blocksection}
+\textbf{Model-View-Update (Lustre)}
+
+A Lustre app has three parts. The model is the state of the app. The view is a function of the model that returns the tree of elements to display, including which message to send when the user takes an action. The update is a function that takes the current model and a message, and returns an updated model. Lustre calls \lstinline$view$ on the model and displays the result. For each message, Lustre calls \lstinline$update$, then calls \lstinline$view$ on the new model and efficiently changes the page to match.
+\end{blocksection}
+
+\vspace{0.5\baselineskip}
+\begin{blocksection}
+\textbf{Building Elements}
+
+Each function in \lstinline$lustre/element/html$, such as \lstinline$html.div$ and \lstinline$html.button$, creates a node from a list of attributes and a list of children. For example, this element describes the HTML in the comment:
+\begin{lstlisting}
+html.div([attribute.class("row")], [html.button([], [html.text("Hi")])])
+// <div class="row"><button>Hi</button></div>
+\end{lstlisting}
+\lstinline$attribute.class("name")$ lets CSS style a node, \lstinline$attribute.disabled(True)$ makes a button unclickable, \lstinline$event.on_click(msg)$ sends \lstinline$msg$ to \lstinline$update$ on a click, and \lstinline$html.text(s)$ creates a text child. \lstinline$element.to_string$ converts an element to HTML text, which doesn't include events.
+\end{blocksection}

@@ -6,8 +6,8 @@ FROM lift
 WHERE single >= 4;
 
 
-CREATE TABLE lift_totals AS
-    SELECT chair, single + 2 * couple AS people FROM lift;
+CREATE TABLE early_chairs AS
+    SELECT chair, couple FROM lift WHERE chair < 4;
 
 
 SELECT chair, single + 2 * couple AS people
@@ -20,5 +20,7 @@ LIMIT 2;
 SELECT * FROM lift
 ORDER BY single DESC, chair ASC
 LIMIT 3;
+
+
 
 

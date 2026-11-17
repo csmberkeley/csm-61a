@@ -1,0 +1,48 @@
+\begin{blocksection}
+\question Implement the \lstinline{UserClickedCell(i)} case of \texttt{update}, which takes in the current \texttt{model} and a message \texttt{msg} and returns the new model. When a user clicks cell \texttt{i}, if that cell is \lstinline{Empty}, the current player takes it; otherwise, nothing changes. You may use \texttt{current\_player} and \texttt{place} from the previous questions, as well as the provided \texttt{cell\_at}.
+\begin{lstlisting}
+pub fn update(model: Model, msg: Msg) -> Model {
+  case msg {
+    UserClickedCell(i) ->
+      case ____________(______________________) {
+        Empty ->
+          Model(board: ____________(________________, ____,
+            ____________________(________________)))
+        Taken(_) -> _________
+      }
+    UserClickedNewGame -> init(Nil)
+  }
+}
+
+assert update(init(Nil), UserClickedCell(4)).board
+  == [Empty, Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty]
+assert cell_at(update(update(init(Nil), UserClickedCell(4)), UserClickedCell(0)).board, 0)
+  == Taken(O)
+assert update(update(init(Nil), UserClickedCell(4)), UserClickedCell(4))
+  == update(init(Nil), UserClickedCell(4))
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn update(model: Model, msg: Msg) -> Model {
+  case msg {
+    UserClickedCell(i) ->
+      case cell_at(model.board, i) {
+        Empty ->
+          Model(board: place(model.board, i, current_player(model.board)))
+        Taken(_) -> model
+      }
+    UserClickedNewGame -> init(Nil)
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  \texttt{update} never touches the page. It takes the old model and a message describing what happened, and returns a new model. Lustre then calls \texttt{view} on the new model and changes the page to match the tree that \texttt{view} returns.
+
+  To decide whether the move is allowed, we match on the clicked cell. If it is \lstinline{Empty}, the new board comes from \texttt{place}, using \texttt{current\_player} to find out who is moving. If it is already taken, we return \texttt{model} unchanged, so the click has no effect.
+
+  In the next question, taken cells are disabled buttons, so they can't be clicked in the first place. \texttt{update} still checks, because it shouldn't rely on the view to keep the model valid: if we later changed the view, or sent \lstinline{UserClickedCell} from somewhere else, a taken cell would still never be overwritten.
+\end{questionmeta}
+\end{blocksection}
