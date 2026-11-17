@@ -3,7 +3,7 @@ SQL (Structured Query Language) is a declarative programming language that allow
 \subsection{Creating Tables}
 \subsubsection{\lstinline{CREATE TABLE}}
 Say we want to create a table \lstinline{lift} which has integer columns \lstinline{chair}, \lstinline{single}, and \lstinline{couple}. 
-Each row should describe one chair and how many single people and couples are in that chair at a specific instance in time. 
+Each row should describe one chair and how many single people and couples are in that chair at a specific instance in time (for couples, if there is say 1 couple then there should be 1 in the row in the \lstinline{couple} column; each couple has 2 people). 
 To create a named table to represent this scenario, use \lstinline{CREATE TABLE} with column names and types:
 \begin{lstlisting}
 CREATE TABLE lift (
@@ -16,18 +16,25 @@ CREATE TABLE lift (
 The table can then be populated with \lstinline{INSERT INTO} statements. For example:
 \begin{lstlisting}
 INSERT INTO lift VALUES (1, 4, 2);
+INSERT INTO lift VALUES (2, 3, 5);
+INSERT INTO lift VALUES (3, 6, 1);
+INSERT INTO lift VALUES (4, 2, 3);
+INSERT INTO lift VALUES (5, 5, 4);
 \end{lstlisting}
 
-We can also create a new table from a \lstinline{SELECT} statement using \lstinline{CREATE TABLE ... AS}:
+The resulting table we have then is \subimport{../lift/}{table.tex}
+
+We can create a new table from a \lstinline{SELECT} statement using \lstinline{CREATE TABLE ... AS}:
 \begin{lstlisting}
 CREATE TABLE crowded_lifts AS
     SELECT * FROM lift WHERE single >= 5;
 \end{lstlisting}
 
+\newpage
 \subsection{Querying Tables}
 The \lstinline{FROM} clause specifies the source table for a query. We can choose columns with \lstinline{SELECT}:
 \begin{lstlisting}
-SELECT name, birth_month FROM team;
+SELECT chair, single FROM lift;
 \end{lstlisting}
 An asterisk (\lstinline{*}) selects all columns. Arithmetic expressions can compute values from columns in each row. For example, if each couple has two people, this query computes the total number of people in each chair:
 \begin{lstlisting}
@@ -38,19 +45,19 @@ The \lstinline{AS} keyword names the resulting column.
 \subsubsection{\lstinline{WHERE}}
 \lstinline{WHERE} filters rows according to a boolean condition:
 \begin{lstlisting}
-SELECT name FROM team WHERE pet = "dog";
+SELECT chair FROM lift WHERE couple >= 3;
 \end{lstlisting}
 In SQL, \lstinline{=} checks equality; it does not assign a value.
 
 \subsubsection{\lstinline{ORDER BY}}
 \lstinline{ORDER BY} sorts result rows by a column. Add \lstinline{ASC} for ascending order or \lstinline{DESC} for descending order; ascending order is the default.
 \begin{lstlisting}
-SELECT name FROM team WHERE pet = "dog" ORDER BY name DESC;
+SELECT chair, couple FROM lift ORDER BY couple DESC;
 \end{lstlisting}
 
 \subsubsection{\lstinline{LIMIT}}
 \lstinline{LIMIT} restricts the result to a maximum number of rows. For example:
 \begin{lstlisting}
-SELECT chair FROM lift ORDER BY chair LIMIT 3;
+SELECT chair FROM lift LIMIT 3;
 \end{lstlisting}
 
