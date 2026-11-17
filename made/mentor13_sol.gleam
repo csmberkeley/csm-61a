@@ -1,8 +1,3 @@
-html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
-  html.text("Start over"),
-])
-
-
 pub fn current_player(board: List(Cell)) -> Player {
   let taken = list.count(board, fn(cell) { cell != Empty })
   case taken % 2 {
@@ -48,5 +43,10 @@ pub fn view_cell(cell: Cell, i: Int) -> Element(Msg) {
       ])
   }
 }
+
+
+html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
+  html.text("Start over"),
+])
 
 

@@ -1,8 +1,3 @@
-html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
-  html.text("Start over"),
-])
-
-
 pub fn current_player(board: List(Cell)) -> Player {
   let taken = list.count(board, fn(cell) { ____________ })
   case ____________ {
@@ -72,5 +67,10 @@ assert element.to_string(view_cell(Empty, 3))
   == "<button class=\"cell\"></button>"
 assert element.to_string(view_cell(Taken(O), 3))
   == "<button class=\"cell\" disabled>O</button>"
+
+
+html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
+  html.text("Start over"),
+])
 
 
