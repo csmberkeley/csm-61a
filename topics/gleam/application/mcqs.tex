@@ -1,0 +1,76 @@
+\begin{blocksection}
+\question A rock-paper-scissors app stores its state in a model with three fields: \lstinline$your_score$ (an \lstinline$Int$), \lstinline$computer_score$ (an \lstinline$Int$), and \lstinline$rounds$ (a list of every round played so far, each recording both players' choices). A new feature removes the most recent rounds from \lstinline$rounds$. What must also happen?
+
+\begin{choices}
+\choice Nothing, because scores are not part of the model's state
+\choice The scores must be recomputed from the remaining rounds, because they can be derived from \lstinline$rounds$ and could otherwise disagree with it
+\choice \lstinline$view$ must be changed to ignore the scores
+\choice The scores must be removed from the model, because stored values that can be derived from other fields are not allowed
+\end{choices}
+
+\begin{solution}
+(B). The scores can be computed from \lstinline$rounds$, so after rounds are removed, the stored scores no longer match the history unless they are recomputed. Storing derived values is convenient, but every change to \lstinline$rounds$ must update them too.
+(A) is wrong because the scores are stored in the model.
+(C) doesn't help, since \lstinline$view$ just displays whatever the model holds.
+(D) overcorrects, storing a derived value is allowed, it just means you must keep it consistent.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question The same app lets the user step back through past rounds. The model needs to remember which round is currently displayed. Which design is least likely to cause bugs?
+
+\begin{choices}
+\choice Add a field \lstinline$displayed: Round$ holding a copy of the round being shown
+\choice Add a field \lstinline$back: Int$, the number of rounds before the latest one, and find the displayed round from \lstinline$rounds$ and \lstinline$back$
+\choice Add both \lstinline$displayed: Round$ and \lstinline$back: Int$, so \lstinline$view$ can use whichever is convenient
+\choice Remove \lstinline$rounds$ and store only \lstinline$displayed$
+\end{choices}
+
+\begin{solution}
+(B). \lstinline$rounds$ already holds every round. \lstinline$back$ is just a position in that list, so the displayed round can always be found from \lstinline$rounds$ and \lstinline$back$.
+(A) and (C) store a copy of a round, which can become wrong when \lstinline$rounds$ changes.
+(D) deletes the history, so there is nothing to step back through.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question In the same app, \lstinline$view$ shows both scores and the hands from the most recent round in \lstinline$rounds$. A developer writes the \lstinline$UserChose$ case of \lstinline$update$ so that it correctly increases the scores but forgets to add the new round to \lstinline$rounds$. The user clicks Rock. What does the page show?
+
+\begin{choices}
+\choice The updated scores, but the hands from the previous round (or no hands, if this was the first click)
+\choice The old scores and the old hands, because nothing changed
+\choice The updated scores and the hands from the round the user just played, because Lustre remembers the click
+\choice An error, because the model's fields are inconsistent
+\end{choices}
+
+\begin{solution}
+(A). \lstinline$view$ only sees the model that \lstinline$update$ returns. The scores were updated, so the page shows the new scores. The new round was never added to \lstinline$rounds$, so \lstinline$view$ still finds the previous round at the front of the list (or an empty list on the first click, which shows no hands).
+(B) is wrong because the scores did change.
+(C) is wrong because the click isn't stored anywhere except in the model, so Lustre can't show a round the model doesn't contain.
+(D) is wrong because the model's types are still valid, so nothing crashes; the page just shows stale hands.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+\question What does \lstinline$element.to_string$ return for this element?
+
+\begin{lstlisting}
+html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
+  html.text("Start over"),
+])
+\end{lstlisting}
+
+\begin{choices}
+\choice \lstinline$<button class="button" onclick="UserClickedReset">Start over</button>$
+\choice \lstinline$<button class="button">Start over</button>$
+\choice \lstinline$<button class="button">UserClickedReset</button>$
+\choice \lstinline$<button>Start over</button>$
+\end{choices}
+
+\begin{solution}
+(B). \lstinline$element.to_string$ produces HTML text, and event handlers like \lstinline$event.on_click$ are associated with nodes in the tree but are not part of the HTML text. So only the class attribute and the text child appear.
+(A) wrongly includes the event as an \lstinline$onclick$ attribute.
+(C) confuses the message with the button's text child.
+(D) leaves out the \lstinline$class$ attribute, which does appear in the HTML.
+\end{solution}
+\end{blocksection}

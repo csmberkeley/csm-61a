@@ -1,3 +1,8 @@
+html.button([attribute.class("button"), event.on_click(UserClickedReset)], [
+  html.text("Start over"),
+])
+
+
 pub fn current_player(board: List(Cell)) -> Player {
   let taken = list.count(board, fn(cell) { ____________ })
   case ____________ {

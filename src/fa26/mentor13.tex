@@ -1,5 +1,13 @@
 \documentclass{exam}
 \usepackage{../../commonheader}
+\lstset{keywordstyle={}}
+
+% Unnumbered heading between \section and \subsection in weight.
+\newcommand{\topictitle}[1]{%
+  \par\vspace{1ex}%
+  \noindent{\fontfamily{ppl}\fontsize{13}{16}\selectfont\bfseries #1}\par
+  \vspace{-0.8ex}\noindent\rule{\linewidth}{0.75pt}\par
+  \vspace{1ex}}
 
 \discnumber{13}
 \title{CSM Gleaming 3 \& Intro to SQL}
@@ -29,18 +37,25 @@
 \end{meta}
 
 \section{Applications}
+\subimport{../../topics/gleam/text}{application-intro.tex}
 \newpage
+\topictitle{Tic-Tac-Toe}
 \subimport{../../topics/gleam/text}{tic-tac-toe-intro.tex}
 
 \newpage
 \begin{questions}
     \subimport{../../topics/gleam/application}{current-player.tex}
+    \par\vspace*{\baselineskip}
     \subimport{../../topics/gleam/application}{place.tex}
     \newpage
     \subimport{../../topics/gleam/application}{update.tex}
+    \par\vspace*{\baselineskip}
     \subimport{../../topics/gleam/application}{view-cell.tex}
+    \newpage
+    %\subimport{../../topics/gleam/application}{mcqs.tex}
 \end{questions}
 
+\newpage
 \section{SQL}
 \lstset{language=SQL}
 \subimport{../../topics/sql/text/}{intro-first-half.tex}
