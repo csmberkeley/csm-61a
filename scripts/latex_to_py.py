@@ -12,7 +12,21 @@ from make_dependency import get_dependencies
 
 worksheet_dest = 'made'
 
-def generate_file(file_name, file_paths, solution=False):
+# Output extension for each topic directory (topics/<name>/...).
+# To support another language, add one line here.
+LANGUAGE_EXTENSIONS = {
+	'gleam': '.gleam',
+	'sql': '.sql',
+}
+DEFAULT_EXTENSION = '.py'
+
+def extension_for(file_path):
+	match = re.search(r'(?:^|/)topics/([^/]+)/', file_path)
+	if match:
+		return LANGUAGE_EXTENSIONS.get(match.group(1), DEFAULT_EXTENSION)
+	return DEFAULT_EXTENSION
+
+def generate_file(file_paths, solution=False):
 	file = []
 	for file_path in file_paths:
 		with open(file_path, 'r', encoding="UTF-8") as f:
@@ -37,9 +51,8 @@ def generate_file(file_name, file_paths, solution=False):
 					file.append(line)
 					num_lines_since_start += 1
 		file.append("\n")
-	with open(file_name, 'w') as f:
-		f.write('\n'.join(file) + '\n')
-		
+	return file
+
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
@@ -50,11 +63,20 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 	file_paths = get_dependencies(args.input_file)
 	file_paths = [p for p in file_paths if '/text/' not in p and p[-4:] == '.tex']
-	base_name = os.path.basename(args.input_file)
+	base_name = os.path.basename(args.input_file).replace('.tex', '')
 	if args.solution:
-		sol_name = base_name.replace('.tex', '_sol.py')
-		generate_file(os.path.join(worksheet_dest, sol_name), file_paths, solution=True)
-	else: 
-		out_file = base_name.replace('.tex', '.py')
-		generate_file(os.path.join(worksheet_dest, out_file), file_paths)
-	
+		base_name += '_sol'
+	# One output file per language, in import order. A worksheet that
+	# imports no code files still gets an (empty) default file, as before.
+	paths_by_extension = {}
+	for file_path in file_paths:
+		paths_by_extension.setdefault(extension_for(file_path), []).append(file_path)
+	if not paths_by_extension:
+		paths_by_extension[DEFAULT_EXTENSION] = []
+	for extension, paths in paths_by_extension.items():
+		content = '\n'.join(generate_file(paths, solution=args.solution)) + '\n'
+		# Only the default file is written when it has no code.
+		if extension != DEFAULT_EXTENSION and not content.strip():
+			continue
+		with open(os.path.join(worksheet_dest, base_name + extension), 'w') as f:
+			f.write(content)

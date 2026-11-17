@@ -1,11 +1,3 @@
-pub fn factorial(n: Int) -> Int {
-  case n > 0 {
-    True -> ____________ * ______________________________
-    False -> ____________
-  }
-}
-
-
 pub fn inc(x: Int, y: Int) -> Bool {
   x + 1 == y
 }
@@ -31,14 +23,6 @@ assert show_pairs([3, 5, 7, 9, 11, 13])
   == [#(3, 5), #(5, 7), #(7, 9), #(9, 11), #(11, 13)]
 assert show_pairs([1, 2]) == [#(1, 2)]
 assert show_pairs([1]) == []
- pub fn unpair(s: List(#(a, a))) -> List(a) {
-   case s {
-     [] -> []
-     [#(x, y)] -> [x, y]
-     [#(x, _), ..rest] -> [x, ..unpair(rest)]
-   }
- }
- assert unpair(show_pairs([3, 5, 7, 9])) == [3, 5, 7, 9]
 pub fn all_pairs_calls(f: fn(a, a) -> Bool, s: List(a)) -> List(fn() -> Bool) {
   list.map(show_pairs(s), fn(pair) { ______________________________ })
 }
