@@ -20,8 +20,8 @@ INSERT INTO lift VALUES (1, 4, 2);
 
 We can also create a new table from a \lstinline{SELECT} statement using \lstinline{CREATE TABLE ... AS}:
 \begin{lstlisting}
-CREATE TABLE lift_totals AS
-    SELECT chair, single + 2 * couple AS people FROM lift;
+CREATE TABLE crowded_lifts AS
+    SELECT * FROM lift WHERE single >= 5;
 \end{lstlisting}
 
 \subsection{Querying Tables}
