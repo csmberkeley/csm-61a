@@ -69,13 +69,3 @@ assert element.to_string(view_cell(Taken(O), 3))
   == "<button class=\"cell\" disabled>O</button>"
 
 
-
-
-
-
-
-
-
-
-
-
