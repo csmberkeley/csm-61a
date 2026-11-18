@@ -1,0 +1,38 @@
+\begin{blocksection}
+\question Implement \texttt{current\_player}, which takes in a \texttt{board} and returns the \lstinline{Player} whose turn it is. \texttt{X} always moves first, and the players take turns, so whose turn it is depends only on how many cells have been taken. You may find \lstinline{list.count(xs, f)}, which returns the number of elements \texttt{x} in \texttt{xs} for which \lstinline{f(x)} is \lstinline{True}, helpful.
+\begin{lstlisting}
+pub fn current_player(board: List(Cell)) -> Player {
+  let taken = list.count(board, fn(cell) { ____________ })
+  case ____________ {
+    0 -> ____
+    _ -> ____
+  }
+}
+
+assert current_player(list.repeat(Empty, 9)) == X
+assert current_player([Empty, Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty])
+  == O
+assert current_player([Taken(O), Empty, Empty, Empty, Taken(X), Empty, Empty, Empty, Empty])
+  == X
+\end{lstlisting}
+
+\begin{solution}
+\begin{lstlisting}
+pub fn current_player(board: List(Cell)) -> Player {
+  let taken = list.count(board, fn(cell) { cell != Empty })
+  case taken % 2 {
+    0 -> X
+    _ -> O
+  }
+}
+\end{lstlisting}
+\end{solution}
+
+\begin{questionmeta}
+  Since \texttt{X} moves first and the players alternate, \texttt{X} has made either the same number of moves as \texttt{O} (so it is \texttt{X}'s turn) or one more (so it is \texttt{O}'s turn). That means the number of taken cells is even exactly when it is \texttt{X}'s turn.
+
+  The function passed to \lstinline{list.count} checks \lstinline{cell != Empty} rather than matching on \lstinline{Taken(_)}, since \lstinline{!=} works on any two values of the same type. A \lstinline{case} expression inside the function would work too, but takes more lines.
+
+  Notice that the \lstinline{Model} has no field saying whose turn it is. If it did, that field and the board could disagree (say, after a bug in \texttt{update}), and we would have to decide which one is right. Computing the turn from the board keeps a single source of truth: the board is the only thing we store, and everything else, including the status message, is derived from it.
+\end{questionmeta}
+\end{blocksection}

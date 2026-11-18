@@ -1,0 +1,11 @@
+\begin{blocksection}
+\question Using the \lstinline{lift} table, write a query that returns two columns for each chair with at least 4 single people: the chair number, and the number of single people minus twice the number of couples. Name the computed column \lstinline{difference}. For example, chair 1 in the above example table has 4 single people and 2 couples, so its \lstinline{difference} is $4 - 2 \times 2 = 0$.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+SELECT chair, single - 2 * couple AS difference
+FROM lift
+WHERE single >= 4;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

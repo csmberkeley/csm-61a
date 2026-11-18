@@ -1,0 +1,10 @@
+\begin{blocksection}
+\question Using the \lstinline{lift} table, create a new table named \lstinline{early_chairs} with two columns, \lstinline{chair} and \lstinline{couple}. Include one row for each chair whose chair number is less than 4.
+
+\begin{solution}[1.5in]
+\begin{lstlisting}
+CREATE TABLE early_chairs AS
+    SELECT chair, couple FROM lift WHERE chair < 4;
+\end{lstlisting}
+\end{solution}
+\end{blocksection}

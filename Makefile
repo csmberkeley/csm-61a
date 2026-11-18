@@ -1,8 +1,8 @@
 # You should only have to modify RELEASED and SOLUTIONS.
 # Also change SRC once per semester.
 
-RELEASED = mentor12
-SOLUTIONS = mentor12
+RELEASED = mentor13
+SOLUTIONS = mentor13
 
 DST = made
 SRC = src/fa26
@@ -37,8 +37,10 @@ clean:
 
 $(HANDOUT_ALL): %-all: %-pdfs %-py;
 $(HANDOUT_PY): %-py: %-py-sol %-py-no-sol;
-$(HANDOUT_PY_SOL_ONLY): %-py-sol: $(DST) $(DST)/%_sol.py;
-$(HANDOUT_PY_NO_SOL): %-py-no-sol: $(DST) $(DST)/%.py;
+$(HANDOUT_PY_SOL_ONLY): %-py-sol: $(DST)
+	python3 scripts/latex_to_py.py -f $(SRC)/$*.tex -s
+$(HANDOUT_PY_NO_SOL): %-py-no-sol: $(DST)
+	python3 scripts/latex_to_py.py -f $(SRC)/$*.tex
 $(HANDOUT_ALL_PDFS): %-pdfs: % %-sol %-meta;
 $(HANDOUT): %: $(DST) $(DST)/%.pdf;
 $(HANDOUT_SOL): %-sol: $(DST) $(DST)/%_sol.pdf;
@@ -61,12 +63,6 @@ $(DST)/%_meta.pdf: $(SRC)/%.tex commonheader.sty
 	cd $(SRC); $(TEX) $(TEX_FLAGS) -jobname="$*_meta" "\def\discussionsolutions{}\def\discussionmetas{}\input{$*}"
 	@-rm $(DST)/*.aux $(DST)/*.log $(DST)/*.out
 	#open $(DST)/$*_meta.pdf
-
-$(DST)/%.py: $(SRC)/%.tex scripts/latex_to_py.py
-	python3 scripts/latex_to_py.py -f $<
-
-$(DST)/%_sol.py: $(SRC)/%.tex scripts/latex_to_py.py
-	python3 scripts/latex_to_py.py -f $< -s
 
 $(DST):
 	mkdir -p $@

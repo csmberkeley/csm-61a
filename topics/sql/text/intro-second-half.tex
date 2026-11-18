@@ -1,0 +1,29 @@
+\subsection{Joins}
+Sometimes, we need to compare values across two tables, or across two rows of the same table. An inner join creates a table whose rows contain every possible combination of rows from the source tables. We can then filter those combinations to find relationships between rows.
+
+An inner join is created by specifying multiple source tables in a \lstinline{FROM} clause. For example, \lstinline{SELECT * FROM team AS a, team AS b;} combines each row of \lstinline{team} with every row of \lstinline{team}. The aliases \lstinline{a} and \lstinline{b} distinguish the two copies.
+
+To find pairs of people with the same birth month:
+\begin{lstlisting}
+SELECT a.name, b.name FROM team AS a, team AS b
+    WHERE a.name < b.name AND a.birth_month = b.birth_month;
+\end{lstlisting}
+The condition \lstinline{a.name < b.name} lists each pair once.
+
+\subsection{Aggregation}
+Aggregation combines information from multiple rows into a result. Functions such as \lstinline{MAX}, \lstinline{MIN}, \lstinline{COUNT}, and \lstinline{SUM} can summarize table data. For example, this counts the rows in \lstinline{team}:
+\begin{lstlisting}
+SELECT COUNT(*) FROM team;
+\end{lstlisting}
+
+\subsubsection{\lstinline{GROUP BY}}
+\lstinline{GROUP BY} groups together rows with the same value in a column. An aggregation is then performed for each group, producing one result row per group. This query counts teammates for each pet type:
+\begin{lstlisting}
+SELECT pet, COUNT(*) FROM team GROUP BY pet;
+\end{lstlisting}
+
+\subsubsection{\lstinline{HAVING}}
+\lstinline{HAVING} filters groups, just as \lstinline{WHERE} filters individual rows. This selects pet types owned by more than one teammate:
+\begin{lstlisting}
+SELECT pet FROM team GROUP BY pet HAVING COUNT(*) > 1;
+\end{lstlisting}
