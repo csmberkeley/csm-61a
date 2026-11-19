@@ -38,5 +38,10 @@ Suggested Time: 10 min; Difficulty: Medium
     \item \textbf{Read the return type:} \lstinline{all_paths} returns a Python list whose elements are linked lists. Ask what \lstinline{all_paths(b)} means for a branch \lstinline{b}: every path from that branch's root down to a leaf.
     \item \textbf{Same pattern as \lstinline{partitions}:} Add the current label to the front of each path from a branch with \lstinline{Link(t.label, p)}, as the lecture did with \lstinline{Link(m, p)}.
     \item \textbf{Nested comprehension:} Read it as two loops: for each branch, for each path in that branch.
+    \item \textbf{Common bugs:} Both come from mixing up a list of paths with a single path.
+    \begin{itemize}
+        \item Returning \lstinline{Link(t.label)} in the base case (a path, not a list of paths) gives \lstinline{TypeError: 'Link' object is not iterable} when the caller loops over the result.
+        \item Writing \lstinline{[Link(t.label, all_paths(b)) for b in t.branches]} puts a Python list in \lstinline{rest}, so printing a path raises \lstinline{AssertionError: Not a valid linked list}.
+    \end{itemize}
 \end{itemize}
 \end{questionmeta}

@@ -38,5 +38,6 @@ Suggested Time: 10 min; Difficulty: Medium
     \item \textbf{Shrink the problem:} Once we use the root label, each branch only needs to produce a sum of \lstinline{total - t.label}.
     \item \textbf{Base case:} A leaf is a complete path; it counts exactly when its label equals the remaining total.
     \item \textbf{Combine:} Add the counts from all branches, as in \lstinline{count_leaves} from lecture.
+    \item \textbf{Stopping early:} A path must end at a leaf. \lstinline{count_paths(t, 5)} is the only doctest that catches a solution that returns 1 as soon as the remaining total matches an internal node's label: the path 1, 4 sums to 5 but continues to the leaf 1. Ask students to trace it.
 \end{itemize}
 \end{questionmeta}
